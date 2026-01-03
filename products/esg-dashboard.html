@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESG Dashboard | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { 
+      background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
+        </a>
+        <div class="flex items-center gap-4" id="userInfo"></div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-green-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
+    </div>
+  </div>
+
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-leaf text-green-400"></i>
+          <span class="text-green-400 text-sm font-medium">ESG Dashboard</span>
+        </div>
+        <h1 class="text-5xl font-black mb-4">ESG <span class="gradient-text">Performance</span></h1>
+        <p class="text-xl text-gray-400">Environmental, Social & Governance metrics tracking</p>
+      </div>
+
+      <div id="accessBadge" class="mb-8"></div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-2xl border border-green-500/30 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold">Environmental</h3>
+            <i class="fas fa-tree text-green-400 text-xl"></i>
+          </div>
+          <div class="text-4xl font-black mb-2">85/100</div>
+          <div class="text-sm text-gray-400 mb-4">Overall Score</div>
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Carbon Emissions</span>
+              <span class="text-green-400 font-semibold">Good</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Water Usage</span>
+              <span class="text-cyan-400 font-semibold">Excellent</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Waste Management</span>
+              <span class="text-green-400 font-semibold">Good</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/30 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold">Social</h3>
+            <i class="fas fa-users text-blue-400 text-xl"></i>
+          </div>
+          <div class="text-4xl font-black mb-2">92/100</div>
+          <div class="text-sm text-gray-400 mb-4">Overall Score</div>
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Worker Safety</span>
+              <span class="text-cyan-400 font-semibold">Excellent</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Community Impact</span>
+              <span class="text-green-400 font-semibold">Good</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Diversity & Inclusion</span>
+              <span class="text-cyan-400 font-semibold">Excellent</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/30 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold">Governance</h3>
+            <i class="fas fa-balance-scale text-purple-400 text-xl"></i>
+          </div>
+          <div class="text-4xl font-black mb-2">88/100</div>
+          <div class="text-sm text-gray-400 mb-4">Overall Score</div>
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Compliance</span>
+              <span class="text-cyan-400 font-semibold">Excellent</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Ethics & Integrity</span>
+              <span class="text-green-400 font-semibold">Good</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-400">Transparency</span>
+              <span class="text-green-400 font-semibold">Good</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <h3 class="text-xl font-bold mb-6">Environmental Metrics</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-400">Carbon Footprint</span>
+                <span class="font-bold">2,450 tons CO2</span>
+              </div>
+              <div class="w-full bg-slate-950 rounded-full h-2">
+                <div class="bg-gradient-to-r from-green-500 to-cyan-500 h-2 rounded-full" style="width: 75%"></div>
+              </div>
+              <div class="text-xs text-green-400 mt-1">↓ 15% reduction this year</div>
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-400">Water Recycling</span>
+                <span class="font-bold">87%</span>
+              </div>
+              <div class="w-full bg-slate-950 rounded-full h-2">
+                <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 87%"></div>
+              </div>
+              <div class="text-xs text-green-400 mt-1">↑ 12% improvement</div>
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-400">Renewable Energy</span>
+                <span class="font-bold">42%</span>
+              </div>
+              <div class="w-full bg-slate-950 rounded-full h-2">
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: 42%"></div>
+              </div>
+              <div class="text-xs text-green-400 mt-1">↑ 8% increase</div>
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-400">Waste Diverted</span>
+                <span class="font-bold">68%</span>
+              </div>
+              <div class="w-full bg-slate-950 rounded-full h-2">
+                <div class="bg-gradient-to-r from-amber-500 to-orange-500 h-2 rounded-full" style="width: 68%"></div>
+              </div>
+              <div class="text-xs text-green-400 mt-1">↑ 5% improvement</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <h3 class="text-xl font-bold mb-6">Social Impact</h3>
+          <div class="space-y-4">
+            <div class="bg-slate-950 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-shield-alt text-green-400"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold">Safety Record</div>
+                    <div class="text-sm text-gray-400">Zero LTI - 365 days</div>
+                  </div>
+                </div>
+                <div class="text-2xl font-black text-green-400">98.5%</div>
+              </div>
+            </div>
+
+            <div class="bg-slate-950 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-blue-400"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold">Training Hours</div>
+                    <div class="text-sm text-gray-400">Per employee/year</div>
+                  </div>
+                </div>
+                <div class="text-2xl font-black text-blue-400">48hrs</div>
+              </div>
+            </div>
+
+            <div class="bg-slate-950 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-users text-purple-400"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold">Diversity</div>
+                    <div class="text-sm text-gray-400">Women in workforce</div>
+                  </div>
+                </div>
+                <div class="text-2xl font-black text-purple-400">32%</div>
+              </div>
+            </div>
+
+            <div class="bg-slate-950 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hands-helping text-cyan-400"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold">Community Investment</div>
+                    <div class="text-sm text-gray-400">Annual contribution</div>
+                  </div>
+                </div>
+                <div class="text-2xl font-black text-cyan-400">$2.4M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <h3 class="font-bold mb-4">Compliance Status</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">Environmental Permits</span>
+              <span class="text-green-400"><i class="fas fa-check-circle"></i> Current</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">Safety Certifications</span>
+              <span class="text-green-400"><i class="fas fa-check-circle"></i> Current</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">Labor Standards</span>
+              <span class="text-green-400"><i class="fas fa-check-circle"></i> Compliant</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">Financial Reporting</span>
+              <span class="text-green-400"><i class="fas fa-check-circle"></i> Up to date</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <h3 class="font-bold mb-4">Recent Achievements</h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-award text-green-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="text-sm font-semibold">ISO 14001 Certified</div>
+                <div class="text-xs text-gray-400">Environmental Management</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-trophy text-blue-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="text-sm font-semibold">Safety Excellence Award</div>
+                <div class="text-xs text-gray-400">Industry Recognition</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-star text-purple-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="text-sm font-semibold">Top ESG Performer</div>
+                <div class="text-xs text-gray-400">Regional Ranking</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <h3 class="font-bold mb-4">Goals Progress</h3>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-400">Net Zero by 2030</span>
+                <span class="font-semibold">65%</span>
+              </div>
+              <div class="w-full bg-slate-950 rounded-full h-1.5">
+                <div class="bg-green-500 h-1.5 rounded-full" style="width: 65%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-400">Zero Harm Target</span>
+                <span class="font-semibold">92%</span>
+              </div>
+              <div class="w-full bg-slate-950 rounded-full h-1.5">
+                <div class="bg-blue-500 h-1.5 rounded-full" style="width: 92%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-400">Diversity Goal</span>
+                <span class="font-semibold">78%</span>
+              </div>
+              <div class="w-full bg-slate-950 rounded-full h-1.5">
+                <div class="bg-purple-500 h-1.5 rounded-full" style="width: 78%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-2xl border border-green-500/30 p-8">
+        <div class="flex items-start gap-6">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-file-download text-green-400 text-2xl"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-2">Generate ESG Report</h3>
+            <p class="text-gray-400 mb-4">Create comprehensive ESG reports for stakeholders and regulatory compliance</p>
+            <div class="flex gap-3">
+              <button class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-xl font-bold transition-all">
+                <i class="fas fa-file-pdf mr-2"></i>Download PDF
+              </button>
+              <button class="bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-xl font-bold transition-all">
+                <i class="fas fa-file-excel mr-2"></i>Export Excel
+              </button>
+              <button class="bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-xl font-bold transition-all">
+                <i class="fas fa-share-alt mr-2"></i>Share Report
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const RESOURCE_ID = 'esg-dashboard';
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth()) return;
+      const user = getCurrentUser();
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
+        </button>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">ESG Dashboard Access</div>
+              <div class="text-sm text-gray-400">Track sustainability metrics</div>
+            </div>
+          </div>
+        `;
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
+      }
+    });
+  </script>
+</body>
+</html>
