@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Cost Predictor | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { 
+      background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
+        </a>
+        <div class="flex items-center gap-4" id="userInfo"></div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
+    </div>
+  </div>
+
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-brain text-purple-400"></i>
+          <span class="text-purple-400 text-sm font-medium">AI Cost Predictor</span>
+          <span class="bg-gradient-to-r from-purple-500 to-pink-600 text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">PRO</span>
+        </div>
+        <h1 class="text-5xl font-black mb-4">AI-Powered <span class="gradient-text">Cost Prediction</span></h1>
+        <p class="text-xl text-gray-400">Machine learning models for accurate cost forecasting</p>
+      </div>
+
+      <div id="accessBadge" class="mb-8"></div>
+
+      <div class="grid lg:grid-cols-3 gap-6 mb-8">
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-8">
+            <h3 class="text-2xl font-bold mb-6">Project Parameters</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold mb-2">Project Type</label>
+                <select class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3">
+                  <option>Open Pit Mine</option>
+                  <option>Underground Mine</option>
+                  <option>Processing Plant</option>
+                  <option>Infrastructure</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">Commodity</label>
+                <select class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3">
+                  <option>Gold</option>
+                  <option>Copper</option>
+                  <option>Iron Ore</option>
+                  <option>Coal</option>
+                  <option>Lithium</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">Production Rate (tpd)</label>
+                <input type="number" value="50000" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3">
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">Mine Life (years)</label>
+                <input type="number" value="20" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3">
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">Location</label>
+                <select class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3">
+                  <option>North America</option>
+                  <option>South America</option>
+                  <option>Africa</option>
+                  <option>Australia</option>
+                  <option>Asia</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">Ore Grade</label>
+                <input type="text" placeholder="e.g., 2.5 g/t" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3">
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <label class="block text-sm font-semibold mb-2">Historical Data (Optional)</label>
+              <textarea rows="3" placeholder="Paste historical cost data or similar project information..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3"></textarea>
+            </div>
+
+            <button class="mt-6 w-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 px-6 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all">
+              <i class="fas fa-magic mr-2"></i>Generate AI Prediction
+            </button>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/30 p-8">
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-chart-line text-purple-400 text-2xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-2">AI Prediction Results</h3>
+                <p class="text-gray-400 mb-6">Based on machine learning analysis of 10,000+ similar projects</p>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                  <div class="bg-slate-900/50 rounded-xl p-4">
+                    <div class="text-sm text-gray-400 mb-1">Predicted CAPEX</div>
+                    <div class="text-2xl font-black text-purple-400">$245M</div>
+                    <div class="text-xs text-gray-400 mt-1">±15% confidence</div>
+                  </div>
+                  <div class="bg-slate-900/50 rounded-xl p-4">
+                    <div class="text-sm text-gray-400 mb-1">Annual OPEX</div>
+                    <div class="text-2xl font-black text-pink-400">$42M</div>
+                    <div class="text-xs text-gray-400 mt-1">±12% confidence</div>
+                  </div>
+                  <div class="bg-slate-900/50 rounded-xl p-4">
+                    <div class="text-sm text-gray-400 mb-1">Cost per Ton</div>
+                    <div class="text-2xl font-black text-amber-400">$28.50</div>
+                    <div class="text-xs text-gray-400 mt-1">±10% confidence</div>
+                  </div>
+                </div>
+
+                <div class="bg-slate-900/50 rounded-xl p-4">
+                  <h4 class="font-bold mb-3">Cost Range Scenarios</h4>
+                  <div class="space-y-3">
+                    <div>
+                      <div class="flex justify-between text-sm mb-1">
+                        <span class="text-green-400">Best Case (P10)</span>
+                        <span class="font-semibold">$208M</span>
+                      </div>
+                      <div class="w-full bg-slate-950 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-sm mb-1">
+                        <span class="text-blue-400">Most Likely (P50)</span>
+                        <span class="font-semibold">$245M</span>
+                      </div>
+                      <div class="w-full bg-slate-950 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-sm mb-1">
+                        <span class="text-red-400">Worst Case (P90)</span>
+                        <span class="font-semibold">$282M</span>
+                      </div>
+                      <div class="w-full bg-slate-950 rounded-full h-2">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 115%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+            <h3 class="font-bold mb-4">AI Model Info</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-400">Model Version</span>
+                <span class="font-semibold">v3.2.1</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Training Data</span>
+                <span class="font-semibold">10,247 projects</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Accuracy</span>
+                <span class="font-semibold text-green-400">94.2%</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Last Updated</span>
+                <span class="font-semibold">Jan 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+            <h3 class="font-bold mb-4">Key Factors</h3>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-400">Location Impact</span>
+                  <span class="font-semibold">High</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-1.5">
+                  <div class="bg-red-500 h-1.5 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-400">Scale Effect</span>
+                  <span class="font-semibold">Medium</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-1.5">
+                  <div class="bg-amber-500 h-1.5 rounded-full" style="width: 60%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-400">Commodity Price</span>
+                  <span class="font-semibold">Medium</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-1.5">
+                  <div class="bg-amber-500 h-1.5 rounded-full" style="width: 55%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-gray-400">Technology</span>
+                  <span class="font-semibold">Low</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-1.5">
+                  <div class="bg-green-500 h-1.5 rounded-full" style="width: 35%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+            <h3 class="font-bold mb-4">Recommendations</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i class="fas fa-check text-green-400 text-xs"></i>
+                </div>
+                <div class="text-sm">
+                  <div class="font-semibold mb-1">Optimize Equipment Selection</div>
+                  <div class="text-gray-400">Potential 8% cost reduction</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i class="fas fa-lightbulb text-blue-400 text-xs"></i>
+                </div>
+                <div class="text-sm">
+                  <div class="font-semibold mb-1">Consider Phased Development</div>
+                  <div class="text-gray-400">Reduce initial CAPEX by 15%</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i class="fas fa-chart-line text-purple-400 text-xs"></i>
+                </div>
+                <div class="text-sm">
+                  <div class="font-semibold mb-1">Monitor Market Trends</div>
+                  <div class="text-gray-400">Commodity prices volatile</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/30 p-6">
+            <h3 class="font-bold mb-3">Export Results</h3>
+            <div class="space-y-2">
+              <button class="w-full bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                <i class="fas fa-file-pdf mr-2"></i>Download PDF Report
+              </button>
+              <button class="w-full bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                <i class="fas fa-file-excel mr-2"></i>Export to Excel
+              </button>
+              <button class="w-full bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                <i class="fas fa-share-alt mr-2"></i>Share Analysis
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const RESOURCE_ID = 'ai-predictor';
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth()) return;
+      const user = getCurrentUser();
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
+        </button>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">AI Predictor Access</div>
+              <div class="text-sm text-gray-400">Machine learning powered predictions</div>
+            </div>
+          </div>
+        `;
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
+      }
+    });
+  </script>
+</body>
+</html>
