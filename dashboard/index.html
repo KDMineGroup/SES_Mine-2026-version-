@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SESMine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .sidebar { transition: all 0.3s ease; }
+    .sidebar.collapsed { width: 80px; }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 bg-slate-900 border-r border-slate-800 flex flex-col">
+      <!-- Logo -->
+      <div class="p-6 border-b border-slate-800">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-mountain text-white"></i>
+          </div>
+          <span class="text-xl font-black">SES<span class="gradient-text">Mine</span></span>
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 bg-amber-500/20 border border-amber-500/30 rounded-xl text-amber-500 font-semibold">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="../products/cost-calculator.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-calculator"></i>
+          <span>Cost Calculator</span>
+        </a>
+        <a href="../products/equipment-database.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-truck-monster"></i>
+          <span>Equipment</span>
+        </a>
+        <a href="analytics.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-chart-line"></i>
+          <span>Analytics</span>
+        </a>
+        <a href="esg-dashboard.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-leaf"></i>
+          <span>ESG Metrics</span>
+        </a>
+        
+        <div class="pt-4 border-t border-slate-800 mt-4">
+          <p class="text-xs text-gray-500 uppercase tracking-wider px-4 mb-2">Projects</p>
+          <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-folder"></i>
+            <span>All Projects</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-star"></i>
+            <span>Favorites</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-clock"></i>
+            <span>Recent</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- User Profile -->
+      <div class="p-4 border-t border-slate-800">
+        <div class="flex items-center gap-3 p-3 bg-slate-800 rounded-xl">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+               alt="User" 
+               class="w-10 h-10 rounded-full">
+          <div class="flex-1">
+            <div class="font-semibold text-sm">John Doe</div>
+            <div class="text-xs text-gray-400">john@mining.com</div>
+          </div>
+          <button class="text-gray-400 hover:text-white">
+            <i class="fas fa-cog"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Bar -->
+      <header class="bg-slate-900 border-b border-slate-800 px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-2xl font-bold">Dashboard</h1>
+            <p class="text-gray-400 text-sm">Welcome back, John! Here's your mining overview.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="relative p-2 text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-bell text-xl"></i>
+              <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <button class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-xl font-semibold hover:shadow-lg transition-all">
+              <i class="fas fa-plus mr-2"></i>New Project
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Stats Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-dollar-sign text-amber-500 text-xl"></i>
+              </div>
+              <span class="text-green-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-up"></i>12.5%
+              </span>
+            </div>
+            <div class="text-3xl font-black mb-1">$2.4M</div>
+            <div class="text-gray-400 text-sm">Total Cost Saved</div>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-folder text-green-500 text-xl"></i>
+              </div>
+              <span class="text-green-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-up"></i>8.2%
+              </span>
+            </div>
+            <div class="text-3xl font-black mb-1">156</div>
+            <div class="text-gray-400 text-sm">Active Projects</div>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-chart-line text-purple-500 text-xl"></i>
+              </div>
+              <span class="text-green-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-up"></i>2.1%
+              </span>
+            </div>
+            <div class="text-3xl font-black mb-1">94.2%</div>
+            <div class="text-gray-400 text-sm">Accuracy Rate</div>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-truck-monster text-blue-500 text-xl"></i>
+              </div>
+              <span class="text-red-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-down"></i>3.4%
+              </span>
+            </div>
+            <div class="text-3xl font-black mb-1">$285/hr</div>
+            <div class="text-gray-400 text-sm">Avg Equipment Cost</div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid lg:grid-cols-2 gap-6 mb-8">
+          <!-- Cost Trend Chart -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold">Cost Trend</h3>
+              <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm">
+                <option>Last 6 Months</option>
+                <option>Last Year</option>
+                <option>All Time</option>
+              </select>
+            </div>
+            <canvas id="costChart" class="w-full" height="250"></canvas>
+          </div>
+
+          <!-- Project Distribution -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold">Project Distribution</h3>
+              <button class="text-amber-500 text-sm font-semibold hover:underline">View All</button>
+            </div>
+            <canvas id="projectChart" class="w-full" height="250"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Projects & Quick Actions -->
+        <div class="grid lg:grid-cols-3 gap-6">
+          <!-- Recent Projects -->
+          <div class="lg:col-span-2 bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold">Recent Projects</h3>
+              <button class="text-amber-500 text-sm font-semibold hover:underline">View All</button>
+            </div>
+            
+            <div class="space-y-4">
+              <div class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors cursor-pointer">
+                <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-mountain text-amber-500"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="font-semibold mb-1">Copper Mine Alpha - Phase 2</div>
+                  <div class="text-sm text-gray-400">Open Pit • Updated 2 hours ago</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-amber-500">$12.5M</div>
+                  <div class="text-sm text-gray-400">Estimated</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors cursor-pointer">
+                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-gem text-green-500"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="font-semibold mb-1">Gold Project - Feasibility Study</div>
+                  <div class="text-sm text-gray-400">Underground • Updated 5 hours ago</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-green-500">$8.2M</div>
+                  <div class="text-sm text-gray-400">Estimated</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors cursor-pointer">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-industry text-purple-500"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="font-semibold mb-1">Iron Ore Expansion</div>
+                  <div class="text-sm text-gray-400">Open Pit • Updated 1 day ago</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-purple-500">$24.8M</div>
+                  <div class="text-sm text-gray-400">Estimated</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors cursor-pointer">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-battery-full text-blue-500"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="font-semibold mb-1">Lithium Mine - Pre-Feasibility</div>
+                  <div class="text-sm text-gray-400">Open Pit • Updated 2 days ago</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-blue-500">$15.6M</div>
+                  <div class="text-sm text-gray-400">Estimated</div>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="space-y-6">
+            <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+              <h3 class="text-xl font-bold mb-4">Quick Actions</h3>
+              <div class="space-y-3">
+                <button class="w-full bg-gradient-to-r from-amber-500 to-orange-600 py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                  <i class="fas fa-plus mr-2"></i>New Estimate
+                </button>
+                <button class="w-full bg-slate-800 hover:bg-slate-700 py-3 rounded-xl font-semibold transition-all">
+                  <i class="fas fa-file-import mr-2"></i>Import Data
+                </button>
+                <button class="w-full bg-slate-800 hover:bg-slate-700 py-3 rounded-xl font-semibold transition-all">
+                  <i class="fas fa-file-pdf mr-2"></i>Export Report
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-amber-500/10 to-orange-600/10 rounded-2xl p-6 border border-amber-500/30">
+              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-lightbulb text-amber-500 text-xl"></i>
+              </div>
+              <h4 class="font-bold mb-2">AI Insight</h4>
+              <p class="text-sm text-gray-300 mb-4">
+                Your equipment costs are 12% below industry average. Consider reviewing maintenance schedules.
+              </p>
+              <button class="text-amber-500 text-sm font-semibold hover:underline">
+                Learn More →
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Cost Trend Chart
+    const costCtx = document.getElementById('costChart').getContext('2d');
+    new Chart(costCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Estimated Cost',
+          data: [2.1, 2.3, 2.0, 2.4, 2.2, 2.4],
+          borderColor: '#f59e0b',
+          backgroundColor: 'rgba(245, 158, 11, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            ticks: { color: '#94a3b8' },
+            grid: { color: '#1e293b' }
+          },
+          x: {
+            ticks: { color: '#94a3b8' },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+
+    // Project Distribution Chart
+    const projectCtx = document.getElementById('projectChart').getContext('2d');
+    new Chart(projectCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Open Pit', 'Underground', 'Processing', 'Exploration'],
+        datasets: [{
+          data: [45, 25, 20, 10],
+          backgroundColor: ['#f59e0b', '#10b981', '#8b5cf6', '#3b82f6'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#94a3b8', padding: 15 }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
