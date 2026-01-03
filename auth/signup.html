@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - SESMine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .step-indicator { transition: all 0.3s ease; }
+    .step-indicator.active { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <div class="min-h-screen flex">
+    <!-- Left Side - Signup Form -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 overflow-y-auto">
+      <div class="w-full max-w-md">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-3 mb-8">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-mountain text-white text-xl"></i>
+          </div>
+          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+        </a>
+
+        <div class="mb-8">
+          <h1 class="text-4xl font-black mb-2">Start Your Free Trial</h1>
+          <p class="text-gray-400">14 days free. No credit card required.</p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex items-center gap-2 mb-8">
+          <div class="step-indicator active flex-1 h-2 rounded-full"></div>
+          <div class="step-indicator flex-1 h-2 bg-slate-800 rounded-full"></div>
+          <div class="step-indicator flex-1 h-2 bg-slate-800 rounded-full"></div>
+        </div>
+
+        <!-- Social Signup -->
+        <div class="space-y-3 mb-6">
+          <button class="w-full bg-slate-900 border border-slate-800 hover:bg-slate-800 py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-3">
+            <img src="https://www.google.com/favicon.ico" alt="Google" class="w-5 h-5">
+            Sign up with Google
+          </button>
+          <button class="w-full bg-slate-900 border border-slate-800 hover:bg-slate-800 py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-3">
+            <i class="fab fa-microsoft text-xl"></i>
+            Sign up with Microsoft
+          </button>
+        </div>
+
+        <div class="flex items-center gap-4 mb-6">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-gray-500 text-sm">or</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+
+        <!-- Signup Form -->
+        <form class="space-y-6">
+          <!-- Name Fields -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">First Name *</label>
+              <input 
+                type="text" 
+                placeholder="John"
+                class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                required
+              >
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">Last Name *</label>
+              <input 
+                type="text" 
+                placeholder="Doe"
+                class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Work Email *</label>
+            <input 
+              type="email" 
+              placeholder="your.email@company.com"
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+              required
+            >
+            <p class="text-xs text-gray-500 mt-1">We'll send verification code to this email</p>
+          </div>
+
+          <!-- Company -->
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Company Name *</label>
+            <input 
+              type="text" 
+              placeholder="Mining Corp Inc."
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+              required
+            >
+          </div>
+
+          <!-- Job Title -->
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Job Title *</label>
+            <select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all" required>
+              <option value="">Select your role</option>
+              <option>Mining Engineer</option>
+              <option>Cost Estimator</option>
+              <option>Project Manager</option>
+              <option>Operations Manager</option>
+              <option>CFO/Finance Director</option>
+              <option>CEO/Owner</option>
+              <option>Consultant</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- Company Size -->
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Company Size *</label>
+            <select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all" required>
+              <option value="">Select company size</option>
+              <option>1-10 employees</option>
+              <option>11-50 employees</option>
+              <option>51-200 employees</option>
+              <option>201-500 employees</option>
+              <option>501-1000 employees</option>
+              <option>1000+ employees</option>
+            </select>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Password *</label>
+            <div class="relative">
+              <input 
+                type="password" 
+                id="password"
+                placeholder="Create a strong password"
+                class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                required
+              >
+              <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                <i class="fas fa-eye" id="eye-icon"></i>
+              </button>
+            </div>
+            <div class="mt-2 space-y-1">
+              <div class="flex items-center gap-2 text-xs">
+                <i class="fas fa-check text-gray-600" id="length-check"></i>
+                <span class="text-gray-500">At least 8 characters</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <i class="fas fa-check text-gray-600" id="upper-check"></i>
+                <span class="text-gray-500">One uppercase letter</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <i class="fas fa-check text-gray-600" id="number-check"></i>
+                <span class="text-gray-500">One number</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="terms" class="mt-1" required>
+            <label for="terms" class="text-sm text-gray-400">
+              I agree to SESMine's <a href="#" class="text-amber-500 hover:underline">Terms of Service</a> and 
+              <a href="#" class="text-amber-500 hover:underline">Privacy Policy</a>
+            </label>
+          </div>
+
+          <!-- Marketing Consent -->
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="marketing" class="mt-1">
+            <label for="marketing" class="text-sm text-gray-400">
+              Send me product updates, mining industry insights, and special offers
+            </label>
+          </div>
+
+          <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
+            Create Free Account
+          </button>
+        </form>
+
+        <p class="text-center text-gray-400 text-sm mt-6">
+          Already have an account? 
+          <a href="login.html" class="text-amber-500 font-semibold hover:underline">Sign in</a>
+        </p>
+
+        <!-- Trust Indicators -->
+        <div class="mt-8 pt-8 border-t border-slate-800">
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <div class="text-2xl font-bold text-amber-500 mb-1">500+</div>
+              <div class="text-xs text-gray-500">Companies</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-green-500 mb-1">94%</div>
+              <div class="text-xs text-gray-500">Accuracy</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-purple-500 mb-1">24/7</div>
+              <div class="text-xs text-gray-500">Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Benefits -->
+    <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-slate-900 to-slate-950 p-12 flex-col justify-between relative overflow-hidden">
+      <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 mb-6">
+          <i class="fas fa-gift text-green-500"></i>
+          <span class="text-green-500 text-sm font-medium">14-Day Free Trial</span>
+        </div>
+        
+        <h2 class="text-4xl font-black mb-4">
+          Everything You Need to
+          <br><span class="gradient-text">Estimate Smarter</span>
+        </h2>
+        <p class="text-gray-400 text-lg mb-12">
+          Join hundreds of mining companies already saving millions with accurate, AI-powered cost estimation.
+        </p>
+
+        <!-- Feature Cards -->
+        <div class="space-y-4 mb-12">
+          <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-calculator text-amber-500 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-2">Advanced Cost Calculator</h3>
+                <p class="text-gray-400 text-sm">Complete open pit and underground cost estimation with real-time equipment pricing</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-brain text-green-500 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-2">AI-Powered Predictions</h3>
+                <p class="text-gray-400 text-sm">Machine learning algorithms analyze historical data for 94% accurate cost forecasts</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-database text-purple-500 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-2">10,000+ Equipment Items</h3>
+                <p class="text-gray-400 text-sm">Comprehensive database with monthly price updates from all major manufacturers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial -->
+        <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fas fa-star text-amber-500"></i>
+            <i class="fas fa-star text-amber-500"></i>
+            <i class="fas fa-star text-amber-500"></i>
+            <i class="fas fa-star text-amber-500"></i>
+            <i class="fas fa-star text-amber-500"></i>
+          </div>
+          <p class="text-gray-300 mb-4">"SESMine reduced our estimation time by 60% and saved us $2.4M in the first year. The ROI was immediate."</p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=50&h=50&fit=crop&crop=face" 
+                 alt="User" 
+                 class="w-10 h-10 rounded-full">
+            <div>
+              <div class="font-semibold text-sm">Michael Chen</div>
+              <div class="text-xs text-gray-400">VP Operations, Rio Mining Corp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Features -->
+      <div class="relative z-10 grid grid-cols-2 gap-4">
+        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
+          <i class="fas fa-shield-alt text-green-500 text-2xl mb-2"></i>
+          <div class="font-semibold text-sm mb-1">Bank-Level Security</div>
+          <div class="text-xs text-gray-400">256-bit SSL encryption</div>
+        </div>
+        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
+          <i class="fas fa-headset text-blue-500 text-2xl mb-2"></i>
+          <div class="font-semibold text-sm mb-1">24/7 Support</div>
+          <div class="text-xs text-gray-400">Expert help anytime</div>
+        </div>
+        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
+          <i class="fas fa-sync text-purple-500 text-2xl mb-2"></i>
+          <div class="font-semibold text-sm mb-1">Auto Updates</div>
+          <div class="text-xs text-gray-400">Monthly price refreshes</div>
+        </div>
+        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
+          <i class="fas fa-file-export text-amber-500 text-2xl mb-2"></i>
+          <div class="font-semibold text-sm mb-1">Export Reports</div>
+          <div class="text-xs text-gray-400">PDF & Excel formats</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const eyeIcon = document.getElementById('eye-icon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+      }
+    }
+
+    // Password strength checker
+    document.getElementById('password')?.addEventListener('input', function(e) {
+      const password = e.target.value;
+      
+      // Check length
+      if (password.length >= 8) {
+        document.getElementById('length-check').classList.remove('text-gray-600');
+        document.getElementById('length-check').classList.add('text-green-500');
+      } else {
+        document.getElementById('length-check').classList.remove('text-green-500');
+        document.getElementById('length-check').classList.add('text-gray-600');
+      }
+      
+      // Check uppercase
+      if (/[A-Z]/.test(password)) {
+        document.getElementById('upper-check').classList.remove('text-gray-600');
+        document.getElementById('upper-check').classList.add('text-green-500');
+      } else {
+        document.getElementById('upper-check').classList.remove('text-green-500');
+        document.getElementById('upper-check').classList.add('text-gray-600');
+      }
+      
+      // Check number
+      if (/[0-9]/.test(password)) {
+        document.getElementById('number-check').classList.remove('text-gray-600');
+        document.getElementById('number-check').classList.add('text-green-500');
+      } else {
+        document.getElementById('number-check').classList.remove('text-green-500');
+        document.getElementById('number-check').classList.add('text-gray-600');
+      }
+    });
+  </script>
+</body>
+</html>
