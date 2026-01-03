@@ -3,659 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sustainability Hub | SESMine Platform</title>
-  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
+  <title>Sustainability Hub | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
   <script src="../js/auth.js"></script>
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #14b8a6 0%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .tool-card { transition: all 0.3s ease; cursor: pointer; }
-    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(20, 184, 166, 0.3); }
-    .leaf-float { animation: leafFloat 3s ease-in-out infinite; }
-    @keyframes leafFloat { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(5deg); } }
-    .locked-overlay { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.95); display: flex; align-items: center; justify-content: center; border-radius: 1rem; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-    .tool-card:hover .locked-overlay { opacity: 1; pointer-events: auto; }
+    .gradient-text { 
+      background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
-  <!-- Navigation -->
   <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-mountain text-white text-xl"></i>
-          </div>
-          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="../index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">All Hubs</a>
-          <a href="sustainability-hub.html" class="text-teal-500 font-semibold">Sustainability Hub</a>
-          <a href="../contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
-          <div id="authButtons">
-            <a href="../auth/login.html" class="bg-gradient-to-r from-teal-500 to-green-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
-              Sign In
-            </a>
-          </div>
-        </div>
+        <div class="flex items-center gap-4" id="userInfo"></div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="pt-32 pb-12 relative overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-20 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-green-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
     </div>
+  </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/30 rounded-full px-4 py-2 mb-6">
-            <i class="fas fa-leaf text-teal-500 leaf-float"></i>
-            <span class="text-teal-500 text-sm font-medium">Sustainable Mining</span>
-          </div>
-          <h1 class="text-5xl lg:text-6xl font-black mb-6">
-            Sustainability
-            <br><span class="gradient-text">Hub</span>
-          </h1>
-          <p class="text-xl text-gray-400 mb-8">
-            ESG metrics tracking, environmental compliance, carbon reduction strategies, water management, and sustainable mining practices for responsible operations.
-          </p>
-          <div class="flex items-center gap-4">
-            <button onclick="checkAccessAndRedirect('esg-tracking')" class="bg-gradient-to-r from-teal-500 to-green-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-teal-500/30 transition-all">
-              <i class="fas fa-leaf mr-2"></i>Start ESG Tracking
-            </button>
-            <button onclick="checkAccessAndRedirect('esg-reports')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 px-8 py-4 rounded-xl font-bold transition-all">
-              <i class="fas fa-chart-bar mr-2"></i>View Reports
-            </button>
-          </div>
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-leaf text-green-400"></i>
+          <span class="text-green-400 text-sm font-medium">Sustainability Hub</span>
         </div>
-        <div class="relative">
-          <div class="bg-slate-900 rounded-3xl border border-slate-800 p-6">
-            <canvas id="sustainabilityChart" height="300"></canvas>
-          </div>
-          <div class="absolute -bottom-6 -left-6 bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl">
-            <div class="text-3xl font-black text-teal-500 mb-1">-35%</div>
-            <div class="text-sm text-gray-400">Carbon Reduction</div>
-          </div>
-        </div>
+        <h1 class="text-5xl font-black mb-4">Sustainability & <span class="gradient-text">ESG</span></h1>
+        <p class="text-xl text-gray-400">Environmental, Social, and Governance excellence</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Quick Stats -->
-  <section class="py-12 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-leaf text-teal-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">110+</div>
-          <div class="text-sm text-gray-400">ESG Metrics</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-recycle text-green-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">50+</div>
-          <div class="text-sm text-gray-400">Sustainability Tools</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-globe text-teal-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">15</div>
-          <div class="text-sm text-gray-400">Compliance Standards</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-award text-green-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">300+</div>
-          <div class="text-sm text-gray-400">Certified Operations</div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div id="accessBadge" class="mb-8"></div>
 
-  <!-- Main Categories -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-12">Sustainability Categories</h2>
-      
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- ESG Reporting -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800 relative" onclick="checkAccessAndRedirect('esg-reporting')">
-          <div class="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-file-alt text-teal-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-green-500/50 transition-all">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-file-alt text-green-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">ESG Reporting</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Comprehensive ESG metrics tracking, reporting frameworks, and stakeholder communication tools.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>GRI Standards</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>SASB Framework</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>Automated Reporting</span>
-            </li>
-          </ul>
-          <div class="w-full bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 py-3 rounded-xl font-semibold text-teal-500 transition-all text-center">
-            Explore ESG Tools
+          <h3 class="text-xl font-bold mb-2">ESG Reporting</h3>
+          <p class="text-gray-400 mb-4">Comprehensive ESG reports and disclosures</p>
+          <button class="text-green-400 hover:text-green-300 font-semibold">Generate Report <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-cloud text-blue-400 text-2xl"></i>
           </div>
-          <div class="locked-overlay" id="lock-esg-reporting">
-            <div class="text-center">
-              <i class="fas fa-lock text-4xl text-teal-500 mb-4"></i>
-              <p class="text-white font-semibold mb-2">Premium Feature</p>
-              <p class="text-gray-400 text-sm">Sign in to access</p>
-            </div>
+          <h3 class="text-xl font-bold mb-2">Carbon Footprint</h3>
+          <p class="text-gray-400 mb-4">Track and reduce carbon emissions</p>
+          <button class="text-blue-400 hover:text-blue-300 font-semibold">Calculate CO2 <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-tint text-cyan-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Water Management</h3>
+          <p class="text-gray-400 mb-4">Monitor and optimize water usage</p>
+          <button class="text-cyan-400 hover:text-cyan-300 font-semibold">Manage Water <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-amber-500/50 transition-all">
+          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-recycle text-amber-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Waste Reduction</h3>
+          <p class="text-gray-400 mb-4">Minimize waste and maximize recycling</p>
+          <button class="text-amber-400 hover:text-amber-300 font-semibold">Track Waste <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-purple-500/50 transition-all">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-solar-panel text-purple-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Renewable Energy</h3>
+          <p class="text-gray-400 mb-4">Transition to clean energy sources</p>
+          <button class="text-purple-400 hover:text-purple-300 font-semibold">View Options <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-pink-500/50 transition-all">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-clipboard-check text-pink-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Compliance Tracking</h3>
+          <p class="text-gray-400 mb-4">Stay compliant with regulations</p>
+          <button class="text-pink-400 hover:text-pink-300 font-semibold">Check Status <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-2xl border border-green-500/30 p-6">
+          <div class="text-3xl font-black mb-2">2,450</div>
+          <div class="text-gray-400 mb-1">Tons CO2 Reduced</div>
+          <div class="flex items-center gap-2 text-green-400 text-sm">
+            <i class="fas fa-arrow-down"></i>
+            <span>-15% this year</span>
           </div>
         </div>
 
-        <!-- Carbon Management -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800 relative" onclick="checkAccessAndRedirect('carbon-management')">
-          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-cloud text-green-500 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Carbon Management</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Carbon footprint tracking, emission reduction strategies, and net-zero planning tools.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Emission Tracking</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Carbon Calculator</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Offset Programs</span>
-            </li>
-          </ul>
-          <div class="w-full bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 py-3 rounded-xl font-semibold text-green-500 transition-all text-center">
-            Track Carbon
-          </div>
-          <div class="locked-overlay" id="lock-carbon-management">
-            <div class="text-center">
-              <i class="fas fa-lock text-4xl text-green-500 mb-4"></i>
-              <p class="text-white font-semibold mb-2">Premium Feature</p>
-              <p class="text-gray-400 text-sm">Sign in to access</p>
-            </div>
+        <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/30 p-6">
+          <div class="text-3xl font-black mb-2">87%</div>
+          <div class="text-gray-400 mb-1">Water Recycled</div>
+          <div class="flex items-center gap-2 text-green-400 text-sm">
+            <i class="fas fa-arrow-up"></i>
+            <span>+12% improvement</span>
           </div>
         </div>
 
-        <!-- Water Management -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800 relative" onclick="checkAccessAndRedirect('water-management')">
-          <div class="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-tint text-teal-500 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Water Management</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Water usage monitoring, treatment systems, recycling programs, and conservation strategies.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>Usage Monitoring</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>Quality Testing</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>Recycling Systems</span>
-            </li>
-          </ul>
-          <div class="w-full bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 py-3 rounded-xl font-semibold text-teal-500 transition-all text-center">
-            Manage Water
-          </div>
-          <div class="locked-overlay" id="lock-water-management">
-            <div class="text-center">
-              <i class="fas fa-lock text-4xl text-teal-500 mb-4"></i>
-              <p class="text-white font-semibold mb-2">Premium Feature</p>
-              <p class="text-gray-400 text-sm">Sign in to access</p>
-            </div>
+        <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/30 p-6">
+          <div class="text-3xl font-black mb-2">42%</div>
+          <div class="text-gray-400 mb-1">Renewable Energy</div>
+          <div class="flex items-center gap-2 text-green-400 text-sm">
+            <i class="fas fa-arrow-up"></i>
+            <span>+8% this quarter</span>
           </div>
         </div>
+      </div>
 
-        <!-- Waste Management -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800 relative" onclick="checkAccessAndRedirect('waste-management')">
-          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-recycle text-green-500 text-2xl"></i>
+      <div class="mt-12 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-2xl border border-green-500/30 p-8">
+        <div class="flex items-start gap-6">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-award text-green-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Waste Management</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Tailings management, waste rock handling, recycling programs, and circular economy initiatives.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Tailings Monitoring</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Waste Tracking</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Recycling Programs</span>
-            </li>
-          </ul>
-          <div class="w-full bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 py-3 rounded-xl font-semibold text-green-500 transition-all text-center">
-            Track Waste
-          </div>
-          <div class="locked-overlay" id="lock-waste-management">
-            <div class="text-center">
-              <i class="fas fa-lock text-4xl text-green-500 mb-4"></i>
-              <p class="text-white font-semibold mb-2">Premium Feature</p>
-              <p class="text-gray-400 text-sm">Sign in to access</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Biodiversity -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800 relative" onclick="checkAccessAndRedirect('biodiversity')">
-          <div class="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-seedling text-teal-500 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Biodiversity Protection</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Habitat monitoring, species protection, rehabilitation planning, and ecosystem management.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>Habitat Monitoring</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>Impact Assessment</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-teal-500 text-xs"></i>
-              <span>Rehabilitation Plans</span>
-            </li>
-          </ul>
-          <div class="w-full bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 py-3 rounded-xl font-semibold text-teal-500 transition-all text-center">
-            Protect Biodiversity
-          </div>
-          <div class="locked-overlay" id="lock-biodiversity">
-            <div class="text-center">
-              <i class="fas fa-lock text-4xl text-teal-500 mb-4"></i>
-              <p class="text-white font-semibold mb-2">Premium Feature</p>
-              <p class="text-gray-400 text-sm">Sign in to access</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Energy Efficiency -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800 relative" onclick="checkAccessAndRedirect('energy-efficiency')">
-          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-bolt text-green-500 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Energy Efficiency</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Energy consumption tracking, renewable energy integration, and efficiency optimization programs.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Energy Monitoring</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Solar/Wind Integration</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-green-500 text-xs"></i>
-              <span>Efficiency Analysis</span>
-            </li>
-          </ul>
-          <div class="w-full bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 py-3 rounded-xl font-semibold text-green-500 transition-all text-center">
-            Optimize Energy
-          </div>
-          <div class="locked-overlay" id="lock-energy-efficiency">
-            <div class="text-center">
-              <i class="fas fa-lock text-4xl text-green-500 mb-4"></i>
-              <p class="text-white font-semibold mb-2">Premium Feature</p>
-              <p class="text-gray-400 text-sm">Sign in to access</p>
-            </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-2">Sustainability Goals</h3>
+            <p class="text-gray-400 mb-4">Set and track your environmental targets</p>
+            <button class="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-xl font-bold transition-all">
+              <i class="fas fa-bullseye mr-2"></i>Set Goals
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ESG Dashboard Demo -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-black mb-4">ESG Performance Dashboard</h2>
-        <p class="text-xl text-gray-400">Real-time sustainability metrics at your fingertips</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-bold">Environmental Score</h3>
-            <i class="fas fa-leaf text-teal-500"></i>
-          </div>
-          <div class="text-4xl font-black text-teal-500 mb-2">85/100</div>
-          <div class="text-sm text-gray-400 mb-4">↑ 12% vs last quarter</div>
-          <div class="w-full bg-slate-900 rounded-full h-2">
-            <div class="bg-teal-500 h-2 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-bold">Social Score</h3>
-            <i class="fas fa-users text-green-500"></i>
-          </div>
-          <div class="text-4xl font-black text-green-500 mb-2">78/100</div>
-          <div class="text-sm text-gray-400 mb-4">↑ 8% vs last quarter</div>
-          <div class="w-full bg-slate-900 rounded-full h-2">
-            <div class="bg-green-500 h-2 rounded-full" style="width: 78%"></div>
-          </div>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-bold">Governance Score</h3>
-            <i class="fas fa-shield-alt text-teal-500"></i>
-          </div>
-          <div class="text-4xl font-black text-teal-500 mb-2">92/100</div>
-          <div class="text-sm text-gray-400 mb-4">↑ 5% vs last quarter</div>
-          <div class="w-full bg-slate-900 rounded-full h-2">
-            <div class="bg-teal-500 h-2 rounded-full" style="width: 92%"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold mb-4">Carbon Emissions Trend</h3>
-          <canvas id="carbonChart" height="200"></canvas>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold mb-4">Key Sustainability Metrics</h3>
-          <div class="space-y-4">
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm">Water Recycling Rate</span>
-                <span class="text-sm font-semibold text-teal-500">68%</span>
-              </div>
-              <div class="w-full bg-slate-900 rounded-full h-2">
-                <div class="bg-teal-500 h-2 rounded-full" style="width: 68%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm">Renewable Energy Usage</span>
-                <span class="text-sm font-semibold text-green-500">42%</span>
-              </div>
-              <div class="w-full bg-slate-900 rounded-full h-2">
-                <div class="bg-green-500 h-2 rounded-full" style="width: 42%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm">Waste Diversion Rate</span>
-                <span class="text-sm font-semibold text-teal-500">75%</span>
-              </div>
-              <div class="w-full bg-slate-900 rounded-full h-2">
-                <div class="bg-teal-500 h-2 rounded-full" style="width: 75%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm">Rehabilitation Progress</span>
-                <span class="text-sm font-semibold text-green-500">58%</span>
-              </div>
-              <div class="w-full bg-slate-900 rounded-full h-2">
-                <div class="bg-green-500 h-2 rounded-full" style="width: 58%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-12 text-center">Supported Standards & Certifications</h2>
-      
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-teal-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-certificate text-teal-500 text-2xl"></i>
-          </div>
-          <h3 class="font-bold mb-2">ISO 14001</h3>
-          <p class="text-sm text-gray-400">Environmental Management</p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-award text-green-500 text-2xl"></i>
-          </div>
-          <h3 class="font-bold mb-2">GRI Standards</h3>
-          <p class="text-sm text-gray-400">Sustainability Reporting</p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-teal-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-leaf text-teal-500 text-2xl"></i>
-          </div>
-          <h3 class="font-bold mb-2">SASB</h3>
-          <p class="text-sm text-gray-400">Industry Standards</p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-globe text-green-500 text-2xl"></i>
-          </div>
-          <h3 class="font-bold mb-2">TCFD</h3>
-          <p class="text-sm text-gray-400">Climate Disclosure</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <div class="bg-gradient-to-r from-teal-500/20 via-green-500/20 to-teal-500/20 rounded-3xl p-12 border border-teal-500/30">
-        <i class="fas fa-seedling text-teal-500 text-5xl mb-6"></i>
-        <h2 class="text-4xl font-black mb-4">Ready to Lead in Sustainability?</h2>
-        <p class="text-xl text-gray-300 mb-8">
-          Start tracking your ESG performance and join 300+ mining operations committed to sustainable practices.
-        </p>
-        <button onclick="checkAccessAndRedirect('esg-journey')" class="bg-gradient-to-r from-teal-500 to-green-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-teal-500/30 transition-all">
-          <i class="fas fa-leaf mr-2"></i>Begin ESG Journey
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-mountain text-white"></i>
-            </div>
-            <span class="text-xl font-bold">SESMine</span>
-          </div>
-          <p class="text-gray-400 text-sm">Sustainability Excellence Hub</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Other Hubs</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="engineering-hub.html" class="hover:text-white transition-colors">Engineering</a></li>
-            <li><a href="economics-hub.html" class="hover:text-white transition-colors">Economics</a></li>
-            <li><a href="procurement-hub.html" class="hover:text-white transition-colors">Procurement</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Resources</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors">ESG Reports</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Compliance Guides</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Best Practices</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Support</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-        <p>© 2025 SESMine Sustainability Hub. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  </div>
 
   <script>
-    // Initialize auth state
+    const RESOURCE_ID = 'sustainability-hub';
     document.addEventListener('DOMContentLoaded', function() {
-      updateAuthUI();
-      initializeCharts();
-    });
-
-    function updateAuthUI() {
+      if (!requireAuth()) return;
       const user = getCurrentUser();
-      const authButtons = document.getElementById('authButtons');
-      
-      if (user) {
-        authButtons.innerHTML = `
-          <div class="flex items-center gap-4">
-            <span class="text-gray-300">Welcome, ${user.name}</span>
-            <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors">
-              <i class="fas fa-sign-out-alt mr-2"></i>Logout
-            </button>
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
+        </button>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">Access Granted</div>
+              <div class="text-sm text-gray-400">You have ${user.plan.charAt(0).toUpperCase() + user.plan.slice(1)} plan access</div>
+            </div>
           </div>
         `;
-        
-        // Hide all lock overlays for authenticated users
-        document.querySelectorAll('.locked-overlay').forEach(overlay => {
-          overlay.style.display = 'none';
-        });
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
       }
-    }
-
-    function checkAccessAndRedirect(feature) {
-      if (!isAuthenticated()) {
-        // Store intended destination
-        sessionStorage.setItem('intendedDestination', window.location.href);
-        sessionStorage.setItem('intendedFeature', feature);
-        
-        // Redirect to login
-        window.location.href = '../auth/login.html';
-        return false;
-      }
-      
-      // User is authenticated, allow access
-      console.log(`Accessing feature: ${feature}`);
-      return true;
-    }
-
-    function initializeCharts() {
-      // Sustainability Chart
-      const sustainCtx = document.getElementById('sustainabilityChart').getContext('2d');
-      new Chart(sustainCtx, {
-        type: 'line',
-        data: {
-          labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-          datasets: [{
-            label: 'Carbon Emissions (kt CO2e)',
-            data: [450, 425, 380, 340, 310, 285, 260],
-            borderColor: '#14b8a6',
-            backgroundColor: 'rgba(20, 184, 166, 0.1)',
-            tension: 0.4,
-            fill: true
-          }, {
-            label: 'Target',
-            data: [450, 420, 390, 360, 330, 300, 270],
-            borderColor: '#10b981',
-            backgroundColor: 'transparent',
-            borderDash: [5, 5],
-            tension: 0.4
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { labels: { color: '#94a3b8' } }
-          },
-          scales: {
-            y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
-            x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
-          }
-        }
-      });
-
-      // Carbon Chart
-      const carbonCtx = document.getElementById('carbonChart').getContext('2d');
-      new Chart(carbonCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-          datasets: [{
-            label: 'Scope 1',
-            data: [85, 82, 78, 75],
-            backgroundColor: '#14b8a6'
-          }, {
-            label: 'Scope 2',
-            data: [45, 42, 40, 38],
-            backgroundColor: '#10b981'
-          }, {
-            label: 'Scope 3',
-            data: [120, 115, 110, 105],
-            backgroundColor: '#6ee7b7'
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { labels: { color: '#94a3b8' } }
-          },
-          scales: {
-            y: { 
-              stacked: true,
-              ticks: { color: '#94a3b8' }, 
-              grid: { color: '#1e293b' } 
-            },
-            x: { 
-              stacked: true,
-              ticks: { color: '#94a3b8' }, 
-              grid: { display: false } 
-            }
-          }
-        }
-      });
-    }
+    });
   </script>
 </body>
 </html>
