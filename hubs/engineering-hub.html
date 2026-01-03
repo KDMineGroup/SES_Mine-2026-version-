@@ -3,398 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Hub - SESMine</title>
+  <title>Engineering Hub | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .tool-card { transition: all 0.3s ease; }
-    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3); }
+    .gradient-text { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
-  <!-- Navigation -->
   <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-mountain text-white text-xl"></i>
-          </div>
-          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="../index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">All Hubs</a>
-          <a href="engineering-hub.html" class="text-blue-500 font-semibold">Engineering Hub</a>
-          <a href="../contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
-          <a href="../auth/login.html" class="bg-gradient-to-r from-blue-500 to-cyan-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
-            Sign In
-          </a>
-        </div>
+        <div class="flex items-center gap-4" id="userInfo"></div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="pt-32 pb-12 relative overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-cyan-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
     </div>
+  </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
-            <i class="fas fa-hard-hat text-blue-500"></i>
-            <span class="text-blue-500 text-sm font-medium">Engineering Excellence</span>
-          </div>
-          <h1 class="text-5xl lg:text-6xl font-black mb-6">
-            Engineering
-            <br><span class="gradient-text">Hub</span>
-          </h1>
-          <p class="text-xl text-gray-400 mb-8">
-            Comprehensive engineering resources for mine design, planning, geotechnical analysis, and technical optimization. Access industry-leading tools and expert knowledge.
-          </p>
-          <div class="flex items-center gap-4">
-            <button class="bg-gradient-to-r from-blue-500 to-cyan-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-blue-500/30 transition-all">
-              <i class="fas fa-rocket mr-2"></i>Get Started
-            </button>
-            <button class="bg-slate-900 hover:bg-slate-800 border border-slate-800 px-8 py-4 rounded-xl font-bold transition-all">
-              <i class="fas fa-book mr-2"></i>View Docs
-            </button>
-          </div>
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-hard-hat text-amber-400"></i>
+          <span class="text-amber-400 text-sm font-medium">Engineering Hub</span>
         </div>
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=600&h=400&fit=crop" 
-               alt="Engineering" 
-               class="rounded-3xl border border-slate-800 shadow-2xl">
-          <div class="absolute -bottom-6 -left-6 bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl">
-            <div class="text-3xl font-black text-blue-500 mb-1">150+</div>
-            <div class="text-sm text-gray-400">Engineering Resources</div>
-          </div>
-        </div>
+        <h1 class="text-5xl font-black mb-4">Engineering <span class="gradient-text">Solutions</span></h1>
+        <p class="text-xl text-gray-400">Technical design, feasibility studies, and engineering excellence</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Quick Stats -->
-  <section class="py-12 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-tools text-blue-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">25+</div>
-          <div class="text-sm text-gray-400">Engineering Tools</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-book-open text-cyan-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">80+</div>
-          <div class="text-sm text-gray-400">Technical Guides</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-users text-blue-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">50+</div>
-          <div class="text-sm text-gray-400">Expert Engineers</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-project-diagram text-cyan-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">200+</div>
-          <div class="text-sm text-gray-400">Case Studies</div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div id="accessBadge" class="mb-8"></div>
 
-  <!-- Main Categories -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-12">Engineering Categories</h2>
-      
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Mine Design -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-drafting-compass text-blue-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-drafting-compass text-cyan-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Mine Design & Planning</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Pit optimization, underground layout, production scheduling, and long-term mine planning tools.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Pit Optimization Software</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Production Scheduling</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>3D Mine Models</span>
-            </li>
-          </ul>
-          <button class="w-full bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 py-3 rounded-xl font-semibold text-blue-500 transition-all">
-            Explore Tools
-          </button>
+          <h3 class="text-xl font-bold mb-2">Technical Design</h3>
+          <p class="text-gray-400 mb-4">Advanced CAD tools and design optimization for mining operations</p>
+          <button class="text-cyan-400 hover:text-cyan-300 font-semibold">Launch Tool <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Geotechnical -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-mountain text-cyan-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-calculator text-blue-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Geotechnical Analysis</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Slope stability, rock mechanics, ground control, and geotechnical risk assessment tools.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Slope Stability Analysis</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Rock Mass Classification</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Ground Support Design</span>
-            </li>
-          </ul>
-          <button class="w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 py-3 rounded-xl font-semibold text-cyan-500 transition-all">
-            Explore Tools
-          </button>
+          <h3 class="text-xl font-bold mb-2">Feasibility Studies</h3>
+          <p class="text-gray-400 mb-4">Comprehensive analysis and project viability assessment</p>
+          <button class="text-blue-400 hover:text-blue-300 font-semibold">Start Analysis <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Equipment Selection -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-truck-monster text-blue-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-purple-500/50 transition-all">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-cogs text-purple-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Equipment Selection</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Fleet sizing, equipment matching, productivity analysis, and cost optimization calculators.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Fleet Sizing Calculator</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Equipment Database</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Productivity Models</span>
-            </li>
-          </ul>
-          <button class="w-full bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 py-3 rounded-xl font-semibold text-blue-500 transition-all">
-            Explore Tools
-          </button>
+          <h3 class="text-xl font-bold mb-2">Process Optimization</h3>
+          <p class="text-gray-400 mb-4">Improve efficiency and reduce operational costs</p>
+          <button class="text-purple-400 hover:text-purple-300 font-semibold">Optimize Now <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Ventilation -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-wind text-cyan-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-green-500/50 transition-all">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-line text-green-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Ventilation Design</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Underground ventilation systems, airflow modeling, and air quality management tools.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Airflow Simulation</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Fan Selection Tools</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Heat Load Analysis</span>
-            </li>
-          </ul>
-          <button class="w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 py-3 rounded-xl font-semibold text-cyan-500 transition-all">
-            Explore Tools
-          </button>
+          <h3 class="text-xl font-bold mb-2">Performance Analytics</h3>
+          <p class="text-gray-400 mb-4">Real-time monitoring and performance tracking</p>
+          <button class="text-green-400 hover:text-green-300 font-semibold">View Dashboard <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Drilling & Blasting -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-bomb text-blue-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-amber-500/50 transition-all">
+          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-file-alt text-amber-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Drilling & Blasting</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Blast design, fragmentation analysis, vibration control, and drilling pattern optimization.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Blast Pattern Design</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Fragmentation Prediction</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-blue-500 text-xs"></i>
-              <span>Vibration Monitoring</span>
-            </li>
-          </ul>
-          <button class="w-full bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 py-3 rounded-xl font-semibold text-blue-500 transition-all">
-            Explore Tools
-          </button>
+          <h3 class="text-xl font-bold mb-2">Documentation</h3>
+          <p class="text-gray-400 mb-4">Access technical specifications and guidelines</p>
+          <button class="text-amber-400 hover:text-amber-300 font-semibold">Browse Docs <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Material Handling -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-conveyor-belt text-cyan-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-pink-500/50 transition-all">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-users text-pink-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Material Handling</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Conveyor design, stockpile management, crushing circuits, and material flow optimization.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Conveyor Sizing</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Crusher Selection</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-cyan-500 text-xs"></i>
-              <span>Stockpile Design</span>
-            </li>
-          </ul>
-          <button class="w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 py-3 rounded-xl font-semibold text-cyan-500 transition-all">
-            Explore Tools
-          </button>
+          <h3 class="text-xl font-bold mb-2">Expert Consultation</h3>
+          <p class="text-gray-400 mb-4">Connect with engineering specialists</p>
+          <button class="text-pink-400 hover:text-pink-300 font-semibold">Book Session <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Featured Resources -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-12">Featured Engineering Resources</h2>
-      
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
-          <div class="h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
-            <i class="fas fa-file-pdf text-blue-500 text-5xl"></i>
+      <div class="mt-12 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/30 p-8">
+        <div class="flex items-start gap-6">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-graduation-cap text-cyan-400 text-2xl"></i>
           </div>
-          <div class="p-6">
-            <span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-xs font-semibold">📚 Guide</span>
-            <h3 class="text-lg font-bold mt-3 mb-2">Open Pit Design Handbook</h3>
-            <p class="text-gray-400 text-sm mb-4">Comprehensive 200-page guide covering all aspects of open pit mine design.</p>
-            <button class="w-full bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 py-2 rounded-lg font-semibold text-blue-500 transition-all text-sm">
-              Download PDF
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
-          <div class="h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
-            <i class="fas fa-video text-cyan-500 text-5xl"></i>
-          </div>
-          <div class="p-6">
-            <span class="bg-cyan-500/20 text-cyan-500 px-3 py-1 rounded-full text-xs font-semibold">🎥 Video</span>
-            <h3 class="text-lg font-bold mt-3 mb-2">Geotechnical Analysis Masterclass</h3>
-            <p class="text-gray-400 text-sm mb-4">Expert-led video series on slope stability and rock mechanics.</p>
-            <button class="w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 py-2 rounded-lg font-semibold text-cyan-500 transition-all text-sm">
-              Watch Now
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
-          <div class="h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
-            <i class="fas fa-file-excel text-blue-500 text-5xl"></i>
-          </div>
-          <div class="p-6">
-            <span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-xs font-semibold">📄 Template</span>
-            <h3 class="text-lg font-bold mt-3 mb-2">Equipment Selection Calculator</h3>
-            <p class="text-gray-400 text-sm mb-4">Excel template for fleet sizing and equipment matching analysis.</p>
-            <button class="w-full bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 py-2 rounded-lg font-semibold text-blue-500 transition-all text-sm">
-              Download Template
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-2">Engineering Resources</h3>
+            <p class="text-gray-400 mb-4">Access our comprehensive library of engineering resources, case studies, and best practices</p>
+            <button class="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-xl font-bold transition-all">
+              <i class="fas fa-book mr-2"></i>Browse Library
             </button>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Expert Consultation -->
-  <section class="py-20">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <div class="bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-blue-500/20 rounded-3xl p-12 border border-blue-500/30">
-        <i class="fas fa-user-tie text-blue-500 text-5xl mb-6"></i>
-        <h2 class="text-4xl font-black mb-4">Need Expert Engineering Consultation?</h2>
-        <p class="text-xl text-gray-300 mb-8">
-          Connect with our network of 50+ experienced mining engineers for personalized guidance on your projects.
-        </p>
-        <button class="bg-gradient-to-r from-blue-500 to-cyan-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-blue-500/30 transition-all">
-          <i class="fas fa-calendar-alt mr-2"></i>Book Consultation
+  <script>
+    const RESOURCE_ID = 'engineering-hub';
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth()) return;
+      const user = getCurrentUser();
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
         </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-12 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-mountain text-white"></i>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">Access Granted</div>
+              <div class="text-sm text-gray-400">You have ${user.plan.charAt(0).toUpperCase() + user.plan.slice(1)} plan access</div>
             </div>
-            <span class="text-xl font-bold">SESMine</span>
           </div>
-          <p class="text-gray-400 text-sm">Engineering Excellence Hub</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Other Hubs</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="economics-hub.html" class="hover:text-white transition-colors">Economics</a></li>
-            <li><a href="procurement-hub.html" class="hover:text-white transition-colors">Procurement</a></li>
-            <li><a href="innovation-hub.html" class="hover:text-white transition-colors">Innovation</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Resources</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Tutorials</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Support</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-        <p>© 2025 SESMine Engineering Hub. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+        `;
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
+      }
+    });
+  </script>
 </body>
 </html>
