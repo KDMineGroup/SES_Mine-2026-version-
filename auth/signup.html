@@ -3,366 +3,414 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up - SESMine</title>
+  <title>Sign Up | SESMine Platform</title>
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init({
+        publicKey: "pYI5e7c0EjKvjvgbV",
+      });
+    })();
+  </script>
+  
+  <!-- Auth & Config Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .step-indicator { transition: all 0.3s ease; }
-    .step-indicator.active { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .input-focus:focus { border-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1); }
+    .password-strength-weak { background-color: #ef4444; }
+    .password-strength-medium { background-color: #f59e0b; }
+    .password-strength-strong { background-color: #10b981; }
   </style>
 </head>
-<body class="bg-slate-950 text-white">
-  <div class="min-h-screen flex">
-    <!-- Left Side - Signup Form -->
-    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 overflow-y-auto">
-      <div class="w-full max-w-md">
-        <!-- Logo -->
-        <a href="../index.html" class="flex items-center gap-3 mb-8">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-mountain text-white text-xl"></i>
-          </div>
-          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
-        </a>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6">
+  <!-- Background Effects -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
+  </div>
 
-        <div class="mb-8">
-          <h1 class="text-4xl font-black mb-2">Start Your Free Trial</h1>
-          <p class="text-gray-400">14 days free. No credit card required.</p>
+  <!-- Signup Container -->
+  <div class="relative z-10 w-full max-w-md">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <a href="../index.html" class="inline-flex items-center gap-3 mb-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+          <i class="fas fa-mountain text-white text-2xl"></i>
+        </div>
+        <span class="text-3xl font-black">SES<span class="gradient-text">Mine</span></span>
+      </a>
+      <h1 class="text-3xl font-black mb-2">Create Account</h1>
+      <p class="text-gray-400">Start your mining cost optimization journey</p>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="bg-slate-900 rounded-2xl border border-slate-800 p-8 shadow-2xl">
+      <form id="signupForm" onsubmit="handleSignupSubmit(event)">
+        <!-- Full Name -->
+        <div class="mb-6">
+          <label for="fullName" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-user mr-2 text-amber-500"></i>Full Name
+          </label>
+          <input 
+            type="text" 
+            id="fullName" 
+            name="fullName"
+            required
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all"
+            placeholder="John Doe"
+          >
         </div>
 
-        <!-- Progress Steps -->
-        <div class="flex items-center gap-2 mb-8">
-          <div class="step-indicator active flex-1 h-2 rounded-full"></div>
-          <div class="step-indicator flex-1 h-2 bg-slate-800 rounded-full"></div>
-          <div class="step-indicator flex-1 h-2 bg-slate-800 rounded-full"></div>
+        <!-- Email -->
+        <div class="mb-6">
+          <label for="email" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-envelope mr-2 text-amber-500"></i>Email Address
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email"
+            required
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all"
+            placeholder="your.email@company.com"
+          >
         </div>
 
-        <!-- Social Signup -->
-        <div class="space-y-3 mb-6">
-          <button class="w-full bg-slate-900 border border-slate-800 hover:bg-slate-800 py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-3">
-            <img src="https://www.google.com/favicon.ico" alt="Google" class="w-5 h-5">
-            Sign up with Google
-          </button>
-          <button class="w-full bg-slate-900 border border-slate-800 hover:bg-slate-800 py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-3">
-            <i class="fab fa-microsoft text-xl"></i>
-            Sign up with Microsoft
-          </button>
+        <!-- Company -->
+        <div class="mb-6">
+          <label for="company" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-building mr-2 text-amber-500"></i>Company Name
+          </label>
+          <input 
+            type="text" 
+            id="company" 
+            name="company"
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all"
+            placeholder="Your Company Ltd."
+          >
         </div>
 
-        <div class="flex items-center gap-4 mb-6">
-          <div class="flex-1 h-px bg-slate-800"></div>
-          <span class="text-gray-500 text-sm">or</span>
-          <div class="flex-1 h-px bg-slate-800"></div>
+        <!-- Phone -->
+        <div class="mb-6">
+          <label for="phone" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-phone mr-2 text-amber-500"></i>Phone Number (Optional)
+          </label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone"
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all"
+            placeholder="+1 (555) 000-0000"
+          >
         </div>
 
-        <!-- Signup Form -->
-        <form class="space-y-6">
-          <!-- Name Fields -->
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2">First Name *</label>
-              <input 
-                type="text" 
-                placeholder="John"
-                class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                required
-              >
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2">Last Name *</label>
-              <input 
-                type="text" 
-                placeholder="Doe"
-                class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                required
-              >
-            </div>
-          </div>
-
-          <!-- Email -->
-          <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2">Work Email *</label>
+        <!-- Password -->
+        <div class="mb-6">
+          <label for="password" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-lock mr-2 text-amber-500"></i>Password
+          </label>
+          <div class="relative">
             <input 
-              type="email" 
-              placeholder="your.email@company.com"
-              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+              type="password" 
+              id="password" 
+              name="password"
               required
+              oninput="checkPasswordStrength()"
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all pr-12"
+              placeholder="Create a strong password"
             >
-            <p class="text-xs text-gray-500 mt-1">We'll send verification code to this email</p>
+            <button 
+              type="button" 
+              onclick="togglePassword('password')"
+              class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fas fa-eye" id="toggleIcon1"></i>
+            </button>
           </div>
+          <!-- Password Strength Indicator -->
+          <div class="mt-2">
+            <div class="flex gap-1 mb-2">
+              <div id="strength-bar-1" class="h-1 flex-1 bg-slate-800 rounded-full transition-all"></div>
+              <div id="strength-bar-2" class="h-1 flex-1 bg-slate-800 rounded-full transition-all"></div>
+              <div id="strength-bar-3" class="h-1 flex-1 bg-slate-800 rounded-full transition-all"></div>
+              <div id="strength-bar-4" class="h-1 flex-1 bg-slate-800 rounded-full transition-all"></div>
+            </div>
+            <p id="strength-text" class="text-xs text-gray-400"></p>
+          </div>
+        </div>
 
-          <!-- Company -->
-          <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2">Company Name *</label>
+        <!-- Confirm Password -->
+        <div class="mb-6">
+          <label for="confirmPassword" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-lock mr-2 text-amber-500"></i>Confirm Password
+          </label>
+          <div class="relative">
             <input 
-              type="text" 
-              placeholder="Mining Corp Inc."
-              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+              type="password" 
+              id="confirmPassword" 
+              name="confirmPassword"
               required
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all pr-12"
+              placeholder="Confirm your password"
             >
+            <button 
+              type="button" 
+              onclick="togglePassword('confirmPassword')"
+              class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fas fa-eye" id="toggleIcon2"></i>
+            </button>
           </div>
+        </div>
 
-          <!-- Job Title -->
-          <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2">Job Title *</label>
-            <select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all" required>
-              <option value="">Select your role</option>
-              <option>Mining Engineer</option>
-              <option>Cost Estimator</option>
-              <option>Project Manager</option>
-              <option>Operations Manager</option>
-              <option>CFO/Finance Director</option>
-              <option>CEO/Owner</option>
-              <option>Consultant</option>
-              <option>Other</option>
-            </select>
-          </div>
+        <!-- Terms & Conditions -->
+        <div class="mb-6">
+          <label class="flex items-start cursor-pointer">
+            <input type="checkbox" id="terms" required class="w-4 h-4 rounded border-slate-700 text-amber-500 focus:ring-amber-500 focus:ring-offset-slate-900 mt-1">
+            <span class="ml-2 text-sm text-gray-400">
+              I agree to the <a href="#" class="text-amber-500 hover:text-amber-400">Terms of Service</a> and <a href="#" class="text-amber-500 hover:text-amber-400">Privacy Policy</a>
+            </span>
+          </label>
+        </div>
 
-          <!-- Company Size -->
-          <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2">Company Size *</label>
-            <select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all" required>
-              <option value="">Select company size</option>
-              <option>1-10 employees</option>
-              <option>11-50 employees</option>
-              <option>51-200 employees</option>
-              <option>201-500 employees</option>
-              <option>501-1000 employees</option>
-              <option>1000+ employees</option>
-            </select>
-          </div>
+        <!-- Error Message -->
+        <div id="errorMessage" class="hidden mb-6 bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-500 text-sm">
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          <span id="errorText"></span>
+        </div>
 
-          <!-- Password -->
-          <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2">Password *</label>
-            <div class="relative">
-              <input 
-                type="password" 
-                id="password"
-                placeholder="Create a strong password"
-                class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                required
-              >
-              <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
-                <i class="fas fa-eye" id="eye-icon"></i>
-              </button>
-            </div>
-            <div class="mt-2 space-y-1">
-              <div class="flex items-center gap-2 text-xs">
-                <i class="fas fa-check text-gray-600" id="length-check"></i>
-                <span class="text-gray-500">At least 8 characters</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <i class="fas fa-check text-gray-600" id="upper-check"></i>
-                <span class="text-gray-500">One uppercase letter</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <i class="fas fa-check text-gray-600" id="number-check"></i>
-                <span class="text-gray-500">One number</span>
-              </div>
-            </div>
-          </div>
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden mb-6 bg-green-500/10 border border-green-500/30 rounded-xl p-4 text-green-500 text-sm">
+          <i class="fas fa-check-circle mr-2"></i>
+          <span id="successText"></span>
+        </div>
 
-          <!-- Terms -->
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="terms" class="mt-1" required>
-            <label for="terms" class="text-sm text-gray-400">
-              I agree to SESMine's <a href="#" class="text-amber-500 hover:underline">Terms of Service</a> and 
-              <a href="#" class="text-amber-500 hover:underline">Privacy Policy</a>
-            </label>
-          </div>
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-amber-500/30 flex items-center justify-center gap-2"
+        >
+          <i class="fas fa-user-plus"></i>
+          <span>Create Account</span>
+        </button>
+      </form>
 
-          <!-- Marketing Consent -->
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="marketing" class="mt-1">
-            <label for="marketing" class="text-sm text-gray-400">
-              Send me product updates, mining industry insights, and special offers
-            </label>
-          </div>
+      <!-- Divider -->
+      <div class="relative my-8">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-slate-800"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-4 bg-slate-900 text-gray-400">Or sign up with</span>
+        </div>
+      </div>
 
-          <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-            Create Free Account
-          </button>
-        </form>
+      <!-- Social Signup -->
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <button class="bg-slate-950 hover:bg-slate-800 border border-slate-800 py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+          <i class="fab fa-google text-red-500"></i>
+          <span>Google</span>
+        </button>
+        <button class="bg-slate-950 hover:bg-slate-800 border border-slate-800 py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+          <i class="fab fa-microsoft text-blue-500"></i>
+          <span>Microsoft</span>
+        </button>
+      </div>
 
-        <p class="text-center text-gray-400 text-sm mt-6">
+      <!-- Sign In Link -->
+      <div class="text-center">
+        <p class="text-gray-400">
           Already have an account? 
-          <a href="login.html" class="text-amber-500 font-semibold hover:underline">Sign in</a>
+          <a href="login.html" class="text-amber-500 hover:text-amber-400 font-semibold transition-colors">
+            Sign in
+          </a>
         </p>
-
-        <!-- Trust Indicators -->
-        <div class="mt-8 pt-8 border-t border-slate-800">
-          <div class="grid grid-cols-3 gap-4 text-center">
-            <div>
-              <div class="text-2xl font-bold text-amber-500 mb-1">500+</div>
-              <div class="text-xs text-gray-500">Companies</div>
-            </div>
-            <div>
-              <div class="text-2xl font-bold text-green-500 mb-1">94%</div>
-              <div class="text-xs text-gray-500">Accuracy</div>
-            </div>
-            <div>
-              <div class="text-2xl font-bold text-purple-500 mb-1">24/7</div>
-              <div class="text-xs text-gray-500">Support</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
-    <!-- Right Side - Benefits -->
-    <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-slate-900 to-slate-950 p-12 flex-col justify-between relative overflow-hidden">
-      <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-
-      <div class="relative z-10">
-        <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 mb-6">
-          <i class="fas fa-gift text-green-500"></i>
-          <span class="text-green-500 text-sm font-medium">14-Day Free Trial</span>
-        </div>
-        
-        <h2 class="text-4xl font-black mb-4">
-          Everything You Need to
-          <br><span class="gradient-text">Estimate Smarter</span>
-        </h2>
-        <p class="text-gray-400 text-lg mb-12">
-          Join hundreds of mining companies already saving millions with accurate, AI-powered cost estimation.
-        </p>
-
-        <!-- Feature Cards -->
-        <div class="space-y-4 mb-12">
-          <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-calculator text-amber-500 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg mb-2">Advanced Cost Calculator</h3>
-                <p class="text-gray-400 text-sm">Complete open pit and underground cost estimation with real-time equipment pricing</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-brain text-green-500 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg mb-2">AI-Powered Predictions</h3>
-                <p class="text-gray-400 text-sm">Machine learning algorithms analyze historical data for 94% accurate cost forecasts</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-database text-purple-500 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg mb-2">10,000+ Equipment Items</h3>
-                <p class="text-gray-400 text-sm">Comprehensive database with monthly price updates from all major manufacturers</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial -->
-        <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-6 border border-slate-800">
-          <div class="flex items-center gap-1 mb-3">
-            <i class="fas fa-star text-amber-500"></i>
-            <i class="fas fa-star text-amber-500"></i>
-            <i class="fas fa-star text-amber-500"></i>
-            <i class="fas fa-star text-amber-500"></i>
-            <i class="fas fa-star text-amber-500"></i>
-          </div>
-          <p class="text-gray-300 mb-4">"SESMine reduced our estimation time by 60% and saved us $2.4M in the first year. The ROI was immediate."</p>
-          <div class="flex items-center gap-3">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=50&h=50&fit=crop&crop=face" 
-                 alt="User" 
-                 class="w-10 h-10 rounded-full">
-            <div>
-              <div class="font-semibold text-sm">Michael Chen</div>
-              <div class="text-xs text-gray-400">VP Operations, Rio Mining Corp</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Features -->
-      <div class="relative z-10 grid grid-cols-2 gap-4">
-        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
-          <i class="fas fa-shield-alt text-green-500 text-2xl mb-2"></i>
-          <div class="font-semibold text-sm mb-1">Bank-Level Security</div>
-          <div class="text-xs text-gray-400">256-bit SSL encryption</div>
-        </div>
-        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
-          <i class="fas fa-headset text-blue-500 text-2xl mb-2"></i>
-          <div class="font-semibold text-sm mb-1">24/7 Support</div>
-          <div class="text-xs text-gray-400">Expert help anytime</div>
-        </div>
-        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
-          <i class="fas fa-sync text-purple-500 text-2xl mb-2"></i>
-          <div class="font-semibold text-sm mb-1">Auto Updates</div>
-          <div class="text-xs text-gray-400">Monthly price refreshes</div>
-        </div>
-        <div class="bg-slate-900/30 backdrop-blur rounded-xl p-4 border border-slate-800">
-          <i class="fas fa-file-export text-amber-500 text-2xl mb-2"></i>
-          <div class="font-semibold text-sm mb-1">Export Reports</div>
-          <div class="text-xs text-gray-400">PDF & Excel formats</div>
-        </div>
-      </div>
+    <!-- Back to Home -->
+    <div class="text-center mt-6">
+      <a href="../index.html" class="text-gray-400 hover:text-white transition-colors text-sm">
+        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+      </a>
     </div>
   </div>
 
   <script>
-    function togglePassword() {
-      const passwordInput = document.getElementById('password');
-      const eyeIcon = document.getElementById('eye-icon');
+    // Toggle password visibility
+    function togglePassword(fieldId) {
+      const passwordInput = document.getElementById(fieldId);
+      const toggleIcon = document.getElementById(fieldId === 'password' ? 'toggleIcon1' : 'toggleIcon2');
       
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        eyeIcon.classList.remove('fa-eye');
-        eyeIcon.classList.add('fa-eye-slash');
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
       } else {
         passwordInput.type = 'password';
-        eyeIcon.classList.remove('fa-eye-slash');
-        eyeIcon.classList.add('fa-eye');
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
       }
     }
 
-    // Password strength checker
-    document.getElementById('password')?.addEventListener('input', function(e) {
-      const password = e.target.value;
+    // Check password strength
+    function checkPasswordStrength() {
+      const password = document.getElementById('password').value;
+      const result = validatePassword(password);
       
-      // Check length
-      if (password.length >= 8) {
-        document.getElementById('length-check').classList.remove('text-gray-600');
-        document.getElementById('length-check').classList.add('text-green-500');
-      } else {
-        document.getElementById('length-check').classList.remove('text-green-500');
-        document.getElementById('length-check').classList.add('text-gray-600');
+      // Update strength bars
+      const bars = [
+        document.getElementById('strength-bar-1'),
+        document.getElementById('strength-bar-2'),
+        document.getElementById('strength-bar-3'),
+        document.getElementById('strength-bar-4')
+      ];
+      
+      // Reset bars
+      bars.forEach(bar => {
+        bar.className = 'h-1 flex-1 bg-slate-800 rounded-full transition-all';
+      });
+      
+      // Update based on strength
+      let strengthClass = '';
+      let strengthText = '';
+      let barsToFill = 0;
+      
+      if (result.strength === 'strong') {
+        strengthClass = 'password-strength-strong';
+        strengthText = 'Strong password';
+        barsToFill = 4;
+      } else if (result.strength === 'medium') {
+        strengthClass = 'password-strength-medium';
+        strengthText = 'Medium strength';
+        barsToFill = 3;
+      } else if (password.length > 0) {
+        strengthClass = 'password-strength-weak';
+        strengthText = 'Weak password';
+        barsToFill = 1;
       }
       
-      // Check uppercase
-      if (/[A-Z]/.test(password)) {
-        document.getElementById('upper-check').classList.remove('text-gray-600');
-        document.getElementById('upper-check').classList.add('text-green-500');
-      } else {
-        document.getElementById('upper-check').classList.remove('text-green-500');
-        document.getElementById('upper-check').classList.add('text-gray-600');
+      for (let i = 0; i < barsToFill; i++) {
+        bars[i].classList.add(strengthClass);
       }
       
-      // Check number
-      if (/[0-9]/.test(password)) {
-        document.getElementById('number-check').classList.remove('text-gray-600');
-        document.getElementById('number-check').classList.add('text-green-500');
-      } else {
-        document.getElementById('number-check').classList.remove('text-green-500');
-        document.getElementById('number-check').classList.add('text-gray-600');
+      document.getElementById('strength-text').textContent = strengthText;
+    }
+
+    // Show error message
+    function showError(message) {
+      const errorDiv = document.getElementById('errorMessage');
+      const errorText = document.getElementById('errorText');
+      const successDiv = document.getElementById('successMessage');
+      
+      errorText.textContent = message;
+      errorDiv.classList.remove('hidden');
+      successDiv.classList.add('hidden');
+      
+      // Scroll to error
+      errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        errorDiv.classList.add('hidden');
+      }, 5000);
+    }
+
+    // Show success message
+    function showSuccess(message) {
+      const successDiv = document.getElementById('successMessage');
+      const successText = document.getElementById('successText');
+      const errorDiv = document.getElementById('errorMessage');
+      
+      successText.textContent = message;
+      successDiv.classList.remove('hidden');
+      errorDiv.classList.add('hidden');
+    }
+
+    // Handle signup form submission
+    async function handleSignupSubmit(event) {
+      event.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const termsAccepted = document.getElementById('terms').checked;
+      
+      // Disable submit button
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Creating account...';
+      
+      try {
+        // Validate inputs
+        if (!fullName || !email || !password) {
+          throw new Error('Please fill in all required fields');
+        }
+        
+        if (!validateEmail(email)) {
+          throw new Error('Please enter a valid email address');
+        }
+        
+        if (password !== confirmPassword) {
+          throw new Error('Passwords do not match');
+        }
+        
+        const passwordValidation = validatePassword(password);
+        if (!passwordValidation.isValid) {
+          throw new Error('Password must be at least 8 characters and include uppercase, lowercase, and numbers');
+        }
+        
+        if (!termsAccepted) {
+          throw new Error('Please accept the Terms of Service and Privacy Policy');
+        }
+        
+        // Attempt signup
+        const result = await handleSignup({
+          fullName,
+          email,
+          company,
+          phone,
+          password
+        });
+        
+        if (result.success) {
+          showSuccess('Account created successfully! Redirecting to dashboard...');
+          
+          // Redirect after short delay
+          setTimeout(() => {
+            window.location.href = '../dashboard/main-dashboard.html';
+          }, 2000);
+        } else {
+          throw new Error(result.error || 'Registration failed. Please try again.');
+        }
+      } catch (error) {
+        console.error('Signup error:', error);
+        showError(error.message);
+        
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-user-plus mr-2"></i>Create Account';
+      }
+    }
+
+    // Check if already logged in
+    document.addEventListener('DOMContentLoaded', function() {
+      if (isAuthenticated()) {
+        window.location.href = '../dashboard/main-dashboard.html';
       }
     });
   </script>
