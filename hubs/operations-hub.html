@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operations Hub | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
+        </a>
+        <div class="flex items-center gap-4" id="userInfo"></div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-cyan-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
+    </div>
+  </div>
+
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-cogs text-cyan-400"></i>
+          <span class="text-cyan-400 text-sm font-medium">Operations Hub</span>
+          <span class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">FREE</span>
+        </div>
+        <h1 class="text-5xl font-black mb-4">Operations <span class="gradient-text">Management</span></h1>
+        <p class="text-xl text-gray-400">Streamline daily operations and maximize efficiency</p>
+      </div>
+
+      <div id="accessBadge" class="mb-8"></div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-tasks text-cyan-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Task Management</h3>
+          <p class="text-gray-400 mb-4">Organize and track operational tasks</p>
+          <button class="text-cyan-400 hover:text-cyan-300 font-semibold">View Tasks <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-line text-blue-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Production Tracking</h3>
+          <p class="text-gray-400 mb-4">Monitor production metrics in real-time</p>
+          <button class="text-blue-400 hover:text-blue-300 font-semibold">Track Production <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-purple-500/50 transition-all">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-truck text-purple-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Equipment Monitoring</h3>
+          <p class="text-gray-400 mb-4">Track equipment status and maintenance</p>
+          <button class="text-purple-400 hover:text-purple-300 font-semibold">Monitor Fleet <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-green-500/50 transition-all">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-calendar-alt text-green-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Shift Planning</h3>
+          <p class="text-gray-400 mb-4">Schedule and manage workforce shifts</p>
+          <button class="text-green-400 hover:text-green-300 font-semibold">Plan Shifts <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-amber-500/50 transition-all">
+          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-file-alt text-amber-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Basic Reporting</h3>
+          <p class="text-gray-400 mb-4">Generate operational reports</p>
+          <button class="text-amber-400 hover:text-amber-300 font-semibold">Create Report <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-pink-500/50 transition-all">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-clipboard-list text-pink-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Inventory Management</h3>
+          <p class="text-gray-400 mb-4">Track supplies and materials</p>
+          <button class="text-pink-400 hover:text-pink-300 font-semibold">Manage Inventory <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-4 gap-6">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <div class="text-3xl font-black mb-2 text-cyan-400">94%</div>
+          <div class="text-gray-400">Uptime</div>
+        </div>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <div class="text-3xl font-black mb-2 text-blue-400">1,245</div>
+          <div class="text-gray-400">Tasks Completed</div>
+        </div>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <div class="text-3xl font-black mb-2 text-green-400">156</div>
+          <div class="text-gray-400">Active Equipment</div>
+        </div>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+          <div class="text-3xl font-black mb-2 text-purple-400">3</div>
+          <div class="text-gray-400">Active Shifts</div>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/30 p-8">
+        <div class="flex items-start gap-6">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-rocket text-cyan-400 text-2xl"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-2">Upgrade for Advanced Features</h3>
+            <p class="text-gray-400 mb-4">Get access to advanced analytics, AI predictions, and more with our paid plans</p>
+            <a href="../pricing/index.html" class="inline-block bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-xl font-bold transition-all">
+              <i class="fas fa-crown mr-2"></i>View Plans
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const RESOURCE_ID = 'operations-hub';
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth()) return;
+      const user = getCurrentUser();
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
+        </button>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">Free Access</div>
+              <div class="text-sm text-gray-400">Available on all plans</div>
+            </div>
+          </div>
+        `;
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
+      }
+    });
+  </script>
+</body>
+</html>
