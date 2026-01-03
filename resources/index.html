@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources Hub - SESMine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .resource-card { transition: all 0.3s ease; }
+    .resource-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2); }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-mountain text-white text-xl"></i>
+          </div>
+          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="../index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="../products/cost-calculator.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
+          <a href="../pricing/index.html" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
+          <a href="index.html" class="text-amber-500 font-semibold">Resources</a>
+          <a href="../contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+          <a href="../auth/login.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
+            Sign In
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-12 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
+          <i class="fas fa-book-open text-blue-500"></i>
+          <span class="text-blue-500 text-sm font-medium">Knowledge Center</span>
+        </div>
+        <h1 class="text-5xl lg:text-6xl font-black mb-6">
+          Resources & Learning
+          <br><span class="gradient-text">Hub</span>
+        </h1>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Everything you need to master mining cost estimation. Guides, templates, videos, and industry insights.
+        </p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <div class="relative">
+          <input 
+            type="text" 
+            placeholder="Search resources, guides, templates..."
+            class="w-full bg-slate-900 border border-slate-800 rounded-2xl px-6 py-4 pl-14 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+          >
+          <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="flex items-center justify-center gap-4 flex-wrap">
+        <button class="px-6 py-2.5 bg-amber-500/20 border border-amber-500/30 rounded-full text-amber-500 font-semibold">
+          All Resources
+        </button>
+        <button class="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors">
+          📚 Guides
+        </button>
+        <button class="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors">
+          🎥 Videos
+        </button>
+        <button class="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors">
+          📄 Templates
+        </button>
+        <button class="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors">
+          📊 Reports
+        </button>
+        <button class="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors">
+          🎓 Webinars
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Resources -->
+  <section class="py-12 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-black mb-8">Featured Resources</h2>
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="resource-card bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
+          <div class="relative h-48">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" 
+                 alt="Guide" 
+                 class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">POPULAR</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-xs font-semibold">📚 Guide</span>
+              <span class="text-gray-400 text-xs">45 min read</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Complete Mining Cost Estimation Guide 2025</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Comprehensive 150-page guide covering all aspects of mining cost estimation from feasibility to production.
+            </p>
+            <button class="w-full bg-gradient-to-r from-amber-500 to-orange-600 py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+              <i class="fas fa-download mr-2"></i>Download PDF
+            </button>
+          </div>
+        </div>
+
+        <div class="resource-card bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
+          <div class="relative h-48">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop" 
+                 alt="Video" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center">
+                <i class="fas fa-play text-white text-xl ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full text-xs font-semibold">🎥 Video</span>
+              <span class="text-gray-400 text-xs">28 min</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Equipment Cost Optimization Masterclass</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Learn proven strategies to reduce equipment costs by 15-20% through smart selection and lifecycle management.
+            </p>
+            <button class="w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 py-3 rounded-xl font-semibold transition-all">
+              <i class="fas fa-play mr-2"></i>Watch Now
+            </button>
+          </div>
+        </div>
+
+        <div class="resource-card bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
+          <div class="relative h-48">
+            <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop" 
+                 alt="Template" 
+                 class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">NEW</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-xs font-semibold">📄 Template</span>
+              <span class="text-gray-400 text-xs">Excel + PDF</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Open Pit Mining Cost Model Template</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Ready-to-use Excel template with formulas, charts, and AACE-compliant reporting for open pit projects.
+            </p>
+            <button class="w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 py-3 rounded-xl font-semibold transition-all">
+              <i class="fas fa-download mr-2"></i>Download Template
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Grid -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-black mb-8">All Resources</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Guide 1 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-book text-blue-500 text-xl"></i>
+          </div>
+          <span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-xs font-semibold">📚 Guide</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Underground Mining Cost Estimation</h3>
+          <p class="text-gray-400 text-sm mb-4">Detailed guide for underground operations including shaft, decline, and block cave methods.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">85 pages • PDF</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Download →</button>
+          </div>
+        </div>
+
+        <!-- Video 1 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-video text-red-500 text-xl"></i>
+          </div>
+          <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full text-xs font-semibold">🎥 Video</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">AI Cost Prediction Demo</h3>
+          <p class="text-gray-400 text-sm mb-4">See how our AI model predicts costs with 94% accuracy in real-time demonstration.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">15 min • Video</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Watch →</button>
+          </div>
+        </div>
+
+        <!-- Template 1 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-file-excel text-green-500 text-xl"></i>
+          </div>
+          <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-xs font-semibold">📄 Template</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Equipment Cost Tracking Spreadsheet</h3>
+          <p class="text-gray-400 text-sm mb-4">Track capital and operating costs for all equipment types with automated calculations.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">Excel • 2.4 MB</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Download →</button>
+          </div>
+        </div>
+
+        <!-- Report 1 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-bar text-purple-500 text-xl"></i>
+          </div>
+          <span class="bg-purple-500/20 text-purple-500 px-3 py-1 rounded-full text-xs font-semibold">📊 Report</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">2025 Mining Equipment Cost Trends</h3>
+          <p class="text-gray-400 text-sm mb-4">Annual report analyzing global equipment pricing trends and market forecasts.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">42 pages • PDF</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Download →</button>
+          </div>
+        </div>
+
+        <!-- Webinar 1 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-chalkboard-teacher text-amber-500 text-xl"></i>
+          </div>
+          <span class="bg-amber-500/20 text-amber-500 px-3 py-1 rounded-full text-xs font-semibold">🎓 Webinar</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">ESG Reporting for Mining Operations</h3>
+          <p class="text-gray-400 text-sm mb-4">Live webinar covering environmental, social, and governance metrics tracking.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">Jan 25 • 2:00 PM</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Register →</button>
+          </div>
+        </div>
+
+        <!-- Case Study 1 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-briefcase text-pink-500 text-xl"></i>
+          </div>
+          <span class="bg-pink-500/20 text-pink-500 px-3 py-1 rounded-full text-xs font-semibold">💼 Case Study</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Rio Mining: $2.4M Cost Savings</h3>
+          <p class="text-gray-400 text-sm mb-4">How accurate estimation helped reduce project expenses by 15% in first year.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">12 pages • PDF</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Read →</button>
+          </div>
+        </div>
+
+        <!-- Guide 2 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-book-open text-blue-500 text-xl"></i>
+          </div>
+          <span class="bg-blue-500/20 text-blue-500 px-3 py-1 rounded-full text-xs font-semibold">📚 Guide</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">AACE Cost Classification Standards</h3>
+          <p class="text-gray-400 text-sm mb-4">Complete guide to AACE International cost estimation classification system.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">64 pages • PDF</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Download →</button>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-play-circle text-red-500 text-xl"></i>
+          </div>
+          <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full text-xs font-semibold">🎥 Video</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">SESMine Platform Tutorial</h3>
+          <p class="text-gray-400 text-sm mb-4">Complete walkthrough of all features and how to maximize platform value.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">42 min • Video</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Watch →</button>
+          </div>
+        </div>
+
+        <!-- Template 2 -->
+        <div class="resource-card bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-file-alt text-green-500 text-xl"></i>
+          </div>
+          <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-xs font-semibold">📄 Template</span>
+          <h3 class="text-lg font-bold mt-3 mb-2">Project Budget Proposal Template</h3>
+          <p class="text-gray-400 text-sm mb-4">Professional template for presenting mining project budgets to stakeholders.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-gray-500 text-xs">PowerPoint • 5 MB</span>
+            <button class="text-amber-500 font-semibold text-sm hover:underline">Download →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Load More -->
+      <div class="mt-12 text-center">
+        <button class="px-8 py-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl font-semibold transition-all">
+          <i class="fas fa-chevron-down mr-2"></i>Load More Resources
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 rounded-3xl p-12 border border-amber-500/30">
+        <i class="fas fa-graduation-cap text-amber-500 text-4xl mb-6"></i>
+        <h2 class="text-4xl font-black mb-4">Need Custom Training?</h2>
+        <p class="text-xl text-gray-300 mb-8">
+          Get personalized training sessions for your team. We'll help you master cost estimation best practices.
+        </p>
+        <button class="bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-amber-500/30 transition-all">
+          <i class="fas fa-calendar-alt mr-2"></i>Schedule Training Session
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+              <i class="fas fa-mountain text-white"></i>
+            </div>
+            <span class="text-xl font-bold">SES<span class="gradient-text">Mine</span></span>
+          </div>
+          <p class="text-gray-400 text-sm">Smart Engineering Solutions for Mining</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Product</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="../products/cost-calculator.html" class="hover:text-white transition-colors">Cost Calculator</a></li>
+            <li><a href="../products/equipment-database.html" class="hover:text-white transition-colors">Equipment Database</a></li>
+            <li><a href="../pricing/index.html" class="hover:text-white transition-colors">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="index.html" class="hover:text-white transition-colors">All Resources</a></li>
+            <li><a href="../news.html" class="hover:text-white transition-colors">News & Blog</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="../about.html" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+        <p>© 2025 SESMine. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
