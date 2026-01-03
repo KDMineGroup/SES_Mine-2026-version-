@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Mining News - SESMine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .article-card { transition: all 0.3s ease; }
+    .article-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2); }
+    .skeleton { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%); background-size: 200% 100%; }
+    @keyframes pulse { 0%, 100% { background-position: 0% 0%; } 50% { background-position: 100% 0%; } }
+    .fade-in { animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .notification { animation: slideIn 0.3s ease-out; }
+    @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-mountain text-white text-xl"></i>
+          </div>
+          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="products/cost-calculator.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
+          <a href="pricing/index.html" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
+          <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="news.html" class="text-amber-500 font-semibold">News</a>
+          <a href="auth/login.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
+            Sign In
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-12 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 mb-6">
+          <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <span class="text-green-500 text-sm font-medium">Live Updates • Auto-Refresh Every 5 Minutes</span>
+        </div>
+        <h1 class="text-5xl lg:text-6xl font-black mb-6">
+          Live Mining Industry
+          <br><span class="gradient-text">News & Insights</span>
+        </h1>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-6">
+          Real-time updates from Mining.com, Canadian Mining Journal, Mining Weekly, and SESMine insights.
+        </p>
+        <div class="flex items-center justify-center gap-4 flex-wrap">
+          <div class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-xl border border-slate-800">
+            <i class="fas fa-rss text-amber-500"></i>
+            <span class="text-sm text-gray-400">4 Active RSS Feeds</span>
+          </div>
+          <div class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-xl border border-slate-800">
+            <i class="fas fa-newspaper text-blue-500"></i>
+            <span class="text-sm text-gray-400" id="article-count">Loading articles...</span>
+          </div>
+          <div class="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-xl border border-slate-800">
+            <i class="fas fa-clock text-purple-500"></i>
+            <span class="text-sm text-gray-400" id="last-update">Updating...</span>
+          </div>
+        </div>
+        <div class="mt-6">
+          <button onclick="manualRefresh()" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:shadow-xl hover:shadow-amber-500/30 rounded-xl font-semibold transition-all flex items-center gap-2 mx-auto">
+            <i class="fas fa-sync-alt" id="refresh-icon"></i>
+            Refresh News Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Source Indicators -->
+      <div class="grid md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 text-center">
+          <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <i class="fas fa-globe text-blue-500"></i>
+          </div>
+          <div class="font-semibold text-sm">Mining.com</div>
+          <div class="text-xs text-gray-400" id="source-mining">Loading...</div>
+        </div>
+        <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 text-center">
+          <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <i class="fas fa-flag text-red-500"></i>
+          </div>
+          <div class="font-semibold text-sm">Canadian Mining</div>
+          <div class="text-xs text-gray-400" id="source-canadian">Loading...</div>
+        </div>
+        <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 text-center">
+          <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <i class="fas fa-chart-line text-green-500"></i>
+          </div>
+          <div class="font-semibold text-sm">Mining Weekly</div>
+          <div class="text-xs text-gray-400" id="source-weekly">Loading...</div>
+        </div>
+        <div class="bg-slate-900 rounded-xl p-4 border border-slate-800 text-center">
+          <div class="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <i class="fas fa-bolt text-amber-500"></i>
+          </div>
+          <div class="font-semibold text-sm">SESMine</div>
+          <div class="text-xs text-gray-400" id="source-sesmine">5 articles</div>
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="flex items-center justify-center gap-4 flex-wrap">
+        <button onclick="filterNews('all')" class="filter-btn px-6 py-2.5 bg-amber-500/20 border border-amber-500/30 rounded-full text-amber-500 font-semibold" data-category="all">
+          All Sources
+        </button>
+        <button onclick="filterNews('mining.com')" class="filter-btn px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors" data-category="mining.com">
+          🌐 Mining.com
+        </button>
+        <button onclick="filterNews('canadian-mining')" class="filter-btn px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors" data-category="canadian-mining">
+          🇨🇦 Canadian Mining
+        </button>
+        <button onclick="filterNews('mining-weekly')" class="filter-btn px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors" data-category="mining-weekly">
+          📊 Mining Weekly
+        </button>
+        <button onclick="filterNews('sesmine')" class="filter-btn px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors" data-category="sesmine">
+          ⚡ SESMine
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Article -->
+  <section class="py-12 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div id="featured-article" class="bg-slate-950 rounded-3xl overflow-hidden border border-slate-800">
+        <!-- Loading skeleton -->
+        <div class="grid lg:grid-cols-2 gap-0">
+          <div class="skeleton h-96"></div>
+          <div class="p-12 space-y-4">
+            <div class="skeleton h-6 w-3/4 rounded"></div>
+            <div class="skeleton h-4 w-1/2 rounded"></div>
+            <div class="skeleton h-32 w-full rounded"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold">Latest Articles</h2>
+        <div class="flex items-center gap-4">
+          <select onchange="sortNews(this.value)" class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm">
+            <option value="date">Newest First</option>
+            <option value="date-old">Oldest First</option>
+            <option value="source">By Source</option>
+            <option value="title">By Title</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="articles-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Loading skeletons -->
+        <div class="skeleton rounded-2xl h-96"></div>
+        <div class="skeleton rounded-2xl h-96"></div>
+        <div class="skeleton rounded-2xl h-96"></div>
+        <div class="skeleton rounded-2xl h-96"></div>
+        <div class="skeleton rounded-2xl h-96"></div>
+        <div class="skeleton rounded-2xl h-96"></div>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="mt-12 text-center">
+        <button onclick="loadMore()" id="load-more-btn" class="px-8 py-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl font-semibold transition-all">
+          <i class="fas fa-chevron-down mr-2"></i>Load More Articles
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-20 bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 rounded-3xl p-12 border border-amber-500/30">
+        <i class="fas fa-envelope text-amber-500 text-4xl mb-6"></i>
+        <h2 class="text-4xl font-black mb-4">Never Miss an Update</h2>
+        <p class="text-xl text-gray-300 mb-8">
+          Get daily mining news digest from all sources delivered to your inbox every morning.
+        </p>
+        <form class="flex gap-4 max-w-md mx-auto" onsubmit="subscribeNewsletter(event)">
+          <input 
+            type="email" 
+            id="newsletter-email"
+            placeholder="your.email@company.com"
+            class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+            required
+          >
+          <button type="submit" class="bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-amber-500/30 transition-all whitespace-nowrap">
+            Subscribe
+          </button>
+        </form>
+        <p class="text-sm text-gray-400 mt-4">Join 5,000+ mining professionals • Unsubscribe anytime</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+              <i class="fas fa-mountain text-white"></i>
+            </div>
+            <span class="text-xl font-bold">SES<span class="gradient-text">Mine</span></span>
+          </div>
+          <p class="text-gray-400 text-sm mb-4">Smart Engineering Solutions for Mining</p>
+          <p class="text-xs text-gray-500">News aggregated from: Mining.com, Canadian Mining Journal, Mining Weekly, and SESMine</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Product</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="products/cost-calculator.html" class="hover:text-white transition-colors">Cost Calculator</a></li>
+            <li><a href="products/equipment-database.html" class="hover:text-white transition-colors">Equipment Database</a></li>
+            <li><a href="pricing/index.html" class="hover:text-white transition-colors">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="news.html" class="hover:text-white transition-colors">News</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">News Sources</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="https://www.mining.com" target="_blank" class="hover:text-white transition-colors">Mining.com ↗</a></li>
+            <li><a href="https://www.canadianminingjournal.com" target="_blank" class="hover:text-white transition-colors">Canadian Mining Journal ↗</a></li>
+            <li><a href="https://www.miningweekly.com" target="_blank" class="hover:text-white transition-colors">Mining Weekly ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+        <p>© 2025 SESMine. All rights reserved. • News content © respective publishers</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Container -->
+  <div id="notification-container" class="fixed top-24 right-6 z-50 space-y-3"></div>
+
+  <script>
+    // RSS Feed URLs from multiple sources
+    const RSS_FEEDS = {
+      'mining.com': 'https://www.mining.com/feed/',
+      'canadian-mining': 'https://www.canadianminingjournal.com/feed/',
+      'mining-weekly': 'https://www.miningweekly.com/rss/daily-newsletter',
+      'mining-technology': 'https://www.mining-technology.com/feed/'
+    };
+
+    // CORS proxy for RSS feeds (using rss2json.com free service)
+    const RSS_PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+    let allArticles = [];
+    let displayedArticles = [];
+    let currentFilter = 'all';
+    let currentSort = 'date';
+    let articlesPerLoad = 9;
+    let currentlyDisplayed = 9;
+
+    // SESMine articles (static content)
+    const sesmineArticles = [
+      {
+        title: "AI-Powered Cost Predictions Achieve 94% Accuracy",
+        description: "SESMine's latest machine learning model sets new industry standard for mining cost estimation accuracy, helping companies save millions in project planning.",
+        link: "#",
+        pubDate: new Date().toISOString(),
+        thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+        source: "sesmine",
+        author: "Dr. Sarah Chen, CTO"
+      },
+      {
+        title: "How Rio Mining Saved $2.4M Using SESMine Platform",
+        description: "Comprehensive case study reveals how accurate cost estimation and real-time tracking reduced project expenses by 15% in first year of implementation.",
+        link: "#",
+        pubDate: new Date(Date.now() - 86400000).toISOString(),
+        thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        source: "sesmine",
+        author: "Michael Chen, VP Operations"
+      },
+      {
+        title: "Complete Guide to Mining Equipment Cost Optimization",
+        description: "Expert strategies for reducing equipment costs by 15-20% through strategic selection, maintenance planning, and lifecycle management.",
+        link: "#",
+        pubDate: new Date(Date.now() - 172800000).toISOString(),
+        thumbnail: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=600&fit=crop",
+        source: "sesmine",
+        author: "James Wilson, Senior Analyst"
+      },
+      {
+        title: "2025 Mining Equipment Cost Trends Report",
+        description: "Comprehensive analysis of global mining equipment pricing trends and budget planning recommendations for the year ahead.",
+        link: "#",
+        pubDate: new Date(Date.now() - 259200000).toISOString(),
+        thumbnail: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&h=600&fit=crop",
+        source: "sesmine",
+        author: "Emma Rodriguez, Market Analyst"
+      },
+      {
+        title: "ESG Reporting Best Practices for Mining Operations",
+        description: "Essential guide to environmental, social, and governance metrics tracking and reporting for modern mining companies.",
+        link: "#",
+        date: new Date(Date.now() - 345600000).toISOString(),
+        thumbnail: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop",
+        source: "sesmine",
+        author: "Dr. Lisa Anderson, ESG Director"
+      }
+    ];
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAllNews();
+      
+      // Auto-refresh every 5 minutes
+      setInterval(loadAllNews, 300000);
+    });
+
+    async function loadAllNews() {
+      try {
+        showNotification('Fetching latest news...', 'info');
+        
+        const promises = Object.entries(RSS_FEEDS).map(([source, url]) => 
+          fetchRSSFeed(source, url)
+        );
+        
+        const results = await Promise.allSettled(promises);
+        
+        // Combine all articles
+        allArticles = [];
+        results.forEach((result, index) => {
+          if (result.status === 'fulfilled' && result.value) {
+            allArticles = allArticles.concat(result.value);
+          }
+        });
+        
+        // Add SESMine articles
+        allArticles = allArticles.concat(sesmineArticles.map(a => ({
+          ...a,
+          pubDate: a.pubDate || a.date
+        })));
+        
+        // Update source counts
+        updateSourceCounts();
+        
+        // Render articles
+        renderFeaturedArticle();
+        renderArticles();
+        updateLastUpdateTime();
+        
+        showNotification(`Successfully loaded ${allArticles.length} articles from 4 sources!`, 'success');
+        
+      } catch (error) {
+        console.error('Error loading news:', error);
+        showNotification('Failed to load some news sources. Showing cached articles.', 'error');
+        
+        // Show SESMine articles as fallback
+        allArticles = sesmineArticles;
+        renderFeaturedArticle();
+        renderArticles();
+      }
+    }
+
+    async function fetchRSSFeed(source, url) {
+      try {
+        const response = await fetch(`${RSS_PROXY}${encodeURIComponent(url)}`);
+        const data = await response.json();
+        
+        if (data.status === 'ok' && data.items) {
+          return data.items.map(item => ({
+            title: item.title,
+            description: item.description?.replace(/<[^>]*>/g, '').substring(0, 200) + '...',
+            link: item.link,
+            pubDate: item.pubDate,
+            thumbnail: item.thumbnail || item.enclosure?.link || getDefaultImage(source),
+            source: source,
+            author: item.author || getSourceName(source)
+          }));
+        }
+        return [];
+      } catch (error) {
+        console.error(`Error fetching ${source}:`, error);
+        return [];
+      }
+    }
+
+    function updateSourceCounts() {
+      const counts = {
+        'mining.com': 0,
+        'canadian-mining': 0,
+        'mining-weekly': 0,
+        'sesmine': 5
+      };
+      
+      allArticles.forEach(article => {
+        if (counts[article.source] !== undefined) {
+          counts[article.source]++;
+        }
+      });
+      
+      document.getElementById('source-mining').textContent = `${counts['mining.com']} articles`;
+      document.getElementById('source-canadian').textContent = `${counts['canadian-mining']} articles`;
+      document.getElementById('source-weekly').textContent = `${counts['mining-weekly']} articles`;
+      document.getElementById('article-count').textContent = `${allArticles.length} Total Articles`;
+    }
+
+    function renderFeaturedArticle() {
+      if (allArticles.length === 0) return;
+      
+      const featured = allArticles[0];
+      const container = document.getElementById('featured-article');
+      
+      container.innerHTML = `
+        <div class="grid lg:grid-cols-2 gap-0 fade-in">
+          <div class="relative h-96 lg:h-auto">
+            <img src="${featured.thumbnail}" alt="${featured.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&h=600&fit=crop'">
+            <div class="absolute top-6 left-6">
+              <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">FEATURED</span>
+            </div>
+            <div class="absolute bottom-6 left-6">
+              <span class="bg-slate-900/90 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                ${getSourceIcon(featured.source)} ${getSourceName(featured.source)}
+              </span>
+            </div>
+          </div>
+          <div class="p-12 flex flex-col justify-center">
+            <div class="flex items-center gap-4 mb-4 flex-wrap">
+              <span class="text-amber-500 text-sm font-semibold">${getSourceName(featured.source)}</span>
+              <span class="text-gray-500 text-sm">•</span>
+              <span class="text-gray-400 text-sm">${formatDate(featured.pubDate)}</span>
+              ${featured.author ? `<span class="text-gray-500 text-sm">•</span><span class="text-gray-400 text-sm">${featured.author}</span>` : ''}
+            </div>
+            <h2 class="text-4xl font-black mb-4">${featured.title}</h2>
+            <p class="text-gray-400 text-lg mb-6">${featured.description}</p>
+            <a href="${featured.link}" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-amber-500/30 transition-all self-start">
+              Read Full Story <i class="fas fa-external-link-alt text-sm"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderArticles() {
+      const filtered = filterArticles();
+      const sorted = sortArticles(filtered);
+      displayedArticles = sorted.slice(1); // Skip featured article
+      
+      const toShow = displayedArticles.slice(0, currentlyDisplayed);
+      const container = document.getElementById('articles-grid');
+      
+      if (toShow.length === 0) {
+        container.innerHTML = '<div class="col-span-3 text-center text-gray-400 py-12">No articles found for this filter</div>';
+        document.getElementById('load-more-btn').style.display = 'none';
+        return;
+      }
+
+      container.innerHTML = toShow.map((article, index) => `
+        <article class="article-card bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 fade-in" style="animation-delay: ${index * 0.1}s">
+          <div class="relative h-48">
+            <img src="${article.thumbnail}" alt="${article.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop'">
+            <div class="absolute top-4 left-4">
+              <span class="bg-${getSourceColor(article.source)} text-white text-xs font-bold px-3 py-1 rounded-full">
+                ${getSourceIcon(article.source)} ${getSourceName(article.source)}
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="text-gray-400 text-sm mb-3">${formatDate(article.pubDate)}</div>
+            <h3 class="text-xl font-bold mb-3 hover:text-amber-500 transition-colors cursor-pointer line-clamp-2">
+              ${article.title}
+            </h3>
+            <p class="text-gray-400 text-sm mb-4 line-clamp-3">${article.description}</p>
+            <a href="${article.link}" target="_blank" class="text-amber-500 font-semibold hover:underline flex items-center gap-2">
+              Read More <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </article>
+      `).join('');
+
+      // Show/hide load more button
+      document.getElementById('load-more-btn').style.display = 
+        currentlyDisplayed < displayedArticles.length ? 'block' : 'none';
+    }
+
+    function filterArticles() {
+      if (currentFilter === 'all') return allArticles;
+      return allArticles.filter(a => a.source === currentFilter);
+    }
+
+    function sortArticles(articles) {
+      return [...articles].sort((a, b) => {
+        if (currentSort === 'date') return new Date(b.pubDate) - new Date(a.pubDate);
+        if (currentSort === 'date-old') return new Date(a.pubDate) - new Date(b.pubDate);
+        if (currentSort === 'title') return a.title.localeCompare(b.title);
+        if (currentSort === 'source') return a.source.localeCompare(b.source);
+        return 0;
+      });
+    }
+
+    function filterNews(category) {
+      currentFilter = category;
+      currentlyDisplayed = articlesPerLoad;
+      
+      // Update button styles
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.className = 'filter-btn px-6 py-2.5 bg-amber-500/20 border border-amber-500/30 rounded-full text-amber-500 font-semibold';
+        } else {
+          btn.className = 'filter-btn px-6 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-full text-gray-300 font-semibold transition-colors';
+        }
+      });
+
+      renderArticles();
+    }
+
+    function sortNews(sortBy) {
+      currentSort = sortBy;
+      renderArticles();
+    }
+
+    function loadMore() {
+      currentlyDisplayed += articlesPerLoad;
+      renderArticles();
+    }
+
+    function manualRefresh() {
+      const icon = document.getElementById('refresh-icon');
+      icon.classList.add('fa-spin');
+      
+      loadAllNews().finally(() => {
+        setTimeout(() => {
+          icon.classList.remove('fa-spin');
+        }, 1000);
+      });
+    }
+
+    function updateLastUpdateTime() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('last-update').textContent = `Updated: ${timeStr}`;
+    }
+
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      const now = new Date();
+      const diff = now - date;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor(diff / (1000 * 60));
+      
+      if (minutes < 60) return `${minutes} minutes ago`;
+      if (hours < 24) return `${hours} hours ago`;
+      if (days === 0) return 'Today';
+      if (days === 1) return 'Yesterday';
+      if (days < 7) return `${days} days ago`;
+      
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function getSourceName(source) {
+      const names = {
+        'mining.com': 'Mining.com',
+        'canadian-mining': 'Canadian Mining',
+        'mining-weekly': 'Mining Weekly',
+        'mining-technology': 'Mining Technology',
+        'sesmine': 'SESMine'
+      };
+      return names[source] || source;
+    }
+
+    function getSourceIcon(source) {
+      const icons = {
+        'mining.com': '🌐',
+        'canadian-mining': '🇨🇦',
+        'mining-weekly': '📊',
+        'mining-technology': '🔧',
+        'sesmine': '⚡'
+      };
+      return icons[source] || '📰';
+    }
+
+    function getSourceColor(source) {
+      const colors = {
+        'mining.com': 'blue-500',
+        'canadian-mining': 'red-500',
+        'mining-weekly': 'green-500',
+        'mining-technology': 'purple-500',
+        'sesmine': 'amber-500'
+      };
+      return colors[source] || 'gray-500';
+    }
+
+    function getDefaultImage(source) {
+      const images = {
+        'mining.com': 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=400&h=300&fit=crop',
+        'canadian-mining': 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&h=300&fit=crop',
+        'mining-weekly': 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop',
+        'sesmine': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop'
+      };
+      return images[source] || 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=400&h=300&fit=crop';
+    }
+
+    function subscribeNewsletter(event) {
+      event.preventDefault();
+      const email = document.getElementById('newsletter-email').value;
+      showNotification(`Successfully subscribed: ${email}`, 'success');
+      document.getElementById('newsletter-email').value = '';
+    }
+
+    function showNotification(message, type = 'info') {
+      const container = document.getElementById('notification-container');
+      const colors = {
+        success: 'bg-green-500',
+        error: 'bg-red-500',
+        info: 'bg-blue-500'
+      };
+      
+      const notification = document.createElement('div');
+      notification.className = `notification ${colors[type]} text-white px-6 py-4 rounded-xl shadow-xl flex items-center gap-3 min-w-[300px]`;
+      notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+        <span>${message}</span>
+      `;
+      
+      container.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(400px)';
+        setTimeout(() => notification.remove(), 300);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
