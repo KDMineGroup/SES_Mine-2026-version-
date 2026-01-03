@@ -3,451 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innovation & Technology Hub - SESMine</title>
+  <title>Innovation Hub | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .tool-card { transition: all 0.3s ease; }
-    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3); }
-    .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); } 50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6); } }
+    .gradient-text { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
-  <!-- Navigation -->
   <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-mountain text-white text-xl"></i>
-          </div>
-          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="../index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">All Hubs</a>
-          <a href="innovation-hub.html" class="text-amber-500 font-semibold">Innovation Hub</a>
-          <a href="../contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
-          <a href="../auth/login.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
-            Sign In
-          </a>
-        </div>
+        <div class="flex items-center gap-4" id="userInfo"></div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="pt-32 pb-12 relative overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pulse-glow"></div>
-      <div class="absolute bottom-20 right-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pulse-glow" style="animation-delay: 1s;"></div>
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-purple-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
     </div>
+  </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-            <i class="fas fa-rocket text-amber-500"></i>
-            <span class="text-amber-500 text-sm font-medium">Future of Mining</span>
-          </div>
-          <h1 class="text-5xl lg:text-6xl font-black mb-6">
-            Innovation &
-            <br><span class="gradient-text">Technology Hub</span>
-          </h1>
-          <p class="text-xl text-gray-400 mb-8">
-            Explore cutting-edge technologies transforming the mining industry. AI, automation, IoT, digital twins, and emerging innovations shaping the future.
-          </p>
-          <div class="flex items-center gap-4">
-            <button class="bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-              <i class="fas fa-brain mr-2"></i>Explore AI Tools
-            </button>
-            <button class="bg-slate-900 hover:bg-slate-800 border border-slate-800 px-8 py-4 rounded-xl font-bold transition-all">
-              <i class="fas fa-video mr-2"></i>Watch Demos
-            </button>
-          </div>
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-lightbulb text-purple-400"></i>
+          <span class="text-purple-400 text-sm font-medium">Innovation Hub</span>
+          <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">NEW</span>
         </div>
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop" 
-               alt="Innovation" 
-               class="rounded-3xl border border-slate-800 shadow-2xl">
-          <div class="absolute -bottom-6 -left-6 bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl pulse-glow">
-            <div class="text-3xl font-black text-amber-500 mb-1">94%</div>
-            <div class="text-sm text-gray-400">AI Accuracy</div>
-          </div>
-        </div>
+        <h1 class="text-5xl font-black mb-4">Innovation & <span class="gradient-text">Technology</span></h1>
+        <p class="text-xl text-gray-400">Emerging technologies, AI solutions, and digital transformation</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Quick Stats -->
-  <section class="py-12 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-robot text-amber-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">50+</div>
-          <div class="text-sm text-gray-400">AI/ML Models</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-microchip text-orange-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">30+</div>
-          <div class="text-sm text-gray-400">IoT Solutions</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-cube text-amber-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">15+</div>
-          <div class="text-sm text-gray-400">Digital Twins</div>
-        </div>
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
-          <i class="fas fa-chart-network text-orange-500 text-3xl mb-3"></i>
-          <div class="text-2xl font-black mb-1">100+</div>
-          <div class="text-sm text-gray-400">Innovation Cases</div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div id="accessBadge" class="mb-8"></div>
 
-  <!-- Main Categories -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-12">Innovation Categories</h2>
-      
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- AI & Machine Learning -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-brain text-amber-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-purple-500/50 transition-all">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-robot text-purple-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">AI & Machine Learning</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Predictive maintenance, cost forecasting, ore grade prediction, and optimization algorithms.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Predictive Analytics</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Cost Forecasting AI</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Optimization Models</span>
-            </li>
-          </ul>
-          <button class="w-full bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 py-3 rounded-xl font-semibold text-amber-500 transition-all">
-            Explore AI Tools
-          </button>
+          <h3 class="text-xl font-bold mb-2">AI & Machine Learning</h3>
+          <p class="text-gray-400 mb-4">Implement AI-powered solutions for mining operations</p>
+          <button class="text-purple-400 hover:text-purple-300 font-semibold">Explore AI <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Automation & Robotics -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-robot text-orange-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-network-wired text-blue-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Automation & Robotics</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Autonomous haulage, remote operations, automated drilling, and robotic systems.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Autonomous Vehicles</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Remote Operations</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Robotic Systems</span>
-            </li>
-          </ul>
-          <button class="w-full bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 py-3 rounded-xl font-semibold text-orange-500 transition-all">
-            Explore Automation
-          </button>
+          <h3 class="text-xl font-bold mb-2">IoT Integration</h3>
+          <p class="text-gray-400 mb-4">Connect and monitor equipment with IoT sensors</p>
+          <button class="text-blue-400 hover:text-blue-300 font-semibold">Setup IoT <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- IoT & Sensors -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-satellite-dish text-amber-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-cloud text-cyan-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">IoT & Sensors</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Real-time monitoring, smart sensors, connected equipment, and data analytics platforms.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Smart Sensors</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Real-time Monitoring</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Connected Fleet</span>
-            </li>
-          </ul>
-          <button class="w-full bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 py-3 rounded-xl font-semibold text-amber-500 transition-all">
-            Explore IoT
-          </button>
+          <h3 class="text-xl font-bold mb-2">Cloud Solutions</h3>
+          <p class="text-gray-400 mb-4">Migrate to cloud-based mining management systems</p>
+          <button class="text-cyan-400 hover:text-cyan-300 font-semibold">Go Cloud <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Digital Twins -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-cube text-orange-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-green-500/50 transition-all">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-vr-cardboard text-green-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Digital Twins</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Virtual mine replicas, simulation models, scenario testing, and performance optimization.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Mine Simulation</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Scenario Testing</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Performance Tracking</span>
-            </li>
-          </ul>
-          <button class="w-full bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 py-3 rounded-xl font-semibold text-orange-500 transition-all">
-            Explore Digital Twins
-          </button>
+          <h3 class="text-xl font-bold mb-2">VR/AR Training</h3>
+          <p class="text-gray-400 mb-4">Virtual reality training simulations for safety</p>
+          <button class="text-green-400 hover:text-green-300 font-semibold">Try VR <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Blockchain & Crypto -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-link text-amber-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-amber-500/50 transition-all">
+          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-drone text-amber-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Blockchain & Traceability</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Supply chain transparency, mineral traceability, smart contracts, and secure transactions.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Mineral Traceability</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Smart Contracts</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-amber-500 text-xs"></i>
-              <span>Supply Chain Tracking</span>
-            </li>
-          </ul>
-          <button class="w-full bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 py-3 rounded-xl font-semibold text-amber-500 transition-all">
-            Explore Blockchain
-          </button>
+          <h3 class="text-xl font-bold mb-2">Drone Technology</h3>
+          <p class="text-gray-400 mb-4">Aerial surveying and inspection with drones</p>
+          <button class="text-amber-400 hover:text-amber-300 font-semibold">Launch Drone <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
 
-        <!-- Drones & Aerial Tech -->
-        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-drone text-orange-500 text-2xl"></i>
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-pink-500/50 transition-all">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-microchip text-pink-400 text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3">Drones & Aerial Tech</h3>
-          <p class="text-gray-400 text-sm mb-6">
-            Aerial surveys, stockpile measurement, site inspection, and mapping technologies.
-          </p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Aerial Surveys</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>3D Mapping</span>
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-400">
-              <i class="fas fa-check text-orange-500 text-xs"></i>
-              <span>Stockpile Analysis</span>
-            </li>
-          </ul>
-          <button class="w-full bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 py-3 rounded-xl font-semibold text-orange-500 transition-all">
-            Explore Drones
-          </button>
+          <h3 class="text-xl font-bold mb-2">Digital Twins</h3>
+          <p class="text-gray-400 mb-4">Create digital replicas of mining operations</p>
+          <button class="text-pink-400 hover:text-pink-300 font-semibold">Build Twin <i class="fas fa-arrow-right ml-2"></i></button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Innovation Showcase -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-black mb-4">Innovation Showcase</h2>
-        <p class="text-xl text-gray-400">Real-world implementations and success stories</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
-          <div class="h-48 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
-            <i class="fas fa-brain text-amber-500 text-6xl"></i>
+      <div class="mt-12 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-2xl border border-purple-500/30 p-8">
+        <div class="flex items-start gap-6">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-rocket text-purple-400 text-2xl"></i>
           </div>
-          <div class="p-6">
-            <span class="bg-amber-500/20 text-amber-500 px-3 py-1 rounded-full text-xs font-semibold">AI Success</span>
-            <h3 class="text-lg font-bold mt-3 mb-2">AI Cost Prediction: 94% Accuracy</h3>
-            <p class="text-gray-400 text-sm mb-4">
-              Machine learning model achieves industry-leading accuracy in mining cost estimation.
-            </p>
-            <button class="text-amber-500 font-semibold text-sm hover:underline">Read Case Study →</button>
-          </div>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
-          <div class="h-48 bg-gradient-to-br from-orange-500/20 to-amber-500/20 flex items-center justify-center">
-            <i class="fas fa-truck text-orange-500 text-6xl"></i>
-          </div>
-          <div class="p-6">
-            <span class="bg-orange-500/20 text-orange-500 px-3 py-1 rounded-full text-xs font-semibold">Automation</span>
-            <h3 class="text-lg font-bold mt-3 mb-2">Autonomous Fleet: 30% Cost Reduction</h3>
-            <p class="text-gray-400 text-sm mb-4">
-              Autonomous haulage system delivers significant operational cost savings and safety improvements.
-            </p>
-            <button class="text-orange-500 font-semibold text-sm hover:underline">Read Case Study →</button>
-          </div>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
-          <div class="h-48 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
-            <i class="fas fa-cube text-amber-500 text-6xl"></i>
-          </div>
-          <div class="p-6">
-            <span class="bg-amber-500/20 text-amber-500 px-3 py-1 rounded-full text-xs font-semibold">Digital Twin</span>
-            <h3 class="text-lg font-bold mt-3 mb-2">Virtual Mine: 25% Efficiency Gain</h3>
-            <p class="text-gray-400 text-sm mb-4">
-              Digital twin technology enables scenario testing and optimization before implementation.
-            </p>
-            <button class="text-amber-500 font-semibold text-sm hover:underline">Read Case Study →</button>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-2">Innovation Lab</h3>
+            <p class="text-gray-400 mb-4">Experiment with cutting-edge technologies and pilot new solutions</p>
+            <button class="bg-purple-500 hover:bg-purple-600 px-6 py-3 rounded-xl font-bold transition-all">
+              <i class="fas fa-flask mr-2"></i>Enter Lab
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Tech Trends -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-12">Emerging Technology Trends</h2>
-      
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-chart-line text-amber-500 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Quantum Computing in Mining</h3>
-              <p class="text-gray-400 text-sm mb-3">
-                Quantum algorithms for complex optimization problems, resource allocation, and geological modeling.
-              </p>
-              <span class="text-xs text-amber-500 font-semibold">Emerging • 2-3 Years</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-vr-cardboard text-orange-500 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">AR/VR Training & Operations</h3>
-              <p class="text-gray-400 text-sm mb-3">
-                Immersive training simulations, remote equipment operation, and virtual site inspections.
-              </p>
-              <span class="text-xs text-orange-500 font-semibold">Growing • Available Now</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-leaf text-amber-500 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Green Mining Technologies</h3>
-              <p class="text-gray-400 text-sm mb-3">
-                Electric equipment, renewable energy integration, carbon capture, and sustainable practices.
-              </p>
-              <span class="text-xs text-amber-500 font-semibold">Accelerating • High Priority</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-network-wired text-orange-500 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">5G & Edge Computing</h3>
-              <p class="text-gray-400 text-sm mb-3">
-                Ultra-low latency communications, real-time data processing, and enhanced connectivity.
-              </p>
-              <span class="text-xs text-orange-500 font-semibold">Deploying • 1-2 Years</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 rounded-3xl p-12 border border-amber-500/30">
-        <i class="fas fa-rocket text-amber-500 text-5xl mb-6"></i>
-        <h2 class="text-4xl font-black mb-4">Ready to Innovate Your Operations?</h2>
-        <p class="text-xl text-gray-300 mb-8">
-          Get early access to cutting-edge mining technologies and AI-powered tools.
-        </p>
-        <button class="bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-          <i class="fas fa-flask mr-2"></i>Join Innovation Program
+  <script>
+    const RESOURCE_ID = 'innovation-hub';
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth()) return;
+      const user = getCurrentUser();
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
         </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-mountain text-white"></i>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">Access Granted</div>
+              <div class="text-sm text-gray-400">You have ${user.plan.charAt(0).toUpperCase() + user.plan.slice(1)} plan access</div>
             </div>
-            <span class="text-xl font-bold">SESMine</span>
           </div>
-          <p class="text-gray-400 text-sm">Innovation & Technology Hub</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Other Hubs</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="engineering-hub.html" class="hover:text-white transition-colors">Engineering</a></li>
-            <li><a href="economics-hub.html" class="hover:text-white transition-colors">Economics</a></li>
-            <li><a href="procurement-hub.html" class="hover:text-white transition-colors">Procurement</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Technologies</h4>
-          <ul class="space-y-2 
+        `;
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
+      }
+    });
+  </script>
+</body>
+</html>
