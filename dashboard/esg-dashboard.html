@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESG Dashboard - SESMine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .progress-ring { transform: rotate(-90deg); }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col">
+      <div class="p-6 border-b border-slate-800">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-mountain text-white"></i>
+          </div>
+          <span class="text-xl font-black">SES<span class="gradient-text">Mine</span></span>
+        </a>
+      </div>
+
+      <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="../products/cost-calculator.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-calculator"></i>
+          <span>Cost Calculator</span>
+        </a>
+        <a href="../products/equipment-database.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-truck-monster"></i>
+          <span>Equipment</span>
+        </a>
+        <a href="analytics.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
+          <i class="fas fa-chart-line"></i>
+          <span>Analytics</span>
+        </a>
+        <a href="esg-dashboard.html" class="flex items-center gap-3 px-4 py-3 bg-green-500/20 border border-green-500/30 rounded-xl text-green-500 font-semibold">
+          <i class="fas fa-leaf"></i>
+          <span>ESG Metrics</span>
+        </a>
+      </nav>
+
+      <div class="p-4 border-t border-slate-800">
+        <div class="flex items-center gap-3 p-3 bg-slate-800 rounded-xl">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+               alt="User" 
+               class="w-10 h-10 rounded-full">
+          <div class="flex-1">
+            <div class="font-semibold text-sm">John Doe</div>
+            <div class="text-xs text-gray-400">john@mining.com</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Bar -->
+      <header class="bg-slate-900 border-b border-slate-800 px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-2xl font-bold flex items-center gap-3">
+              <i class="fas fa-leaf text-green-500"></i>
+              ESG & Sustainability Dashboard
+            </h1>
+            <p class="text-gray-400 text-sm">Environmental, Social, and Governance metrics for your operations</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <select class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-sm">
+              <option>All Sites</option>
+              <option>Copper Mine Alpha</option>
+              <option>Gold Project Beta</option>
+              <option>Iron Ore Gamma</option>
+            </select>
+            <button class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-2.5 rounded-xl font-semibold hover:shadow-lg transition-all">
+              <i class="fas fa-download mr-2"></i>Export Report
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- ESG Score Overview -->
+        <div class="grid lg:grid-cols-4 gap-6 mb-8">
+          <!-- Overall ESG Score -->
+          <div class="bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-2xl p-6 border border-green-500/30">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold">Overall ESG Score</h3>
+              <span class="text-green-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-up"></i>5.2%
+              </span>
+            </div>
+            <div class="flex items-center justify-center mb-4">
+              <div class="relative">
+                <svg class="w-32 h-32">
+                  <circle cx="64" cy="64" r="56" stroke="#1e293b" stroke-width="8" fill="none"></circle>
+                  <circle class="progress-ring" cx="64" cy="64" r="56" stroke="#10b981" stroke-width="8" fill="none" 
+                          stroke-dasharray="352" stroke-dashoffset="70" stroke-linecap="round"></circle>
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="text-3xl font-black text-green-500">82</div>
+                    <div class="text-xs text-gray-400">/ 100</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center text-sm text-gray-400">Industry Average: 68</div>
+          </div>
+
+          <!-- Environmental Score -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-water text-blue-500 text-xl"></i>
+              </div>
+              <div>
+                <div class="text-sm text-gray-400">Environmental</div>
+                <div class="text-2xl font-black">85</div>
+              </div>
+            </div>
+            <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+              <div class="bg-blue-500 h-2 rounded-full" style="width: 85%"></div>
+            </div>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>Target: 80</span>
+              <span class="text-green-500">+5 above</span>
+            </div>
+          </div>
+
+          <!-- Social Score -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-users text-purple-500 text-xl"></i>
+              </div>
+              <div>
+                <div class="text-sm text-gray-400">Social</div>
+                <div class="text-2xl font-black">78</div>
+              </div>
+            </div>
+            <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+              <div class="bg-purple-500 h-2 rounded-full" style="width: 78%"></div>
+            </div>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>Target: 75</span>
+              <span class="text-green-500">+3 above</span>
+            </div>
+          </div>
+
+          <!-- Governance Score -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-balance-scale text-amber-500 text-xl"></i>
+              </div>
+              <div>
+                <div class="text-sm text-gray-400">Governance</div>
+                <div class="text-2xl font-black">83</div>
+              </div>
+            </div>
+            <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+              <div class="bg-amber-500 h-2 rounded-full" style="width: 83%"></div>
+            </div>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>Target: 85</span>
+              <span class="text-red-500">-2 below</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Environmental Metrics -->
+        <div class="grid lg:grid-cols-3 gap-6 mb-8">
+          <!-- Carbon Emissions -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-bold flex items-center gap-2">
+                <i class="fas fa-smog text-red-500"></i>
+                Carbon Emissions
+              </h3>
+              <span class="text-green-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-down"></i>8.4%
+              </span>
+            </div>
+            <div class="mb-4">
+              <div class="text-3xl font-black mb-1">2,450</div>
+              <div class="text-sm text-gray-400">tonnes CO₂e this month</div>
+            </div>
+            <canvas id="carbonChart" height="150"></canvas>
+          </div>
+
+          <!-- Water Usage -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-bold flex items-center gap-2">
+                <i class="fas fa-tint text-blue-500"></i>
+                Water Usage
+              </h3>
+              <span class="text-green-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-down"></i>12.1%
+              </span>
+            </div>
+            <div class="mb-4">
+              <div class="text-3xl font-black mb-1">45,200</div>
+              <div class="text-sm text-gray-400">m³ this month</div>
+            </div>
+            <canvas id="waterChart" height="150"></canvas>
+          </div>
+
+          <!-- Energy Consumption -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-bold flex items-center gap-2">
+                <i class="fas fa-bolt text-yellow-500"></i>
+                Energy Usage
+              </h3>
+              <span class="text-red-500 text-sm font-semibold flex items-center gap-1">
+                <i class="fas fa-arrow-up"></i>3.2%
+              </span>
+            </div>
+            <div class="mb-4">
+              <div class="text-3xl font-black mb-1">1.2M</div>
+              <div class="text-sm text-gray-400">kWh this month</div>
+            </div>
+            <canvas id="energyChart" height="150"></canvas>
+          </div>
+        </div>
+
+        <!-- Detailed Metrics Grid -->
+        <div class="grid lg:grid-cols-2 gap-6 mb-8">
+          <!-- Environmental Impact -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <h3 class="text-xl font-bold mb-6">Environmental Impact</h3>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-recycle text-green-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Waste Recycled</div>
+                    <div class="text-sm text-gray-400">Target: 75%</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-green-500">82%</div>
+                  <div class="text-xs text-green-500">+7% above</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-water text-blue-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Water Recycled</div>
+                    <div class="text-sm text-gray-400">Target: 60%</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-blue-500">68%</div>
+                  <div class="text-xs text-green-500">+8% above</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-sun text-yellow-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Renewable Energy</div>
+                    <div class="text-sm text-gray-400">Target: 40%</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-yellow-500">35%</div>
+                  <div class="text-xs text-red-500">-5% below</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-tree text-purple-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Land Rehabilitated</div>
+                    <div class="text-sm text-gray-400">Target: 50 hectares</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-purple-500">62</div>
+                  <div class="text-xs text-green-500">+12 above</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Metrics -->
+          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <h3 class="text-xl font-bold mb-6">Social Impact</h3>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hard-hat text-green-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Safety Incidents</div>
+                    <div class="text-sm text-gray-400">Lost Time Injury Rate</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-green-500">0.12</div>
+                  <div class="text-xs text-green-500">-45% YoY</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-users text-blue-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Local Employment</div>
+                    <div class="text-sm text-gray-400">Community hiring rate</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-blue-500">72%</div>
+                  <div class="text-xs text-green-500">+8% YoY</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-purple-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Training Hours</div>
+                    <div class="text-sm text-gray-400">Per employee/year</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-purple-500">48</div>
+                  <div class="text-xs text-green-500">+12 YoY</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hand-holding-usd text-amber-500"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold">Community Investment</div>
+                    <div class="text-sm text-gray-400">This year</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-amber-500">$2.4M</div>
+                  <div class="text-xs text-green-500">+15% YoY</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance & Certifications -->
+        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 mb-8">
+          <h3 class="text-xl font-bold mb-6">Compliance & Certifications</h3>
+          <div class="grid md:grid-cols-4 gap-6">
+            <div class="text-center p-6 bg-slate-800 rounded-xl">
+              <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+              </div>
+              <div class="font-bold mb-2">ISO 14001</div>
+              <div class="text-sm text-gray-400">Environmental Management</div>
+              <div class="text-xs text-green-500 mt-2">Valid until 2026</div>
+            </div>
+
+            <div class="text-center p-6 bg-slate-800 rounded-xl">
+              <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+              </div>
+              <div class="font-bold mb-2">ISO 45001</div>
+              <div class="text-sm text-gray-400">Occupational Health & Safety</div>
+              <div class="text-xs text-green-500 mt-2">Valid until 2025</div>
+            </div>
+
+            <div class="text-center p-6 bg-slate-800 rounded-xl">
+              <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+              </div>
+              <div class="font-bold mb-2">GRI Standards</div>
+              <div class="text-sm text-gray-400">Sustainability Reporting</div>
+              <div class="text-xs text-green-500 mt-2">Compliant</div>
+            </div>
+
+            <div class="text-center p-6 bg-slate-800 rounded-xl">
+              <div class="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-clock text-yellow-500 text-2xl"></i>
+              </div>
+              <div class="font-bold mb-2">TCFD</div>
+              <div class="text-sm text-gray-400">Climate Disclosure</div>
+              <div class="text-xs text-yellow-500 mt-2">In Progress</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <h3 class="text-xl font-bold mb-6">Recent ESG Activities</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 bg-slate-800 rounded-xl">
+              <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-tree text-green-500"></i>
+              </div>
+              <div class="flex-1">
+                <div class="font-semibold mb-1">Reforestation Project Completed</div>
+                <div class="text-sm text-gray-400 mb-2">Successfully planted 10,000 native trees in rehabilitated mining area</div>
+                <div class="text-xs text-gray-500">2 days ago</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 bg-slate-800 rounded-xl">
+              <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-water text-blue-500"></i>
+              </div>
+              <div class="flex-1">
+                <div class="font-semibold mb-1">Water Treatment Facility Upgrade</div>
+                <div class="text-sm text-gray-400 mb-2">New system increases water recycling capacity by 25%</div>
+                <div class="text-xs text-gray-500">5 days ago</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 bg-slate-800 rounded-xl">
+              <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-graduation-cap text-purple-500"></i>
+              </div>
+              <div class="flex-1">
+                <div class="font-semibold mb-1">Community Training Program Launched</div>
+                <div class="text-sm text-gray-400 mb-2">50 local residents enrolled in mining skills development program</div>
+                <div class="text-xs text-gray-500">1 week ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Carbon Emissions Chart
+    const carbonCtx = document.getElementById('carbonChart').getContext('2d');
+    new Chart(carbonCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'CO₂ Emissions',
+          data: [2800, 2650, 2700, 2550, 2600, 2450],
+          borderColor: '#ef4444',
+          backgroundColor: 'rgba(239, 68, 68, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+          x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+        }
+      }
+    });
+
+    // Water Usage Chart
+    const waterCtx = document.getElementById('waterChart').getContext('2d');
+    new Chart(waterCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Water Usage',
+          data: [52000, 50500, 49000, 48200, 46800, 45200],
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+          x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+        }
+      }
+    });
+
+    // Energy Consumption Chart
+    const energyCtx = document.getElementById('energyChart').getContext('2d');
+    new Chart(energyCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Energy Usage',
+          data: [1.15, 1.18, 1.16, 1.19, 1.21, 1.20],
+          borderColor: '#eab308',
+          backgroundColor: 'rgba(234, 179, 8, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+          x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
