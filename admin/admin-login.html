@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | SESMine Platform</title>
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init({
+        publicKey: "pYI5e7c0EjKvjvgbV",
+      });
+    })();
+  </script>
+  
+  <!-- Auth & Config Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .input-focus:focus { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); }
+  </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6">
+  <!-- Background Effects -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Admin Login Container -->
+  <div class="relative z-10 w-full max-w-md">
+    <!-- Logo & Title -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center gap-3 mb-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+          <i class="fas fa-shield-alt text-white text-2xl"></i>
+        </div>
+        <span class="text-3xl font-black">Admin <span class="gradient-text">Portal</span></span>
+      </div>
+      <h1 class="text-3xl font-black mb-2">Administrator Access</h1>
+      <p class="text-gray-400">Secure login for system administrators</p>
+    </div>
+
+    <!-- Login Form -->
+    <div class="bg-slate-900 rounded-2xl border border-slate-800 p-8 shadow-2xl">
+      <!-- Security Notice -->
+      <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-4 mb-6">
+        <div class="flex items-start gap-3">
+          <i class="fas fa-shield-alt text-purple-500 mt-1"></i>
+          <div>
+            <h3 class="font-semibold text-purple-500 mb-1">Secure Access</h3>
+            <p class="text-xs text-gray-400">This area is restricted to authorized administrators only. All access attempts are logged.</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+        <!-- Admin Email -->
+        <div class="mb-6">
+          <label for="adminEmail" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-user-shield mr-2 text-purple-500"></i>Admin Email
+          </label>
+          <input 
+            type="email" 
+            id="adminEmail" 
+            name="adminEmail"
+            required
+            autocomplete="username"
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all"
+            placeholder="admin@sesmine.com"
+          >
+        </div>
+
+        <!-- Admin Password -->
+        <div class="mb-6">
+          <label for="adminPassword" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-key mr-2 text-purple-500"></i>Admin Password
+          </label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="adminPassword" 
+              name="adminPassword"
+              required
+              autocomplete="current-password"
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all pr-12"
+              placeholder="Enter admin password"
+            >
+            <button 
+              type="button" 
+              onclick="togglePassword()"
+              class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+            >
+              <i class="fas fa-eye" id="toggleIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2FA Code (Optional) -->
+        <div class="mb-6">
+          <label for="twoFactorCode" class="block text-sm font-semibold mb-2">
+            <i class="fas fa-mobile-alt mr-2 text-purple-500"></i>2FA Code (if enabled)
+          </label>
+          <input 
+            type="text" 
+            id="twoFactorCode" 
+            name="twoFactorCode"
+            maxlength="6"
+            pattern="[0-9]{6}"
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white input-focus focus:outline-none transition-all"
+            placeholder="000000"
+          >
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="hidden mb-6 bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-500 text-sm">
+          <i class="fas fa-exclamation-triangle mr-2"></i>
+          <span id="errorText"></span>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden mb-6 bg-green-500/10 border border-green-500/30 rounded-xl p-4 text-green-500 text-sm">
+          <i class="fas fa-check-circle mr-2"></i>
+          <span id="successText"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-purple-500/30 flex items-center justify-center gap-2"
+        >
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Access Admin Panel</span>
+        </button>
+      </form>
+
+      <!-- Additional Info -->
+      <div class="mt-6 pt-6 border-t border-slate-800">
+        <div class="text-center text-sm text-gray-400">
+          <p class="mb-2">
+            <i class="fas fa-info-circle mr-2"></i>
+            Need admin access?
+          </p>
+          <a href="../contact.html" class="text-purple-500 hover:text-purple-400 font-semibold transition-colors">
+            Contact System Administrator
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Main Site -->
+    <div class="text-center mt-6">
+      <a href="../index.html" class="text-gray-400 hover:text-white transition-colors text-sm">
+        <i class="fas fa-arrow-left mr-2"></i>Back to Main Site
+      </a>
+    </div>
+
+    <!-- Security Footer -->
+    <div class="mt-8 text-center text-xs text-gray-500">
+      <p>
+        <i class="fas fa-lock mr-1"></i>
+        Secured with 256-bit SSL encryption
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Default admin credentials (In production, this should be server-side)
+    const ADMIN_CREDENTIALS = {
+      email: 'admin@sesmine.com',
+      password: 'Admin@2025',
+      role: 'admin'
+    };
+
+    // Toggle password visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById('adminPassword');
+      const toggleIcon = document.getElementById('toggleIcon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+      }
+    }
+
+    // Show error message
+    function showError(message) {
+      const errorDiv = document.getElementById('errorMessage');
+      const errorText = document.getElementById('errorText');
+      const successDiv = document.getElementById('successMessage');
+      
+      errorText.textContent = message;
+      errorDiv.classList.remove('hidden');
+      successDiv.classList.add('hidden');
+      
+      setTimeout(() => {
+        errorDiv.classList.add('hidden');
+      }, 5000);
+    }
+
+    // Show success message
+    function showSuccess(message) {
+      const successDiv = document.getElementById('successMessage');
+      const successText = document.getElementById('successText');
+      const errorDiv = document.getElementById('errorMessage');
+      
+      successText.textContent = message;
+      successDiv.classList.remove('hidden');
+      errorDiv.classList.add('hidden');
+    }
+
+    // Handle admin login
+    async function handleAdminLogin(event) {
+      event.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const email = document.getElementById('adminEmail').value.trim();
+      const password = document.getElementById('adminPassword').value;
+      const twoFactorCode = document.getElementById('twoFactorCode').value.trim();
+      
+      // Disable submit button
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Verifying...';
+      
+      try {
+        // Validate inputs
+        if (!email || !password) {
+          throw new Error('Please enter both email and password');
+        }
+        
+        if (!validateEmail(email)) {
+          throw new Error('Please enter a valid email address');
+        }
+        
+        // Check admin credentials
+        if (email.toLowerCase() !== ADMIN_CREDENTIALS.email.toLowerCase() || 
+            password !== ADMIN_CREDENTIALS.password) {
+          // Log failed attempt
+          logFailedAttempt(email);
+          throw new Error('Invalid admin credentials. Access denied.');
+        }
+        
+        // If 2FA is provided, validate it (simplified for demo)
+        if (twoFactorCode && twoFactorCode.length !== 6) {
+          throw new Error('Invalid 2FA code format');
+        }
+        
+        // Create admin user session
+        const adminUser = {
+          id: 'admin_001',
+          email: email,
+          name: 'System Administrator',
+          role: 'admin',
+          plan: 'enterprise',
+          createdAt: new Date().toISOString()
+        };
+        
+        // Save admin user
+        saveUser(adminUser);
+        
+        // Send admin login notification
+        await sendAdminLoginNotification(adminUser);
+        
+        showSuccess('Admin access granted. Redirecting to dashboard...');
+        
+        // Redirect to admin dashboard
+        setTimeout(() => {
+          window.location.href = 'admin-dashboard.html';
+        }, 1500);
+        
+      } catch (error) {
+        console.error('Admin login error:', error);
+        showError(error.message);
+        
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Access Admin Panel';
+      }
+    }
+
+    // Log failed login attempt
+    function logFailedAttempt(email) {
+      const attempts = JSON.parse(localStorage.getItem('admin_failed_attempts') || '[]');
+      attempts.push({
+        email: email,
+        timestamp: new Date().toISOString(),
+        ip: 'Unknown' // In production, get real IP
+      });
+      localStorage.setItem('admin_failed_attempts', JSON.stringify(attempts));
+      
+      console.warn('Failed admin login attempt:', email);
+    }
+
+    // Send admin login notification
+    async function sendAdminLoginNotification(user) {
+      try {
+        const templateParams = {
+          to_email: user.email,
+          to_name: user.name,
+          from_name: 'SESMine Security',
+          subject: 'Admin Login Alert',
+          message: `Admin login detected from your account at ${new Date().toLocaleString()}. If this wasn't you, please contact security immediately.`,
+          reply_to: 'security@sesmine.com'
+        };
+        
+        await emailjs.send(
+          'service_qfwvqyg',
+          'template_notification',
+          templateParams,
+          'pYI5e7c0EjKvjvgbV'
+        );
+        
+        console.log('Admin login notification sent');
+      } catch (error) {
+        console.error('Error sending admin notification:', error);
+      }
+    }
+
+    // Check if already logged in as admin
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = getCurrentUser();
+      if (user && user.role === 'admin') {
+        window.location.href = 'admin-dashboard.html';
+      }
+    });
+
+    // Auto-format 2FA code input
+    document.getElementById('twoFactorCode').addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);
+    });
+  </script>
+</body>
+</html>
