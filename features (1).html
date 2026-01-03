@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Features - Advanced Mining Solutions | SESMine Platform</title>
+    <meta name="title" content="Features - Advanced Mining Solutions | SESMine Platform">
+    <meta name="description" content="Explore SESMine's comprehensive features: AACE-compliant cost estimation, advanced analytics, smart procurement, engineering solutions, and enterprise security for mining operations.">
+    <meta name="keywords" content="mining software features, cost estimation tools, mining analytics, procurement management, engineering solutions, AACE compliance, mining equipment database">
+    <meta name="author" content="SESMine Platform">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sesmine.com/features">
+    <meta property="og:title" content="Features - Advanced Mining Solutions | SESMine">
+    <meta property="og:description" content="Comprehensive mining intelligence platform with cost estimation, analytics, and engineering solutions.">
+    <meta property="og:image" content="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/xk45vEdR2AschRMJ.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sesmine.com/features">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/xk45vEdR2AschRMJ.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0b1a2e;
+            --primary-dark: #0d3a6b;
+            --secondary: #00d4ff;
+            --accent: #d4af37;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --dark: #1e1e2e;
+            --light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: rgba(11, 26, 46, 0.98);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.4));
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+        
+        .logo-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--secondary);
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a.active {
+            color: var(--secondary);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 80%;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+        
+        .btn-nav {
+            background: linear-gradient(135deg, var(--secondary), #0099cc);
+            padding: 0.75rem 1.5rem !important;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+        }
+        
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(11, 26, 46, 0.95), rgba(13, 58, 107, 0.95)),
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80') center/cover;
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .page-header h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-header p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        /* Features Container */
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        /* Feature Category */
+        .feature-category {
+            margin-bottom: 6rem;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .category-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: drop-shadow(0 4px 12px rgba(0, 212, 255, 0.3));
+        }
+        
+        .category-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 900;
+        }
+        
+        .category-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            border-left-width: 8px;
+        }
+        
+        .feature-item-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .feature-item p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Comparison Table */
+        .comparison-section {
+            background: white;
+            padding: 5rem 2rem;
+            margin: 5rem 0;
+        }
+        
+        .comparison-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+            box-shadow: var(--shadow-lg);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .comparison-table thead {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .comparison-table th {
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .comparison-table tbody tr:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+        
+        .check-icon {
+            color: var(--success);
+            font-size: 1.5rem;
+        }
+        
+        .cross-icon {
+            color: var(--danger);
+            font-size: 1.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary), #0099cc);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 900;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        .btn {
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--text-light);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h4 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 0.8rem;
+            padding: 0.3rem 0;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            padding-left: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.25;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .category-title {
+                font-size: 2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                 <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SESMine">
+                <div class="logo-text">
+                    <span class="logo-title">SES_MINE</span>
+                    <span class="logo-subtitle">SMART ENGINEERING SOLUTIONS</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html" class="active">Features</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-nav">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Powerful Features for Modern Mining</h1>
+            <p>
+                Comprehensive suite of AACE-compliant tools designed to optimize every aspect 
+                of your mining operations, from cost estimation to project delivery.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Container -->
+    <div class="features-container">
+        
+        <!-- Cost Estimation Features -->
+        <section class="feature-category">
+            <div class="category-header">
+                <div class="category-icon">📊</div>
+                <h2 class="category-title">Cost Estimation & Analysis</h2>
+                <p class="category-description">
+                    Industry-leading AACE-compliant cost estimation tools with real-time calculations, 
+                    comprehensive equipment database, and detailed financial analysis capabilities.
+                </p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-item-icon">💰</span>
+                    <h3>AACE Compliance</h3>
+                    <p>Full compliance with AACE International standards for cost estimation (Classes 1-5)</p>
+                    <ul class="feature-list">
+                        <li>Class 5: Concept screening (-50% to +100%)</li>
+                        <li>Class 4: Feasibility study (-30% to +50%)</li>
+                        <li>Class 3: Budget authorization (-20% to +30%)</li>
+                        <li>Class 2: Control estimate (-15% to +20%)</li>
+                        <li>Class 1: Detailed estimate (-10% to +15%)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">🗄️</span>
+                    <h3>Equipment Database</h3>
+                    <p>Comprehensive database with 500+ equipment types and current market pricing</p>
+                    <ul class="feature-list">
+                        <li>Real-time pricing updates</li>
+                        <li>CAPEX & OPEX calculations</li>
+                        <li>Maintenance cost tracking</li>
+                        <li>Fuel consumption data</li>
+                        <li>Depreciation schedules</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">📈</span>
+                    <h3>Financial Modeling</h3>
+                    <p>Advanced financial analysis tools for comprehensive project evaluation</p>
+                    <ul class="feature-list">
+                        <li>NPV & IRR calculations</li>
+                        <li>Payback period analysis</li>
+                        <li>Sensitivity testing</li>
+                        <li>Risk assessment</li>
+                        <li>Cash flow projections</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Features -->
+        <section class="feature-category">
+            <div class="category-header">
+                <div class="category-icon">📉</div>
+                <h2 class="category-title">Advanced Analytics & Reporting</h2>
+                <p class="category-description">
+                    Powerful analytics platform with interactive dashboards, predictive modeling, 
+                    and comprehensive reporting capabilities for data-driven decision making.
+                </p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-item-icon">📊</span>
+                    <h3>Interactive Dashboards</h3>
+                    <p>Customizable dashboards with real-time data visualization and KPI tracking</p>
+                    <ul class="feature-list">
+                        <li>Real-time data updates</li>
+                        <li>Customizable widgets</li>
+                        <li>Multi-project views</li>
+                        <li>Performance metrics</li>
+                        <li>Trend analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">🤖</span>
+                    <h3>Predictive Analytics</h3>
+                    <p>AI-powered predictive modeling for cost forecasting and risk analysis</p>
+                    <ul class="feature-list">
+                        <li>Machine learning algorithms</li>
+                        <li>Cost trend predictions</li>
+                        <li>Risk probability analysis</li>
+                        <li>Resource optimization</li>
+                        <li>Scenario planning</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">📄</span>
+                    <h3>Professional Reports</h3>
+                    <p>Generate comprehensive reports with customizable templates and formats</p>
+                    <ul class="feature-list">
+                        <li>PDF export capabilities</li>
+                        <li>Excel integration</li>
+                        <li>Custom branding</li>
+                        <li>Automated scheduling</li>
+                        <li>Multi-format support</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engineering Features -->
+        <section class="feature-category">
+            <div class="category-header">
+                <div class="category-icon">⚙️</div>
+                <h2 class="category-title">Engineering Solutions</h2>
+                <p class="category-description">
+                    Complete engineering toolkit for mine design, equipment selection, 
+                    production scheduling, and technical documentation management.
+                </p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-item-icon">🏗️</span>
+                    <h3>Mine Design Tools</h3>
+                    <p>Advanced tools for open pit and underground mine planning and design</p>
+                    <ul class="feature-list">
+                        <li>3D visualization</li>
+                        <li>Pit optimization</li>
+                        <li>Haul road design</li>
+                        <li>Blast pattern planning</li>
+                        <li>Ventilation analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">🚜</span>
+                    <h3>Equipment Selection</h3>
+                    <p>Intelligent equipment selection based on project requirements and conditions</p>
+                    <ul class="feature-list">
+                        <li>Performance matching</li>
+                        <li>Fleet optimization</li>
+                        <li>Cost comparison</li>
+                        <li>Productivity analysis</li>
+                        <li>Lifecycle assessment</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">📅</span>
+                    <h3>Production Scheduling</h3>
+                    <p>Optimize production schedules for maximum efficiency and profitability</p>
+                    <ul class="feature-list">
+                        <li>Long-term planning</li>
+                        <li>Short-term scheduling</li>
+                        <li>Resource allocation</li>
+                        <li>Constraint management</li>
+                        <li>Grade control</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Procurement Features -->
+        <section class="feature-category">
+            <div class="category-header">
+                <div class="category-icon">🛒</div>
+                <h2 class="category-title">Smart Procurement Management</h2>
+                <p class="category-description">
+                    Streamlined procurement processes with vendor management, automated workflows, 
+                    and supply chain optimization for cost reduction and efficiency.
+                </p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-item-icon">👥</span>
+                    <h3>Vendor Management</h3>
+                    <p>Comprehensive vendor database with performance tracking and evaluation</p>
+                    <ul class="feature-list">
+                        <li>Vendor profiles</li>
+                        <li>Performance ratings</li>
+                        <li>Contract management</li>
+                        <li>Compliance tracking</li>
+                        <li>Risk assessment</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">📋</span>
+                    <h3>RFQ Automation</h3>
+                    <p>Automated request for quotation processing with bid comparison tools</p>
+                    <ul class="feature-list">
+                        <li>Template library</li>
+                        <li>Automated distribution</li>
+                        <li>Bid comparison</li>
+                        <li>Scoring system</li>
+                        <li>Award management</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">🔗</span>
+                    <h3>Supply Chain Optimization</h3>
+                    <p>Optimize supply chain operations for cost reduction and reliability</p>
+                    <ul class="feature-list">
+                        <li>Inventory management</li>
+                        <li>Logistics tracking</li>
+                        <li>Lead time analysis</li>
+                        <li>Cost optimization</li>
+                        <li>Risk mitigation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Features -->
+        <section class="feature-category">
+            <div class="category-header">
+                <div class="category-icon">🔒</div>
+                <h2 class="category-title">Enterprise Security & Compliance</h2>
+                <p class="category-description">
+                    Bank-level security with comprehensive access controls, audit logging, 
+                    and compliance with international data protection standards.
+                </p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="feature-item-icon">🛡️</span>
+                    <h3>Data Security</h3>
+                    <p>Military-grade encryption and security protocols for data protection</p>
+                    <ul class="feature-list">
+                        <li>AES-256 encryption</li>
+                        <li>SSL/TLS protocols</li>
+                        <li>Secure data centers</li>
+                        <li>Regular backups</li>
+                        <li>Disaster recovery</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">👤</span>
+                    <h3>Access Control</h3>
+                    <p>Role-based access control with granular permission management</p>
+                    <ul class="feature-list">
+                        <li>Multi-factor authentication</li>
+                        <li>Role-based permissions</li>
+                        <li>User activity tracking</li>
+                        <li>Session management</li>
+                        <li>IP whitelisting</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-item">
+                    <span class="feature-item-icon">📜</span>
+                    <h3>Compliance & Auditing</h3>
+                    <p>Comprehensive audit trails and compliance with international standards</p>
+                    <ul class="feature-list">
+                        <li>GDPR compliance</li>
+                        <li>ISO 27001 certified</li>
+                        <li>Audit logging</li>
+                        <li>Compliance reporting</li>
+                        <li>Data retention policies</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="comparison-container">
+            <div class="category-header">
+                <h2 class="category-title">Compare Our Plans</h2>
+                <p class="category-description">
+                    Choose the plan that best fits your organization's needs and scale
+                </p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Basic</th>
+                        <th>Professional</th>
+                        <th>Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cost Estimation</strong></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Equipment Database</strong></td>
+                        <td>Limited</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advanced Analytics</strong></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Predictive AI</strong></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td>Limited</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Custom Reports</strong></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>API Access</strong></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Priority Support</strong></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dedicated Account Manager</strong></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Experience These Features?</h2>
+            <p>
+                Start your free trial today and discover how SESMine can transform 
+                your mining operations with our comprehensive suite of professional tools.
+            </p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="btn btn-primary">
+                    Start Free Trial →
+                </a>
+                <a href="contact.html" class="btn btn-secondary">
+                    Contact Sales
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SES_MINE</h4>
+                <p>Smart Engineering Solutions for the global mining industry.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Solution Hubs</h4>
+                <ul>
+                    <li><a href="engineering-hub.html">Engineering Hub</a></li>
+                    <li><a href="economics-hub.html">Economics Hub</a></li>
+                    <li><a href="procurement-hub.html">Procurement Hub</a></li>
+                    <li><a href="innovation-hub.html">Innovation Hub</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> info@sesmine.com</p>
+                <p><i class="fas fa-globe"></i> www.sesmine.com</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SESMine Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-item, .feature-category').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
