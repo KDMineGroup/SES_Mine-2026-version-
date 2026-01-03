@@ -3,438 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analytics - SESMine</title>
+  <title>Analytics Hub | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gradient-text { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
-  <div class="flex h-screen overflow-hidden">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col">
-      <div class="p-6 border-b border-slate-800">
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-mountain text-white"></i>
-          </div>
-          <span class="text-xl font-black">SES<span class="gradient-text">Mine</span></span>
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
         </a>
+        <div class="flex items-center gap-4" id="userInfo"></div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-blue-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
+    </div>
+  </div>
+
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-chart-bar text-blue-400"></i>
+          <span class="text-blue-400 text-sm font-medium">Analytics Hub</span>
+          <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full ml-2">PRO</span>
+        </div>
+        <h1 class="text-5xl font-black mb-4">Advanced <span class="gradient-text">Analytics</span></h1>
+        <p class="text-xl text-gray-400">Deep insights and data-driven decision making</p>
       </div>
 
-      <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
-        <a href="index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-home"></i>
-          <span>Dashboard</span>
-        </a>
-        <a href="../products/cost-calculator.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-calculator"></i>
-          <span>Cost Calculator</span>
-        </a>
-        <a href="../products/equipment-database.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-truck-monster"></i>
-          <span>Equipment</span>
-        </a>
-        <a href="analytics.html" class="flex items-center gap-3 px-4 py-3 bg-purple-500/20 border border-purple-500/30 rounded-xl text-purple-500 font-semibold">
-          <i class="fas fa-chart-line"></i>
-          <span>Analytics</span>
-        </a>
-        <a href="esg-dashboard.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-leaf"></i>
-          <span>ESG Metrics</span>
-        </a>
-      </nav>
+      <div id="accessBadge" class="mb-8"></div>
 
-      <div class="p-4 border-t border-slate-800">
-        <div class="flex items-center gap-3 p-3 bg-slate-800 rounded-xl">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
-               alt="User" 
-               class="w-10 h-10 rounded-full">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-line text-blue-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Advanced Analytics</h3>
+          <p class="text-gray-400 mb-4">Deep dive into operational metrics</p>
+          <button class="text-blue-400 hover:text-blue-300 font-semibold">View Analytics <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-file-alt text-cyan-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Custom Reports</h3>
+          <p class="text-gray-400 mb-4">Build tailored reports for your needs</p>
+          <button class="text-cyan-400 hover:text-cyan-300 font-semibold">Create Report <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-purple-500/50 transition-all">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-brain text-purple-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Predictive Insights</h3>
+          <p class="text-gray-400 mb-4">AI-powered predictions and forecasts</p>
+          <button class="text-purple-400 hover:text-purple-300 font-semibold">View Predictions <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-green-500/50 transition-all">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-pie text-green-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Data Visualization</h3>
+          <p class="text-gray-400 mb-4">Interactive charts and dashboards</p>
+          <button class="text-green-400 hover:text-green-300 font-semibold">Visualize Data <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-amber-500/50 transition-all">
+          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-tachometer-alt text-amber-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">KPI Dashboards</h3>
+          <p class="text-gray-400 mb-4">Monitor key performance indicators</p>
+          <button class="text-amber-400 hover:text-amber-300 font-semibold">View KPIs <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-pink-500/50 transition-all">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-4">
+            <i class="fas fa-download text-pink-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Export & Share</h3>
+          <p class="text-gray-400 mb-4">Export data in multiple formats</p>
+          <button class="text-pink-400 hover:text-pink-300 font-semibold">Export Data <i class="fas fa-arrow-right ml-2"></i></button>
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl border border-blue-500/30 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-sm text-gray-400">Total Revenue</div>
+            <i class="fas fa-dollar-sign text-blue-400"></i>
+          </div>
+          <div class="text-3xl font-black mb-2">$24.5M</div>
+          <div class="flex items-center gap-2 text-green-400 text-sm">
+            <i class="fas fa-arrow-up"></i>
+            <span>+12.5% vs last month</span>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/30 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-sm text-gray-400">Efficiency Rate</div>
+            <i class="fas fa-chart-line text-purple-400"></i>
+          </div>
+          <div class="text-3xl font-black mb-2">89.2%</div>
+          <div class="flex items-center gap-2 text-green-400 text-sm">
+            <i class="fas fa-arrow-up"></i>
+            <span>+3.2% improvement</span>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-2xl border border-green-500/30 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-sm text-gray-400">Cost Savings</div>
+            <i class="fas fa-piggy-bank text-green-400"></i>
+          </div>
+          <div class="text-3xl font-black mb-2">$3.2M</div>
+          <div class="flex items-center gap-2 text-green-400 text-sm">
+            <i class="fas fa-arrow-down"></i>
+            <span>-8.7% costs reduced</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/30 p-8">
+        <div class="flex items-start gap-6">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-magic text-blue-400 text-2xl"></i>
+          </div>
           <div class="flex-1">
-            <div class="font-semibold text-sm">John Doe</div>
-            <div class="text-xs text-gray-400">john@mining.com</div>
+            <h3 class="text-2xl font-bold mb-2">AI-Powered Insights</h3>
+            <p class="text-gray-400 mb-4">Get intelligent recommendations based on your data patterns</p>
+            <button class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl font-bold transition-all">
+              <i class="fas fa-robot mr-2"></i>View AI Insights
+            </button>
           </div>
         </div>
       </div>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="flex-1 flex flex-col overflow-hidden">
-      <!-- Top Bar -->
-      <header class="bg-slate-900 border-b border-slate-800 px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <h1 class="text-2xl font-bold flex items-center gap-3">
-              <i class="fas fa-chart-line text-purple-500"></i>
-              Advanced Analytics
-            </h1>
-            <p class="text-gray-400 text-sm">Deep insights into your mining operations and cost performance</p>
-          </div>
-          <div class="flex items-center gap-4">
-            <select class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-sm">
-              <option>Last 30 Days</option>
-              <option>Last 90 Days</option>
-              <option>Last 6 Months</option>
-              <option>Last Year</option>
-              <option>All Time</option>
-            </select>
-            <button class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-2.5 rounded-xl font-semibold hover:shadow-lg transition-all">
-              <i class="fas fa-download mr-2"></i>Export Report
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <!-- Dashboard Content -->
-      <main class="flex-1 overflow-y-auto p-6">
-        <!-- KPI Cards -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-chart-bar text-purple-500 text-xl"></i>
-              </div>
-              <span class="text-green-500 text-sm font-semibold">+18.2%</span>
-            </div>
-            <div class="text-3xl font-black mb-1">$45.2M</div>
-            <div class="text-gray-400 text-sm">Total Project Value</div>
-          </div>
-
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-piggy-bank text-green-500 text-xl"></i>
-              </div>
-              <span class="text-green-500 text-sm font-semibold">+12.5%</span>
-            </div>
-            <div class="text-3xl font-black mb-1">$2.8M</div>
-            <div class="text-gray-400 text-sm">Cost Savings YTD</div>
-          </div>
-
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-percentage text-blue-500 text-xl"></i>
-              </div>
-              <span class="text-green-500 text-sm font-semibold">+2.1%</span>
-            </div>
-            <div class="text-3xl font-black mb-1">96.4%</div>
-            <div class="text-gray-400 text-sm">Estimation Accuracy</div>
-          </div>
-
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-clock text-amber-500 text-xl"></i>
-              </div>
-              <span class="text-red-500 text-sm font-semibold">-8.3%</span>
-            </div>
-            <div class="text-3xl font-black mb-1">4.2 hrs</div>
-            <div class="text-gray-400 text-sm">Avg Estimation Time</div>
-          </div>
-        </div>
-
-        <!-- Main Charts Row -->
-        <div class="grid lg:grid-cols-2 gap-6 mb-8">
-          <!-- Cost Breakdown -->
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-center justify-between mb-6">
-              <h3 class="text-xl font-bold">Cost Breakdown by Category</h3>
-              <button class="text-purple-500 text-sm font-semibold hover:underline">Details</button>
-            </div>
-            <canvas id="costBreakdownChart" height="300"></canvas>
-          </div>
-
-          <!-- Monthly Trend -->
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <div class="flex items-center justify-between mb-6">
-              <h3 class="text-xl font-bold">Monthly Cost Trend</h3>
-              <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm">
-                <option>2024</option>
-                <option>2023</option>
-              </select>
-            </div>
-            <canvas id="monthlyTrendChart" height="300"></canvas>
-          </div>
-        </div>
-
-        <!-- Equipment Analysis -->
-        <div class="grid lg:grid-cols-3 gap-6 mb-8">
-          <div class="lg:col-span-2 bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <h3 class="text-xl font-bold mb-6">Equipment Cost Analysis</h3>
-            <canvas id="equipmentChart" height="250"></canvas>
-          </div>
-
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-            <h3 class="text-xl font-bold mb-6">Top Cost Drivers</h3>
-            <div class="space-y-4">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold">Haul Trucks</span>
-                  <span class="text-sm text-amber-500">$8.2M</span>
-                </div>
-                <div class="w-full bg-slate-800 rounded-full h-2">
-                  <div class="bg-amber-500 h-2 rounded-full" style="width: 85%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold">Excavators</span>
-                  <span class="text-sm text-green-500">$6.5M</span>
-                </div>
-                <div class="w-full bg-slate-800 rounded-full h-2">
-                  <div class="bg-green-500 h-2 rounded-full" style="width: 68%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold">Drills</span>
-                  <span class="text-sm text-blue-500">$4.8M</span>
-                </div>
-                <div class="w-full bg-slate-800 rounded-full h-2">
-                  <div class="bg-blue-500 h-2 rounded-full" style="width: 50%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold">Loaders</span>
-                  <span class="text-sm text-purple-500">$3.2M</span>
-                </div>
-                <div class="w-full bg-slate-800 rounded-full h-2">
-                  <div class="bg-purple-500 h-2 rounded-full" style="width: 33%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-semibold">Support Equipment</span>
-                  <span class="text-sm text-pink-500">$2.1M</span>
-                </div>
-                <div class="w-full bg-slate-800 rounded-full h-2">
-                  <div class="bg-pink-500 h-2 rounded-full" style="width: 22%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Performance -->
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 mb-8">
-          <h3 class="text-xl font-bold mb-6">Project Performance Comparison</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead>
-                <tr class="border-b border-slate-800">
-                  <th class="text-left py-3 px-4 text-sm font-semibold text-gray-400">Project Name</th>
-                  <th class="text-left py-3 px-4 text-sm font-semibold text-gray-400">Type</th>
-                  <th class="text-right py-3 px-4 text-sm font-semibold text-gray-400">Estimated</th>
-                  <th class="text-right py-3 px-4 text-sm font-semibold text-gray-400">Actual</th>
-                  <th class="text-right py-3 px-4 text-sm font-semibold text-gray-400">Variance</th>
-                  <th class="text-center py-3 px-4 text-sm font-semibold text-gray-400">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-slate-800 hover:bg-slate-800 transition-colors">
-                  <td class="py-4 px-4 font-semibold">Copper Mine Alpha</td>
-                  <td class="py-4 px-4 text-gray-400">Open Pit</td>
-                  <td class="py-4 px-4 text-right">$12.5M</td>
-                  <td class="py-4 px-4 text-right">$12.1M</td>
-                  <td class="py-4 px-4 text-right text-green-500">-3.2%</td>
-                  <td class="py-4 px-4 text-center">
-                    <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-xs font-semibold">On Track</span>
-                  </td>
-                </tr>
-                <tr class="border-b border-slate-800 hover:bg-slate-800 transition-colors">
-                  <td class="py-4 px-4 font-semibold">Gold Project Beta</td>
-                  <td class="py-4 px-4 text-gray-400">Underground</td>
-                  <td class="py-4 px-4 text-right">$8.2M</td>
-                  <td class="py-4 px-4 text-right">$8.5M</td>
-                  <td class="py-4 px-4 text-right text-red-500">+3.7%</td>
-                  <td class="py-4 px-4 text-center">
-                    <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded-full text-xs font-semibold">At Risk</span>
-                  </td>
-                </tr>
-                <tr class="border-b border-slate-800 hover:bg-slate-800 transition-colors">
-                  <td class="py-4 px-4 font-semibold">Iron Ore Expansion</td>
-                  <td class="py-4 px-4 text-gray-400">Open Pit</td>
-                  <td class="py-4 px-4 text-right">$24.8M</td>
-                  <td class="py-4 px-4 text-right">$23.9M</td>
-                  <td class="py-4 px-4 text-right text-green-500">-3.6%</td>
-                  <td class="py-4 px-4 text-center">
-                    <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-xs font-semibold">On Track</span>
-                  </td>
-                </tr>
-                <tr class="border-b border-slate-800 hover:bg-slate-800 transition-colors">
-                  <td class="py-4 px-4 font-semibold">Lithium Mine Pre-Feas</td>
-                  <td class="py-4 px-4 text-gray-400">Open Pit</td>
-                  <td class="py-4 px-4 text-right">$15.6M</td>
-                  <td class="py-4 px-4 text-right">$15.4M</td>
-                  <td class="py-4 px-4 text-right text-green-500">-1.3%</td>
-                  <td class="py-4 px-4 text-center">
-                    <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full text-xs font-semibold">On Track</span>
-                  </td>
-                </tr>
-                <tr class="hover:bg-slate-800 transition-colors">
-                  <td class="py-4 px-4 font-semibold">Coal Project Gamma</td>
-                  <td class="py-4 px-4 text-gray-400">Underground</td>
-                  <td class="py-4 px-4 text-right">$18.3M</td>
-                  <td class="py-4 px-4 text-right">$19.2M</td>
-                  <td class="py-4 px-4 text-right text-red-500">+4.9%</td>
-                  <td class="py-4 px-4 text-center">
-                    <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full text-xs font-semibold">Over Budget</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Insights & Recommendations -->
-        <div class="grid lg:grid-cols-2 gap-6">
-          <div class="bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-2xl p-6 border border-purple-500/30">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-lightbulb text-purple-500 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg mb-2">AI Insight</h3>
-                <p class="text-gray-300 text-sm">
-                  Your haul truck costs are trending 8% below industry average. Consider reallocating budget to excavator upgrades for improved productivity.
-                </p>
-              </div>
-            </div>
-            <button class="text-purple-500 text-sm font-semibold hover:underline">
-              View Full Analysis →
-            </button>
-          </div>
-
-          <div class="bg-gradient-to-br from-amber-500/10 to-orange-600/10 rounded-2xl p-6 border border-amber-500/30">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-exclamation-triangle text-amber-500 text-xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg mb-2">Cost Alert</h3>
-                <p class="text-gray-300 text-sm">
-                  Equipment maintenance costs increased 12% this quarter. Review preventive maintenance schedules to reduce unplanned downtime.
-                </p>
-              </div>
-            </div>
-            <button class="text-amber-500 text-sm font-semibold hover:underline">
-              View Recommendations →
-            </button>
-          </div>
-        </div>
-      </main>
     </div>
   </div>
 
   <script>
-    // Cost Breakdown Chart
-    const breakdownCtx = document.getElementById('costBreakdownChart').getContext('2d');
-    new Chart(breakdownCtx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Equipment', 'Labor', 'Materials', 'Energy', 'Maintenance', 'Other'],
-        datasets: [{
-          data: [35, 25, 18, 12, 7, 3],
-          backgroundColor: ['#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#6b7280'],
-          borderWidth: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: { color: '#94a3b8', padding: 15 }
-          }
-        }
-      }
-    });
-
-    // Monthly Trend Chart
-    const trendCtx = document.getElementById('monthlyTrendChart').getContext('2d');
-    new Chart(trendCtx, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Actual Cost',
-          data: [3.2, 3.5, 3.1, 3.8, 3.6, 4.2, 4.0, 4.5, 4.3, 4.8, 4.6, 5.1],
-          borderColor: '#f59e0b',
-          backgroundColor: 'rgba(245, 158, 11, 0.1)',
-          tension: 0.4,
-          fill: true
-        }, {
-          label: 'Estimated Cost',
-          data: [3.3, 3.4, 3.2, 3.9, 3.7, 4.3, 4.1, 4.6, 4.4, 4.9, 4.7, 5.2],
-          borderColor: '#8b5cf6',
-          backgroundColor: 'rgba(139, 92, 246, 0.1)',
-          tension: 0.4,
-          fill: true,
-          borderDash: [5, 5]
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            labels: { color: '#94a3b8' }
-          }
-        },
-        scales: {
-          y: {
-            ticks: { color: '#94a3b8' },
-            grid: { color: '#1e293b' }
-          },
-          x: {
-            ticks: { color: '#94a3b8' },
-            grid: { display: false }
-          }
-        }
-      }
-    });
-
-    // Equipment Chart
-    const equipmentCtx = document.getElementById('equipmentChart').getContext('2d');
-    new Chart(equipmentCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Haul Trucks', 'Excavators', 'Drills', 'Loaders', 'Dozers', 'Graders', 'Support'],
-        datasets: [{
-          label: 'Capital Cost',
-          data: [8.2, 6.5, 4.8, 3.2, 2.8, 1.9, 2.1],
-          backgroundColor: '#f59e0b'
-        }, {
-          label: 'Operating Cost',
-          data: [4.5, 3.2, 2.1, 1.8, 1.5, 0.9, 1.2],
-          backgroundColor: '#10b981'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            labels: { color: '#94a3b8' }
-          }
-        },
-        scales: {
-          y: {
-            ticks: { color: '#94a3b8' },
-            grid: { color: '#1e293b' }
-          },
-          x: {
-            ticks: { color: '#94a3b8' },
-            grid: { display: false }
-          }
-        }
+    const RESOURCE_ID = 'analytics-hub';
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth()) return;
+      const user = getCurrentUser();
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
+        </button>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">Professional Access</div>
+              <div class="text-sm text-gray-400">Advanced analytics enabled</div>
+            </div>
+          </div>
+        `;
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
       }
     });
   </script>
