@@ -3,550 +3,261 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Pit Cost Calculator - SESMine</title>
+  <title>Cost Calculator | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .step-indicator { transition: all 0.3s ease; }
-    .step-indicator.active { transform: scale(1.1); }
-    input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
-    input[type="range"]::-webkit-slider-track { background: #334155; height: 8px; border-radius: 4px; }
-    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #ef4444); cursor: pointer; margin-top: -6px; }
+    .gradient-text { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
-  <!-- Navigation -->
   <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
         <a href="../index.html" class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-mountain text-white text-xl"></i>
-          </div>
-          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+          <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-12">
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="../index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="cost-calculator.html" class="text-amber-500 font-semibold">Calculator</a>
-          <a href="equipment-database.html" class="text-gray-300 hover:text-white transition-colors">Equipment</a>
-          <a href="../pricing/index.html" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
-          <a href="../auth/login.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
-            Sign In
-          </a>
-        </div>
+        <div class="flex items-center gap-4" id="userInfo"></div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="pt-32 pb-12 relative overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+  <div id="loadingState" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="text-center">
+      <i class="fas fa-spinner fa-spin text-4xl text-cyan-400 mb-4"></i>
+      <p class="text-gray-400">Verifying access...</p>
     </div>
+  </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-          <i class="fas fa-calculator text-amber-500"></i>
-          <span class="text-amber-500 text-sm font-medium">AI-Powered Cost Estimation</span>
+  <div id="protectedContent" class="hidden pt-24 pb-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-4 py-2 mb-4">
+          <i class="fas fa-calculator text-cyan-400"></i>
+          <span class="text-cyan-400 text-sm font-medium">Cost Calculator</span>
         </div>
-        <h1 class="text-5xl lg:text-6xl font-black mb-6">
-          Open Pit Mining
-          <br><span class="gradient-text">Cost Calculator</span>
-        </h1>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Get accurate cost estimates in minutes with our comprehensive calculator covering 
-          drilling, blasting, loading, hauling, and processing operations.
-        </p>
+        <h1 class="text-5xl font-black mb-4">AI-Powered <span class="gradient-text">Cost Calculator</span></h1>
+        <p class="text-xl text-gray-400">Accurate cost estimation with 98% precision using machine learning</p>
       </div>
 
-      <div class="grid lg:grid-cols-3 gap-6 mb-12">
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-clock text-amber-500 text-2xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-2">15 Minutes</h3>
-          <p class="text-gray-400 text-sm">Complete estimation time</p>
-        </div>
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-check-circle text-green-500 text-2xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-2">94% Accuracy</h3>
-          <p class="text-gray-400 text-sm">AI-validated results</p>
-        </div>
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-file-pdf text-purple-500 text-2xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-2">Export Ready</h3>
-          <p class="text-gray-400 text-sm">PDF & Excel reports</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div id="accessBadge" class="mb-8"></div>
 
-  <!-- Calculator Section -->
-  <section class="py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-3 gap-8">
-        <!-- Left Sidebar - Steps -->
-        <div class="lg:col-span-1">
-          <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 sticky top-24">
-            <h3 class="font-bold text-lg mb-6">Calculation Steps</h3>
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+            <h3 class="text-xl font-bold mb-4">Project Details</h3>
             <div class="space-y-4">
-              <div class="step-indicator active flex items-center gap-4 p-4 bg-amber-500/20 border border-amber-500/30 rounded-xl">
-                <div class="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center font-bold">1</div>
+              <div>
+                <label class="block text-sm font-semibold mb-2">Project Name</label>
+                <input type="text" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none" placeholder="Enter project name">
+              </div>
+              <div class="grid md:grid-cols-2 gap-4">
                 <div>
-                  <div class="font-semibold">Mine Parameters</div>
-                  <div class="text-xs text-gray-400">Basic information</div>
+                  <label class="block text-sm font-semibold mb-2">Mine Type</label>
+                  <select class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none">
+                    <option>Open Pit</option>
+                    <option>Underground</option>
+                    <option>Surface</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold mb-2">Commodity</label>
+                  <select class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none">
+                    <option>Gold</option>
+                    <option>Copper</option>
+                    <option>Iron Ore</option>
+                    <option>Coal</option>
+                  </select>
                 </div>
               </div>
-              <div class="step-indicator flex items-center gap-4 p-4 bg-slate-800 rounded-xl opacity-50">
-                <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center font-bold">2</div>
+              <div class="grid md:grid-cols-2 gap-4">
                 <div>
-                  <div class="font-semibold">Equipment Selection</div>
-                  <div class="text-xs text-gray-400">Choose machinery</div>
+                  <label class="block text-sm font-semibold mb-2">Production Rate (tpd)</label>
+                  <input type="number" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none" placeholder="10000">
                 </div>
-              </div>
-              <div class="step-indicator flex items-center gap-4 p-4 bg-slate-800 rounded-xl opacity-50">
-                <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center font-bold">3</div>
                 <div>
-                  <div class="font-semibold">Operating Costs</div>
-                  <div class="text-xs text-gray-400">Labor & consumables</div>
-                </div>
-              </div>
-              <div class="step-indicator flex items-center gap-4 p-4 bg-slate-800 rounded-xl opacity-50">
-                <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center font-bold">4</div>
-                <div>
-                  <div class="font-semibold">Results</div>
-                  <div class="text-xs text-gray-400">View estimate</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
-              <div class="flex items-start gap-3">
-                <i class="fas fa-info-circle text-blue-500 mt-1"></i>
-                <div>
-                  <p class="text-sm font-semibold mb-1">Need Help?</p>
-                  <p class="text-xs text-gray-400">Watch our tutorial video or contact support</p>
+                  <label class="block text-sm font-semibold mb-2">Mine Life (years)</label>
+                  <input type="number" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none" placeholder="15">
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Main Calculator Form -->
-        <div class="lg:col-span-2">
-          <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800">
-            <h2 class="text-2xl font-bold mb-8">Step 1: Mine Parameters</h2>
-
-            <form class="space-y-8">
-              <!-- Project Name -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Project Name *</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g., Copper Mine Alpha"
-                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                  required
-                >
-              </div>
-
-              <!-- Mine Type -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Mine Type *</label>
-                <select class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all">
-                  <option>Open Pit - Copper</option>
-                  <option>Open Pit - Gold</option>
-                  <option>Open Pit - Iron Ore</option>
-                  <option>Open Pit - Coal</option>
-                  <option>Open Pit - Other</option>
-                </select>
-              </div>
-
-              <!-- Production Rate -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">
-                  Annual Production Rate: <span class="text-amber-500 font-bold" id="production-value">50,000</span> tonnes/year
-                </label>
-                <input 
-                  type="range" 
-                  min="10000" 
-                  max="500000" 
-                  step="10000" 
-                  value="50000"
-                  class="w-full"
-                  oninput="document.getElementById('production-value').textContent = parseInt(this.value).toLocaleString()"
-                >
-                <div class="flex justify-between text-xs text-gray-500 mt-2">
-                  <span>10,000</span>
-                  <span>500,000</span>
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+            <h3 class="text-xl font-bold mb-4">Equipment Selection</h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between bg-slate-950 rounded-lg p-4">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" class="w-4 h-4">
+                  <div>
+                    <div class="font-semibold">Haul Trucks (CAT 797F)</div>
+                    <div class="text-sm text-gray-400">400 ton capacity</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-cyan-400">$6.5M</div>
+                  <div class="text-sm text-gray-400">per unit</div>
                 </div>
               </div>
-
-              <!-- Ore Grade -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">
-                  Average Ore Grade: <span class="text-amber-500 font-bold" id="grade-value">1.5</span>%
-                </label>
-                <input 
-                  type="range" 
-                  min="0.1" 
-                  max="5.0" 
-                  step="0.1" 
-                  value="1.5"
-                  class="w-full"
-                  oninput="document.getElementById('grade-value').textContent = parseFloat(this.value).toFixed(1)"
-                >
-                <div class="flex justify-between text-xs text-gray-500 mt-2">
-                  <span>0.1%</span>
-                  <span>5.0%</span>
+              <div class="flex items-center justify-between bg-slate-950 rounded-lg p-4">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" class="w-4 h-4">
+                  <div>
+                    <div class="font-semibold">Excavators (Komatsu PC8000)</div>
+                    <div class="text-sm text-gray-400">800 ton class</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-cyan-400">$8.2M</div>
+                  <div class="text-sm text-gray-400">per unit</div>
                 </div>
               </div>
-
-              <!-- Strip Ratio -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">
-                  Strip Ratio (Waste:Ore): <span class="text-amber-500 font-bold" id="strip-value">2.5</span>:1
-                </label>
-                <input 
-                  type="range" 
-                  min="0.5" 
-                  max="10.0" 
-                  step="0.5" 
-                  value="2.5"
-                  class="w-full"
-                  oninput="document.getElementById('strip-value').textContent = parseFloat(this.value).toFixed(1)"
-                >
-                <div class="flex justify-between text-xs text-gray-500 mt-2">
-                  <span>0.5:1</span>
-                  <span>10.0:1</span>
+              <div class="flex items-center justify-between bg-slate-950 rounded-lg p-4">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" class="w-4 h-4">
+                  <div>
+                    <div class="font-semibold">Drill Rigs (Atlas Copco)</div>
+                    <div class="text-sm text-gray-400">Production drilling</div>
+                  </div>
                 </div>
-              </div>
-
-              <!-- Pit Depth -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">
-                  Maximum Pit Depth: <span class="text-amber-500 font-bold" id="depth-value">300</span> meters
-                </label>
-                <input 
-                  type="range" 
-                  min="50" 
-                  max="1000" 
-                  step="50" 
-                  value="300"
-                  class="w-full"
-                  oninput="document.getElementById('depth-value').textContent = parseInt(this.value).toLocaleString()"
-                >
-                <div class="flex justify-between text-xs text-gray-500 mt-2">
-                  <span>50m</span>
-                  <span>1,000m</span>
+                <div class="text-right">
+                  <div class="font-bold text-cyan-400">$2.8M</div>
+                  <div class="text-sm text-gray-400">per unit</div>
                 </div>
-              </div>
-
-              <!-- Haul Distance -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">
-                  Average Haul Distance: <span class="text-amber-500 font-bold" id="haul-value">2.5</span> km
-                </label>
-                <input 
-                  type="range" 
-                  min="0.5" 
-                  max="10.0" 
-                  step="0.5" 
-                  value="2.5"
-                  class="w-full"
-                  oninput="document.getElementById('haul-value').textContent = parseFloat(this.value).toFixed(1)"
-                >
-                <div class="flex justify-between text-xs text-gray-500 mt-2">
-                  <span>0.5km</span>
-                  <span>10.0km</span>
-                </div>
-              </div>
-
-              <!-- Location -->
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Location/Region *</label>
-                <select class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all">
-                  <option>North America</option>
-                  <option>South America</option>
-                  <option>Australia</option>
-                  <option>Africa</option>
-                  <option>Asia</option>
-                  <option>Europe</option>
-                </select>
-              </div>
-
-              <!-- Operating Hours -->
-              <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-sm font-medium text-gray-400 mb-2">Operating Days/Year</label>
-                  <input 
-                    type="number" 
-                    value="350"
-                    min="250"
-                    max="365"
-                    class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all"
-                  >
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-400 mb-2">Hours/Day</label>
-                  <input 
-                    type="number" 
-                    value="20"
-                    min="8"
-                    max="24"
-                    class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all"
-                  >
-                </div>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex gap-4 pt-6">
-                <button type="button" class="flex-1 bg-slate-800 hover:bg-slate-700 py-4 rounded-xl font-semibold transition-all">
-                  <i class="fas fa-save mr-2"></i>Save Draft
-                </button>
-                <button type="button" class="flex-1 bg-gradient-to-r from-amber-500 to-orange-600 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-                  Next Step <i class="fas fa-arrow-right ml-2"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Quick Estimate Preview -->
-          <div class="mt-8 bg-gradient-to-br from-amber-500/10 to-orange-600/10 rounded-2xl p-6 border border-amber-500/30">
-            <h3 class="font-bold text-lg mb-4">Quick Estimate Preview</h3>
-            <div class="grid md:grid-cols-3 gap-4">
-              <div class="bg-slate-900/50 rounded-xl p-4">
-                <div class="text-sm text-gray-400 mb-1">Drilling Cost</div>
-                <div class="text-2xl font-bold text-amber-500">$0.45/t</div>
-              </div>
-              <div class="bg-slate-900/50 rounded-xl p-4">
-                <div class="text-sm text-gray-400 mb-1">Loading Cost</div>
-                <div class="text-2xl font-bold text-green-500">$0.82/t</div>
-              </div>
-              <div class="bg-slate-900/50 rounded-xl p-4">
-                <div class="text-sm text-gray-400 mb-1">Hauling Cost</div>
-                <div class="text-2xl font-bold text-purple-500">$1.23/t</div>
               </div>
             </div>
-            <div class="mt-4 p-4 bg-slate-900/50 rounded-xl">
-              <div class="flex items-center justify-between">
-                <span class="font-semibold">Estimated Total Cost:</span>
-                <span class="text-3xl font-black text-amber-500">$2.50/tonne</span>
+          </div>
+
+          <button class="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 px-6 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+            <i class="fas fa-calculator mr-2"></i>Calculate Total Cost
+          </button>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/30 p-6">
+            <div class="text-sm text-gray-400 mb-2">Estimated Total Cost</div>
+            <div class="text-4xl font-black gradient-text mb-4">$0.00</div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-400">CAPEX</span>
+                <span class="font-semibold">$0.00</span>
               </div>
-              <p class="text-xs text-gray-400 mt-2">* Preliminary estimate based on current inputs. Complete all steps for detailed breakdown.</p>
+              <div class="flex justify-between">
+                <span class="text-gray-400">OPEX (Annual)</span>
+                <span class="font-semibold">$0.00</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Equipment</span>
+                <span class="font-semibold">$0.00</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Features Section -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-black mb-4">Calculator Features</h2>
-        <p class="text-gray-400 text-lg">Everything you need for accurate cost estimation</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-database text-amber-500 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-3">Real-Time Database</h3>
-          <p class="text-gray-400 text-sm">
-            Equipment costs updated monthly from 10,000+ verified sources including CAT, Komatsu, and Liebherr pricing.
-          </p>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-brain text-green-500 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-3">AI Optimization</h3>
-          <p class="text-gray-400 text-sm">
-            Machine learning algorithms suggest optimal equipment combinations and operating parameters for your specific conditions.
-          </p>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-chart-line text-purple-500 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-3">Sensitivity Analysis</h3>
-          <p class="text-gray-400 text-sm">
-            Automatically generates sensitivity charts showing how cost changes with key variables like fuel price and production rate.
-          </p>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-file-invoice-dollar text-blue-500 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-3">AACE Compliance</h3>
-          <p class="text-gray-400 text-sm">
-            All estimates follow AACE International standards with proper contingency analysis and accuracy classifications.
-          </p>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-file-pdf text-red-500 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-3">Export Reports</h3>
-          <p class="text-gray-400 text-sm">
-            Generate professional PDF reports with charts, tables, and detailed breakdowns ready for stakeholder presentations.
-          </p>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <div class="w-14 h-14 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-history text-yellow-500 text-xl"></i>
-          </div>
-          <h3 class="font-bold text-lg mb-3">Version Control</h3>
-          <p class="text-gray-400 text-sm">
-            Save multiple versions of your estimates and track changes over time with full revision history.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Example Results -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-black mb-4">Sample Output</h2>
-        <p class="text-gray-400 text-lg">See what your detailed cost breakdown looks like</p>
-      </div>
-
-      <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800">
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div>
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
-                 alt="Cost Breakdown Chart" 
-                 class="rounded-xl w-full">
-          </div>
-          <div>
-            <h3 class="text-2xl font-bold mb-6">Detailed Cost Breakdown</h3>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
-                <div class="flex items-center gap-3">
-                  <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
-                  <span>Drilling & Blasting</span>
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+            <h4 class="font-bold mb-4">Cost Breakdown</h4>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span>Mining</span>
+                  <span>35%</span>
                 </div>
-                <span class="font-bold">$0.45/t</span>
-              </div>
-              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
-                <div class="flex items-center gap-3">
-                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span>Loading</span>
+                <div class="w-full bg-slate-950 rounded-full h-2">
+                  <div class="bg-cyan-500 h-2 rounded-full" style="width: 35%"></div>
                 </div>
-                <span class="font-bold">$0.82/t</span>
               </div>
-              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
-                <div class="flex items-center gap-3">
-                  <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
-                  <span>Hauling</span>
-                </div>
-                <span class="font-bold">$1.23/t</span>
-              </div>
-              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
-                <div class="flex items-center gap-3">
-                  <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
                   <span>Processing</span>
+                  <span>28%</span>
                 </div>
-                <span class="font-bold">$3.45/t</span>
-              </div>
-              <div class="flex items-center justify-between p-4 bg-slate-800 rounded-xl">
-                <div class="flex items-center gap-3">
-                  <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <span>G&A</span>
+                <div class="w-full bg-slate-950 rounded-full h-2">
+                  <div class="bg-blue-500 h-2 rounded-full" style="width: 28%"></div>
                 </div>
-                <span class="font-bold">$0.85/t</span>
               </div>
-              <div class="flex items-center justify-between p-4 bg-gradient-to-r from-amber-500/20 to-orange-600/20 border border-amber-500/30 rounded-xl">
-                <span class="font-bold text-lg">Total Operating Cost</span>
-                <span class="font-black text-2xl text-amber-500">$6.80/t</span>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span>Infrastructure</span>
+                  <span>22%</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-2">
+                  <div class="bg-purple-500 h-2 rounded-full" style="width: 22%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span>Other</span>
+                  <span>15%</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-2">
+                  <div class="bg-green-500 h-2 rounded-full" style="width: 15%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+            <h4 class="font-bold mb-4">AI Insights</h4>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-2">
+                <i class="fas fa-lightbulb text-amber-400 mt-1"></i>
+                <p class="text-gray-400">Consider bulk purchasing for 15% savings</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <i class="fas fa-chart-line text-green-400 mt-1"></i>
+                <p class="text-gray-400">Market conditions favorable for Q2 procurement</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <i class="fas fa-exclamation-triangle text-red-400 mt-1"></i>
+                <p class="text-gray-400">Fuel costs trending upward - lock rates now</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- CTA Section -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 rounded-3xl p-12 border border-amber-500/30 text-center">
-        <h2 class="text-4xl font-black mb-4">Ready to Calculate Your Project?</h2>
-        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          Sign up for free and get instant access to our complete cost calculator suite.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="../auth/signup.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-            Start Free Trial
-          </a>
-          <a href="../contact.html" class="border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">
-            Schedule Demo
-          </a>
-        </div>
-        <p class="text-sm text-gray-400 mt-6">No credit card required • 14-day free trial</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-mountain text-white"></i>
+  <script>
+    const RESOURCE_ID = 'cost-calculator';
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth()) return;
+      const user = getCurrentUser();
+      document.getElementById('userInfo').innerHTML = `
+        <span class="text-sm text-gray-400">Welcome, ${user.name}</span>
+        <a href="../dashboard/index.html" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-th-large mr-2"></i>Dashboard
+        </a>
+        <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors text-sm">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
+        </button>
+      `;
+      if (hasAccess(RESOURCE_ID)) {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+        document.getElementById('accessBadge').innerHTML = `
+          <div class="inline-flex items-center gap-3 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-3">
+            <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            <div>
+              <div class="font-bold text-green-400">Full Access</div>
+              <div class="text-sm text-gray-400">Advanced cost calculation features enabled</div>
             </div>
-            <span class="text-xl font-bold">SES<span class="gradient-text">Mine</span></span>
           </div>
-          <p class="text-gray-400 text-sm">Smart Engineering Solutions for Mining</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Product</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="cost-calculator.html" class="hover:text-white transition-colors">Cost Calculator</a></li>
-            <li><a href="equipment-database.html" class="hover:text-white transition-colors">Equipment Database</a></li>
-            <li><a href="../pricing/index.html" class="hover:text-white transition-colors">Pricing</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Company</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="../about.html" class="hover:text-white transition-colors">About</a></li>
-            <li><a href="../news.html" class="hover:text-white transition-colors">News</a></li>
-            <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Legal</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-        <p>© 2025 SESMine. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+        `;
+      } else {
+        document.getElementById('loadingState').classList.add('hidden');
+        requireAccess(RESOURCE_ID, '../pricing/index.html');
+      }
+    });
+  </script>
 </body>
 </html>
