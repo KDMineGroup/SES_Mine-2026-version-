@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procurement Hub - SESMine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .tool-card { transition: all 0.3s ease; }
+    .tool-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3); }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-mountain text-white text-xl"></i>
+          </div>
+          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="../index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">All Hubs</a>
+          <a href="procurement-hub.html" class="text-purple-500 font-semibold">Procurement Hub</a>
+          <a href="../contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+          <a href="../auth/login.html" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
+            Sign In
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-12 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/30 rounded-full px-4 py-2 mb-6">
+            <i class="fas fa-shopping-cart text-purple-500"></i>
+            <span class="text-purple-500 text-sm font-medium">Strategic Sourcing</span>
+          </div>
+          <h1 class="text-5xl lg:text-6xl font-black mb-6">
+            Procurement
+            <br><span class="gradient-text">Hub</span>
+          </h1>
+          <p class="text-xl text-gray-400 mb-8">
+            Streamline your mining procurement with vendor management, equipment sourcing, contract negotiation tools, and supply chain optimization strategies.
+          </p>
+          <div class="flex items-center gap-4">
+            <button class="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-purple-500/30 transition-all">
+              <i class="fas fa-search mr-2"></i>Find Vendors
+            </button>
+            <button class="bg-slate-900 hover:bg-slate-800 border border-slate-800 px-8 py-4 rounded-xl font-bold transition-all">
+              <i class="fas fa-file-contract mr-2"></i>Templates
+            </button>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" 
+               alt="Procurement" 
+               class="rounded-3xl border border-slate-800 shadow-2xl">
+          <div class="absolute -bottom-6 -left-6 bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl">
+            <div class="text-3xl font-black text-purple-500 mb-1">5,000+</div>
+            <div class="text-sm text-gray-400">Verified Vendors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="py-12 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <i class="fas fa-store text-purple-500 text-3xl mb-3"></i>
+          <div class="text-2xl font-black mb-1">5,000+</div>
+          <div class="text-sm text-gray-400">Verified Vendors</div>
+        </div>
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <i class="fas fa-file-contract text-pink-500 text-3xl mb-3"></i>
+          <div class="text-2xl font-black mb-1">150+</div>
+          <div class="text-sm text-gray-400">Contract Templates</div>
+        </div>
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <i class="fas fa-handshake text-purple-500 text-3xl mb-3"></i>
+          <div class="text-2xl font-black mb-1">$2.8B</div>
+          <div class="text-sm text-gray-400">Deals Facilitated</div>
+        </div>
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <i class="fas fa-percent text-pink-500 text-3xl mb-3"></i>
+          <div class="text-2xl font-black mb-1">18%</div>
+          <div class="text-sm text-gray-400">Avg. Cost Savings</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Categories -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-black mb-12">Procurement Categories</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Vendor Management -->
+        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-address-book text-purple-500 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Vendor Management</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            Comprehensive database of verified mining equipment and service vendors worldwide.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Vendor Database</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Performance Ratings</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Compliance Tracking</span>
+            </li>
+          </ul>
+          <button class="w-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 py-3 rounded-xl font-semibold text-purple-500 transition-all">
+            Browse Vendors
+          </button>
+        </div>
+
+        <!-- RFQ Management -->
+        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-clipboard-list text-pink-500 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">RFQ Management</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            Create, send, and manage requests for quotations with automated workflows.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>RFQ Templates</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Bid Comparison</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Automated Workflows</span>
+            </li>
+          </ul>
+          <button class="w-full bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 py-3 rounded-xl font-semibold text-pink-500 transition-all">
+            Create RFQ
+          </button>
+        </div>
+
+        <!-- Contract Management -->
+        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-file-signature text-purple-500 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Contract Management</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            Digital contract repository, templates, and automated renewal tracking.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Contract Templates</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Digital Signatures</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Renewal Alerts</span>
+            </li>
+          </ul>
+          <button class="w-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 py-3 rounded-xl font-semibold text-purple-500 transition-all">
+            Manage Contracts
+          </button>
+        </div>
+
+        <!-- Equipment Sourcing -->
+        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-truck-monster text-pink-500 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Equipment Sourcing</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            Find and compare mining equipment from global manufacturers and dealers.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Equipment Catalog</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Price Comparison</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Spec Matching</span>
+            </li>
+          </ul>
+          <button class="w-full bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 py-3 rounded-xl font-semibold text-pink-500 transition-all">
+            Browse Equipment
+          </button>
+        </div>
+
+        <!-- Supply Chain -->
+        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-truck text-purple-500 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Supply Chain</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            Optimize logistics, inventory management, and delivery tracking systems.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Logistics Planning</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Inventory Tracking</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-purple-500 text-xs"></i>
+              <span>Delivery Monitoring</span>
+            </li>
+          </ul>
+          <button class="w-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 py-3 rounded-xl font-semibold text-purple-500 transition-all">
+            Optimize Supply Chain
+          </button>
+        </div>
+
+        <!-- Cost Analysis -->
+        <div class="tool-card bg-slate-900 rounded-2xl p-8 border border-slate-800">
+          <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-chart-pie text-pink-500 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Cost Analysis</h3>
+          <p class="text-gray-400 text-sm mb-6">
+            Analyze procurement spending, identify savings opportunities, and benchmark costs.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Spend Analysis</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Cost Benchmarking</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas fa-check text-pink-500 text-xs"></i>
+              <span>Savings Tracking</span>
+            </li>
+          </ul>
+          <button class="w-full bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 py-3 rounded-xl font-semibold text-pink-500 transition-all">
+            Analyze Costs
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Vendors -->
+  <section class="py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-black">Featured Vendors</h2>
+        <button class="text-purple-500 font-semibold hover:underline">View All →</button>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <div class="w-20 h-20 bg-slate-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-industry text-purple-500 text-3xl"></i>
+          </div>
+          <h3 class="font-bold mb-2">Caterpillar</h3>
+          <p class="text-sm text-gray-400 mb-3">Heavy Equipment</p>
+          <div class="flex items-center justify-center gap-1 mb-3">
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <span class="text-xs text-gray-400 ml-1">(248)</span>
+          </div>
+          <button class="w-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 py-2 rounded-lg font-semibold text-purple-500 transition-all text-sm">
+            View Profile
+          </button>
+        </div>
+
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <div class="w-20 h-20 bg-slate-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-cogs text-pink-500 text-3xl"></i>
+          </div>
+          <h3 class="font-bold mb-2">Komatsu</h3>
+          <p class="text-sm text-gray-400 mb-3">Mining Equipment</p>
+          <div class="flex items-center justify-center gap-1 mb-3">
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <span class="text-xs text-gray-400 ml-1">(195)</span>
+          </div>
+          <button class="w-full bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 py-2 rounded-lg font-semibold text-pink-500 transition-all text-sm">
+            View Profile
+          </button>
+        </div>
+
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <div class="w-20 h-20 bg-slate-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-truck text-purple-500 text-3xl"></i>
+          </div>
+          <h3 class="font-bold mb-2">Hitachi</h3>
+          <p class="text-sm text-gray-400 mb-3">Excavators</p>
+          <div class="flex items-center justify-center gap-1 mb-3">
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star-half-alt text-amber-500 text-xs"></i>
+            <span class="text-xs text-gray-400 ml-1">(167)</span>
+          </div>
+          <button class="w-full bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 py-2 rounded-lg font-semibold text-purple-500 transition-all text-sm">
+            View Profile
+          </button>
+        </div>
+
+        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+          <div class="w-20 h-20 bg-slate-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-tools text-pink-500 text-3xl"></i>
+          </div>
+          <h3 class="font-bold mb-2">Sandvik</h3>
+          <p class="text-sm text-gray-400 mb-3">Drilling Equipment</p>
+          <div class="flex items-center justify-center gap-1 mb-3">
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <i class="fas fa-star text-amber-500 text-xs"></i>
+            <span class="text-xs text-gray-400 ml-1">(142)</span>
+          </div>
+          <button class="w-full bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/30 py-2 rounded-lg font-semibold text-pink-500 transition-all text-sm">
+            View Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RFQ Tool Demo -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-black mb-4">Create Your First RFQ</h2>
+        <p class="text-xl text-gray-400">Quick and easy procurement request in minutes</p>
+      </div>
+
+      <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Equipment Type</label>
+            <select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500">
+              <option>Select Equipment</option>
+              <option>Haul Trucks</option>
+              <option>Excavators</option>
+              <option>Drills</option>
+              <option>Loaders</option>
+            </select>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-semibold mb-2">Quantity</label>
+              <input type="number" value="5" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-2">Delivery Date</label>
+              <input type="date" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-2">Additional Requirements</label>
+            <textarea rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500" placeholder="Describe your specific requirements..."></textarea>
+          </div>
+          <button class="w-full bg-gradient-to-r from-purple-500 to-pink-600 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-purple-500/30 transition-all">
+            <i class="fas fa-paper-plane mr-2"></i>Send RFQ to 25 Vendors
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl p-12 border border-purple-500/30">
+        <i class="fas fa-handshake text-purple-500 text-5xl mb-6"></i>
+        <h2 class="text-4xl font-black mb-4">Ready to Optimize Your Procurement?</h2>
+        <p class="text-xl text-gray-300 mb-8">
+          Join 500+ mining companies saving an average of 18% on procurement costs.
+        </p>
+        <button class="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-purple-500/30 transition-all">
+          <i class="fas fa-rocket mr-2"></i>Start Free Trial
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+              <i class="fas fa-mountain text-white"></i>
+            </div>
+            <span class="text-xl font-bold">SESMine</span>
+          </div>
+          <p class="text-gray-400 text-sm">Procurement Excellence Hub</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Other Hubs</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="engineering-hub.html" class="hover:text-white transition-colors">Engineering</a></li>
+            <li><a href="economics-hub.html" class="hover:text-white transition-colors">Economics</a></li>
+            <li><a href="innovation-hub.html" class="hover:text-white transition-colors">Innovation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">Vendor Directory</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">RFQ Templates</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contracts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Support</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+        <p>© 2025 SESMine Procurement Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
