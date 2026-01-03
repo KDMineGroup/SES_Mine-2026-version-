@@ -1,24 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing Plans - SESMine</title>
+  <title>Contact Us - SESMine</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { font-family: 'Inter', sans-serif; }
     .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .pricing-card { transition: all 0.3s ease; }
-    .pricing-card:hover { transform: translateY(-10px); }
-    .toggle-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
-    .toggle-switch input { opacity: 0; width: 0; height: 0; }
-    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .4s; border-radius: 34px; }
-    .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-    input:checked + .slider { background: linear-gradient(135deg, #f59e0b, #ef4444); }
-    input:checked + .slider:before { transform: translateX(26px); }
+    .contact-card { transition: all 0.3s ease; }
+    .contact-card:hover { transform: translateY(-5px); }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
@@ -26,18 +19,19 @@
   <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
-        <a href="../index.html" class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3">
           <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
             <i class="fas fa-mountain text-white text-xl"></i>
           </div>
           <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
         </a>
         <div class="hidden md:flex items-center gap-8">
-          <a href="../index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="../products/cost-calculator.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
-          <a href="index.html" class="text-amber-500 font-semibold">Pricing</a>
-          <a href="../about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
-          <a href="../auth/login.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
+          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="products/cost-calculator.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
+          <a href="pricing/index.html" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
+          <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="contact.html" class="text-amber-500 font-semibold">Contact</a>
+          <a href="auth/login.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
             Sign In
           </a>
         </div>
@@ -48,269 +42,326 @@
   <!-- Hero Section -->
   <section class="pt-32 pb-12 relative overflow-hidden">
     <div class="absolute inset-0">
-      <div class="absolute top-20 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 mb-6">
-          <i class="fas fa-check-circle text-green-500"></i>
-          <span class="text-green-500 text-sm font-medium">14-Day Free Trial • No Credit Card Required</span>
+        <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
+          <i class="fas fa-headset text-blue-500"></i>
+          <span class="text-blue-500 text-sm font-medium">We're Here to Help</span>
         </div>
         <h1 class="text-5xl lg:text-6xl font-black mb-6">
-          Simple, Transparent
-          <br><span class="gradient-text">Pricing</span>
+          Get in Touch
+          <br><span class="gradient-text">With Our Team</span>
         </h1>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
-          Choose the perfect plan for your mining operation. All plans include our core features 
-          with flexible options to scale as you grow.
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Have questions about SESMine? Want to schedule a demo? Our team of mining experts 
+          is ready to help you find the perfect solution.
         </p>
+      </div>
 
-        <!-- Billing Toggle -->
-        <div class="flex items-center justify-center gap-4 mb-8">
-          <span class="text-gray-400">Monthly</span>
-          <label class="toggle-switch">
-            <input type="checkbox" id="billing-toggle" onchange="toggleBilling()">
-            <span class="slider"></span>
-          </label>
-          <span class="text-white font-semibold">Annual <span class="text-green-500 text-sm">(Save 20%)</span></span>
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="contact-card bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-phone text-blue-500 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Call Us</h3>
+          <p class="text-gray-400 text-sm mb-3">Mon-Fri 8am-6pm MST</p>
+          <a href="tel:+13035551234" class="text-amber-500 font-semibold hover:underline">+1 (303) 555-1234</a>
+        </div>
+
+        <div class="contact-card bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
+          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-envelope text-green-500 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Email Us</h3>
+          <p class="text-gray-400 text-sm mb-3">Response within 24 hours</p>
+          <a href="mailto:info@sesmine.com" class="text-amber-500 font-semibold hover:underline">info@sesmine.com</a>
+        </div>
+
+        <div class="contact-card bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-comments text-purple-500 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Live Chat</h3>
+          <p class="text-gray-400 text-sm mb-3">Available 24/7</p>
+          <button class="text-amber-500 font-semibold hover:underline">Start Chat</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Cards -->
+  <!-- Contact Form & Info Section -->
   <section class="py-12">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-4 gap-8">
-        <!-- Starter Plan -->
-        <div class="pricing-card bg-slate-900 rounded-3xl p-8 border border-slate-800">
-          <div class="mb-6">
-            <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4">
-              <i class="fas fa-rocket text-blue-500 text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold mb-2">Starter</h3>
-            <p class="text-gray-400 text-sm">Perfect for exploration companies and small projects</p>
-          </div>
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
+          <h2 class="text-3xl font-bold mb-6">Send Us a Message</h2>
+          <p class="text-gray-400 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
 
-          <div class="mb-8">
-            <div class="flex items-baseline gap-2">
-              <span class="text-5xl font-black" id="starter-price">$299</span>
-              <span class="text-gray-400">/month</span>
+          <form class="space-y-6">
+            <!-- Name Fields -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">First Name *</label>
+                <input 
+                  type="text" 
+                  placeholder="John"
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                  required
+                >
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Last Name *</label>
+                <input 
+                  type="text" 
+                  placeholder="Doe"
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                  required
+                >
+              </div>
             </div>
-            <p class="text-sm text-gray-500 mt-2" id="starter-annual">Billed monthly</p>
-          </div>
 
-          <a href="../auth/signup.html" class="block w-full bg-slate-800 hover:bg-slate-700 text-center py-4 rounded-xl font-bold mb-8 transition-all">
-            Start Free Trial
-          </a>
+            <!-- Email & Phone -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Email Address *</label>
+                <input 
+                  type="email" 
+                  placeholder="john.doe@company.com"
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                  required
+                >
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Phone Number</label>
+                <input 
+                  type="tel" 
+                  placeholder="+1 (555) 123-4567"
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                >
+              </div>
+            </div>
 
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Up to 5 projects</span>
+            <!-- Company & Role -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Company Name *</label>
+                <input 
+                  type="text" 
+                  placeholder="Mining Corp Inc."
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                  required
+                >
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">Job Title</label>
+                <input 
+                  type="text" 
+                  placeholder="Mining Engineer"
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
+                >
+              </div>
             </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Basic cost calculator</span>
+
+            <!-- Inquiry Type -->
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">What can we help you with? *</label>
+              <select class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all" required>
+                <option value="">Select an option</option>
+                <option>Schedule a Demo</option>
+                <option>Sales Inquiry</option>
+                <option>Technical Support</option>
+                <option>Partnership Opportunity</option>
+                <option>General Question</option>
+                <option>Other</option>
+              </select>
             </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Equipment database access</span>
+
+            <!-- Message -->
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">Message *</label>
+              <textarea 
+                rows="5"
+                placeholder="Tell us more about your needs..."
+                class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all resize-none"
+                required
+              ></textarea>
             </div>
+
+            <!-- Consent -->
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">PDF report exports</span>
+              <input type="checkbox" id="consent" class="mt-1" required>
+              <label for="consent" class="text-sm text-gray-400">
+                I agree to receive communications from SESMine and understand that I can opt out at any time. 
+                View our <a href="#" class="text-amber-500 hover:underline">Privacy Policy</a>.
+              </label>
             </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Email support</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">2 team members</span>
-            </div>
-          </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
+              <i class="fas fa-paper-plane mr-2"></i>Send Message
+            </button>
+
+            <p class="text-xs text-gray-500 text-center">
+              We typically respond within 24 hours during business days
+            </p>
+          </form>
         </div>
 
-        <!-- Professional Plan -->
-        <div class="pricing-card bg-slate-900 rounded-3xl p-8 border border-slate-800">
-          <div class="mb-6">
-            <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-4">
-              <i class="fas fa-briefcase text-green-500 text-2xl"></i>
+        <!-- Office Locations & Additional Info -->
+        <div class="space-y-8">
+          <!-- Office Locations -->
+          <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
+            <h3 class="text-2xl font-bold mb-6">Our Offices</h3>
+            
+            <div class="space-y-6">
+              <!-- Denver HQ -->
+              <div class="flex gap-4">
+                <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-building text-amber-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">🇺🇸 Denver, USA (HQ)</h4>
+                  <p class="text-gray-400 text-sm mb-2">1234 Mining Avenue, Suite 500<br>Denver, CO 80202</p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-phone text-amber-500 mr-2"></i>+1 (303) 555-1234
+                  </p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-clock text-amber-500 mr-2"></i>Mon-Fri: 8am-6pm MST
+                  </p>
+                </div>
+              </div>
+
+              <div class="border-t border-slate-800"></div>
+
+              <!-- Perth Office -->
+              <div class="flex gap-4">
+                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-building text-green-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">🇦🇺 Perth, Australia</h4>
+                  <p class="text-gray-400 text-sm mb-2">Level 5, 123 St Georges Terrace<br>Perth, WA 6000</p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-phone text-green-500 mr-2"></i>+61 8 9123 4567
+                  </p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-clock text-green-500 mr-2"></i>Mon-Fri: 9am-5pm AWST
+                  </p>
+                </div>
+              </div>
+
+              <div class="border-t border-slate-800"></div>
+
+              <!-- Santiago Office -->
+              <div class="flex gap-4">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-building text-blue-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">🇨🇱 Santiago, Chile</h4>
+                  <p class="text-gray-400 text-sm mb-2">Av. Apoquindo 4501, Piso 12<br>Las Condes, Santiago</p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-phone text-blue-500 mr-2"></i>+56 2 2345 6789
+                  </p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-clock text-blue-500 mr-2"></i>Lun-Vie: 9am-6pm CLT
+                  </p>
+                </div>
+              </div>
+
+              <div class="border-t border-slate-800"></div>
+
+              <!-- Johannesburg Office -->
+              <div class="flex gap-4">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-building text-purple-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">🇿🇦 Johannesburg, South Africa</h4>
+                  <p class="text-gray-400 text-sm mb-2">Sandton City Office Tower<br>Sandton, 2196</p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-phone text-purple-500 mr-2"></i>+27 11 123 4567
+                  </p>
+                  <p class="text-gray-400 text-sm">
+                    <i class="fas fa-clock text-purple-500 mr-2"></i>Mon-Fri: 8am-5pm SAST
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold mb-2">Professional</h3>
-            <p class="text-gray-400 text-sm">Ideal for mid-tier mining companies</p>
           </div>
 
-          <div class="mb-8">
-            <div class="flex items-baseline gap-2">
-              <span class="text-5xl font-black" id="pro-price">$799</span>
-              <span class="text-gray-400">/month</span>
+          <!-- Support Resources -->
+          <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
+            <h3 class="text-2xl font-bold mb-6">Need Quick Help?</h3>
+            
+            <div class="space-y-4">
+              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-book text-blue-500"></i>
+                </div>
+                <div>
+                  <div class="font-semibold">Documentation</div>
+                  <div class="text-sm text-gray-400">Browse our knowledge base</div>
+                </div>
+                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
+              </a>
+
+              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
+                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-video text-green-500"></i>
+                </div>
+                <div>
+                  <div class="font-semibold">Video Tutorials</div>
+                  <div class="text-sm text-gray-400">Watch step-by-step guides</div>
+                </div>
+                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
+              </a>
+
+              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-question-circle text-purple-500"></i>
+                </div>
+                <div>
+                  <div class="font-semibold">FAQ</div>
+                  <div class="text-sm text-gray-400">Common questions answered</div>
+                </div>
+                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
+              </a>
+
+              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
+                <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-ticket-alt text-amber-500"></i>
+                </div>
+                <div>
+                  <div class="font-semibold">Submit a Ticket</div>
+                  <div class="text-sm text-gray-400">Get technical support</div>
+                </div>
+                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
+              </a>
             </div>
-            <p class="text-sm text-gray-500 mt-2" id="pro-annual">Billed monthly</p>
           </div>
 
-          <a href="../auth/signup.html" class="block w-full bg-slate-800 hover:bg-slate-700 text-center py-4 rounded-xl font-bold mb-8 transition-all">
-            Start Free Trial
-          </a>
-
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Unlimited projects</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Advanced cost calculator</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Full equipment database</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">AI cost predictions</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Sensitivity analysis</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Priority support</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">10 team members</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-500 mt-1"></i>
-              <span class="text-sm text-gray-300">API access</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Enterprise Plan - Featured -->
-        <div class="pricing-card bg-gradient-to-br from-amber-500/10 to-orange-600/10 rounded-3xl p-8 border-2 border-amber-500/50 relative">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-xs font-bold px-4 py-2 rounded-full">
-            MOST POPULAR
-          </div>
-          
-          <div class="mb-6">
-            <div class="w-14 h-14 bg-amber-500/20 rounded-2xl flex items-center justify-center mb-4">
-              <i class="fas fa-building text-amber-500 text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-            <p class="text-gray-400 text-sm">For large mining operations</p>
-          </div>
-
-          <div class="mb-8">
-            <div class="flex items-baseline gap-2">
-              <span class="text-5xl font-black" id="enterprise-price">$1,999</span>
-              <span class="text-gray-400">/month</span>
-            </div>
-            <p class="text-sm text-gray-500 mt-2" id="enterprise-annual">Billed monthly</p>
-          </div>
-
-          <a href="../auth/signup.html" class="block w-full bg-gradient-to-r from-amber-500 to-orange-600 text-center py-4 rounded-xl font-bold mb-8 hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-            Start Free Trial
-          </a>
-
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300 font-semibold">Everything in Professional</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Real-time IoT integration</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">ESG dashboard</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Custom integrations</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Dedicated account manager</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">24/7 phone support</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Unlimited team members</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">White-label reports</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-500 mt-1"></i>
-              <span class="text-sm text-gray-300">SLA guarantee</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Custom Plan -->
-        <div class="pricing-card bg-slate-900 rounded-3xl p-8 border border-slate-800">
-          <div class="mb-6">
-            <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4">
-              <i class="fas fa-crown text-purple-500 text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold mb-2">Custom</h3>
-            <p class="text-gray-400 text-sm">Tailored solutions for unique needs</p>
-          </div>
-
-          <div class="mb-8">
-            <div class="flex items-baseline gap-2">
-              <span class="text-4xl font-black">Let's Talk</span>
-            </div>
-            <p class="text-sm text-gray-500 mt-2">Custom pricing</p>
-          </div>
-
-          <a href="../contact.html" class="block w-full bg-slate-800 hover:bg-slate-700 text-center py-4 rounded-xl font-bold mb-8 transition-all">
-            Contact Sales
-          </a>
-
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300 font-semibold">Everything in Enterprise</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Custom development</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300">On-premise deployment</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Advanced security</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Training programs</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Multi-site licenses</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Dedicated infrastructure</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-500 mt-1"></i>
-              <span class="text-sm text-gray-300">Legal compliance support</span>
+          <!-- Social Media -->
+          <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
+            <h3 class="text-2xl font-bold mb-6">Follow Us</h3>
+            <div class="flex gap-4">
+              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-600 transition-colors">
+                <i class="fab fa-linkedin-in text-xl"></i>
+              </a>
+              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-400 transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors">
+                <i class="fab fa-youtube text-xl"></i>
+              </a>
+              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-pink-600 transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -318,199 +369,65 @@
     </div>
   </section>
 
-  <!-- Feature Comparison -->
+  <!-- Map Section -->
   <section class="py-20 bg-slate-900">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-black mb-4">Compare Plans</h2>
-        <p class="text-gray-400 text-lg">Detailed feature comparison across all plans</p>
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-black mb-4">Visit Our Headquarters</h2>
+        <p class="text-gray-400 text-lg">Located in the heart of Denver's mining district</p>
       </div>
-
-      <div class="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full">
-            <thead>
-              <tr class="border-b border-slate-800">
-                <th class="text-left p-6 font-bold">Features</th>
-                <th class="text-center p-6 font-bold">Starter</th>
-                <th class="text-center p-6 font-bold">Professional</th>
-                <th class="text-center p-6 font-bold bg-amber-500/5">Enterprise</th>
-                <th class="text-center p-6 font-bold">Custom</th>
-              </tr>
-            </thead>
-            <tbody class="text-sm">
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">Number of Projects</td>
-                <td class="p-6 text-center text-gray-400">5</td>
-                <td class="p-6 text-center text-gray-400">Unlimited</td>
-                <td class="p-6 text-center bg-amber-500/5 text-gray-400">Unlimited</td>
-                <td class="p-6 text-center text-gray-400">Unlimited</td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">Team Members</td>
-                <td class="p-6 text-center text-gray-400">2</td>
-                <td class="p-6 text-center text-gray-400">10</td>
-                <td class="p-6 text-center bg-amber-500/5 text-gray-400">Unlimited</td>
-                <td class="p-6 text-center text-gray-400">Unlimited</td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">Equipment Database</td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center bg-amber-500/5"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">AI Cost Predictions</td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center bg-amber-500/5"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">Sensitivity Analysis</td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center bg-amber-500/5"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">Real-time IoT Integration</td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center bg-amber-500/5"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">ESG Dashboard</td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center bg-amber-500/5"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">API Access</td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center bg-amber-500/5"><i class="fas fa-check text-green-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="p-6 text-gray-300">Support</td>
-                <td class="p-6 text-center text-gray-400">Email</td>
-                <td class="p-6 text-center text-gray-400">Priority</td>
-                <td class="p-6 text-center bg-amber-500/5 text-gray-400">24/7 Phone</td>
-                <td class="p-6 text-center text-gray-400">Dedicated</td>
-              </tr>
-              <tr>
-                <td class="p-6 text-gray-300">Custom Development</td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center bg-amber-500/5"><i class="fas fa-times text-red-500"></i></td>
-                <td class="p-6 text-center"><i class="fas fa-check text-green-500"></i></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="py-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-black mb-4">Frequently Asked Questions</h2>
-        <p class="text-gray-400 text-lg">Everything you need to know about pricing</p>
-      </div>
-
-      <div class="space-y-6">
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-3">
-            <i class="fas fa-question-circle text-amber-500"></i>
-            What's included in the free trial?
-          </h3>
-          <p class="text-gray-400 pl-9">
-            The 14-day free trial includes full access to all features of your chosen plan. 
-            No credit card required. You can cancel anytime during the trial period.
-          </p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-3">
-            <i class="fas fa-question-circle text-amber-500"></i>
-            Can I change plans later?
-          </h3>
-          <p class="text-gray-400 pl-9">
-            Yes! You can upgrade or downgrade your plan at any time. Changes take effect 
-            immediately, and we'll prorate any charges or credits.
-          </p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-3">
-            <i class="fas fa-question-circle text-amber-500"></i>
-            What payment methods do you accept?
-          </h3>
-          <p class="text-gray-400 pl-9">
-            We accept all major credit cards (Visa, Mastercard, Amex), wire transfers, 
-            and purchase orders for Enterprise and Custom plans.
-          </p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-3">
-            <i class="fas fa-question-circle text-amber-500"></i>
-            Is there a discount for annual billing?
-          </h3>
-          <p class="text-gray-400 pl-9">
-            Yes! Annual billing saves you 20% compared to monthly billing. That's like 
-            getting 2.4 months free every year.
-          </p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-3">
-            <i class="fas fa-question-circle text-amber-500"></i>
-            Do you offer educational or non-profit discounts?
-          </h3>
-          <p class="text-gray-400 pl-9">
-            Yes! We offer 50% discounts for educational institutions and registered 
-            non-profit organizations. Contact our sales team for details.
-          </p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
-          <h3 class="font-bold text-lg mb-3 flex items-center gap-3">
-            <i class="fas fa-question-circle text-amber-500"></i>
-            What happens to my data if I cancel?
-          </h3>
-          <p class="text-gray-400 pl-9">
-            Your data remains accessible for 30 days after cancellation. You can export 
-            all your projects and reports during this period. After 30 days, data is permanently deleted.
-          </p>
+      
+      <div class="bg-slate-950 rounded-3xl overflow-hidden border border-slate-800">
+        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=500&fit=crop" 
+             alt="Denver Office Location" 
+             class="w-full h-96 object-cover">
+        <div class="p-8">
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-amber-500"></i>
+              </div>
+              <div>
+                <div class="font-semibold">Address</div>
+                <div class="text-sm text-gray-400">1234 Mining Ave, Denver CO</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-parking text-green-500"></i>
+              </div>
+              <div>
+                <div class="font-semibold">Parking</div>
+                <div class="text-sm text-gray-400">Free visitor parking available</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-subway text-blue-500"></i>
+              </div>
+              <div>
+                <div class="font-semibold">Transit</div>
+                <div class="text-sm text-gray-400">Union Station - 5 min walk</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 bg-slate-900">
+  <section class="py-20">
     <div class="max-w-7xl mx-auto px-6">
       <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 rounded-3xl p-12 border border-amber-500/30 text-center">
-        <h2 class="text-4xl font-black mb-4">Ready to Get Started?</h2>
+        <h2 class="text-4xl font-black mb-4">Prefer to See a Demo First?</h2>
         <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          Join 500+ mining companies already using SESMine to reduce costs and improve accuracy.
+          Schedule a personalized demo with one of our mining experts and see SESMine in action.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="../auth/signup.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-            Start 14-Day Free Trial
-          </a>
-          <a href="../contact.html" class="border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">
-            <i class="fas fa-phone mr-2"></i>Talk to Sales
-          </a>
-        </div>
-        <p class="text-sm text-gray-400 mt-6">No credit card required • Cancel anytime • 24/7 support</p>
+        <a href="auth/signup.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
+          <i class="fas fa-calendar-alt"></i>
+          Schedule Demo
+        </a>
       </div>
     </div>
   </section>
@@ -531,17 +448,17 @@
         <div>
           <h4 class="font-semibold mb-4">Product</h4>
           <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="../products/cost-calculator.html" class="hover:text-white transition-colors">Cost Calculator</a></li>
-            <li><a href="../products/equipment-database.html" class="hover:text-white transition-colors">Equipment Database</a></li>
-            <li><a href="index.html" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="products/cost-calculator.html" class="hover:text-white transition-colors">Cost Calculator</a></li>
+            <li><a href="products/equipment-database.html" class="hover:text-white transition-colors">Equipment Database</a></li>
+            <li><a href="pricing/index.html" class="hover:text-white transition-colors">Pricing</a></li>
           </ul>
         </div>
         <div>
           <h4 class="font-semibold mb-4">Company</h4>
           <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="../about.html" class="hover:text-white transition-colors">About</a></li>
-            <li><a href="../news.html" class="hover:text-white transition-colors">News</a></li>
-            <li><a href="../contact.html" class="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="news.html" class="hover:text-white transition-colors">News</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
           </ul>
         </div>
         <div>
@@ -557,31 +474,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    function toggleBilling() {
-      const isAnnual = document.getElementById('billing-toggle').checked;
-      
-      if (isAnnual) {
-        document.getElementById('starter-price').textContent = '$239';
-        document.getElementById('starter-annual').textContent = '$2,868/year (save $720)';
-        
-        document.getElementById('pro-price').textContent = '$639';
-        document.getElementById('pro-annual').textContent = '$7,668/year (save $1,920)';
-        
-        document.getElementById('enterprise-price').textContent = '$1,599';
-        document.getElementById('enterprise-annual').textContent = '$19,188/year (save $4,800)';
-      } else {
-        document.getElementById('starter-price').textContent = '$299';
-        document.getElementById('starter-annual').textContent = 'Billed monthly';
-        
-        document.getElementById('pro-price').textContent = '$799';
-        document.getElementById('pro-annual').textContent = 'Billed monthly';
-        
-        document.getElementById('enterprise-price').textContent = '$1,999';
-        document.getElementById('enterprise-annual').textContent = 'Billed monthly';
-      }
-    }
-  </script>
 </body>
 </html>
