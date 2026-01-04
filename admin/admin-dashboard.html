@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Content Management | Admin Dashboard</title>
+  <title>Admin Dashboard | SES_MINE</title>
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- TinyMCE Rich Text Editor -->
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-  
-  <!-- Auth & Config Scripts -->
-  <script src="../js/config.js"></script>
-  <script src="../js/auth.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .tab-active { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); }
-    .content-card { transition: all 0.3s ease; }
-    .content-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2); }
+    .gradient-text { 
+      background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .stat-card {
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
@@ -31,16 +32,13 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-8">
           <a href="admin-dashboard.html" class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-shield-alt text-white"></i>
-            </div>
-            <span class="text-xl font-black">Admin <span class="gradient-text">Portal</span></span>
+            <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-12">
           </a>
           <div class="hidden md:flex items-center gap-6">
-            <a href="admin-dashboard.html" class="text-gray-400 hover:text-white transition-colors">
+            <a href="admin-dashboard.html" class="text-purple-500 font-semibold">
               <i class="fas fa-chart-line mr-2"></i>Dashboard
             </a>
-            <a href="content-management.html" class="text-purple-500 font-semibold">
+            <a href="content-management.html" class="text-gray-400 hover:text-white transition-colors">
               <i class="fas fa-edit mr-2"></i>Content
             </a>
             <a href="user-management.html" class="text-gray-400 hover:text-white transition-colors">
@@ -49,7 +47,16 @@
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <span class="text-gray-400 text-sm" id="adminName">Admin</span>
+          <div class="relative">
+            <button class="relative text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-bell text-xl"></i>
+              <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center">3</span>
+            </button>
+          </div>
+          <div class="flex items-center gap-3">
+            <img src="https://i.pravatar.cc/100?img=5" alt="Admin" class="w-10 h-10 rounded-full border-2 border-purple-500">
+            <span class="text-sm font-semibold" id="adminName">Admin User</span>
+          </div>
           <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-sign-out-alt mr-2"></i>Logout
           </button>
@@ -63,567 +70,381 @@
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <h1 class="text-4xl font-black mb-2">Content Management</h1>
-        <p class="text-gray-400">Create and manage products, articles, and news</p>
+        <h1 class="text-4xl font-black mb-2">Admin <span class="gradient-text">Dashboard</span></h1>
+        <p class="text-gray-400">Welcome back! Here's what's happening with SES_MINE today.</p>
       </div>
 
-      <!-- Tabs -->
-      <div class="flex gap-4 mb-8 overflow-x-auto">
-        <button onclick="switchTab('products')" id="tab-products" class="tab-active px-6 py-3 rounded-xl font-semibold whitespace-nowrap transition-all">
-          <i class="fas fa-box mr-2"></i>Products
-        </button>
-        <button onclick="switchTab('articles')" id="tab-articles" class="bg-slate-900 hover:bg-slate-800 px-6 py-3 rounded-xl font-semibold whitespace-nowrap transition-all">
-          <i class="fas fa-newspaper mr-2"></i>Articles & News
-        </button>
-        <button onclick="switchTab('media')" id="tab-media" class="bg-slate-900 hover:bg-slate-800 px-6 py-3 rounded-xl font-semibold whitespace-nowrap transition-all">
-          <i class="fas fa-images mr-2"></i>Media Library
-        </button>
+      <!-- Stats Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Total Users -->
+        <div class="stat-card bg-gradient-to-br from-purple-500/10 to-purple-900/10 border border-purple-500/20 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-users text-purple-400 text-2xl"></i>
+            </div>
+            <span class="text-green-400 text-sm font-semibold">+12.5%</span>
+          </div>
+          <div class="text-3xl font-black mb-1" id="totalUsers">1,247</div>
+          <div class="text-gray-400 text-sm">Total Users</div>
+        </div>
+
+        <!-- Active Projects -->
+        <div class="stat-card bg-gradient-to-br from-cyan-500/10 to-cyan-900/10 border border-cyan-500/20 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-project-diagram text-cyan-400 text-2xl"></i>
+            </div>
+            <span class="text-green-400 text-sm font-semibold">+8.2%</span>
+          </div>
+          <div class="text-3xl font-black mb-1" id="activeProjects">543</div>
+          <div class="text-gray-400 text-sm">Active Projects</div>
+        </div>
+
+        <!-- Revenue -->
+        <div class="stat-card bg-gradient-to-br from-green-500/10 to-green-900/10 border border-green-500/20 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-dollar-sign text-green-400 text-2xl"></i>
+            </div>
+            <span class="text-green-400 text-sm font-semibold">+23.1%</span>
+          </div>
+          <div class="text-3xl font-black mb-1" id="revenue">$87.4K</div>
+          <div class="text-gray-400 text-sm">Monthly Revenue</div>
+        </div>
+
+        <!-- Support Tickets -->
+        <div class="stat-card bg-gradient-to-br from-amber-500/10 to-amber-900/10 border border-amber-500/20 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-ticket-alt text-amber-400 text-2xl"></i>
+            </div>
+            <span class="text-red-400 text-sm font-semibold">+3</span>
+          </div>
+          <div class="text-3xl font-black mb-1" id="tickets">24</div>
+          <div class="text-gray-400 text-sm">Open Tickets</div>
+        </div>
       </div>
 
-      <!-- Products Tab -->
-      <div id="content-products" class="tab-content">
-        <!-- Action Bar -->
+      <!-- Charts Row -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-8">
+        <!-- User Growth Chart -->
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">User Growth</h3>
+            <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+              <option>Last 90 days</option>
+            </select>
+          </div>
+          <canvas id="userGrowthChart" height="250"></canvas>
+        </div>
+
+        <!-- Revenue Chart -->
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">Revenue Overview</h3>
+            <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
+              <option>This Month</option>
+              <option>Last Month</option>
+              <option>This Year</option>
+            </select>
+          </div>
+          <canvas id="revenueChart" height="250"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Activity & Top Products -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-8">
+        <!-- Recent Users -->
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">
+              <i class="fas fa-user-plus text-purple-500 mr-2"></i>
+              Recent Users
+            </h3>
+            <a href="user-management.html" class="text-purple-400 hover:text-purple-300 text-sm font-semibold">
+              View All <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+          <div class="space-y-4" id="recentUsers">
+            <!-- Users will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Top Products -->
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">
+              <i class="fas fa-star text-amber-500 mr-2"></i>
+              Top Products
+            </h3>
+            <a href="content-management.html" class="text-purple-400 hover:text-purple-300 text-sm font-semibold">
+              View All <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+          <div class="space-y-4" id="topProducts">
+            <!-- Products will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity Log -->
+      <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
         <div class="flex items-center justify-between mb-6">
-          <div class="flex items-center gap-4">
-            <div class="relative">
-              <input 
-                type="text" 
-                id="searchProducts"
-                placeholder="Search products..."
-                class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 pl-10 text-white focus:outline-none focus:border-purple-500"
-              >
-              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-            </div>
-            <select class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500">
-              <option>All Categories</option>
-              <option>Calculators</option>
-              <option>Databases</option>
-              <option>Tools</option>
-              <option>Reports</option>
-            </select>
-          </div>
-          <button onclick="openProductModal()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-2 rounded-xl font-semibold hover:shadow-xl transition-all">
-            <i class="fas fa-plus mr-2"></i>Add Product
+          <h3 class="text-xl font-bold">
+            <i class="fas fa-history text-cyan-500 mr-2"></i>
+            Recent Activity
+          </h3>
+          <button class="text-purple-400 hover:text-purple-300 text-sm font-semibold">
+            Clear All
           </button>
         </div>
-
-        <!-- Products Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
-          <!-- Products will be loaded here -->
-        </div>
-      </div>
-
-      <!-- Articles Tab -->
-      <div id="content-articles" class="tab-content hidden">
-        <!-- Action Bar -->
-        <div class="flex items-center justify-between mb-6">
-          <div class="flex items-center gap-4">
-            <div class="relative">
-              <input 
-                type="text" 
-                id="searchArticles"
-                placeholder="Search articles..."
-                class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 pl-10 text-white focus:outline-none focus:border-purple-500"
-              >
-              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-            </div>
-            <select class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500">
-              <option>All Status</option>
-              <option>Published</option>
-              <option>Draft</option>
-              <option>Scheduled</option>
-            </select>
-          </div>
-          <button onclick="openArticleModal()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-2 rounded-xl font-semibold hover:shadow-xl transition-all">
-            <i class="fas fa-plus mr-2"></i>Add Article
-          </button>
-        </div>
-
-        <!-- Articles List -->
-        <div class="space-y-4" id="articlesGrid">
-          <!-- Articles will be loaded here -->
-        </div>
-      </div>
-
-      <!-- Media Library Tab -->
-      <div id="content-media" class="tab-content hidden">
-        <!-- Action Bar -->
-        <div class="flex items-center justify-between mb-6">
-          <div class="flex items-center gap-4">
-            <div class="relative">
-              <input 
-                type="text" 
-                id="searchMedia"
-                placeholder="Search media..."
-                class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 pl-10 text-white focus:outline-none focus:border-purple-500"
-              >
-              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-            </div>
-            <select class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-purple-500">
-              <option>All Types</option>
-              <option>Images</option>
-              <option>Videos</option>
-              <option>Documents</option>
-            </select>
-          </div>
-          <button onclick="openMediaUpload()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-2 rounded-xl font-semibold hover:shadow-xl transition-all">
-            <i class="fas fa-upload mr-2"></i>Upload Media
-          </button>
-        </div>
-
-        <!-- Media Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" id="mediaGrid">
-          <!-- Media will be loaded here -->
+        <div class="space-y-3" id="activityLog">
+          <!-- Activity will be loaded here -->
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Product Modal -->
-  <div id="productModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6 overflow-y-auto">
-    <div class="bg-slate-900 rounded-2xl border border-slate-800 w-full max-w-3xl my-8">
-      <div class="flex items-center justify-between p-6 border-b border-slate-800">
-        <h2 class="text-2xl font-bold">
-          <i class="fas fa-box text-purple-500 mr-2"></i>
-          <span id="productModalTitle">Add New Product</span>
-        </h2>
-        <button onclick="closeProductModal()" class="text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-      </div>
-      
-      <form id="productForm" onsubmit="saveProduct(event)" class="p-6 space-y-6">
-        <input type="hidden" id="productId">
-        
-        <!-- Product Name -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-tag text-purple-500 mr-2"></i>Product Name
-          </label>
-          <input 
-            type="text" 
-            id="productName"
-            required
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="e.g., Advanced Cost Calculator"
-          >
-        </div>
-
-        <!-- Category & Type -->
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-folder text-purple-500 mr-2"></i>Category
-            </label>
-            <select 
-              id="productCategory"
-              required
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            >
-              <option value="">Select Category</option>
-              <option value="calculator">Calculator</option>
-              <option value="database">Database</option>
-              <option value="tool">Tool</option>
-              <option value="report">Report</option>
-              <option value="hub">Hub</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-layer-group text-purple-500 mr-2"></i>Product Type
-            </label>
-            <select 
-              id="productType"
-              required
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            >
-              <option value="">Select Type</option>
-              <option value="free">Free</option>
-              <option value="premium">Premium</option>
-              <option value="enterprise">Enterprise</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-align-left text-purple-500 mr-2"></i>Short Description
-          </label>
-          <textarea 
-            id="productDescription"
-            required
-            rows="3"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="Brief description of the product..."
-          ></textarea>
-        </div>
-
-        <!-- Features -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-list text-purple-500 mr-2"></i>Key Features (one per line)
-          </label>
-          <textarea 
-            id="productFeatures"
-            rows="4"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="Feature 1&#10;Feature 2&#10;Feature 3"
-          ></textarea>
-        </div>
-
-        <!-- Pricing -->
-        <div class="grid md:grid-cols-3 gap-4">
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-dollar-sign text-purple-500 mr-2"></i>Price
-            </label>
-            <input 
-              type="number" 
-              id="productPrice"
-              step="0.01"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-              placeholder="0.00"
-            >
-          </div>
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-percentage text-purple-500 mr-2"></i>Discount %
-            </label>
-            <input 
-              type="number" 
-              id="productDiscount"
-              min="0"
-              max="100"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-              placeholder="0"
-            >
-          </div>
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-clock text-purple-500 mr-2"></i>Billing Period
-            </label>
-            <select 
-              id="productPeriod"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            >
-              <option value="one-time">One-time</option>
-              <option value="monthly">Monthly</option>
-              <option value="yearly">Yearly</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Image URL -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-image text-purple-500 mr-2"></i>Product Image URL
-          </label>
-          <input 
-            type="url" 
-            id="productImage"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="https://example.com/image.jpg"
-          >
-        </div>
-
-        <!-- Product URL -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-link text-purple-500 mr-2"></i>Product Page URL
-          </label>
-          <input 
-            type="text" 
-            id="productUrl"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="/products/product-name.html"
-          >
-        </div>
-
-        <!-- Status -->
-        <div>
-          <label class="flex items-center cursor-pointer">
-            <input type="checkbox" id="productActive" checked class="w-5 h-5 rounded border-slate-700 text-purple-500 focus:ring-purple-500">
-            <span class="ml-3 font-semibold">
-              <i class="fas fa-check-circle text-green-500 mr-2"></i>Active (visible to users)
-            </span>
-          </label>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="flex gap-4 pt-4 border-t border-slate-800">
-          <button 
-            type="button" 
-            onclick="closeProductModal()"
-            class="flex-1 bg-slate-800 hover:bg-slate-700 py-3 rounded-xl font-semibold transition-all"
-          >
-            Cancel
-          </button>
-          <button 
-            type="submit"
-            class="flex-1 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 py-3 rounded-xl font-semibold transition-all"
-          >
-            <i class="fas fa-save mr-2"></i>Save Product
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Article Modal -->
-  <div id="articleModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6 overflow-y-auto">
-    <div class="bg-slate-900 rounded-2xl border border-slate-800 w-full max-w-4xl my-8">
-      <div class="flex items-center justify-between p-6 border-b border-slate-800">
-        <h2 class="text-2xl font-bold">
-          <i class="fas fa-newspaper text-purple-500 mr-2"></i>
-          <span id="articleModalTitle">Add New Article</span>
-        </h2>
-        <button onclick="closeArticleModal()" class="text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-      </div>
-      
-      <form id="articleForm" onsubmit="saveArticle(event)" class="p-6 space-y-6">
-        <input type="hidden" id="articleId">
-        
-        <!-- Article Title -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-heading text-purple-500 mr-2"></i>Article Title
-          </label>
-          <input 
-            type="text" 
-            id="articleTitle"
-            required
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="Enter article title..."
-          >
-        </div>
-
-        <!-- Category & Author -->
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-folder text-purple-500 mr-2"></i>Category
-            </label>
-            <select 
-              id="articleCategory"
-              required
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            >
-              <option value="">Select Category</option>
-              <option value="news">News</option>
-              <option value="tutorial">Tutorial</option>
-              <option value="case-study">Case Study</option>
-              <option value="industry-insights">Industry Insights</option>
-              <option value="product-updates">Product Updates</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-user text-purple-500 mr-2"></i>Author
-            </label>
-            <input 
-              type="text" 
-              id="articleAuthor"
-              required
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-              placeholder="Author name"
-            >
-          </div>
-        </div>
-
-        <!-- Excerpt -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-quote-left text-purple-500 mr-2"></i>Excerpt
-          </label>
-          <textarea 
-            id="articleExcerpt"
-            required
-            rows="2"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="Brief summary of the article..."
-          ></textarea>
-        </div>
-
-        <!-- Content Editor -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-file-alt text-purple-500 mr-2"></i>Article Content
-          </label>
-          <textarea 
-            id="articleContent"
-            rows="12"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="Write your article content here..."
-          ></textarea>
-        </div>
-
-        <!-- Featured Image -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-image text-purple-500 mr-2"></i>Featured Image URL
-          </label>
-          <input 
-            type="url" 
-            id="articleImage"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="https://example.com/image.jpg"
-          >
-        </div>
-
-        <!-- Tags -->
-        <div>
-          <label class="block text-sm font-semibold mb-2">
-            <i class="fas fa-tags text-purple-500 mr-2"></i>Tags (comma separated)
-          </label>
-          <input 
-            type="text" 
-            id="articleTags"
-            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            placeholder="mining, cost, optimization"
-          >
-        </div>
-
-        <!-- Publishing Options -->
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-calendar text-purple-500 mr-2"></i>Publish Date
-            </label>
-            <input 
-              type="datetime-local" 
-              id="articlePublishDate"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            >
-          </div>
-          <div>
-            <label class="block text-sm font-semibold mb-2">
-              <i class="fas fa-toggle-on text-purple-500 mr-2"></i>Status
-            </label>
-            <select 
-              id="articleStatus"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500"
-            >
-              <option value="draft">Draft</option>
-              <option value="published">Published</option>
-              <option value="scheduled">Scheduled</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Featured Toggle -->
-        <div>
-          <label class="flex items-center cursor-pointer">
-            <input type="checkbox" id="articleFeatured" class="w-5 h-5 rounded border-slate-700 text-purple-500 focus:ring-purple-500">
-            <span class="ml-3 font-semibold">
-              <i class="fas fa-star text-amber-500 mr-2"></i>Featured Article
-            </span>
-          </label>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="flex gap-4 pt-4 border-t border-slate-800">
-          <button 
-            type="button" 
-            onclick="closeArticleModal()"
-            class="flex-1 bg-slate-800 hover:bg-slate-700 py-3 rounded-xl font-semibold transition-all"
-          >
-            Cancel
-          </button>
-          <button 
-            type="button"
-            onclick="saveArticle(event, 'draft')"
-            class="flex-1 bg-slate-700 hover:bg-slate-600 py-3 rounded-xl font-semibold transition-all"
-          >
-            <i class="fas fa-save mr-2"></i>Save Draft
-          </button>
-          <button 
-            type="submit"
-            class="flex-1 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 py-3 rounded-xl font-semibold transition-all"
-          >
-            <i class="fas fa-paper-plane mr-2"></i>Publish
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Media Upload Modal -->
-  <div id="mediaModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6">
-    <div class="bg-slate-900 rounded-2xl border border-slate-800 w-full max-w-2xl">
-      <div class="flex items-center justify-between p-6 border-b border-slate-800">
-        <h2 class="text-2xl font-bold">
-          <i class="fas fa-upload text-purple-500 mr-2"></i>Upload Media
-        </h2>
-        <button onclick="closeMediaModal()" class="text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-      </div>
-      
-      <div class="p-6">
-        <!-- Drag & Drop Area -->
-        <div class="border-2 border-dashed border-slate-700 rounded-xl p-12 text-center hover:border-purple-500 transition-colors cursor-pointer" onclick="document.getElementById('fileInput').click()">
-          <i class="fas fa-cloud-upload-alt text-6xl text-purple-500 mb-4"></i>
-          <p class="text-xl font-semibold mb-2">Drop files here or click to upload</p>
-          <p class="text-gray-400 text-sm">Supports: JPG, PNG, GIF, PDF, MP4 (Max 10MB)</p>
-          <input type="file" id="fileInput" multiple class="hidden" onchange="handleFileUpload(event)">
-        </div>
-
-        <!-- Upload Progress -->
-        <div id="uploadProgress" class="hidden mt-6">
-          <div class="bg-slate-950 rounded-xl p-4">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-sm font-semibold">Uploading...</span>
-              <span class="text-sm text-gray-400" id="uploadPercent">0%</span>
-            </div>
-            <div class="w-full bg-slate-800 rounded-full h-2">
-              <div id="uploadBar" class="bg-gradient-to-r from-purple-500 to-pink-600 h-2 rounded-full transition-all" style="width: 0%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="../js/admin-content.js"></script>
   <script>
-    // Require admin authentication
-    requireAdmin();
+    // Initialize Dashboard Data
+    const dashboardData = {
+      users: [
+        { id: 1, name: 'John Smith', email: 'john@globalmine.com', company: 'GlobalMine Corp', plan: 'Professional', joined: '2 hours ago', avatar: 12 },
+        { id: 2, name: 'Sarah Johnson', email: 'sarah@minemax.com', company: 'MineMax Ltd', plan: 'Starter', joined: '5 hours ago', avatar: 47 },
+        { id: 3, name: 'Michael Chen', email: 'michael@ecomine.com', company: 'EcoMine Inc', plan: 'Professional', joined: '1 day ago', avatar: 33 },
+        { id: 4, name: 'Emily Rodriguez', email: 'emily@pacific.com', company: 'Pacific Mining', plan: 'Free', joined: '2 days ago', avatar: 68 },
+        { id: 5, name: 'David Thompson', email: 'david@northern.com', company: 'Northern Resources', plan: 'Starter', joined: '3 days ago', avatar: 15 }
+      ],
+      products: [
+        { name: 'AI Cost Calculator', usage: 1247, growth: '+23%', color: 'cyan' },
+        { name: 'Equipment Database', usage: 892, growth: '+18%', color: 'purple' },
+        { name: 'Analytics Dashboard', usage: 654, growth: '+31%', color: 'blue' },
+        { name: 'ESG Dashboard', usage: 432, growth: '+12%', color: 'green' },
+        { name: 'AI Predictor', usage: 287, growth: '+45%', color: 'pink' }
+      ],
+      activities: [
+        { type: 'user', icon: 'fa-user-plus', color: 'green', text: 'New user registered: John Smith', time: '5 minutes ago' },
+        { type: 'project', icon: 'fa-project-diagram', color: 'cyan', text: 'New project created: Copper Mine Expansion', time: '15 minutes ago' },
+        { type: 'payment', icon: 'fa-dollar-sign', color: 'green', text: 'Payment received: $149.00 from MineMax Ltd', time: '1 hour ago' },
+        { type: 'support', icon: 'fa-ticket-alt', color: 'amber', text: 'Support ticket opened: Database access issue', time: '2 hours ago' },
+        { type: 'content', icon: 'fa-edit', color: 'purple', text: 'Article published: Mining Industry Trends 2026', time: '3 hours ago' },
+        { type: 'user', icon: 'fa-user-check', color: 'blue', text: 'User upgraded to Professional plan', time: '4 hours ago' },
+        { type: 'system', icon: 'fa-cog', color: 'gray', text: 'System backup completed successfully', time: '6 hours ago' },
+        { type: 'security', icon: 'fa-shield-alt', color: 'red', text: 'Failed login attempt detected', time: '8 hours ago' }
+      ]
+    };
 
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      const user = getCurrentUser();
-      if (user) {
-        document.getElementById('adminName').textContent = user.name;
+    // Load Recent Users
+    function loadRecentUsers() {
+      const container = document.getElementById('recentUsers');
+      container.innerHTML = dashboardData.users.map(user => `
+        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-all">
+          <div class="flex items-center gap-3">
+            <img src="https://i.pravatar.cc/100?img=${user.avatar}" alt="${user.name}" class="w-12 h-12 rounded-full border-2 border-purple-500">
+            <div>
+              <div class="font-semibold">${user.name}</div>
+              <div class="text-sm text-gray-400">${user.email}</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm font-semibold ${user.plan === 'Professional' ? 'text-purple-400' : user.plan === 'Starter' ? 'text-cyan-400' : 'text-gray-400'}">${user.plan}</div>
+            <div class="text-xs text-gray-500">${user.joined}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Load Top Products
+    function loadTopProducts() {
+      const container = document.getElementById('topProducts');
+      container.innerHTML = dashboardData.products.map(product => `
+        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-${product.color}-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-box text-${product.color}-400"></i>
+            </div>
+            <div>
+              <div class="font-semibold">${product.name}</div>
+              <div class="text-sm text-gray-400">${product.usage} users</div>
+            </div>
+          </div>
+          <div class="text-green-400 font-semibold">${product.growth}</div>
+        </div>
+      `).join('');
+    }
+
+    // Load Activity Log
+    function loadActivityLog() {
+      const container = document.getElementById('activityLog');
+      container.innerHTML = dashboardData.activities.map(activity => `
+        <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
+          <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fas ${activity.icon} text-${activity.color}-400"></i>
+          </div>
+          <div class="flex-1">
+            <div class="text-sm">${activity.text}</div>
+            <div class="text-xs text-gray-500 mt-1">${activity.time}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // User Growth Chart
+    function createUserGrowthChart() {
+      const ctx = document.getElementById('userGrowthChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'New Users',
+            data: [12, 19, 15, 25, 22, 30, 28],
+            borderColor: '#8b5cf6',
+            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
+              ticks: { color: '#94a3b8' }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: '#94a3b8' }
+            }
+          }
+        }
+      });
+    }
+
+    // Revenue Chart
+    function createRevenueChart() {
+      const ctx = document.getElementById('revenueChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          datasets: [{
+            label: 'Revenue',
+            data: [18500, 22300, 19800, 26800],
+            backgroundColor: [
+              'rgba(6, 182, 212, 0.8)',
+              'rgba(139, 92, 246, 0.8)',
+              'rgba(236, 72, 153, 0.8)',
+              'rgba(34, 197, 94, 0.8)'
+            ],
+            borderRadius: 8,
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
+              ticks: { 
+                color: '#94a3b8',
+                callback: function(value) {
+                  return '$' + (value / 1000) + 'K';
+                }
+              }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: '#94a3b8' }
+            }
+          }
+        }
+      });
+    }
+
+    // Animate Stats
+    function animateStats() {
+      const stats = [
+        { id: 'totalUsers', target: 1247, prefix: '', suffix: '' },
+        { id: 'activeProjects', target: 543, prefix: '', suffix: '' },
+        { id: 'revenue', target: 87.4, prefix: '$', suffix: 'K' },
+        { id: 'tickets', target: 24, prefix: '', suffix: '' }
+      ];
+
+      stats.forEach(stat => {
+        const element = document.getElementById(stat.id);
+        let current = 0;
+        const increment = stat.target / 50;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= stat.target) {
+            current = stat.target;
+            clearInterval(timer);
+          }
+          element.textContent = stat.prefix + (stat.suffix === 'K' ? current.toFixed(1) : Math.floor(current)) + stat.suffix;
+        }, 20);
+      });
+    }
+
+    // Logout Function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('adminToken');
+        window.location.href = 'admin-login.html';
       }
+    }
+
+    // Check Authentication
+    function checkAuth() {
+      const token = localStorage.getItem('adminToken');
+      if (!token) {
+        window.location.href = 'admin-login.html';
+        return false;
+      }
+      return true;
+    }
+
+    // Initialize Dashboard
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!checkAuth()) return;
       
-      // Load initial data
-      loadProducts();
-      loadArticles();
-      loadMedia();
-      
-      // Set current date for article publish date
-      const now = new Date();
-      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-      document.getElementById('articlePublishDate').value = now.toISOString().slice(0, 16);
+      // Load admin name from localStorage
+      const adminName = localStorage.getItem('adminName') || 'Admin User';
+      document.getElementById('adminName').textContent = adminName;
+
+      // Load all data
+      loadRecentUsers();
+      loadTopProducts();
+      loadActivityLog();
+      createUserGrowthChart();
+      createRevenueChart();
+      animateStats();
+
+      // Auto-refresh data every 30 seconds
+      setInterval(() => {
+        loadActivityLog();
+      }, 30000);
     });
 
-    // Tab switching
-    function switchTab(tab) {
-      // Hide all tabs
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('[id^="tab-"]').forEach(el => {
-        el.classList.remove('tab-active');
-        el.classList.add('bg-slate-900', 'hover:bg-slate-800');
-      });
-      
-      // Show selected tab
-      document.getElementById('content-' + tab).classList.remove('hidden');
-      document.getElementById('tab-' + tab).classList.add('tab-active');
-      document.getElementById('tab-' + tab).classList.remove('bg-slate-900', 'hover:bg-slate-800');
-    }
+    // Real-time updates simulation
+    setInterval(() => {
+      const totalUsers = document.getElementById('totalUsers');
+      const current = parseInt(totalUsers.textContent);
+      totalUsers.textContent = current + Math.floor(Math.random() * 3);
+    }, 60000);
   </script>
 </body>
 </html>
