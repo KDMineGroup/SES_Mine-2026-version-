@@ -4,202 +4,378 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up | SES_MINE</title>
-  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/auth.js"></script>
   <style>
-    * { font-family: 'Inter', sans-serif; }
+    * { 
+      font-family: 'Inter', sans-serif;
+    }
     .gradient-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
     }
     .gradient-text {
       background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .glass-effect {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+    .input-glow:focus {
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
   </style>
 </head>
-<body class="gradient-bg min-h-screen">
-  <div class="min-h-screen flex items-center justify-center px-4 py-12">
-    <div class="max-w-md w-full">
-      <div class="text-center mb-8">
-        <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png" alt="SES_MINE" class="h-16 mx-auto mb-4">
-        <h1 class="text-4xl font-black mb-2">Create Account</h1>
-        <p class="text-gray-400">Join SES_MINE and transform your mining operations</p>
-      </div>
+<body class="gradient-bg text-white min-h-screen">
+  <!-- Background Decorations -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
+  </div>
 
-      <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
-        <form id="signupForm" class="space-y-4">
-          <div>
-            <label class="block text-sm font-semibold mb-2">Full Name</label>
-            <input type="text" id="fullName" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="John Smith">
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold mb-2">Email Address</label>
-            <input type="email" id="email" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="john@company.com">
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold mb-2">Company Name</label>
-            <input type="text" id="company" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="Mining Corp Ltd">
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold mb-2">Phone Number (Optional)</label>
-            <input type="tel" id="phone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="+1 (555) 000-0000">
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold mb-2">Password</label>
-            <div class="relative">
-              <input type="password" id="password" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 pr-12 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="••••••••">
-              <button type="button" onclick="togglePassword('password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
-                <i class="fas fa-eye" id="password-eye"></i>
-              </button>
-            </div>
-            <div id="passwordStrength" class="mt-2 text-sm"></div>
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold mb-2">Confirm Password</label>
-            <div class="relative">
-              <input type="password" id="confirmPassword" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 pr-12 focus:border-cyan-500 focus:outline-none transition-colors" placeholder="••••••••">
-              <button type="button" onclick="togglePassword('confirmPassword')" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
-                <i class="fas fa-eye" id="confirmPassword-eye"></i>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold mb-2">Select Plan</label>
-            <select id="plan" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition-colors">
-              <option value="free">Free - $0/month (Basic Access)</option>
-              <option value="starter">Starter - $49/month (Recommended)</option>
-              <option value="professional">Professional - $149/month (Full Access)</option>
-              <option value="enterprise">Enterprise - Custom Pricing</option>
-            </select>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="terms" required class="mt-1">
-            <label for="terms" class="text-sm text-gray-400">
-              I agree to the <a href="#" class="text-cyan-400 hover:text-cyan-300">Terms of Service</a> and <a href="#" class="text-cyan-400 hover:text-cyan-300">Privacy Policy</a>
-            </label>
-          </div>
-
-          <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 px-6 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
-            <i class="fas fa-user-plus mr-2"></i>Create Account
-          </button>
-        </form>
-
-        <div class="mt-6 text-center">
-          <p class="text-gray-400">Already have an account? <a href="login.html" class="text-cyan-400 hover:text-cyan-300 font-semibold">Sign In</a></p>
-        </div>
-
-        <div class="mt-6">
-          <div class="relative">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-slate-800"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-4 bg-slate-900 text-gray-400">Or sign up with</span>
-            </div>
-          </div>
-
-          <div class="mt-6 grid grid-cols-2 gap-4">
-            <button class="flex items-center justify-center gap-2 bg-slate-950 border border-slate-800 hover:border-slate-700 px-4 py-3 rounded-lg transition-colors">
-              <i class="fab fa-google text-red-400"></i>
-              <span>Google</span>
-            </button>
-            <button class="flex items-center justify-center gap-2 bg-slate-950 border border-slate-800 hover:border-slate-700 px-4 py-3 rounded-lg transition-colors">
-              <i class="fab fa-microsoft text-blue-400"></i>
-              <span>Microsoft</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-6 text-center">
-        <a href="../index.html" class="text-gray-400 hover:text-white transition-colors">
-          <i class="fas fa-arrow-left mr-2"></i>Back to Home
+  <!-- Navigation -->
+  <nav class="relative z-50 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE Logo" class="h-14">
+      </a>
+      <div class="flex items-center gap-4">
+        <span class="text-gray-400 text-sm">Already have an account?</span>
+        <a href="login.html" class="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors">
+          Sign In
         </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Side - Form -->
+      <div class="order-2 lg:order-1">
+        <div class="glass-effect rounded-3xl p-8 lg:p-12 shadow-2xl">
+          <!-- Header -->
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-full px-4 py-2 mb-4">
+              <i class="fas fa-rocket text-cyan-400"></i>
+              <span class="text-cyan-400 text-sm font-semibold">START YOUR FREE TRIAL</span>
+            </div>
+            <h1 class="text-4xl font-black mb-3">Create Your <span class="gradient-text">Account</span></h1>
+            <p class="text-gray-400">Join thousands of mining professionals worldwide</p>
+          </div>
+
+          <!-- Social Sign Up -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <button class="flex items-center justify-center gap-3 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 rounded-xl px-4 py-3 transition-all group">
+              <i class="fab fa-google text-xl text-red-400 group-hover:scale-110 transition-transform"></i>
+              <span class="font-semibold">Google</span>
+            </button>
+            <button class="flex items-center justify-center gap-3 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 rounded-xl px-4 py-3 transition-all group">
+              <i class="fab fa-linkedin text-xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+              <span class="font-semibold">LinkedIn</span>
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="flex items-center gap-4 mb-6">
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+            <span class="text-sm text-gray-500 font-medium">OR</span>
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+          </div>
+
+          <!-- Sign Up Form -->
+          <form class="space-y-5">
+            <!-- Name Fields -->
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-300">
+                  <i class="fas fa-user text-cyan-400 mr-2"></i>First Name
+                </label>
+                <input type="text" placeholder="John" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 input-glow transition-all">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-300">
+                  <i class="fas fa-user text-cyan-400 mr-2"></i>Last Name
+                </label>
+                <input type="text" placeholder="Doe" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 input-glow transition-all">
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-gray-300">
+                <i class="fas fa-envelope text-cyan-400 mr-2"></i>Work Email
+              </label>
+              <input type="email" placeholder="john.doe@company.com" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 input-glow transition-all">
+            </div>
+
+            <!-- Company -->
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-gray-300">
+                <i class="fas fa-building text-cyan-400 mr-2"></i>Company Name
+              </label>
+              <input type="text" placeholder="Your Mining Company" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 input-glow transition-all">
+            </div>
+
+            <!-- Job Title -->
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-gray-300">
+                <i class="fas fa-briefcase text-cyan-400 mr-2"></i>Job Title
+              </label>
+              <select required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 input-glow transition-all">
+                <option value="">Select your role</option>
+                <option value="engineer">Mining Engineer</option>
+                <option value="manager">Project Manager</option>
+                <option value="executive">Executive/C-Level</option>
+                <option value="analyst">Cost Analyst</option>
+                <option value="consultant">Consultant</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Password -->
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-gray-300">
+                <i class="fas fa-lock text-cyan-400 mr-2"></i>Password
+              </label>
+              <div class="relative">
+                <input type="password" id="password" placeholder="Create a strong password" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 input-glow transition-all">
+                <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors">
+                  <i class="fas fa-eye" id="toggleIcon"></i>
+                </button>
+              </div>
+              <div class="mt-2 flex items-center gap-2 text-xs">
+                <div class="flex-1 h-1 bg-slate-700 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 w-0" id="strengthBar"></div>
+                </div>
+                <span id="strengthText" class="text-gray-500 font-medium">Weak</span>
+              </div>
+            </div>
+
+            <!-- Plan Selection -->
+            <div>
+              <label class="block text-sm font-semibold mb-3 text-gray-300">
+                <i class="fas fa-crown text-cyan-400 mr-2"></i>Choose Your Plan
+              </label>
+              <div class="grid grid-cols-3 gap-3">
+                <label class="relative cursor-pointer">
+                  <input type="radio" name="plan" value="free" class="peer sr-only" checked>
+                  <div class="bg-slate-800/50 border-2 border-slate-700 peer-checked:border-green-500 peer-checked:bg-green-500/10 rounded-xl p-4 text-center transition-all hover:border-green-500/50">
+                    <div class="text-2xl mb-1">🆓</div>
+                    <div class="font-bold text-sm">Free</div>
+                    <div class="text-xs text-gray-400">$0/mo</div>
+                  </div>
+                </label>
+                <label class="relative cursor-pointer">
+                  <input type="radio" name="plan" value="starter" class="peer sr-only">
+                  <div class="bg-slate-800/50 border-2 border-slate-700 peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 rounded-xl p-4 text-center transition-all hover:border-cyan-500/50">
+                    <div class="text-2xl mb-1">🚀</div>
+                    <div class="font-bold text-sm">Starter</div>
+                    <div class="text-xs text-gray-400">$49/mo</div>
+                  </div>
+                </label>
+                <label class="relative cursor-pointer">
+                  <input type="radio" name="plan" value="pro" class="peer sr-only">
+                  <div class="bg-slate-800/50 border-2 border-slate-700 peer-checked:border-purple-500 peer-checked:bg-purple-500/10 rounded-xl p-4 text-center transition-all hover:border-purple-500/50">
+                    <div class="text-2xl mb-1">👑</div>
+                    <div class="font-bold text-sm">Pro</div>
+                    <div class="text-xs text-gray-400">$149/mo</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Terms -->
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="terms" required class="mt-1 w-5 h-5 rounded border-slate-700 bg-slate-800/50 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-0 cursor-pointer">
+              <label for="terms" class="text-sm text-gray-400 cursor-pointer">
+                I agree to the <a href="#" class="text-cyan-400 hover:text-cyan-300 font-semibold">Terms of Service</a> and <a href="#" class="text-cyan-400 hover:text-cyan-300 font-semibold">Privacy Policy</a>
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition-all transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50 flex items-center justify-center gap-3">
+              <i class="fas fa-rocket"></i>
+              <span>Start Free Trial</span>
+            </button>
+
+            <!-- Trust Badges -->
+            <div class="flex items-center justify-center gap-6 pt-4 text-xs text-gray-500">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle text-green-400"></i>
+                <span>No credit card</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle text-green-400"></i>
+                <span>14-day trial</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle text-green-400"></i>
+                <span>Cancel anytime</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Side - Benefits -->
+      <div class="order-1 lg:order-2">
+        <div class="mb-8">
+          <h2 class="text-5xl font-black mb-4 leading-tight">
+            Join <span class="gradient-text">500+</span> Mining Companies
+          </h2>
+          <p class="text-xl text-gray-400 leading-relaxed">
+            Transform your mining operations with AI-powered cost estimation and comprehensive project management tools.
+          </p>
+        </div>
+
+        <!-- Features -->
+        <div class="space-y-4 mb-8">
+          <div class="feature-card glass-effect rounded-2xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-brain text-white text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-1">AI Cost Estimation</h3>
+              <p class="text-gray-400 text-sm">94.2% accuracy with machine learning algorithms trained on thousands of projects</p>
+            </div>
+          </div>
+
+          <div class="feature-card glass-effect rounded-2xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-database text-white text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-1">10,000+ Equipment Database</h3>
+              <p class="text-gray-400 text-sm">Comprehensive specs, pricing, and vendor information updated daily</p>
+            </div>
+          </div>
+
+          <div class="feature-card glass-effect rounded-2xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-chart-line text-white text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-1">Real-time Analytics</h3>
+              <p class="text-gray-400 text-sm">Advanced dashboards with predictive insights and custom reporting</p>
+            </div>
+          </div>
+
+          <div class="feature-card glass-effect rounded-2xl p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-alt text-white text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-1">Enterprise Security</h3>
+              <p class="text-gray-400 text-sm">Bank-level encryption, SOC 2 compliance, and daily backups</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial -->
+        <div class="glass-effect rounded-2xl p-6 border-l-4 border-cyan-500">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fas fa-star text-amber-400"></i>
+            <i class="fas fa-star text-amber-400"></i>
+            <i class="fas fa-star text-amber-400"></i>
+            <i class="fas fa-star text-amber-400"></i>
+            <i class="fas fa-star text-amber-400"></i>
+          </div>
+          <p class="text-gray-300 mb-4 italic">"SES_MINE reduced our project estimation time by 75% and improved accuracy significantly. Best investment we've made!"</p>
+          <div class="flex items-center gap-3">
+            <img src="https://i.pravatar.cc/100?img=12" alt="User" class="w-12 h-12 rounded-full border-2 border-cyan-500">
+            <div>
+              <div class="font-bold">Sarah Johnson</div>
+              <div class="text-sm text-gray-400">Operations Director, GlobalMine Corp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <div class="text-center">
+            <div class="text-3xl font-black gradient-text mb-1">500+</div>
+            <div class="text-xs text-gray-400">Companies</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-black gradient-text mb-1">$2.5B+</div>
+            <div class="text-xs text-gray-400">Managed</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-black gradient-text mb-1">94.2%</div>
+            <div class="text-xs text-gray-400">Accuracy</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="relative z-10 text-center py-8 px-6 text-sm text-gray-500">
+    <p>© 2026 SES_MINE. All rights reserved. | <a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a> | <a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a></p>
+  </footer>
+
   <script>
-    function togglePassword(fieldId) {
-      const field = document.getElementById(fieldId);
-      const eye = document.getElementById(fieldId + '-eye');
-      if (field.type === 'password') {
-        field.type = 'text';
-        eye.classList.remove('fa-eye');
-        eye.classList.add('fa-eye-slash');
+    // Password Toggle
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('toggleIcon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
       } else {
-        field.type = 'password';
-        eye.classList.remove('fa-eye-slash');
-        eye.classList.add('fa-eye');
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
       }
     }
 
+    // Password Strength
     document.getElementById('password').addEventListener('input', function(e) {
-      const validation = validatePassword(e.target.value);
-      const strengthDiv = document.getElementById('passwordStrength');
+      const password = e.target.value;
+      const strengthBar = document.getElementById('strengthBar');
+      const strengthText = document.getElementById('strengthText');
       
-      let color = 'text-red-400';
-      if (validation.strength === 'medium') color = 'text-amber-400';
-      if (validation.strength === 'strong') color = 'text-green-400';
+      let strength = 0;
+      if (password.length >= 8) strength += 25;
+      if (password.match(/[a-z]+/)) strength += 25;
+      if (password.match(/[A-Z]+/)) strength += 25;
+      if (password.match(/[0-9]+/)) strength += 25;
       
-      strengthDiv.innerHTML = `<span class="${color}">${validation.message}</span>`;
-    });
-
-    document.getElementById('signupForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
+      strengthBar.style.width = strength + '%';
       
-      const fullName = document.getElementById('fullName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const company = document.getElementById('company').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      const plan = document.getElementById('plan').value;
-      const terms = document.getElementById('terms').checked;
-
-      if (!terms) {
-        alert('Please accept the Terms of Service');
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        alert('Passwords do not match');
-        return;
-      }
-
-      const submitButton = e.target.querySelector('button[type="submit"]');
-      submitButton.disabled = true;
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Creating Account...';
-
-      const result = await handleSignup({
-        fullName,
-        email,
-        company,
-        phone,
-        password,
-        plan
-      });
-
-      if (result.success) {
-        alert('✅ Account created successfully! Check your email for verification code.');
-        window.location.href = 'login.html';
+      if (strength <= 25) {
+        strengthText.textContent = 'Weak';
+        strengthText.className = 'text-red-400 font-medium';
+      } else if (strength <= 50) {
+        strengthText.textContent = 'Fair';
+        strengthText.className = 'text-yellow-400 font-medium';
+      } else if (strength <= 75) {
+        strengthText.textContent = 'Good';
+        strengthText.className = 'text-blue-400 font-medium';
       } else {
-        alert('❌ Error: ' + result.error);
-        submitButton.disabled = false;
-        submitButton.innerHTML = '<i class="fas fa-user-plus mr-2"></i>Create Account';
+        strengthText.textContent = 'Strong';
+        strengthText.className = 'text-green-400 font-medium';
       }
     });
   </script>
