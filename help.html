@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { 
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent);
+    }
+  </style>
+</head>
+<body class="gradient-bg text-white">
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-6 py-3">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE Logo" class="h-16">
+        </a>
+        
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a>
+          <a href="auth/login.html" class="hover:text-cyan-400 transition-colors">Login</a>
+          <a href="auth/signup.html" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2.5 rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-4 py-2 mb-6">
+        <i class="fas fa-life-ring text-cyan-400"></i>
+        <span class="text-cyan-400 text-sm font-semibold">HELP CENTER</span>
+      </div>
+      <h1 class="text-6xl font-black mb-6">How Can We <span class="gradient-text">Help You?</span></h1>
+      <p class="text-xl text-gray-400 mb-10 max-w-3xl mx-auto">Find answers, explore our services, and navigate through SES_MINE platform</p>
+      
+      <!-- Search Bar -->
+      <div class="max-w-2xl mx-auto">
+        <div class="relative">
+          <input type="text" placeholder="Search for help articles, guides, or services..." class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-6 py-4 pl-14 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-all">
+          <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-gray-500"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-6">
+        <a href="#sitemap" class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all text-center group">
+          <div class="w-16 h-16 bg-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <i class="fas fa-sitemap text-cyan-400 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Site Map</h3>
+          <p class="text-sm text-gray-400">Navigate all pages</p>
+        </a>
+
+        <a href="#services" class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all text-center group">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <i class="fas fa-concierge-bell text-blue-400 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Services Review</h3>
+          <p class="text-sm text-gray-400">Explore all services</p>
+        </a>
+
+        <a href="#faq" class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-purple-500/50 transition-all text-center group">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <i class="fas fa-question-circle text-purple-400 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">FAQ</h3>
+          <p class="text-sm text-gray-400">Common questions</p>
+        </a>
+
+        <a href="#contact" class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-green-500/50 transition-all text-center group">
+          <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <i class="fas fa-headset text-green-400 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Contact Support</h3>
+          <p class="text-sm text-gray-400">Get in touch</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Site Map Section -->
+  <section id="sitemap" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black mb-4">Complete <span class="gradient-text">Site Map</span></h2>
+        <p class="text-xl text-gray-400">Navigate through all pages and sections of SES_MINE</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Main Pages -->
+        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-home text-cyan-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">Main Pages</h3>
+          </div>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Home</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> About Us</a></li>
+            <li><a href="pricing/index.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Pricing</a></li>
+            <li><a href="news.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> News & Updates</a></li>
+            <li><a href="help-center.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Help Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Authentication -->
+        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-user-lock text-blue-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">Authentication</h3>
+          </div>
+          <ul class="space-y-3">
+            <li><a href="auth/login.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Login</a></li>
+            <li><a href="auth/signup.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Sign Up</a></li>
+            <li><a href="auth/forgot-password.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Forgot Password</a></li>
+          </ul>
+        </div>
+
+        <!-- Admin -->
+        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-user-shield text-amber-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">Admin Panel</h3>
+          </div>
+          <ul class="space-y-3">
+            <li><a href="admin/admin-login.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Admin Login</a></li>
+            <li><a href="admin/user-management.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> User Management</a></li>
+          </ul>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-th-large text-purple-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">Dashboard</h3>
+          </div>
+          <ul class="space-y-3">
+            <li><a href="dashboard/index.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Main Dashboard</a></li>
+            <li><a href="dashboard/analytics.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Analytics</a></li>
+          </ul>
+        </div>
+
+        <!-- Hubs -->
+        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-layer-group text-green-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">9 Solution Hubs</h3>
+          </div>
+          <ul class="space-y-3">
+            <li><a href="hubs/engineering-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Engineering Hub</a></li>
+            <li><a href="hubs/economics-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Economics Hub</a></li>
+            <li><a href="hubs/innovation-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Innovation Hub</a></li>
+            <li><a href="hubs/procurement-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Procurement Hub</a></li>
+            <li><a href="hubs/consulting-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Consulting Hub</a></li>
+            <li><a href="hubs/sustainability-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Sustainability Hub</a></li>
+            <li><a href="hubs/operations-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Operations Hub</a></li>
+            <li><a href="hubs/safety-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Safety Hub</a></li>
+            <li><a href="hubs/analytics-hub.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Analytics Hub</a></li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-box-open text-pink-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold">Products</h3>
+          </div>
+          <ul class="space-y-3">
+            <li><a href="products/cost-calculator.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Cost Calculator</a></li>
+            <li><a href="products/equipment-database.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Equipment Database</a></li>
+            <li><a href="products/analytics-dashboard.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Analytics Dashboard</a></li>
+            <li><a href="products/esg-dashboard.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> ESG Dashboard</a></li>
+            <li><a href="products/ai-predictor.html" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> AI Cost Predictor</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Services Review Section -->
+  <section id="services" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black mb-4">Complete <span class="gradient-text">Services Review</span></h2>
+        <p class="text-xl text-gray-400">Explore all features, hubs, and products available on SES_MINE</p>
+      </div>
+
+      <!-- Core Features -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-3">
+          <div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+            <i class="fas fa-star text-cyan-400"></i>
+          </div>
+          Core Features
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8 hover:border-cyan-500/50 transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 bg-cyan-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-calculator text-cyan-400 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">AI Cost Calculator</h4>
+                <p class="text-gray-400 mb-4">Advanced machine learning algorithms provide 94.2% accurate cost estimations for mining projects. Includes CAPEX/OPEX breakdown, real-time adjustments, and scenario analysis.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-cyan-500/10 text-cyan-400 text-xs px-3 py-1 rounded-full">AI-Powered</span>
+                  <span class="bg-cyan-500/10 text-cyan-400 text-xs px-3 py-1 rounded-full">Real-time</span>
+                  <span class="bg-cyan-500/10 text-cyan-400 text-xs px-3 py-1 rounded-full">94.2% Accuracy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8 hover:border-blue-500/50 transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-database text-blue-400 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">Equipment Database</h4>
+                <p class="text-gray-400 mb-4">Comprehensive database with 10,000+ mining equipment specifications, pricing data, comparison tools, and vendor information. Updated daily with market trends.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full">10K+ Equipment</span>
+                  <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full">Daily Updates</span>
+                  <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full">Vendor Info</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8 hover:border-purple-500/50 transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-chart-line text-purple-400 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">Advanced Analytics</h4>
+                <p class="text-gray-400 mb-4">Real-time data visualization, predictive analytics, custom reporting, and KPI tracking. Make data-driven decisions with comprehensive insights.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-purple-500/10 text-purple-400 text-xs px-3 py-1 rounded-full">Real-time</span>
+                  <span class="bg-purple-500/10 text-purple-400 text-xs px-3 py-1 rounded-full">Predictive</span>
+                  <span class="bg-purple-500/10 text-purple-400 text-xs px-3 py-1 rounded-full">Custom Reports</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8 hover:border-green-500/50 transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-leaf text-green-400 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">ESG Dashboard</h4>
+                <p class="text-gray-400 mb-4">Track environmental, social, and governance metrics. Automated compliance reporting, sustainability goals tracking, and regulatory alignment.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-green-500/10 text-green-400 text-xs px-3 py-1 rounded-full">Compliance</span>
+                  <span class="bg-green-500/10 text-green-400 text-xs px-3 py-1 rounded-full">Sustainability</span>
+                  <span class="bg-green-500/10 text-green-400 text-xs px-3 py-1 rounded-full">Reporting</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 Solution Hubs -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-3">
+          <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+            <i class="fas fa-layer-group text-blue-400"></i>
+          </div>
+          9 Specialized Hubs
+        </h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Engineering Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all">
+            <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-drafting-compass text-cyan-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Engineering Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">Technical design, feasibility studies, mine planning, optimization algorithms, and engineering calculations.</p>
+            <span class="bg-cyan-500/10 text-cyan-400 text-xs px-3 py-1 rounded-full">STARTER+</span>
+          </div>
+
+          <!-- Economics Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-chart-pie text-blue-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Economics Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">Financial modeling, NPV analysis, ROI calculations, cash flow projections, and economic feasibility studies.</p>
+            <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full">STARTER+</span>
+          </div>
+
+          <!-- Innovation Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-purple-500/50 transition-all">
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-lightbulb text-purple-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Innovation Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">AI integration, IoT solutions, cloud computing, automation, and digital transformation initiatives.</p>
+            <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs px-3 py-1 rounded-full">PRO</span>
+          </div>
+
+          <!-- Procurement Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-pink-500/50 transition-all">
+            <div class="w-14 h-14 bg-pink-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-shopping-cart text-pink-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Procurement Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">Vendor management, supply chain optimization, purchase orders, contract management, and procurement analytics.</p>
+            <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs px-3 py-1 rounded-full">PRO</span>
+          </div>
+
+          <!-- Consulting Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-amber-500/50 transition-all">
+            <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-user-tie text-amber-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Consulting Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">Expert consultation, project management, strategic planning, risk assessment, and professional advisory services.</p>
+            <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs px-3 py-1 rounded-full">PRO</span>
+          </div>
+
+          <!-- Sustainability Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-green-500/50 transition-all">
+            <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-leaf text-green-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Sustainability Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">ESG reporting, environmental compliance, carbon footprint tracking, sustainability initiatives, and green mining.</p>
+            <span class="bg-green-500/10 text-green-400 text-xs px-3 py-1 rounded-full">STARTER+</span>
+          </div>
+
+          <!-- Operations Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-cyan-500/50 transition-all">
+            <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-cogs text-cyan-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Operations Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">Daily operations management, production tracking, workforce scheduling, equipment monitoring, and efficiency optimization.</p>
+            <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full">FREE</span>
+          </div>
+
+          <!-- Safety Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-red-500/50 transition-all">
+            <div class="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-shield-alt text-red-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Safety Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">Safety protocols, incident reporting, compliance tracking, training management, and hazard identification.</p>
+            <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full">FREE</span>
+          </div>
+
+          <!-- Analytics Hub -->
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 hover:border-blue-500/50 transition-all">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-chart-bar text-blue-400 text-2xl"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Analytics Hub</h4>
+            <p class="text-gray-400 text-sm mb-3">Advanced analytics, business intelligence, data visualization, custom dashboards, and performance metrics.</p>
+            <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs px-3 py-1 rounded-full">PRO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Products -->
+      <div>
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-3">
+          <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+            <i class="fas fa-crown text-purple-400"></i>
+          </div>
+          Premium Products
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8 hover:border-pink-500/50 transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 bg-pink-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-brain text-pink-400 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">AI Cost Predictor</h4>
+                <p class="text-gray-400 mb-4">Machine learning powered cost forecasting with scenario analysis, risk assessment, market trend integration, and confidence intervals. Reduces estimation errors by 90%.</p>
+                <div class="flex items-center justify-between">
+                  <span class="bg-gradient-to-r from-purple-500 to-pink-600 text-white text-xs px-3 py-1 rounded-full">PRO</span>
+                  <span class="text-pink-400 font-semibold">90% Error Reduction</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8 hover:border-cyan-500/50 transition-all">
+            <div class="flex items-start gap-4">
+              <div class="w-16 h-16 bg-cyan-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-robot text-cyan-400 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">Automation Suite</h4>
+                <p class="text-gray-400 mb-4">Automated workflows, report generation, data integration, alert systems, and process optimization. Save 20+ hours per week on manual tasks.</p>
+                <div class="flex items-center justify-between">
+                  <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs px-3 py-1 rounded-full">PRO</span>
+                  <span class="text-cyan-400 font-semibold">20+ Hours Saved</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black mb-4">Frequently Asked <span class="gradient-text">Questions</span></h2>
+        <p class="text-xl text-gray-400">Find answers to common questions about SES_MINE</p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>How do I get started with SES_MINE?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">Simply sign up for a free account, choose your plan (Free, Starter, or Professional), and start exploring our features. We offer a 14-day free trial for all paid plans with no credit card required.</p>
+        </details>
+
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>What's included in the Free plan?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">The Free plan includes access to Operations Hub, Safety Hub, 5 projects per month, basic reporting, and community support. Perfect for individuals or small teams getting started.</p>
+        </details>
+
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>How accurate is the AI Cost Calculator?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">Our AI Cost Calculator achieves 94.2% accuracy based on thousands of mining projects. It uses machine learning algorithms trained on historical data and continuously improves with each project.</p>
+        </details>
+
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>Can I upgrade or downgrade my plan anytime?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any charges or credits accordingly.</p>
+        </details>
+
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>Is my data secure?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">Absolutely. We use enterprise-grade encryption, secure data centers, regular security audits, and comply with international data protection standards. Your data is backed up daily and never shared with third parties.</p>
+        </details>
+
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>Do you offer training or onboarding?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">Yes! Professional and Enterprise plans include personalized onboarding sessions, training materials, video tutorials, and dedicated support. We ensure your team is fully equipped to use SES_MINE effectively.</p>
+        </details>
+
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>What payment methods do you accept?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and wire transfers for Enterprise plans. All payments are processed securely through encrypted channels.</p>
+        </details>
+
+        <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+            <span>Can I cancel my subscription?</span>
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <p class="text-gray-400 mt-4 leading-relaxed">Yes, you can cancel your subscription at any time with no cancellation fees or long-term contracts. You'll continue to have access until the end of your billing period.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Contact Support Section -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-3xl border border-cyan-500/30 p-12 text-center">
+        <div class="w-24 h-24 bg-cyan-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-headset text-cyan-400 text-5xl"></i>
+        </div>
+        <h2 class="text-4xl font-black mb-4">Still Need Help?</h2>
+        <p class="text-xl text-gray-400 mb-8">Our support team is available 24/7 to assist you</p>
+        
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6">
+            <i class="fas fa-envelope text-cyan-400 text-3xl mb-3"></i>
+            <h4 class="font-bold mb-2">Email Support</h4>
+            <p class="text-sm text-gray-400 mb-3">support@sesmine.com</p>
+            <p class="text-xs text-gray-500">Response within 2 hours</p>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6">
+            <i class="fas fa-phone text-blue-400 text-3xl mb-3"></i>
+            <h4 class="font-bold mb-2">Phone Support</h4>
+            <p class="text-sm text-gray-400 mb-3">+1 (555) 123-4567</p>
+            <p class="text-xs text-gray-500">24/7 Available</p>
+          </div>
+
+          <div class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6">
+            <i class="fas fa-comments text-purple-400 text-3xl mb-3"></i>
+            <h4 class="font-bold mb-2">Live Chat</h4>
+            <p class="text-sm text-gray-400 mb-3">Instant messaging</p>
+            <p class="text-xs text-gray-500">Available 24/7</p>
+          </div>
+        </div>
+
+        <a href="mailto:support@sesmine.com" class="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all">
+          <i class="fas fa-paper-plane"></i>
+          <span>Contact Support Team</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/50 py-16 px-6 bg-slate-950/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-16 mb-4">
+          <p class="text-gray-400 text-sm leading-relaxed">Smart Engineering Solutions for the modern mining industry.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-lg">Product</h4>
+          <div class="space-y-3 text-sm">
+            <a href="index.html#features" class="block text-gray-400 hover:text-cyan-400 transition-colors">Features</a>
+            <a href="index.html#hubs" class="block text-gray-400 hover:text-cyan-400 transition-colors">Hubs</a>
+            <a href="index.html#products" class="block text-gray-400 hover:text-cyan-400 transition-colors">Products</a>
+            <a href="pricing/index.html" class="block text-gray-400 hover:text-cyan-400 transition-colors">Pricing</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-lg">Company</h4>
+          <div class="space-y-3 text-sm">
+            <a href="about.html" class="block text-gray-400 hover:text-cyan-400 transition-colors">About</a>
+            <a href="news.html" class="block text-gray-400 hover:text-cyan-400 transition-colors">News</a>
+            <a href="admin/admin-login.html" class="block text-amber-400 hover:text-amber-300 transition-colors">Admin</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-lg">Support</h4>
+          <div class="space-y-3 text-sm">
+            <a href="help-center.html" class="block text-gray-400 hover:text-cyan-400 transition-colors">Help Center</a>
+            <a href="#contact" class="block text-gray-400 hover:text-cyan-400 transition-colors">Contact</a>
+            <a href="#faq" class="block text-gray-400 hover:text-cyan-400 transition-colors">FAQ</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-400 text-sm">© 2026 SES_MINE. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors text-lg"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors text-lg"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors text-lg"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors text-lg"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
