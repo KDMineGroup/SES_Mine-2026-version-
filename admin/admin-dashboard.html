@@ -8,9 +8,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
-    * { font-family: 'Inter', sans-serif; }
+    * { 
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
+      min-height: 100vh;
+    }
     .gradient-text { 
       background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); 
       -webkit-background-clip: text; 
@@ -18,283 +27,445 @@
     }
     .stat-card {
       transition: all 0.3s ease;
+      cursor: pointer;
     }
     .stat-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
     }
+    .pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+    .slide-in {
+      animation: slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-white">
+<body class="text-white">
   <!-- Top Navigation -->
-  <nav class="fixed w-full z-50 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 py-4">
+  <nav class="fixed w-full z-50 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-8">
-          <a href="admin-dashboard.html" class="flex items-center gap-3">
-            <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-12">
+        <div class="flex items-center gap-4 sm:gap-8">
+          <a href="../index.html" class="flex items-center gap-3">
+            <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-10 sm:h-12">
           </a>
           <div class="hidden md:flex items-center gap-6">
-            <a href="admin-dashboard.html" class="text-purple-500 font-semibold">
-              <i class="fas fa-chart-line mr-2"></i>Dashboard
+            <a href="admin-dashboard.html" class="text-purple-500 font-semibold flex items-center gap-2">
+              <i class="fas fa-chart-line"></i>
+              <span>Dashboard</span>
             </a>
-            <a href="content-management.html" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fas fa-edit mr-2"></i>Content
+            <a href="user-management.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+              <i class="fas fa-users"></i>
+              <span>Users</span>
             </a>
-            <a href="user-management.html" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fas fa-users mr-2"></i>Users
+            <a href="content-management.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+              <i class="fas fa-edit"></i>
+              <span>Content</span>
             </a>
           </div>
         </div>
-        <div class="flex items-center gap-4">
-          <div class="relative">
-            <button class="relative text-gray-400 hover:text-white transition-colors">
-              <i class="fas fa-bell text-xl"></i>
-              <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center">3</span>
-            </button>
-          </div>
-          <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 sm:gap-4">
+          <button onclick="toggleNotifications()" class="relative text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-bell text-xl"></i>
+            <span id="notifBadge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center pulse">3</span>
+          </button>
+          <div class="hidden sm:flex items-center gap-3">
             <img src="https://i.pravatar.cc/100?img=5" alt="Admin" class="w-10 h-10 rounded-full border-2 border-purple-500">
-            <span class="text-sm font-semibold" id="adminName">Admin User</span>
+            <span class="text-sm font-semibold" id="adminName">Admin</span>
           </div>
-          <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg transition-colors">
-            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+          <button onclick="handleLogout()" class="bg-slate-800 hover:bg-slate-700 px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm">
+            <i class="fas fa-sign-out-alt mr-2"></i>
+            <span class="hidden sm:inline">Logout</span>
           </button>
         </div>
       </div>
     </div>
   </nav>
 
+  <!-- Notifications Dropdown -->
+  <div id="notificationsPanel" class="hidden fixed top-20 right-6 w-80 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl z-40 slide-in">
+    <div class="p-4 border-b border-slate-800">
+      <h3 class="font-bold">Notifications</h3>
+    </div>
+    <div class="max-h-96 overflow-y-auto">
+      <div class="p-4 hover:bg-slate-800 cursor-pointer border-b border-slate-800">
+        <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+          <div>
+            <p class="text-sm">New user registration: John Smith</p>
+            <p class="text-xs text-gray-400 mt-1">5 minutes ago</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 hover:bg-slate-800 cursor-pointer border-b border-slate-800">
+        <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+          <div>
+            <p class="text-sm">Payment received: $149.00</p>
+            <p class="text-xs text-gray-400 mt-1">1 hour ago</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 hover:bg-slate-800 cursor-pointer">
+        <div class="flex items-start gap-3">
+          <div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+          <div>
+            <p class="text-sm">Support ticket opened</p>
+            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Main Content -->
-  <div class="pt-24 pb-12 px-6">
+  <div class="pt-24 pb-12 px-4 sm:px-6">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
-      <div class="mb-8">
-        <h1 class="text-4xl font-black mb-2">Admin <span class="gradient-text">Dashboard</span></h1>
-        <p class="text-gray-400">Welcome back! Here's what's happening with SES_MINE today.</p>
+      <div class="mb-8 slide-in">
+        <h1 class="text-3xl sm:text-4xl font-black mb-2">Admin <span class="gradient-text">Dashboard</span></h1>
+        <p class="text-gray-400">Welcome back! Here's what's happening today.</p>
+        <p class="text-sm text-gray-500 mt-2" id="currentDateTime"></p>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="mb-8 slide-in">
+        <div class="flex flex-wrap gap-3">
+          <button onclick="addNewUser()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-4 py-2 rounded-lg font-semibold hover:shadow-xl transition-all text-sm">
+            <i class="fas fa-user-plus mr-2"></i>Add User
+          </button>
+          <button onclick="createContent()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg font-semibold transition-all text-sm">
+            <i class="fas fa-plus mr-2"></i>New Content
+          </button>
+          <button onclick="exportData()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg font-semibold transition-all text-sm">
+            <i class="fas fa-download mr-2"></i>Export Data
+          </button>
+          <button onclick="refreshDashboard()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg font-semibold transition-all text-sm">
+            <i class="fas fa-sync-alt mr-2"></i>Refresh
+          </button>
+        </div>
       </div>
 
       <!-- Stats Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
         <!-- Total Users -->
-        <div class="stat-card bg-gradient-to-br from-purple-500/10 to-purple-900/10 border border-purple-500/20 rounded-2xl p-6">
+        <div class="stat-card bg-gradient-to-br from-purple-500/10 to-purple-900/10 border border-purple-500/20 rounded-2xl p-6 slide-in">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
-              <i class="fas fa-users text-purple-400 text-2xl"></i>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-users text-purple-400 text-xl sm:text-2xl"></i>
             </div>
-            <span class="text-green-400 text-sm font-semibold">+12.5%</span>
+            <span class="text-green-400 text-xs sm:text-sm font-semibold">+12.5%</span>
           </div>
-          <div class="text-3xl font-black mb-1" id="totalUsers">1,247</div>
-          <div class="text-gray-400 text-sm">Total Users</div>
+          <div class="text-2xl sm:text-3xl font-black mb-1" id="totalUsers">0</div>
+          <div class="text-gray-400 text-xs sm:text-sm">Total Users</div>
+          <div class="mt-3 pt-3 border-t border-purple-500/20">
+            <div class="text-xs text-gray-500">+156 this month</div>
+          </div>
         </div>
 
         <!-- Active Projects -->
-        <div class="stat-card bg-gradient-to-br from-cyan-500/10 to-cyan-900/10 border border-cyan-500/20 rounded-2xl p-6">
+        <div class="stat-card bg-gradient-to-br from-cyan-500/10 to-cyan-900/10 border border-cyan-500/20 rounded-2xl p-6 slide-in" style="animation-delay: 0.1s">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center">
-              <i class="fas fa-project-diagram text-cyan-400 text-2xl"></i>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-project-diagram text-cyan-400 text-xl sm:text-2xl"></i>
             </div>
-            <span class="text-green-400 text-sm font-semibold">+8.2%</span>
+            <span class="text-green-400 text-xs sm:text-sm font-semibold">+8.2%</span>
           </div>
-          <div class="text-3xl font-black mb-1" id="activeProjects">543</div>
-          <div class="text-gray-400 text-sm">Active Projects</div>
+          <div class="text-2xl sm:text-3xl font-black mb-1" id="activeProjects">0</div>
+          <div class="text-gray-400 text-xs sm:text-sm">Active Projects</div>
+          <div class="mt-3 pt-3 border-t border-cyan-500/20">
+            <div class="text-xs text-gray-500">+45 this week</div>
+          </div>
         </div>
 
         <!-- Revenue -->
-        <div class="stat-card bg-gradient-to-br from-green-500/10 to-green-900/10 border border-green-500/20 rounded-2xl p-6">
+        <div class="stat-card bg-gradient-to-br from-green-500/10 to-green-900/10 border border-green-500/20 rounded-2xl p-6 slide-in" style="animation-delay: 0.2s">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
-              <i class="fas fa-dollar-sign text-green-400 text-2xl"></i>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-dollar-sign text-green-400 text-xl sm:text-2xl"></i>
             </div>
-            <span class="text-green-400 text-sm font-semibold">+23.1%</span>
+            <span class="text-green-400 text-xs sm:text-sm font-semibold">+23.1%</span>
           </div>
-          <div class="text-3xl font-black mb-1" id="revenue">$87.4K</div>
-          <div class="text-gray-400 text-sm">Monthly Revenue</div>
+          <div class="text-2xl sm:text-3xl font-black mb-1" id="revenue">$0</div>
+          <div class="text-gray-400 text-xs sm:text-sm">Monthly Revenue</div>
+          <div class="mt-3 pt-3 border-t border-green-500/20">
+            <div class="text-xs text-gray-500">+$20.2K this month</div>
+          </div>
         </div>
 
         <!-- Support Tickets -->
-        <div class="stat-card bg-gradient-to-br from-amber-500/10 to-amber-900/10 border border-amber-500/20 rounded-2xl p-6">
+        <div class="stat-card bg-gradient-to-br from-amber-500/10 to-amber-900/10 border border-amber-500/20 rounded-2xl p-6 slide-in" style="animation-delay: 0.3s">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
-              <i class="fas fa-ticket-alt text-amber-400 text-2xl"></i>
+            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
+              <i class="fas fa-ticket-alt text-amber-400 text-xl sm:text-2xl"></i>
             </div>
-            <span class="text-red-400 text-sm font-semibold">+3</span>
+            <span class="text-red-400 text-xs sm:text-sm font-semibold">+3</span>
           </div>
-          <div class="text-3xl font-black mb-1" id="tickets">24</div>
-          <div class="text-gray-400 text-sm">Open Tickets</div>
+          <div class="text-2xl sm:text-3xl font-black mb-1" id="tickets">0</div>
+          <div class="text-gray-400 text-xs sm:text-sm">Open Tickets</div>
+          <div class="mt-3 pt-3 border-t border-amber-500/20">
+            <div class="text-xs text-gray-500">3 urgent</div>
+          </div>
         </div>
       </div>
 
       <!-- Charts Row -->
-      <div class="grid lg:grid-cols-2 gap-6 mb-8">
+      <div class="grid lg:grid-cols-2 gap-4 sm:gap-6 mb-8">
         <!-- User Growth Chart -->
-        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 sm:p-6 slide-in">
           <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold">User Growth</h3>
-            <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
-              <option>Last 7 days</option>
-              <option>Last 30 days</option>
-              <option>Last 90 days</option>
+            <h3 class="text-lg sm:text-xl font-bold">
+              <i class="fas fa-chart-line text-purple-500 mr-2"></i>
+              User Growth
+            </h3>
+            <select onchange="updateUserChart(this.value)" class="bg-slate-800 border border-slate-700 rounded-lg px-2 sm:px-3 py-1 text-xs sm:text-sm">
+              <option value="7">Last 7 days</option>
+              <option value="30">Last 30 days</option>
+              <option value="90">Last 90 days</option>
             </select>
           </div>
-          <canvas id="userGrowthChart" height="250"></canvas>
+          <div class="relative" style="height: 250px;">
+            <canvas id="userGrowthChart"></canvas>
+          </div>
         </div>
 
         <!-- Revenue Chart -->
-        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 sm:p-6 slide-in" style="animation-delay: 0.1s">
           <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold">Revenue Overview</h3>
-            <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
-              <option>This Month</option>
-              <option>Last Month</option>
-              <option>This Year</option>
+            <h3 class="text-lg sm:text-xl font-bold">
+              <i class="fas fa-dollar-sign text-green-500 mr-2"></i>
+              Revenue Overview
+            </h3>
+            <select onchange="updateRevenueChart(this.value)" class="bg-slate-800 border border-slate-700 rounded-lg px-2 sm:px-3 py-1 text-xs sm:text-sm">
+              <option value="month">This Month</option>
+              <option value="quarter">This Quarter</option>
+              <option value="year">This Year</option>
             </select>
           </div>
-          <canvas id="revenueChart" height="250"></canvas>
+          <div class="relative" style="height: 250px;">
+            <canvas id="revenueChart"></canvas>
+          </div>
         </div>
       </div>
 
       <!-- Recent Activity & Top Products -->
-      <div class="grid lg:grid-cols-2 gap-6 mb-8">
+      <div class="grid lg:grid-cols-2 gap-4 sm:gap-6 mb-8">
         <!-- Recent Users -->
-        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 sm:p-6 slide-in">
           <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold">
+            <h3 class="text-lg sm:text-xl font-bold">
               <i class="fas fa-user-plus text-purple-500 mr-2"></i>
               Recent Users
             </h3>
-            <a href="user-management.html" class="text-purple-400 hover:text-purple-300 text-sm font-semibold">
+            <a href="user-management.html" class="text-purple-400 hover:text-purple-300 text-xs sm:text-sm font-semibold">
               View All <i class="fas fa-arrow-right ml-1"></i>
             </a>
           </div>
-          <div class="space-y-4" id="recentUsers">
-            <!-- Users will be loaded here -->
+          <div class="space-y-3" id="recentUsers">
+            <div class="text-center text-gray-500 py-8">
+              <i class="fas fa-spinner fa-spin text-3xl mb-2"></i>
+              <p>Loading users...</p>
+            </div>
           </div>
         </div>
 
         <!-- Top Products -->
-        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+        <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 sm:p-6 slide-in" style="animation-delay: 0.1s">
           <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold">
+            <h3 class="text-lg sm:text-xl font-bold">
               <i class="fas fa-star text-amber-500 mr-2"></i>
               Top Products
             </h3>
-            <a href="content-management.html" class="text-purple-400 hover:text-purple-300 text-sm font-semibold">
-              View All <i class="fas fa-arrow-right ml-1"></i>
-            </a>
+            <button onclick="refreshProducts()" class="text-purple-400 hover:text-purple-300 text-xs sm:text-sm font-semibold">
+              <i class="fas fa-sync-alt mr-1"></i>Refresh
+            </button>
           </div>
-          <div class="space-y-4" id="topProducts">
-            <!-- Products will be loaded here -->
+          <div class="space-y-3" id="topProducts">
+            <div class="text-center text-gray-500 py-8">
+              <i class="fas fa-spinner fa-spin text-3xl mb-2"></i>
+              <p>Loading products...</p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Recent Activity Log -->
-      <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6">
+      <div class="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 sm:p-6 slide-in">
         <div class="flex items-center justify-between mb-6">
-          <h3 class="text-xl font-bold">
+          <h3 class="text-lg sm:text-xl font-bold">
             <i class="fas fa-history text-cyan-500 mr-2"></i>
             Recent Activity
           </h3>
-          <button class="text-purple-400 hover:text-purple-300 text-sm font-semibold">
+          <button onclick="clearActivityLog()" class="text-purple-400 hover:text-purple-300 text-xs sm:text-sm font-semibold">
             Clear All
           </button>
         </div>
-        <div class="space-y-3" id="activityLog">
-          <!-- Activity will be loaded here -->
+        <div class="space-y-3 max-h-96 overflow-y-auto" id="activityLog">
+          <div class="text-center text-gray-500 py-8">
+            <i class="fas fa-spinner fa-spin text-3xl mb-2"></i>
+            <p>Loading activity...</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Initialize Dashboard Data
+    // Dashboard State
+    let userGrowthChart = null;
+    let revenueChart = null;
+    let autoRefreshInterval = null;
+
+    // Sample Data
     const dashboardData = {
+      stats: {
+        totalUsers: 1247,
+        activeProjects: 543,
+        revenue: 87400,
+        tickets: 24
+      },
       users: [
-        { id: 1, name: 'John Smith', email: 'john@globalmine.com', company: 'GlobalMine Corp', plan: 'Professional', joined: '2 hours ago', avatar: 12 },
-        { id: 2, name: 'Sarah Johnson', email: 'sarah@minemax.com', company: 'MineMax Ltd', plan: 'Starter', joined: '5 hours ago', avatar: 47 },
-        { id: 3, name: 'Michael Chen', email: 'michael@ecomine.com', company: 'EcoMine Inc', plan: 'Professional', joined: '1 day ago', avatar: 33 },
-        { id: 4, name: 'Emily Rodriguez', email: 'emily@pacific.com', company: 'Pacific Mining', plan: 'Free', joined: '2 days ago', avatar: 68 },
-        { id: 5, name: 'David Thompson', email: 'david@northern.com', company: 'Northern Resources', plan: 'Starter', joined: '3 days ago', avatar: 15 }
+        { id: 1, name: 'John Smith', email: 'john@globalmine.com', company: 'GlobalMine Corp', plan: 'Professional', joined: '2 hours ago', avatar: 12, status: 'active' },
+        { id: 2, name: 'Sarah Johnson', email: 'sarah@minemax.com', company: 'MineMax Ltd', plan: 'Starter', joined: '5 hours ago', avatar: 47, status: 'active' },
+        { id: 3, name: 'Michael Chen', email: 'michael@ecomine.com', company: 'EcoMine Inc', plan: 'Professional', joined: '1 day ago', avatar: 33, status: 'active' },
+        { id: 4, name: 'Emily Rodriguez', email: 'emily@pacific.com', company: 'Pacific Mining', plan: 'Free', joined: '2 days ago', avatar: 68, status: 'active' },
+        { id: 5, name: 'David Thompson', email: 'david@northern.com', company: 'Northern Resources', plan: 'Starter', joined: '3 days ago', avatar: 15, status: 'active' }
       ],
       products: [
-        { name: 'AI Cost Calculator', usage: 1247, growth: '+23%', color: 'cyan' },
-        { name: 'Equipment Database', usage: 892, growth: '+18%', color: 'purple' },
-        { name: 'Analytics Dashboard', usage: 654, growth: '+31%', color: 'blue' },
-        { name: 'ESG Dashboard', usage: 432, growth: '+12%', color: 'green' },
-        { name: 'AI Predictor', usage: 287, growth: '+45%', color: 'pink' }
+        { name: 'AI Cost Calculator', usage: 1247, growth: '+23%', color: 'cyan', icon: 'calculator' },
+        { name: 'Equipment Database', usage: 892, growth: '+18%', color: 'purple', icon: 'database' },
+        { name: 'Analytics Dashboard', usage: 654, growth: '+31%', color: 'blue', icon: 'chart-line' },
+        { name: 'ESG Dashboard', usage: 432, growth: '+12%', color: 'green', icon: 'leaf' },
+        { name: 'AI Predictor', usage: 287, growth: '+45%', color: 'pink', icon: 'brain' }
       ],
       activities: [
-        { type: 'user', icon: 'fa-user-plus', color: 'green', text: 'New user registered: John Smith', time: '5 minutes ago' },
-        { type: 'project', icon: 'fa-project-diagram', color: 'cyan', text: 'New project created: Copper Mine Expansion', time: '15 minutes ago' },
-        { type: 'payment', icon: 'fa-dollar-sign', color: 'green', text: 'Payment received: $149.00 from MineMax Ltd', time: '1 hour ago' },
-        { type: 'support', icon: 'fa-ticket-alt', color: 'amber', text: 'Support ticket opened: Database access issue', time: '2 hours ago' },
-        { type: 'content', icon: 'fa-edit', color: 'purple', text: 'Article published: Mining Industry Trends 2026', time: '3 hours ago' },
-        { type: 'user', icon: 'fa-user-check', color: 'blue', text: 'User upgraded to Professional plan', time: '4 hours ago' },
-        { type: 'system', icon: 'fa-cog', color: 'gray', text: 'System backup completed successfully', time: '6 hours ago' },
-        { type: 'security', icon: 'fa-shield-alt', color: 'red', text: 'Failed login attempt detected', time: '8 hours ago' }
+        { type: 'user', icon: 'user-plus', color: 'green', text: 'New user registered: John Smith', time: '5 minutes ago' },
+        { type: 'project', icon: 'project-diagram', color: 'cyan', text: 'New project created: Copper Mine Expansion', time: '15 minutes ago' },
+        { type: 'payment', icon: 'dollar-sign', color: 'green', text: 'Payment received: $149.00 from MineMax Ltd', time: '1 hour ago' },
+        { type: 'support', icon: 'ticket-alt', color: 'amber', text: 'Support ticket opened: Database access issue', time: '2 hours ago' },
+        { type: 'content', icon: 'edit', color: 'purple', text: 'Article published: Mining Industry Trends 2026', time: '3 hours ago' },
+        { type: 'user', icon: 'user-check', color: 'blue', text: 'User upgraded to Professional plan', time: '4 hours ago' },
+        { type: 'system', icon: 'cog', color: 'gray', text: 'System backup completed successfully', time: '6 hours ago' },
+        { type: 'security', icon: 'shield-alt', color: 'red', text: 'Failed login attempt detected', time: '8 hours ago' }
       ]
     };
+
+    // Update Date Time
+    function updateDateTime() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      document.getElementById('currentDateTime').textContent = now.toLocaleDateString('en-US', options);
+    }
+
+    // Animate Counter
+    function animateCounter(element, target, prefix = '', suffix = '', decimals = 0) {
+      let current = 0;
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        const value = decimals > 0 ? current.toFixed(decimals) : Math.floor(current);
+        element.textContent = prefix + value.toLocaleString() + suffix;
+      }, 20);
+    }
+
+    // Load Stats
+    function loadStats() {
+      animateCounter(document.getElementById('totalUsers'), dashboardData.stats.totalUsers);
+      animateCounter(document.getElementById('activeProjects'), dashboardData.stats.activeProjects);
+      animateCounter(document.getElementById('revenue'), dashboardData.stats.revenue / 1000, '$', 'K', 1);
+      animateCounter(document.getElementById('tickets'), dashboardData.stats.tickets);
+    }
 
     // Load Recent Users
     function loadRecentUsers() {
       const container = document.getElementById('recentUsers');
-      container.innerHTML = dashboardData.users.map(user => `
-        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-all">
-          <div class="flex items-center gap-3">
-            <img src="https://i.pravatar.cc/100?img=${user.avatar}" alt="${user.name}" class="w-12 h-12 rounded-full border-2 border-purple-500">
-            <div>
-              <div class="font-semibold">${user.name}</div>
-              <div class="text-sm text-gray-400">${user.email}</div>
+      setTimeout(() => {
+        container.innerHTML = dashboardData.users.map(user => `
+          <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-all cursor-pointer">
+            <div class="flex items-center gap-3 flex-1 min-w-0">
+              <img src="https://i.pravatar.cc/100?img=${user.avatar}" alt="${user.name}" class="w-10 h-10 rounded-full border-2 border-purple-500 flex-shrink-0">
+              <div class="min-w-0 flex-1">
+                <div class="font-semibold truncate text-sm">${user.name}</div>
+                <div class="text-xs text-gray-400 truncate">${user.email}</div>
+              </div>
+            </div>
+            <div class="text-right flex-shrink-0 ml-2">
+              <div class="text-xs font-semibold ${getPlanColor(user.plan)}">${user.plan}</div>
+              <div class="text-xs text-gray-500">${user.joined}</div>
             </div>
           </div>
-          <div class="text-right">
-            <div class="text-sm font-semibold ${user.plan === 'Professional' ? 'text-purple-400' : user.plan === 'Starter' ? 'text-cyan-400' : 'text-gray-400'}">${user.plan}</div>
-            <div class="text-xs text-gray-500">${user.joined}</div>
-          </div>
-        </div>
-      `).join('');
+        `).join('');
+      }, 500);
     }
 
     // Load Top Products
     function loadTopProducts() {
       const container = document.getElementById('topProducts');
-      container.innerHTML = dashboardData.products.map(product => `
-        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-all">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-${product.color}-500/20 rounded-xl flex items-center justify-center">
-              <i class="fas fa-box text-${product.color}-400"></i>
+      setTimeout(() => {
+        container.innerHTML = dashboardData.products.map(product => `
+          <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-xl hover:bg-slate-800 transition-all cursor-pointer">
+            <div class="flex items-center gap-3 flex-1 min-w-0">
+              <div class="w-10 h-10 bg-${product.color}-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-${product.icon} text-${product.color}-400"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="font-semibold text-sm truncate">${product.name}</div>
+                <div class="text-xs text-gray-400">${product.usage.toLocaleString()} users</div>
+              </div>
             </div>
-            <div>
-              <div class="font-semibold">${product.name}</div>
-              <div class="text-sm text-gray-400">${product.usage} users</div>
-            </div>
+            <div class="text-green-400 font-semibold text-sm flex-shrink-0 ml-2">${product.growth}</div>
           </div>
-          <div class="text-green-400 font-semibold">${product.growth}</div>
-        </div>
-      `).join('');
+        `).join('');
+      }, 700);
     }
 
     // Load Activity Log
     function loadActivityLog() {
       const container = document.getElementById('activityLog');
-      container.innerHTML = dashboardData.activities.map(activity => `
-        <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
-          <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-            <i class="fas ${activity.icon} text-${activity.color}-400"></i>
+      setTimeout(() => {
+        container.innerHTML = dashboardData.activities.map(activity => `
+          <div class="flex items-start gap-3 p-3 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
+            <div class="w-8 h-8 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-${activity.icon} text-${activity.color}-400 text-sm"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm">${activity.text}</div>
+              <div class="text-xs text-gray-500 mt-1">${activity.time}</div>
+            </div>
           </div>
-          <div class="flex-1">
-            <div class="text-sm">${activity.text}</div>
-            <div class="text-xs text-gray-500 mt-1">${activity.time}</div>
-          </div>
-        </div>
-      `).join('');
+        `).join('');
+      }, 900);
     }
 
-    // User Growth Chart
+    // Create User Growth Chart
     function createUserGrowthChart() {
-      const ctx = document.getElementById('userGrowthChart').getContext('2d');
-      new Chart(ctx, {
+      const ctx = document.getElementById('userGrowthChart');
+      if (!ctx) return;
+
+      if (userGrowthChart) {
+        userGrowthChart.destroy();
+      }
+
+      userGrowthChart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -305,14 +476,23 @@
             backgroundColor: 'rgba(139, 92, 246, 0.1)',
             borderWidth: 3,
             fill: true,
-            tension: 0.4
+            tension: 0.4,
+            pointRadius: 4,
+            pointHoverRadius: 6
           }]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false }
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: '#8b5cf6',
+              borderWidth: 1
+            }
           },
           scales: {
             y: {
@@ -329,10 +509,16 @@
       });
     }
 
-    // Revenue Chart
+    // Create Revenue Chart
     function createRevenueChart() {
-      const ctx = document.getElementById('revenueChart').getContext('2d');
-      new Chart(ctx, {
+      const ctx = document.getElementById('revenueChart');
+      if (!ctx) return;
+
+      if (revenueChart) {
+        revenueChart.destroy();
+      }
+
+      revenueChart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
@@ -353,7 +539,19 @@
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false }
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: '#22c55e',
+              borderWidth: 1,
+              callbacks: {
+                label: function(context) {
+                  return '$' + context.parsed.y.toLocaleString();
+                }
+              }
+            }
           },
           scales: {
             y: {
@@ -375,76 +573,130 @@
       });
     }
 
-    // Animate Stats
-    function animateStats() {
-      const stats = [
-        { id: 'totalUsers', target: 1247, prefix: '', suffix: '' },
-        { id: 'activeProjects', target: 543, prefix: '', suffix: '' },
-        { id: 'revenue', target: 87.4, prefix: '$', suffix: 'K' },
-        { id: 'tickets', target: 24, prefix: '', suffix: '' }
-      ];
-
-      stats.forEach(stat => {
-        const element = document.getElementById(stat.id);
-        let current = 0;
-        const increment = stat.target / 50;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= stat.target) {
-            current = stat.target;
-            clearInterval(timer);
-          }
-          element.textContent = stat.prefix + (stat.suffix === 'K' ? current.toFixed(1) : Math.floor(current)) + stat.suffix;
-        }, 20);
-      });
+    // Helper Functions
+    function getPlanColor(plan) {
+      const colors = {
+        'Professional': 'text-purple-400',
+        'Starter': 'text-cyan-400',
+        'Free': 'text-gray-400'
+      };
+      return colors[plan] || 'text-gray-400';
     }
 
-    // Logout Function
-    function logout() {
+    function toggleNotifications() {
+      const panel = document.getElementById('notificationsPanel');
+      panel.classList.toggle('hidden');
+    }
+
+    function handleLogout() {
       if (confirm('Are you sure you want to logout?')) {
         localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminName');
         window.location.href = 'admin-login.html';
       }
     }
 
-    // Check Authentication
-    function checkAuth() {
-      const token = localStorage.getItem('adminToken');
-      if (!token) {
-        window.location.href = 'admin-login.html';
-        return false;
+    function addNewUser() {
+      alert('Add New User functionality - Navigate to User Management');
+      window.location.href = 'user-management.html';
+    }
+
+    function createContent() {
+      alert('Create Content functionality - Navigate to Content Management');
+      window.location.href = 'content-management.html';
+    }
+
+    function exportData() {
+      alert('Exporting dashboard data...');
+      console.log('Dashboard Data:', dashboardData);
+    }
+
+    function refreshDashboard() {
+      location.reload();
+    }
+
+    function refreshProducts() {
+      loadTopProducts();
+    }
+
+    function clearActivityLog() {
+      if (confirm('Clear all activity logs?')) {
+        document.getElementById('activityLog').innerHTML = '<div class="text-center text-gray-500 py-8">No recent activity</div>';
       }
-      return true;
+    }
+
+    function updateUserChart(period) {
+      console.log('Updating user chart for period:', period);
+      // Implement chart update logic
+    }
+
+    function updateRevenueChart(period) {
+      console.log('Updating revenue chart for period:', period);
+      // Implement chart update logic
     }
 
     // Initialize Dashboard
-    document.addEventListener('DOMContentLoaded', function() {
-      if (!checkAuth()) return;
-      
-      // Load admin name from localStorage
+    function initDashboard() {
+      // Check authentication
+      const adminToken = localStorage.getItem('adminToken');
+      if (!adminToken) {
+        window.location.href = 'admin-login.html';
+        return;
+      }
+
+      // Load admin name
       const adminName = localStorage.getItem('adminName') || 'Admin User';
       document.getElementById('adminName').textContent = adminName;
 
+      // Update date/time
+      updateDateTime();
+      setInterval(updateDateTime, 60000);
+
       // Load all data
+      loadStats();
       loadRecentUsers();
       loadTopProducts();
       loadActivityLog();
-      createUserGrowthChart();
-      createRevenueChart();
-      animateStats();
 
-      // Auto-refresh data every 30 seconds
-      setInterval(() => {
+      // Create charts after a small delay to ensure canvas is ready
+      setTimeout(() => {
+        createUserGrowthChart();
+        createRevenueChart();
+      }, 100);
+
+      // Auto-refresh activity every 30 seconds
+      autoRefreshInterval = setInterval(() => {
         loadActivityLog();
       }, 30000);
+
+      // Simulate real-time updates
+      setInterval(() => {
+        const badge = document.getElementById('notifBadge');
+        const current = parseInt(badge.textContent);
+        if (Math.random() > 0.7) {
+          badge.textContent = current + 1;
+        }
+      }, 60000);
+    }
+
+    // Close notifications when clicking outside
+    document.addEventListener('click', function(event) {
+      const panel = document.getElementById('notificationsPanel');
+      const target = event.target;
+      if (!panel.contains(target) && !target.closest('button[onclick="toggleNotifications()"]')) {
+        panel.classList.add('hidden');
+      }
     });
 
-    // Real-time updates simulation
-    setInterval(() => {
-      const totalUsers = document.getElementById('totalUsers');
-      const current = parseInt(totalUsers.textContent);
-      totalUsers.textContent = current + Math.floor(Math.random() * 3);
-    }, 60000);
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', initDashboard);
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+      if (autoRefreshInterval) {
+        clearInterval(autoRefreshInterval);
+      }
+    });
   </script>
 </body>
 </html>
