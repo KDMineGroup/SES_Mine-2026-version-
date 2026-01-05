@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     * { 
@@ -53,9 +52,16 @@
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      overflow-y: auto;
     }
     .modal.active {
       display: flex;
+    }
+    .tab-button {
+      transition: all 0.3s ease;
+    }
+    .tab-button.active {
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
     }
     .badge-new {
       animation: pulse 2s infinite;
@@ -63,6 +69,20 @@
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
+    }
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(400px); }
+      to { transform: translateX(0); }
     }
   </style>
 </head>
@@ -148,17 +168,20 @@
               <a href="#" onclick="showSection('dashboard')" id="nav-dashboard" class="nav-link text-cyan-400 font-semibold">
                 <i class="fas fa-chart-line mr-2"></i>Dashboard
               </a>
+              <a href="#" onclick="showSection('content')" id="nav-content" class="nav-link text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-newspaper mr-2"></i>Content
+              </a>
               <a href="#" onclick="showSection('registrations')" id="nav-registrations" class="nav-link text-gray-400 hover:text-white transition-colors relative">
                 <i class="fas fa-user-plus mr-2"></i>Registrations
-                <span id="regBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new">0</span>
+                <span id="regBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
               <a href="#" onclick="showSection('contacts')" id="nav-contacts" class="nav-link text-gray-400 hover:text-white transition-colors relative">
                 <i class="fas fa-envelope mr-2"></i>Contacts
-                <span id="contactBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new">0</span>
+                <span id="contactBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
               <a href="#" onclick="showSection('newsletter')" id="nav-newsletter" class="nav-link text-gray-400 hover:text-white transition-colors relative">
                 <i class="fas fa-newspaper mr-2"></i>Newsletter
-                <span id="newsBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new">0</span>
+                <span id="newsBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
               <a href="#" onclick="showSection('users')" id="nav-users" class="nav-link text-gray-400 hover:text-white transition-colors">
                 <i class="fas fa-users mr-2"></i>Users
@@ -196,46 +219,52 @@
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div class="card-hover glass rounded-2xl p-6 fade-in">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('content')">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-newspaper text-purple-400 text-2xl"></i>
+              </div>
+            </div>
+            <div class="text-3xl font-black mb-1" id="statContent">0</div>
+            <div class="text-gray-400 text-sm">Total Content</div>
+          </div>
+
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('registrations')" style="animation-delay: 0.1s">
             <div class="flex items-center justify-between mb-4">
               <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center">
                 <i class="fas fa-user-plus text-cyan-400 text-2xl"></i>
               </div>
-              <span class="text-green-400 text-sm font-semibold">New</span>
             </div>
             <div class="text-3xl font-black mb-1" id="statRegistrations">0</div>
-            <div class="text-gray-400 text-sm">Registration Requests</div>
+            <div class="text-gray-400 text-sm">Registrations</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('contacts')" style="animation-delay: 0.2s">
             <div class="flex items-center justify-between mb-4">
-              <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-envelope text-purple-400 text-2xl"></i>
+              <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-envelope text-green-400 text-2xl"></i>
               </div>
-              <span class="text-green-400 text-sm font-semibold">New</span>
             </div>
             <div class="text-3xl font-black mb-1" id="statContacts">0</div>
             <div class="text-gray-400 text-sm">Contact Messages</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.2s">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-newspaper text-green-400 text-2xl"></i>
-              </div>
-              <span class="text-green-400 text-sm font-semibold">New</span>
-            </div>
-            <div class="text-3xl font-black mb-1" id="statNewsletter">0</div>
-            <div class="text-gray-400 text-sm">Newsletter Subscribers</div>
-          </div>
-
-          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.3s">
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('newsletter')" style="animation-delay: 0.3s">
             <div class="flex items-center justify-between mb-4">
               <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-users text-amber-400 text-2xl"></i>
+                <i class="fas fa-mail-bulk text-amber-400 text-2xl"></i>
               </div>
-              <span class="text-blue-400 text-sm font-semibold">Active</span>
+            </div>
+            <div class="text-3xl font-black mb-1" id="statNewsletter">0</div>
+            <div class="text-gray-400 text-sm">Subscribers</div>
+          </div>
+
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('users')" style="animation-delay: 0.4s">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-14 h-14 bg-pink-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-users text-pink-400 text-2xl"></i>
+              </div>
             </div>
             <div class="text-3xl font-black mb-1" id="statUsers">0</div>
             <div class="text-gray-400 text-sm">Total Users</div>
@@ -246,16 +275,16 @@
         <div class="grid lg:grid-cols-2 gap-6 mb-8">
           <div class="glass rounded-2xl p-6 fade-in">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>Registration Trends
+              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>Activity Overview (Last 7 Days)
             </h3>
             <div style="position: relative; height: 300px;">
-              <canvas id="regChart"></canvas>
+              <canvas id="activityChart"></canvas>
             </div>
           </div>
 
           <div class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Request Distribution
+              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Data Distribution
             </h3>
             <div style="position: relative; height: 300px;">
               <canvas id="distChart"></canvas>
@@ -265,11 +294,88 @@
 
         <!-- Recent Activity -->
         <div class="glass rounded-2xl p-6 fade-in">
-          <h3 class="text-xl font-bold mb-6">
-            <i class="fas fa-history text-purple-400 mr-2"></i>Recent Activity
-          </h3>
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">
+              <i class="fas fa-history text-purple-400 mr-2"></i>Recent Activity
+            </h3>
+            <button onclick="loadRecentActivity()" class="text-cyan-400 hover:text-cyan-300 text-sm">
+              <i class="fas fa-sync-alt mr-2"></i>Refresh
+            </button>
+          </div>
           <div class="space-y-3" id="activityList"></div>
         </div>
+      </div>
+    </div>
+
+    <!-- Content Management Section -->
+    <div id="contentContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <h1 class="text-4xl font-black">Content <span class="gradient-text">Management</span></h1>
+          <button onclick="openContentModal()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-plus mr-2"></i>Add Content
+          </button>
+        </div>
+
+        <!-- Content Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-8">
+          <div class="glass rounded-2xl p-6">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-file-alt text-purple-400 text-xl"></i>
+            </div>
+            <div class="text-2xl font-black mb-1" id="totalContentCount">0</div>
+            <div class="text-gray-400 text-sm">Total Content</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            </div>
+            <div class="text-2xl font-black mb-1" id="publishedContentCount">0</div>
+            <div class="text-gray-400 text-sm">Published</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-edit text-amber-400 text-xl"></i>
+            </div>
+            <div class="text-2xl font-black mb-1" id="draftContentCount">0</div>
+            <div class="text-gray-400 text-sm">Drafts</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-eye text-cyan-400 text-xl"></i>
+            </div>
+            <div class="text-2xl font-black mb-1" id="totalViewsCount">0</div>
+            <div class="text-gray-400 text-sm">Total Views</div>
+          </div>
+        </div>
+
+        <!-- Content Tabs -->
+        <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
+          <button onclick="filterContent('all')" id="filter-all" class="tab-button active px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            All Content
+          </button>
+          <button onclick="filterContent('News')" id="filter-News" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            News
+          </button>
+          <button onclick="filterContent('Resources')" id="filter-Resources" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            Resources
+          </button>
+          <button onclick="filterContent('Guides')" id="filter-Guides" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            Guides
+          </button>
+          <button onclick="filterContent('Published')" id="filter-Published" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            Published
+          </button>
+          <button onclick="filterContent('Draft')" id="filter-Draft" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            Drafts
+          </button>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="contentGrid"></div>
       </div>
     </div>
 
@@ -278,40 +384,34 @@
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
           <h1 class="text-4xl font-black">Registration <span class="gradient-text">Requests</span></h1>
-          <button onclick="refreshRegistrations()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-sync-alt mr-2"></i>Refresh
+          <button onclick="simulateRegistration()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-plus mr-2"></i>Simulate New Registration
           </button>
         </div>
 
         <!-- Registration Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
           <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-clock text-cyan-400 text-xl"></i>
-              </div>
+            <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-clock text-amber-400 text-xl"></i>
             </div>
-            <div class="text-2xl font-black mb-1" id="pendingRegs">0</div>
-            <div class="text-gray-400 text-sm">Pending Approval</div>
+            <div class="text-2xl font-black mb-1" id="pendingRegsCount">0</div>
+            <div class="text-gray-400 text-sm">Pending</div>
           </div>
 
           <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-check-circle text-green-400 text-xl"></i>
-              </div>
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-check-circle text-green-400 text-xl"></i>
             </div>
-            <div class="text-2xl font-black mb-1" id="approvedRegs">0</div>
+            <div class="text-2xl font-black mb-1" id="approvedRegsCount">0</div>
             <div class="text-gray-400 text-sm">Approved</div>
           </div>
 
           <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-times-circle text-red-400 text-xl"></i>
-              </div>
+            <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-times-circle text-red-400 text-xl"></i>
             </div>
-            <div class="text-2xl font-black mb-1" id="rejectedRegs">0</div>
+            <div class="text-2xl font-black mb-1" id="rejectedRegsCount">0</div>
             <div class="text-gray-400 text-sm">Rejected</div>
           </div>
         </div>
@@ -331,14 +431,7 @@
                   <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
                 </tr>
               </thead>
-              <tbody id="registrationsTableBody" class="divide-y divide-slate-800">
-                <tr>
-                  <td colspan="7" class="px-6 py-12 text-center text-gray-400">
-                    <i class="fas fa-inbox text-4xl mb-3"></i>
-                    <p>No registration requests yet</p>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="registrationsTableBody" class="divide-y divide-slate-800"></tbody>
             </table>
           </div>
         </div>
@@ -350,18 +443,13 @@
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
           <h1 class="text-4xl font-black">Contact <span class="gradient-text">Messages</span></h1>
-          <button onclick="refreshContacts()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-sync-alt mr-2"></i>Refresh
+          <button onclick="simulateContact()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-plus mr-2"></i>Simulate New Contact
           </button>
         </div>
 
         <!-- Contacts Grid -->
-        <div class="grid md:grid-cols-2 gap-6" id="contactsGrid">
-          <div class="glass rounded-2xl p-12 text-center">
-            <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
-            <p class="text-gray-400">No contact messages yet</p>
-          </div>
-        </div>
+        <div class="grid md:grid-cols-2 gap-6" id="contactsGrid"></div>
       </div>
     </div>
 
@@ -371,11 +459,11 @@
         <div class="flex items-center justify-between mb-8">
           <h1 class="text-4xl font-black">Newsletter <span class="gradient-text">Subscribers</span></h1>
           <div class="flex gap-3">
-            <button onclick="exportSubscribers()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-              <i class="fas fa-download mr-2"></i>Export
+            <button onclick="exportNewsletter()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+              <i class="fas fa-download mr-2"></i>Export CSV
             </button>
-            <button onclick="refreshNewsletter()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-              <i class="fas fa-sync-alt mr-2"></i>Refresh
+            <button onclick="simulateNewsletter()" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+              <i class="fas fa-plus mr-2"></i>Simulate Subscriber
             </button>
           </div>
         </div>
@@ -393,14 +481,7 @@
                   <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
                 </tr>
               </thead>
-              <tbody id="newsletterTableBody" class="divide-y divide-slate-800">
-                <tr>
-                  <td colspan="5" class="px-6 py-12 text-center text-gray-400">
-                    <i class="fas fa-inbox text-4xl mb-3"></i>
-                    <p>No newsletter subscribers yet</p>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="newsletterTableBody" class="divide-y divide-slate-800"></tbody>
             </table>
           </div>
         </div>
@@ -412,7 +493,7 @@
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
           <h1 class="text-4xl font-black">User <span class="gradient-text">Management</span></h1>
-          <button onclick="openAddUserModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+          <button onclick="openUserModal()" class="bg-gradient-to-r from-pink-500 to-rose-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
             <i class="fas fa-user-plus mr-2"></i>Add User
           </button>
         </div>
@@ -428,11 +509,11 @@
                   <th class="px-6 py-4 text-left text-sm font-semibold">Company</th>
                   <th class="px-6 py-4 text-left text-sm font-semibold">Plan</th>
                   <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Joined</th>
                   <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
                 </tr>
               </thead>
-              <tbody id="usersTableBody" class="divide-y divide-slate-800">
-              </tbody>
+              <tbody id="usersTableBody" class="divide-y divide-slate-800"></tbody>
             </table>
           </div>
         </div>
@@ -440,139 +521,255 @@
     </div>
   </div>
 
-  <!-- View Details Modal -->
-  <div id="detailsModal" class="modal">
-    <div class="glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+  <!-- Content Modal -->
+  <div id="contentModal" class="modal">
+    <div class="glass rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black">Request Details</h2>
-        <button onclick="closeDetailsModal()" class="text-gray-400 hover:text-white">
+        <h2 class="text-2xl font-black" id="contentModalTitle">Add New Content</h2>
+        <button onclick="closeContentModal()" class="text-gray-400 hover:text-white">
           <i class="fas fa-times text-2xl"></i>
         </button>
       </div>
-      <div id="detailsContent"></div>
+      <form id="contentForm" class="space-y-4">
+        <input type="hidden" id="editContentId">
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Title *</label>
+            <input type="text" id="contentTitle" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-semibold mb-2">Category *</label>
+            <select id="contentCategory" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+              <option value="News">News</option>
+              <option value="Resources">Resources</option>
+              <option value="Guides">Guides</option>
+              <option value="Tutorial">Tutorial</option>
+              <option value="Case Study">Case Study</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Short Description *</label>
+          <textarea id="contentDescription" rows="2" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Full Content *</label>
+          <textarea id="contentBody" rows="8" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white"></textarea>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Author *</label>
+            <input type="text" id="contentAuthor" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Publish Date *</label>
+            <input type="date" id="contentDate" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Status *</label>
+            <select id="contentStatus" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+              <option value="Draft">Draft</option>
+              <option value="Published">Published</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Featured Image URL</label>
+          <input type="url" id="contentImage" placeholder="https://example.com/image.jpg" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">Tags (comma separated)</label>
+          <input type="text" id="contentTags" placeholder="mining, technology, sustainability" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+        </div>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold">
+            <i class="fas fa-save mr-2"></i>Save Content
+          </button>
+          <button type="button" onclick="closeContentModal()" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold">
+            Cancel
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 
-  <!-- Add User Modal -->
-  <div id="addUserModal" class="modal">
-    <div class="glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+  <!-- User Modal -->
+  <div id="userModal" class="modal">
+    <div class="glass rounded-3xl p-8 max-w-2xl w-full">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-black">Add New User</h2>
-        <button onclick="closeAddUserModal()" class="text-gray-400 hover:text-white">
+        <button onclick="closeUserModal()" class="text-gray-400 hover:text-white">
           <i class="fas fa-times text-2xl"></i>
         </button>
       </div>
-      <form id="addUserForm" class="space-y-4">
+      <form id="userForm" class="space-y-4">
         <div class="grid md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm font-semibold mb-2">First Name</label>
-            <input type="text" id="newUserFirstName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+            <label class="block text-sm font-semibold mb-2">First Name *</label>
+            <input type="text" id="userFirstName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
           <div>
-            <label class="block text-sm font-semibold mb-2">Last Name</label>
-            <input type="text" id="newUserLastName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+            <label class="block text-sm font-semibold mb-2">Last Name *</label>
+            <input type="text" id="userLastName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
         </div>
+
         <div>
-          <label class="block text-sm font-semibold mb-2">Email</label>
-          <input type="email" id="newUserEmail" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <label class="block text-sm font-semibold mb-2">Email *</label>
+          <input type="email" id="userEmail" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
+
         <div>
-          <label class="block text-sm font-semibold mb-2">Company</label>
-          <input type="text" id="newUserCompany" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <label class="block text-sm font-semibold mb-2">Company *</label>
+          <input type="text" id="userCompany" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
+
         <div>
-          <label class="block text-sm font-semibold mb-2">Plan</label>
-          <select id="newUserPlan" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          <label class="block text-sm font-semibold mb-2">Plan *</label>
+          <select id="userPlan" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
             <option value="Free">Free</option>
             <option value="Starter">Starter</option>
             <option value="Professional">Professional</option>
           </select>
         </div>
-        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold">
-          <i class="fas fa-user-plus mr-2"></i>Add User
-        </button>
+
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 bg-gradient-to-r from-pink-500 to-rose-600 px-6 py-3 rounded-xl font-bold">
+            <i class="fas fa-user-plus mr-2"></i>Add User
+          </button>
+          <button type="button" onclick="closeUserModal()" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold">
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   </div>
 
-  <script>
-    // EmailJS Configuration
-    const EMAILJS_CONFIG = {
-      serviceId: 'service_v1tzk6t',
-      templateId: 'template_5rwnvg8',
-      publicKey: 'vIsuy4VXOAFCLwx2c'
-    };
+  <!-- View Content Modal -->
+  <div id="viewModal" class="modal">
+    <div class="glass rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-black" id="viewModalTitle">Content Details</h2>
+        <button onclick="closeViewModal()" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+      <div id="viewModalBody"></div>
+    </div>
+  </div>
 
-    // Initialize EmailJS
-    emailjs.init(EMAILJS_CONFIG.publicKey);
+  <script>
+    // EmailJS Init
+    emailjs.init('vIsuy4VXOAFCLwx2c');
 
     // Data Storage
+    let content = [];
     let registrations = [];
     let contacts = [];
     let newsletter = [];
     let users = [];
     let charts = {};
+    let currentFilter = 'all';
 
     const ADMIN_USERS = {
       'admin@sesmine.com': { password: 'admin123', name: 'Admin User', role: 'Super Admin' }
     };
 
-    // Load data from localStorage
-    function loadStoredData() {
-      registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
-      contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
-      newsletter = JSON.parse(localStorage.getItem('newsletter') || '[]');
-      users = JSON.parse(localStorage.getItem('users') || '[]');
-      
-      updateAllStats();
-      updateBadges();
+    // Sample Data
+    const sampleContent = [
+      {
+        id: 1,
+        title: 'Mining Industry Trends 2026',
+        category: 'News',
+        description: 'Latest trends shaping the future of mining industry with AI and automation',
+        body: 'The mining industry is experiencing significant transformations driven by technology, sustainability, and changing market demands. Artificial Intelligence and machine learning are revolutionizing operations, from exploration to processing. This comprehensive analysis explores the key trends that will define mining operations in 2026 and beyond, including autonomous vehicles, predictive maintenance, and real-time data analytics.',
+        author: 'John Smith',
+        date: '2026-01-05',
+        status: 'Published',
+        image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800',
+        tags: 'mining, trends, technology, AI',
+        views: 1250,
+        created: new Date().toISOString()
+      },
+      {
+        id: 2,
+        title: 'Complete Guide to Cost Estimation',
+        category: 'Resources',
+        description: 'Comprehensive resource for accurate mining project cost estimation',
+        body: 'Cost estimation is critical for mining project success. This guide covers methodologies, tools, and best practices for accurate cost prediction. Learn about parametric estimation, analogous estimation, bottom-up estimation, and how to apply AI-powered tools for better accuracy. Includes real-world case studies and downloadable templates.',
+        author: 'Sarah Johnson',
+        date: '2026-01-04',
+        status: 'Published',
+        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800',
+        tags: 'cost estimation, resources, guide',
+        views: 890,
+        created: new Date().toISOString()
+      },
+      {
+        id: 3,
+        title: 'Sustainable Mining Practices',
+        category: 'Guides',
+        description: 'Step-by-step guide to implementing sustainable mining operations',
+        body: 'Environmental sustainability is no longer optional in the mining industry. This comprehensive guide outlines proven strategies for implementing sustainable practices while maintaining operational efficiency. Topics include water management, waste reduction, energy efficiency, biodiversity protection, and community engagement. Learn from industry leaders who have successfully transformed their operations.',
+        author: 'Michael Chen',
+        date: '2026-01-03',
+        status: 'Draft',
+        image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800',
+        tags: 'sustainability, environment, ESG',
+        views: 0,
+        created: new Date().toISOString()
+      }
+    ];
+
+    // Initialize
+    function init() {
+      loadData();
+      if (!checkSession()) {
+        document.getElementById('loginScreen').classList.remove('hidden');
+      }
     }
 
-    // Save data to localStorage
+    // Load Data
+    function loadData() {
+      content = JSON.parse(localStorage.getItem('adminContent') || JSON.stringify(sampleContent));
+      registrations = JSON.parse(localStorage.getItem('adminRegistrations') || '[]');
+      contacts = JSON.parse(localStorage.getItem('adminContacts') || '[]');
+      newsletter = JSON.parse(localStorage.getItem('adminNewsletter') || '[]');
+      users = JSON.parse(localStorage.getItem('adminUsers') || '[]');
+    }
+
+    // Save Data
     function saveData() {
-      localStorage.setItem('registrations', JSON.stringify(registrations));
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-      localStorage.setItem('newsletter', JSON.stringify(newsletter));
-      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('adminContent', JSON.stringify(content));
+      localStorage.setItem('adminRegistrations', JSON.stringify(registrations));
+      localStorage.setItem('adminContacts', JSON.stringify(contacts));
+      localStorage.setItem('adminNewsletter', JSON.stringify(newsletter));
+      localStorage.setItem('adminUsers', JSON.stringify(users));
     }
 
-    // Update badges
-    function updateBadges() {
-      const pendingRegs = registrations.filter(r => r.status === 'pending').length;
-      const unreadContacts = contacts.filter(c => !c.read).length;
-      const activeNews = newsletter.filter(n => n.active).length;
-      
-      document.getElementById('regBadge').textContent = pendingRegs;
-      document.getElementById('contactBadge').textContent = unreadContacts;
-      document.getElementById('newsBadge').textContent = activeNews;
-      
-      document.getElementById('regBadge').style.display = pendingRegs > 0 ? 'flex' : 'none';
-      document.getElementById('contactBadge').style.display = unreadContacts > 0 ? 'flex' : 'none';
-      document.getElementById('newsBadge').style.display = activeNews > 0 ? 'flex' : 'none';
+    // Show Notification
+    function showNotification(message, type = 'success') {
+      const notification = document.createElement('div');
+      notification.className = `notification glass ${type === 'success' ? 'border-green-500' : 'border-red-500'} border-2`;
+      notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} mr-2"></i>
+        ${message}
+      `;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 3000);
     }
 
-    // Update all stats
-    function updateAllStats() {
-      document.getElementById('statRegistrations').textContent = registrations.length;
-      document.getElementById('statContacts').textContent = contacts.length;
-      document.getElementById('statNewsletter').textContent = newsletter.length;
-      document.getElementById('statUsers').textContent = users.length;
-      
-      const pending = registrations.filter(r => r.status === 'pending').length;
-      const approved = registrations.filter(r => r.status === 'approved').length;
-      const rejected = registrations.filter(r => r.status === 'rejected').length;
-      
-      const pendingEl = document.getElementById('pendingRegs');
-      const approvedEl = document.getElementById('approvedRegs');
-      const rejectedEl = document.getElementById('rejectedRegs');
-      
-      if (pendingEl) pendingEl.textContent = pending;
-      if (approvedEl) approvedEl.textContent = approved;
-      if (rejectedEl) rejectedEl.textContent = rejected;
-    }
-
-    // Check session
+    // Check Session
     function checkSession() {
       const session = localStorage.getItem('adminSession');
       if (session) {
@@ -585,7 +782,7 @@
       return false;
     }
 
-    // Toggle password
+    // Toggle Password
     function togglePasswordVisibility() {
       const input = document.getElementById('loginPassword');
       const icon = document.getElementById('toggleIcon');
@@ -598,7 +795,7 @@
       }
     }
 
-    // Show error
+    // Show Error
     function showError(message) {
       const errorDiv = document.getElementById('loginError');
       const errorMessage = document.getElementById('errorMessage');
@@ -636,7 +833,7 @@
       }, 1000);
     });
 
-    // Show dashboard
+    // Show Dashboard
     function showDashboard(userData) {
       document.getElementById('loginScreen').classList.add('hidden');
       document.getElementById('dashboardScreen').classList.remove('hidden');
@@ -644,22 +841,22 @@
       document.getElementById('welcomeName').textContent = userData.name.split(' ')[0];
       document.getElementById('navAdminName').textContent = userData.name;
       
-      loadStoredData();
       updateTime();
       setInterval(updateTime, 1000);
       
-      loadActivities();
-      loadRegistrations();
-      loadContacts();
-      loadNewsletter();
-      loadUsers();
+      updateAllStats();
+      updateBadges();
+      loadRecentActivity();
+      renderContent();
+      renderRegistrations();
+      renderContacts();
+      renderNewsletter();
+      renderUsers();
       
-      setTimeout(() => {
-        createCharts();
-      }, 100);
+      setTimeout(createCharts, 100);
     }
 
-    // Update time
+    // Update Time
     function updateTime() {
       const now = new Date();
       const options = { 
@@ -677,11 +874,58 @@
       }
     }
 
-    // Load activities
-    function loadActivities() {
+    // Update All Stats
+    function updateAllStats() {
+      document.getElementById('statContent').textContent = content.length;
+      document.getElementById('statRegistrations').textContent = registrations.length;
+      document.getElementById('statContacts').textContent = contacts.length;
+      document.getElementById('statNewsletter').textContent = newsletter.length;
+      document.getElementById('statUsers').textContent = users.length;
+      
+      document.getElementById('totalContentCount').textContent = content.length;
+      document.getElementById('publishedContentCount').textContent = content.filter(c => c.status === 'Published').length;
+      document.getElementById('draftContentCount').textContent = content.filter(c => c.status === 'Draft').length;
+      document.getElementById('totalViewsCount').textContent = content.reduce((sum, c) => sum + (c.views || 0), 0).toLocaleString();
+      
+      document.getElementById('pendingRegsCount').textContent = registrations.filter(r => r.status === 'pending').length;
+      document.getElementById('approvedRegsCount').textContent = registrations.filter(r => r.status === 'approved').length;
+      document.getElementById('rejectedRegsCount').textContent = registrations.filter(r => r.status === 'rejected').length;
+    }
+
+    // Update Badges
+    function updateBadges() {
+      const pendingRegs = registrations.filter(r => r.status === 'pending').length;
+      const unreadContacts = contacts.filter(c => !c.read).length;
+      const activeNews = newsletter.filter(n => n.active).length;
+      
+      const regBadge = document.getElementById('regBadge');
+      const contactBadge = document.getElementById('contactBadge');
+      const newsBadge = document.getElementById('newsBadge');
+      
+      regBadge.textContent = pendingRegs;
+      regBadge.style.display = pendingRegs > 0 ? 'flex' : 'none';
+      
+      contactBadge.textContent = unreadContacts;
+      contactBadge.style.display = unreadContacts > 0 ? 'flex' : 'none';
+      
+      newsBadge.textContent = activeNews;
+      newsBadge.style.display = activeNews > 0 ? 'flex' : 'none';
+    }
+
+    // Load Recent Activity
+    function loadRecentActivity() {
       const activities = [];
       
-      registrations.slice(0, 3).forEach(r => {
+      content.slice(0, 2).forEach(c => {
+        activities.push({
+          icon: 'newspaper',
+          color: 'purple',
+          text: `Content published: ${c.title}`,
+          time: getTimeAgo(c.created)
+        });
+      });
+      
+      registrations.slice(0, 2).forEach(r => {
         activities.push({
           icon: 'user-plus',
           color: 'cyan',
@@ -693,21 +937,19 @@
       contacts.slice(0, 2).forEach(c => {
         activities.push({
           icon: 'envelope',
-          color: 'purple',
-          text: `New contact message from ${c.name}`,
+          color: 'green',
+          text: `Contact message from ${c.name}`,
           time: getTimeAgo(c.date)
         });
       });
       
       const container = document.getElementById('activityList');
-      if (!container) return;
-      
       if (activities.length === 0) {
         container.innerHTML = '<div class="text-center text-gray-400 py-8">No recent activity</div>';
         return;
       }
       
-      container.innerHTML = activities.map(activity => `
+      container.innerHTML = activities.slice(0, 5).map(activity => `
         <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
           <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
             <i class="fas fa-${activity.icon} text-${activity.color}-400"></i>
@@ -720,7 +962,7 @@
       `).join('');
     }
 
-    // Get time ago
+    // Get Time Ago
     function getTimeAgo(dateString) {
       const date = new Date(dateString);
       const now = new Date();
@@ -732,17 +974,17 @@
       return Math.floor(seconds / 86400) + ' days ago';
     }
 
-    // Create charts
+    // Create Charts
     function createCharts() {
-      const regCtx = document.getElementById('regChart');
-      if (regCtx && !charts.regChart) {
-        charts.regChart = new Chart(regCtx, {
+      const activityCtx = document.getElementById('activityChart');
+      if (activityCtx && !charts.activityChart) {
+        charts.activityChart = new Chart(activityCtx, {
           type: 'line',
           data: {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
-              label: 'Registrations',
-              data: [5, 12, 8, 15, 10, 18, 14],
+              label: 'Activity',
+              data: [12, 19, 15, 25, 22, 30, 28],
               borderColor: '#06b6d4',
               backgroundColor: 'rgba(6, 182, 212, 0.1)',
               tension: 0.4,
@@ -753,19 +995,10 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { 
-              legend: { labels: { color: '#fff' } }
-            },
+            plugins: { legend: { labels: { color: '#fff' } } },
             scales: {
-              y: { 
-                beginAtZero: true,
-                grid: { color: 'rgba(255,255,255,0.1)' },
-                ticks: { color: '#94a3b8' }
-              },
-              x: { 
-                grid: { display: false },
-                ticks: { color: '#94a3b8' }
-              }
+              y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94a3b8' } },
+              x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
             }
           }
         });
@@ -776,10 +1009,10 @@
         charts.distChart = new Chart(distCtx, {
           type: 'doughnut',
           data: {
-            labels: ['Registrations', 'Contacts', 'Newsletter'],
+            labels: ['Content', 'Registrations', 'Contacts', 'Newsletter', 'Users'],
             datasets: [{
-              data: [registrations.length, contacts.length, newsletter.length],
-              backgroundColor: ['#06b6d4', '#8b5cf6', '#22c55e'],
+              data: [content.length, registrations.length, contacts.length, newsletter.length, users.length],
+              backgroundColor: ['#8b5cf6', '#06b6d4', '#22c55e', '#f59e0b', '#ec4899'],
               borderWidth: 0
             }]
           },
@@ -797,86 +1030,60 @@
       }
     }
 
-    // Load registrations
-    function loadRegistrations() {
-      const tbody = document.getElementById('registrationsTableBody');
-      if (!tbody) return;
-      
-      if (registrations.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="7" class="px-6 py-12 text-center text-gray-400">
-              <i class="fas fa-inbox text-4xl mb-3"></i>
-              <p>No registration requests yet</p>
-            </td>
-          </tr>
-        `;
-        return;
-      }
-      
-      tbody.innerHTML = registrations.map(reg => `
-        <tr class="hover:bg-slate-800/30 transition-colors">
-          <td class="px-6 py-4">
-            <div class="font-semibold">${reg.firstName} ${reg.lastName}</div>
-          </td>
-          <td class="px-6 py-4 text-gray-400">${reg.email}</td>
-          <td class="px-6 py-4 text-gray-400">${reg.company || 'N/A'}</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${reg.plan || 'Free'}</span>
-          </td>
-          <td class="px-6 py-4 text-gray-400 text-sm">${new Date(reg.date).toLocaleDateString()}</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(reg.status)}">${reg.status}</span>
-          </td>
-          <td class="px-6 py-4">
-            <button onclick="viewDetails('registration', ${reg.id})" class="text-cyan-400 hover:text-cyan-300 mr-3">
-              <i class="fas fa-eye"></i>
-            </button>
-            ${reg.status === 'pending' ? `
-              <button onclick="approveRegistration(${reg.id})" class="text-green-400 hover:text-green-300 mr-3">
-                <i class="fas fa-check"></i>
-              </button>
-              <button onclick="rejectRegistration(${reg.id})" class="text-red-400 hover:text-red-300">
-                <i class="fas fa-times"></i>
-              </button>
-            ` : ''}
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    // Load contacts
-    function loadContacts() {
-      const grid = document.getElementById('contactsGrid');
+    // CONTENT MANAGEMENT
+    function renderContent() {
+      const grid = document.getElementById('contentGrid');
       if (!grid) return;
       
-      if (contacts.length === 0) {
+      let filtered = [...content];
+      if (currentFilter !== 'all') {
+        if (currentFilter === 'Published' || currentFilter === 'Draft') {
+          filtered = filtered.filter(c => c.status === currentFilter);
+        } else {
+          filtered = filtered.filter(c => c.category === currentFilter);
+        }
+      }
+      
+      if (filtered.length === 0) {
         grid.innerHTML = `
-          <div class="glass rounded-2xl p-12 text-center col-span-2">
+          <div class="glass rounded-2xl p-12 text-center col-span-3">
             <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
-            <p class="text-gray-400">No contact messages yet</p>
+            <p class="text-gray-400">No content found</p>
           </div>
         `;
         return;
       }
       
-      grid.innerHTML = contacts.map(contact => `
-        <div class="glass rounded-2xl p-6 ${!contact.read ? 'border-2 border-purple-500/50' : ''}">
-          <div class="flex items-start justify-between mb-4">
-            <div>
-              <h3 class="text-lg font-bold">${contact.name}</h3>
-              <p class="text-sm text-gray-400">${contact.email}</p>
+      grid.innerHTML = filtered.map(item => `
+        <div class="glass rounded-2xl overflow-hidden card-hover">
+          ${item.image ? `
+            <div class="h-48 overflow-hidden">
+              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'">
             </div>
-            ${!contact.read ? '<span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">New</span>' : ''}
-          </div>
-          <p class="text-gray-300 text-sm mb-4">${contact.message}</p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span><i class="fas fa-clock mr-2"></i>${new Date(contact.date).toLocaleDateString()}</span>
-            <div class="space-x-2">
-              <button onclick="markAsRead(${contact.id})" class="text-cyan-400 hover:text-cyan-300">
-                <i class="fas fa-check mr-1"></i>Mark Read
+          ` : ''}
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${item.status === 'Published' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}">${item.status}</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2 line-clamp-2">${item.title}</h3>
+            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${item.description}</p>
+            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+              <span><i class="fas fa-user mr-2"></i>${item.author}</span>
+              <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
+            </div>
+            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+              <span><i class="fas fa-eye mr-2"></i>${item.views || 0} views</span>
+              ${item.tags ? `<span><i class="fas fa-tags mr-2"></i>${item.tags.split(',')[0]}</span>` : ''}
+            </div>
+            <div class="flex gap-2">
+              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-eye mr-1"></i>View
               </button>
-              <button onclick="deleteContact(${contact.id})" class="text-red-400 hover:text-red-300">
+              <button onclick="editContent(${item.id})" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-edit mr-1"></i>Edit
+              </button>
+              <button onclick="deleteContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all text-sm">
                 <i class="fas fa-trash mr-1"></i>Delete
               </button>
             </div>
@@ -885,374 +1092,623 @@
       `).join('');
     }
 
-    // Load newsletter
-    function loadNewsletter() {
-      const tbody = document.getElementById('newsletterTableBody');
-      if (!tbody) return;
-      
-      if (newsletter.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="5" class="px-6 py-12 text-center text-gray-400">
-              <i class="fas fa-inbox text-4xl mb-3"></i>
-              <p>No newsletter subscribers yet</p>
-            </td>
-          </tr>
-        `;
-        return;
+    function filterContent(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('bg-slate-800/50', 'hover:bg-slate-700/50');
+      });
+      const activeBtn = document.getElementById('filter-' + filter);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.classList.remove('bg-slate-800/50', 'hover:bg-slate-700/50');
       }
-      
-      tbody.innerHTML = newsletter.map((sub, index) => `
-        <tr class="hover:bg-slate-800/30 transition-colors">
-          <td class="px-6 py-4 text-gray-400">${index + 1}</td>
-          <td class="px-6 py-4 font-semibold">${sub.email}</td>
-          <td class="px-6 py-4 text-gray-400 text-sm">${new Date(sub.date).toLocaleDateString()}</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold ${sub.active ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">
-              ${sub.active ? 'Active' : 'Unsubscribed'}
-            </span>
-          </td>
-          <td class="px-6 py-4">
-            <button onclick="deleteNewsletter(${sub.id})" class="text-red-400 hover:text-red-300">
-              <i class="fas fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      `).join('');
+      renderContent();
     }
 
-    // Load users
-    function loadUsers() {
-      const tbody = document.getElementById('usersTableBody');
-      if (!tbody) return;
-      
-      if (users.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="6" class="px-6 py-12 text-center text-gray-400">
-              <i class="fas fa-users text-4xl mb-3"></i>
-              <p>No users yet. Add your first user!</p>
-            </td>
-          </tr>
-        `;
-        return;
-      }
-      
-      tbody.innerHTML = users.map(user => `
-        <tr class="hover:bg-slate-800/30 transition-colors">
-          <td class="px-6 py-4">
-            <div class="flex items-center gap-3">
-              <img src="https://i.pravatar.cc/100?img=${user.avatar || 1}" alt="${user.firstName}" class="w-10 h-10 rounded-full">
-              <div>
-                <div class="font-semibold">${user.firstName} ${user.lastName}</div>
-              </div>
-            </div>
-          </td>
-          <td class="px-6 py-4 text-gray-400">${user.email}</td>
-          <td class="px-6 py-4 text-gray-400">${user.company}</td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold ${getPlanColor(user.plan)}">${user.plan}</span>
-          </td>
-          <td class="px-6 py-4">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold ${user.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">${user.status}</span>
-          </td>
-          <td class="px-6 py-4">
-            <button onclick="deleteUser(${user.id})" class="text-red-400 hover:text-red-300">
-              <i class="fas fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    // Helper functions
-    function getStatusColor(status) {
-      const colors = {
-        'pending': 'bg-amber-500/20 text-amber-400',
-        'approved': 'bg-green-500/20 text-green-400',
-        'rejected': 'bg-red-500/20 text-red-400'
-      };
-      return colors[status] || 'bg-gray-500/20 text-gray-400';
-    }
-
-    function getPlanColor(plan) {
-      const colors = {
-        'Professional': 'bg-purple-500/20 text-purple-400',
-        'Starter': 'bg-cyan-500/20 text-cyan-400',
-        'Free': 'bg-gray-500/20 text-gray-400'
-      };
-      return colors[plan] || 'bg-gray-500/20 text-gray-400';
-    }
-
-    // Actions
-    function approveRegistration(id) {
-      const reg = registrations.find(r => r.id === id);
-      if (reg) {
-        reg.status = 'approved';
-        
-        // Add to users
-        users.push({
-          id: users.length + 1,
-          firstName: reg.firstName,
-          lastName: reg.lastName,
-          email: reg.email,
-          company: reg.company,
-          plan: reg.plan,
-          status: 'Active',
-          avatar: Math.floor(Math.random() * 70) + 1
-        });
-        
-        saveData();
-        loadRegistrations();
-        loadUsers();
-        updateAllStats();
-        updateBadges();
-        
-        alert('✅ Registration approved! User added to system.');
-      }
-    }
-
-    function rejectRegistration(id) {
-      if (confirm('⚠️ Are you sure you want to reject this registration?')) {
-        const reg = registrations.find(r => r.id === id);
-        if (reg) {
-          reg.status = 'rejected';
-          saveData();
-          loadRegistrations();
-          updateAllStats();
-          updateBadges();
-          alert('❌ Registration rejected.');
+    function openContentModal(id = null) {
+      if (id) {
+        const item = content.find(c => c.id === id);
+        if (item) {
+          document.getElementById('contentModalTitle').textContent = 'Edit Content';
+          document.getElementById('editContentId').value = id;
+          document.getElementById('contentTitle').value = item.title;
+          document.getElementById('contentCategory').value = item.category;
+          document.getElementById('contentDescription').value = item.description;
+          document.getElementById('contentBody').value = item.body;
+          document.getElementById('contentAuthor').value = item.author;
+          document.getElementById('contentDate').value = item.date;
+          document.getElementById('contentStatus').value = item.status;
+            document.getElementById('contentImage').value = item.image || '';
+            document.getElementById('contentTags').value = item.tags || '';
+          }
+        } else {
+          document.getElementById('contentModalTitle').textContent = 'Add New Content';
+          document.getElementById('contentForm').reset();
+          document.getElementById('editContentId').value = '';
+          document.getElementById('contentDate').valueAsDate = new Date();
         }
+        document.getElementById('contentModal').classList.add('active');
       }
-    }
 
-    function viewDetails(type, id) {
-      const modal = document.getElementById('detailsModal');
-      const content = document.getElementById('detailsContent');
-      
-      if (type === 'registration') {
-        const reg = registrations.find(r => r.id === id);
-        if (reg) {
-          content.innerHTML = `
+      function closeContentModal() {
+        document.getElementById('contentModal').classList.remove('active');
+      }
+
+      function editContent(id) {
+        openContentModal(id);
+      }
+
+      function viewContent(id) {
+        const item = content.find(c => c.id === id);
+        if (item) {
+          document.getElementById('viewModalTitle').textContent = item.title;
+          document.getElementById('viewModalBody').innerHTML = `
             <div class="space-y-4">
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label class="text-sm text-gray-400">First Name</label>
-                  <div class="font-semibold">${reg.firstName}</div>
+              ${item.image ? `<img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover rounded-xl mb-4" onerror="this.style.display='none'">` : ''}
+              <div class="flex items-center gap-4 text-sm text-gray-400 flex-wrap">
+                <span><i class="fas fa-user mr-2"></i>${item.author}</span>
+                <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
+                <span><i class="fas fa-eye mr-2"></i>${item.views || 0} views</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold ${item.status === 'Published' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}">${item.status}</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
+              </div>
+              <div class="prose prose-invert max-w-none">
+                <p class="text-lg text-gray-300 leading-relaxed">${item.description}</p>
+                <div class="mt-4 text-gray-400 leading-relaxed">${item.body}</div>
+              </div>
+              ${item.tags ? `
+                <div class="flex flex-wrap gap-2 mt-4">
+                  ${item.tags.split(',').map(tag => `<span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">${tag.trim()}</span>`).join('')}
                 </div>
-                <div>
-                  <label class="text-sm text-gray-400">Last Name</label>
-                  <div class="font-semibold">${reg.lastName}</div>
-                </div>
-              </div>
-              <div>
-                <label class="text-sm text-gray-400">Email</label>
-                <div class="font-semibold">${reg.email}</div>
-              </div>
-              <div>
-                <label class="text-sm text-gray-400">Company</label>
-                <div class="font-semibold">${reg.company || 'N/A'}</div>
-              </div>
-              <div>
-                <label class="text-sm text-gray-400">Plan</label>
-                <div class="font-semibold">${reg.plan || 'Free'}</div>
-              </div>
-              <div>
-                <label class="text-sm text-gray-400">Registration Date</label>
-                <div class="font-semibold">${new Date(reg.date).toLocaleString()}</div>
-              </div>
-              <div>
-                <label class="text-sm text-gray-400">Status</label>
-                <div><span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(reg.status)}">${reg.status}</span></div>
-              </div>
+              ` : ''}
             </div>
           `;
+          document.getElementById('viewModal').classList.add('active');
         }
       }
-      
-      modal.classList.add('active');
-    }
 
-    function closeDetailsModal() {
-      document.getElementById('detailsModal').classList.remove('active');
-    }
-
-    function markAsRead(id) {
-      const contact = contacts.find(c => c.id === id);
-      if (contact) {
-        contact.read = true;
-        saveData();
-        loadContacts();
-        updateBadges();
+      function closeViewModal() {
+        document.getElementById('viewModal').classList.remove('active');
       }
-    }
 
-    function deleteContact(id) {
-      if (confirm('⚠️ Delete this contact message?')) {
-        contacts = contacts.filter(c => c.id !== id);
+      function deleteContent(id) {
+        if (confirm('⚠️ Are you sure you want to delete this content?')) {
+          content = content.filter(c => c.id !== id);
+          saveData();
+          renderContent();
+          updateAllStats();
+          updateCharts();
+          showNotification('Content deleted successfully!');
+        }
+      }
+
+      document.getElementById('contentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const editId = document.getElementById('editContentId').value;
+        const formData = {
+          title: document.getElementById('contentTitle').value,
+          category: document.getElementById('contentCategory').value,
+          description: document.getElementById('contentDescription').value,
+          body: document.getElementById('contentBody').value,
+          author: document.getElementById('contentAuthor').value,
+          date: document.getElementById('contentDate').value,
+          status: document.getElementById('contentStatus').value,
+          image: document.getElementById('contentImage').value,
+          tags: document.getElementById('contentTags').value,
+          views: 0
+        };
+        
+        if (editId) {
+          const index = content.findIndex(c => c.id === parseInt(editId));
+          if (index !== -1) {
+            content[index] = { ...content[index], ...formData };
+            showNotification('Content updated successfully!');
+          }
+        } else {
+          const newContent = {
+            id: content.length > 0 ? Math.max(...content.map(c => c.id)) + 1 : 1,
+            ...formData,
+            created: new Date().toISOString()
+          };
+          content.push(newContent);
+          showNotification('Content added successfully!');
+        }
+        
         saveData();
-        loadContacts();
+        renderContent();
         updateAllStats();
-      }
-    }
-
-    function deleteNewsletter(id) {
-      if (confirm('⚠️ Remove this subscriber?')) {
-        newsletter = newsletter.filter(n => n.id !== id);
-        saveData();
-        loadNewsletter();
-        updateAllStats();
-      }
-    }
-
-    function deleteUser(id) {
-      if (confirm('⚠️ Delete this user?')) {
-        users = users.filter(u => u.id !== id);
-        saveData();
-        loadUsers();
-        updateAllStats();
-      }
-    }
-
-    function exportSubscribers() {
-      const csv = 'Email,Date,Status\n' + newsletter.map(n => 
-        `${n.email},${new Date(n.date).toLocaleDateString()},${n.active ? 'Active' : 'Unsubscribed'}`
-      ).join('\n');
-      
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'newsletter-subscribers.csv';
-      a.click();
-    }
-
-    function refreshRegistrations() {
-      loadRegistrations();
-      alert('✅ Registrations refreshed!');
-    }
-
-    function refreshContacts() {
-      loadContacts();
-      alert('✅ Contacts refreshed!');
-    }
-
-    function refreshNewsletter() {
-      loadNewsletter();
-      alert('✅ Newsletter refreshed!');
-    }
-
-    // Add user modal
-    function openAddUserModal() {
-      document.getElementById('addUserModal').classList.add('active');
-    }
-
-    function closeAddUserModal() {
-      document.getElementById('addUserModal').classList.remove('active');
-    }
-
-    document.getElementById('addUserForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const newUser = {
-        id: users.length + 1,
-        firstName: document.getElementById('newUserFirstName').value,
-        lastName: document.getElementById('newUserLastName').value,
-        email: document.getElementById('newUserEmail').value,
-        company: document.getElementById('newUserCompany').value,
-        plan: document.getElementById('newUserPlan').value,
-        status: 'Active',
-        avatar: Math.floor(Math.random() * 70) + 1
-      };
-      users.push(newUser);
-      saveData();
-      loadUsers();
-      updateAllStats();
-      closeAddUserModal();
-      alert('✅ User added successfully!');
-      this.reset();
-    });
-
-    // Show section
-    function showSection(section) {
-      ['dashboardContent', 'registrationsContent', 'contactsContent', 'newsletterContent', 'usersContent'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.classList.add('hidden');
+        updateCharts();
+        closeContentModal();
       });
-      
-      const sectionEl = document.getElementById(section + 'Content');
-      if (sectionEl) sectionEl.classList.remove('hidden');
-      
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('text-cyan-400', 'font-semibold');
-        link.classList.add('text-gray-400');
-      });
-      
-      const activeLink = document.getElementById('nav-' + section);
-      if (activeLink) {
-        activeLink.classList.add('text-cyan-400', 'font-semibold');
-        activeLink.classList.remove('text-gray-400');
-      }
-    }
 
-    // Logout
-    function handleLogout() {
-      if (confirm('⚠️ Are you sure you want to logout?')) {
-        localStorage.removeItem('adminSession');
-        Object.keys(charts).forEach(key => {
-          if (charts[key]) charts[key].destroy();
-        });
-        charts = {};
-        location.reload();
+      // REGISTRATIONS MANAGEMENT
+      function renderRegistrations() {
+        const tbody = document.getElementById('registrationsTableBody');
+        if (!tbody) return;
+        
+        if (registrations.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="7" class="px-6 py-12 text-center text-gray-400">
+                <i class="fas fa-inbox text-4xl mb-3"></i>
+                <p>No registration requests yet</p>
+                <button onclick="simulateRegistration()" class="mt-4 text-cyan-400 hover:text-cyan-300">
+                  <i class="fas fa-plus mr-2"></i>Add Sample Registration
+                </button>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+        
+        tbody.innerHTML = registrations.map(reg => `
+          <tr class="hover:bg-slate-800/30 transition-colors">
+            <td class="px-6 py-4">
+              <div class="font-semibold">${reg.firstName} ${reg.lastName}</div>
+            </td>
+            <td class="px-6 py-4 text-gray-400">${reg.email}</td>
+            <td class="px-6 py-4 text-gray-400">${reg.company || 'N/A'}</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${reg.plan || 'Free'}</span>
+            </td>
+            <td class="px-6 py-4 text-gray-400 text-sm">${new Date(reg.date).toLocaleDateString()}</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${
+                reg.status === 'pending' ? 'bg-amber-500/20 text-amber-400' :
+                reg.status === 'approved' ? 'bg-green-500/20 text-green-400' :
+                'bg-red-500/20 text-red-400'
+              }">${reg.status}</span>
+            </td>
+            <td class="px-6 py-4">
+              ${reg.status === 'pending' ? `
+                <button onclick="approveRegistration(${reg.id})" class="text-green-400 hover:text-green-300 mr-3" title="Approve">
+                  <i class="fas fa-check"></i>
+                </button>
+                <button onclick="rejectRegistration(${reg.id})" class="text-red-400 hover:text-red-300" title="Reject">
+                  <i class="fas fa-times"></i>
+                </button>
+              ` : `
+                <button onclick="deleteRegistration(${reg.id})" class="text-red-400 hover:text-red-300" title="Delete">
+                  <i class="fas fa-trash"></i>
+                </button>
+              `}
+            </td>
+          </tr>
+        `).join('');
       }
-    }
 
-    // Close modals on outside click
-    window.addEventListener('click', function(e) {
-      if (e.target.classList.contains('modal')) {
-        e.target.classList.remove('active');
-      }
-    });
-
-    // Keyboard shortcuts
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(modal => {
-          modal.classList.remove('active');
-        });
-      }
-    });
-
-    // Simulate receiving data (for demo purposes)
-    function simulateIncomingData() {
-      // Simulate registration
-      if (Math.random() > 0.7 && registrations.length < 10) {
-        const names = ['John Smith', 'Sarah Johnson', 'Michael Chen', 'Emily Davis'];
-        const name = names[Math.floor(Math.random() * names.length)].split(' ');
-        registrations.push({
-          id: registrations.length + 1,
-          firstName: name[0],
-          lastName: name[1],
-          email: `${name[0].toLowerCase()}@example.com`,
-          company: 'Tech Corp',
-          plan: 'Professional',
+      function simulateRegistration() {
+        const names = [
+          {first: 'John', last: 'Smith', email: 'john.smith@example.com', company: 'Mining Corp'},
+          {first: 'Sarah', last: 'Johnson', email: 'sarah.j@techmine.com', company: 'TechMine Ltd'},
+          {first: 'Michael', last: 'Chen', email: 'mchen@globalmine.com', company: 'GlobalMine Inc'},
+          {first: 'Emily', last: 'Davis', email: 'emily.davis@resources.com', company: 'Resources Co'}
+        ];
+        const random = names[Math.floor(Math.random() * names.length)];
+        const plans = ['Free', 'Starter', 'Professional'];
+        
+        const newReg = {
+          id: registrations.length > 0 ? Math.max(...registrations.map(r => r.id)) + 1 : 1,
+          firstName: random.first,
+          lastName: random.last,
+          email: random.email,
+          company: random.company,
+          plan: plans[Math.floor(Math.random() * plans.length)],
           status: 'pending',
           date: new Date().toISOString()
-        });
+        };
+        
+        registrations.unshift(newReg);
         saveData();
+        renderRegistrations();
         updateAllStats();
         updateBadges();
-        loadRegistrations();
-        loadActivities();
+        loadRecentActivity();
+        showNotification('New registration received!');
       }
-    }
 
-    // Check for new data every 30 seconds
-    setInterval(simulateIncomingData, 30000);
+      function approveRegistration(id) {
+        const reg = registrations.find(r => r.id === id);
+        if (reg) {
+          reg.status = 'approved';
+          
+          // Add to users
+          users.push({
+            id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
+            firstName: reg.firstName,
+            lastName: reg.lastName,
+            email: reg.email,
+            company: reg.company,
+            plan: reg.plan,
+            status: 'Active',
+            joined: new Date().toISOString(),
+            avatar: Math.floor(Math.random() * 70) + 1
+          });
+          
+          saveData();
+          renderRegistrations();
+          renderUsers();
+          updateAllStats();
+          updateBadges();
+          updateCharts();
+          showNotification(`Registration approved! ${reg.firstName} ${reg.lastName} added as user.`);
+        }
+      }
 
-    // Initialize
-    if (!checkSession()) {
-      document.getElementById('loginScreen').classList.remove('hidden');
-    }
-  </script>
-</body>
-</html>
+      function rejectRegistration(id) {
+        if (confirm('⚠️ Are you sure you want to reject this registration?')) {
+          const reg = registrations.find(r => r.id === id);
+          if (reg) {
+            reg.status = 'rejected';
+            saveData();
+            renderRegistrations();
+            updateAllStats();
+            updateBadges();
+            showNotification('Registration rejected.');
+          }
+        }
+      }
+
+      function deleteRegistration(id) {
+        if (confirm('⚠️ Delete this registration?')) {
+          registrations = registrations.filter(r => r.id !== id);
+          saveData();
+          renderRegistrations();
+          updateAllStats();
+          updateCharts();
+          showNotification('Registration deleted.');
+        }
+      }
+
+      // CONTACTS MANAGEMENT
+      function renderContacts() {
+        const grid = document.getElementById('contactsGrid');
+        if (!grid) return;
+        
+        if (contacts.length === 0) {
+          grid.innerHTML = `
+            <div class="glass rounded-2xl p-12 text-center col-span-2">
+              <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
+              <p class="text-gray-400 mb-4">No contact messages yet</p>
+              <button onclick="simulateContact()" class="text-cyan-400 hover:text-cyan-300">
+                <i class="fas fa-plus mr-2"></i>Add Sample Contact
+              </button>
+            </div>
+          `;
+          return;
+        }
+        
+        grid.innerHTML = contacts.map(contact => `
+          <div class="glass rounded-2xl p-6 ${!contact.read ? 'border-2 border-green-500/50' : ''}">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-lg font-bold">${contact.name}</h3>
+                <p class="text-sm text-gray-400">${contact.email}</p>
+              </div>
+              ${!contact.read ? '<span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full">New</span>' : ''}
+            </div>
+            <p class="text-gray-300 text-sm mb-4 line-clamp-3">${contact.message}</p>
+            <div class="flex items-center justify-between text-xs text-gray-500 mb-3">
+              <span><i class="fas fa-clock mr-2"></i>${new Date(contact.date).toLocaleDateString()}</span>
+              ${contact.subject ? `<span><i class="fas fa-tag mr-2"></i>${contact.subject}</span>` : ''}
+            </div>
+            <div class="flex gap-2">
+              ${!contact.read ? `
+                <button onclick="markContactRead(${contact.id})" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg transition-all text-sm">
+                  <i class="fas fa-check mr-1"></i>Mark Read
+                </button>
+              ` : ''}
+              <button onclick="deleteContact(${contact.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-trash mr-1"></i>Delete
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function simulateContact() {
+        const samples = [
+          {name: 'Alice Brown', email: 'alice@company.com', subject: 'Project Inquiry', message: 'I am interested in learning more about your cost estimation services for our upcoming mining project in Australia.'},
+          {name: 'Bob Wilson', email: 'bob.w@mining.com', subject: 'Partnership', message: 'We would like to discuss potential partnership opportunities between our organizations.'},
+          {name: 'Carol Martinez', email: 'carol@resources.com', subject: 'Technical Support', message: 'I need assistance with the cost calculator tool. Can someone help me understand the parameters?'}
+        ];
+        const random = samples[Math.floor(Math.random() * samples.length)];
+        
+        const newContact = {
+          id: contacts.length > 0 ? Math.max(...contacts.map(c => c.id)) + 1 : 1,
+          ...random,
+          date: new Date().toISOString(),
+          read: false
+        };
+        
+        contacts.unshift(newContact);
+        saveData();
+        renderContacts();
+        updateAllStats();
+        updateBadges();
+        loadRecentActivity();
+        showNotification('New contact message received!');
+      }
+
+      function markContactRead(id) {
+        const contact = contacts.find(c => c.id === id);
+        if (contact) {
+          contact.read = true;
+          saveData();
+          renderContacts();
+          updateBadges();
+          showNotification('Contact marked as read.');
+        }
+      }
+
+      function deleteContact(id) {
+        if (confirm('⚠️ Delete this contact message?')) {
+          contacts = contacts.filter(c => c.id !== id);
+          saveData();
+          renderContacts();
+          updateAllStats();
+          updateCharts();
+          showNotification('Contact deleted.');
+        }
+      }
+
+      // NEWSLETTER MANAGEMENT
+      function renderNewsletter() {
+        const tbody = document.getElementById('newsletterTableBody');
+        if (!tbody) return;
+        
+        if (newsletter.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" class="px-6 py-12 text-center text-gray-400">
+                <i class="fas fa-inbox text-4xl mb-3"></i>
+                <p>No newsletter subscribers yet</p>
+                <button onclick="simulateNewsletter()" class="mt-4 text-cyan-400 hover:text-cyan-300">
+                  <i class="fas fa-plus mr-2"></i>Add Sample Subscriber
+                </button>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+        
+        tbody.innerHTML = newsletter.map((sub, index) => `
+          <tr class="hover:bg-slate-800/30 transition-colors">
+            <td class="px-6 py-4 text-gray-400">${index + 1}</td>
+            <td class="px-6 py-4 font-semibold">${sub.email}</td>
+            <td class="px-6 py-4 text-gray-400 text-sm">${new Date(sub.date).toLocaleDateString()}</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${sub.active ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">
+                ${sub.active ? 'Active' : 'Unsubscribed'}
+              </span>
+            </td>
+            <td class="px-6 py-4">
+              <button onclick="deleteNewsletter(${sub.id})" class="text-red-400 hover:text-red-300" title="Delete">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      function simulateNewsletter() {
+        const emails = [
+          'subscriber1@example.com',
+          'newsletter.fan@company.com',
+          'mining.pro@industry.com',
+          'updates@business.com'
+        ];
+        const randomEmail = emails[Math.floor(Math.random() * emails.length)];
+        
+        const newSub = {
+          id: newsletter.length > 0 ? Math.max(...newsletter.map(n => n.id)) + 1 : 1,
+          email: randomEmail,
+          date: new Date().toISOString(),
+          active: true
+        };
+        
+        newsletter.unshift(newSub);
+        saveData();
+        renderNewsletter();
+        updateAllStats();
+        updateBadges();
+        showNotification('New newsletter subscriber!');
+      }
+
+      function deleteNewsletter(id) {
+        if (confirm('⚠️ Remove this subscriber?')) {
+          newsletter = newsletter.filter(n => n.id !== id);
+          saveData();
+          renderNewsletter();
+          updateAllStats();
+          updateCharts();
+          showNotification('Subscriber removed.');
+        }
+      }
+
+      function exportNewsletter() {
+        if (newsletter.length === 0) {
+          showNotification('No subscribers to export.', 'error');
+          return;
+        }
+        
+        const csv = 'Email,Date,Status\n' + newsletter.map(n => 
+          `${n.email},${new Date(n.date).toLocaleDateString()},${n.active ? 'Active' : 'Unsubscribed'}`
+        ).join('\n');
+        
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `newsletter-subscribers-${new Date().toISOString().split('T')[0]}.csv`;
+        a.click();
+        showNotification('Newsletter subscribers exported!');
+      }
+
+      // USERS MANAGEMENT
+      function renderUsers() {
+        const tbody = document.getElementById('usersTableBody');
+        if (!tbody) return;
+        
+        if (users.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="7" class="px-6 py-12 text-center text-gray-400">
+                <i class="fas fa-users text-4xl mb-3"></i>
+                <p>No users yet</p>
+                <button onclick="openUserModal()" class="mt-4 text-cyan-400 hover:text-cyan-300">
+                  <i class="fas fa-user-plus mr-2"></i>Add First User
+                </button>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+        
+        tbody.innerHTML = users.map(user => `
+          <tr class="hover:bg-slate-800/30 transition-colors">
+            <td class="px-6 py-4">
+              <div class="flex items-center gap-3">
+                <img src="https://i.pravatar.cc/100?img=${user.avatar || 1}" alt="${user.firstName}" class="w-10 h-10 rounded-full">
+                <div>
+                  <div class="font-semibold">${user.firstName} ${user.lastName}</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-gray-400">${user.email}</td>
+            <td class="px-6 py-4 text-gray-400">${user.company}</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${
+                user.plan === 'Professional' ? 'bg-purple-500/20 text-purple-400' :
+                user.plan === 'Starter' ? 'bg-cyan-500/20 text-cyan-400' :
+                'bg-gray-500/20 text-gray-400'
+              }">${user.plan}</span>
+            </td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${user.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">${user.status}</span>
+            </td>
+            <td class="px-6 py-4 text-gray-400 text-sm">${new Date(user.joined).toLocaleDateString()}</td>
+            <td class="px-6 py-4">
+              <button onclick="deleteUser(${user.id})" class="text-red-400 hover:text-red-300" title="Delete">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      function openUserModal() {
+        document.getElementById('userForm').reset();
+        document.getElementById('userModal').classList.add('active');
+      }
+
+      function closeUserModal() {
+        document.getElementById('userModal').classList.remove('active');
+      }
+
+      function deleteUser(id) {
+        if (confirm('⚠️ Delete this user?')) {
+          users = users.filter(u => u.id !== id);
+          saveData();
+          renderUsers();
+          updateAllStats();
+          updateCharts();
+          showNotification('User deleted.');
+        }
+      }
+
+      document.getElementById('userForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const newUser = {
+          id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
+          firstName: document.getElementById('userFirstName').value,
+          lastName: document.getElementById('userLastName').value,
+          email: document.getElementById('userEmail').value,
+          company: document.getElementById('userCompany').value,
+          plan: document.getElementById('userPlan').value,
+          status: 'Active',
+          joined: new Date().toISOString(),
+          avatar: Math.floor(Math.random() * 70) + 1
+        };
+        
+        users.push(newUser);
+        saveData();
+        renderUsers();
+        updateAllStats();
+        updateCharts();
+        closeUserModal();
+        showNotification('User added successfully!');
+      });
+
+      // NAVIGATION
+      function showSection(section) {
+        ['dashboardContent', 'contentContent', 'registrationsContent', 'contactsContent', 'newsletterContent', 'usersContent'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.add('hidden');
+        });
+        
+        const sectionEl = document.getElementById(section + 'Content');
+        if (sectionEl) sectionEl.classList.remove('hidden');
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('text-cyan-400', 'font-semibold');
+          link.classList.add('text-gray-400');
+        });
+        
+        const activeLink = document.getElementById('nav-' + section);
+        if (activeLink) {
+          activeLink.classList.add('text-cyan-400', 'font-semibold');
+          activeLink.classList.remove('text-gray-400');
+        }
+      }
+
+      // UPDATE CHARTS
+      function updateCharts() {
+        if (charts.distChart) {
+          charts.distChart.data.datasets[0].data = [
+            content.length,
+            registrations.length,
+            contacts.length,
+            newsletter.length,
+            users.length
+          ];
+          charts.distChart.update();
+        }
+      }
+
+      // LOGOUT
+      function handleLogout() {
+        if (confirm('⚠️ Are you sure you want to logout?')) {
+          localStorage.removeItem('adminSession');
+          Object.keys(charts).forEach(key => {
+            if (charts[key]) charts[key].destroy();
+          });
+          charts = {};
+          location.reload();
+        }
+      }
+
+      // MODAL CLOSE ON OUTSIDE CLICK
+      window.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+          e.target.classList.remove('active');
+        }
+      });
+
+      // KEYBOARD SHORTCUTS
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal').forEach(modal => {
+            modal.classList.remove('active');
+          });
+        }
+      });
+
+      // INITIALIZE
+      init();
+    </script>
+  </body>
+  </html>
