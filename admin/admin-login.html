@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Portal | SES_MINE</title>
+  <title>Admin Portal | SES_MINE - Content Publishing System</title>
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -84,6 +84,9 @@
       from { transform: translateX(400px); }
       to { transform: translateX(0); }
     }
+    .status-pending {
+      border: 2px solid rgba(251, 191, 36, 0.5);
+    }
   </style>
 </head>
 <body class="text-white">
@@ -93,7 +96,7 @@
       <div class="text-center mb-8 fade-in">
         <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-16 mx-auto mb-4">
         <h1 class="text-3xl font-black mb-2">Admin <span class="gradient-text">Portal</span></h1>
-        <p class="text-gray-400">Secure access to dashboard</p>
+        <p class="text-gray-400">Content Publishing System</p>
       </div>
 
       <div class="glass rounded-3xl p-8 shadow-2xl fade-in" style="animation-delay: 0.1s">
@@ -168,23 +171,16 @@
               <a href="#" onclick="showSection('dashboard')" id="nav-dashboard" class="nav-link text-cyan-400 font-semibold">
                 <i class="fas fa-chart-line mr-2"></i>Dashboard
               </a>
-              <a href="#" onclick="showSection('content')" id="nav-content" class="nav-link text-gray-400 hover:text-white transition-colors">
+              <a href="#" onclick="showSection('content')" id="nav-content" class="nav-link text-gray-400 hover:text-white transition-colors relative">
                 <i class="fas fa-newspaper mr-2"></i>Content
+                <span id="contentBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-amber-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
-              <a href="#" onclick="showSection('registrations')" id="nav-registrations" class="nav-link text-gray-400 hover:text-white transition-colors relative">
-                <i class="fas fa-user-plus mr-2"></i>Registrations
-                <span id="regBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
+              <a href="#" onclick="showSection('approval')" id="nav-approval" class="nav-link text-gray-400 hover:text-white transition-colors relative">
+                <i class="fas fa-check-circle mr-2"></i>Approval Queue
+                <span id="approvalBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
-              <a href="#" onclick="showSection('contacts')" id="nav-contacts" class="nav-link text-gray-400 hover:text-white transition-colors relative">
-                <i class="fas fa-envelope mr-2"></i>Contacts
-                <span id="contactBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
-              </a>
-              <a href="#" onclick="showSection('newsletter')" id="nav-newsletter" class="nav-link text-gray-400 hover:text-white transition-colors relative">
-                <i class="fas fa-newspaper mr-2"></i>Newsletter
-                <span id="newsBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
-              </a>
-              <a href="#" onclick="showSection('users')" id="nav-users" class="nav-link text-gray-400 hover:text-white transition-colors">
-                <i class="fas fa-users mr-2"></i>Users
+              <a href="#" onclick="showSection('published')" id="nav-published" class="nav-link text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-globe mr-2"></i>Published
               </a>
             </div>
           </div>
@@ -204,14 +200,14 @@
       </div>
     </nav>
 
-    <!-- Main Dashboard Content -->
+    <!-- Main Dashboard -->
     <div id="dashboardContent" class="pt-24 pb-12 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto">
         <div class="mb-8 fade-in">
           <h1 class="text-4xl font-black mb-2">
-            Welcome back, <span class="gradient-text" id="welcomeName">Admin</span>! 👋
+            Content Publishing <span class="gradient-text">Dashboard</span> 📰
           </h1>
-          <p class="text-gray-400">Here's your overview for today</p>
+          <p class="text-gray-400">Manage and approve content for News & Resources pages</p>
           <p class="text-sm text-gray-500 mt-2">
             <i class="fas fa-clock mr-2"></i>
             <span id="currentTime"></span>
@@ -221,53 +217,43 @@
         <!-- Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
           <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('content')">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-newspaper text-purple-400 text-2xl"></i>
-              </div>
+            <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-file-alt text-purple-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statContent">0</div>
+            <div class="text-3xl font-black mb-1" id="statTotal">0</div>
             <div class="text-gray-400 text-sm">Total Content</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('registrations')" style="animation-delay: 0.1s">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-user-plus text-cyan-400 text-2xl"></i>
-              </div>
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('content')" style="animation-delay: 0.1s">
+            <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-edit text-amber-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statRegistrations">0</div>
-            <div class="text-gray-400 text-sm">Registrations</div>
+            <div class="text-3xl font-black mb-1" id="statDraft">0</div>
+            <div class="text-gray-400 text-sm">Drafts</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('contacts')" style="animation-delay: 0.2s">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-envelope text-green-400 text-2xl"></i>
-              </div>
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('approval')" style="animation-delay: 0.2s">
+            <div class="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-clock text-orange-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statContacts">0</div>
-            <div class="text-gray-400 text-sm">Contact Messages</div>
+            <div class="text-3xl font-black mb-1" id="statPending">0</div>
+            <div class="text-gray-400 text-sm">Pending Approval</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('newsletter')" style="animation-delay: 0.3s">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-mail-bulk text-amber-400 text-2xl"></i>
-              </div>
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('published')" style="animation-delay: 0.3s">
+            <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-check-circle text-green-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statNewsletter">0</div>
-            <div class="text-gray-400 text-sm">Subscribers</div>
+            <div class="text-3xl font-black mb-1" id="statPublished">0</div>
+            <div class="text-gray-400 text-sm">Published</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('users')" style="animation-delay: 0.4s">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-14 h-14 bg-pink-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-users text-pink-400 text-2xl"></i>
-              </div>
+          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.4s">
+            <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-eye text-cyan-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statUsers">0</div>
-            <div class="text-gray-400 text-sm">Total Users</div>
+            <div class="text-3xl font-black mb-1" id="statViews">0</div>
+            <div class="text-gray-400 text-sm">Total Views</div>
           </div>
         </div>
 
@@ -275,7 +261,7 @@
         <div class="grid lg:grid-cols-2 gap-6 mb-8">
           <div class="glass rounded-2xl p-6 fade-in">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>Activity Overview (Last 7 Days)
+              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>Publishing Activity
             </h3>
             <div style="position: relative; height: 300px;">
               <canvas id="activityChart"></canvas>
@@ -284,10 +270,10 @@
 
           <div class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Data Distribution
+              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Content Status Distribution
             </h3>
             <div style="position: relative; height: 300px;">
-              <canvas id="distChart"></canvas>
+              <canvas id="statusChart"></canvas>
             </div>
           </div>
         </div>
@@ -313,43 +299,8 @@
         <div class="flex items-center justify-between mb-8">
           <h1 class="text-4xl font-black">Content <span class="gradient-text">Management</span></h1>
           <button onclick="openContentModal()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-plus mr-2"></i>Add Content
+            <i class="fas fa-plus mr-2"></i>Create New Content
           </button>
-        </div>
-
-        <!-- Content Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-8">
-          <div class="glass rounded-2xl p-6">
-            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-file-alt text-purple-400 text-xl"></i>
-            </div>
-            <div class="text-2xl font-black mb-1" id="totalContentCount">0</div>
-            <div class="text-gray-400 text-sm">Total Content</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-check-circle text-green-400 text-xl"></i>
-            </div>
-            <div class="text-2xl font-black mb-1" id="publishedContentCount">0</div>
-            <div class="text-gray-400 text-sm">Published</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-edit text-amber-400 text-xl"></i>
-            </div>
-            <div class="text-2xl font-black mb-1" id="draftContentCount">0</div>
-            <div class="text-gray-400 text-sm">Drafts</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-eye text-cyan-400 text-xl"></i>
-            </div>
-            <div class="text-2xl font-black mb-1" id="totalViewsCount">0</div>
-            <div class="text-gray-400 text-sm">Total Views</div>
-          </div>
         </div>
 
         <!-- Content Tabs -->
@@ -357,20 +308,20 @@
           <button onclick="filterContent('all')" id="filter-all" class="tab-button active px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
             All Content
           </button>
+          <button onclick="filterContent('Draft')" id="filter-Draft" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            <i class="fas fa-edit mr-2"></i>Drafts
+          </button>
+          <button onclick="filterContent('Pending')" id="filter-Pending" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            <i class="fas fa-clock mr-2"></i>Pending
+          </button>
+          <button onclick="filterContent('Published')" id="filter-Published" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            <i class="fas fa-check mr-2"></i>Published
+          </button>
           <button onclick="filterContent('News')" id="filter-News" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
             News
           </button>
           <button onclick="filterContent('Resources')" id="filter-Resources" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
             Resources
-          </button>
-          <button onclick="filterContent('Guides')" id="filter-Guides" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            Guides
-          </button>
-          <button onclick="filterContent('Published')" id="filter-Published" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            Published
-          </button>
-          <button onclick="filterContent('Draft')" id="filter-Draft" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            Drafts
           </button>
         </div>
 
@@ -379,144 +330,36 @@
       </div>
     </div>
 
-    <!-- Registrations Section -->
-    <div id="registrationsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+    <!-- Approval Queue Section -->
+    <div id="approvalContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
-          <h1 class="text-4xl font-black">Registration <span class="gradient-text">Requests</span></h1>
-          <button onclick="simulateRegistration()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-plus mr-2"></i>Simulate New Registration
-          </button>
-        </div>
-
-        <!-- Registration Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-          <div class="glass rounded-2xl p-6">
-            <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-clock text-amber-400 text-xl"></i>
-            </div>
-            <div class="text-2xl font-black mb-1" id="pendingRegsCount">0</div>
-            <div class="text-gray-400 text-sm">Pending</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-check-circle text-green-400 text-xl"></i>
-            </div>
-            <div class="text-2xl font-black mb-1" id="approvedRegsCount">0</div>
-            <div class="text-gray-400 text-sm">Approved</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-times-circle text-red-400 text-xl"></i>
-            </div>
-            <div class="text-2xl font-black mb-1" id="rejectedRegsCount">0</div>
-            <div class="text-gray-400 text-sm">Rejected</div>
+          <div>
+            <h1 class="text-4xl font-black">Approval <span class="gradient-text">Queue</span></h1>
+            <p class="text-gray-400 mt-2">Review and approve content before publishing to News/Resources</p>
           </div>
         </div>
 
-        <!-- Registrations Table -->
-        <div class="glass rounded-2xl overflow-hidden">
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead class="bg-slate-800/50">
-                <tr>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Name</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Email</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Company</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Plan</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Date</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="registrationsTableBody" class="divide-y divide-slate-800"></tbody>
-            </table>
-          </div>
-        </div>
+        <!-- Approval Grid -->
+        <div class="grid md:grid-cols-2 gap-6" id="approvalGrid"></div>
       </div>
     </div>
 
-    <!-- Contacts Section -->
-    <div id="contactsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+    <!-- Published Content Section -->
+    <div id="publishedContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
-          <h1 class="text-4xl font-black">Contact <span class="gradient-text">Messages</span></h1>
-          <button onclick="simulateContact()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-plus mr-2"></i>Simulate New Contact
+          <div>
+            <h1 class="text-4xl font-black">Published <span class="gradient-text">Content</span></h1>
+            <p class="text-gray-400 mt-2">Live content on News & Resources pages</p>
+          </div>
+          <button onclick="syncPublishedContent()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-sync-alt mr-2"></i>Sync to Public Pages
           </button>
         </div>
 
-        <!-- Contacts Grid -->
-        <div class="grid md:grid-cols-2 gap-6" id="contactsGrid"></div>
-      </div>
-    </div>
-
-    <!-- Newsletter Section -->
-    <div id="newsletterContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-8">
-          <h1 class="text-4xl font-black">Newsletter <span class="gradient-text">Subscribers</span></h1>
-          <div class="flex gap-3">
-            <button onclick="exportNewsletter()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-              <i class="fas fa-download mr-2"></i>Export CSV
-            </button>
-            <button onclick="simulateNewsletter()" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-              <i class="fas fa-plus mr-2"></i>Simulate Subscriber
-            </button>
-          </div>
-        </div>
-
-        <!-- Newsletter Table -->
-        <div class="glass rounded-2xl overflow-hidden">
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead class="bg-slate-800/50">
-                <tr>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">#</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Email</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Subscribed Date</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="newsletterTableBody" class="divide-y divide-slate-800"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Users Section -->
-    <div id="usersContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-8">
-          <h1 class="text-4xl font-black">User <span class="gradient-text">Management</span></h1>
-          <button onclick="openUserModal()" class="bg-gradient-to-r from-pink-500 to-rose-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-user-plus mr-2"></i>Add User
-          </button>
-        </div>
-
-        <!-- Users Table -->
-        <div class="glass rounded-2xl overflow-hidden">
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead class="bg-slate-800/50">
-                <tr>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">User</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Email</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Company</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Plan</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Joined</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="usersTableBody" class="divide-y divide-slate-800"></tbody>
-            </table>
-          </div>
-        </div>
+        <!-- Published Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="publishedGrid"></div>
       </div>
     </div>
   </div>
@@ -525,7 +368,7 @@
   <div id="contentModal" class="modal">
     <div class="glass rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black" id="contentModalTitle">Add New Content</h2>
+        <h2 class="text-2xl font-black" id="contentModalTitle">Create New Content</h2>
         <button onclick="closeContentModal()" class="text-gray-400 hover:text-white">
           <i class="fas fa-times text-2xl"></i>
         </button>
@@ -575,8 +418,8 @@
           <div>
             <label class="block text-sm font-semibold mb-2">Status *</label>
             <select id="contentStatus" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-              <option value="Draft">Draft</option>
-              <option value="Published">Published</option>
+              <option value="Draft">Draft (Save for later)</option>
+              <option value="Pending">Pending (Submit for approval)</option>
             </select>
           </div>
         </div>
@@ -591,6 +434,13 @@
           <input type="text" id="contentTags" placeholder="mining, technology, sustainability" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
 
+        <div class="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4">
+          <p class="text-sm text-cyan-400">
+            <i class="fas fa-info-circle mr-2"></i>
+            <strong>Publishing Workflow:</strong> Draft → Submit for Approval → Admin Reviews → Published to News/Resources
+          </p>
+        </div>
+
         <div class="flex gap-3">
           <button type="submit" class="flex-1 bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold">
             <i class="fas fa-save mr-2"></i>Save Content
@@ -603,63 +453,11 @@
     </div>
   </div>
 
-  <!-- User Modal -->
-  <div id="userModal" class="modal">
-    <div class="glass rounded-3xl p-8 max-w-2xl w-full">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black">Add New User</h2>
-        <button onclick="closeUserModal()" class="text-gray-400 hover:text-white">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-      </div>
-      <form id="userForm" class="space-y-4">
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-semibold mb-2">First Name *</label>
-            <input type="text" id="userFirstName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-          </div>
-          <div>
-            <label class="block text-sm font-semibold mb-2">Last Name *</label>
-            <input type="text" id="userLastName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-sm font-semibold mb-2">Email *</label>
-          <input type="email" id="userEmail" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-        </div>
-
-        <div>
-          <label class="block text-sm font-semibold mb-2">Company *</label>
-          <input type="text" id="userCompany" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-        </div>
-
-        <div>
-          <label class="block text-sm font-semibold mb-2">Plan *</label>
-          <select id="userPlan" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-            <option value="Free">Free</option>
-            <option value="Starter">Starter</option>
-            <option value="Professional">Professional</option>
-          </select>
-        </div>
-
-        <div class="flex gap-3">
-          <button type="submit" class="flex-1 bg-gradient-to-r from-pink-500 to-rose-600 px-6 py-3 rounded-xl font-bold">
-            <i class="fas fa-user-plus mr-2"></i>Add User
-          </button>
-          <button type="button" onclick="closeUserModal()" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold">
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- View Content Modal -->
   <div id="viewModal" class="modal">
     <div class="glass rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black" id="viewModalTitle">Content Details</h2>
+        <h2 class="text-2xl font-black" id="viewModalTitle">Content Preview</h2>
         <button onclick="closeViewModal()" class="text-gray-400 hover:text-white">
           <i class="fas fa-times text-2xl"></i>
         </button>
@@ -672,12 +470,15 @@
     // EmailJS Init
     emailjs.init('vIsuy4VXOAFCLwx2c');
 
-    // Data Storage
+    // Data Storage Keys
+    const STORAGE_KEYS = {
+      CONTENT: 'sesmine_admin_content',
+      PUBLIC_NEWS: 'sesmine_public_news',
+      PUBLIC_RESOURCES: 'sesmine_public_resources'
+    };
+
+    // Data
     let content = [];
-    let registrations = [];
-    let contacts = [];
-    let newsletter = [];
-    let users = [];
     let charts = {};
     let currentFilter = 'all';
 
@@ -685,49 +486,50 @@
       'admin@sesmine.com': { password: 'admin123', name: 'Admin User', role: 'Super Admin' }
     };
 
-    // Sample Data
+    // Sample Content
     const sampleContent = [
       {
         id: 1,
-        title: 'Mining Industry Trends 2026',
+        title: 'AI Revolution in Mining Industry 2026',
         category: 'News',
-        description: 'Latest trends shaping the future of mining industry with AI and automation',
-        body: 'The mining industry is experiencing significant transformations driven by technology, sustainability, and changing market demands. Artificial Intelligence and machine learning are revolutionizing operations, from exploration to processing. This comprehensive analysis explores the key trends that will define mining operations in 2026 and beyond, including autonomous vehicles, predictive maintenance, and real-time data analytics.',
-        author: 'John Smith',
+        description: 'Artificial Intelligence is transforming mining operations with unprecedented efficiency and safety improvements.',
+        body: 'The mining industry is experiencing a technological revolution driven by AI and machine learning. From autonomous drilling to predictive maintenance, AI is reshaping every aspect of mining operations. This comprehensive analysis explores how leading mining companies are implementing AI solutions to improve safety, reduce costs, and increase productivity. Key areas include: autonomous vehicles, real-time monitoring systems, predictive analytics for equipment maintenance, and AI-powered exploration techniques.',
+        author: 'Dr. Sarah Chen',
         date: '2026-01-05',
         status: 'Published',
-        image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800',
-        tags: 'mining, trends, technology, AI',
-        views: 1250,
-        created: new Date().toISOString()
+        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800',
+        tags: 'AI, mining, technology, automation',
+        views: 1847,
+        created: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+        publishedDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
       },
       {
         id: 2,
-        title: 'Complete Guide to Cost Estimation',
+        title: 'Complete Cost Estimation Guide 2026',
         category: 'Resources',
-        description: 'Comprehensive resource for accurate mining project cost estimation',
-        body: 'Cost estimation is critical for mining project success. This guide covers methodologies, tools, and best practices for accurate cost prediction. Learn about parametric estimation, analogous estimation, bottom-up estimation, and how to apply AI-powered tools for better accuracy. Includes real-world case studies and downloadable templates.',
-        author: 'Sarah Johnson',
+        description: 'Comprehensive guide covering all aspects of mining project cost estimation with real-world examples.',
+        body: 'Cost estimation is critical for mining project success. This detailed guide covers: parametric estimation methods, analogous estimation techniques, bottom-up estimation approaches, three-point estimation, and contingency planning. Includes downloadable templates, case studies from successful projects, and best practices from industry experts. Learn how to create accurate estimates that account for geological uncertainties, equipment costs, labor rates, and regulatory compliance.',
+        author: 'Michael Rodriguez',
         date: '2026-01-04',
-        status: 'Published',
+        status: 'Pending',
         image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800',
-        tags: 'cost estimation, resources, guide',
-        views: 890,
-        created: new Date().toISOString()
+        tags: 'cost estimation, resources, guide, planning',
+        views: 0,
+        created: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
       },
       {
         id: 3,
-        title: 'Sustainable Mining Practices',
-        category: 'Guides',
-        description: 'Step-by-step guide to implementing sustainable mining operations',
-        body: 'Environmental sustainability is no longer optional in the mining industry. This comprehensive guide outlines proven strategies for implementing sustainable practices while maintaining operational efficiency. Topics include water management, waste reduction, energy efficiency, biodiversity protection, and community engagement. Learn from industry leaders who have successfully transformed their operations.',
-        author: 'Michael Chen',
+        title: 'Sustainable Mining Practices Framework',
+        category: 'Resources',
+        description: 'Step-by-step framework for implementing sustainable and responsible mining operations.',
+        body: 'Environmental sustainability is essential in modern mining. This framework covers: water management systems, waste reduction strategies, energy efficiency optimization, biodiversity protection protocols, community engagement best practices, and ESG reporting standards. Includes implementation checklists, ROI analysis tools, and success stories from mines that have achieved sustainability certifications.',
+        author: 'Emma Thompson',
         date: '2026-01-03',
         status: 'Draft',
         image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800',
-        tags: 'sustainability, environment, ESG',
+        tags: 'sustainability, ESG, environment, best practices',
         views: 0,
-        created: new Date().toISOString()
+        created: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
       }
     ];
 
@@ -741,20 +543,33 @@
 
     // Load Data
     function loadData() {
-      content = JSON.parse(localStorage.getItem('adminContent') || JSON.stringify(sampleContent));
-      registrations = JSON.parse(localStorage.getItem('adminRegistrations') || '[]');
-      contacts = JSON.parse(localStorage.getItem('adminContacts') || '[]');
-      newsletter = JSON.parse(localStorage.getItem('adminNewsletter') || '[]');
-      users = JSON.parse(localStorage.getItem('adminUsers') || '[]');
+      const stored = localStorage.getItem(STORAGE_KEYS.CONTENT);
+      content = stored ? JSON.parse(stored) : sampleContent;
     }
 
     // Save Data
     function saveData() {
-      localStorage.setItem('adminContent', JSON.stringify(content));
-      localStorage.setItem('adminRegistrations', JSON.stringify(registrations));
-      localStorage.setItem('adminContacts', JSON.stringify(contacts));
-      localStorage.setItem('adminNewsletter', JSON.stringify(newsletter));
-      localStorage.setItem('adminUsers', JSON.stringify(users));
+      localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(content));
+    }
+
+    // Sync to Public Pages
+    function syncPublishedContent() {
+      const publishedContent = content.filter(c => c.status === 'Published');
+      const news = publishedContent.filter(c => c.category === 'News');
+      const resources = publishedContent.filter(c => c.category === 'Resources' || c.category === 'Guides' || c.category === 'Tutorial' || c.category === 'Case Study');
+      
+      localStorage.setItem(STORAGE_KEYS.PUBLIC_NEWS, JSON.stringify(news));
+      localStorage.setItem(STORAGE_KEYS.PUBLIC_RESOURCES, JSON.stringify(resources));
+      
+      showNotification(`✅ Synced ${news.length} news articles and ${resources.length} resources to public pages!`);
+      
+      // Trigger storage event for other tabs
+      window.dispatchEvent(new Event('storage'));
+    }
+
+    // Auto-sync on publish
+    function autoSync() {
+      syncPublishedContent();
     }
 
     // Show Notification
@@ -766,7 +581,7 @@
         ${message}
       `;
       document.body.appendChild(notification);
-      setTimeout(() => notification.remove(), 3000);
+      setTimeout(() => notification.remove(), 4000);
     }
 
     // Check Session
@@ -838,7 +653,6 @@
       document.getElementById('loginScreen').classList.add('hidden');
       document.getElementById('dashboardScreen').classList.remove('hidden');
       
-      document.getElementById('welcomeName').textContent = userData.name.split(' ')[0];
       document.getElementById('navAdminName').textContent = userData.name;
       
       updateTime();
@@ -848,10 +662,8 @@
       updateBadges();
       loadRecentActivity();
       renderContent();
-      renderRegistrations();
-      renderContacts();
-      renderNewsletter();
-      renderUsers();
+      renderApprovalQueue();
+      renderPublished();
       
       setTimeout(createCharts, 100);
     }
@@ -876,70 +688,56 @@
 
     // Update All Stats
     function updateAllStats() {
-      document.getElementById('statContent').textContent = content.length;
-      document.getElementById('statRegistrations').textContent = registrations.length;
-      document.getElementById('statContacts').textContent = contacts.length;
-      document.getElementById('statNewsletter').textContent = newsletter.length;
-      document.getElementById('statUsers').textContent = users.length;
+      const draft = content.filter(c => c.status === 'Draft').length;
+      const pending = content.filter(c => c.status === 'Pending').length;
+      const published = content.filter(c => c.status === 'Published').length;
+      const totalViews = content.reduce((sum, c) => sum + (c.views || 0), 0);
       
-      document.getElementById('totalContentCount').textContent = content.length;
-      document.getElementById('publishedContentCount').textContent = content.filter(c => c.status === 'Published').length;
-      document.getElementById('draftContentCount').textContent = content.filter(c => c.status === 'Draft').length;
-      document.getElementById('totalViewsCount').textContent = content.reduce((sum, c) => sum + (c.views || 0), 0).toLocaleString();
-      
-      document.getElementById('pendingRegsCount').textContent = registrations.filter(r => r.status === 'pending').length;
-      document.getElementById('approvedRegsCount').textContent = registrations.filter(r => r.status === 'approved').length;
-      document.getElementById('rejectedRegsCount').textContent = registrations.filter(r => r.status === 'rejected').length;
+      document.getElementById('statTotal').textContent = content.length;
+      document.getElementById('statDraft').textContent = draft;
+      document.getElementById('statPending').textContent = pending;
+      document.getElementById('statPublished').textContent = published;
+      document.getElementById('statViews').textContent = totalViews.toLocaleString();
     }
 
     // Update Badges
     function updateBadges() {
-      const pendingRegs = registrations.filter(r => r.status === 'pending').length;
-      const unreadContacts = contacts.filter(c => !c.read).length;
-      const activeNews = newsletter.filter(n => n.active).length;
+      const pending = content.filter(c => c.status === 'Pending').length;
+      const draft = content.filter(c => c.status === 'Draft').length;
       
-      const regBadge = document.getElementById('regBadge');
-      const contactBadge = document.getElementById('contactBadge');
-      const newsBadge = document.getElementById('newsBadge');
+      const approvalBadge = document.getElementById('approvalBadge');
+      const contentBadge = document.getElementById('contentBadge');
       
-      regBadge.textContent = pendingRegs;
-      regBadge.style.display = pendingRegs > 0 ? 'flex' : 'none';
+      approvalBadge.textContent = pending;
+      approvalBadge.style.display = pending > 0 ? 'flex' : 'none';
       
-      contactBadge.textContent = unreadContacts;
-      contactBadge.style.display = unreadContacts > 0 ? 'flex' : 'none';
-      
-      newsBadge.textContent = activeNews;
-      newsBadge.style.display = activeNews > 0 ? 'flex' : 'none';
+      contentBadge.textContent = draft;
+      contentBadge.style.display = draft > 0 ? 'flex' : 'none';
     }
 
     // Load Recent Activity
     function loadRecentActivity() {
       const activities = [];
       
-      content.slice(0, 2).forEach(c => {
+      content.slice(0, 5).forEach(c => {
+        let icon, color, text;
+        if (c.status === 'Published') {
+          icon = 'check-circle';
+          color = 'green';
+          text = `Published: ${c.title}`;
+        } else if (c.status === 'Pending') {
+          icon = 'clock';
+          color = 'orange';
+          text = `Pending approval: ${c.title}`;
+        } else {
+          icon = 'edit';
+          color = 'amber';
+          text = `Draft created: ${c.title}`;
+        }
+        
         activities.push({
-          icon: 'newspaper',
-          color: 'purple',
-          text: `Content published: ${c.title}`,
+          icon, color, text,
           time: getTimeAgo(c.created)
-        });
-      });
-      
-      registrations.slice(0, 2).forEach(r => {
-        activities.push({
-          icon: 'user-plus',
-          color: 'cyan',
-          text: `New registration: ${r.firstName} ${r.lastName}`,
-          time: getTimeAgo(r.date)
-        });
-      });
-      
-      contacts.slice(0, 2).forEach(c => {
-        activities.push({
-          icon: 'envelope',
-          color: 'green',
-          text: `Contact message from ${c.name}`,
-          time: getTimeAgo(c.date)
         });
       });
       
@@ -949,7 +747,7 @@
         return;
       }
       
-      container.innerHTML = activities.slice(0, 5).map(activity => `
+      container.innerHTML = activities.map(activity => `
         <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
           <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
             <i class="fas fa-${activity.icon} text-${activity.color}-400"></i>
@@ -983,8 +781,8 @@
           data: {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
-              label: 'Activity',
-              data: [12, 19, 15, 25, 22, 30, 28],
+              label: 'Published Content',
+              data: [2, 4, 3, 5, 6, 4, 7],
               borderColor: '#06b6d4',
               backgroundColor: 'rgba(6, 182, 212, 0.1)',
               tension: 0.4,
@@ -1004,15 +802,19 @@
         });
       }
 
-      const distCtx = document.getElementById('distChart');
-      if (distCtx && !charts.distChart) {
-        charts.distChart = new Chart(distCtx, {
+      const statusCtx = document.getElementById('statusChart');
+      if (statusCtx && !charts.statusChart) {
+        const draft = content.filter(c => c.status === 'Draft').length;
+        const pending = content.filter(c => c.status === 'Pending').length;
+        const published = content.filter(c => c.status === 'Published').length;
+        
+        charts.statusChart = new Chart(statusCtx, {
           type: 'doughnut',
           data: {
-            labels: ['Content', 'Registrations', 'Contacts', 'Newsletter', 'Users'],
+            labels: ['Draft', 'Pending Approval', 'Published'],
             datasets: [{
-              data: [content.length, registrations.length, contacts.length, newsletter.length, users.length],
-              backgroundColor: ['#8b5cf6', '#06b6d4', '#22c55e', '#f59e0b', '#ec4899'],
+              data: [draft, pending, published],
+              backgroundColor: ['#f59e0b', '#f97316', '#22c55e'],
               borderWidth: 0
             }]
           },
@@ -1037,7 +839,7 @@
       
       let filtered = [...content];
       if (currentFilter !== 'all') {
-        if (currentFilter === 'Published' || currentFilter === 'Draft') {
+        if (['Draft', 'Pending', 'Published'].includes(currentFilter)) {
           filtered = filtered.filter(c => c.status === currentFilter);
         } else {
           filtered = filtered.filter(c => c.category === currentFilter);
@@ -1055,7 +857,7 @@
       }
       
       grid.innerHTML = filtered.map(item => `
-        <div class="glass rounded-2xl overflow-hidden card-hover">
+        <div class="glass rounded-2xl overflow-hidden card-hover ${item.status === 'Pending' ? 'status-pending' : ''}">
           ${item.image ? `
             <div class="h-48 overflow-hidden">
               <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'">
@@ -1064,7 +866,7 @@
           <div class="p-6">
             <div class="flex items-start justify-between mb-4">
               <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold ${item.status === 'Published' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}">${item.status}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(item.status)}">${item.status}</span>
             </div>
             <h3 class="text-xl font-bold mb-2 line-clamp-2">${item.title}</h3>
             <p class="text-gray-400 text-sm mb-4 line-clamp-2">${item.description}</p>
@@ -1072,17 +874,15 @@
               <span><i class="fas fa-user mr-2"></i>${item.author}</span>
               <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
             </div>
-            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
-              <span><i class="fas fa-eye mr-2"></i>${item.views || 0} views</span>
-              ${item.tags ? `<span><i class="fas fa-tags mr-2"></i>${item.tags.split(',')[0]}</span>` : ''}
-            </div>
             <div class="flex gap-2">
               <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all text-sm">
                 <i class="fas fa-eye mr-1"></i>View
               </button>
-              <button onclick="editContent(${item.id})" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-edit mr-1"></i>Edit
-              </button>
+              ${item.status !== 'Published' ? `
+                <button onclick="editContent(${item.id})" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg transition-all text-sm">
+                  <i class="fas fa-edit mr-1"></i>Edit
+                </button>
+              ` : ''}
               <button onclick="deleteContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all text-sm">
                 <i class="fas fa-trash mr-1"></i>Delete
               </button>
@@ -1092,6 +892,120 @@
       `).join('');
     }
 
+    // Render Approval Queue
+    function renderApprovalQueue() {
+      const grid = document.getElementById('approvalGrid');
+      if (!grid) return;
+      
+      const pending = content.filter(c => c.status === 'Pending');
+      
+      if (pending.length === 0) {
+        grid.innerHTML = `
+          <div class="glass rounded-2xl p-12 text-center col-span-2">
+            <i class="fas fa-check-circle text-6xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400">No content pending approval</p>
+          </div>
+        `;
+        return;
+      }
+      
+      grid.innerHTML = pending.map(item => `
+        <div class="glass rounded-2xl overflow-hidden status-pending">
+          ${item.image ? `
+            <div class="h-48 overflow-hidden">
+              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'">
+            </div>
+          ` : ''}
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/20 text-orange-400">
+                <i class="fas fa-clock mr-1"></i>Pending Review
+              </span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">${item.title}</h3>
+            <p class="text-gray-400 text-sm mb-4">${item.description}</p>
+            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+              <span><i class="fas fa-user mr-2"></i>${item.author}</span>
+              <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-eye mr-1"></i>Preview
+              </button>
+              <button onclick="approveContent(${item.id})" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-check mr-1"></i>Approve & Publish
+              </button>
+              <button onclick="rejectContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-times mr-1"></i>Reject
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Published
+    function renderPublished() {
+      const grid = document.getElementById('publishedGrid');
+      if (!grid) return;
+      
+      const published = content.filter(c => c.status === 'Published');
+      
+      if (published.length === 0) {
+        grid.innerHTML = `
+          <div class="glass rounded-2xl p-12 text-center col-span-3">
+            <i class="fas fa-globe text-6xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400">No published content yet</p>
+          </div>
+        `;
+        return;
+      }
+      
+      grid.innerHTML = published.map(item => `
+        <div class="glass rounded-2xl overflow-hidden card-hover">
+          ${item.image ? `
+            <div class="h-48 overflow-hidden">
+              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'">
+            </div>
+          ` : ''}
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400">
+                <i class="fas fa-check-circle mr-1"></i>Live
+              </span>
+            </div>
+            <h3 class="text-xl font-bold mb-2 line-clamp-2">${item.title}</h3>
+            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${item.description}</p>
+            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+              <span><i class="fas fa-eye mr-2"></i>${item.views || 0} views</span>
+              <span><i class="fas fa-calendar mr-2"></i>Published ${getTimeAgo(item.publishedDate || item.created)}</span>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-eye mr-1"></i>View
+              </button>
+              <button onclick="unpublishContent(${item.id})" class="flex-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 py-2 rounded-lg transition-all text-sm">
+                <i class="fas fa-undo mr-1"></i>Unpublish
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Get Status Color
+    function getStatusColor(status) {
+      const colors = {
+        'Draft': 'bg-amber-500/20 text-amber-400',
+        'Pending': 'bg-orange-500/20 text-orange-400',
+        'Published': 'bg-green-500/20 text-green-400'
+      };
+      return colors[status] || 'bg-gray-500/20 text-gray-400';
+    }
+
+    // Filter Content
     function filterContent(filter) {
       currentFilter = filter;
       document.querySelectorAll('.tab-button').forEach(btn => {
@@ -1106,6 +1020,7 @@
       renderContent();
     }
 
+    // Open Content Modal
     function openContentModal(id = null) {
       if (id) {
         const item = content.find(c => c.id === id);
@@ -1119,533 +1034,191 @@
           document.getElementById('contentAuthor').value = item.author;
           document.getElementById('contentDate').value = item.date;
           document.getElementById('contentStatus').value = item.status;
-            document.getElementById('contentImage').value = item.image || '';
-            document.getElementById('contentTags').value = item.tags || '';
-          }
-        } else {
-          document.getElementById('contentModalTitle').textContent = 'Add New Content';
-          document.getElementById('contentForm').reset();
-          document.getElementById('editContentId').value = '';
-          document.getElementById('contentDate').valueAsDate = new Date();
+          document.getElementById('contentImage').value = item.image || '';
+          document.getElementById('contentTags').value = item.tags || '';
         }
-        document.getElementById('contentModal').classList.add('active');
+      } else {
+        document.getElementById('contentModalTitle').textContent = 'Create New Content';
+        document.getElementById('contentForm').reset();
+        document.getElementById('editContentId').value = '';
+        document.getElementById('contentDate').valueAsDate = new Date();
       }
+      document.getElementById('contentModal').classList.add('active');
+    }
 
-      function closeContentModal() {
-        document.getElementById('contentModal').classList.remove('active');
+    function closeContentModal() {
+      document.getElementById('contentModal').classList.remove('active');
+    }
+
+    function editContent(id) {
+      openContentModal(id);
+    }
+
+    // View Content
+    function viewContent(id) {
+      const item = content.find(c => c.id === id);
+      if (item) {
+        document.getElementById('viewModalTitle').textContent = item.title;
+        document.getElementById('viewModalBody').innerHTML = `
+          <div class="space-y-4">
+            ${item.image ? `<img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover rounded-xl mb-4" onerror="this.style.display='none'">` : ''}
+            <div class="flex items-center gap-4 text-sm text-gray-400 flex-wrap">
+              <span><i class="fas fa-user mr-2"></i>${item.author}</span>
+              <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(item.status)}">${item.status}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
+            </div>
+            <div class="prose prose-invert max-w-none">
+              <p class="text-lg text-gray-300 leading-relaxed">${item.description}</p>
+              <div class="mt-4 text-gray-400 leading-relaxed">${item.body}</div>
+            </div>
+            ${item.tags ? `
+              <div class="flex flex-wrap gap-2 mt-4">
+                ${item.tags.split(',').map(tag => `<span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">${tag.trim()}</span>`).join('')}
+              </div>
+            ` : ''}
+          </div>
+        `;
+        document.getElementById('viewModal').classList.add('active');
       }
+    }
 
-      function editContent(id) {
-        openContentModal(id);
-      }
+    function closeViewModal() {
+      document.getElementById('viewModal').classList.remove('active');
+    }
 
-      function viewContent(id) {
+    // Approve Content
+    function approveContent(id) {
+      if (confirm('✅ Approve and publish this content to News/Resources page?')) {
         const item = content.find(c => c.id === id);
         if (item) {
-          document.getElementById('viewModalTitle').textContent = item.title;
-          document.getElementById('viewModalBody').innerHTML = `
-            <div class="space-y-4">
-              ${item.image ? `<img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover rounded-xl mb-4" onerror="this.style.display='none'">` : ''}
-              <div class="flex items-center gap-4 text-sm text-gray-400 flex-wrap">
-                <span><i class="fas fa-user mr-2"></i>${item.author}</span>
-                <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
-                <span><i class="fas fa-eye mr-2"></i>${item.views || 0} views</span>
-                <span class="px-3 py-1 rounded-full text-xs font-semibold ${item.status === 'Published' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}">${item.status}</span>
-                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
-              </div>
-              <div class="prose prose-invert max-w-none">
-                <p class="text-lg text-gray-300 leading-relaxed">${item.description}</p>
-                <div class="mt-4 text-gray-400 leading-relaxed">${item.body}</div>
-              </div>
-              ${item.tags ? `
-                <div class="flex flex-wrap gap-2 mt-4">
-                  ${item.tags.split(',').map(tag => `<span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">${tag.trim()}</span>`).join('')}
-                </div>
-              ` : ''}
-            </div>
-          `;
-          document.getElementById('viewModal').classList.add('active');
+          item.status = 'Published';
+          item.publishedDate = new Date().toISOString();
+          saveData();
+          autoSync();
+          renderContent();
+          renderApprovalQueue();
+          renderPublished();
+          updateAllStats();
+          updateBadges();
+          updateCharts();
+          loadRecentActivity();
+          showNotification(`✅ "${item.title}" has been published to ${item.category} page!`);
         }
       }
+    }
 
-      function closeViewModal() {
-        document.getElementById('viewModal').classList.remove('active');
-      }
-
-      function deleteContent(id) {
-        if (confirm('⚠️ Are you sure you want to delete this content?')) {
-          content = content.filter(c => c.id !== id);
+    // Reject Content
+    function rejectContent(id) {
+      if (confirm('⚠️ Reject this content? It will be moved back to Draft.')) {
+        const item = content.find(c => c.id === id);
+        if (item) {
+          item.status = 'Draft';
           saveData();
           renderContent();
+          renderApprovalQueue();
           updateAllStats();
+          updateBadges();
           updateCharts();
-          showNotification('Content deleted successfully!');
+          showNotification(`Content "${item.title}" rejected and moved to Draft.`);
         }
       }
+    }
 
-      document.getElementById('contentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const editId = document.getElementById('editContentId').value;
-        const formData = {
-          title: document.getElementById('contentTitle').value,
-          category: document.getElementById('contentCategory').value,
-          description: document.getElementById('contentDescription').value,
-          body: document.getElementById('contentBody').value,
-          author: document.getElementById('contentAuthor').value,
-          date: document.getElementById('contentDate').value,
-          status: document.getElementById('contentStatus').value,
-          image: document.getElementById('contentImage').value,
-          tags: document.getElementById('contentTags').value,
-          views: 0
-        };
-        
-        if (editId) {
-          const index = content.findIndex(c => c.id === parseInt(editId));
-          if (index !== -1) {
-            content[index] = { ...content[index], ...formData };
-            showNotification('Content updated successfully!');
-          }
-        } else {
-          const newContent = {
-            id: content.length > 0 ? Math.max(...content.map(c => c.id)) + 1 : 1,
+    // Unpublish Content
+    function unpublishContent(id) {
+      if (confirm('⚠️ Unpublish this content? It will be removed from public pages.')) {
+        const item = content.find(c => c.id === id);
+        if (item) {
+          item.status = 'Draft';
+          saveData();
+          autoSync();
+          renderContent();
+          renderPublished();
+          updateAllStats();
+          updateBadges();
+          updateCharts();
+          showNotification(`Content "${item.title}" unpublished.`);
+        }
+      }
+    }
+
+    // Delete Content
+    function deleteContent(id) {
+      if (confirm('⚠️ Permanently delete this content?')) {
+        content = content.filter(c => c.id !== id);
+        saveData();
+        autoSync();
+        renderContent();
+        renderApprovalQueue();
+        renderPublished();
+        updateAllStats();
+        updateBadges();
+        updateCharts();
+        showNotification('Content deleted successfully!');
+      }
+    }
+
+    // Content Form Submit
+    document.getElementById('contentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const editId = document.getElementById('editContentId').value;
+      const formData = {
+        title: document.getElementById('contentTitle').value,
+        category: document.getElementById('contentCategory').value,
+        description: document.getElementById('contentDescription').value,
+        body: document.getElementById('contentBody').value,
+        author: document.getElementById('contentAuthor').value,
+        date: document.getElementById('contentDate').value,
+        status: document.getElementById('contentStatus').value,
+        image: document.getElementById('contentImage').value,
+        tags: document.getElementById('contentTags').value,
+        views: 0
+      };
+      
+      if (editId) {
+        const index = content.findIndex(c => c.id === parseInt(editId));
+        if (index !== -1) {
+          content[index] = { ...content[index], ...formData };
+          showNotification('Content updated successfully!');
+        }
+      } else {
+        const newContent = {
+          id: content.length > 0 ? Math.max(...content.map(c => c.id)) + 1 : 1,
             ...formData,
             created: new Date().toISOString()
           };
           content.push(newContent);
-          showNotification('Content added successfully!');
+          showNotification('Content created successfully!');
         }
         
         saveData();
         renderContent();
+        renderApprovalQueue();
+        renderPublished();
         updateAllStats();
+        updateBadges();
         updateCharts();
+        loadRecentActivity();
         closeContentModal();
       });
 
-      // REGISTRATIONS MANAGEMENT
-      function renderRegistrations() {
-        const tbody = document.getElementById('registrationsTableBody');
-        if (!tbody) return;
-        
-        if (registrations.length === 0) {
-          tbody.innerHTML = `
-            <tr>
-              <td colspan="7" class="px-6 py-12 text-center text-gray-400">
-                <i class="fas fa-inbox text-4xl mb-3"></i>
-                <p>No registration requests yet</p>
-                <button onclick="simulateRegistration()" class="mt-4 text-cyan-400 hover:text-cyan-300">
-                  <i class="fas fa-plus mr-2"></i>Add Sample Registration
-                </button>
-              </td>
-            </tr>
-          `;
-          return;
-        }
-        
-        tbody.innerHTML = registrations.map(reg => `
-          <tr class="hover:bg-slate-800/30 transition-colors">
-            <td class="px-6 py-4">
-              <div class="font-semibold">${reg.firstName} ${reg.lastName}</div>
-            </td>
-            <td class="px-6 py-4 text-gray-400">${reg.email}</td>
-            <td class="px-6 py-4 text-gray-400">${reg.company || 'N/A'}</td>
-            <td class="px-6 py-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${reg.plan || 'Free'}</span>
-            </td>
-            <td class="px-6 py-4 text-gray-400 text-sm">${new Date(reg.date).toLocaleDateString()}</td>
-            <td class="px-6 py-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold ${
-                reg.status === 'pending' ? 'bg-amber-500/20 text-amber-400' :
-                reg.status === 'approved' ? 'bg-green-500/20 text-green-400' :
-                'bg-red-500/20 text-red-400'
-              }">${reg.status}</span>
-            </td>
-            <td class="px-6 py-4">
-              ${reg.status === 'pending' ? `
-                <button onclick="approveRegistration(${reg.id})" class="text-green-400 hover:text-green-300 mr-3" title="Approve">
-                  <i class="fas fa-check"></i>
-                </button>
-                <button onclick="rejectRegistration(${reg.id})" class="text-red-400 hover:text-red-300" title="Reject">
-                  <i class="fas fa-times"></i>
-                </button>
-              ` : `
-                <button onclick="deleteRegistration(${reg.id})" class="text-red-400 hover:text-red-300" title="Delete">
-                  <i class="fas fa-trash"></i>
-                </button>
-              `}
-            </td>
-          </tr>
-        `).join('');
-      }
-
-      function simulateRegistration() {
-        const names = [
-          {first: 'John', last: 'Smith', email: 'john.smith@example.com', company: 'Mining Corp'},
-          {first: 'Sarah', last: 'Johnson', email: 'sarah.j@techmine.com', company: 'TechMine Ltd'},
-          {first: 'Michael', last: 'Chen', email: 'mchen@globalmine.com', company: 'GlobalMine Inc'},
-          {first: 'Emily', last: 'Davis', email: 'emily.davis@resources.com', company: 'Resources Co'}
-        ];
-        const random = names[Math.floor(Math.random() * names.length)];
-        const plans = ['Free', 'Starter', 'Professional'];
-        
-        const newReg = {
-          id: registrations.length > 0 ? Math.max(...registrations.map(r => r.id)) + 1 : 1,
-          firstName: random.first,
-          lastName: random.last,
-          email: random.email,
-          company: random.company,
-          plan: plans[Math.floor(Math.random() * plans.length)],
-          status: 'pending',
-          date: new Date().toISOString()
-        };
-        
-        registrations.unshift(newReg);
-        saveData();
-        renderRegistrations();
-        updateAllStats();
-        updateBadges();
-        loadRecentActivity();
-        showNotification('New registration received!');
-      }
-
-      function approveRegistration(id) {
-        const reg = registrations.find(r => r.id === id);
-        if (reg) {
-          reg.status = 'approved';
+      // Update Charts
+      function updateCharts() {
+        if (charts.statusChart) {
+          const draft = content.filter(c => c.status === 'Draft').length;
+          const pending = content.filter(c => c.status === 'Pending').length;
+          const published = content.filter(c => c.status === 'Published').length;
           
-          // Add to users
-          users.push({
-            id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
-            firstName: reg.firstName,
-            lastName: reg.lastName,
-            email: reg.email,
-            company: reg.company,
-            plan: reg.plan,
-            status: 'Active',
-            joined: new Date().toISOString(),
-            avatar: Math.floor(Math.random() * 70) + 1
-          });
-          
-          saveData();
-          renderRegistrations();
-          renderUsers();
-          updateAllStats();
-          updateBadges();
-          updateCharts();
-          showNotification(`Registration approved! ${reg.firstName} ${reg.lastName} added as user.`);
+          charts.statusChart.data.datasets[0].data = [draft, pending, published];
+          charts.statusChart.update();
         }
       }
 
-      function rejectRegistration(id) {
-        if (confirm('⚠️ Are you sure you want to reject this registration?')) {
-          const reg = registrations.find(r => r.id === id);
-          if (reg) {
-            reg.status = 'rejected';
-            saveData();
-            renderRegistrations();
-            updateAllStats();
-            updateBadges();
-            showNotification('Registration rejected.');
-          }
-        }
-      }
-
-      function deleteRegistration(id) {
-        if (confirm('⚠️ Delete this registration?')) {
-          registrations = registrations.filter(r => r.id !== id);
-          saveData();
-          renderRegistrations();
-          updateAllStats();
-          updateCharts();
-          showNotification('Registration deleted.');
-        }
-      }
-
-      // CONTACTS MANAGEMENT
-      function renderContacts() {
-        const grid = document.getElementById('contactsGrid');
-        if (!grid) return;
-        
-        if (contacts.length === 0) {
-          grid.innerHTML = `
-            <div class="glass rounded-2xl p-12 text-center col-span-2">
-              <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
-              <p class="text-gray-400 mb-4">No contact messages yet</p>
-              <button onclick="simulateContact()" class="text-cyan-400 hover:text-cyan-300">
-                <i class="fas fa-plus mr-2"></i>Add Sample Contact
-              </button>
-            </div>
-          `;
-          return;
-        }
-        
-        grid.innerHTML = contacts.map(contact => `
-          <div class="glass rounded-2xl p-6 ${!contact.read ? 'border-2 border-green-500/50' : ''}">
-            <div class="flex items-start justify-between mb-4">
-              <div>
-                <h3 class="text-lg font-bold">${contact.name}</h3>
-                <p class="text-sm text-gray-400">${contact.email}</p>
-              </div>
-              ${!contact.read ? '<span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full">New</span>' : ''}
-            </div>
-            <p class="text-gray-300 text-sm mb-4 line-clamp-3">${contact.message}</p>
-            <div class="flex items-center justify-between text-xs text-gray-500 mb-3">
-              <span><i class="fas fa-clock mr-2"></i>${new Date(contact.date).toLocaleDateString()}</span>
-              ${contact.subject ? `<span><i class="fas fa-tag mr-2"></i>${contact.subject}</span>` : ''}
-            </div>
-            <div class="flex gap-2">
-              ${!contact.read ? `
-                <button onclick="markContactRead(${contact.id})" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg transition-all text-sm">
-                  <i class="fas fa-check mr-1"></i>Mark Read
-                </button>
-              ` : ''}
-              <button onclick="deleteContact(${contact.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-trash mr-1"></i>Delete
-              </button>
-            </div>
-          </div>
-        `).join('');
-      }
-
-      function simulateContact() {
-        const samples = [
-          {name: 'Alice Brown', email: 'alice@company.com', subject: 'Project Inquiry', message: 'I am interested in learning more about your cost estimation services for our upcoming mining project in Australia.'},
-          {name: 'Bob Wilson', email: 'bob.w@mining.com', subject: 'Partnership', message: 'We would like to discuss potential partnership opportunities between our organizations.'},
-          {name: 'Carol Martinez', email: 'carol@resources.com', subject: 'Technical Support', message: 'I need assistance with the cost calculator tool. Can someone help me understand the parameters?'}
-        ];
-        const random = samples[Math.floor(Math.random() * samples.length)];
-        
-        const newContact = {
-          id: contacts.length > 0 ? Math.max(...contacts.map(c => c.id)) + 1 : 1,
-          ...random,
-          date: new Date().toISOString(),
-          read: false
-        };
-        
-        contacts.unshift(newContact);
-        saveData();
-        renderContacts();
-        updateAllStats();
-        updateBadges();
-        loadRecentActivity();
-        showNotification('New contact message received!');
-      }
-
-      function markContactRead(id) {
-        const contact = contacts.find(c => c.id === id);
-        if (contact) {
-          contact.read = true;
-          saveData();
-          renderContacts();
-          updateBadges();
-          showNotification('Contact marked as read.');
-        }
-      }
-
-      function deleteContact(id) {
-        if (confirm('⚠️ Delete this contact message?')) {
-          contacts = contacts.filter(c => c.id !== id);
-          saveData();
-          renderContacts();
-          updateAllStats();
-          updateCharts();
-          showNotification('Contact deleted.');
-        }
-      }
-
-      // NEWSLETTER MANAGEMENT
-      function renderNewsletter() {
-        const tbody = document.getElementById('newsletterTableBody');
-        if (!tbody) return;
-        
-        if (newsletter.length === 0) {
-          tbody.innerHTML = `
-            <tr>
-              <td colspan="5" class="px-6 py-12 text-center text-gray-400">
-                <i class="fas fa-inbox text-4xl mb-3"></i>
-                <p>No newsletter subscribers yet</p>
-                <button onclick="simulateNewsletter()" class="mt-4 text-cyan-400 hover:text-cyan-300">
-                  <i class="fas fa-plus mr-2"></i>Add Sample Subscriber
-                </button>
-              </td>
-            </tr>
-          `;
-          return;
-        }
-        
-        tbody.innerHTML = newsletter.map((sub, index) => `
-          <tr class="hover:bg-slate-800/30 transition-colors">
-            <td class="px-6 py-4 text-gray-400">${index + 1}</td>
-            <td class="px-6 py-4 font-semibold">${sub.email}</td>
-            <td class="px-6 py-4 text-gray-400 text-sm">${new Date(sub.date).toLocaleDateString()}</td>
-            <td class="px-6 py-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold ${sub.active ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">
-                ${sub.active ? 'Active' : 'Unsubscribed'}
-              </span>
-            </td>
-            <td class="px-6 py-4">
-              <button onclick="deleteNewsletter(${sub.id})" class="text-red-400 hover:text-red-300" title="Delete">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        `).join('');
-      }
-
-      function simulateNewsletter() {
-        const emails = [
-          'subscriber1@example.com',
-          'newsletter.fan@company.com',
-          'mining.pro@industry.com',
-          'updates@business.com'
-        ];
-        const randomEmail = emails[Math.floor(Math.random() * emails.length)];
-        
-        const newSub = {
-          id: newsletter.length > 0 ? Math.max(...newsletter.map(n => n.id)) + 1 : 1,
-          email: randomEmail,
-          date: new Date().toISOString(),
-          active: true
-        };
-        
-        newsletter.unshift(newSub);
-        saveData();
-        renderNewsletter();
-        updateAllStats();
-        updateBadges();
-        showNotification('New newsletter subscriber!');
-      }
-
-      function deleteNewsletter(id) {
-        if (confirm('⚠️ Remove this subscriber?')) {
-          newsletter = newsletter.filter(n => n.id !== id);
-          saveData();
-          renderNewsletter();
-          updateAllStats();
-          updateCharts();
-          showNotification('Subscriber removed.');
-        }
-      }
-
-      function exportNewsletter() {
-        if (newsletter.length === 0) {
-          showNotification('No subscribers to export.', 'error');
-          return;
-        }
-        
-        const csv = 'Email,Date,Status\n' + newsletter.map(n => 
-          `${n.email},${new Date(n.date).toLocaleDateString()},${n.active ? 'Active' : 'Unsubscribed'}`
-        ).join('\n');
-        
-        const blob = new Blob([csv], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `newsletter-subscribers-${new Date().toISOString().split('T')[0]}.csv`;
-        a.click();
-        showNotification('Newsletter subscribers exported!');
-      }
-
-      // USERS MANAGEMENT
-      function renderUsers() {
-        const tbody = document.getElementById('usersTableBody');
-        if (!tbody) return;
-        
-        if (users.length === 0) {
-          tbody.innerHTML = `
-            <tr>
-              <td colspan="7" class="px-6 py-12 text-center text-gray-400">
-                <i class="fas fa-users text-4xl mb-3"></i>
-                <p>No users yet</p>
-                <button onclick="openUserModal()" class="mt-4 text-cyan-400 hover:text-cyan-300">
-                  <i class="fas fa-user-plus mr-2"></i>Add First User
-                </button>
-              </td>
-            </tr>
-          `;
-          return;
-        }
-        
-        tbody.innerHTML = users.map(user => `
-          <tr class="hover:bg-slate-800/30 transition-colors">
-            <td class="px-6 py-4">
-              <div class="flex items-center gap-3">
-                <img src="https://i.pravatar.cc/100?img=${user.avatar || 1}" alt="${user.firstName}" class="w-10 h-10 rounded-full">
-                <div>
-                  <div class="font-semibold">${user.firstName} ${user.lastName}</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 text-gray-400">${user.email}</td>
-            <td class="px-6 py-4 text-gray-400">${user.company}</td>
-            <td class="px-6 py-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold ${
-                user.plan === 'Professional' ? 'bg-purple-500/20 text-purple-400' :
-                user.plan === 'Starter' ? 'bg-cyan-500/20 text-cyan-400' :
-                'bg-gray-500/20 text-gray-400'
-              }">${user.plan}</span>
-            </td>
-            <td class="px-6 py-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold ${user.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">${user.status}</span>
-            </td>
-            <td class="px-6 py-4 text-gray-400 text-sm">${new Date(user.joined).toLocaleDateString()}</td>
-            <td class="px-6 py-4">
-              <button onclick="deleteUser(${user.id})" class="text-red-400 hover:text-red-300" title="Delete">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        `).join('');
-      }
-
-      function openUserModal() {
-        document.getElementById('userForm').reset();
-        document.getElementById('userModal').classList.add('active');
-      }
-
-      function closeUserModal() {
-        document.getElementById('userModal').classList.remove('active');
-      }
-
-      function deleteUser(id) {
-        if (confirm('⚠️ Delete this user?')) {
-          users = users.filter(u => u.id !== id);
-          saveData();
-          renderUsers();
-          updateAllStats();
-          updateCharts();
-          showNotification('User deleted.');
-        }
-      }
-
-      document.getElementById('userForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const newUser = {
-          id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
-          firstName: document.getElementById('userFirstName').value,
-          lastName: document.getElementById('userLastName').value,
-          email: document.getElementById('userEmail').value,
-          company: document.getElementById('userCompany').value,
-          plan: document.getElementById('userPlan').value,
-          status: 'Active',
-          joined: new Date().toISOString(),
-          avatar: Math.floor(Math.random() * 70) + 1
-        };
-        
-        users.push(newUser);
-        saveData();
-        renderUsers();
-        updateAllStats();
-        updateCharts();
-        closeUserModal();
-        showNotification('User added successfully!');
-      });
-
-      // NAVIGATION
+      // Show Section
       function showSection(section) {
-        ['dashboardContent', 'contentContent', 'registrationsContent', 'contactsContent', 'newsletterContent', 'usersContent'].forEach(id => {
+        ['dashboardContent', 'contentContent', 'approvalContent', 'publishedContent'].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.classList.add('hidden');
         });
@@ -1665,21 +1238,7 @@
         }
       }
 
-      // UPDATE CHARTS
-      function updateCharts() {
-        if (charts.distChart) {
-          charts.distChart.data.datasets[0].data = [
-            content.length,
-            registrations.length,
-            contacts.length,
-            newsletter.length,
-            users.length
-          ];
-          charts.distChart.update();
-        }
-      }
-
-      // LOGOUT
+      // Logout
       function handleLogout() {
         if (confirm('⚠️ Are you sure you want to logout?')) {
           localStorage.removeItem('adminSession');
@@ -1691,14 +1250,14 @@
         }
       }
 
-      // MODAL CLOSE ON OUTSIDE CLICK
+      // Modal Close on Outside Click
       window.addEventListener('click', function(e) {
         if (e.target.classList.contains('modal')) {
           e.target.classList.remove('active');
         }
       });
 
-      // KEYBOARD SHORTCUTS
+      // Keyboard Shortcuts
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           document.querySelectorAll('.modal').forEach(modal => {
@@ -1707,7 +1266,7 @@
         }
       });
 
-      // INITIALIZE
+      // Initialize
       init();
     </script>
   </body>
