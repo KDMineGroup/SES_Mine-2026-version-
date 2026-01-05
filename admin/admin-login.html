@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Portal | SES_MINE - Content Publishing System</title>
+  <title>Admin Portal | SES_MINE - Complete Management System</title>
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -87,6 +87,9 @@
     .status-pending {
       border: 2px solid rgba(251, 191, 36, 0.5);
     }
+    .status-new {
+      border-left: 4px solid #06b6d4;
+    }
   </style>
 </head>
 <body class="text-white">
@@ -96,7 +99,7 @@
       <div class="text-center mb-8 fade-in">
         <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-16 mx-auto mb-4">
         <h1 class="text-3xl font-black mb-2">Admin <span class="gradient-text">Portal</span></h1>
-        <p class="text-gray-400">Content Publishing System</p>
+        <p class="text-gray-400">Complete Management System</p>
       </div>
 
       <div class="glass rounded-3xl p-8 shadow-2xl fade-in" style="animation-delay: 0.1s">
@@ -176,11 +179,16 @@
                 <span id="contentBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-amber-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
               <a href="#" onclick="showSection('approval')" id="nav-approval" class="nav-link text-gray-400 hover:text-white transition-colors relative">
-                <i class="fas fa-check-circle mr-2"></i>Approval Queue
+                <i class="fas fa-check-circle mr-2"></i>Approval
                 <span id="approvalBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
-              <a href="#" onclick="showSection('published')" id="nav-published" class="nav-link text-gray-400 hover:text-white transition-colors">
-                <i class="fas fa-globe mr-2"></i>Published
+              <a href="#" onclick="showSection('users')" id="nav-users" class="nav-link text-gray-400 hover:text-white transition-colors relative">
+                <i class="fas fa-users mr-2"></i>Users
+                <span id="usersBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-green-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
+              </a>
+              <a href="#" onclick="showSection('messages')" id="nav-messages" class="nav-link text-gray-400 hover:text-white transition-colors relative">
+                <i class="fas fa-envelope mr-2"></i>Messages
+                <span id="messagesBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-purple-500 rounded-full text-xs flex items-center justify-center badge-new" style="display:none;">0</span>
               </a>
             </div>
           </div>
@@ -205,55 +213,47 @@
       <div class="max-w-7xl mx-auto">
         <div class="mb-8 fade-in">
           <h1 class="text-4xl font-black mb-2">
-            Content Publishing <span class="gradient-text">Dashboard</span> 📰
+            Admin <span class="gradient-text">Dashboard</span> 🎯
           </h1>
-          <p class="text-gray-400">Manage and approve content for News & Resources pages</p>
+          <p class="text-gray-400">Complete system overview and management</p>
           <p class="text-sm text-gray-500 mt-2">
             <i class="fas fa-clock mr-2"></i>
             <span id="currentTime"></span>
           </p>
         </div>
 
-        <!-- Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('content')">
             <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-file-alt text-purple-400 text-2xl"></i>
+              <i class="fas fa-newspaper text-purple-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statTotal">0</div>
+            <div class="text-3xl font-black mb-1" id="statContent">0</div>
             <div class="text-gray-400 text-sm">Total Content</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('content')" style="animation-delay: 0.1s">
-            <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-edit text-amber-400 text-2xl"></i>
-            </div>
-            <div class="text-3xl font-black mb-1" id="statDraft">0</div>
-            <div class="text-gray-400 text-sm">Drafts</div>
-          </div>
-
-          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('approval')" style="animation-delay: 0.2s">
-            <div class="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-clock text-orange-400 text-2xl"></i>
-            </div>
-            <div class="text-3xl font-black mb-1" id="statPending">0</div>
-            <div class="text-gray-400 text-sm">Pending Approval</div>
-          </div>
-
-          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('published')" style="animation-delay: 0.3s">
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('users')" style="animation-delay: 0.1s">
             <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-check-circle text-green-400 text-2xl"></i>
+              <i class="fas fa-users text-green-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statPublished">0</div>
-            <div class="text-gray-400 text-sm">Published</div>
+            <div class="text-3xl font-black mb-1" id="statUsers">0</div>
+            <div class="text-gray-400 text-sm">Registered Users</div>
           </div>
 
-          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.4s">
-            <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-eye text-cyan-400 text-2xl"></i>
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('messages')" style="animation-delay: 0.2s">
+            <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-envelope text-blue-400 text-2xl"></i>
             </div>
-            <div class="text-3xl font-black mb-1" id="statViews">0</div>
-            <div class="text-gray-400 text-sm">Total Views</div>
+            <div class="text-3xl font-black mb-1" id="statMessages">0</div>
+            <div class="text-gray-400 text-sm">New Messages</div>
+          </div>
+
+          <div class="card-hover glass rounded-2xl p-6 fade-in cursor-pointer" onclick="showSection('messages')" style="animation-delay: 0.3s">
+            <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-bell text-amber-400 text-2xl"></i>
+            </div>
+            <div class="text-3xl font-black mb-1" id="statNewsletter">0</div>
+            <div class="text-gray-400 text-sm">Newsletter Subs</div>
           </div>
         </div>
 
@@ -261,19 +261,19 @@
         <div class="grid lg:grid-cols-2 gap-6 mb-8">
           <div class="glass rounded-2xl p-6 fade-in">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>Publishing Activity
+              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>User Growth
             </h3>
             <div style="position: relative; height: 300px;">
-              <canvas id="activityChart"></canvas>
+              <canvas id="userChart"></canvas>
             </div>
           </div>
 
           <div class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Content Status Distribution
+              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Content Distribution
             </h3>
             <div style="position: relative; height: 300px;">
-              <canvas id="statusChart"></canvas>
+              <canvas id="contentChart"></canvas>
             </div>
           </div>
         </div>
@@ -293,7 +293,7 @@
       </div>
     </div>
 
-    <!-- Content Management Section -->
+    <!-- Content Section (Previous Code) -->
     <div id="contentContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
@@ -302,69 +302,69 @@
             <i class="fas fa-plus mr-2"></i>Create New Content
           </button>
         </div>
-
-        <!-- Content Tabs -->
         <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
-          <button onclick="filterContent('all')" id="filter-all" class="tab-button active px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            All Content
-          </button>
-          <button onclick="filterContent('Draft')" id="filter-Draft" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            <i class="fas fa-edit mr-2"></i>Drafts
-          </button>
-          <button onclick="filterContent('Pending')" id="filter-Pending" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            <i class="fas fa-clock mr-2"></i>Pending
-          </button>
-          <button onclick="filterContent('Published')" id="filter-Published" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            <i class="fas fa-check mr-2"></i>Published
-          </button>
-          <button onclick="filterContent('News')" id="filter-News" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            News
-          </button>
-          <button onclick="filterContent('Resources')" id="filter-Resources" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            Resources
-          </button>
+          <button onclick="filterContent('all')" id="filter-all" class="tab-button active px-6 py-3 rounded-xl font-semibold whitespace-nowrap">All Content</button>
+          <button onclick="filterContent('Draft')" id="filter-Draft" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap"><i class="fas fa-edit mr-2"></i>Drafts</button>
+          <button onclick="filterContent('Pending')" id="filter-Pending" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap"><i class="fas fa-clock mr-2"></i>Pending</button>
+          <button onclick="filterContent('Published')" id="filter-Published" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap"><i class="fas fa-check mr-2"></i>Published</button>
         </div>
-
-        <!-- Content Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="contentGrid"></div>
       </div>
     </div>
 
-    <!-- Approval Queue Section -->
+    <!-- Approval Section (Previous Code) -->
     <div id="approvalContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-8">
-          <div>
-            <h1 class="text-4xl font-black">Approval <span class="gradient-text">Queue</span></h1>
-            <p class="text-gray-400 mt-2">Review and approve content before publishing to News/Resources</p>
-          </div>
-        </div>
-
-        <!-- Approval Grid -->
+        <h1 class="text-4xl font-black mb-8">Approval <span class="gradient-text">Queue</span></h1>
         <div class="grid md:grid-cols-2 gap-6" id="approvalGrid"></div>
       </div>
     </div>
 
-    <!-- Published Content Section -->
-    <div id="publishedContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+    <!-- Users Section -->
+    <div id="usersContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
           <div>
-            <h1 class="text-4xl font-black">Published <span class="gradient-text">Content</span></h1>
-            <p class="text-gray-400 mt-2">Live content on News & Resources pages</p>
+            <h1 class="text-4xl font-black">User <span class="gradient-text">Management</span></h1>
+            <p class="text-gray-400 mt-2">Manage registered users and registration requests</p>
           </div>
-          <button onclick="syncPublishedContent()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-sync-alt mr-2"></i>Sync to Public Pages
-          </button>
         </div>
 
-        <!-- Published Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="publishedGrid"></div>
+        <!-- User Tabs -->
+        <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
+          <button onclick="filterUsers('all')" id="user-filter-all" class="tab-button active px-6 py-3 rounded-xl font-semibold whitespace-nowrap">All Users</button>
+          <button onclick="filterUsers('pending')" id="user-filter-pending" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap"><i class="fas fa-clock mr-2"></i>Pending Approval</button>
+          <button onclick="filterUsers('approved')" id="user-filter-approved" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap"><i class="fas fa-check mr-2"></i>Approved</button>
+        </div>
+
+        <!-- Users Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="usersGrid"></div>
+      </div>
+    </div>
+
+    <!-- Messages Section -->
+    <div id="messagesContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h1 class="text-4xl font-black">Messages & <span class="gradient-text">Communications</span></h1>
+            <p class="text-gray-400 mt-2">Contact messages and newsletter subscriptions</p>
+          </div>
+        </div>
+
+        <!-- Message Tabs -->
+        <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
+          <button onclick="filterMessages('contact')" id="msg-filter-contact" class="tab-button active px-6 py-3 rounded-xl font-semibold whitespace-nowrap"><i class="fas fa-envelope mr-2"></i>Contact Messages</button>
+          <button onclick="filterMessages('newsletter')" id="msg-filter-newsletter" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap"><i class="fas fa-newspaper mr-2"></i>Newsletter</button>
+        </div>
+
+        <!-- Messages Grid -->
+        <div id="messagesGrid"></div>
       </div>
     </div>
   </div>
 
-  <!-- Content Modal -->
+  <!-- Content Modal (Previous Code) -->
   <div id="contentModal" class="modal">
     <div class="glass rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
       <div class="flex items-center justify-between mb-6">
@@ -375,13 +375,11 @@
       </div>
       <form id="contentForm" class="space-y-4">
         <input type="hidden" id="editContentId">
-        
         <div class="grid md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-semibold mb-2">Title *</label>
             <input type="text" id="contentTitle" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
-          
           <div>
             <label class="block text-sm font-semibold mb-2">Category *</label>
             <select id="contentCategory" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
@@ -393,71 +391,54 @@
             </select>
           </div>
         </div>
-
         <div>
           <label class="block text-sm font-semibold mb-2">Short Description *</label>
           <textarea id="contentDescription" rows="2" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white"></textarea>
         </div>
-
         <div>
           <label class="block text-sm font-semibold mb-2">Full Content *</label>
           <textarea id="contentBody" rows="8" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white"></textarea>
         </div>
-
         <div class="grid md:grid-cols-3 gap-4">
           <div>
             <label class="block text-sm font-semibold mb-2">Author *</label>
             <input type="text" id="contentAuthor" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
-
           <div>
             <label class="block text-sm font-semibold mb-2">Publish Date *</label>
             <input type="date" id="contentDate" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
           </div>
-
           <div>
             <label class="block text-sm font-semibold mb-2">Status *</label>
             <select id="contentStatus" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-              <option value="Draft">Draft (Save for later)</option>
-              <option value="Pending">Pending (Submit for approval)</option>
+              <option value="Draft">Draft</option>
+              <option value="Pending">Pending</option>
             </select>
           </div>
         </div>
-
         <div>
           <label class="block text-sm font-semibold mb-2">Featured Image URL</label>
           <input type="url" id="contentImage" placeholder="https://example.com/image.jpg" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
-
         <div>
           <label class="block text-sm font-semibold mb-2">Tags (comma separated)</label>
           <input type="text" id="contentTags" placeholder="mining, technology, sustainability" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
         </div>
-
-        <div class="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4">
-          <p class="text-sm text-cyan-400">
-            <i class="fas fa-info-circle mr-2"></i>
-            <strong>Publishing Workflow:</strong> Draft → Submit for Approval → Admin Reviews → Published to News/Resources
-          </p>
-        </div>
-
         <div class="flex gap-3">
           <button type="submit" class="flex-1 bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold">
             <i class="fas fa-save mr-2"></i>Save Content
           </button>
-          <button type="button" onclick="closeContentModal()" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold">
-            Cancel
-          </button>
+          <button type="button" onclick="closeContentModal()" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold">Cancel</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- View Content Modal -->
+  <!-- View Modal -->
   <div id="viewModal" class="modal">
     <div class="glass rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8">
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black" id="viewModalTitle">Content Preview</h2>
+        <h2 class="text-2xl font-black" id="viewModalTitle">Details</h2>
         <button onclick="closeViewModal()" class="text-gray-400 hover:text-white">
           <i class="fas fa-times text-2xl"></i>
         </button>
@@ -470,118 +451,84 @@
     // EmailJS Init
     emailjs.init('vIsuy4VXOAFCLwx2c');
 
-    // Data Storage Keys
+    // Storage Keys
     const STORAGE_KEYS = {
       CONTENT: 'sesmine_admin_content',
       PUBLIC_NEWS: 'sesmine_public_news',
-      PUBLIC_RESOURCES: 'sesmine_public_resources'
+      PUBLIC_RESOURCES: 'sesmine_public_resources',
+      USERS: 'sesmine_users',
+      REGISTRATIONS: 'sesmine_registrations',
+      CONTACT_MESSAGES: 'sesmine_contact_messages',
+      NEWSLETTER: 'sesmine_newsletter'
     };
 
     // Data
     let content = [];
+    let users = [];
+    let registrations = [];
+    let contactMessages = [];
+    let newsletter = [];
     let charts = {};
     let currentFilter = 'all';
+    let currentUserFilter = 'all';
+    let currentMessageFilter = 'contact';
 
     const ADMIN_USERS = {
       'admin@sesmine.com': { password: 'admin123', name: 'Admin User', role: 'Super Admin' }
     };
 
-    // Sample Content
+    // Sample Data
     const sampleContent = [
       {
         id: 1,
         title: 'AI Revolution in Mining Industry 2026',
         category: 'News',
-        description: 'Artificial Intelligence is transforming mining operations with unprecedented efficiency and safety improvements.',
-        body: 'The mining industry is experiencing a technological revolution driven by AI and machine learning. From autonomous drilling to predictive maintenance, AI is reshaping every aspect of mining operations. This comprehensive analysis explores how leading mining companies are implementing AI solutions to improve safety, reduce costs, and increase productivity. Key areas include: autonomous vehicles, real-time monitoring systems, predictive analytics for equipment maintenance, and AI-powered exploration techniques.',
+        description: 'Artificial Intelligence is transforming mining operations.',
+        body: 'Full article content here...',
         author: 'Dr. Sarah Chen',
         date: '2026-01-05',
         status: 'Published',
         image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800',
-        tags: 'AI, mining, technology, automation',
+        tags: 'AI, mining, technology',
         views: 1847,
         created: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
         publishedDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
-      },
-      {
-        id: 2,
-        title: 'Complete Cost Estimation Guide 2026',
-        category: 'Resources',
-        description: 'Comprehensive guide covering all aspects of mining project cost estimation with real-world examples.',
-        body: 'Cost estimation is critical for mining project success. This detailed guide covers: parametric estimation methods, analogous estimation techniques, bottom-up estimation approaches, three-point estimation, and contingency planning. Includes downloadable templates, case studies from successful projects, and best practices from industry experts. Learn how to create accurate estimates that account for geological uncertainties, equipment costs, labor rates, and regulatory compliance.',
-        author: 'Michael Rodriguez',
-        date: '2026-01-04',
-        status: 'Pending',
-        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800',
-        tags: 'cost estimation, resources, guide, planning',
-        views: 0,
-        created: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
-      },
-      {
-        id: 3,
-        title: 'Sustainable Mining Practices Framework',
-        category: 'Resources',
-        description: 'Step-by-step framework for implementing sustainable and responsible mining operations.',
-        body: 'Environmental sustainability is essential in modern mining. This framework covers: water management systems, waste reduction strategies, energy efficiency optimization, biodiversity protection protocols, community engagement best practices, and ESG reporting standards. Includes implementation checklists, ROI analysis tools, and success stories from mines that have achieved sustainability certifications.',
-        author: 'Emma Thompson',
-        date: '2026-01-03',
-        status: 'Draft',
-        image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800',
-        tags: 'sustainability, ESG, environment, best practices',
-        views: 0,
-        created: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
       }
     ];
 
     // Initialize
     function init() {
-      loadData();
+      loadAllData();
       if (!checkSession()) {
         document.getElementById('loginScreen').classList.remove('hidden');
       }
+      
+      // Listen for new registrations/messages from EmailJS
+      window.addEventListener('storage', handleStorageChange);
     }
 
-    // Load Data
-    function loadData() {
-      const stored = localStorage.getItem(STORAGE_KEYS.CONTENT);
-      content = stored ? JSON.parse(stored) : sampleContent;
+    // Load All Data
+    function loadAllData() {
+      content = JSON.parse(localStorage.getItem(STORAGE_KEYS.CONTENT) || JSON.stringify(sampleContent));
+      users = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || '[]');
+      registrations = JSON.parse(localStorage.getItem(STORAGE_KEYS.REGISTRATIONS) || '[]');
+      contactMessages = JSON.parse(localStorage.getItem(STORAGE_KEYS.CONTACT_MESSAGES) || '[]');
+      newsletter = JSON.parse(localStorage.getItem(STORAGE_KEYS.NEWSLETTER) || '[]');
+    }
+
+    // Handle Storage Changes
+    function handleStorageChange(e) {
+      if ([STORAGE_KEYS.REGISTRATIONS, STORAGE_KEYS.CONTACT_MESSAGES, STORAGE_KEYS.NEWSLETTER].includes(e.key)) {
+        loadAllData();
+        updateAllStats();
+        updateBadges();
+        showNotification('New submission received!', 'info');
+      }
     }
 
     // Save Data
-    function saveData() {
-      localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(content));
-    }
-
-    // Sync to Public Pages
-    function syncPublishedContent() {
-      const publishedContent = content.filter(c => c.status === 'Published');
-      const news = publishedContent.filter(c => c.category === 'News');
-      const resources = publishedContent.filter(c => c.category === 'Resources' || c.category === 'Guides' || c.category === 'Tutorial' || c.category === 'Case Study');
-      
-      localStorage.setItem(STORAGE_KEYS.PUBLIC_NEWS, JSON.stringify(news));
-      localStorage.setItem(STORAGE_KEYS.PUBLIC_RESOURCES, JSON.stringify(resources));
-      
-      showNotification(`✅ Synced ${news.length} news articles and ${resources.length} resources to public pages!`);
-      
-      // Trigger storage event for other tabs
-      window.dispatchEvent(new Event('storage'));
-    }
-
-    // Auto-sync on publish
-    function autoSync() {
-      syncPublishedContent();
-    }
-
-    // Show Notification
-    function showNotification(message, type = 'success') {
-      const notification = document.createElement('div');
-      notification.className = `notification glass ${type === 'success' ? 'border-green-500' : 'border-red-500'} border-2`;
-      notification.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} mr-2"></i>
-        ${message}
-      `;
-      document.body.appendChild(notification);
-      setTimeout(() => notification.remove(), 4000);
+    function saveData(key, data) {
+      localStorage.setItem(key, JSON.stringify(data));
     }
 
     // Check Session
@@ -610,35 +557,18 @@
       }
     }
 
-    // Show Error
-    function showError(message) {
-      const errorDiv = document.getElementById('loginError');
-      const errorMessage = document.getElementById('errorMessage');
-      errorMessage.textContent = message;
-      errorDiv.classList.remove('hidden');
-      setTimeout(() => errorDiv.classList.add('hidden'), 5000);
-    }
-
     // Login
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
       const button = document.getElementById('loginButtonText');
-
       button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
 
       setTimeout(() => {
         const user = ADMIN_USERS[email];
-        
         if (user && user.password === password) {
-          const sessionData = {
-            email: email,
-            name: user.name,
-            role: user.role,
-            timestamp: Date.now()
-          };
+          const sessionData = { email, name: user.name, role: user.role, timestamp: Date.now() };
           localStorage.setItem('adminSession', JSON.stringify(sessionData));
           showDashboard(sessionData);
         } else {
@@ -652,7 +582,6 @@
     function showDashboard(userData) {
       document.getElementById('loginScreen').classList.add('hidden');
       document.getElementById('dashboardScreen').classList.remove('hidden');
-      
       document.getElementById('navAdminName').textContent = userData.name;
       
       updateTime();
@@ -663,7 +592,8 @@
       loadRecentActivity();
       renderContent();
       renderApprovalQueue();
-      renderPublished();
+      renderUsers();
+      renderMessages();
       
       setTimeout(createCharts, 100);
     }
@@ -671,93 +601,68 @@
     // Update Time
     function updateTime() {
       const now = new Date();
-      const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      };
       const timeEl = document.getElementById('currentTime');
       if (timeEl) {
-        timeEl.textContent = now.toLocaleDateString('en-US', options);
+        timeEl.textContent = now.toLocaleString('en-US', { 
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+          hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
       }
     }
 
     // Update All Stats
     function updateAllStats() {
-      const draft = content.filter(c => c.status === 'Draft').length;
-      const pending = content.filter(c => c.status === 'Pending').length;
-      const published = content.filter(c => c.status === 'Published').length;
-      const totalViews = content.reduce((sum, c) => sum + (c.views || 0), 0);
-      
-      document.getElementById('statTotal').textContent = content.length;
-      document.getElementById('statDraft').textContent = draft;
-      document.getElementById('statPending').textContent = pending;
-      document.getElementById('statPublished').textContent = published;
-      document.getElementById('statViews').textContent = totalViews.toLocaleString();
+      document.getElementById('statContent').textContent = content.length;
+      document.getElementById('statUsers').textContent = users.length;
+      document.getElementById('statMessages').textContent = contactMessages.filter(m => !m.read).length;
+      document.getElementById('statNewsletter').textContent = newsletter.length;
     }
 
     // Update Badges
     function updateBadges() {
       const pending = content.filter(c => c.status === 'Pending').length;
-      const draft = content.filter(c => c.status === 'Draft').length;
+      const pendingUsers = registrations.filter(r => r.status === 'pending').length;
+      const unreadMessages = contactMessages.filter(m => !m.read).length;
       
-      const approvalBadge = document.getElementById('approvalBadge');
-      const contentBadge = document.getElementById('contentBadge');
+      document.getElementById('approvalBadge').textContent = pending;
+      document.getElementById('approvalBadge').style.display = pending > 0 ? 'flex' : 'none';
       
-      approvalBadge.textContent = pending;
-      approvalBadge.style.display = pending > 0 ? 'flex' : 'none';
+      document.getElementById('usersBadge').textContent = pendingUsers;
+      document.getElementById('usersBadge').style.display = pendingUsers > 0 ? 'flex' : 'none';
       
-      contentBadge.textContent = draft;
-      contentBadge.style.display = draft > 0 ? 'flex' : 'none';
+      document.getElementById('messagesBadge').textContent = unreadMessages;
+      document.getElementById('messagesBadge').style.display = unreadMessages > 0 ? 'flex' : 'none';
     }
 
     // Load Recent Activity
     function loadRecentActivity() {
-      const activities = [];
-      
-      content.slice(0, 5).forEach(c => {
-        let icon, color, text;
-        if (c.status === 'Published') {
-          icon = 'check-circle';
-          color = 'green';
-          text = `Published: ${c.title}`;
-        } else if (c.status === 'Pending') {
-          icon = 'clock';
-          color = 'orange';
-          text = `Pending approval: ${c.title}`;
-        } else {
-          icon = 'edit';
-          color = 'amber';
-          text = `Draft created: ${c.title}`;
-        }
-        
-        activities.push({
-          icon, color, text,
-          time: getTimeAgo(c.created)
-        });
-      });
-      
+      const activities = [
+        ...content.slice(0, 2).map(c => ({ type: 'content', text: `Content: ${c.title}`, time: c.created })),
+        ...registrations.slice(0, 2).map(r => ({ type: 'user', text: `New registration: ${r.name}`, time: r.created })),
+        ...contactMessages.slice(0, 2).map(m => ({ type: 'message', text: `Message from: ${m.name}`, time: m.created }))
+      ].sort((a, b) => new Date(b.time) - new Date(a.time)).slice(0, 5);
+
       const container = document.getElementById('activityList');
       if (activities.length === 0) {
         container.innerHTML = '<div class="text-center text-gray-400 py-8">No recent activity</div>';
         return;
       }
-      
-      container.innerHTML = activities.map(activity => `
-        <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
-          <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-            <i class="fas fa-${activity.icon} text-${activity.color}-400"></i>
+
+      container.innerHTML = activities.map(activity => {
+        const icons = { content: 'newspaper', user: 'user-plus', message: 'envelope' };
+        const colors = { content: 'purple', user: 'green', message: 'blue' };
+        return `
+          <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
+            <div class="w-10 h-10 bg-${colors[activity.type]}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-${icons[activity.type]} text-${colors[activity.type]}-400"></i>
+            </div>
+            <div class="flex-1">
+              <div class="text-sm">${activity.text}</div>
+              <div class="text-xs text-gray-500 mt-1">${getTimeAgo(activity.time)}</div>
+            </div>
           </div>
-          <div class="flex-1">
-            <div class="text-sm">${activity.text}</div>
-            <div class="text-xs text-gray-500 mt-1">${activity.time}</div>
-          </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     // Get Time Ago
@@ -765,29 +670,27 @@
       const date = new Date(dateString);
       const now = new Date();
       const seconds = Math.floor((now - date) / 1000);
-      
       if (seconds < 60) return 'Just now';
-      if (seconds < 3600) return Math.floor(seconds / 60) + ' minutes ago';
+      if (seconds < 3600) return Math.floor(seconds / 60) + ' min ago';
       if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
       return Math.floor(seconds / 86400) + ' days ago';
     }
 
     // Create Charts
     function createCharts() {
-      const activityCtx = document.getElementById('activityChart');
-      if (activityCtx && !charts.activityChart) {
-        charts.activityChart = new Chart(activityCtx, {
+      const userCtx = document.getElementById('userChart');
+      if (userCtx && !charts.userChart) {
+        charts.userChart = new Chart(userCtx, {
           type: 'line',
           data: {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
-              label: 'Published Content',
-              data: [2, 4, 3, 5, 6, 4, 7],
-              borderColor: '#06b6d4',
-              backgroundColor: 'rgba(6, 182, 212, 0.1)',
+              label: 'New Users',
+              data: [5, 8, 12, 15, 20, 18, 25],
+              borderColor: '#22c55e',
+              backgroundColor: 'rgba(34, 197, 94, 0.1)',
               tension: 0.4,
-              fill: true,
-              borderWidth: 3
+              fill: true
             }]
           },
           options: {
@@ -802,90 +705,58 @@
         });
       }
 
-      const statusCtx = document.getElementById('statusChart');
-      if (statusCtx && !charts.statusChart) {
-        const draft = content.filter(c => c.status === 'Draft').length;
-        const pending = content.filter(c => c.status === 'Pending').length;
-        const published = content.filter(c => c.status === 'Published').length;
-        
-        charts.statusChart = new Chart(statusCtx, {
+      const contentCtx = document.getElementById('contentChart');
+      if (contentCtx && !charts.contentChart) {
+        charts.contentChart = new Chart(contentCtx, {
           type: 'doughnut',
           data: {
-            labels: ['Draft', 'Pending Approval', 'Published'],
+            labels: ['News', 'Resources', 'Guides'],
             datasets: [{
-              data: [draft, pending, published],
-              backgroundColor: ['#f59e0b', '#f97316', '#22c55e'],
-              borderWidth: 0
+              data: [
+                content.filter(c => c.category === 'News').length,
+                content.filter(c => c.category === 'Resources').length,
+                content.filter(c => c.category === 'Guides').length
+              ],
+              backgroundColor: ['#ef4444', '#3b82f6', '#8b5cf6']
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { 
-              legend: { 
-                position: 'bottom',
-                labels: { color: '#fff', padding: 20 }
-              }
-            }
+            plugins: { legend: { position: 'bottom', labels: { color: '#fff', padding: 20 } } }
           }
         });
       }
     }
 
-    // CONTENT MANAGEMENT
+    // Render Content (Simplified)
     function renderContent() {
       const grid = document.getElementById('contentGrid');
       if (!grid) return;
       
-      let filtered = [...content];
-      if (currentFilter !== 'all') {
-        if (['Draft', 'Pending', 'Published'].includes(currentFilter)) {
-          filtered = filtered.filter(c => c.status === currentFilter);
-        } else {
-          filtered = filtered.filter(c => c.category === currentFilter);
-        }
-      }
-      
+      let filtered = currentFilter === 'all' ? content : content.filter(c => 
+        ['Draft', 'Pending', 'Published'].includes(currentFilter) ? c.status === currentFilter : c.category === currentFilter
+      );
+
       if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="glass rounded-2xl p-12 text-center col-span-3">
-            <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
-            <p class="text-gray-400">No content found</p>
-          </div>
-        `;
+        grid.innerHTML = '<div class="glass rounded-2xl p-12 text-center col-span-3"><i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i><p class="text-gray-400">No content found</p></div>';
         return;
       }
-      
+
       grid.innerHTML = filtered.map(item => `
-        <div class="glass rounded-2xl overflow-hidden card-hover ${item.status === 'Pending' ? 'status-pending' : ''}">
-          ${item.image ? `
-            <div class="h-48 overflow-hidden">
-              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'">
-            </div>
-          ` : ''}
+        <div class="glass rounded-2xl overflow-hidden card-hover">
+          ${item.image ? `<div class="h-48 overflow-hidden"><img src="${item.image}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'"></div>` : ''}
           <div class="p-6">
             <div class="flex items-start justify-between mb-4">
               <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(item.status)}">${item.status}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${item.status === 'Published' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}">${item.status}</span>
             </div>
             <h3 class="text-xl font-bold mb-2 line-clamp-2">${item.title}</h3>
             <p class="text-gray-400 text-sm mb-4 line-clamp-2">${item.description}</p>
-            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
-              <span><i class="fas fa-user mr-2"></i>${item.author}</span>
-              <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
-            </div>
             <div class="flex gap-2">
-              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-eye mr-1"></i>View
-              </button>
-              ${item.status !== 'Published' ? `
-                <button onclick="editContent(${item.id})" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg transition-all text-sm">
-                  <i class="fas fa-edit mr-1"></i>Edit
-                </button>
-              ` : ''}
-              <button onclick="deleteContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-trash mr-1"></i>Delete
-              </button>
+              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg text-sm"><i class="fas fa-eye mr-1"></i>View</button>
+              ${item.status !== 'Published' ? `<button onclick="editContent(${item.id})" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg text-sm"><i class="fas fa-edit mr-1"></i>Edit</button>` : ''}
+              <button onclick="deleteContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg text-sm"><i class="fas fa-trash mr-1"></i>Delete</button>
             </div>
           </div>
         </div>
@@ -898,294 +769,376 @@
       if (!grid) return;
       
       const pending = content.filter(c => c.status === 'Pending');
-      
       if (pending.length === 0) {
-        grid.innerHTML = `
-          <div class="glass rounded-2xl p-12 text-center col-span-2">
-            <i class="fas fa-check-circle text-6xl text-gray-600 mb-4"></i>
-            <p class="text-gray-400">No content pending approval</p>
-          </div>
-        `;
+        grid.innerHTML = '<div class="glass rounded-2xl p-12 text-center col-span-2"><i class="fas fa-check-circle text-6xl text-gray-600 mb-4"></i><p class="text-gray-400">No content pending approval</p></div>';
         return;
       }
-      
+
       grid.innerHTML = pending.map(item => `
         <div class="glass rounded-2xl overflow-hidden status-pending">
-          ${item.image ? `
-            <div class="h-48 overflow-hidden">
-              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'">
-            </div>
-          ` : ''}
+          ${item.image ? `<div class="h-48 overflow-hidden"><img src="${item.image}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'"></div>` : ''}
           <div class="p-6">
-            <div class="flex items-start justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/20 text-orange-400">
-                <i class="fas fa-clock mr-1"></i>Pending Review
-              </span>
-            </div>
             <h3 class="text-xl font-bold mb-2">${item.title}</h3>
             <p class="text-gray-400 text-sm mb-4">${item.description}</p>
-            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
-              <span><i class="fas fa-user mr-2"></i>${item.author}</span>
-              <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
-            </div>
             <div class="flex gap-2">
-              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-eye mr-1"></i>Preview
-              </button>
-              <button onclick="approveContent(${item.id})" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-check mr-1"></i>Approve & Publish
-              </button>
-              <button onclick="rejectContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-times mr-1"></i>Reject
-              </button>
+              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg text-sm"><i class="fas fa-eye mr-1"></i>Preview</button>
+              <button onclick="approveContent(${item.id})" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg text-sm"><i class="fas fa-check mr-1"></i>Approve</button>
+              <button onclick="rejectContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg text-sm"><i class="fas fa-times mr-1"></i>Reject</button>
             </div>
           </div>
         </div>
       `).join('');
     }
 
-    // Render Published
-    function renderPublished() {
-      const grid = document.getElementById('publishedGrid');
+    // Render Users
+    function renderUsers() {
+      const grid = document.getElementById('usersGrid');
       if (!grid) return;
-      
-      const published = content.filter(c => c.status === 'Published');
-      
-      if (published.length === 0) {
-        grid.innerHTML = `
-          <div class="glass rounded-2xl p-12 text-center col-span-3">
-            <i class="fas fa-globe text-6xl text-gray-600 mb-4"></i>
-            <p class="text-gray-400">No published content yet</p>
-          </div>
-        `;
+
+      let filtered = currentUserFilter === 'all' ? [...users, ...registrations] : 
+                    currentUserFilter === 'pending' ? registrations.filter(r => r.status === 'pending') :
+                    users;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="glass rounded-2xl p-12 text-center col-span-3"><i class="fas fa-users text-6xl text-gray-600 mb-4"></i><p class="text-gray-400">No users found</p></div>';
         return;
       }
-      
-      grid.innerHTML = published.map(item => `
-        <div class="glass rounded-2xl overflow-hidden card-hover">
-          ${item.image ? `
-            <div class="h-48 overflow-hidden">
-              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'">
+
+      grid.innerHTML = filtered.map(user => `
+        <div class="glass rounded-2xl p-6 ${user.status === 'pending' ? 'status-new' : ''}">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-2xl font-black">
+              ${(user.name || user.fullName || 'U').charAt(0).toUpperCase()}
             </div>
-          ` : ''}
-          <div class="p-6">
-            <div class="flex items-start justify-between mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400">
-                <i class="fas fa-check-circle mr-1"></i>Live
-              </span>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold">${user.name || user.fullName}</h3>
+              <p class="text-sm text-gray-400">${user.email}</p>
+              ${user.company ? `<p class="text-xs text-gray-500 mt-1"><i class="fas fa-building mr-1"></i>${user.company}</p>` : ''}
             </div>
-            <h3 class="text-xl font-bold mb-2 line-clamp-2">${item.title}</h3>
-            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${item.description}</p>
-            <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
-              <span><i class="fas fa-eye mr-2"></i>${item.views || 0} views</span>
-              <span><i class="fas fa-calendar mr-2"></i>Published ${getTimeAgo(item.publishedDate || item.created)}</span>
-            </div>
-            <div class="flex gap-2">
-              <button onclick="viewContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-eye mr-1"></i>View
-              </button>
-              <button onclick="unpublishContent(${item.id})" class="flex-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 py-2 rounded-lg transition-all text-sm">
-                <i class="fas fa-undo mr-1"></i>Unpublish
-              </button>
-            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${user.status === 'pending' ? 'bg-amber-500/20 text-amber-400' : 'bg-green-500/20 text-green-400'}">
+              ${user.status === 'pending' ? 'Pending' : 'Approved'}
+            </span>
+          </div>
+          ${user.message ? `<p class="text-sm text-gray-400 mb-4 line-clamp-2">${user.message}</p>` : ''}
+          <div class="text-xs text-gray-500 mb-4">
+            <i class="fas fa-clock mr-2"></i>Registered ${getTimeAgo(user.created || user.registeredAt)}
+          </div>
+          <div class="flex gap-2">
+            <button onclick="viewUser(${JSON.stringify(user).replace(/"/g, '&quot;')})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg text-sm"><i class="fas fa-eye mr-1"></i>View</button>
+            ${user.status === 'pending' ? `
+              <button onclick="approveUser('${user.email}')" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg text-sm"><i class="fas fa-check mr-1"></i>Approve</button>
+              <button onclick="rejectUser('${user.email}')" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg text-sm"><i class="fas fa-times mr-1"></i>Reject</button>
+            ` : `
+              <button onclick="deleteUser('${user.email}')" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg text-sm"><i class="fas fa-trash mr-1"></i>Delete</button>
+            `}
           </div>
         </div>
       `).join('');
     }
 
-    // Get Status Color
-    function getStatusColor(status) {
-      const colors = {
-        'Draft': 'bg-amber-500/20 text-amber-400',
-        'Pending': 'bg-orange-500/20 text-orange-400',
-        'Published': 'bg-green-500/20 text-green-400'
-      };
-      return colors[status] || 'bg-gray-500/20 text-gray-400';
+    // Render Messages
+    function renderMessages() {
+      const grid = document.getElementById('messagesGrid');
+      if (!grid) return;
+
+      const messages = currentMessageFilter === 'contact' ? contactMessages : newsletter;
+
+      if (messages.length === 0) {
+        grid.innerHTML = '<div class="glass rounded-2xl p-12 text-center"><i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i><p class="text-gray-400">No messages found</p></div>';
+        return;
+      }
+
+      grid.innerHTML = `<div class="space-y-4">${messages.map(msg => `
+        <div class="glass rounded-2xl p-6 ${!msg.read ? 'status-new' : ''}">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <h3 class="text-lg font-bold">${msg.name || msg.email}</h3>
+              <p class="text-sm text-gray-400">${msg.email}</p>
+              ${msg.subject ? `<p class="text-sm text-cyan-400 mt-1">${msg.subject}</p>` : ''}
+            </div>
+            <div class="text-right">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${!msg.read ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-500/20 text-gray-400'}">
+                ${!msg.read ? 'New' : 'Read'}
+              </span>
+              <p class="text-xs text-gray-500 mt-2">${getTimeAgo(msg.created)}</p>
+            </div>
+          </div>
+          ${msg.message ? `<p class="text-sm text-gray-300 mb-4">${msg.message}</p>` : ''}
+          <div class="flex gap-2">
+            ${currentMessageFilter === 'contact' ? `
+              <button onclick="replyMessage('${msg.email}')" class="flex-1 bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 py-2 rounded-lg text-sm"><i class="fas fa-reply mr-1"></i>Reply</button>
+              ${!msg.read ? `<button onclick="markAsRead('${msg.email}')" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg text-sm"><i class="fas fa-check mr-1"></i>Mark Read</button>` : ''}
+            ` : ''}
+            <button onclick="deleteMessage('${msg.email}', '${currentMessageFilter}')" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg text-sm"><i class="fas fa-trash mr-1"></i>Delete</button>
+          </div>
+        </div>
+      `).join('')}</div>`;
     }
 
-    // Filter Content
+    // Filter Functions
     function filterContent(filter) {
       currentFilter = filter;
       document.querySelectorAll('.tab-button').forEach(btn => {
         btn.classList.remove('active');
-        btn.classList.add('bg-slate-800/50', 'hover:bg-slate-700/50');
+        btn.classList.add('bg-slate-800/50');
       });
-      const activeBtn = document.getElementById('filter-' + filter);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-        activeBtn.classList.remove('bg-slate-800/50', 'hover:bg-slate-700/50');
-      }
+      document.getElementById('filter-' + filter).classList.add('active');
+      document.getElementById('filter-' + filter).classList.remove('bg-slate-800/50');
       renderContent();
     }
 
-    // Open Content Modal
-    function openContentModal(id = null) {
-      if (id) {
-        const item = content.find(c => c.id === id);
-        if (item) {
-          document.getElementById('contentModalTitle').textContent = 'Edit Content';
-          document.getElementById('editContentId').value = id;
-          document.getElementById('contentTitle').value = item.title;
-          document.getElementById('contentCategory').value = item.category;
-          document.getElementById('contentDescription').value = item.description;
-          document.getElementById('contentBody').value = item.body;
-          document.getElementById('contentAuthor').value = item.author;
-          document.getElementById('contentDate').value = item.date;
-          document.getElementById('contentStatus').value = item.status;
-          document.getElementById('contentImage').value = item.image || '';
-          document.getElementById('contentTags').value = item.tags || '';
+    function filterUsers(filter) {
+      currentUserFilter = filter;
+      document.querySelectorAll('[id^="user-filter-"]').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('bg-slate-800/50');
+      });
+      document.getElementById('user-filter-' + filter).classList.add('active');
+      document.getElementById('user-filter-' + filter).classList.remove('bg-slate-800/50');
+      renderUsers();
+    }
+
+    function filterMessages(filter) {
+      currentMessageFilter = filter;
+      document.querySelectorAll('[id^="msg-filter-"]').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('bg-slate-800/50');
+      });
+      document.getElementById('msg-filter-' + filter).classList.add('active');
+      document.getElementById('msg-filter-' + filter).classList.remove('bg-slate-800/50');
+      renderMessages();
+    }
+
+    // User Actions
+    function viewUser(user) {
+      document.getElementById('viewModalTitle').textContent = 'User Details';
+      document.getElementById('viewModalBody').innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-3xl font-black">
+              ${user.name.charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold">${user.name}</h3>
+              <p class="text-gray-400">${user.email}</p>
+            </div>
+          </div>
+          ${user.company ? `<p><strong>Company:</strong> ${user.company}</p>` : ''}
+          ${user.phone ? `<p><strong>Phone:</strong> ${user.phone}</p>` : ''}
+          ${user.message ? `<p><strong>Message:</strong> ${user.message}</p>` : ''}
+          <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Registered: ${new Date(user.created).toLocaleString()}</p>
+        </div>
+      `;
+      document.getElementById('viewModal').classList.add('active');
+    }
+
+    function approveUser(email) {
+      if (confirm('Approve this user registration?')) {
+        const reg = registrations.find(r => r.email === email);
+        if (reg) {
+          users.push({ ...reg, status: 'approved', approvedAt: new Date().toISOString() });
+          registrations = registrations.filter(r => r.email !== email);
+          saveData(STORAGE_KEYS.USERS, users);
+          saveData(STORAGE_KEYS.REGISTRATIONS, registrations);
+          
+          // Send approval email
+          emailjs.send('service_v1tzk6t', 'template_5rwnvg8', {
+            to_email: email,
+            to_name: reg.name,
+            message: 'Your registration has been approved! You can now login to your account.'
+          });
+          
+          renderUsers();
+          updateAllStats();
+          updateBadges();
+          showNotification(`User ${reg.name} approved!`);
         }
-      } else {
-        document.getElementById('contentModalTitle').textContent = 'Create New Content';
-        document.getElementById('contentForm').reset();
-        document.getElementById('editContentId').value = '';
-        document.getElementById('contentDate').valueAsDate = new Date();
       }
-      document.getElementById('contentModal').classList.add('active');
     }
 
-    function closeContentModal() {
-      document.getElementById('contentModal').classList.remove('active');
+    function rejectUser(email) {
+      if (confirm('Reject this user registration?')) {
+        registrations = registrations.filter(r => r.email !== email);
+        saveData(STORAGE_KEYS.REGISTRATIONS, registrations);
+        renderUsers();
+        updateAllStats();
+        updateBadges();
+        showNotification('Registration rejected');
+      }
     }
 
-    function editContent(id) {
-      openContentModal(id);
+    function deleteUser(email) {
+      if (confirm('Delete this user?')) {
+        users = users.filter(u => u.email !== email);
+        saveData(STORAGE_KEYS.USERS, users);
+        renderUsers();
+        updateAllStats();
+        showNotification('User deleted');
+      }
     }
 
-    // View Content
+    // Message Actions
+    function replyMessage(email) {
+      window.location.href = `mailto:${email}`;
+    }
+
+    function markAsRead(email) {
+      const msg = contactMessages.find(m => m.email === email);
+      if (msg) {
+        msg.read = true;
+        saveData(STORAGE_KEYS.CONTACT_MESSAGES, contactMessages);
+        renderMessages();
+        updateAllStats();
+        updateBadges();
+      }
+    }
+
+    function deleteMessage(email, type) {
+      if (confirm('Delete this message?')) {
+        if (type === 'contact') {
+          contactMessages = contactMessages.filter(m => m.email !== email);
+          saveData(STORAGE_KEYS.CONTACT_MESSAGES, contactMessages);
+        } else {
+          newsletter = newsletter.filter(n => n.email !== email);
+          saveData(STORAGE_KEYS.NEWSLETTER, newsletter);
+        }
+        renderMessages();
+        updateAllStats();
+        showNotification('Message deleted');
+      }
+    }
+
+    // Content Actions (Simplified versions)
     function viewContent(id) {
       const item = content.find(c => c.id === id);
       if (item) {
         document.getElementById('viewModalTitle').textContent = item.title;
         document.getElementById('viewModalBody').innerHTML = `
           <div class="space-y-4">
-            ${item.image ? `<img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover rounded-xl mb-4" onerror="this.style.display='none'">` : ''}
-            <div class="flex items-center gap-4 text-sm text-gray-400 flex-wrap">
-              <span><i class="fas fa-user mr-2"></i>${item.author}</span>
-              <span><i class="fas fa-calendar mr-2"></i>${new Date(item.date).toLocaleDateString()}</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(item.status)}">${item.status}</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
-            </div>
-            <div class="prose prose-invert max-w-none">
-              <p class="text-lg text-gray-300 leading-relaxed">${item.description}</p>
-              <div class="mt-4 text-gray-400 leading-relaxed">${item.body}</div>
-            </div>
-            ${item.tags ? `
-              <div class="flex flex-wrap gap-2 mt-4">
-                ${item.tags.split(',').map(tag => `<span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">${tag.trim()}</span>`).join('')}
-              </div>
-            ` : ''}
+            ${item.image ? `<img src="${item.image}" class="w-full h-64 object-cover rounded-xl">` : ''}
+            <p class="text-lg text-gray-300">${item.description}</p>
+            <div class="text-gray-400">${item.body}</div>
           </div>
         `;
         document.getElementById('viewModal').classList.add('active');
       }
     }
 
-    function closeViewModal() {
-      document.getElementById('viewModal').classList.remove('active');
+    function editContent(id) {
+      const item = content.find(c => c.id === id);
+      if (item) {
+        document.getElementById('contentModalTitle').textContent = 'Edit Content';
+        document.getElementById('editContentId').value = id;
+        document.getElementById('contentTitle').value = item.title;
+        document.getElementById('contentCategory').value = item.category;
+        document.getElementById('contentDescription').value = item.description;
+        document.getElementById('contentBody').value = item.body;
+        document.getElementById('contentAuthor').value = item.author;
+        document.getElementById('contentDate').value = item.date;
+        document.getElementById('contentStatus').value = item.status;
+        document.getElementById('contentImage').value = item.image || '';
+        document.getElementById('contentTags').value = item.tags || '';
+        document.getElementById('contentModal').classList.add('active');
+      }
     }
 
-    // Approve Content
+    function deleteContent(id) {
+      if (confirm('Delete this content?')) {
+        content = content.filter(c => c.id !== id);
+        saveData(STORAGE_KEYS.CONTENT, content);
+        renderContent();
+        updateAllStats();
+        showNotification('Content deleted');
+      }
+    }
+
     function approveContent(id) {
-      if (confirm('✅ Approve and publish this content to News/Resources page?')) {
+      if (confirm('Approve and publish this content?')) {
         const item = content.find(c => c.id === id);
         if (item) {
           item.status = 'Published';
           item.publishedDate = new Date().toISOString();
-          saveData();
-          autoSync();
+          saveData(STORAGE_KEYS.CONTENT, content);
+          syncPublishedContent();
           renderContent();
           renderApprovalQueue();
-          renderPublished();
           updateAllStats();
           updateBadges();
-          updateCharts();
-          loadRecentActivity();
-          showNotification(`✅ "${item.title}" has been published to ${item.category} page!`);
+          showNotification(`"${item.title}" published!`);
         }
       }
     }
 
-    // Reject Content
     function rejectContent(id) {
-      if (confirm('⚠️ Reject this content? It will be moved back to Draft.')) {
+      if (confirm('Reject this content?')) {
         const item = content.find(c => c.id === id);
         if (item) {
           item.status = 'Draft';
-          saveData();
-          renderContent();
-          renderApprovalQueue();
-          updateAllStats();
-          updateBadges();
-          updateCharts();
-          showNotification(`Content "${item.title}" rejected and moved to Draft.`);
+                      saveData(STORAGE_KEYS.CONTENT, content);
+            renderContent();
+            renderApprovalQueue();
+            updateAllStats();
+            updateBadges();
+            showNotification('Content rejected');
+          }
         }
       }
-    }
 
-    // Unpublish Content
-    function unpublishContent(id) {
-      if (confirm('⚠️ Unpublish this content? It will be removed from public pages.')) {
-        const item = content.find(c => c.id === id);
-        if (item) {
-          item.status = 'Draft';
-          saveData();
-          autoSync();
-          renderContent();
-          renderPublished();
-          updateAllStats();
-          updateBadges();
-          updateCharts();
-          showNotification(`Content "${item.title}" unpublished.`);
-        }
+      function syncPublishedContent() {
+        const publishedContent = content.filter(c => c.status === 'Published');
+        const news = publishedContent.filter(c => c.category === 'News');
+        const resources = publishedContent.filter(c => c.category === 'Resources' || c.category === 'Guides' || c.category === 'Tutorial' || c.category === 'Case Study');
+        
+        localStorage.setItem(STORAGE_KEYS.PUBLIC_NEWS, JSON.stringify(news));
+        localStorage.setItem(STORAGE_KEYS.PUBLIC_RESOURCES, JSON.stringify(resources));
+        
+        window.dispatchEvent(new Event('storage'));
       }
-    }
 
-    // Delete Content
-    function deleteContent(id) {
-      if (confirm('⚠️ Permanently delete this content?')) {
-        content = content.filter(c => c.id !== id);
-        saveData();
-        autoSync();
-        renderContent();
-        renderApprovalQueue();
-        renderPublished();
-        updateAllStats();
-        updateBadges();
-        updateCharts();
-        showNotification('Content deleted successfully!');
+      // Modal Functions
+      function openContentModal() {
+        document.getElementById('contentModalTitle').textContent = 'Create New Content';
+        document.getElementById('contentForm').reset();
+        document.getElementById('editContentId').value = '';
+        document.getElementById('contentDate').valueAsDate = new Date();
+        document.getElementById('contentModal').classList.add('active');
       }
-    }
 
-    // Content Form Submit
-    document.getElementById('contentForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const editId = document.getElementById('editContentId').value;
-      const formData = {
-        title: document.getElementById('contentTitle').value,
-        category: document.getElementById('contentCategory').value,
-        description: document.getElementById('contentDescription').value,
-        body: document.getElementById('contentBody').value,
-        author: document.getElementById('contentAuthor').value,
-        date: document.getElementById('contentDate').value,
-        status: document.getElementById('contentStatus').value,
-        image: document.getElementById('contentImage').value,
-        tags: document.getElementById('contentTags').value,
-        views: 0
-      };
-      
-      if (editId) {
-        const index = content.findIndex(c => c.id === parseInt(editId));
-        if (index !== -1) {
-          content[index] = { ...content[index], ...formData };
-          showNotification('Content updated successfully!');
-        }
-      } else {
-        const newContent = {
-          id: content.length > 0 ? Math.max(...content.map(c => c.id)) + 1 : 1,
+      function closeContentModal() {
+        document.getElementById('contentModal').classList.remove('active');
+      }
+
+      function closeViewModal() {
+        document.getElementById('viewModal').classList.remove('active');
+      }
+
+      // Content Form Submit
+      document.getElementById('contentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const editId = document.getElementById('editContentId').value;
+        const formData = {
+          title: document.getElementById('contentTitle').value,
+          category: document.getElementById('contentCategory').value,
+          description: document.getElementById('contentDescription').value,
+          body: document.getElementById('contentBody').value,
+          author: document.getElementById('contentAuthor').value,
+          date: document.getElementById('contentDate').value,
+          status: document.getElementById('contentStatus').value,
+          image: document.getElementById('contentImage').value,
+          tags: document.getElementById('contentTags').value,
+          views: 0
+        };
+        
+        if (editId) {
+          const index = content.findIndex(c => c.id === parseInt(editId));
+          if (index !== -1) {
+            content[index] = { ...content[index], ...formData };
+            showNotification('Content updated successfully!');
+          }
+        } else {
+          const newContent = {
+            id: content.length > 0 ? Math.max(...content.map(c => c.id)) + 1 : 1,
             ...formData,
             created: new Date().toISOString()
           };
@@ -1193,32 +1146,17 @@
           showNotification('Content created successfully!');
         }
         
-        saveData();
+        saveData(STORAGE_KEYS.CONTENT, content);
         renderContent();
         renderApprovalQueue();
-        renderPublished();
         updateAllStats();
         updateBadges();
-        updateCharts();
-        loadRecentActivity();
         closeContentModal();
       });
 
-      // Update Charts
-      function updateCharts() {
-        if (charts.statusChart) {
-          const draft = content.filter(c => c.status === 'Draft').length;
-          const pending = content.filter(c => c.status === 'Pending').length;
-          const published = content.filter(c => c.status === 'Published').length;
-          
-          charts.statusChart.data.datasets[0].data = [draft, pending, published];
-          charts.statusChart.update();
-        }
-      }
-
       // Show Section
       function showSection(section) {
-        ['dashboardContent', 'contentContent', 'approvalContent', 'publishedContent'].forEach(id => {
+        ['dashboardContent', 'contentContent', 'approvalContent', 'usersContent', 'messagesContent'].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.classList.add('hidden');
         });
@@ -1248,6 +1186,26 @@
           charts = {};
           location.reload();
         }
+      }
+
+      // Show Notification
+      function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification glass ${type === 'success' ? 'border-green-500' : type === 'info' ? 'border-blue-500' : 'border-red-500'} border-2`;
+        notification.innerHTML = `
+          <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'exclamation-circle'} mr-2"></i>
+          ${message}
+        `;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 4000);
+      }
+
+      function showError(message) {
+        const errorDiv = document.getElementById('loginError');
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = message;
+        errorDiv.classList.remove('hidden');
+        setTimeout(() => errorDiv.classList.add('hidden'), 5000);
       }
 
       // Modal Close on Outside Click
