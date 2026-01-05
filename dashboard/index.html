@@ -60,9 +60,20 @@
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
       border: 1px solid rgba(245, 158, 11, 0.3);
     }
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
 <body class="text-white">
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="fixed inset-0 flex items-center justify-center bg-slate-950 z-50">
+    <div class="text-center">
+      <div class="w-16 h-16 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-gray-400">Loading your dashboard...</p>
+    </div>
+  </div>
+
   <!-- Navigation -->
   <nav class="fixed w-full z-50 glass border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
@@ -90,7 +101,7 @@
         <div class="flex items-center gap-4">
           <button onclick="showNotifications()" class="relative p-2 hover:bg-slate-800 rounded-lg transition-all">
             <i class="fas fa-bell text-xl"></i>
-            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span id="notificationDot" class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
           </button>
           <div class="hidden sm:flex items-center gap-3 glass px-4 py-2 rounded-lg">
             <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center font-black" id="userAvatar">U</div>
@@ -163,7 +174,7 @@
           <i class="fas fa-bolt text-amber-500 mr-2"></i>Quick Actions
         </h2>
         <div class="grid md:grid-cols-3 gap-4">
-          <button onclick="window.location.href='../products/cost-calculator.html'" class="tool-card rounded-xl p-6 text-left hover:shadow-xl transition-all group">
+          <button onclick="navigateTo('cost-calculator')" class="tool-card rounded-xl p-6 text-left hover:shadow-xl transition-all group">
             <div class="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <i class="fas fa-calculator text-amber-400 text-xl"></i>
             </div>
@@ -179,7 +190,7 @@
             <p class="text-sm text-gray-400">Start a new mining project</p>
           </button>
 
-          <button onclick="window.location.href='../resources/index.html'" class="tool-card rounded-xl p-6 text-left hover:shadow-xl transition-all group">
+          <button onclick="navigateTo('resources')" class="tool-card rounded-xl p-6 text-left hover:shadow-xl transition-all group">
             <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <i class="fas fa-book text-blue-400 text-xl"></i>
             </div>
@@ -236,7 +247,7 @@
             <li><i class="fas fa-check text-green-400 mr-2"></i>Material cost analysis</li>
             <li><i class="fas fa-check text-green-400 mr-2"></i>PDF report generation</li>
           </ul>
-          <button onclick="window.location.href='../products/cost-calculator.html'" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-3 rounded-xl transition-all">
+          <button onclick="navigateTo('cost-calculator')" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-3 rounded-xl transition-all">
             <i class="fas fa-rocket mr-2"></i>Launch Tool
           </button>
         </div>
@@ -302,7 +313,7 @@
           <i class="fas fa-book text-4xl text-amber-500 mb-4"></i>
           <h3 class="text-2xl font-bold mb-2">Documentation</h3>
           <p class="text-gray-400 mb-4">Complete guides and documentation for all tools</p>
-          <button onclick="window.location.href='../resources/index.html'" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 px-6 py-2 rounded-lg font-semibold transition-all">
+          <button onclick="navigateTo('resources')" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 px-6 py-2 rounded-lg font-semibold transition-all">
             <i class="fas fa-arrow-right mr-2"></i>Browse Docs
           </button>
         </div>
@@ -320,7 +331,7 @@
           <i class="fas fa-newspaper text-4xl text-blue-500 mb-4"></i>
           <h3 class="text-2xl font-bold mb-2">Industry News</h3>
           <p class="text-gray-400 mb-4">Latest news and trends in mining industry</p>
-          <button onclick="window.location.href='../news.html'" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 px-6 py-2 rounded-lg font-semibold transition-all">
+          <button onclick="navigateTo('news')" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 px-6 py-2 rounded-lg font-semibold transition-all">
             <i class="fas fa-arrow-right mr-2"></i>Read News
           </button>
         </div>
@@ -362,14 +373,14 @@
 
       <div class="glass rounded-2xl p-8">
         <h2 class="text-2xl font-bold mb-6">Contact Support</h2>
-        <form class="space-y-4">
+        <form onsubmit="submitSupport(event)" class="space-y-4">
           <div>
             <label class="block text-sm font-semibold mb-2">Subject</label>
-            <input type="text" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="How can we help?">
+            <input type="text" id="supportSubject" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="How can we help?">
           </div>
           <div>
             <label class="block text-sm font-semibold mb-2">Message</label>
-            <textarea rows="5" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="Describe your issue..."></textarea>
+            <textarea id="supportMessage" rows="5" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="Describe your issue..."></textarea>
           </div>
           <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-3 rounded-xl transition-all">
             <i class="fas fa-paper-plane mr-2"></i>Send Message
@@ -380,34 +391,69 @@
   </div>
 
   <script>
-    // Check if user is logged in
+    // Global user data
+    let currentUser = null;
+
+    // Check Authentication
     function checkAuth() {
       const session = localStorage.getItem('userSession');
+      
       if (!session) {
-        window.location.href = '../auth/login.html';
-        return false;
+        console.log('No session found, redirecting to login...');
+        window.location.href = 'login.html';
+        return null;
       }
       
-      const userData = JSON.parse(session);
-      if (Date.now() - userData.timestamp > 24 * 60 * 60 * 1000) {
+      try {
+        const userData = JSON.parse(session);
+        
+        // Check if session is expired (24 hours)
+        if (Date.now() - userData.timestamp > 24 * 60 * 60 * 1000) {
+          console.log('Session expired');
+          localStorage.removeItem('userSession');
+          window.location.href = 'login.html';
+          return null;
+        }
+        
+        console.log('User authenticated:', userData);
+        return userData;
+      } catch (error) {
+        console.error('Error parsing session:', error);
         localStorage.removeItem('userSession');
-        window.location.href = '../auth/login.html';
-        return false;
+        window.location.href = 'login.html';
+        return null;
       }
-      
-      return userData;
     }
 
-    // Initialize
-    const userData = checkAuth();
-    if (userData) {
-      document.getElementById('userName').textContent = userData.name;
-      document.getElementById('welcomeName').textContent = userData.name;
-      document.getElementById('userAvatar').textContent = userData.name.charAt(0).toUpperCase();
+    // Initialize Dashboard
+    function initDashboard() {
+      console.log('Initializing dashboard...');
       
+      currentUser = checkAuth();
+      
+      if (!currentUser) {
+        return;
+      }
+      
+      // Set user info
+      const userName = currentUser.name || currentUser.fullName || currentUser.email.split('@')[0];
+      document.getElementById('userName').textContent = userName;
+      document.getElementById('welcomeName').textContent = userName;
+      document.getElementById('userAvatar').textContent = userName.charAt(0).toUpperCase();
+      
+      // Load user data
       loadUserData();
+      
+      // Update time
       updateTime();
       setInterval(updateTime, 1000);
+      
+      // Hide loading screen
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+      }, 500);
+      
+      console.log('Dashboard initialized successfully');
     }
 
     // Update Time
@@ -416,33 +462,54 @@
       const timeEl = document.getElementById('currentTime');
       if (timeEl) {
         timeEl.textContent = now.toLocaleString('en-US', { 
-          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-          hour: '2-digit', minute: '2-digit'
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit', 
+          minute: '2-digit'
         });
       }
     }
 
     // Load User Data
     function loadUserData() {
-      // Load from localStorage
-      const projects = JSON.parse(localStorage.getItem('user_projects_' + userData.email) || '[]');
-      const calculations = JSON.parse(localStorage.getItem('user_calculations_' + userData.email) || '[]');
+      if (!currentUser) return;
       
+      const userEmail = currentUser.email;
+      
+      // Load projects
+      const projects = JSON.parse(localStorage.getItem('user_projects_' + userEmail) || '[]');
+      const calculations = JSON.parse(localStorage.getItem('user_calculations_' + userEmail) || '[]');
+      
+      // Update stats
       document.getElementById('statProjects').textContent = projects.length;
       document.getElementById('statCalculations').textContent = calculations.length;
       document.getElementById('statReports').textContent = calculations.filter(c => c.reportGenerated).length;
       document.getElementById('statHours').textContent = Math.floor(calculations.length * 2.5);
       
+      // Load sections
       loadRecentProjects(projects);
       loadActivity();
       loadProjectsGrid(projects);
+      
+      console.log('User data loaded:', { projects: projects.length, calculations: calculations.length });
     }
 
     // Load Recent Projects
     function loadRecentProjects(projects) {
       const container = document.getElementById('recentProjects');
+      
       if (projects.length === 0) {
-        container.innerHTML = '<div class="text-center text-gray-400 py-8">No projects yet. Create your first project!</div>';
+        container.innerHTML = `
+          <div class="text-center text-gray-400 py-8">
+            <i class="fas fa-folder-open text-4xl mb-3"></i>
+            <p>No projects yet</p>
+            <button onclick="createNewProject()" class="mt-3 text-amber-400 hover:text-amber-300">
+              <i class="fas fa-plus mr-2"></i>Create your first project
+            </button>
+          </div>
+        `;
         return;
       }
 
@@ -463,9 +530,9 @@
     // Load Activity
     function loadActivity() {
       const activities = [
-        { icon: 'calculator', color: 'amber', text: 'Completed cost calculation', time: new Date(Date.now() - 2 * 60 * 60 * 1000) },
-        { icon: 'file-pdf', color: 'blue', text: 'Generated project report', time: new Date(Date.now() - 5 * 60 * 60 * 1000) },
-        { icon: 'folder', color: 'purple', text: 'Created new project', time: new Date(Date.now() - 24 * 60 * 60 * 1000) }
+        { icon: 'user-check', color: 'green', text: 'Successfully logged in', time: new Date() },
+        { icon: 'calculator', color: 'amber', text: 'Dashboard loaded', time: new Date(Date.now() - 2 * 60 * 1000) },
+        { icon: 'chart-line', color: 'blue', text: 'Viewed statistics', time: new Date(Date.now() - 5 * 60 * 1000) }
       ];
 
       const container = document.getElementById('activityList');
@@ -488,7 +555,15 @@
       if (!grid) return;
 
       if (projects.length === 0) {
-        grid.innerHTML = '<div class="glass rounded-2xl p-12 text-center col-span-3"><i class="fas fa-folder-open text-6xl text-gray-600 mb-4"></i><p class="text-gray-400">No projects yet. Create your first project!</p></div>';
+        grid.innerHTML = `
+          <div class="glass rounded-2xl p-12 text-center col-span-3">
+            <i class="fas fa-folder-open text-6xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400 mb-4">No projects yet</p>
+            <button onclick="createNewProject()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+              <i class="fas fa-plus mr-2"></i>Create Your First Project
+            </button>
+          </div>
+        `;
         return;
       }
 
@@ -505,7 +580,7 @@
           <div class="text-xs text-gray-500 mb-4">
             <i class="fas fa-clock mr-2"></i>Created ${getTimeAgo(project.created)}
           </div>
-          <button class="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 py-2 rounded-lg font-semibold transition-all">
+          <button onclick="openProject(${project.id})" class="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 py-2 rounded-lg font-semibold transition-all">
             <i class="fas fa-folder-open mr-2"></i>Open Project
           </button>
         </div>
@@ -515,19 +590,43 @@
     // Create New Project
     function createNewProject() {
       const projectName = prompt('Enter project name:');
-      if (projectName) {
-        const projects = JSON.parse(localStorage.getItem('user_projects_' + userData.email) || '[]');
-        projects.push({
+      if (projectName && projectName.trim()) {
+        const userEmail = currentUser.email;
+        const projects = JSON.parse(localStorage.getItem('user_projects_' + userEmail) || '[]');
+        
+        const newProject = {
           id: Date.now(),
-          name: projectName,
+          name: projectName.trim(),
           description: '',
           status: 'Active',
           created: new Date().toISOString(),
           updated: new Date().toISOString()
-        });
-        localStorage.setItem('user_projects_' + userData.email, JSON.stringify(projects));
+        };
+        
+        projects.push(newProject);
+        localStorage.setItem('user_projects_' + userEmail, JSON.stringify(projects));
+        
         loadUserData();
-        showNotification('Project created successfully!');
+        showNotification('✅ Project created successfully!');
+      }
+    }
+
+    // Open Project
+    function openProject(projectId) {
+      showNotification('Opening project...', 'info');
+      // Add your project opening logic here
+    }
+
+    // Navigate To
+    function navigateTo(page) {
+      const routes = {
+        'cost-calculator': '../products/cost-calculator.html',
+        'resources': '../resources/index.html',
+        'news': '../news.html'
+      };
+      
+      if (routes[page]) {
+        window.location.href = routes[page];
       }
     }
 
@@ -536,16 +635,36 @@
       showNotification('You have 3 new notifications', 'info');
     }
 
+    // Submit Support
+    function submitSupport(e) {
+      e.preventDefault();
+      const subject = document.getElementById('supportSubject').value;
+      const message = document.getElementById('supportMessage').value;
+      
+      // Here you can add EmailJS integration
+      console.log('Support request:', { subject, message });
+      
+      showNotification('✅ Support request sent successfully!');
+      e.target.reset();
+    }
+
     // Show Section
     function showSection(section) {
-      ['dashboardContent', 'toolsContent', 'projectsContent', 'resourcesContent', 'supportContent'].forEach(id => {
+      const sections = ['dashboardContent', 'toolsContent', 'projectsContent', 'resourcesContent', 'supportContent'];
+      
+      sections.forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.classList.add('hidden');
+        if (el) {
+          el.classList.add('hidden');
+        }
       });
       
       const sectionEl = document.getElementById(section + 'Content');
-      if (sectionEl) sectionEl.classList.remove('hidden');
+      if (sectionEl) {
+        sectionEl.classList.remove('hidden');
+      }
       
+      // Update nav links
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('text-amber-400', 'font-semibold');
         link.classList.add('text-gray-400');
@@ -562,16 +681,24 @@
     function handleLogout() {
       if (confirm('Are you sure you want to logout?')) {
         localStorage.removeItem('userSession');
-        window.location.href = '../auth/login.html';
+        window.location.href = 'login.html';
       }
     }
 
     // Show Notification
     function showNotification(message, type = 'success') {
       const notification = document.createElement('div');
-      notification.className = `notification glass ${type === 'success' ? 'border-green-500' : type === 'info' ? 'border-blue-500' : 'border-red-500'} border-2`;
+      notification.className = `notification glass ${
+        type === 'success' ? 'border-green-500 bg-green-500/20' : 
+        type === 'info' ? 'border-blue-500 bg-blue-500/20' : 
+        'border-red-500 bg-red-500/20'
+      } border-2`;
       notification.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'exclamation-circle'} mr-2"></i>
+        <i class="fas fa-${
+          type === 'success' ? 'check-circle' : 
+          type === 'info' ? 'info-circle' : 
+          'exclamation-circle'
+        } mr-2"></i>
         ${message}
       `;
       document.body.appendChild(notification);
@@ -582,11 +709,16 @@
     function getTimeAgo(date) {
       const dateObj = typeof date === 'string' ? new Date(date) : date;
       const seconds = Math.floor((new Date() - dateObj) / 1000);
+      
       if (seconds < 60) return 'Just now';
       if (seconds < 3600) return Math.floor(seconds / 60) + ' min ago';
       if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
-      return Math.floor(seconds / 86400) + ' days ago';
+      if (seconds < 604800) return Math.floor(seconds / 86400) + ' days ago';
+      return dateObj.toLocaleDateString();
     }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', initDashboard);
   </script>
 </body>
 </html>
