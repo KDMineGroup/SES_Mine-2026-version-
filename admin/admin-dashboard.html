@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { 
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      min-height: 100vh;
+    }
+    .gradient-text { 
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .glass {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body class="text-white">
+  <!-- Login Screen -->
+  <div id="loginScreen" class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8 fade-in">
+        <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-16 mx-auto mb-4">
+        <h1 class="text-3xl font-black mb-2">Admin <span class="gradient-text">Portal</span></h1>
+        <p class="text-gray-400">Secure access to dashboard</p>
+      </div>
+
+      <div class="glass rounded-3xl p-8 shadow-2xl fade-in" style="animation-delay: 0.1s">
+        <form id="loginForm" class="space-y-6">
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-envelope text-cyan-400 mr-2"></i>Email
+            </label>
+            <input 
+              type="email" 
+              id="loginEmail"
+              value="admin@sesmine.com"
+              required
+              class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-all"
+            >
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-lock text-cyan-400 mr-2"></i>Password
+            </label>
+            <div class="relative">
+              <input 
+                type="password" 
+                id="loginPassword"
+                value="admin123"
+                required
+                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white focus:outline-none focus:border-cyan-500 transition-all"
+              >
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-cyan-400">
+                <i class="fas fa-eye" id="toggleIcon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="loginError" class="hidden bg-red-500/20 border border-red-500 rounded-xl p-3 text-sm text-red-400">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            <span id="errorMessage"></span>
+          </div>
+
+          <button 
+            type="submit"
+            class="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition-all transform hover:scale-105"
+          >
+            <i class="fas fa-sign-in-alt mr-2"></i>
+            <span id="loginButtonText">Sign In</span>
+          </button>
+        </form>
+
+        <div class="mt-6 p-4 bg-cyan-500/10 border border-cyan-500/30 rounded-xl">
+          <p class="text-sm font-semibold mb-2 text-cyan-400">
+            <i class="fas fa-info-circle mr-2"></i>Demo Credentials
+          </p>
+          <div class="text-xs text-gray-400 space-y-1">
+            <p><strong>Email:</strong> admin@sesmine.com</p>
+            <p><strong>Password:</strong> admin123</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Screen -->
+  <div id="dashboardScreen" class="hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-8">
+            <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-12">
+            <div class="hidden md:flex items-center gap-6">
+              <a href="#" onclick="showSection('dashboard')" id="nav-dashboard" class="nav-link text-cyan-400 font-semibold">
+                <i class="fas fa-chart-line mr-2"></i>Dashboard
+              </a>
+              <a href="#" onclick="showSection('users')" id="nav-users" class="nav-link text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-users mr-2"></i>Users
+              </a>
+              <a href="#" onclick="showSection('content')" id="nav-content" class="nav-link text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-edit mr-2"></i>Content
+              </a>
+              <a href="#" onclick="showSection('settings')" id="nav-settings" class="nav-link text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-cog mr-2"></i>Settings
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="hidden sm:flex items-center gap-3 glass px-4 py-2 rounded-lg">
+              <img src="https://i.pravatar.cc/100?img=5" alt="Admin" class="w-8 h-8 rounded-full border-2 border-cyan-500">
+              <div>
+                <div class="text-sm font-semibold" id="navAdminName">Admin</div>
+                <div class="text-xs text-gray-400">Administrator</div>
+              </div>
+            </div>
+            <button onclick="handleLogout()" class="bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-400 px-4 py-2 rounded-lg transition-all font-semibold">
+              <i class="fas fa-sign-out-alt mr-2"></i>Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div id="dashboardContent" class="pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <!-- Welcome -->
+        <div class="mb-8 fade-in">
+          <h1 class="text-4xl font-black mb-2">
+            Welcome back, <span class="gradient-text" id="welcomeName">Admin</span>! 👋
+          </h1>
+          <p class="text-gray-400">Here's your overview for today</p>
+          <p class="text-sm text-gray-500 mt-2">
+            <i class="fas fa-clock mr-2"></i>
+            <span id="currentTime"></span>
+          </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="card-hover glass rounded-2xl p-6 fade-in">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-users text-cyan-400 text-2xl"></i>
+              </div>
+              <span class="text-green-400 text-sm font-semibold">+12.5%</span>
+            </div>
+            <div class="text-3xl font-black mb-1" id="statUsers">1,247</div>
+            <div class="text-gray-400 text-sm">Total Users</div>
+          </div>
+
+          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-project-diagram text-purple-400 text-2xl"></i>
+              </div>
+              <span class="text-green-400 text-sm font-semibold">+8.2%</span>
+            </div>
+            <div class="text-3xl font-black mb-1" id="statProjects">543</div>
+            <div class="text-gray-400 text-sm">Active Projects</div>
+          </div>
+
+          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.2s">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-dollar-sign text-green-400 text-2xl"></i>
+              </div>
+              <span class="text-green-400 text-sm font-semibold">+23.1%</span>
+            </div>
+            <div class="text-3xl font-black mb-1" id="statRevenue">$87.4K</div>
+            <div class="text-gray-400 text-sm">Monthly Revenue</div>
+          </div>
+
+          <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.3s">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-ticket-alt text-amber-400 text-2xl"></i>
+              </div>
+              <span class="text-red-400 text-sm font-semibold">+3</span>
+            </div>
+            <div class="text-3xl font-black mb-1" id="statTickets">24</div>
+            <div class="text-gray-400 text-sm">Open Tickets</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid lg:grid-cols-2 gap-6 mb-8">
+          <div class="glass rounded-2xl p-6 fade-in">
+            <h3 class="text-xl font-bold mb-6">
+              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>User Growth (Last 7 Days)
+            </h3>
+            <div style="position: relative; height: 300px;">
+              <canvas id="userChart"></canvas>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
+            <h3 class="text-xl font-bold mb-6">
+              <i class="fas fa-dollar-sign text-green-400 mr-2"></i>Revenue (Last 4 Weeks)
+            </h3>
+            <div style="position: relative; height: 300px;">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="glass rounded-2xl p-6 fade-in">
+          <h3 class="text-xl font-bold mb-6">
+            <i class="fas fa-history text-purple-400 mr-2"></i>Recent Activity
+          </h3>
+          <div class="space-y-3" id="activityList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Users Section -->
+    <div id="usersContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <h1 class="text-4xl font-black">User <span class="gradient-text">Management</span></h1>
+          <button onclick="openAddUserModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-user-plus mr-2"></i>Add User
+          </button>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="glass rounded-2xl p-6 mb-6">
+          <div class="flex flex-wrap gap-4">
+            <div class="flex-1 min-w-64">
+              <input 
+                type="text" 
+                id="userSearch"
+                placeholder="Search users..."
+                onkeyup="filterUsers()"
+                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500"
+              >
+            </div>
+            <select onchange="filterUsers()" id="userPlanFilter" class="bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500">
+              <option value="">All Plans</option>
+              <option value="Free">Free</option>
+              <option value="Starter">Starter</option>
+              <option value="Professional">Professional</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="glass rounded-2xl overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-slate-800/50">
+              <tr>
+                <th class="px-6 py-4 text-left text-sm font-semibold">User</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold">Email</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold">Company</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold">Plan</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody" class="divide-y divide-slate-800">
+              <!-- Users will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div id="contentContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <h1 class="text-4xl font-black">Content <span class="gradient-text">Management</span></h1>
+          <button onclick="openAddContentModal()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-plus mr-2"></i>Add Content
+          </button>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="contentGrid">
+          <!-- Content will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Section -->
+    <div id="settingsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-black mb-8">System <span class="gradient-text">Settings</span></h1>
+        
+        <div class="space-y-6">
+          <div class="glass rounded-2xl p-6">
+            <h3 class="text-xl font-bold mb-4">
+              <i class="fas fa-user-circle text-cyan-400 mr-2"></i>Profile Settings
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-semibold mb-2">Full Name</label>
+                <input type="text" value="Admin User" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold mb-2">Email</label>
+                <input type="email" value="admin@sesmine.com" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+              </div>
+              <button class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold">
+                Save Changes
+              </button>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <h3 class="text-xl font-bold mb-4">
+              <i class="fas fa-bell text-purple-400 mr-2"></i>Notification Settings
+            </h3>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" checked class="w-5 h-5 rounded">
+                <span>Email notifications</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" checked class="w-5 h-5 rounded">
+                <span>New user registrations</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="w-5 h-5 rounded">
+                <span>Weekly reports</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div id="addUserModal" class="modal">
+    <div class="glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-black">Add New User</h2>
+        <button onclick="closeAddUserModal()" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+      <form id="addUserForm" class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold mb-2">First Name</label>
+            <input type="text" id="newUserFirstName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-2">Last Name</label>
+            <input type="text" id="newUserLastName" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2">Email</label>
+          <input type="email" id="newUserEmail" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2">Company</label>
+          <input type="text" id="newUserCompany" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2">Plan</label>
+          <select id="newUserPlan" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+            <option value="Free">Free</option>
+            <option value="Starter">Starter</option>
+            <option value="Professional">Professional</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold">
+          <i class="fas fa-user-plus mr-2"></i>Add User
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Content Modal -->
+  <div id="addContentModal" class="modal">
+    <div class="glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-black">Add New Content</h2>
+        <button onclick="closeAddContentModal()" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+      <form id="addContentForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold mb-2">Title</label>
+          <input type="text" id="newContentTitle" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2">Category</label>
+          <select id="newContentCategory" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
+            <option value="Article">Article</option>
+            <option value="News">News</option>
+            <option value="Tutorial">Tutorial</option>
+            <option value="Guide">Guide</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-2">Description</label>
+          <textarea id="newContentDesc" rows="4" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold">
+          <i class="fas fa-plus mr-2"></i>Add Content
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Data Storage
+    let users = [
+      { id: 1, firstName: 'John', lastName: 'Smith', email: 'john@globalmine.com', company: 'GlobalMine Corp', plan: 'Professional', status: 'Active', avatar: 12 },
+      { id: 2, firstName: 'Sarah', lastName: 'Johnson', email: 'sarah@minemax.com', company: 'MineMax Ltd', plan: 'Starter', status: 'Active', avatar: 47 },
+      { id: 3, firstName: 'Michael', lastName: 'Chen', email: 'michael@ecomine.com', company: 'EcoMine Inc', plan: 'Professional', status: 'Active', avatar: 33 },
+      { id: 4, firstName: 'Emily', lastName: 'Rodriguez', email: 'emily@pacific.com', company: 'Pacific Mining', plan: 'Free', status: 'Active', avatar: 68 },
+      { id: 5, firstName: 'David', lastName: 'Thompson', email: 'david@northern.com', company: 'Northern Resources', plan: 'Starter', status: 'Inactive', avatar: 15 }
+    ];
+
+    let content = [
+      { id: 1, title: 'Mining Industry Trends 2026', category: 'Article', desc: 'Latest trends in mining technology', date: '2026-01-03', status: 'Published' },
+      { id: 2, title: 'AI in Cost Estimation', category: 'Tutorial', desc: 'How to use AI for accurate cost predictions', date: '2026-01-02', status: 'Published' },
+      { id: 3, title: 'New Feature Release', category: 'News', desc: 'Announcing new dashboard features', date: '2026-01-01', status: 'Draft' }
+    ];
+
+    const activities = [
+      { icon: 'user-plus', color: 'green', text: 'New user registered: John Smith', time: '5 min ago' },
+      { icon: 'project-diagram', color: 'cyan', text: 'Project created: Copper Mine Expansion', time: '15 min ago' },
+      { icon: 'dollar-sign', color: 'green', text: 'Payment received: $149.00', time: '1 hour ago' },
+      { icon: 'ticket-alt', color: 'amber', text: 'Support ticket opened', time: '2 hours ago' },
+      { icon: 'edit', color: 'purple', text: 'Article published', time: '3 hours ago' }
+    ];
+
+    const ADMIN_USERS = {
+      'admin@sesmine.com': { password: 'admin123', name: 'Admin User', role: 'Super Admin' }
+    };
+
+    let userChart = null;
+    let revenueChart = null;
+
+    // Check session
+    function checkSession() {
+      const session = localStorage.getItem('adminSession');
+      if (session) {
+        const data = JSON.parse(session);
+        if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+          showDashboard(data);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Toggle password
+    function togglePasswordVisibility() {
+      const input = document.getElementById('loginPassword');
+      const icon = document.getElementById('toggleIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    // Show error
+    function showError(message) {
+      const errorDiv = document.getElementById('loginError');
+      const errorMessage = document.getElementById('errorMessage');
+      errorMessage.textContent = message;
+      errorDiv.classList.remove('hidden');
+      setTimeout(() => errorDiv.classList.add('hidden'), 5000);
+    }
+
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const button = document.getElementById('loginButtonText');
+
+      button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
+
+      setTimeout(() => {
+        const user = ADMIN_USERS[email];
+        
+        if (user && user.password === password) {
+          const sessionData = {
+            email: email,
+            name: user.name,
+            role: user.role,
+            timestamp: Date.now()
+          };
+          localStorage.setItem('adminSession', JSON.stringify(sessionData));
+          showDashboard(sessionData);
+        } else {
+          showError('Invalid email or password');
+          button.textContent = 'Sign In';
+        }
+      }, 1000);
+    });
+
+    // Show dashboard
+    function showDashboard(userData) {
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('dashboardScreen').classList.remove('hidden');
+      
+      document.getElementById('welcomeName').textContent = userData.name.split(' ')[0];
+      document.getElementById('navAdminName').textContent = userData.name;
+      
+      updateTime();
+      setInterval(updateTime, 1000);
+      
+      loadActivities();
+      loadUsers();
+      loadContent();
+      
+      setTimeout(() => {
+        createCharts();
+      }, 100);
+    }
+
+    // Update time
+    function updateTime() {
+      const now = new Date();
+      const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      document.getElementById('currentTime').textContent = now.toLocaleDateString('en-US', options);
+    }
+
+    // Load activities
+    function loadActivities() {
+      const container = document.getElementById('activityList');
+      container.innerHTML = activities.map(activity => `
+        <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
+          <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-${activity.icon} text-${activity.color}-400"></i>
+          </div>
+          <div class="flex-1">
+            <div class="text-sm">${activity.text}</div>
+            <div class="text-xs text-gray-500 mt-1">${activity.time}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Create charts
+    function createCharts() {
+      const userCtx = document.getElementById('userChart');
+      if (userChart) userChart.destroy();
+      
+      userChart = new Chart(userCtx, {
+        type: 'line',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          datasets: [{
+            label: 'New Users',
+            data: [12, 19, 15, 25, 22, 30, 28],
+            borderColor: '#06b6d4',
+            backgroundColor: 'rgba(6, 182, 212, 0.1)',
+            tension: 0.4,
+            fill: true,
+            borderWidth: 3,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { 
+            legend: { 
+              display: true,
+              labels: { color: '#fff' }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: '#06b6d4',
+              borderWidth: 1
+            }
+          },
+          scales: {
+            y: { 
+              beginAtZero: true,
+              grid: { color: 'rgba(255,255,255,0.1)' },
+              ticks: { color: '#94a3b8' }
+            },
+            x: { 
+              grid: { display: false },
+              ticks: { color: '#94a3b8' }
+            }
+          }
+        }
+      });
+
+      const revenueCtx = document.getElementById('revenueChart');
+      if (revenueChart) revenueChart.destroy();
+      
+      revenueChart = new Chart(revenueCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+          datasets: [{
+            label: 'Revenue ($)',
+            data: [18500, 22300, 19800, 26800],
+            backgroundColor: ['#06b6d4', '#8b5cf6', '#ec4899', '#22c55e'],
+            borderRadius: 8,
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { 
+            legend: { 
+              display: true,
+              labels: { color: '#fff' }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: '#22c55e',
+              borderWidth: 1,
+              callbacks: {
+                label: function(context) {
+                  return '$' + context.parsed.y.toLocaleString();
+                }
+              }
+            }
+          },
+          scales: {
+            y: { 
+              beginAtZero: true,
+              grid: { color: 'rgba(255,255,255,0.1)' },
+              ticks: { 
+                color: '#94a3b8',
+                callback: value => '$' + (value/1000) + 'K'
+              }
+            },
+            x: { 
+              grid: { display: false },
+              ticks: { color: '#94a3b8' }
+            }
+          }
+        }
+      });
+    }
+
+    // Load users
+    function loadUsers() {
+      const tbody = document.getElementById('usersTableBody');
+      tbody.innerHTML = users.map(user => `
+        <tr class="hover:bg-slate-800/30 transition-colors">
+          <td class="px-6 py-4">
+            <div class="flex items-center gap-3">
+              <img src="https://i.pravatar.cc/100?img=${user.avatar}" alt="${user.firstName}" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-semibold">${user.firstName} ${user.lastName}</div>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-400">${user.email}</td>
+          <td class="px-6 py-4 text-gray-400">${user.company}</td>
+          <td class="px-6 py-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${getPlanColor(user.plan)}">${user.plan}</span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${user.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">${user.status}</span>
+          </td>
+          <td class="px-6 py-4">
+            <button onclick="editUser(${user.id})" class="text-cyan-400 hover:text-cyan-300 mr-3">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button onclick="deleteUser(${user.id})" class="text-red-400 hover:text-red-300">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Load content
+    function loadContent() {
+      const grid = document.getElementById('contentGrid');
+      grid.innerHTML = content.map(item => `
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="flex items-start justify-between mb-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${item.status === 'Published' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}">${item.status}</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">${item.title}</h3>
+          <p class="text-gray-400 text-sm mb-4">${item.desc}</p>
+          <div class="flex items-center justify-between text-xs text-gray-500">
+            <span><i class="fas fa-calendar mr-2"></i>${item.date}</span>
+            <div class="space-x-2">
+              <button onclick="editContent(${item.id})" class="text-cyan-400 hover:text-cyan-300">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button onclick="deleteContent(${item.id})" class="text-red-400 hover:text-red-300">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filter users
+    function filterUsers() {
+      const search = document.getElementById('userSearch').value.toLowerCase();
+      const plan = document.getElementById('userPlanFilter').value;
+      
+      const filtered = users.filter(user => {
+        const matchSearch = user.firstName.toLowerCase().includes(search) || 
+                          user.lastName.toLowerCase().includes(search) || 
+                          user.email.toLowerCase().includes(search);
+        const matchPlan = !plan || user.plan === plan;
+        return matchSearch && matchPlan;
+      });
+      
+      const tbody = document.getElementById('usersTableBody');
+      tbody.innerHTML = filtered.map(user => `
+        <tr class="hover:bg-slate-800/30 transition-colors">
+          <td class="px-6 py-4">
+            <div class="flex items-center gap-3">
+              <img src="https://i.pravatar.cc/100?img=${user.avatar}" alt="${user.firstName}" class="w-10 h-10 rounded-full">
+              <div>
+                <div class="font-semibold">${user.firstName} ${user.lastName}</div>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-400">${user.email}</td>
+          <td class="px-6 py-4 text-gray-400">${user.company}</td>
+          <td class="px-6 py-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${getPlanColor(user.plan)}">${user.plan}</span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${user.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">${user.status}</span>
+          </td>
+          <td class="px-6 py-4">
+            <button onclick="editUser(${user.id})" class="text-cyan-400 hover:text-cyan-300 mr-3">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button onclick="deleteUser(${user.id})" class="text-red-400 hover:text-red-300">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Helper functions
+    function getPlanColor(plan) {
+      const colors = {
+        'Professional': 'bg-purple-500/20 text-purple-400',
+        'Starter': 'bg-cyan-500/20 text-cyan-400',
+        'Free': 'bg-gray-500/20 text-gray-400'
+      };
+      return colors[plan] || 'bg-gray-500/20 text-gray-400';
+    }
+
+    // Modals
+    function openAddUserModal() {
+      document.getElementById('addUserModal').classList.add('active');
+    }
+
+    function closeAddUserModal() {
+      document.getElementById('addUserModal').classList.remove('active');
+    }
+
+    function openAddContentModal() {
+      document.getElementById('addContentModal').classList.add('active');
+    }
+
+    function closeAddContentModal() {
+      document.getElementById('addContentModal').classList.remove('active');
+    }
+
+    // Add user
+    document.getElementById('addUserForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newUser = {
+        id: users.length + 1,
+        firstName: document.getElementById('newUserFirstName').value,
+        lastName: document.getElementById('newUserLastName').value,
+        email: document.getElementById('newUserEmail').value,
+        company: document.getElementById('newUserCompany').value,
+        plan: document.getElementById('newUserPlan').value,
+        status: 'Active',
+        avatar: Math.floor(Math.random() * 70) + 1
+      };
+      users.push(newUser);
+      loadUsers();
+      closeAddUserModal();
+      alert('User added successfully!');
+      this.reset();
+    });
+
+    // Add content
+    document.getElementById('addContentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newContent = {
+        id: content.length + 1,
+        title: document.getElementById('newContentTitle').value,
+        category: document.getElementById('newContentCategory').value,
+        desc: document.getElementById('newContentDesc').value,
+        date: new Date().toISOString().split('T')[0],
+        status: 'Draft'
+      };
+      content.push(newContent);
+      loadContent();
+      closeAddContentModal();
+      alert('Content added successfully!');
+      this.reset();
+    });
+
+    // Delete functions
+    function deleteUser(id) {
+      if (confirm('Are you sure you want to delete this user?')) {
+        users = users.filter(u => u.id !== id);
+        loadUsers();
+        alert('User deleted successfully!');
+      }
+    }
+
+    function deleteContent(id) {
+      if (confirm('Are you sure you want to delete this content?')) {
+        content = content.filter(c => c.id !== id);
+        loadContent();
+        alert('Content deleted successfully!');
+      }
+    }
+
+    function editUser(id) {
+      alert('Edit user feature coming soon!');
+    }
+
+    function editContent(id) {
+      alert('Edit content feature coming soon!');
+    }
+
+    // Show section
+    function showSection(section) {
+      ['dashboardContent', 'usersContent', 'contentContent', 'settingsContent'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      
+      document.getElementById(section + 'Content').classList.remove('hidden');
+      
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('text-cyan-400', 'font-semibold');
+        link.classList.add('text-gray-400');
+      });
+      
+      const activeLink = document.getElementById('nav-' + section);
+      if (activeLink) {
+        activeLink.classList.add('text-cyan-400', 'font-semibold');
+        activeLink.classList.remove('text-gray-400');
+      }
+    }
+
+    // Logout
+    function handleLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('adminSession');
+        location.reload();
+      }
+    }
+
+    // Initialize
+    if (!checkSession()) {
+      document.getElementById('loginScreen').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
