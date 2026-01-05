@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | SES_MINE</title>
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { 
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      min-height: 100vh;
+    }
+    .gradient-text { 
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .glass {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+    }
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(400px); }
+      to { transform: translateX(0); }
+    }
+    .tool-card {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+  </style>
+</head>
+<body class="text-white">
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-8">
+          <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE" class="h-12">
+          <div class="hidden md:flex items-center gap-6">
+            <a href="#" onclick="showSection('dashboard')" id="nav-dashboard" class="nav-link text-amber-400 font-semibold">
+              <i class="fas fa-home mr-2"></i>Dashboard
+            </a>
+            <a href="#" onclick="showSection('tools')" id="nav-tools" class="nav-link text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-tools mr-2"></i>Tools
+            </a>
+            <a href="#" onclick="showSection('projects')" id="nav-projects" class="nav-link text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-folder mr-2"></i>My Projects
+            </a>
+            <a href="#" onclick="showSection('resources')" id="nav-resources" class="nav-link text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-book mr-2"></i>Resources
+            </a>
+            <a href="#" onclick="showSection('support')" id="nav-support" class="nav-link text-gray-400 hover:text-white transition-colors">
+              <i class="fas fa-life-ring mr-2"></i>Support
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <button onclick="showNotifications()" class="relative p-2 hover:bg-slate-800 rounded-lg transition-all">
+            <i class="fas fa-bell text-xl"></i>
+            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+          <div class="hidden sm:flex items-center gap-3 glass px-4 py-2 rounded-lg">
+            <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center font-black" id="userAvatar">U</div>
+            <div>
+              <div class="text-sm font-semibold" id="userName">User</div>
+              <div class="text-xs text-gray-400">Member</div>
+            </div>
+          </div>
+          <button onclick="handleLogout()" class="bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-400 px-4 py-2 rounded-lg transition-all font-semibold">
+            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard -->
+  <div id="dashboardContent" class="pt-24 pb-12 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Welcome Section -->
+      <div class="mb-8 fade-in">
+        <h1 class="text-4xl font-black mb-2">
+          Welcome back, <span class="gradient-text" id="welcomeName">User</span>! 👋
+        </h1>
+        <p class="text-gray-400">Here's what's happening with your mining projects today</p>
+        <p class="text-sm text-gray-500 mt-2">
+          <i class="fas fa-clock mr-2"></i>
+          <span id="currentTime"></span>
+        </p>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="card-hover glass rounded-2xl p-6 fade-in">
+          <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-folder text-purple-400 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-black mb-1" id="statProjects">0</div>
+          <div class="text-gray-400 text-sm">Active Projects</div>
+        </div>
+
+        <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
+          <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-calculator text-green-400 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-black mb-1" id="statCalculations">0</div>
+          <div class="text-gray-400 text-sm">Calculations</div>
+        </div>
+
+        <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.2s">
+          <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-download text-blue-400 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-black mb-1" id="statReports">0</div>
+          <div class="text-gray-400 text-sm">Reports Generated</div>
+        </div>
+
+        <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.3s">
+          <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-clock text-amber-400 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-black mb-1" id="statHours">0</div>
+          <div class="text-gray-400 text-sm">Hours Saved</div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="glass rounded-2xl p-6 mb-8 fade-in">
+        <h2 class="text-2xl font-black mb-6">
+          <i class="fas fa-bolt text-amber-500 mr-2"></i>Quick Actions
+        </h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <button onclick="window.location.href='../products/cost-calculator.html'" class="tool-card rounded-xl p-6 text-left hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i class="fas fa-calculator text-amber-400 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Cost Calculator</h3>
+            <p class="text-sm text-gray-400">Calculate mining project costs</p>
+          </button>
+
+          <button onclick="createNewProject()" class="tool-card rounded-xl p-6 text-left hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i class="fas fa-plus text-purple-400 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">New Project</h3>
+            <p class="text-sm text-gray-400">Start a new mining project</p>
+          </button>
+
+          <button onclick="window.location.href='../resources/index.html'" class="tool-card rounded-xl p-6 text-left hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i class="fas fa-book text-blue-400 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Resources</h3>
+            <p class="text-sm text-gray-400">Access guides and tutorials</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Projects & Activity -->
+      <div class="grid lg:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-6 fade-in">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">
+              <i class="fas fa-folder text-purple-400 mr-2"></i>Recent Projects
+            </h3>
+            <button onclick="showSection('projects')" class="text-amber-400 hover:text-amber-300 text-sm">
+              View All <i class="fas fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+          <div class="space-y-3" id="recentProjects"></div>
+        </div>
+
+        <div class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">
+              <i class="fas fa-chart-line text-green-400 mr-2"></i>Recent Activity
+            </h3>
+            <button onclick="loadActivity()" class="text-amber-400 hover:text-amber-300 text-sm">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+          </div>
+          <div class="space-y-3" id="activityList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tools Section -->
+  <div id="toolsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-black mb-8">Available <span class="gradient-text">Tools</span></h1>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="w-16 h-16 bg-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-calculator text-amber-400 text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Cost Calculator</h3>
+          <p class="text-gray-400 mb-4">Advanced mining cost estimation tool with AI-powered analysis</p>
+          <ul class="text-sm text-gray-400 mb-6 space-y-2">
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Equipment cost estimation</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Labor cost calculation</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Material cost analysis</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>PDF report generation</li>
+          </ul>
+          <button onclick="window.location.href='../products/cost-calculator.html'" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-3 rounded-xl transition-all">
+            <i class="fas fa-rocket mr-2"></i>Launch Tool
+          </button>
+        </div>
+
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-bar text-purple-400 text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Project Analytics</h3>
+          <p class="text-gray-400 mb-4">Comprehensive project performance analytics and insights</p>
+          <ul class="text-sm text-gray-400 mb-6 space-y-2">
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Real-time dashboards</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Cost tracking</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Performance metrics</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Custom reports</li>
+          </ul>
+          <button class="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-3 rounded-xl transition-all">
+            <i class="fas fa-rocket mr-2"></i>Coming Soon
+          </button>
+        </div>
+
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-file-pdf text-blue-400 text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Report Generator</h3>
+          <p class="text-gray-400 mb-4">Generate professional mining project reports instantly</p>
+          <ul class="text-sm text-gray-400 mb-6 space-y-2">
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Custom templates</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>PDF/Excel export</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Branding options</li>
+            <li><i class="fas fa-check text-green-400 mr-2"></i>Auto-scheduling</li>
+          </ul>
+          <button class="w-full bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold py-3 rounded-xl transition-all">
+            <i class="fas fa-rocket mr-2"></i>Coming Soon
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div id="projectsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <h1 class="text-4xl font-black">My <span class="gradient-text">Projects</span></h1>
+        <button onclick="createNewProject()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+          <i class="fas fa-plus mr-2"></i>New Project
+        </button>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid"></div>
+    </div>
+  </div>
+
+  <!-- Resources Section -->
+  <div id="resourcesContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-black mb-8">Learning <span class="gradient-text">Resources</span></h1>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-6 card-hover">
+          <i class="fas fa-book text-4xl text-amber-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Documentation</h3>
+          <p class="text-gray-400 mb-4">Complete guides and documentation for all tools</p>
+          <button onclick="window.location.href='../resources/index.html'" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 px-6 py-2 rounded-lg font-semibold transition-all">
+            <i class="fas fa-arrow-right mr-2"></i>Browse Docs
+          </button>
+        </div>
+
+        <div class="glass rounded-2xl p-6 card-hover">
+          <i class="fas fa-video text-4xl text-purple-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Video Tutorials</h3>
+          <p class="text-gray-400 mb-4">Step-by-step video guides for beginners</p>
+          <button class="bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 px-6 py-2 rounded-lg font-semibold transition-all">
+            <i class="fas fa-arrow-right mr-2"></i>Watch Videos
+          </button>
+        </div>
+
+        <div class="glass rounded-2xl p-6 card-hover">
+          <i class="fas fa-newspaper text-4xl text-blue-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Industry News</h3>
+          <p class="text-gray-400 mb-4">Latest news and trends in mining industry</p>
+          <button onclick="window.location.href='../news.html'" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 px-6 py-2 rounded-lg font-semibold transition-all">
+            <i class="fas fa-arrow-right mr-2"></i>Read News
+          </button>
+        </div>
+
+        <div class="glass rounded-2xl p-6 card-hover">
+          <i class="fas fa-users text-4xl text-green-500 mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Community Forum</h3>
+          <p class="text-gray-400 mb-4">Connect with other mining professionals</p>
+          <button class="bg-green-500/20 hover:bg-green-500/30 text-green-400 px-6 py-2 rounded-lg font-semibold transition-all">
+            <i class="fas fa-arrow-right mr-2"></i>Join Forum
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Support Section -->
+  <div id="supportContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-black mb-8">Help & <span class="gradient-text">Support</span></h1>
+      
+      <div class="glass rounded-2xl p-8 mb-6">
+        <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <details class="bg-slate-800/30 rounded-xl p-4">
+            <summary class="font-semibold cursor-pointer">How do I create a new project?</summary>
+            <p class="text-gray-400 mt-3">Click on the "New Project" button in the dashboard or projects section, fill in the required details, and save.</p>
+          </details>
+          <details class="bg-slate-800/30 rounded-xl p-4">
+            <summary class="font-semibold cursor-pointer">How do I use the cost calculator?</summary>
+            <p class="text-gray-400 mt-3">Navigate to Tools section, select Cost Calculator, and follow the step-by-step wizard to input your project parameters.</p>
+          </details>
+          <details class="bg-slate-800/30 rounded-xl p-4">
+            <summary class="font-semibold cursor-pointer">Can I export my reports?</summary>
+            <p class="text-gray-400 mt-3">Yes! All reports can be exported as PDF or Excel files from the report generation tool.</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl p-8">
+        <h2 class="text-2xl font-bold mb-6">Contact Support</h2>
+        <form class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold mb-2">Subject</label>
+            <input type="text" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="How can we help?">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-2">Message</label>
+            <textarea rows="5" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="Describe your issue..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold py-3 rounded-xl transition-all">
+            <i class="fas fa-paper-plane mr-2"></i>Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check if user is logged in
+    function checkAuth() {
+      const session = localStorage.getItem('userSession');
+      if (!session) {
+        window.location.href = '../auth/login.html';
+        return false;
+      }
+      
+      const userData = JSON.parse(session);
+      if (Date.now() - userData.timestamp > 24 * 60 * 60 * 1000) {
+        localStorage.removeItem('userSession');
+        window.location.href = '../auth/login.html';
+        return false;
+      }
+      
+      return userData;
+    }
+
+    // Initialize
+    const userData = checkAuth();
+    if (userData) {
+      document.getElementById('userName').textContent = userData.name;
+      document.getElementById('welcomeName').textContent = userData.name;
+      document.getElementById('userAvatar').textContent = userData.name.charAt(0).toUpperCase();
+      
+      loadUserData();
+      updateTime();
+      setInterval(updateTime, 1000);
+    }
+
+    // Update Time
+    function updateTime() {
+      const now = new Date();
+      const timeEl = document.getElementById('currentTime');
+      if (timeEl) {
+        timeEl.textContent = now.toLocaleString('en-US', { 
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        });
+      }
+    }
+
+    // Load User Data
+    function loadUserData() {
+      // Load from localStorage
+      const projects = JSON.parse(localStorage.getItem('user_projects_' + userData.email) || '[]');
+      const calculations = JSON.parse(localStorage.getItem('user_calculations_' + userData.email) || '[]');
+      
+      document.getElementById('statProjects').textContent = projects.length;
+      document.getElementById('statCalculations').textContent = calculations.length;
+      document.getElementById('statReports').textContent = calculations.filter(c => c.reportGenerated).length;
+      document.getElementById('statHours').textContent = Math.floor(calculations.length * 2.5);
+      
+      loadRecentProjects(projects);
+      loadActivity();
+      loadProjectsGrid(projects);
+    }
+
+    // Load Recent Projects
+    function loadRecentProjects(projects) {
+      const container = document.getElementById('recentProjects');
+      if (projects.length === 0) {
+        container.innerHTML = '<div class="text-center text-gray-400 py-8">No projects yet. Create your first project!</div>';
+        return;
+      }
+
+      container.innerHTML = projects.slice(0, 3).map(project => `
+        <div class="bg-slate-800/30 rounded-xl p-4 hover:bg-slate-800/50 transition-all cursor-pointer">
+          <div class="flex items-start justify-between mb-2">
+            <h4 class="font-bold">${project.name}</h4>
+            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs">${project.status || 'Active'}</span>
+          </div>
+          <p class="text-sm text-gray-400 mb-2">${project.description || 'No description'}</p>
+          <div class="text-xs text-gray-500">
+            <i class="fas fa-clock mr-1"></i>Updated ${getTimeAgo(project.updated || project.created)}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Load Activity
+    function loadActivity() {
+      const activities = [
+        { icon: 'calculator', color: 'amber', text: 'Completed cost calculation', time: new Date(Date.now() - 2 * 60 * 60 * 1000) },
+        { icon: 'file-pdf', color: 'blue', text: 'Generated project report', time: new Date(Date.now() - 5 * 60 * 60 * 1000) },
+        { icon: 'folder', color: 'purple', text: 'Created new project', time: new Date(Date.now() - 24 * 60 * 60 * 1000) }
+      ];
+
+      const container = document.getElementById('activityList');
+      container.innerHTML = activities.map(activity => `
+        <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
+          <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-${activity.icon} text-${activity.color}-400"></i>
+          </div>
+          <div class="flex-1">
+            <div class="text-sm">${activity.text}</div>
+            <div class="text-xs text-gray-500 mt-1">${getTimeAgo(activity.time)}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Load Projects Grid
+    function loadProjectsGrid(projects) {
+      const grid = document.getElementById('projectsGrid');
+      if (!grid) return;
+
+      if (projects.length === 0) {
+        grid.innerHTML = '<div class="glass rounded-2xl p-12 text-center col-span-3"><i class="fas fa-folder-open text-6xl text-gray-600 mb-4"></i><p class="text-gray-400">No projects yet. Create your first project!</p></div>';
+        return;
+      }
+
+      grid.innerHTML = projects.map(project => `
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+              <i class="fas fa-folder text-purple-400 text-xl"></i>
+            </div>
+            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">${project.status || 'Active'}</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">${project.name}</h3>
+          <p class="text-gray-400 text-sm mb-4">${project.description || 'No description'}</p>
+          <div class="text-xs text-gray-500 mb-4">
+            <i class="fas fa-clock mr-2"></i>Created ${getTimeAgo(project.created)}
+          </div>
+          <button class="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 py-2 rounded-lg font-semibold transition-all">
+            <i class="fas fa-folder-open mr-2"></i>Open Project
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Create New Project
+    function createNewProject() {
+      const projectName = prompt('Enter project name:');
+      if (projectName) {
+        const projects = JSON.parse(localStorage.getItem('user_projects_' + userData.email) || '[]');
+        projects.push({
+          id: Date.now(),
+          name: projectName,
+          description: '',
+          status: 'Active',
+          created: new Date().toISOString(),
+          updated: new Date().toISOString()
+        });
+        localStorage.setItem('user_projects_' + userData.email, JSON.stringify(projects));
+        loadUserData();
+        showNotification('Project created successfully!');
+      }
+    }
+
+    // Show Notifications
+    function showNotifications() {
+      showNotification('You have 3 new notifications', 'info');
+    }
+
+    // Show Section
+    function showSection(section) {
+      ['dashboardContent', 'toolsContent', 'projectsContent', 'resourcesContent', 'supportContent'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+      
+      const sectionEl = document.getElementById(section + 'Content');
+      if (sectionEl) sectionEl.classList.remove('hidden');
+      
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('text-amber-400', 'font-semibold');
+        link.classList.add('text-gray-400');
+      });
+      
+      const activeLink = document.getElementById('nav-' + section);
+      if (activeLink) {
+        activeLink.classList.add('text-amber-400', 'font-semibold');
+        activeLink.classList.remove('text-gray-400');
+      }
+    }
+
+    // Logout
+    function handleLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('userSession');
+        window.location.href = '../auth/login.html';
+      }
+    }
+
+    // Show Notification
+    function showNotification(message, type = 'success') {
+      const notification = document.createElement('div');
+      notification.className = `notification glass ${type === 'success' ? 'border-green-500' : type === 'info' ? 'border-blue-500' : 'border-red-500'} border-2`;
+      notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'exclamation-circle'} mr-2"></i>
+        ${message}
+      `;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 4000);
+    }
+
+    // Get Time Ago
+    function getTimeAgo(date) {
+      const dateObj = typeof date === 'string' ? new Date(date) : date;
+      const seconds = Math.floor((new Date() - dateObj) / 1000);
+      if (seconds < 60) return 'Just now';
+      if (seconds < 3600) return Math.floor(seconds / 60) + ' min ago';
+      if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
+      return Math.floor(seconds / 86400) + ' days ago';
+    }
+  </script>
+</body>
+</html>
