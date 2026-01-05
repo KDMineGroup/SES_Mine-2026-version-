@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     * { 
       font-family: 'Inter', sans-serif;
@@ -55,11 +57,12 @@
     .modal.active {
       display: flex;
     }
-    .tab-button {
-      transition: all 0.3s ease;
+    .badge-new {
+      animation: pulse 2s infinite;
     }
-    .tab-button.active {
-      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
   </style>
 </head>
@@ -145,14 +148,20 @@
               <a href="#" onclick="showSection('dashboard')" id="nav-dashboard" class="nav-link text-cyan-400 font-semibold">
                 <i class="fas fa-chart-line mr-2"></i>Dashboard
               </a>
+              <a href="#" onclick="showSection('registrations')" id="nav-registrations" class="nav-link text-gray-400 hover:text-white transition-colors relative">
+                <i class="fas fa-user-plus mr-2"></i>Registrations
+                <span id="regBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new">0</span>
+              </a>
+              <a href="#" onclick="showSection('contacts')" id="nav-contacts" class="nav-link text-gray-400 hover:text-white transition-colors relative">
+                <i class="fas fa-envelope mr-2"></i>Contacts
+                <span id="contactBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new">0</span>
+              </a>
+              <a href="#" onclick="showSection('newsletter')" id="nav-newsletter" class="nav-link text-gray-400 hover:text-white transition-colors relative">
+                <i class="fas fa-newspaper mr-2"></i>Newsletter
+                <span id="newsBadge" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center badge-new">0</span>
+              </a>
               <a href="#" onclick="showSection('users')" id="nav-users" class="nav-link text-gray-400 hover:text-white transition-colors">
                 <i class="fas fa-users mr-2"></i>Users
-              </a>
-              <a href="#" onclick="showSection('content')" id="nav-content" class="nav-link text-gray-400 hover:text-white transition-colors">
-                <i class="fas fa-edit mr-2"></i>Content
-              </a>
-              <a href="#" onclick="showSection('settings')" id="nav-settings" class="nav-link text-gray-400 hover:text-white transition-colors">
-                <i class="fas fa-cog mr-2"></i>Settings
               </a>
             </div>
           </div>
@@ -191,45 +200,45 @@
           <div class="card-hover glass rounded-2xl p-6 fade-in">
             <div class="flex items-center justify-between mb-4">
               <div class="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-users text-cyan-400 text-2xl"></i>
+                <i class="fas fa-user-plus text-cyan-400 text-2xl"></i>
               </div>
-              <span class="text-green-400 text-sm font-semibold">+12.5%</span>
+              <span class="text-green-400 text-sm font-semibold">New</span>
             </div>
-            <div class="text-3xl font-black mb-1">1,247</div>
-            <div class="text-gray-400 text-sm">Total Users</div>
+            <div class="text-3xl font-black mb-1" id="statRegistrations">0</div>
+            <div class="text-gray-400 text-sm">Registration Requests</div>
           </div>
 
           <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
             <div class="flex items-center justify-between mb-4">
               <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-project-diagram text-purple-400 text-2xl"></i>
+                <i class="fas fa-envelope text-purple-400 text-2xl"></i>
               </div>
-              <span class="text-green-400 text-sm font-semibold">+8.2%</span>
+              <span class="text-green-400 text-sm font-semibold">New</span>
             </div>
-            <div class="text-3xl font-black mb-1">543</div>
-            <div class="text-gray-400 text-sm">Active Projects</div>
+            <div class="text-3xl font-black mb-1" id="statContacts">0</div>
+            <div class="text-gray-400 text-sm">Contact Messages</div>
           </div>
 
           <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.2s">
             <div class="flex items-center justify-between mb-4">
               <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-dollar-sign text-green-400 text-2xl"></i>
+                <i class="fas fa-newspaper text-green-400 text-2xl"></i>
               </div>
-              <span class="text-green-400 text-sm font-semibold">+23.1%</span>
+              <span class="text-green-400 text-sm font-semibold">New</span>
             </div>
-            <div class="text-3xl font-black mb-1">$87.4K</div>
-            <div class="text-gray-400 text-sm">Monthly Revenue</div>
+            <div class="text-3xl font-black mb-1" id="statNewsletter">0</div>
+            <div class="text-gray-400 text-sm">Newsletter Subscribers</div>
           </div>
 
           <div class="card-hover glass rounded-2xl p-6 fade-in" style="animation-delay: 0.3s">
             <div class="flex items-center justify-between mb-4">
               <div class="w-14 h-14 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-file-alt text-amber-400 text-2xl"></i>
+                <i class="fas fa-users text-amber-400 text-2xl"></i>
               </div>
-              <span class="text-green-400 text-sm font-semibold">+15</span>
+              <span class="text-blue-400 text-sm font-semibold">Active</span>
             </div>
-            <div class="text-3xl font-black mb-1">89</div>
-            <div class="text-gray-400 text-sm">Total Content</div>
+            <div class="text-3xl font-black mb-1" id="statUsers">0</div>
+            <div class="text-gray-400 text-sm">Total Users</div>
           </div>
         </div>
 
@@ -237,19 +246,19 @@
         <div class="grid lg:grid-cols-2 gap-6 mb-8">
           <div class="glass rounded-2xl p-6 fade-in">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>User Growth (Last 7 Days)
+              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>Registration Trends
             </h3>
             <div style="position: relative; height: 300px;">
-              <canvas id="userChart"></canvas>
+              <canvas id="regChart"></canvas>
             </div>
           </div>
 
           <div class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.1s">
             <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-dollar-sign text-green-400 mr-2"></i>Revenue (Last 4 Weeks)
+              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Request Distribution
             </h3>
             <div style="position: relative; height: 300px;">
-              <canvas id="revenueChart"></canvas>
+              <canvas id="distChart"></canvas>
             </div>
           </div>
         </div>
@@ -264,7 +273,141 @@
       </div>
     </div>
 
-    <!-- Users Section with Dashboard -->
+    <!-- Registrations Section -->
+    <div id="registrationsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <h1 class="text-4xl font-black">Registration <span class="gradient-text">Requests</span></h1>
+          <button onclick="refreshRegistrations()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-sync-alt mr-2"></i>Refresh
+          </button>
+        </div>
+
+        <!-- Registration Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-clock text-cyan-400 text-xl"></i>
+              </div>
+            </div>
+            <div class="text-2xl font-black mb-1" id="pendingRegs">0</div>
+            <div class="text-gray-400 text-sm">Pending Approval</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-check-circle text-green-400 text-xl"></i>
+              </div>
+            </div>
+            <div class="text-2xl font-black mb-1" id="approvedRegs">0</div>
+            <div class="text-gray-400 text-sm">Approved</div>
+          </div>
+
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-times-circle text-red-400 text-xl"></i>
+              </div>
+            </div>
+            <div class="text-2xl font-black mb-1" id="rejectedRegs">0</div>
+            <div class="text-gray-400 text-sm">Rejected</div>
+          </div>
+        </div>
+
+        <!-- Registrations Table -->
+        <div class="glass rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-slate-800/50">
+                <tr>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Name</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Email</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Company</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Plan</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Date</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="registrationsTableBody" class="divide-y divide-slate-800">
+                <tr>
+                  <td colspan="7" class="px-6 py-12 text-center text-gray-400">
+                    <i class="fas fa-inbox text-4xl mb-3"></i>
+                    <p>No registration requests yet</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacts Section -->
+    <div id="contactsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <h1 class="text-4xl font-black">Contact <span class="gradient-text">Messages</span></h1>
+          <button onclick="refreshContacts()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+            <i class="fas fa-sync-alt mr-2"></i>Refresh
+          </button>
+        </div>
+
+        <!-- Contacts Grid -->
+        <div class="grid md:grid-cols-2 gap-6" id="contactsGrid">
+          <div class="glass rounded-2xl p-12 text-center">
+            <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400">No contact messages yet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div id="newsletterContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <h1 class="text-4xl font-black">Newsletter <span class="gradient-text">Subscribers</span></h1>
+          <div class="flex gap-3">
+            <button onclick="exportSubscribers()" class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+              <i class="fas fa-download mr-2"></i>Export
+            </button>
+            <button onclick="refreshNewsletter()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
+              <i class="fas fa-sync-alt mr-2"></i>Refresh
+            </button>
+          </div>
+        </div>
+
+        <!-- Newsletter Table -->
+        <div class="glass rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-slate-800/50">
+                <tr>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">#</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Email</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Subscribed Date</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="newsletterTableBody" class="divide-y divide-slate-800">
+                <tr>
+                  <td colspan="5" class="px-6 py-12 text-center text-gray-400">
+                    <i class="fas fa-inbox text-4xl mb-3"></i>
+                    <p>No newsletter subscribers yet</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Users Section -->
     <div id="usersContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-8">
@@ -272,96 +415,6 @@
           <button onclick="openAddUserModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
             <i class="fas fa-user-plus mr-2"></i>Add User
           </button>
-        </div>
-
-        <!-- User Dashboard Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-users text-cyan-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="totalUsersCount">1,247</div>
-            <div class="text-gray-400 text-sm">Total Users</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-user-check text-green-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="activeUsersCount">1,189</div>
-            <div class="text-gray-400 text-sm">Active Users</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-crown text-purple-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="proUsersCount">342</div>
-            <div class="text-gray-400 text-sm">Pro Users</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-user-plus text-amber-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="newUsersCount">156</div>
-            <div class="text-gray-400 text-sm">New This Month</div>
-          </div>
-        </div>
-
-        <!-- User Analytics Charts -->
-        <div class="grid lg:grid-cols-2 gap-6 mb-8">
-          <div class="glass rounded-2xl p-6">
-            <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-pie text-cyan-400 mr-2"></i>Users by Plan
-            </h3>
-            <div style="position: relative; height: 300px;">
-              <canvas id="userPlanChart"></canvas>
-            </div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-bar text-purple-400 mr-2"></i>User Registrations
-            </h3>
-            <div style="position: relative; height: 300px;">
-              <canvas id="userRegChart"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <!-- Search and Filter -->
-        <div class="glass rounded-2xl p-6 mb-6">
-          <div class="flex flex-wrap gap-4">
-            <div class="flex-1 min-w-64">
-              <input 
-                type="text" 
-                id="userSearch"
-                placeholder="Search users by name or email..."
-                onkeyup="filterUsers()"
-                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500"
-              >
-            </div>
-            <select onchange="filterUsers()" id="userPlanFilter" class="bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500">
-              <option value="">All Plans</option>
-              <option value="Free">Free</option>
-              <option value="Starter">Starter</option>
-              <option value="Professional">Professional</option>
-            </select>
-            <select onchange="filterUsers()" id="userStatusFilter" class="bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500">
-              <option value="">All Status</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-          </div>
         </div>
 
         <!-- Users Table -->
@@ -375,162 +428,28 @@
                   <th class="px-6 py-4 text-left text-sm font-semibold">Company</th>
                   <th class="px-6 py-4 text-left text-sm font-semibold">Plan</th>
                   <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
-                  <th class="px-6 py-4 text-left text-sm font-semibold">Joined</th>
                   <th class="px-6 py-4 text-left text-sm font-semibold">Actions</th>
                 </tr>
               </thead>
               <tbody id="usersTableBody" class="divide-y divide-slate-800">
-                <!-- Users will be loaded here -->
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Content Section with Dashboard -->
-    <div id="contentContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-8">
-          <h1 class="text-4xl font-black">Content <span class="gradient-text">Management</span></h1>
-          <button onclick="openAddContentModal()" class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold hover:shadow-xl transition-all">
-            <i class="fas fa-plus mr-2"></i>Add Content
-          </button>
-        </div>
-
-        <!-- Content Dashboard Stats -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-file-alt text-purple-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="totalContentCount">89</div>
-            <div class="text-gray-400 text-sm">Total Content</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-check-circle text-green-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="publishedCount">67</div>
-            <div class="text-gray-400 text-sm">Published</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-edit text-amber-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="draftCount">22</div>
-            <div class="text-gray-400 text-sm">Drafts</div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-eye text-cyan-400 text-xl"></i>
-              </div>
-            </div>
-            <div class="text-2xl font-black mb-1" id="viewsCount">45.2K</div>
-            <div class="text-gray-400 text-sm">Total Views</div>
-          </div>
-        </div>
-
-        <!-- Content Analytics Charts -->
-        <div class="grid lg:grid-cols-2 gap-6 mb-8">
-          <div class="glass rounded-2xl p-6">
-            <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-pie text-purple-400 mr-2"></i>Content by Category
-            </h3>
-            <div style="position: relative; height: 300px;">
-              <canvas id="contentCategoryChart"></canvas>
-            </div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <h3 class="text-xl font-bold mb-6">
-              <i class="fas fa-chart-line text-cyan-400 mr-2"></i>Content Performance
-            </h3>
-            <div style="position: relative; height: 300px;">
-              <canvas id="contentPerformanceChart"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <!-- Content Tabs -->
-        <div class="flex gap-4 mb-6 overflow-x-auto">
-          <button onclick="showContentTab('all')" id="tab-all" class="tab-button active px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            All Content
-          </button>
-          <button onclick="showContentTab('articles')" id="tab-articles" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            Articles
-          </button>
-          <button onclick="showContentTab('news')" id="tab-news" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            News
-          </button>
-          <button onclick="showContentTab('tutorials')" id="tab-tutorials" class="tab-button bg-slate-800/50 hover:bg-slate-700/50 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
-            Tutorials
-          </button>
-        </div>
-
-        <!-- Content Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="contentGrid">
-          <!-- Content will be loaded here -->
-        </div>
+  <!-- View Details Modal -->
+  <div id="detailsModal" class="modal">
+    <div class="glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-black">Request Details</h2>
+        <button onclick="closeDetailsModal()" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
       </div>
-    </div>
-
-    <!-- Settings Section -->
-    <div id="settingsContent" class="hidden pt-24 pb-12 px-4 sm:px-6">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl font-black mb-8">System <span class="gradient-text">Settings</span></h1>
-        
-        <div class="space-y-6">
-          <div class="glass rounded-2xl p-6">
-            <h3 class="text-xl font-bold mb-4">
-              <i class="fas fa-user-circle text-cyan-400 mr-2"></i>Profile Settings
-            </h3>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-semibold mb-2">Full Name</label>
-                <input type="text" value="Admin User" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-              </div>
-              <div>
-                <label class="block text-sm font-semibold mb-2">Email</label>
-                <input type="email" value="admin@sesmine.com" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-              </div>
-              <button class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-xl font-bold">
-                Save Changes
-              </button>
-            </div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <h3 class="text-xl font-bold mb-4">
-              <i class="fas fa-bell text-purple-400 mr-2"></i>Notification Settings
-            </h3>
-            <div class="space-y-3">
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" checked class="w-5 h-5 rounded">
-                <span>Email notifications</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" checked class="w-5 h-5 rounded">
-                <span>New user registrations</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" class="w-5 h-5 rounded">
-                <span>Weekly reports</span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="detailsContent"></div>
     </div>
   </div>
 
@@ -577,83 +496,81 @@
     </div>
   </div>
 
-  <!-- Add Content Modal -->
-  <div id="addContentModal" class="modal">
-    <div class="glass rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-black">Add New Content</h2>
-        <button onclick="closeAddContentModal()" class="text-gray-400 hover:text-white">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-      </div>
-      <form id="addContentForm" class="space-y-4">
-        <div>
-          <label class="block text-sm font-semibold mb-2">Title</label>
-          <input type="text" id="newContentTitle" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-        </div>
-        <div>
-          <label class="block text-sm font-semibold mb-2">Category</label>
-          <select id="newContentCategory" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-            <option value="Article">Article</option>
-            <option value="News">News</option>
-            <option value="Tutorial">Tutorial</option>
-            <option value="Guide">Guide</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm font-semibold mb-2">Description</label>
-          <textarea id="newContentDesc" rows="4" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white"></textarea>
-        </div>
-        <div>
-          <label class="block text-sm font-semibold mb-2">Status</label>
-          <select id="newContentStatus" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white">
-            <option value="Draft">Draft</option>
-            <option value="Published">Published</option>
-          </select>
-        </div>
-        <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-xl font-bold">
-          <i class="fas fa-plus mr-2"></i>Add Content
-        </button>
-      </form>
-    </div>
-  </div>
-
   <script>
+    // EmailJS Configuration
+    const EMAILJS_CONFIG = {
+      serviceId: 'service_v1tzk6t',
+      templateId: 'template_5rwnvg8',
+      publicKey: 'vIsuy4VXOAFCLwx2c'
+    };
+
+    // Initialize EmailJS
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+
     // Data Storage
-    let users = [
-      { id: 1, firstName: 'John', lastName: 'Smith', email: 'john@globalmine.com', company: 'GlobalMine Corp', plan: 'Professional', status: 'Active', joined: '2025-12-15', avatar: 12 },
-      { id: 2, firstName: 'Sarah', lastName: 'Johnson', email: 'sarah@minemax.com', company: 'MineMax Ltd', plan: 'Starter', status: 'Active', joined: '2025-12-20', avatar: 47 },
-      { id: 3, firstName: 'Michael', lastName: 'Chen', email: 'michael@ecomine.com', company: 'EcoMine Inc', plan: 'Professional', status: 'Active', joined: '2026-01-01', avatar: 33 },
-      { id: 4, firstName: 'Emily', lastName: 'Rodriguez', email: 'emily@pacific.com', company: 'Pacific Mining', plan: 'Free', status: 'Active', joined: '2026-01-02', avatar: 68 },
-      { id: 5, firstName: 'David', lastName: 'Thompson', email: 'david@northern.com', company: 'Northern Resources', plan: 'Starter', status: 'Inactive', joined: '2025-11-10', avatar: 15 },
-      { id: 6, firstName: 'Lisa', lastName: 'Wang', email: 'lisa@asiamine.com', company: 'Asia Mining Co', plan: 'Professional', status: 'Active', joined: '2026-01-03', avatar: 25 },
-      { id: 7, firstName: 'Robert', lastName: 'Brown', email: 'robert@euromines.com', company: 'Euro Mines', plan: 'Free', status: 'Active', joined: '2025-12-28', avatar: 42 },
-      { id: 8, firstName: 'Maria', lastName: 'Garcia', email: 'maria@latinmine.com', company: 'Latin Mining', plan: 'Starter', status: 'Active', joined: '2026-01-04', avatar: 56 }
-    ];
-
-    let content = [
-      { id: 1, title: 'Mining Industry Trends 2026', category: 'Article', desc: 'Latest trends in mining technology and sustainability', date: '2026-01-03', status: 'Published', views: 1250 },
-      { id: 2, title: 'AI in Cost Estimation', category: 'Tutorial', desc: 'How to use AI for accurate cost predictions in mining projects', date: '2026-01-02', status: 'Published', views: 890 },
-      { id: 3, title: 'New Feature Release', category: 'News', desc: 'Announcing new dashboard features and improvements', date: '2026-01-01', status: 'Published', views: 2100 },
-      { id: 4, title: 'ESG Compliance Guide', category: 'Guide', desc: 'Complete guide to ESG compliance in mining', date: '2025-12-30', status: 'Draft', views: 0 },
-      { id: 5, title: 'Equipment Database Update', category: 'News', desc: 'New equipment added to our comprehensive database', date: '2025-12-28', status: 'Published', views: 1450 },
-      { id: 6, title: 'Cost Calculator Tutorial', category: 'Tutorial', desc: 'Step-by-step guide to using the cost calculator', date: '2025-12-25', status: 'Published', views: 3200 }
-    ];
-
-    const activities = [
-      { icon: 'user-plus', color: 'green', text: 'New user registered: John Smith', time: '5 min ago' },
-      { icon: 'project-diagram', color: 'cyan', text: 'Project created: Copper Mine Expansion', time: '15 min ago' },
-      { icon: 'dollar-sign', color: 'green', text: 'Payment received: $149.00', time: '1 hour ago' },
-      { icon: 'ticket-alt', color: 'amber', text: 'Support ticket opened', time: '2 hours ago' },
-      { icon: 'edit', color: 'purple', text: 'Article published: Mining Trends 2026', time: '3 hours ago' }
-    ];
+    let registrations = [];
+    let contacts = [];
+    let newsletter = [];
+    let users = [];
+    let charts = {};
 
     const ADMIN_USERS = {
       'admin@sesmine.com': { password: 'admin123', name: 'Admin User', role: 'Super Admin' }
     };
 
-    let charts = {};
-    let currentContentTab = 'all';
+    // Load data from localStorage
+    function loadStoredData() {
+      registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
+      contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+      newsletter = JSON.parse(localStorage.getItem('newsletter') || '[]');
+      users = JSON.parse(localStorage.getItem('users') || '[]');
+      
+      updateAllStats();
+      updateBadges();
+    }
+
+    // Save data to localStorage
+    function saveData() {
+      localStorage.setItem('registrations', JSON.stringify(registrations));
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+      localStorage.setItem('newsletter', JSON.stringify(newsletter));
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    // Update badges
+    function updateBadges() {
+      const pendingRegs = registrations.filter(r => r.status === 'pending').length;
+      const unreadContacts = contacts.filter(c => !c.read).length;
+      const activeNews = newsletter.filter(n => n.active).length;
+      
+      document.getElementById('regBadge').textContent = pendingRegs;
+      document.getElementById('contactBadge').textContent = unreadContacts;
+      document.getElementById('newsBadge').textContent = activeNews;
+      
+      document.getElementById('regBadge').style.display = pendingRegs > 0 ? 'flex' : 'none';
+      document.getElementById('contactBadge').style.display = unreadContacts > 0 ? 'flex' : 'none';
+      document.getElementById('newsBadge').style.display = activeNews > 0 ? 'flex' : 'none';
+    }
+
+    // Update all stats
+    function updateAllStats() {
+      document.getElementById('statRegistrations').textContent = registrations.length;
+      document.getElementById('statContacts').textContent = contacts.length;
+      document.getElementById('statNewsletter').textContent = newsletter.length;
+      document.getElementById('statUsers').textContent = users.length;
+      
+      const pending = registrations.filter(r => r.status === 'pending').length;
+      const approved = registrations.filter(r => r.status === 'approved').length;
+      const rejected = registrations.filter(r => r.status === 'rejected').length;
+      
+      const pendingEl = document.getElementById('pendingRegs');
+      const approvedEl = document.getElementById('approvedRegs');
+      const rejectedEl = document.getElementById('rejectedRegs');
+      
+      if (pendingEl) pendingEl.textContent = pending;
+      if (approvedEl) approvedEl.textContent = approved;
+      if (rejectedEl) rejectedEl.textContent = rejected;
+    }
 
     // Check session
     function checkSession() {
@@ -727,17 +644,18 @@
       document.getElementById('welcomeName').textContent = userData.name.split(' ')[0];
       document.getElementById('navAdminName').textContent = userData.name;
       
+      loadStoredData();
       updateTime();
       setInterval(updateTime, 1000);
       
       loadActivities();
-      updateUserStats();
-      updateContentStats();
+      loadRegistrations();
+      loadContacts();
+      loadNewsletter();
+      loadUsers();
       
       setTimeout(() => {
-        createMainCharts();
-        createUserCharts();
-        createContentCharts();
+        createCharts();
       }, 100);
     }
 
@@ -761,8 +679,34 @@
 
     // Load activities
     function loadActivities() {
+      const activities = [];
+      
+      registrations.slice(0, 3).forEach(r => {
+        activities.push({
+          icon: 'user-plus',
+          color: 'cyan',
+          text: `New registration: ${r.firstName} ${r.lastName}`,
+          time: getTimeAgo(r.date)
+        });
+      });
+      
+      contacts.slice(0, 2).forEach(c => {
+        activities.push({
+          icon: 'envelope',
+          color: 'purple',
+          text: `New contact message from ${c.name}`,
+          time: getTimeAgo(c.date)
+        });
+      });
+      
       const container = document.getElementById('activityList');
       if (!container) return;
+      
+      if (activities.length === 0) {
+        container.innerHTML = '<div class="text-center text-gray-400 py-8">No recent activity</div>';
+        return;
+      }
+      
       container.innerHTML = activities.map(activity => `
         <div class="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl hover:bg-slate-800/50 transition-all">
           <div class="w-10 h-10 bg-${activity.color}-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -776,226 +720,29 @@
       `).join('');
     }
 
-    // Update user stats
-    function updateUserStats() {
-      const activeUsers = users.filter(u => u.status === 'Active').length;
-      const proUsers = users.filter(u => u.plan === 'Professional').length;
-      const newUsers = users.filter(u => new Date(u.joined) > new Date('2025-12-01')).length;
+    // Get time ago
+    function getTimeAgo(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const seconds = Math.floor((now - date) / 1000);
       
-      const totalEl = document.getElementById('totalUsersCount');
-      const activeEl = document.getElementById('activeUsersCount');
-      const proEl = document.getElementById('proUsersCount');
-      const newEl = document.getElementById('newUsersCount');
-      
-      if (totalEl) totalEl.textContent = users.length.toLocaleString();
-      if (activeEl) activeEl.textContent = activeUsers.toLocaleString();
-      if (proEl) proEl.textContent = proUsers.toLocaleString();
-      if (newEl) newEl.textContent = newUsers.toLocaleString();
+      if (seconds < 60) return 'Just now';
+      if (seconds < 3600) return Math.floor(seconds / 60) + ' minutes ago';
+      if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
+      return Math.floor(seconds / 86400) + ' days ago';
     }
 
-    // Update content stats
-    function updateContentStats() {
-      const published = content.filter(c => c.status === 'Published').length;
-      const drafts = content.filter(c => c.status === 'Draft').length;
-      const totalViews = content.reduce((sum, c) => sum + c.views, 0);
-      
-      const totalEl = document.getElementById('totalContentCount');
-      const pubEl = document.getElementById('publishedCount');
-      const draftEl = document.getElementById('draftCount');
-      const viewsEl = document.getElementById('viewsCount');
-      
-      if (totalEl) totalEl.textContent = content.length;
-      if (pubEl) pubEl.textContent = published;
-      if (draftEl) draftEl.textContent = drafts;
-      if (viewsEl) viewsEl.textContent = (totalViews / 1000).toFixed(1) + 'K';
-    }
-
-    // Create main charts
-    function createMainCharts() {
-      const userCtx = document.getElementById('userChart');
-      if (userCtx && !charts.userChart) {
-        charts.userChart = new Chart(userCtx, {
+    // Create charts
+    function createCharts() {
+      const regCtx = document.getElementById('regChart');
+      if (regCtx && !charts.regChart) {
+        charts.regChart = new Chart(regCtx, {
           type: 'line',
           data: {
-            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            datasets: [{
-              label: 'New Users',
-              data: [12, 19, 15, 25, 22, 30, 28],
-              borderColor: '#06b6d4',
-              backgroundColor: 'rgba(6, 182, 212, 0.1)',
-              tension: 0.4,
-              fill: true,
-              borderWidth: 3
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { 
-              legend: { labels: { color: '#fff' } }
-            },
-            scales: {
-              y: { 
-                beginAtZero: true,
-                grid: { color: 'rgba(255,255,255,0.1)' },
-                ticks: { color: '#94a3b8' }
-              },
-              x: { 
-                grid: { display: false },
-                ticks: { color: '#94a3b8' }
-              }
-            }
-          }
-        });
-      }
-
-      const revenueCtx = document.getElementById('revenueChart');
-      if (revenueCtx && !charts.revenueChart) {
-        charts.revenueChart = new Chart(revenueCtx, {
-          type: 'bar',
-          data: {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-            datasets: [{
-              label: 'Revenue ($)',
-              data: [18500, 22300, 19800, 26800],
-              backgroundColor: ['#06b6d4', '#8b5cf6', '#ec4899', '#22c55e'],
-              borderRadius: 8
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { 
-              legend: { labels: { color: '#fff' } }
-            },
-            scales: {
-              y: { 
-                beginAtZero: true,
-                grid: { color: 'rgba(255,255,255,0.1)' },
-                ticks: { 
-                  color: '#94a3b8',
-                  callback: value => '$' + (value/1000) + 'K'
-                }
-              },
-              x: { 
-                grid: { display: false },
-                ticks: { color: '#94a3b8' }
-              }
-            }
-          }
-        });
-      }
-    }
-
-    // Create user charts
-    function createUserCharts() {
-      const planCtx = document.getElementById('userPlanChart');
-      if (planCtx && !charts.userPlanChart) {
-        const planCounts = {
-          'Free': users.filter(u => u.plan === 'Free').length,
-          'Starter': users.filter(u => u.plan === 'Starter').length,
-          'Professional': users.filter(u => u.plan === 'Professional').length
-        };
-        
-        charts.userPlanChart = new Chart(planCtx, {
-          type: 'doughnut',
-          data: {
-            labels: ['Free', 'Starter', 'Professional'],
-            datasets: [{
-              data: [planCounts.Free, planCounts.Starter, planCounts.Professional],
-              backgroundColor: ['#94a3b8', '#06b6d4', '#8b5cf6'],
-              borderWidth: 0
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { 
-              legend: { 
-                position: 'bottom',
-                labels: { color: '#fff', padding: 20 }
-              }
-            }
-          }
-        });
-      }
-
-      const regCtx = document.getElementById('userRegChart');
-      if (regCtx && !charts.userRegChart) {
-        charts.userRegChart = new Chart(regCtx, {
-          type: 'bar',
-          data: {
-            labels: ['Nov', 'Dec', 'Jan'],
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
               label: 'Registrations',
-              data: [45, 67, 89],
-              backgroundColor: '#06b6d4',
-              borderRadius: 8
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { 
-              legend: { labels: { color: '#fff' } }
-            },
-            scales: {
-              y: { 
-                beginAtZero: true,
-                grid: { color: 'rgba(255,255,255,0.1)' },
-                ticks: { color: '#94a3b8' }
-              },
-              x: { 
-                grid: { display: false },
-                ticks: { color: '#94a3b8' }
-              }
-            }
-          }
-        });
-      }
-    }
-
-    // Create content charts
-    function createContentCharts() {
-      const catCtx = document.getElementById('contentCategoryChart');
-      if (catCtx && !charts.contentCategoryChart) {
-        const categoryCounts = {};
-        content.forEach(c => {
-          categoryCounts[c.category] = (categoryCounts[c.category] || 0) + 1;
-        });
-        
-        charts.contentCategoryChart = new Chart(catCtx, {
-          type: 'pie',
-          data: {
-            labels: Object.keys(categoryCounts),
-            datasets: [{
-              data: Object.values(categoryCounts),
-              backgroundColor: ['#8b5cf6', '#06b6d4', '#ec4899', '#22c55e'],
-              borderWidth: 0
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { 
-              legend: { 
-                position: 'bottom',
-                labels: { color: '#fff', padding: 20 }
-              }
-            }
-          }
-        });
-      }
-
-      const perfCtx = document.getElementById('contentPerformanceChart');
-      if (perfCtx && !charts.contentPerformanceChart) {
-        charts.contentPerformanceChart = new Chart(perfCtx, {
-          type: 'line',
-          data: {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-            datasets: [{
-              label: 'Views',
-              data: [8500, 12300, 15800, 18200],
+              data: [5, 12, 8, 15, 10, 18, 14],
               borderColor: '#06b6d4',
               backgroundColor: 'rgba(6, 182, 212, 0.1)',
               tension: 0.4,
@@ -1023,33 +770,179 @@
           }
         });
       }
+
+      const distCtx = document.getElementById('distChart');
+      if (distCtx && !charts.distChart) {
+        charts.distChart = new Chart(distCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Registrations', 'Contacts', 'Newsletter'],
+            datasets: [{
+              data: [registrations.length, contacts.length, newsletter.length],
+              backgroundColor: ['#06b6d4', '#8b5cf6', '#22c55e'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { 
+              legend: { 
+                position: 'bottom',
+                labels: { color: '#fff', padding: 20 }
+              }
+            }
+          }
+        });
+      }
     }
 
-    // Load users table
+    // Load registrations
+    function loadRegistrations() {
+      const tbody = document.getElementById('registrationsTableBody');
+      if (!tbody) return;
+      
+      if (registrations.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="px-6 py-12 text-center text-gray-400">
+              <i class="fas fa-inbox text-4xl mb-3"></i>
+              <p>No registration requests yet</p>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      tbody.innerHTML = registrations.map(reg => `
+        <tr class="hover:bg-slate-800/30 transition-colors">
+          <td class="px-6 py-4">
+            <div class="font-semibold">${reg.firstName} ${reg.lastName}</div>
+          </td>
+          <td class="px-6 py-4 text-gray-400">${reg.email}</td>
+          <td class="px-6 py-4 text-gray-400">${reg.company || 'N/A'}</td>
+          <td class="px-6 py-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${reg.plan || 'Free'}</span>
+          </td>
+          <td class="px-6 py-4 text-gray-400 text-sm">${new Date(reg.date).toLocaleDateString()}</td>
+          <td class="px-6 py-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(reg.status)}">${reg.status}</span>
+          </td>
+          <td class="px-6 py-4">
+            <button onclick="viewDetails('registration', ${reg.id})" class="text-cyan-400 hover:text-cyan-300 mr-3">
+              <i class="fas fa-eye"></i>
+            </button>
+            ${reg.status === 'pending' ? `
+              <button onclick="approveRegistration(${reg.id})" class="text-green-400 hover:text-green-300 mr-3">
+                <i class="fas fa-check"></i>
+              </button>
+              <button onclick="rejectRegistration(${reg.id})" class="text-red-400 hover:text-red-300">
+                <i class="fas fa-times"></i>
+              </button>
+            ` : ''}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Load contacts
+    function loadContacts() {
+      const grid = document.getElementById('contactsGrid');
+      if (!grid) return;
+      
+      if (contacts.length === 0) {
+        grid.innerHTML = `
+          <div class="glass rounded-2xl p-12 text-center col-span-2">
+            <i class="fas fa-inbox text-6xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400">No contact messages yet</p>
+          </div>
+        `;
+        return;
+      }
+      
+      grid.innerHTML = contacts.map(contact => `
+        <div class="glass rounded-2xl p-6 ${!contact.read ? 'border-2 border-purple-500/50' : ''}">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-lg font-bold">${contact.name}</h3>
+              <p class="text-sm text-gray-400">${contact.email}</p>
+            </div>
+            ${!contact.read ? '<span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">New</span>' : ''}
+          </div>
+          <p class="text-gray-300 text-sm mb-4">${contact.message}</p>
+          <div class="flex items-center justify-between text-xs text-gray-500">
+            <span><i class="fas fa-clock mr-2"></i>${new Date(contact.date).toLocaleDateString()}</span>
+            <div class="space-x-2">
+              <button onclick="markAsRead(${contact.id})" class="text-cyan-400 hover:text-cyan-300">
+                <i class="fas fa-check mr-1"></i>Mark Read
+              </button>
+              <button onclick="deleteContact(${contact.id})" class="text-red-400 hover:text-red-300">
+                <i class="fas fa-trash mr-1"></i>Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Load newsletter
+    function loadNewsletter() {
+      const tbody = document.getElementById('newsletterTableBody');
+      if (!tbody) return;
+      
+      if (newsletter.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="px-6 py-12 text-center text-gray-400">
+              <i class="fas fa-inbox text-4xl mb-3"></i>
+              <p>No newsletter subscribers yet</p>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      tbody.innerHTML = newsletter.map((sub, index) => `
+        <tr class="hover:bg-slate-800/30 transition-colors">
+          <td class="px-6 py-4 text-gray-400">${index + 1}</td>
+          <td class="px-6 py-4 font-semibold">${sub.email}</td>
+          <td class="px-6 py-4 text-gray-400 text-sm">${new Date(sub.date).toLocaleDateString()}</td>
+          <td class="px-6 py-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold ${sub.active ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">
+              ${sub.active ? 'Active' : 'Unsubscribed'}
+            </span>
+          </td>
+          <td class="px-6 py-4">
+            <button onclick="deleteNewsletter(${sub.id})" class="text-red-400 hover:text-red-300">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Load users
     function loadUsers() {
       const tbody = document.getElementById('usersTableBody');
       if (!tbody) return;
       
-      let filtered = [...users];
-      const search = document.getElementById('userSearch')?.value.toLowerCase() || '';
-      const planFilter = document.getElementById('userPlanFilter')?.value || '';
-      const statusFilter = document.getElementById('userStatusFilter')?.value || '';
-      
-      if (search) {
-        filtered = filtered.filter(u => 
-          u.firstName.toLowerCase().includes(search) || 
-          u.lastName.toLowerCase().includes(search) || 
-          u.email.toLowerCase().includes(search)
-        );
+      if (users.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="px-6 py-12 text-center text-gray-400">
+              <i class="fas fa-users text-4xl mb-3"></i>
+              <p>No users yet. Add your first user!</p>
+            </td>
+          </tr>
+        `;
+        return;
       }
-      if (planFilter) filtered = filtered.filter(u => u.plan === planFilter);
-      if (statusFilter) filtered = filtered.filter(u => u.status === statusFilter);
       
-      tbody.innerHTML = filtered.map(user => `
+      tbody.innerHTML = users.map(user => `
         <tr class="hover:bg-slate-800/30 transition-colors">
           <td class="px-6 py-4">
             <div class="flex items-center gap-3">
-              <img src="https://i.pravatar.cc/100?img=${user.avatar}" alt="${user.firstName}" class="w-10 h-10 rounded-full">
+              <img src="https://i.pravatar.cc/100?img=${user.avatar || 1}" alt="${user.firstName}" class="w-10 h-10 rounded-full">
               <div>
                 <div class="font-semibold">${user.firstName} ${user.lastName}</div>
               </div>
@@ -1063,11 +956,7 @@
           <td class="px-6 py-4">
             <span class="px-3 py-1 rounded-full text-xs font-semibold ${user.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}">${user.status}</span>
           </td>
-          <td class="px-6 py-4 text-gray-400 text-sm">${user.joined}</td>
           <td class="px-6 py-4">
-            <button onclick="editUser(${user.id})" class="text-cyan-400 hover:text-cyan-300 mr-3">
-              <i class="fas fa-edit"></i>
-            </button>
             <button onclick="deleteUser(${user.id})" class="text-red-400 hover:text-red-300">
               <i class="fas fa-trash"></i>
             </button>
@@ -1076,60 +965,16 @@
       `).join('');
     }
 
-    // Load content grid
-    function loadContent() {
-      const grid = document.getElementById('contentGrid');
-      if (!grid) return;
-      
-      let filtered = [...content];
-      if (currentContentTab !== 'all') {
-        filtered = filtered.filter(c => c.category.toLowerCase() === currentContentTab.slice(0, -1));
-      }
-      
-      grid.innerHTML = filtered.map(item => `
-        <div class="glass rounded-2xl p-6 card-hover">
-          <div class="flex items-start justify-between mb-4">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-400">${item.category}</span>
-            <span class="px-3 py-1 rounded-full text-xs font-semibold ${item.status === 'Published' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}">${item.status}</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2">${item.title}</h3>
-          <p class="text-gray-400 text-sm mb-4">${item.desc}</p>
-          <div class="flex items-center justify-between text-xs text-gray-500 mb-3">
-            <span><i class="fas fa-calendar mr-2"></i>${item.date}</span>
-            <span><i class="fas fa-eye mr-2"></i>${item.views.toLocaleString()} views</span>
-          </div>
-          <div class="flex gap-2">
-            <button onclick="editContent(${item.id})" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg transition-all">
-              <i class="fas fa-edit mr-2"></i>Edit
-            </button>
-            <button onclick="deleteContent(${item.id})" class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 py-2 rounded-lg transition-all">
-              <i class="fas fa-trash mr-2"></i>Delete
-            </button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // Filter functions
-    function filterUsers() {
-      loadUsers();
-    }
-
-    function showContentTab(tab) {
-      currentContentTab = tab;
-      document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.remove('active');
-        btn.classList.add('bg-slate-800/50', 'hover:bg-slate-700/50');
-      });
-      const activeBtn = document.getElementById('tab-' + tab);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-        activeBtn.classList.remove('bg-slate-800/50', 'hover:bg-slate-700/50');
-      }
-      loadContent();
-    }
-
     // Helper functions
+    function getStatusColor(status) {
+      const colors = {
+        'pending': 'bg-amber-500/20 text-amber-400',
+        'approved': 'bg-green-500/20 text-green-400',
+        'rejected': 'bg-red-500/20 text-red-400'
+      };
+      return colors[status] || 'bg-gray-500/20 text-gray-400';
+    }
+
     function getPlanColor(plan) {
       const colors = {
         'Professional': 'bg-purple-500/20 text-purple-400',
@@ -1139,7 +984,165 @@
       return colors[plan] || 'bg-gray-500/20 text-gray-400';
     }
 
-    // Modals
+    // Actions
+    function approveRegistration(id) {
+      const reg = registrations.find(r => r.id === id);
+      if (reg) {
+        reg.status = 'approved';
+        
+        // Add to users
+        users.push({
+          id: users.length + 1,
+          firstName: reg.firstName,
+          lastName: reg.lastName,
+          email: reg.email,
+          company: reg.company,
+          plan: reg.plan,
+          status: 'Active',
+          avatar: Math.floor(Math.random() * 70) + 1
+        });
+        
+        saveData();
+        loadRegistrations();
+        loadUsers();
+        updateAllStats();
+        updateBadges();
+        
+        alert('✅ Registration approved! User added to system.');
+      }
+    }
+
+    function rejectRegistration(id) {
+      if (confirm('⚠️ Are you sure you want to reject this registration?')) {
+        const reg = registrations.find(r => r.id === id);
+        if (reg) {
+          reg.status = 'rejected';
+          saveData();
+          loadRegistrations();
+          updateAllStats();
+          updateBadges();
+          alert('❌ Registration rejected.');
+        }
+      }
+    }
+
+    function viewDetails(type, id) {
+      const modal = document.getElementById('detailsModal');
+      const content = document.getElementById('detailsContent');
+      
+      if (type === 'registration') {
+        const reg = registrations.find(r => r.id === id);
+        if (reg) {
+          content.innerHTML = `
+            <div class="space-y-4">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-sm text-gray-400">First Name</label>
+                  <div class="font-semibold">${reg.firstName}</div>
+                </div>
+                <div>
+                  <label class="text-sm text-gray-400">Last Name</label>
+                  <div class="font-semibold">${reg.lastName}</div>
+                </div>
+              </div>
+              <div>
+                <label class="text-sm text-gray-400">Email</label>
+                <div class="font-semibold">${reg.email}</div>
+              </div>
+              <div>
+                <label class="text-sm text-gray-400">Company</label>
+                <div class="font-semibold">${reg.company || 'N/A'}</div>
+              </div>
+              <div>
+                <label class="text-sm text-gray-400">Plan</label>
+                <div class="font-semibold">${reg.plan || 'Free'}</div>
+              </div>
+              <div>
+                <label class="text-sm text-gray-400">Registration Date</label>
+                <div class="font-semibold">${new Date(reg.date).toLocaleString()}</div>
+              </div>
+              <div>
+                <label class="text-sm text-gray-400">Status</label>
+                <div><span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(reg.status)}">${reg.status}</span></div>
+              </div>
+            </div>
+          `;
+        }
+      }
+      
+      modal.classList.add('active');
+    }
+
+    function closeDetailsModal() {
+      document.getElementById('detailsModal').classList.remove('active');
+    }
+
+    function markAsRead(id) {
+      const contact = contacts.find(c => c.id === id);
+      if (contact) {
+        contact.read = true;
+        saveData();
+        loadContacts();
+        updateBadges();
+      }
+    }
+
+    function deleteContact(id) {
+      if (confirm('⚠️ Delete this contact message?')) {
+        contacts = contacts.filter(c => c.id !== id);
+        saveData();
+        loadContacts();
+        updateAllStats();
+      }
+    }
+
+    function deleteNewsletter(id) {
+      if (confirm('⚠️ Remove this subscriber?')) {
+        newsletter = newsletter.filter(n => n.id !== id);
+        saveData();
+        loadNewsletter();
+        updateAllStats();
+      }
+    }
+
+    function deleteUser(id) {
+      if (confirm('⚠️ Delete this user?')) {
+        users = users.filter(u => u.id !== id);
+        saveData();
+        loadUsers();
+        updateAllStats();
+      }
+    }
+
+    function exportSubscribers() {
+      const csv = 'Email,Date,Status\n' + newsletter.map(n => 
+        `${n.email},${new Date(n.date).toLocaleDateString()},${n.active ? 'Active' : 'Unsubscribed'}`
+      ).join('\n');
+      
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'newsletter-subscribers.csv';
+      a.click();
+    }
+
+    function refreshRegistrations() {
+      loadRegistrations();
+      alert('✅ Registrations refreshed!');
+    }
+
+    function refreshContacts() {
+      loadContacts();
+      alert('✅ Contacts refreshed!');
+    }
+
+    function refreshNewsletter() {
+      loadNewsletter();
+      alert('✅ Newsletter refreshed!');
+    }
+
+    // Add user modal
     function openAddUserModal() {
       document.getElementById('addUserModal').classList.add('active');
     }
@@ -1148,210 +1151,108 @@
       document.getElementById('addUserModal').classList.remove('active');
     }
 
-    function openAddContentModal() {
-      document.getElementById('addContentModal').classList.add('active');
+    document.getElementById('addUserForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newUser = {
+        id: users.length + 1,
+        firstName: document.getElementById('newUserFirstName').value,
+        lastName: document.getElementById('newUserLastName').value,
+        email: document.getElementById('newUserEmail').value,
+        company: document.getElementById('newUserCompany').value,
+        plan: document.getElementById('newUserPlan').value,
+        status: 'Active',
+        avatar: Math.floor(Math.random() * 70) + 1
+      };
+      users.push(newUser);
+      saveData();
+      loadUsers();
+      updateAllStats();
+      closeAddUserModal();
+      alert('✅ User added successfully!');
+      this.reset();
+    });
+
+    // Show section
+    function showSection(section) {
+      ['dashboardContent', 'registrationsContent', 'contactsContent', 'newsletterContent', 'usersContent'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+      
+      const sectionEl = document.getElementById(section + 'Content');
+      if (sectionEl) sectionEl.classList.remove('hidden');
+      
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('text-cyan-400', 'font-semibold');
+        link.classList.add('text-gray-400');
+      });
+      
+      const activeLink = document.getElementById('nav-' + section);
+      if (activeLink) {
+        activeLink.classList.add('text-cyan-400', 'font-semibold');
+        activeLink.classList.remove('text-gray-400');
+      }
     }
 
-    function closeAddContentModal() {
-      document.getElementById('addContentModal').classList.remove('active');
+    // Logout
+    function handleLogout() {
+      if (confirm('⚠️ Are you sure you want to logout?')) {
+        localStorage.removeItem('adminSession');
+        Object.keys(charts).forEach(key => {
+          if (charts[key]) charts[key].destroy();
+        });
+        charts = {};
+        location.reload();
+      }
     }
 
-    // Add user
-    document.getElementById('addUserForm').addEventListener('submit',function(e) {
-        e.preventDefault();
-        const newUser = {
-          id: users.length + 1,
-          firstName: document.getElementById('newUserFirstName').value,
-          lastName: document.getElementById('newUserLastName').value,
-          email: document.getElementById('newUserEmail').value,
-          company: document.getElementById('newUserCompany').value,
-          plan: document.getElementById('newUserPlan').value,
-          status: 'Active',
-          joined: new Date().toISOString().split('T')[0],
-          avatar: Math.floor(Math.random() * 70) + 1
-        };
-        users.push(newUser);
-        loadUsers();
-        updateUserStats();
-        if (charts.userPlanChart) {
-          charts.userPlanChart.destroy();
-          charts.userPlanChart = null;
-        }
-        if (charts.userRegChart) {
-          charts.userRegChart.destroy();
-          charts.userRegChart = null;
-        }
-        setTimeout(() => createUserCharts(), 100);
-        closeAddUserModal();
-        alert('✅ User added successfully!');
-        this.reset();
-      });
-
-      // Add content
-      document.getElementById('addContentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const newContent = {
-          id: content.length + 1,
-          title: document.getElementById('newContentTitle').value,
-          category: document.getElementById('newContentCategory').value,
-          desc: document.getElementById('newContentDesc').value,
-          date: new Date().toISOString().split('T')[0],
-          status: document.getElementById('newContentStatus').value,
-          views: 0
-        };
-        content.push(newContent);
-        loadContent();
-        updateContentStats();
-        if (charts.contentCategoryChart) {
-          charts.contentCategoryChart.destroy();
-          charts.contentCategoryChart = null;
-        }
-        if (charts.contentPerformanceChart) {
-          charts.contentPerformanceChart.destroy();
-          charts.contentPerformanceChart = null;
-        }
-        setTimeout(() => createContentCharts(), 100);
-        closeAddContentModal();
-        alert('✅ Content added successfully!');
-        this.reset();
-      });
-
-      // Delete functions
-      function deleteUser(id) {
-        if (confirm('⚠️ Are you sure you want to delete this user?')) {
-          users = users.filter(u => u.id !== id);
-          loadUsers();
-          updateUserStats();
-          if (charts.userPlanChart) {
-            charts.userPlanChart.destroy();
-            charts.userPlanChart = null;
-          }
-          setTimeout(() => createUserCharts(), 100);
-          alert('✅ User deleted successfully!');
-        }
+    // Close modals on outside click
+    window.addEventListener('click', function(e) {
+      if (e.target.classList.contains('modal')) {
+        e.target.classList.remove('active');
       }
+    });
 
-      function deleteContent(id) {
-        if (confirm('⚠️ Are you sure you want to delete this content?')) {
-          content = content.filter(c => c.id !== id);
-          loadContent();
-          updateContentStats();
-          if (charts.contentCategoryChart) {
-            charts.contentCategoryChart.destroy();
-            charts.contentCategoryChart = null;
-          }
-          setTimeout(() => createContentCharts(), 100);
-          alert('✅ Content deleted successfully!');
-        }
-      }
-
-      function editUser(id) {
-        const user = users.find(u => u.id === id);
-        if (user) {
-          const newEmail = prompt('Edit email:', user.email);
-          if (newEmail && newEmail !== user.email) {
-            user.email = newEmail;
-            loadUsers();
-            alert('✅ User updated successfully!');
-          }
-        }
-      }
-
-      function editContent(id) {
-        const item = content.find(c => c.id === id);
-        if (item) {
-          const newTitle = prompt('Edit title:', item.title);
-          if (newTitle && newTitle !== item.title) {
-            item.title = newTitle;
-            loadContent();
-            alert('✅ Content updated successfully!');
-          }
-        }
-      }
-
-      // Show section
-      function showSection(section) {
-        ['dashboardContent', 'usersContent', 'contentContent', 'settingsContent'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.classList.add('hidden');
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+          modal.classList.remove('active');
         });
-        
-        const sectionEl = document.getElementById(section + 'Content');
-        if (sectionEl) sectionEl.classList.remove('hidden');
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-          link.classList.remove('text-cyan-400', 'font-semibold');
-          link.classList.add('text-gray-400');
+      }
+    });
+
+    // Simulate receiving data (for demo purposes)
+    function simulateIncomingData() {
+      // Simulate registration
+      if (Math.random() > 0.7 && registrations.length < 10) {
+        const names = ['John Smith', 'Sarah Johnson', 'Michael Chen', 'Emily Davis'];
+        const name = names[Math.floor(Math.random() * names.length)].split(' ');
+        registrations.push({
+          id: registrations.length + 1,
+          firstName: name[0],
+          lastName: name[1],
+          email: `${name[0].toLowerCase()}@example.com`,
+          company: 'Tech Corp',
+          plan: 'Professional',
+          status: 'pending',
+          date: new Date().toISOString()
         });
-        
-        const activeLink = document.getElementById('nav-' + section);
-        if (activeLink) {
-          activeLink.classList.add('text-cyan-400', 'font-semibold');
-          activeLink.classList.remove('text-gray-400');
-        }
-
-        // Load section-specific data
-        if (section === 'users') {
-          loadUsers();
-          setTimeout(() => {
-            if (!charts.userPlanChart) createUserCharts();
-          }, 100);
-        } else if (section === 'content') {
-          loadContent();
-          setTimeout(() => {
-            if (!charts.contentCategoryChart) createContentCharts();
-          }, 100);
-        }
+        saveData();
+        updateAllStats();
+        updateBadges();
+        loadRegistrations();
+        loadActivities();
       }
+    }
 
-      // Logout
-      function handleLogout() {
-        if (confirm('⚠️ Are you sure you want to logout?')) {
-          localStorage.removeItem('adminSession');
-          
-          // Destroy all charts
-          Object.keys(charts).forEach(key => {
-            if (charts[key]) {
-              charts[key].destroy();
-            }
-          });
-          charts = {};
-          
-          location.reload();
-        }
-      }
+    // Check for new data every 30 seconds
+    setInterval(simulateIncomingData, 30000);
 
-      // Close modals on outside click
-      window.addEventListener('click', function(e) {
-        if (e.target.classList.contains('modal')) {
-          e.target.classList.remove('active');
-        }
-      });
-
-      // Keyboard shortcuts
-      document.addEventListener('keydown', function(e) {
-        // ESC to close modals
-        if (e.key === 'Escape') {
-          document.querySelectorAll('.modal').forEach(modal => {
-            modal.classList.remove('active');
-          });
-        }
-      });
-
-      // Initialize
-      if (!checkSession()) {
-        document.getElementById('loginScreen').classList.remove('hidden');
-      }
-
-      // Auto-save session
-      setInterval(() => {
-        const session = localStorage.getItem('adminSession');
-        if (session) {
-          const data = JSON.parse(session);
-          data.timestamp = Date.now();
-          localStorage.setItem('adminSession', JSON.stringify(data));
-        }
-      }, 5 * 60 * 1000); // Every 5 minutes
-    </script>
-  </body>
-  </html>
+    // Initialize
+    if (!checkSession()) {
+      document.getElementById('loginScreen').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
