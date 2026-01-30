@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About SESMine - Global Leader in Mining Engineering Solutions Since 2004</title>
-  <meta name="description" content="Learn about SESMine's 20+ year history, leadership team, global operations, and commitment to excellence in mining engineering solutions.">
+  <title>Help Center - SESMine | 24/7 Enterprise Support & Documentation</title>
+  <meta name="description" content="Comprehensive help center with documentation, tutorials, FAQs, and 24/7 enterprise support for SESMine platform.">
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -21,9 +21,6 @@
     
     :root {
       --corporate-blue: #003366;
-      --navy-dark: #001a3d;
-      --success-blue: #1976d2;
-      --azure-light: #0080cc;
     }
     
     body {
@@ -46,14 +43,12 @@
       box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
       color: white;
       font-weight: 600;
-      letter-spacing: 0.5px;
       transition: all 0.3s ease;
     }
     
     .btn-corporate:hover {
-      background: linear-gradient(135deg, #001a3d 0%, #003366 100%);
-      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
       transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
     }
     
     .nav-premium {
@@ -63,36 +58,26 @@
       box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
     }
     
-    .timeline-item {
-      position: relative;
-      padding-left: 3rem;
-      padding-bottom: 3rem;
-      border-left: 3px solid #003366;
-    }
-    
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -0.75rem;
-      top: 0;
-      width: 1.5rem;
-      height: 1.5rem;
-      background: linear-gradient(135deg, #003366, #0080cc);
-      border-radius: 50%;
-      border: 4px solid white;
-      box-shadow: 0 0 0 3px #ecf0f1;
-    }
-    
-    .team-card {
+    .help-card {
       background: white;
       border: 2px solid #ecf0f1;
       transition: all 0.3s ease;
     }
     
-    .team-card:hover {
+    .help-card:hover {
       border-color: #003366;
       box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
       transform: translateY(-5px);
+    }
+    
+    .faq-item {
+      background: white;
+      border: 2px solid #ecf0f1;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+      border-color: #003366;
     }
     
     .premium-badge {
@@ -106,15 +91,15 @@
       text-transform: uppercase;
     }
     
-    .cert-badge {
-      background: white;
+    .search-box {
       border: 2px solid #ecf0f1;
       transition: all 0.3s ease;
     }
     
-    .cert-badge:hover {
+    .search-box:focus {
+      outline: none;
       border-color: #003366;
-      transform: scale(1.05);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
     }
   </style>
 </head>
@@ -134,7 +119,7 @@
           <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Home</a>
           <a href="features.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Features</a>
           <a href="pricing/index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Pricing</a>
-          <a href="about.html" class="text-sm font-semibold text-blue-900">About</a>
+          <a href="about.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">About</a>
           <a href="contact.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Contact</a>
           <a href="auth/signup.html" class="btn-corporate px-6 py-2.5 rounded-xl text-sm">Get Started</a>
         </div>
@@ -144,321 +129,225 @@
 
   <!-- Hero Section -->
   <section class="pt-40 pb-24 px-6 bg-gradient-to-b from-gray-50 to-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <div class="premium-badge mb-6">Since 2004</div>
-        <h1 class="text-6xl lg:text-7xl font-black mb-6 text-gray-900 premium-heading">
-          Pioneering <span class="gradient-text">Mining Excellence</span>
-        </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-          For over 20 years, SESMine has been the trusted partner of Fortune 500 mining companies worldwide, delivering enterprise-grade solutions that transform mining operations
-        </p>
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="premium-badge mb-6">24/7 Support</div>
+      <h1 class="text-6xl lg:text-7xl font-black mb-6 text-gray-900 premium-heading">
+        How Can We <span class="gradient-text">Help You?</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-10 font-medium">
+        Search our knowledge base or contact our enterprise support team
+      </p>
+
+      <!-- Search Box -->
+      <div class="relative max-w-3xl mx-auto">
+        <input type="text" placeholder="Search for help articles, tutorials, documentation..." class="search-box w-full px-6 py-5 rounded-2xl text-lg font-medium pr-16">
+        <button class="absolute right-3 top-1/2 -translate-y-1/2 btn-corporate px-6 py-3 rounded-xl">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
 
-      <!-- Key Stats -->
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
-          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">20+</div>
-          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Years Excellence</div>
+      <!-- Quick Stats -->
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <div class="text-center">
+          <div class="text-4xl font-black text-blue-900 mb-2 premium-heading">500+</div>
+          <div class="text-sm font-bold text-gray-600">Help Articles</div>
         </div>
-        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
-          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">500+</div>
-          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Global Clients</div>
+        <div class="text-center">
+          <div class="text-4xl font-black text-blue-900 mb-2 premium-heading">&lt;2min</div>
+          <div class="text-sm font-bold text-gray-600">Avg Response Time</div>
         </div>
-        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
-          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">50+</div>
-          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Countries</div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
-          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">$5B+</div>
-          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Projects Managed</div>
+        <div class="text-center">
+          <div class="text-4xl font-black text-blue-900 mb-2 premium-heading">24/7</div>
+          <div class="text-sm font-bold text-gray-600">Support Available</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Mission & Vision -->
+  <!-- Help Categories -->
   <section class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-bullseye text-white text-3xl"></i>
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Browse by Category</h2>
+        <p class="text-xl text-gray-600 font-medium">Find answers organized by topic</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Getting Started -->
+        <div class="help-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-rocket text-white text-2xl"></i>
           </div>
-          <h2 class="text-4xl font-black mb-6 text-gray-900 premium-heading">Our Mission</h2>
-          <p class="text-lg text-gray-600 leading-relaxed mb-6 font-medium">
-            To empower mining companies worldwide with cutting-edge technology solutions that optimize operations, enhance safety, ensure sustainability, and drive profitability through innovation and excellence.
-          </p>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
-              <span class="font-medium">Deliver enterprise-grade solutions with 99.99% reliability</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
-              <span class="font-medium">Maintain highest standards of security and compliance</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
-              <span class="font-medium">Foster innovation through continuous R&D investment</span>
-            </li>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Getting Started</h3>
+          <p class="text-gray-600 mb-4">Quick start guides and onboarding tutorials</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li><a href="#" class="hover:text-blue-900">• Platform Overview</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Account Setup</a></li>
+            <li><a href="#" class="hover:text-blue-900">• First Project</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Team Onboarding</a></li>
           </ul>
+          <a href="#" class="text-blue-900 font-bold hover:text-blue-700">View All →</a>
         </div>
 
-        <div>
-          <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-eye text-white text-3xl"></i>
+        <!-- Cost Calculator -->
+        <div class="help-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-calculator text-white text-2xl"></i>
           </div>
-          <h2 class="text-4xl font-black mb-6 text-gray-900 premium-heading">Our Vision</h2>
-          <p class="text-lg text-gray-600 leading-relaxed mb-6 font-medium">
-            To be the world's most trusted and innovative mining technology platform, setting industry standards for excellence, sustainability, and digital transformation in the global mining sector.
-          </p>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
-              <span class="font-medium">Lead digital transformation in mining industry</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
-              <span class="font-medium">Champion sustainable and responsible mining practices</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
-              <span class="font-medium">Expand global reach to serve 1000+ clients by 2030</span>
-            </li>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Cost Calculator</h3>
+          <p class="text-gray-600 mb-4">AI-powered cost estimation guides</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li><a href="#" class="hover:text-blue-900">• Creating Estimates</a></li>
+            <li><a href="#" class="hover:text-blue-900">• AACE Standards</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Currency Settings</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Export Reports</a></li>
           </ul>
+          <a href="#" class="text-blue-900 font-bold hover:text-blue-700">View All →</a>
+        </div>
+
+        <!-- Project Management -->
+        <div class="help-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-tasks text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Project Management</h3>
+          <p class="text-gray-600 mb-4">Managing projects and teams</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li><a href="#" class="hover:text-blue-900">• Creating Projects</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Gantt Charts</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Resource Allocation</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Progress Tracking</a></li>
+          </ul>
+          <a href="#" class="text-blue-900 font-bold hover:text-blue-700">View All →</a>
+        </div>
+
+        <!-- Analytics -->
+        <div class="help-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-line text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Analytics & Reporting</h3>
+          <p class="text-gray-600 mb-4">Business intelligence and dashboards</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li><a href="#" class="hover:text-blue-900">• Custom Dashboards</a></li>
+            <li><a href="#" class="hover:text-blue-900">• KPI Tracking</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Data Export</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Automated Reports</a></li>
+          </ul>
+          <a href="#" class="text-blue-900 font-bold hover:text-blue-700">View All →</a>
+        </div>
+
+        <!-- Security -->
+        <div class="help-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-shield-alt text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Security & Compliance</h3>
+          <p class="text-gray-600 mb-4">Data protection and access control</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li><a href="#" class="hover:text-blue-900">• User Permissions</a></li>
+            <li><a href="#" class="hover:text-blue-900">• SSO Setup</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Data Encryption</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Compliance</a></li>
+          </ul>
+          <a href="#" class="text-blue-900 font-bold hover:text-blue-700">View All →</a>
+        </div>
+
+        <!-- API Integration -->
+        <div class="help-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-plug text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">API & Integrations</h3>
+          <p class="text-gray-600 mb-4">Developer documentation and API guides</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li><a href="#" class="hover:text-blue-900">• API Documentation</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Authentication</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Webhooks</a></li>
+            <li><a href="#" class="hover:text-blue-900">• Third-party Apps</a></li>
+          </ul>
+          <a href="#" class="text-blue-900 font-bold hover:text-blue-700">View All →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Company History Timeline -->
+  <!-- FAQ Section -->
   <section class="py-24 px-6 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-4xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Our Journey</h2>
-        <p class="text-xl text-gray-600 font-medium">Two decades of innovation and growth</p>
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Frequently Asked Questions</h2>
+        <p class="text-xl text-gray-600 font-medium">Quick answers to common questions</p>
       </div>
 
-      <div class="space-y-0">
-        <div class="timeline-item">
-          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
-            <div class="text-sm font-bold text-blue-900 mb-2">2004</div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Foundation</h3>
-            <p class="text-gray-600 leading-relaxed">SESMine founded in London with a vision to revolutionize mining cost estimation through technology and data-driven insights.</p>
-          </div>
+      <div class="space-y-4">
+        <div class="faq-item rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">How do I get started with SESMine?</h3>
+          <p class="text-gray-600">Sign up for an account, complete the onboarding wizard, and start your first project. Our team provides personalized onboarding for enterprise clients.</p>
         </div>
 
-        <div class="timeline-item">
-          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
-            <div class="text-sm font-bold text-blue-900 mb-2">2008</div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">First Major Client</h3>
-            <p class="text-gray-600 leading-relaxed">Secured first Fortune 500 mining company as client, establishing credibility in enterprise market and expanding team to 50+ professionals.</p>
-          </div>
+        <div class="faq-item rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">What is the accuracy of the AI cost estimation?</h3>
+          <p class="text-gray-600">Our AI-powered cost estimation achieves 94.2% accuracy based on historical data from 5,000+ completed mining projects worldwide.</p>
         </div>
 
-        <div class="timeline-item">
-          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
-            <div class="text-sm font-bold text-blue-900 mb-2">2012</div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Global Expansion</h3>
-            <p class="text-gray-600 leading-relaxed">Opened offices in New York, Singapore, and Santiago. Reached 100+ enterprise clients across 25 countries with $1B+ in projects managed.</p>
-          </div>
+        <div class="faq-item rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Is my data secure?</h3>
+          <p class="text-gray-600">Yes, we use 256-bit encryption, SOC 2 Type II certified infrastructure, and maintain ISO 27001 compliance for information security.</p>
         </div>
 
-        <div class="timeline-item">
-          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
-            <div class="text-sm font-bold text-blue-900 mb-2">2016</div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">AI Integration</h3>
-            <p class="text-gray-600 leading-relaxed">Launched AI-powered cost estimation achieving 94.2% accuracy. Introduced machine learning algorithms for predictive analytics and risk assessment.</p>
-          </div>
+        <div class="faq-item rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Can I integrate SESMine with other tools?</h3>
+          <p class="text-gray-600">Yes, we provide a comprehensive RESTful API and pre-built integrations with major ERP, accounting, and project management systems.</p>
         </div>
 
-        <div class="timeline-item">
-          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
-            <div class="text-sm font-bold text-blue-900 mb-2">2019</div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">ISO Certification</h3>
-            <p class="text-gray-600 leading-relaxed">Achieved ISO 9001:2015 and SOC 2 Type II certification, demonstrating commitment to quality management and information security.</p>
-          </div>
+        <div class="faq-item rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">What support options are available?</h3>
+          <p class="text-gray-600">Enterprise clients receive 24/7 priority support, dedicated account manager, phone support, live chat, and email support with &lt;2 minute response time.</p>
         </div>
 
-        <div class="timeline-item">
-          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
-            <div class="text-sm font-bold text-blue-900 mb-2">2022</div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Platform Evolution</h3>
-            <p class="text-gray-600 leading-relaxed">Launched comprehensive platform with 9 specialized solution hubs, serving 500+ clients with $5B+ in managed projects across 50+ countries.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item border-l-0">
-          <div class="bg-white rounded-2xl p-8 border-2 border-blue-900 shadow-xl">
-            <div class="text-sm font-bold text-blue-900 mb-2">2026 - Present</div>
-            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Industry Leadership</h3>
-            <p class="text-gray-600 leading-relaxed">Recognized as global leader in mining technology with 10,000+ equipment database, 24/7 enterprise support, and continuous innovation in AI and sustainability.</p>
-          </div>
+        <div class="faq-item rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">How often is the equipment database updated?</h3>
+          <p class="text-gray-600">Our equipment database is updated daily with real-time pricing from 500+ verified global vendors and manufacturers.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Leadership Team -->
+  <!-- Contact Support -->
   <section class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Leadership Team</h2>
-        <p class="text-xl text-gray-600 font-medium">Experienced executives driving innovation and excellence</p>
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Still Need Help?</h2>
+        <p class="text-xl text-gray-600 font-medium">Our support team is available 24/7</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- CEO -->
-        <div class="team-card rounded-2xl overflow-hidden">
-          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-blue-900 text-5xl"></i>
-            </div>
+        <div class="help-card rounded-2xl p-8 text-center">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-comments text-white text-2xl"></i>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Dr. James Mitchell</h3>
-            <div class="text-sm text-blue-900 font-bold mb-3">Chief Executive Officer</div>
-            <p class="text-sm text-gray-600 leading-relaxed mb-4">25+ years in mining technology. PhD in Mining Engineering from Imperial College London. Former VP at Rio Tinto.</p>
-            <div class="flex gap-3">
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Live Chat</h3>
+          <p class="text-gray-600 mb-4">Instant support via live chat</p>
+          <button class="btn-corporate px-6 py-3 rounded-xl font-bold">Start Chat</button>
         </div>
 
-        <!-- CTO -->
-        <div class="team-card rounded-2xl overflow-hidden">
-          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-blue-900 text-5xl"></i>
-            </div>
+        <div class="help-card rounded-2xl p-8 text-center">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-envelope text-white text-2xl"></i>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Dr. Sarah Chen</h3>
-            <div class="text-sm text-blue-900 font-bold mb-3">Chief Technology Officer</div>
-            <p class="text-sm text-gray-600 leading-relaxed mb-4">20+ years in AI and machine learning. PhD in Computer Science from MIT. Led AI initiatives at Google Cloud.</p>
-            <div class="flex gap-3">
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Email Support</h3>
+          <p class="text-gray-600 mb-4">Response within 4 hours</p>
+          <a href="mailto:support@sesmine.com" class="btn-corporate px-6 py-3 rounded-xl font-bold inline-block">Send Email</a>
         </div>
 
-        <!-- CFO -->
-        <div class="team-card rounded-2xl overflow-hidden">
-          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-blue-900 text-5xl"></i>
-            </div>
+        <div class="help-card rounded-2xl p-8 text-center">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-phone text-white text-2xl"></i>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Michael O'Brien</h3>
-            <div class="text-sm text-blue-900 font-bold mb-3">Chief Financial Officer</div>
-            <p class="text-sm text-gray-600 leading-relaxed mb-4">30+ years in corporate finance. MBA from Harvard Business School. Former CFO at BHP Billiton.</p>
-            <div class="flex gap-3">
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- COO -->
-        <div class="team-card rounded-2xl overflow-hidden">
-          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-blue-900 text-5xl"></i>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Maria Rodriguez</h3>
-            <div class="text-sm text-blue-900 font-bold mb-3">Chief Operating Officer</div>
-            <p class="text-sm text-gray-600 leading-relaxed mb-4">22+ years in operations management. MSc in Industrial Engineering. Former VP Operations at Glencore.</p>
-            <div class="flex gap-3">
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- VP Engineering -->
-        <div class="team-card rounded-2xl overflow-hidden">
-          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-blue-900 text-5xl"></i>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Dr. Robert Anderson</h3>
-            <div class="text-sm text-blue-900 font-bold mb-3">VP Engineering Solutions</div>
-            <p class="text-sm text-gray-600 leading-relaxed mb-4">18+ years in mining engineering. PhD from Colorado School of Mines. Expert in mine planning and optimization.</p>
-            <div class="flex gap-3">
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- VP Sustainability -->
-        <div class="team-card rounded-2xl overflow-hidden">
-          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
-            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
-              <i class="fas fa-user text-blue-900 text-5xl"></i>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Emma Thompson</h3>
-            <div class="text-sm text-blue-900 font-bold mb-3">VP Sustainability & ESG</div>
-            <p class="text-sm text-gray-600 leading-relaxed mb-4">15+ years in environmental compliance. MSc in Environmental Science. Former Director at Anglo American.</p>
-            <div class="flex gap-3">
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
-              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section class="py-24 px-6 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Certifications & Compliance</h2>
-        <p class="text-xl text-gray-600 font-medium">Maintaining highest standards of quality and security</p>
-      </div>
-
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="cert-badge rounded-2xl p-8 text-center">
-          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
-            <i class="fas fa-award text-white text-3xl"></i>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">ISO 9001:2015</h3>
-          <p class="text-sm text-gray-600">Quality Management System</p>
-        </div>
-
-        <div class="cert-badge rounded-2xl p-8 text-center">
-          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
-            <i class="fas fa-shield-alt text-white text-3xl"></i>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">SOC 2 Type II</h3>
-          <p class="text-sm text-gray-600">Security & Compliance</p>
-        </div>
-
-        <div class="cert-badge rounded-2xl p-8 text-center">
-          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
-            <i class="fas fa-lock text-white text-3xl"></i>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">ISO 27001</h3>
-          <p class="text-sm text-gray-600">Information Security</p>
-        </div>
-
-        <div class="cert-badge rounded-2xl p-8 text-center">
-          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
-            <i class="fas fa-check-circle text-white text-3xl"></i>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">GDPR Compliant</h3>
-          <p class="text-sm text-gray-600">Data Protection</p>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Phone Support</h3>
+          <p class="text-gray-600 mb-4">24/7 enterprise hotline</p>
+          <a href="tel:+442071234567" class="btn-corporate px-6 py-3 rounded-xl font-bold inline-block">Call Now</a>
         </div>
       </div>
     </div>
@@ -467,11 +356,11 @@
   <!-- CTA Section -->
   <section class="py-24 px-6 gradient-blue">
     <div class="max-w-4xl mx-auto text-center text-white">
-      <h2 class="text-5xl font-black mb-6 premium-heading">Join Our Journey</h2>
-      <p class="text-xl mb-10 opacity-95">Be part of the future of mining technology with industry leaders</p>
+      <h2 class="text-5xl font-black mb-6 premium-heading">Ready to Get Started?</h2>
+      <p class="text-xl mb-10 opacity-95">Join 500+ companies using SESMine for enterprise mining solutions</p>
       <div class="flex gap-4 justify-center">
-        <a href="contact.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all">Contact Us</a>
-        <a href="auth/signup.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Get Started</a>
+        <a href="auth/signup.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all">Start Free Trial</a>
+        <a href="contact.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Contact Sales</a>
       </div>
     </div>
   </section>
