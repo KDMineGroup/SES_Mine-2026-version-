@@ -3,474 +3,448 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - SESMine</title>
+  <title>Contact Enterprise Sales - SESMine | Global Mining Solutions Leader</title>
+  <meta name="description" content="Connect with SESMine enterprise sales team. 24/7 support for Fortune 500 mining companies. ISO 9001 certified service.">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .contact-card { transition: all 0.3s ease; }
-    .contact-card:hover { transform: translateY(-5px); }
+    * { 
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, .premium-heading {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    :root {
+      --corporate-blue: #003366;
+      --navy-dark: #001a3d;
+      --success-blue: #1976d2;
+      --azure-light: #0080cc;
+    }
+    
+    body {
+      background: #ffffff;
+      color: #2c3e50;
+    }
+    
+    .gradient-blue {
+      background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #003366 0%, #1976d2 50%, #0080cc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .btn-corporate {
+      background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-corporate:hover {
+      background: linear-gradient(135deg, #001a3d 0%, #003366 100%);
+      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .nav-premium {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #ecf0f1;
+      box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
+    }
+    
+    .contact-card {
+      background: white;
+      border: 2px solid #ecf0f1;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card:hover {
+      border-color: #003366;
+      box-shadow: 0 15px 40px rgba(0, 51, 102, 0.12);
+      transform: translateY(-5px);
+    }
+    
+    .form-input {
+      border: 2px solid #ecf0f1;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #003366;
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+    }
+    
+    .premium-badge {
+      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .office-marker {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #003366, #0080cc);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-white">
+<body>
   <!-- Navigation -->
-  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <div class="flex items-center justify-between">
+  <nav class="fixed w-full z-50 nav-premium">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between py-4">
         <a href="index.html" class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-mountain text-white text-xl"></i>
+          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14">
+          <div class="hidden lg:block">
+            <div class="text-xs text-gray-500 font-medium">EST. 2004</div>
+            <div class="text-xs text-blue-900 font-bold tracking-wider">GLOBAL LEADER</div>
           </div>
-          <span class="text-2xl font-black">SES<span class="gradient-text">Mine</span></span>
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="products/cost-calculator.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
-          <a href="pricing/index.html" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
-          <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
-          <a href="contact.html" class="text-amber-500 font-semibold">Contact</a>
-          <a href="auth/login.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
-            Sign In
-          </a>
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Home</a>
+          <a href="features.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Features</a>
+          <a href="pricing/index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Pricing</a>
+          <a href="about.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">About</a>
+          <a href="contact.html" class="text-sm font-semibold text-blue-900">Contact</a>
+          <a href="auth/signup.html" class="btn-corporate px-6 py-2.5 rounded-xl text-sm">Get Started</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="pt-32 pb-12 relative overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-6">
-          <i class="fas fa-headset text-blue-500"></i>
-          <span class="text-blue-500 text-sm font-medium">We're Here to Help</span>
-        </div>
-        <h1 class="text-5xl lg:text-6xl font-black mb-6">
-          Get in Touch
-          <br><span class="gradient-text">With Our Team</span>
+  <section class="pt-40 pb-24 px-6 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <div class="premium-badge mb-6">Enterprise Support</div>
+        <h1 class="text-6xl lg:text-7xl font-black mb-6 text-gray-900 premium-heading">
+          Connect With Our <span class="gradient-text">Global Team</span>
         </h1>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Have questions about SESMine? Want to schedule a demo? Our team of mining experts 
-          is ready to help you find the perfect solution.
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+          24/7 enterprise support for Fortune 500 mining companies worldwide. ISO 9001 certified service excellence.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="contact-card bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-phone text-blue-500 text-2xl"></i>
+      <!-- Quick Contact Options -->
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="contact-card rounded-2xl p-8 text-center">
+          <div class="office-marker mx-auto mb-6">
+            <i class="fas fa-phone"></i>
           </div>
-          <h3 class="font-bold text-lg mb-2">Call Us</h3>
-          <p class="text-gray-400 text-sm mb-3">Mon-Fri 8am-6pm MST</p>
-          <a href="tel:+13035551234" class="text-amber-500 font-semibold hover:underline">+1 (303) 555-1234</a>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Call Us</h3>
+          <p class="text-gray-600 mb-4 font-medium">24/7 Enterprise Hotline</p>
+          <a href="tel:+442071234567" class="text-blue-900 font-bold text-lg hover:text-blue-700">+44 20 7123 4567</a>
+          <p class="text-sm text-gray-500 mt-2">Average response: &lt;2 minutes</p>
         </div>
 
-        <div class="contact-card bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-envelope text-green-500 text-2xl"></i>
+        <div class="contact-card rounded-2xl p-8 text-center">
+          <div class="office-marker mx-auto mb-6">
+            <i class="fas fa-envelope"></i>
           </div>
-          <h3 class="font-bold text-lg mb-2">Email Us</h3>
-          <p class="text-gray-400 text-sm mb-3">Response within 24 hours</p>
-          <a href="mailto:info@sesmine.com" class="text-amber-500 font-semibold hover:underline">info@sesmine.com</a>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Email Us</h3>
+          <p class="text-gray-600 mb-4 font-medium">Enterprise Sales Team</p>
+          <a href="mailto:enterprise@sesmine.com" class="text-blue-900 font-bold text-lg hover:text-blue-700">enterprise@sesmine.com</a>
+          <p class="text-sm text-gray-500 mt-2">Response within 4 hours</p>
         </div>
 
-        <div class="contact-card bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-comments text-purple-500 text-2xl"></i>
+        <div class="contact-card rounded-2xl p-8 text-center">
+          <div class="office-marker mx-auto mb-6">
+            <i class="fas fa-comments"></i>
           </div>
-          <h3 class="font-bold text-lg mb-2">Live Chat</h3>
-          <p class="text-gray-400 text-sm mb-3">Available 24/7</p>
-          <button class="text-amber-500 font-semibold hover:underline">Start Chat</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form & Info Section -->
-  <section class="py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Contact Form -->
-        <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
-          <h2 class="text-3xl font-bold mb-6">Send Us a Message</h2>
-          <p class="text-gray-400 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
-
-          <form class="space-y-6">
-            <!-- Name Fields -->
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">First Name *</label>
-                <input 
-                  type="text" 
-                  placeholder="John"
-                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                  required
-                >
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Last Name *</label>
-                <input 
-                  type="text" 
-                  placeholder="Doe"
-                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                  required
-                >
-              </div>
-            </div>
-
-            <!-- Email & Phone -->
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Email Address *</label>
-                <input 
-                  type="email" 
-                  placeholder="john.doe@company.com"
-                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                  required
-                >
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Phone Number</label>
-                <input 
-                  type="tel" 
-                  placeholder="+1 (555) 123-4567"
-                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                >
-              </div>
-            </div>
-
-            <!-- Company & Role -->
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Company Name *</label>
-                <input 
-                  type="text" 
-                  placeholder="Mining Corp Inc."
-                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                  required
-                >
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-400 mb-2">Job Title</label>
-                <input 
-                  type="text" 
-                  placeholder="Mining Engineer"
-                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all"
-                >
-              </div>
-            </div>
-
-            <!-- Inquiry Type -->
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2">What can we help you with? *</label>
-              <select class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-all" required>
-                <option value="">Select an option</option>
-                <option>Schedule a Demo</option>
-                <option>Sales Inquiry</option>
-                <option>Technical Support</option>
-                <option>Partnership Opportunity</option>
-                <option>General Question</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <!-- Message -->
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2">Message *</label>
-              <textarea 
-                rows="5"
-                placeholder="Tell us more about your needs..."
-                class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition-all resize-none"
-                required
-              ></textarea>
-            </div>
-
-            <!-- Consent -->
-            <div class="flex items-start gap-3">
-              <input type="checkbox" id="consent" class="mt-1" required>
-              <label for="consent" class="text-sm text-gray-400">
-                I agree to receive communications from SESMine and understand that I can opt out at any time. 
-                View our <a href="#" class="text-amber-500 hover:underline">Privacy Policy</a>.
-              </label>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-600 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-              <i class="fas fa-paper-plane mr-2"></i>Send Message
-            </button>
-
-            <p class="text-xs text-gray-500 text-center">
-              We typically respond within 24 hours during business days
-            </p>
-          </form>
-        </div>
-
-        <!-- Office Locations & Additional Info -->
-        <div class="space-y-8">
-          <!-- Office Locations -->
-          <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
-            <h3 class="text-2xl font-bold mb-6">Our Offices</h3>
-            
-            <div class="space-y-6">
-              <!-- Denver HQ -->
-              <div class="flex gap-4">
-                <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-building text-amber-500"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">🇺🇸 Denver, USA (HQ)</h4>
-                  <p class="text-gray-400 text-sm mb-2">1234 Mining Avenue, Suite 500<br>Denver, CO 80202</p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-phone text-amber-500 mr-2"></i>+1 (303) 555-1234
-                  </p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-clock text-amber-500 mr-2"></i>Mon-Fri: 8am-6pm MST
-                  </p>
-                </div>
-              </div>
-
-              <div class="border-t border-slate-800"></div>
-
-              <!-- Perth Office -->
-              <div class="flex gap-4">
-                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-building text-green-500"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">🇦🇺 Perth, Australia</h4>
-                  <p class="text-gray-400 text-sm mb-2">Level 5, 123 St Georges Terrace<br>Perth, WA 6000</p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-phone text-green-500 mr-2"></i>+61 8 9123 4567
-                  </p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-clock text-green-500 mr-2"></i>Mon-Fri: 9am-5pm AWST
-                  </p>
-                </div>
-              </div>
-
-              <div class="border-t border-slate-800"></div>
-
-              <!-- Santiago Office -->
-              <div class="flex gap-4">
-                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-building text-blue-500"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">🇨🇱 Santiago, Chile</h4>
-                  <p class="text-gray-400 text-sm mb-2">Av. Apoquindo 4501, Piso 12<br>Las Condes, Santiago</p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-phone text-blue-500 mr-2"></i>+56 2 2345 6789
-                  </p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-clock text-blue-500 mr-2"></i>Lun-Vie: 9am-6pm CLT
-                  </p>
-                </div>
-              </div>
-
-              <div class="border-t border-slate-800"></div>
-
-              <!-- Johannesburg Office -->
-              <div class="flex gap-4">
-                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-building text-purple-500"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">🇿🇦 Johannesburg, South Africa</h4>
-                  <p class="text-gray-400 text-sm mb-2">Sandton City Office Tower<br>Sandton, 2196</p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-phone text-purple-500 mr-2"></i>+27 11 123 4567
-                  </p>
-                  <p class="text-gray-400 text-sm">
-                    <i class="fas fa-clock text-purple-500 mr-2"></i>Mon-Fri: 8am-5pm SAST
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Support Resources -->
-          <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
-            <h3 class="text-2xl font-bold mb-6">Need Quick Help?</h3>
-            
-            <div class="space-y-4">
-              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
-                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                  <i class="fas fa-book text-blue-500"></i>
-                </div>
-                <div>
-                  <div class="font-semibold">Documentation</div>
-                  <div class="text-sm text-gray-400">Browse our knowledge base</div>
-                </div>
-                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
-              </a>
-
-              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
-                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                  <i class="fas fa-video text-green-500"></i>
-                </div>
-                <div>
-                  <div class="font-semibold">Video Tutorials</div>
-                  <div class="text-sm text-gray-400">Watch step-by-step guides</div>
-                </div>
-                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
-              </a>
-
-              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
-                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                  <i class="fas fa-question-circle text-purple-500"></i>
-                </div>
-                <div>
-                  <div class="font-semibold">FAQ</div>
-                  <div class="text-sm text-gray-400">Common questions answered</div>
-                </div>
-                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
-              </a>
-
-              <a href="#" class="flex items-center gap-4 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
-                <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                  <i class="fas fa-ticket-alt text-amber-500"></i>
-                </div>
-                <div>
-                  <div class="font-semibold">Submit a Ticket</div>
-                  <div class="text-sm text-gray-400">Get technical support</div>
-                </div>
-                <i class="fas fa-arrow-right ml-auto text-gray-400"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Social Media -->
-          <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800">
-            <h3 class="text-2xl font-bold mb-6">Follow Us</h3>
-            <div class="flex gap-4">
-              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <i class="fab fa-linkedin-in text-xl"></i>
-              </a>
-              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-blue-400 transition-colors">
-                <i class="fab fa-twitter text-xl"></i>
-              </a>
-              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-red-600 transition-colors">
-                <i class="fab fa-youtube text-xl"></i>
-              </a>
-              <a href="#" class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-pink-600 transition-colors">
-                <i class="fab fa-instagram text-xl"></i>
-              </a>
-            </div>
-          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Live Chat</h3>
+          <p class="text-gray-600 mb-4 font-medium">Instant Support</p>
+          <button class="text-blue-900 font-bold text-lg hover:text-blue-700">Start Chat Now</button>
+          <p class="text-sm text-gray-500 mt-2">Available 24/7</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Map Section -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- Contact Form Section -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
-        <h2 class="text-4xl font-black mb-4">Visit Our Headquarters</h2>
-        <p class="text-gray-400 text-lg">Located in the heart of Denver's mining district</p>
+        <h2 class="text-4xl font-black mb-4 text-gray-900 premium-heading">Request Enterprise Demo</h2>
+        <p class="text-lg text-gray-600 font-medium">Fill out the form and our team will contact you within 24 hours</p>
       </div>
-      
-      <div class="bg-slate-950 rounded-3xl overflow-hidden border border-slate-800">
-        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=500&fit=crop" 
-             alt="Denver Office Location" 
-             class="w-full h-96 object-cover">
-        <div class="p-8">
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-map-marker-alt text-amber-500"></i>
-              </div>
-              <div>
-                <div class="font-semibold">Address</div>
-                <div class="text-sm text-gray-400">1234 Mining Ave, Denver CO</div>
-              </div>
+
+      <form class="bg-gray-50 rounded-3xl p-10 border-2 border-gray-200">
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">First Name *</label>
+            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="John">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">Last Name *</label>
+            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Doe">
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">Work Email *</label>
+            <input type="email" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="john.doe@company.com">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">Phone Number *</label>
+            <input type="tel" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">Company Name *</label>
+            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Mining Corp">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">Job Title *</label>
+            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Chief Mining Officer">
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">Country *</label>
+            <select required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium">
+              <option value="">Select Country</option>
+              <option value="US">United States</option>
+              <option value="UK">United Kingdom</option>
+              <option value="CA">Canada</option>
+              <option value="AU">Australia</option>
+              <option value="DE">Germany</option>
+              <option value="FR">France</option>
+              <option value="ES">Spain</option>
+              <option value="BR">Brazil</option>
+              <option value="CL">Chile</option>
+              <option value="PE">Peru</option>
+              <option value="ZA">South Africa</option>
+              <option value="CN">China</option>
+              <option value="IN">India</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-800 mb-2">Company Size *</label>
+            <select required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium">
+              <option value="">Select Size</option>
+              <option value="1-50">1-50 employees</option>
+              <option value="51-200">51-200 employees</option>
+              <option value="201-1000">201-1,000 employees</option>
+              <option value="1001-5000">1,001-5,000 employees</option>
+              <option value="5001+">5,001+ employees</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-sm font-bold text-gray-800 mb-2">Area of Interest *</label>
+          <select required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium">
+            <option value="">Select Solution</option>
+            <option value="cost-estimation">AI Cost Estimation</option>
+            <option value="project-management">Project Management</option>
+            <option value="analytics">Advanced Analytics</option>
+            <option value="esg">ESG Compliance</option>
+            <option value="safety">Safety Management</option>
+            <option value="full-platform">Full Platform Solution</option>
+            <option value="custom">Custom Enterprise Solution</option>
+          </select>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-sm font-bold text-gray-800 mb-2">Message</label>
+          <textarea rows="5" class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Tell us about your project requirements and how we can help..."></textarea>
+        </div>
+
+        <div class="mb-6">
+          <label class="flex items-start gap-3">
+            <input type="checkbox" required class="mt-1 w-5 h-5 text-blue-900 border-2 border-gray-300 rounded">
+            <span class="text-sm text-gray-600">
+              I agree to receive communications from SESMine and understand that I can opt out at any time. 
+              By submitting this form, I acknowledge that I have read and understood the 
+              <a href="#" class="text-blue-900 font-semibold hover:underline">Privacy Policy</a> and 
+              <a href="#" class="text-blue-900 font-semibold hover:underline">Terms of Service</a>.
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-corporate w-full py-4 rounded-xl font-bold text-lg">
+          Request Enterprise Demo
+        </button>
+
+        <p class="text-center text-sm text-gray-500 mt-4">
+          <i class="fas fa-lock mr-2"></i>
+          Your information is secure and will never be shared with third parties
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Global Offices -->
+  <section class="py-24 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black mb-4 text-gray-900 premium-heading">Global Presence</h2>
+        <p class="text-xl text-gray-600 font-medium">Operating in 50+ countries with local expertise</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Headquarters -->
+        <div class="contact-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
+              <i class="fas fa-building"></i>
             </div>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-parking text-green-500"></i>
-              </div>
-              <div>
-                <div class="font-semibold">Parking</div>
-                <div class="text-sm text-gray-400">Free visitor parking available</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                <i class="fas fa-subway text-blue-500"></i>
-              </div>
-              <div>
-                <div class="font-semibold">Transit</div>
-                <div class="text-sm text-gray-400">Union Station - 5 min walk</div>
-              </div>
+            <div>
+              <div class="font-bold text-gray-900">Headquarters</div>
+              <div class="text-sm text-gray-500">London, UK</div>
             </div>
           </div>
+          <p class="text-sm text-gray-600 mb-3">
+            25 Old Broad Street<br>
+            London EC2N 1HN<br>
+            United Kingdom
+          </p>
+          <p class="text-sm font-semibold text-blue-900">+44 20 7123 4567</p>
+        </div>
+
+        <!-- North America -->
+        <div class="contact-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <div class="font-bold text-gray-900">North America</div>
+              <div class="text-sm text-gray-500">New York, USA</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-3">
+            350 Fifth Avenue<br>
+            New York, NY 10118<br>
+            United States
+          </p>
+          <p class="text-sm font-semibold text-blue-900">+1 (212) 555-0100</p>
+        </div>
+
+        <!-- Asia Pacific -->
+        <div class="contact-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <div class="font-bold text-gray-900">Asia Pacific</div>
+              <div class="text-sm text-gray-500">Singapore</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-3">
+            1 Raffles Place<br>
+            Singapore 048616<br>
+            Singapore
+          </p>
+          <p class="text-sm font-semibold text-blue-900">+65 6123 4567</p>
+        </div>
+
+        <!-- Latin America -->
+        <div class="contact-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <div class="font-bold text-gray-900">Latin America</div>
+              <div class="text-sm text-gray-500">Santiago, Chile</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mb-3">
+            Av. Apoquindo 4501<br>
+            Las Condes, Santiago<br>
+            Chile
+          </p>
+          <p class="text-sm font-semibold text-blue-900">+56 2 2345 6789</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 rounded-3xl p-12 border border-amber-500/30 text-center">
-        <h2 class="text-4xl font-black mb-4">Prefer to See a Demo First?</h2>
-        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          Schedule a personalized demo with one of our mining experts and see SESMine in action.
-        </p>
-        <a href="auth/signup.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-          <i class="fas fa-calendar-alt"></i>
-          Schedule Demo
-        </a>
+  <section class="py-24 px-6 gradient-blue">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <h2 class="text-5xl font-black mb-6 premium-heading">Ready to Transform Your Operations?</h2>
+      <p class="text-xl mb-8 opacity-95">Join Fortune 500 companies using SESMine for enterprise mining solutions</p>
+      <div class="flex gap-4 justify-center">
+        <a href="auth/signup.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold hover:scale-105 transition-all">Get Started Now</a>
+        <a href="help.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition-all">Visit Help Center</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-800 py-12">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8">
+  <footer class="border-t-2 border-gray-200 py-16 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-mountain text-white"></i>
-            </div>
-            <span class="text-xl font-bold">SES<span class="gradient-text">Mine</span></span>
-          </div>
-          <p class="text-gray-400 text-sm">Smart Engineering Solutions for Mining</p>
+          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14 mb-4">
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed font-medium">Global Leader in Mining Engineering Solutions</p>
+          <div class="text-xs text-gray-500 font-semibold mb-4">EST. 2004 | ISO 9001 Certified</div>
         </div>
+        
         <div>
-          <h4 class="font-semibold mb-4">Product</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="products/cost-calculator.html" class="hover:text-white transition-colors">Cost Calculator</a></li>
-            <li><a href="products/equipment-database.html" class="hover:text-white transition-colors">Equipment Database</a></li>
-            <li><a href="pricing/index.html" class="hover:text-white transition-colors">Pricing</a></li>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Solutions</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="features.html" class="hover:text-blue-900 transition-colors">Features</a></li>
+            <li><a href="pricing/index.html" class="hover:text-blue-900 transition-colors">Pricing</a></li>
           </ul>
         </div>
+        
         <div>
-          <h4 class="font-semibold mb-4">Company</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
-            <li><a href="news.html" class="hover:text-white transition-colors">News</a></li>
-            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Company</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="about.html" class="hover:text-blue-900 transition-colors">About Us</a></li>
+            <li><a href="news.html" class="hover:text-blue-900 transition-colors">News</a></li>
           </ul>
         </div>
+        
         <div>
-          <h4 class="font-semibold mb-4">Legal</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Support</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="help.html" class="hover:text-blue-900 transition-colors">Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-blue-900 transition-colors">Contact</a></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-        <p>© 2025 SESMine. All rights reserved.</p>
+      
+      <div class="border-t-2 border-gray-200 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-gray-600 text-sm font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
+          <div class="flex items-center gap-4 text-xs text-gray-500 font-semibold">
+            <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-blue-900"></i> SOC 2</span>
+            <span class="flex items-center gap-2"><i class="fas fa-award text-blue-900"></i> ISO 9001</span>
+            <span class="flex items-center gap-2"><i class="fas fa-lock text-blue-900"></i> GDPR</span>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
