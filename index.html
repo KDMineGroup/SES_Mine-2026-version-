@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SESMine - Smart Engineering Solutions for Mining Industry</title>
-  <meta name="description" content="Advanced mining cost estimation platform powered by AI. Trusted by mining companies worldwide for accurate project planning and execution.">
+  <title>SESMine - Global Leader in Mining Engineering Solutions | Est. 2004</title>
+  <meta name="description" content="Industry-leading mining cost estimation and project management platform. Trusted by Fortune 500 mining companies worldwide. 20+ years of excellence.">
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { 
@@ -15,69 +15,77 @@
       scroll-behavior: smooth;
     }
     
-    /* Professional Light Theme Colors */
+    h1, h2, h3, .premium-heading {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Premium Corporate Colors */
     :root {
-      --navy-dark: #001f3f;
-      --navy-primary: #003d7a;
-      --navy-medium: #0056b3;
-      --navy-light: #0066cc;
-      --orange-primary: #ff6600;
-      --orange-light: #ff8833;
-      --blue-trust: #0080ff;
-      --blue-light: #3399ff;
-      --gray-50: #f8f9fa;
-      --gray-100: #e9ecef;
-      --gray-200: #dee2e6;
-      --gray-600: #6c757d;
-      --green-primary: #00897b;
-      --gold-primary: #daa520;
+      --corporate-blue: #003366;
+      --navy-dark: #001a3d;
+      --navy-medium: #2c3e50;
+      --steel-blue: #607d8b;
+      --success-blue: #1976d2;
+      --azure-light: #0080cc;
+      --white-pure: #ffffff;
+      --white-soft: #f8f9fa;
+      --gray-light: #ecf0f1;
     }
     
     body {
       background: #ffffff;
-      color: #2d3748;
+      color: #2c3e50;
+    }
+    
+    .gradient-blue {
+      background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
     }
     
     .gradient-text {
-      background: linear-gradient(135deg, #0066cc 0%, #ff6600 50%, #daa520 100%);
+      background: linear-gradient(135deg, #003366 0%, #1976d2 50%, #0080cc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     
-    .btn-primary {
-      background: linear-gradient(135deg, #ff6600 0%, #ff8833 100%);
-      box-shadow: 0 4px 15px rgba(255, 102, 0, 0.25);
+    .btn-corporate {
+      background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
       color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
     
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #e65100 0%, #ff6600 100%);
-      box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4);
+    .btn-corporate:hover {
+      background: linear-gradient(135deg, #001a3d 0%, #003366 100%);
+      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
       transform: translateY(-2px);
     }
     
-    .btn-secondary {
-      background: linear-gradient(135deg, #0066cc 0%, #3399ff 100%);
-      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.25);
+    .btn-outline {
+      background: white;
+      border: 2px solid #003366;
+      color: #003366;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    .btn-outline:hover {
+      background: #003366;
       color: white;
-    }
-    
-    .btn-secondary:hover {
-      background: linear-gradient(135deg, #0056b3 0%, #0066cc 100%);
-      box-shadow: 0 6px 25px rgba(0, 102, 204, 0.4);
       transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.3);
     }
     
-    .logo-glow {
-      filter: drop-shadow(0 0 20px rgba(0, 102, 204, 0.3));
+    .logo-premium {
+      filter: drop-shadow(0 2px 8px rgba(0, 51, 102, 0.2));
     }
     
-    /* Navigation Styles */
-    .nav-bar {
+    /* Premium Navigation */
+    .nav-premium {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid #e9ecef;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid #ecf0f1;
+      box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
     }
     
     .mega-menu {
@@ -113,7 +121,8 @@
     .menu-link {
       position: relative;
       transition: all 0.3s ease;
-      color: #2d3748;
+      color: #2c3e50;
+      font-weight: 500;
     }
     
     .menu-link::after {
@@ -124,34 +133,35 @@
       transform: translateX(-50%);
       width: 0;
       height: 3px;
-      background: linear-gradient(90deg, #0080ff, #ff6600);
+      background: linear-gradient(90deg, #003366, #0080cc);
       border-radius: 2px;
       transition: width 0.3s ease;
     }
     
     .menu-link:hover {
-      color: #0066cc;
+      color: #003366;
     }
     
     .menu-link:hover::after {
       width: 80%;
     }
     
-    /* Card Styles */
-    .card-interactive {
+    /* Premium Cards */
+    .card-premium {
       position: relative;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       background: white;
-      border: 2px solid #e9ecef;
+      border: 2px solid #ecf0f1;
+      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.06);
     }
     
-    .card-interactive::before {
+    .card-premium::before {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: inherit;
       padding: 2px;
-      background: linear-gradient(135deg, #0080ff, #ff6600);
+      background: linear-gradient(135deg, #003366, #0080cc);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -159,12 +169,12 @@
       transition: opacity 0.4s ease;
     }
     
-    .card-interactive:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+    .card-premium:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(0, 51, 102, 0.15);
     }
     
-    .card-interactive:hover::before {
+    .card-premium:hover::before {
       opacity: 1;
     }
     
@@ -179,34 +189,20 @@
     }
     
     .animate-float {
-      animation: float 6s ease-in-out infinite;
+      animation: float 8s ease-in-out infinite;
     }
     
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-25px); }
+      50% { transform: translateY(-30px); }
     }
     
     .stat-counter {
       font-variant-numeric: tabular-nums;
-      background: linear-gradient(135deg, #0080ff 0%, #ff6600 100%);
+      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-    
-    .notification-badge {
-      animation: pulse-glow 2s infinite;
-    }
-    
-    @keyframes pulse-glow {
-      0%, 100% { 
-        opacity: 1;
-        box-shadow: 0 0 10px rgba(255, 102, 0, 0.8);
-      }
-      50% { 
-        opacity: 0.6;
-        box-shadow: 0 0 20px rgba(255, 102, 0, 1);
-      }
+      font-family: 'Playfair Display', serif;
     }
     
     .hover-lift {
@@ -214,78 +210,119 @@
     }
     
     .hover-lift:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 102, 204, 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 51, 102, 0.15);
     }
     
-    .glass-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid #e9ecef;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    .premium-badge {
+      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
     
-    .hero-gradient {
-      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #003366, transparent);
+      margin: 3rem 0;
     }
     
-    .section-bg {
-      background: #f8f9fa;
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      border: 2px solid #ecf0f1;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 15px rgba(0, 51, 102, 0.08);
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    
+    .hero-premium {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+      position: relative;
+    }
+    
+    .hero-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(0, 128, 204, 0.05) 100%);
+      clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
   </style>
 </head>
 <body>
-  <!-- Advanced Navigation -->
-  <nav class="fixed w-full z-50 nav-bar">
+  <!-- Premium Navigation -->
+  <nav class="fixed w-full z-50 nav-premium">
     <div class="max-w-7xl mx-auto px-6">
       <!-- Top Bar -->
       <div class="flex items-center justify-between py-4 border-b border-gray-100">
         <div class="flex items-center gap-8">
-          <!-- Logo -->
+          <!-- Premium Logo -->
           <a href="index.html" class="flex items-center gap-3 group">
-            <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine Logo" class="h-14 logo-glow group-hover:scale-110 transition-transform duration-300">
+            <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-16 logo-premium group-hover:scale-105 transition-transform duration-300">
+            <div class="hidden lg:block">
+              <div class="text-xs text-gray-500 font-medium">EST. 2004</div>
+              <div class="text-xs text-blue-900 font-bold tracking-wider">GLOBAL LEADER</div>
+            </div>
           </a>
           
-          <!-- Search Bar -->
+          <!-- Premium Search -->
           <div class="hidden lg:flex items-center relative">
-            <input type="text" placeholder="Search features, hubs, documentation..." class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 pl-11 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:w-96 w-72 transition-all duration-300">
-            <i class="fas fa-search absolute left-4 text-blue-500"></i>
-            <button class="absolute right-3 text-xs text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-200 shadow-sm">⌘K</button>
+            <input type="text" placeholder="Search solutions, resources, documentation..." class="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent focus:w-96 w-80 transition-all duration-300">
+            <i class="fas fa-search absolute left-4 text-blue-900"></i>
+            <button class="absolute right-3 text-xs text-gray-500 bg-white px-2.5 py-1.5 rounded-lg border border-gray-200 shadow-sm font-semibold">⌘K</button>
           </div>
         </div>
 
         <!-- Right Actions -->
         <div class="flex items-center gap-3">
+          <!-- Enterprise Badge -->
+          <div class="hidden lg:flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg border border-blue-200">
+            <i class="fas fa-shield-alt text-blue-900"></i>
+            <span class="text-xs font-bold text-blue-900">ENTERPRISE GRADE</span>
+          </div>
+
           <!-- Notifications -->
-          <button class="relative p-2.5 hover:bg-gray-50 rounded-xl transition-all hover-lift group">
-            <i class="fas fa-bell text-gray-600 group-hover:text-blue-600 transition-colors text-lg"></i>
-            <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-orange-500 rounded-full notification-badge"></span>
+          <button class="relative p-3 hover:bg-gray-50 rounded-xl transition-all hover-lift group">
+            <i class="fas fa-bell text-gray-600 group-hover:text-blue-900 transition-colors text-lg"></i>
+            <span class="absolute top-2 right-2 w-2.5 h-2.5 bg-blue-900 rounded-full"></span>
           </button>
 
-          <!-- Language Selector -->
+          <!-- Language -->
           <div class="relative group">
-            <button class="flex items-center gap-2 px-3 py-2.5 hover:bg-gray-50 rounded-xl transition-all hover-lift">
+            <button class="flex items-center gap-2 px-4 py-3 hover:bg-gray-50 rounded-xl transition-all hover-lift">
               <i class="fas fa-globe text-gray-600"></i>
-              <span class="text-sm font-medium text-gray-700">EN</span>
+              <span class="text-sm font-semibold text-gray-700">EN</span>
               <i class="fas fa-chevron-down text-xs text-gray-500"></i>
             </button>
-            <div class="dropdown-menu absolute right-0 top-full mt-2 w-52 glass-card rounded-xl shadow-xl overflow-hidden group-hover:active">
+            <div class="dropdown-menu absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-gray-100 group-hover:active">
               <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
                 <span class="text-2xl">🇺🇸</span>
-                <span class="text-sm font-medium text-gray-700">English</span>
-                <i class="fas fa-check text-blue-600 ml-auto text-xs"></i>
+                <span class="text-sm font-semibold text-gray-700">English</span>
+                <i class="fas fa-check text-blue-900 ml-auto text-xs"></i>
               </a>
               <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
                 <span class="text-2xl">🇪🇸</span>
-                <span class="text-sm font-medium text-gray-700">Español</span>
+                <span class="text-sm font-semibold text-gray-700">Español</span>
               </a>
               <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
                 <span class="text-2xl">🇫🇷</span>
-                <span class="text-sm font-medium text-gray-700">Français</span>
+                <span class="text-sm font-semibold text-gray-700">Français</span>
               </a>
               <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
                 <span class="text-2xl">🇩🇪</span>
-                <span class="text-sm font-medium text-gray-700">Deutsch</span>
+                <span class="text-sm font-semibold text-gray-700">Deutsch</span>
               </a>
             </div>
           </div>
@@ -293,268 +330,258 @@
           <!-- User Profile -->
           <div class="relative group">
             <button class="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded-xl transition-all hover-lift">
-              <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center text-sm font-bold text-white shadow-lg">
+              <div class="w-10 h-10 rounded-xl gradient-blue flex items-center justify-center text-sm font-bold text-white shadow-lg">
                 JD
               </div>
               <div class="hidden md:block text-left">
-                <div class="text-sm font-semibold text-gray-800">John Doe</div>
-                <div class="text-xs text-blue-600 font-medium">Pro Plan</div>
+                <div class="text-sm font-bold text-gray-800">John Doe</div>
+                <div class="text-xs text-blue-900 font-semibold">Enterprise</div>
               </div>
               <i class="fas fa-chevron-down text-xs text-gray-500"></i>
             </button>
-            <div class="dropdown-menu absolute right-0 top-full mt-2 w-72 glass-card rounded-xl shadow-xl overflow-hidden group-hover:active">
-              <div class="p-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-orange-50">
-                <div class="font-semibold text-lg text-gray-800">John Doe</div>
-                <div class="text-sm text-gray-600">john.doe@mining.com</div>
-                <div class="mt-2 inline-flex items-center gap-2 bg-blue-100 px-3 py-1 rounded-full text-xs font-semibold text-blue-700">
+            <div class="dropdown-menu absolute right-0 top-full mt-2 w-80 bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-gray-100 group-hover:active">
+              <div class="p-5 border-b border-gray-100 gradient-blue text-white">
+                <div class="font-bold text-lg">John Doe</div>
+                <div class="text-sm opacity-90">john.doe@mining.com</div>
+                <div class="mt-3 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold">
                   <i class="fas fa-crown"></i>
-                  Pro Plan
+                  Enterprise Plan
                 </div>
               </div>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all group/item">
-                <i class="fas fa-user w-5 text-blue-600 group-hover/item:scale-110 transition-transform"></i>
-                <span class="text-sm font-medium text-gray-700">My Profile</span>
+              <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all group/item">
+                <i class="fas fa-user w-5 text-blue-900 group-hover/item:scale-110 transition-transform"></i>
+                <span class="text-sm font-semibold text-gray-700">My Profile</span>
               </a>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all group/item">
-                <i class="fas fa-cog w-5 text-blue-600 group-hover/item:rotate-90 transition-transform duration-300"></i>
-                <span class="text-sm font-medium text-gray-700">Settings</span>
+              <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all group/item">
+                <i class="fas fa-cog w-5 text-blue-900 group-hover/item:rotate-90 transition-transform duration-300"></i>
+                <span class="text-sm font-semibold text-gray-700">Settings</span>
               </a>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all group/item">
-                <i class="fas fa-credit-card w-5 text-blue-600 group-hover/item:scale-110 transition-transform"></i>
-                <span class="text-sm font-medium text-gray-700">Billing & Plans</span>
+              <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all group/item">
+                <i class="fas fa-credit-card w-5 text-blue-900 group-hover/item:scale-110 transition-transform"></i>
+                <span class="text-sm font-semibold text-gray-700">Billing & Plans</span>
               </a>
               <div class="border-t border-gray-100"></div>
-              <a href="admin/admin-login.html" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all text-orange-600 group/item">
+              <a href="admin/admin-login.html" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all text-blue-900 group/item">
                 <i class="fas fa-user-shield w-5 group-hover/item:scale-110 transition-transform"></i>
-                <span class="text-sm font-medium">Admin Panel</span>
+                <span class="text-sm font-semibold">Admin Panel</span>
               </a>
-              <a href="auth/login.html" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all text-red-600 group/item">
+              <a href="auth/login.html" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all text-red-600 group/item">
                 <i class="fas fa-sign-out-alt w-5 group-hover/item:translate-x-1 transition-transform"></i>
-                <span class="text-sm font-medium">Sign Out</span>
+                <span class="text-sm font-semibold">Sign Out</span>
               </a>
             </div>
           </div>
 
           <!-- CTA Button -->
-          <a href="auth/signup.html" class="hidden lg:flex btn-primary px-6 py-2.5 rounded-xl font-bold items-center gap-2 transition-all">
+          <a href="auth/signup.html" class="hidden lg:flex btn-corporate px-6 py-3 rounded-xl items-center gap-2 transition-all">
             <i class="fas fa-rocket"></i>
             <span>Get Started</span>
           </a>
 
           <!-- Mobile Menu Toggle -->
-          <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 hover:bg-gray-50 rounded-xl transition-all">
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-3 hover:bg-gray-50 rounded-xl transition-all">
             <i class="fas fa-bars text-xl text-gray-700"></i>
           </button>
         </div>
       </div>
 
       <!-- Main Menu -->
-      <div class="hidden lg:flex items-center justify-between py-3">
+      <div class="hidden lg:flex items-center justify-between py-4">
         <div class="flex items-center gap-1">
           <!-- Solutions Mega Menu -->
           <div class="menu-item relative">
-            <button class="menu-link flex items-center gap-2 px-4 py-2.5 transition-colors font-semibold text-sm">
+            <button class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
               <i class="fas fa-th"></i>
               <span>Solutions</span>
               <i class="fas fa-chevron-down text-xs"></i>
             </button>
-            <div class="mega-menu absolute left-0 top-full mt-2 w-screen max-w-6xl glass-card rounded-2xl shadow-2xl p-8">
-              <div class="grid grid-cols-4 gap-8">
-                <!-- Column 1: Engineering Hubs -->
+            <div class="mega-menu absolute left-0 top-full mt-2 w-screen max-w-6xl bg-white rounded-2xl shadow-2xl p-10 border-2 border-gray-100">
+              <div class="grid grid-cols-4 gap-10">
+                <!-- Engineering Solutions -->
                 <div>
-                  <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <i class="fas fa-cogs text-blue-600 text-sm"></i>
+                  <div class="flex items-center gap-2 mb-5">
+                    <div class="w-10 h-10 gradient-blue rounded-xl flex items-center justify-center">
+                      <i class="fas fa-cogs text-white text-sm"></i>
                     </div>
-                    <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">Engineering</div>
+                    <div class="text-xs font-bold text-blue-900 uppercase tracking-wider">Engineering</div>
                   </div>
-                  <div class="space-y-1">
+                  <div class="space-y-2">
                     <a href="hubs/engineering-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-drafting-compass text-blue-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-drafting-compass text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-blue-600 transition-colors">Engineering Hub</div>
-                        <div class="text-xs text-gray-500">Design & optimization</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Engineering Hub</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">Design & optimization</div>
                       </div>
                     </a>
                     <a href="hubs/economics-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-chart-pie text-blue-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-chart-pie text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-blue-600 transition-colors">Economics Hub</div>
-                        <div class="text-xs text-gray-500">Financial modeling</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Economics Hub</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">Financial modeling</div>
                       </div>
                     </a>
                     <a href="hubs/innovation-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-lightbulb text-orange-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-lightbulb text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-orange-600 transition-colors">Innovation Hub</div>
-                        <div class="text-xs text-gray-500">AI & digital solutions</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Innovation Hub</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">AI & digital solutions</div>
                       </div>
                     </a>
                   </div>
                 </div>
 
-                <!-- Column 2: Operations Hubs -->
+                <!-- Operations -->
                 <div>
-                  <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                      <i class="fas fa-leaf text-green-600 text-sm"></i>
+                  <div class="flex items-center gap-2 mb-5">
+                    <div class="w-10 h-10 gradient-blue rounded-xl flex items-center justify-center">
+                      <i class="fas fa-industry text-white text-sm"></i>
                     </div>
-                    <div class="text-xs font-bold text-green-600 uppercase tracking-wider">Operations</div>
+                    <div class="text-xs font-bold text-blue-900 uppercase tracking-wider">Operations</div>
                   </div>
-                  <div class="space-y-1">
+                  <div class="space-y-2">
                     <a href="hubs/sustainability-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-leaf text-green-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-leaf text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-green-600 transition-colors">Sustainability Hub</div>
-                        <div class="text-xs text-gray-500">ESG & compliance</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Sustainability Hub</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">ESG & compliance</div>
                       </div>
                     </a>
                     <a href="hubs/safety-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-shield-alt text-red-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-shield-alt text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-red-600 transition-colors">Safety Hub</div>
-                        <div class="text-xs text-gray-500">Risk management</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Safety Hub</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">Risk management</div>
                       </div>
                     </a>
                     <a href="hubs/analytics-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-chart-bar text-blue-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-chart-bar text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-blue-600 transition-colors">Analytics Hub</div>
-                        <div class="text-xs text-gray-500">Business intelligence</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Analytics Hub</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">Business intelligence</div>
                       </div>
                     </a>
                   </div>
                 </div>
 
-                <!-- Column 3: Products -->
+                <!-- Products -->
                 <div>
-                  <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                      <i class="fas fa-box text-orange-600 text-sm"></i>
+                  <div class="flex items-center gap-2 mb-5">
+                    <div class="w-10 h-10 gradient-blue rounded-xl flex items-center justify-center">
+                      <i class="fas fa-box text-white text-sm"></i>
                     </div>
-                    <div class="text-xs font-bold text-orange-600 uppercase tracking-wider">Products</div>
+                    <div class="text-xs font-bold text-blue-900 uppercase tracking-wider">Products</div>
                   </div>
-                  <div class="space-y-1">
+                  <div class="space-y-2">
                     <a href="products/cost-calculator.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-calculator text-orange-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-calculator text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-orange-600 transition-colors">Cost Calculator</div>
-                        <div class="text-xs text-gray-500">AI-powered estimation</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Cost Calculator</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">AI-powered estimation</div>
                       </div>
                     </a>
                     <a href="products/equipment-database.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-database text-blue-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-database text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-blue-600 transition-colors">Equipment DB</div>
-                        <div class="text-xs text-gray-500">10,000+ specifications</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Equipment DB</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">10,000+ specifications</div>
                       </div>
                     </a>
                     <a href="products/project-manager.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                        <i class="fas fa-tasks text-purple-600"></i>
+                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
+                        <i class="fas fa-tasks text-blue-900"></i>
                       </div>
                       <div>
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-purple-600 transition-colors">Project Manager</div>
-                        <div class="text-xs text-gray-500">End-to-end tracking</div>
+                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Project Manager</div>
+                        <div class="text-xs text-gray-500 leading-relaxed">End-to-end tracking</div>
                       </div>
                     </a>
                   </div>
                 </div>
 
-                <!-- Column 4: Featured -->
-                <div class="bg-gradient-to-br from-blue-50 via-orange-50 to-blue-50 rounded-2xl p-6 border border-blue-200">
+                <!-- Featured -->
+                <div class="gradient-blue rounded-2xl p-6 text-white">
                   <div class="flex items-center gap-2 mb-4">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-orange-500 rounded-lg flex items-center justify-center">
+                    <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
                       <i class="fas fa-star text-white text-sm"></i>
                     </div>
-                    <div class="text-xs font-bold text-blue-700 uppercase tracking-wider">Featured</div>
+                    <div class="text-xs font-bold uppercase tracking-wider">Featured</div>
                   </div>
                   <div>
-                    <div class="w-14 h-14 bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl flex items-center justify-center mb-4 hover:scale-110 transition-transform">
-                      <i class="fas fa-robot text-blue-600 text-2xl"></i>
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-4">
+                      <i class="fas fa-robot text-white text-3xl"></i>
                     </div>
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">AI Cost Estimator</h4>
-                    <p class="text-xs text-gray-600 mb-4 leading-relaxed">Get 94.2% accurate cost estimates powered by advanced machine learning algorithms</p>
-                    <a href="products/cost-calculator.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-orange-600 transition-colors group">
-                      Try Now <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    <h4 class="font-bold text-lg mb-2">AI Cost Estimator</h4>
+                    <p class="text-sm opacity-90 mb-4 leading-relaxed">Enterprise-grade cost estimation with 94.2% accuracy</p>
+                    <a href="products/cost-calculator.html" class="inline-flex items-center gap-2 text-sm font-bold hover:gap-3 transition-all">
+                      Explore Solution <i class="fas fa-arrow-right text-xs"></i>
                     </a>
                   </div>
                 </div>
               </div>
               
-              <!-- Bottom CTA -->
-              <div class="mt-6 pt-6 border-t border-gray-200">
+              <!-- Bottom Bar -->
+              <div class="mt-8 pt-6 border-t-2 border-gray-100">
                 <div class="flex items-center justify-between">
-                  <div class="text-sm text-gray-600">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    Explore all 9 specialized solution hubs
+                  <div class="text-sm text-gray-600 font-medium">
+                    <i class="fas fa-info-circle mr-2 text-blue-900"></i>
+                    9 specialized solution hubs for comprehensive mining operations
                   </div>
-                  <a href="#hubs" class="text-sm font-semibold text-blue-600 hover:text-orange-600 transition-colors flex items-center gap-2">
-                    View All Hubs <i class="fas fa-arrow-right text-xs"></i>
+                  <a href="#hubs" class="text-sm font-bold text-blue-900 hover:text-blue-700 transition-colors flex items-center gap-2">
+                    View All Solutions <i class="fas fa-arrow-right text-xs"></i>
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Features -->
-          <a href="features.html" class="menu-link flex items-center gap-2 px-4 py-2.5 transition-colors font-semibold text-sm">
+          <!-- Simple Links -->
+          <a href="features.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
             <i class="fas fa-star"></i>
             <span>Features</span>
           </a>
 
-          <!-- Resources -->
-          <a href="news.html" class="menu-link flex items-center gap-2 px-4 py-2.5 transition-colors font-semibold text-sm">
-            <i class="fas fa-newspaper"></i>
-            <span>News</span>
-          </a>
-
-          <!-- Pricing -->
-          <a href="pricing/index.html" class="menu-link flex items-center gap-2 px-4 py-2.5 transition-colors font-semibold text-sm">
+          <a href="pricing/index.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
             <i class="fas fa-tag"></i>
             <span>Pricing</span>
           </a>
 
-          <!-- Company -->
-          <a href="about.html" class="menu-link flex items-center gap-2 px-4 py-2.5 transition-colors font-semibold text-sm">
+          <a href="news.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
+            <i class="fas fa-newspaper"></i>
+            <span>Resources</span>
+          </a>
+
+          <a href="about.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
             <i class="fas fa-building"></i>
             <span>Company</span>
           </a>
 
-          <!-- Contact -->
-          <a href="contact.html" class="menu-link flex items-center gap-2 px-4 py-2.5 transition-colors font-semibold text-sm">
+          <a href="contact.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
             <i class="fas fa-envelope"></i>
             <span>Contact</span>
           </a>
-
-          <!-- Help -->
-          <a href="help.html" class="menu-link flex items-center gap-2 px-4 py-2.5 transition-colors font-semibold text-sm">
-            <i class="fas fa-life-ring"></i>
-            <span>Help</span>
-          </a>
         </div>
 
-        <!-- Quick Actions -->
+        <!-- Support -->
         <div class="flex items-center gap-3">
-          <a href="#demo" class="text-sm px-4 py-2 hover:text-blue-600 transition-colors font-medium flex items-center gap-2 text-gray-700">
-            <i class="fas fa-play-circle"></i>
-            <span>Watch Demo</span>
+          <a href="help.html" class="text-sm px-4 py-2 hover:text-blue-900 transition-colors font-semibold flex items-center gap-2 text-gray-700">
+            <i class="fas fa-headset"></i>
+            <span>24/7 Support</span>
           </a>
         </div>
       </div>
@@ -562,7 +589,7 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-y-0 left-0 w-80 z-50 lg:hidden overflow-y-auto border-r border-gray-200 shadow-2xl">
+  <div id="mobileMenu" class="mobile-menu fixed inset-y-0 left-0 w-80 z-50 lg:hidden overflow-y-auto border-r-2 border-gray-200 shadow-2xl">
     <div class="p-6">
       <div class="flex items-center justify-between mb-8">
         <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-12">
@@ -572,121 +599,133 @@
       </div>
 
       <div class="space-y-2">
-        <a href="index.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-home w-5 text-blue-600 group-hover:scale-110 transition-transform"></i>
-          <span class="font-medium text-gray-800">Home</span>
+        <a href="index.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
+          <i class="fas fa-home w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
+          <span class="font-semibold text-gray-800">Home</span>
         </a>
-        <a href="features.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-star w-5 text-blue-600 group-hover:scale-110 transition-transform"></i>
-          <span class="font-medium text-gray-800">Features</span>
+        <a href="features.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
+          <i class="fas fa-star w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
+          <span class="font-semibold text-gray-800">Features</span>
         </a>
-        <a href="pricing/index.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-tag w-5 text-orange-600 group-hover:scale-110 transition-transform"></i>
-          <span class="font-medium text-gray-800">Pricing</span>
+        <a href="pricing/index.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
+          <i class="fas fa-tag w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
+          <span class="font-semibold text-gray-800">Pricing</span>
         </a>
-        <a href="about.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-building w-5 text-green-600 group-hover:scale-110 transition-transform"></i>
-          <span class="font-medium text-gray-800">About</span>
+        <a href="about.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
+          <i class="fas fa-building w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
+          <span class="font-semibold text-gray-800">About</span>
         </a>
-        <a href="contact.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-envelope w-5 text-purple-600 group-hover:scale-110 transition-transform"></i>
-          <span class="font-medium text-gray-800">Contact</span>
+        <a href="contact.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
+          <i class="fas fa-envelope w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
+          <span class="font-semibold text-gray-800">Contact</span>
         </a>
       </div>
 
-      <div class="mt-8 pt-8 border-t border-gray-200">
-        <a href="auth/signup.html" class="block w-full btn-primary px-6 py-3 rounded-xl font-bold text-center transition-all mb-3">
-          Get Started Free
+      <div class="mt-8 pt-8 border-t-2 border-gray-200">
+        <a href="auth/signup.html" class="block w-full btn-corporate px-6 py-4 rounded-xl font-bold text-center transition-all mb-3">
+          Get Started
         </a>
-        <a href="auth/login.html" class="block w-full btn-secondary px-6 py-3 rounded-xl font-bold text-center transition-all">
+        <a href="auth/login.html" class="block w-full btn-outline px-6 py-4 rounded-xl font-bold text-center transition-all">
           Sign In
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="pt-40 pb-24 px-6 relative overflow-hidden hero-gradient">
-    <div class="absolute top-20 right-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
-    <div class="absolute bottom-20 left-20 w-96 h-96 bg-orange-100 rounded-full blur-3xl opacity-50"></div>
+  <!-- Premium Hero Section -->
+  <section class="pt-48 pb-32 px-6 relative overflow-hidden hero-premium">
+    <div class="absolute top-20 right-10 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
+    <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-40"></div>
     
     <div class="max-w-7xl mx-auto relative z-10">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="grid lg:grid-cols-2 gap-20 items-center">
         <div>
-          <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-6">
-            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-            <span class="text-blue-700 text-sm font-bold">AI-Powered Mining Intelligence</span>
+          <!-- Trust Badges -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            <div class="trust-badge">
+              <i class="fas fa-award text-blue-900"></i>
+              <span class="text-xs">ISO 9001 Certified</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fas fa-shield-alt text-blue-900"></i>
+              <span class="text-xs">SOC 2 Compliant</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fas fa-star text-blue-900"></i>
+              <span class="text-xs">20+ Years Excellence</span>
+            </div>
           </div>
           
-          <h1 class="text-6xl lg:text-7xl font-black mb-6 leading-tight text-gray-900">
-            Transform Your <span class="gradient-text">Mining Operations</span>
+          <h1 class="text-6xl lg:text-7xl font-black mb-6 leading-tight text-gray-900 premium-heading">
+            Global Leader in <span class="gradient-text">Mining Engineering</span>
           </h1>
           
-          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-            Advanced cost estimation, analytics, and management platform powered by AI. 
-            Trusted by <span class="font-bold text-blue-600">500+ mining companies</span> worldwide for accurate project planning and execution.
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed font-medium">
+            Enterprise-grade cost estimation and project management platform. 
+            Trusted by <span class="font-bold text-blue-900">Fortune 500 mining companies</span> worldwide 
+            for mission-critical operations and strategic planning.
           </p>
 
           <div class="flex flex-wrap gap-4 mb-10">
-            <a href="auth/signup.html" class="btn-primary px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
+            <a href="auth/signup.html" class="btn-corporate px-10 py-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
               <i class="fas fa-rocket"></i>
-              <span>Start Free Trial</span>
+              <span>Request Enterprise Demo</span>
               <i class="fas fa-arrow-right text-sm"></i>
             </a>
-            <a href="#demo" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
-              <i class="fas fa-play"></i>
-              <span>Watch Demo</span>
+            <a href="contact.html" class="btn-outline px-10 py-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
+              <i class="fas fa-phone"></i>
+              <span>Contact Sales</span>
             </a>
           </div>
 
-          <div class="flex flex-wrap items-center gap-6 text-sm">
-            <div class="flex items-center gap-2">
-              <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
-                <i class="fas fa-check text-green-600 text-xs"></i>
+          <div class="flex flex-wrap items-center gap-8 text-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 gradient-blue rounded-full flex items-center justify-center">
+                <i class="fas fa-check text-white text-xs"></i>
               </div>
-              <span class="text-gray-600 font-medium">No credit card required</span>
+              <span class="text-gray-700 font-semibold">Enterprise Security</span>
             </div>
-            <div class="flex items-center gap-2">
-              <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
-                <i class="fas fa-check text-green-600 text-xs"></i>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 gradient-blue rounded-full flex items-center justify-center">
+                <i class="fas fa-check text-white text-xs"></i>
               </div>
-              <span class="text-gray-600 font-medium">14-day free trial</span>
+              <span class="text-gray-700 font-semibold">24/7 Support</span>
             </div>
-            <div class="flex items-center gap-2">
-              <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
-                <i class="fas fa-check text-green-600 text-xs"></i>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 gradient-blue rounded-full flex items-center justify-center">
+                <i class="fas fa-check text-white text-xs"></i>
               </div>
-              <span class="text-gray-600 font-medium">Cancel anytime</span>
+              <span class="text-gray-700 font-semibold">Custom Solutions</span>
             </div>
           </div>
         </div>
 
         <div class="relative">
           <div class="relative z-10">
-            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&h=600&fit=crop&q=80" alt="Mining Operations" class="rounded-2xl shadow-2xl animate-float border-2 border-blue-200">
+            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&h=600&fit=crop&q=80" alt="Mining Operations" class="rounded-3xl shadow-2xl animate-float border-4 border-white">
           </div>
           
-          <!-- Floating Stats Cards -->
-          <div class="absolute -bottom-8 -left-8 glass-card rounded-2xl p-6 shadow-xl z-20 hover-lift">
+          <!-- Floating Stats -->
+          <div class="absolute -bottom-10 -left-10 bg-white rounded-2xl p-6 shadow-2xl z-20 hover-lift border-2 border-gray-100">
             <div class="flex items-center gap-4">
-              <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-green-50 rounded-xl flex items-center justify-center">
-                <i class="fas fa-check-circle text-green-600 text-2xl"></i>
+              <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center">
+                <i class="fas fa-check-circle text-white text-3xl"></i>
               </div>
               <div>
-                <div class="text-3xl font-black stat-counter">94.2%</div>
-                <div class="text-sm text-gray-600 font-medium">AI Accuracy Rate</div>
+                <div class="text-4xl font-black stat-counter">94.2%</div>
+                <div class="text-sm text-gray-600 font-bold">AI Accuracy</div>
               </div>
             </div>
           </div>
           
-          <div class="absolute -top-8 -right-8 glass-card rounded-2xl p-6 shadow-xl z-20 hover-lift">
+          <div class="absolute -top-10 -right-10 bg-white rounded-2xl p-6 shadow-2xl z-20 hover-lift border-2 border-gray-100">
             <div class="flex items-center gap-4">
-              <div class="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center">
-                <i class="fas fa-users text-blue-600 text-2xl"></i>
+              <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center">
+                <i class="fas fa-building text-white text-3xl"></i>
               </div>
               <div>
-                <div class="text-3xl font-black stat-counter">500+</div>
-                <div class="text-sm text-gray-600 font-medium">Active Projects</div>
+                <div class="text-4xl font-black stat-counter">500+</div>
+                <div class="text-sm text-gray-600 font-bold">Global Clients</div>
               </div>
             </div>
           </div>
@@ -696,87 +735,88 @@
   </section>
 
   <!-- Stats Section -->
-  <section class="py-20 px-6 section-bg border-y border-gray-200">
+  <section class="py-24 px-6 bg-gray-50 border-y-2 border-gray-200">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center group hover-lift bg-white rounded-2xl p-6 shadow-sm">
-          <div class="text-5xl font-black mb-2 stat-counter">500+</div>
-          <div class="text-gray-600 font-semibold text-sm uppercase tracking-wide">Active Projects</div>
-          <div class="mt-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full"></div>
+        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
+          <div class="text-6xl font-black mb-3 stat-counter premium-heading">500+</div>
+          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Global Clients</div>
+          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
         </div>
-        <div class="text-center group hover-lift bg-white rounded-2xl p-6 shadow-sm">
-          <div class="text-5xl font-black mb-2 stat-counter">$2.5B+</div>
-          <div class="text-gray-600 font-semibold text-sm uppercase tracking-wide">Value Managed</div>
-          <div class="mt-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full"></div>
+        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
+          <div class="text-6xl font-black mb-3 stat-counter premium-heading">$5B+</div>
+          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Projects Managed</div>
+          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
         </div>
-        <div class="text-center group hover-lift bg-white rounded-2xl p-6 shadow-sm">
-          <div class="text-5xl font-black mb-2 stat-counter">10K+</div>
-          <div class="text-gray-600 font-semibold text-sm uppercase tracking-wide">Equipment Database</div>
-          <div class="mt-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full"></div>
+        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
+          <div class="text-6xl font-black mb-3 stat-counter premium-heading">10K+</div>
+          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Equipment Database</div>
+          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
         </div>
-        <div class="text-center group hover-lift bg-white rounded-2xl p-6 shadow-sm">
-          <div class="text-5xl font-black mb-2 stat-counter">24/7</div>
-          <div class="text-gray-600 font-semibold text-sm uppercase tracking-wide">Expert Support</div>
-          <div class="mt-3 w-16 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full"></div>
+        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
+          <div class="text-6xl font-black mb-3 stat-counter premium-heading">24/7</div>
+          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Expert Support</div>
+          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Features Section -->
-  <section id="features" class="py-24 px-6 bg-white">
+  <section id="features" class="py-32 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-4">
-          <i class="fas fa-star text-blue-600"></i>
-          <span class="text-blue-700 text-sm font-bold uppercase tracking-wide">Powerful Features</span>
-        </div>
-        <h2 class="text-5xl lg:text-6xl font-black mb-6 text-gray-900">Everything You Need for <span class="gradient-text">Mining Excellence</span></h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive tools and features designed specifically for mining operations</p>
+      <div class="text-center mb-20">
+        <div class="premium-badge mb-6">Enterprise Solutions</div>
+        <h2 class="text-5xl lg:text-6xl font-black mb-6 text-gray-900 premium-heading">
+          Industry-Leading <span class="gradient-text">Technology Platform</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+          Comprehensive suite of enterprise-grade tools designed for Fortune 500 mining operations
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="card-interactive rounded-2xl p-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-calculator text-blue-600 text-3xl"></i>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="card-premium rounded-2xl p-8">
+          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
+            <i class="fas fa-calculator text-white text-4xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">AI Cost Calculator</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">Accurate cost estimation powered by machine learning algorithms with 94.2% accuracy rate</p>
-          <a href="products/cost-calculator.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-orange-600 transition-colors">
-            Learn More <i class="fas fa-arrow-right text-xs"></i>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">AI Cost Estimator</h3>
+          <p class="text-gray-600 leading-relaxed mb-5 font-medium">Enterprise-grade cost estimation with 94.2% accuracy powered by advanced machine learning</p>
+          <a href="products/cost-calculator.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
+            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
           </a>
         </div>
 
-        <div class="card-interactive rounded-2xl p-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-database text-blue-600 text-3xl"></i>
+        <div class="card-premium rounded-2xl p-8">
+          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
+            <i class="fas fa-database text-white text-4xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Equipment Database</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">10,000+ equipment specifications and real-time pricing data from verified sources</p>
-          <a href="products/equipment-database.html" class="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-orange-600 transition-colors">
-            Learn More <i class="fas fa-arrow-right text-xs"></i>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">Equipment Database</h3>
+          <p class="text-gray-600 leading-relaxed mb-5 font-medium">10,000+ equipment specifications with real-time pricing from verified global vendors</p>
+          <a href="products/equipment-database.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
+            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
           </a>
         </div>
 
-        <div class="card-interactive rounded-2xl p-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-chart-line text-orange-600 text-3xl"></i>
+        <div class="card-premium rounded-2xl p-8">
+          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
+            <i class="fas fa-chart-line text-white text-4xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Advanced Analytics</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">Real-time insights and predictive analytics for better decision making</p>
-          <a href="features.html#analytics" class="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-blue-600 transition-colors">
-            Learn More <i class="fas fa-arrow-right text-xs"></i>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">Advanced Analytics</h3>
+          <p class="text-gray-600 leading-relaxed mb-5 font-medium">Real-time business intelligence and predictive analytics for strategic decision making</p>
+          <a href="features.html#analytics" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
+            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
           </a>
         </div>
 
-        <div class="card-interactive rounded-2xl p-8">
-          <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-green-50 rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-leaf text-green-600 text-3xl"></i>
+        <div class="card-premium rounded-2xl p-8">
+          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
+            <i class="fas fa-shield-alt text-white text-4xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">ESG Dashboard</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">Track sustainability metrics and compliance requirements effortlessly</p>
-          <a href="hubs/sustainability-hub.html" class="inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-blue-600 transition-colors">
-            Learn More <i class="fas fa-arrow-right text-xs"></i>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">Enterprise Security</h3>
+          <p class="text-gray-600 leading-relaxed mb-5 font-medium">Bank-level security with SOC 2 compliance and comprehensive data protection</p>
+          <a href="features.html#security" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
+            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
           </a>
         </div>
       </div>
@@ -784,70 +824,83 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="py-24 px-6 relative overflow-hidden bg-gradient-to-r from-blue-50 via-orange-50 to-blue-50">
-    <div class="max-w-4xl mx-auto text-center relative z-10">
-      <h2 class="text-4xl lg:text-5xl font-black mb-6 text-gray-900">Ready to Transform Your Mining Operations?</h2>
-      <p class="text-xl text-gray-600 mb-10">Join 500+ mining companies using SESMine for accurate cost estimation and project management</p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="auth/signup.html" class="btn-primary px-10 py-5 rounded-xl font-bold text-lg transition-all">
-          Start Free Trial
+  <section class="py-32 px-6 relative overflow-hidden gradient-blue">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </div>
+    <div class="max-w-5xl mx-auto text-center relative z-10 text-white">
+      <div class="premium-badge bg-white/20 backdrop-blur-sm text-white mb-8">Enterprise Solutions</div>
+      <h2 class="text-5xl lg:text-6xl font-black mb-8 premium-heading">Ready to Transform Your Mining Operations?</h2>
+      <p class="text-2xl mb-12 opacity-95 font-medium">Join Fortune 500 companies using SESMine for mission-critical mining projects</p>
+      <div class="flex flex-wrap gap-6 justify-center">
+        <a href="auth/signup.html" class="bg-white text-blue-900 px-12 py-5 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-2xl">
+          Request Enterprise Demo
         </a>
-        <a href="contact.html" class="btn-secondary px-10 py-5 rounded-xl font-bold text-lg transition-all">
-          Contact Sales
+        <a href="contact.html" class="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-12 py-5 rounded-xl font-bold text-lg transition-all hover:bg-white/20">
+          Contact Sales Team
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-gray-200 py-12 px-6 bg-gray-50">
+  <!-- Premium Footer -->
+  <footer class="border-t-2 border-gray-200 py-16 px-6 bg-gray-50">
     <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div>
-          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-12 mb-4">
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">Smart Engineering Solutions for Mining Industry</p>
+          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14 mb-4">
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed font-medium">Global Leader in Mining Engineering Solutions</p>
+          <div class="text-xs text-gray-500 font-semibold mb-4">EST. 2004 | ISO 9001 Certified</div>
           <div class="flex gap-3">
-            <a href="#" class="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all hover-lift text-gray-600">
-              <i class="fab fa-linkedin"></i>
+            <a href="#" class="w-11 h-11 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center hover:bg-blue-900 hover:text-white hover:border-blue-900 transition-all hover-lift text-gray-600">
+              <i class="fab fa-linkedin text-lg"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all hover-lift text-gray-600">
-              <i class="fab fa-twitter"></i>
+            <a href="#" class="w-11 h-11 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center hover:bg-blue-900 hover:text-white hover:border-blue-900 transition-all hover-lift text-gray-600">
+              <i class="fab fa-twitter text-lg"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all hover-lift text-gray-600">
-              <i class="fab fa-facebook"></i>
+            <a href="#" class="w-11 h-11 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center hover:bg-blue-900 hover:text-white hover:border-blue-900 transition-all hover-lift text-gray-600">
+              <i class="fab fa-facebook text-lg"></i>
             </a>
           </div>
         </div>
         
         <div>
-          <h4 class="font-bold mb-4 text-blue-700">Product</h4>
-          <ul class="space-y-2 text-gray-600">
-            <li><a href="features.html" class="hover:text-blue-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Features</a></li>
-            <li><a href="pricing/index.html" class="hover:text-blue-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Pricing</a></li>
-            <li><a href="#hubs" class="hover:text-blue-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Solution Hubs</a></li>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Solutions</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="features.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Features</a></li>
+            <li><a href="pricing/index.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Pricing</a></li>
+            <li><a href="#hubs" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Solution Hubs</a></li>
           </ul>
         </div>
         
         <div>
-          <h4 class="font-bold mb-4 text-orange-600">Company</h4>
-          <ul class="space-y-2 text-gray-600">
-            <li><a href="about.html" class="hover:text-orange-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> About Us</a></li>
-            <li><a href="news.html" class="hover:text-orange-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> News</a></li>
-            <li><a href="contact.html" class="hover:text-orange-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Contact</a></li>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Company</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="about.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> About Us</a></li>
+            <li><a href="news.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> News & Insights</a></li>
+            <li><a href="contact.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Contact</a></li>
           </ul>
         </div>
         
         <div>
-          <h4 class="font-bold mb-4 text-green-600">Legal</h4>
-          <ul class="space-y-2 text-gray-600">
-            <li><a href="#" class="hover:text-green-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-green-600 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Terms of Service</a></li>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Support</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="help.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Help Center</a></li>
+            <li><a href="#" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Terms of Service</a></li>
           </ul>
         </div>
       </div>
       
-      <div class="border-t border-gray-200 pt-8 text-center text-gray-600 text-sm">
-        <p>&copy; 2026 SESMine Platform. All rights reserved. | Built with precision for the mining industry</p>
+      <div class="border-t-2 border-gray-200 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-gray-600 text-sm font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
+          <div class="flex items-center gap-4 text-xs text-gray-500 font-semibold">
+            <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-blue-900"></i> SOC 2 Certified</span>
+            <span class="flex items-center gap-2"><i class="fas fa-award text-blue-900"></i> ISO 9001</span>
+            <span class="flex items-center gap-2"><i class="fas fa-lock text-blue-900"></i> GDPR Compliant</span>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
