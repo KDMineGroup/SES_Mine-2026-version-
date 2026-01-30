@@ -3,379 +3,575 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing | SES_MINE</title>
-  <link rel="icon" type="image/png" href="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/153945651/e2OUWSYWp8jhpTli.png">
+  <title>Enterprise Pricing - SESMine | Transparent & Flexible Plans</title>
+  <meta name="description" content="Transparent pricing for enterprise mining solutions. Choose from Free, Starter, Professional, or custom Enterprise plans with 14-day free trial.">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { font-family: 'Inter', sans-serif; }
-    .gradient-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    * { 
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
     }
+    
+    h1, h2, h3, .premium-heading {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    :root {
+      --corporate-blue: #003366;
+      --navy-dark: #001a3d;
+      --success-blue: #1976d2;
+      --azure-light: #0080cc;
+    }
+    
+    body {
+      background: #ffffff;
+      color: #2c3e50;
+    }
+    
+    .gradient-blue {
+      background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+    }
+    
     .gradient-text {
-      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+      background: linear-gradient(135deg, #003366 0%, #1976d2 50%, #0080cc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    
+    .btn-corporate {
+      background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-corporate:hover {
+      background: linear-gradient(135deg, #001a3d 0%, #003366 100%);
+      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .nav-premium {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #ecf0f1;
+      box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
+    }
+    
+    .pricing-card {
+      background: white;
+      border: 2px solid #ecf0f1;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0, 51, 102, 0.15);
+      border-color: #003366;
+    }
+    
+    .pricing-card.featured {
+      border-color: #003366;
+      box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
+    }
+    
+    .premium-badge {
+      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .toggle-btn {
+      background: white;
+      border: 2px solid #ecf0f1;
+      transition: all 0.3s ease;
+    }
+    
+    .toggle-btn.active {
+      background: linear-gradient(135deg, #003366, #0066cc);
+      color: white;
+      border-color: #003366;
+    }
+    
+    .feature-check {
+      color: #003366;
+    }
+    
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #003366, #0080cc);
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
   </style>
 </head>
-<body class="gradient-bg text-white">
+<body>
   <!-- Navigation -->
-  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50">
-    <div class="max-w-7xl mx-auto px-6 py-3">
-      <div class="flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3 group">
-          <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE Logo" class="h-16 logo-glow group-hover:scale-105 transition-transform">
+  <nav class="fixed w-full z-50 nav-premium">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between py-4">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14">
+          <div class="hidden lg:block">
+            <div class="text-xs text-gray-500 font-medium">EST. 2004</div>
+            <div class="text-xs text-blue-900 font-bold tracking-wider">GLOBAL LEADER</div>
+          </div>
         </a>
-        
         <div class="flex items-center gap-4">
-          <a href="../auth/login.html" class="hover:text-cyan-400 transition-colors">Login</a>
-          <a href="../auth/signup.html" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2 rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
-            Get Started
-          </a>
+          <a href="../index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Home</a>
+          <a href="../features.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Features</a>
+          <a href="index.html" class="text-sm font-semibold text-blue-900">Pricing</a>
+          <a href="../about.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">About</a>
+          <a href="../contact.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Contact</a>
+          <a href="../auth/signup.html" class="btn-corporate px-6 py-2.5 rounded-xl text-sm">Get Started</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <section class="pt-32 pb-20 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h1 class="text-6xl font-black mb-6">Simple, <span class="gradient-text">Transparent Pricing</span></h1>
-        <p class="text-xl text-gray-400 mb-8">Choose the perfect plan for your mining operations</p>
-        
-        <div class="inline-flex items-center gap-4 bg-slate-900/50 backdrop-blur-xl rounded-full p-2 border border-slate-800">
-          <button id="monthlyBtn" class="px-6 py-2 rounded-full font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 transition-all">
-            Monthly
-          </button>
-          <button id="annualBtn" class="px-6 py-2 rounded-full font-semibold hover:bg-slate-800 transition-all">
-            Annual <span class="text-green-400 text-xs ml-2">Save 20%</span>
-          </button>
-        </div>
+  <!-- Hero Section -->
+  <section class="pt-40 pb-24 px-6 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="premium-badge mb-6">Transparent Pricing</div>
+      <h1 class="text-6xl lg:text-7xl font-black mb-6 text-gray-900 premium-heading">
+        Simple, <span class="gradient-text">Predictable Pricing</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium mb-8">
+        Choose the perfect plan for your mining operations. All plans include 14-day free trial with no credit card required.
+      </p>
+      
+      <!-- Billing Toggle -->
+      <div class="inline-flex items-center gap-2 bg-white rounded-full p-2 border-2 border-gray-200 shadow-lg">
+        <button id="monthlyBtn" class="toggle-btn active px-8 py-3 rounded-full font-bold text-sm transition-all">
+          Monthly
+        </button>
+        <button id="annualBtn" class="toggle-btn px-8 py-3 rounded-full font-bold text-sm transition-all">
+          Annual <span class="text-green-600 text-xs ml-2 font-black">Save 20%</span>
+        </button>
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+  <!-- Pricing Cards -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
         <!-- Free Plan -->
-        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8">
-          <div class="mb-6">
-            <h3 class="text-2xl font-bold mb-2">Free</h3>
+        <div class="pricing-card rounded-2xl p-8">
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Free</h3>
             <div class="flex items-baseline gap-2 mb-4">
-              <span class="text-5xl font-black">$0</span>
-              <span class="text-gray-400">/month</span>
+              <span class="text-5xl font-black text-blue-900 premium-heading">$0</span>
+              <span class="text-gray-500 font-medium">/month</span>
             </div>
-            <p class="text-gray-400 text-sm">Perfect for getting started</p>
+            <p class="text-gray-600 font-medium">Perfect for getting started</p>
           </div>
 
-          <a href="../auth/signup.html?plan=free" class="block w-full bg-slate-800 hover:bg-slate-700 text-center px-6 py-3 rounded-xl font-bold mb-6 transition-all">
-            Get Started
+          <a href="../auth/signup.html?plan=free" class="block w-full bg-gray-100 hover:bg-gray-200 text-blue-900 text-center px-6 py-4 rounded-xl font-bold mb-8 transition-all border-2 border-gray-200">
+            Get Started Free
           </a>
 
-          <div class="space-y-3 text-sm">
+          <div class="space-y-4 text-sm">
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-400 mt-1"></i>
-              <span>Operations Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Operations Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-400 mt-1"></i>
-              <span>Safety Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Safety Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-400 mt-1"></i>
-              <span>5 projects/month</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">5 projects per month</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-400 mt-1"></i>
-              <span>Basic reporting</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Basic reporting</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-green-400 mt-1"></i>
-              <span>Community support</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Community support</span>
             </div>
           </div>
         </div>
 
         <!-- Starter Plan -->
-        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-cyan-500/50 p-8 relative">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-white text-xs font-bold px-4 py-1 rounded-full">
-            POPULAR
-          </div>
-
-          <div class="mb-6">
-            <h3 class="text-2xl font-bold mb-2">Starter</h3>
+        <div class="pricing-card featured rounded-2xl p-8">
+          <div class="plan-badge">MOST POPULAR</div>
+          
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Starter</h3>
             <div class="flex items-baseline gap-2 mb-4">
-              <span class="text-5xl font-black monthly-price">$49</span>
-              <span class="text-gray-400">/month</span>
+              <span class="text-5xl font-black text-blue-900 premium-heading monthly-price">$49</span>
+              <span class="text-gray-500 font-medium">/month</span>
             </div>
-            <p class="text-gray-400 text-sm">For small to medium operations</p>
+            <p class="text-gray-600 font-medium">For small to medium operations</p>
           </div>
 
-          <a href="../auth/signup.html?plan=starter" class="block w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-center px-6 py-3 rounded-xl font-bold mb-6 hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+          <a href="../auth/signup.html?plan=starter" class="block w-full btn-corporate text-center px-6 py-4 rounded-xl font-bold mb-8">
             Start Free Trial
           </a>
 
-          <div class="space-y-3 text-sm">
+          <div class="space-y-4 text-sm">
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span class="font-semibold">Everything in Free, plus:</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-bold">Everything in Free, plus:</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>Engineering Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Engineering Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>Economics Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Economics Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>Sustainability Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Sustainability Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>Cost Calculator</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Cost Calculator</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>Equipment Database (Basic)</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Equipment Database (Basic)</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>ESG Dashboard</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">ESG Dashboard</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>25 projects/month</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">25 projects per month</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-cyan-400 mt-1"></i>
-              <span>Email support</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Email support</span>
             </div>
           </div>
         </div>
 
         <!-- Professional Plan -->
-        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-purple-500/50 p-8 relative">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-600 text-white text-xs font-bold px-4 py-1 rounded-full">
-            RECOMMENDED
-          </div>
-
-          <div class="mb-6">
-            <h3 class="text-2xl font-bold mb-2">Professional</h3>
+        <div class="pricing-card rounded-2xl p-8">
+          <div class="plan-badge" style="background: linear-gradient(135deg, #7c3aed, #ec4899);">RECOMMENDED</div>
+          
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Professional</h3>
             <div class="flex items-baseline gap-2 mb-4">
-              <span class="text-5xl font-black monthly-price">$149</span>
-              <span class="text-gray-400">/month</span>
+              <span class="text-5xl font-black text-blue-900 premium-heading monthly-price">$149</span>
+              <span class="text-gray-500 font-medium">/month</span>
             </div>
-            <p class="text-gray-400 text-sm">For growing enterprises</p>
+            <p class="text-gray-600 font-medium">For growing enterprises</p>
           </div>
 
-          <a href="../auth/signup.html?plan=professional" class="block w-full bg-gradient-to-r from-purple-500 to-pink-600 text-center px-6 py-3 rounded-xl font-bold mb-6 hover:shadow-lg hover:shadow-purple-500/50 transition-all">
+          <a href="../auth/signup.html?plan=professional" class="block w-full btn-corporate text-center px-6 py-4 rounded-xl font-bold mb-8">
             Start Free Trial
           </a>
 
-          <div class="space-y-3 text-sm">
+          <div class="space-y-4 text-sm">
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span class="font-semibold">Everything in Starter, plus:</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-bold">Everything in Starter, plus:</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>All 9 Hubs</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">All 9 Solution Hubs</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Procurement Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Procurement Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Innovation Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Innovation Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Consulting Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Analytics Hub</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Analytics Hub</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Advanced Analytics Dashboard</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Advanced Analytics Dashboard</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Full Equipment Database</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Full Equipment Database</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">AI Cost Predictor</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>AI Cost Predictor</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Unlimited projects</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Unlimited projects</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Priority support</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>Priority support</span>
-            </div>
-            <div class="flex items-start gap-3">
-              <i class="fas fa-check text-purple-400 mt-1"></i>
-              <span>API access</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">API access</span>
             </div>
           </div>
         </div>
 
         <!-- Enterprise Plan -->
-        <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-amber-500/50 p-8">
-          <div class="mb-6">
-            <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+        <div class="pricing-card rounded-2xl p-8">
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Enterprise</h3>
             <div class="flex items-baseline gap-2 mb-4">
-              <span class="text-3xl font-black">Custom</span>
+              <span class="text-4xl font-black text-blue-900 premium-heading">Custom</span>
             </div>
-            <p class="text-gray-400 text-sm">For large organizations</p>
+            <p class="text-gray-600 font-medium">For large organizations</p>
           </div>
 
-          <a href="mailto:sales@sesmine.com" class="block w-full bg-gradient-to-r from-amber-500 to-orange-600 text-center px-6 py-3 rounded-xl font-bold mb-6 hover:shadow-lg hover:shadow-amber-500/50 transition-all">
+          <a href="../contact.html" class="block w-full btn-corporate text-center px-6 py-4 rounded-xl font-bold mb-8">
             Contact Sales
           </a>
 
-          <div class="space-y-3 text-sm">
+          <div class="space-y-4 text-sm">
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span class="font-semibold">Everything in Professional, plus:</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-bold">Everything in Professional, plus:</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span>Custom integrations</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Custom integrations</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span>White-label options</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">White-label options</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span>Dedicated support team</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Dedicated support team</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span>SLA guarantee</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">SLA guarantee (99.99%)</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span>Custom training</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Custom training programs</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span>On-premise deployment</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">On-premise deployment</span>
             </div>
             <div class="flex items-start gap-3">
-              <i class="fas fa-check text-amber-400 mt-1"></i>
-              <span>Unlimited everything</span>
+              <i class="fas fa-check feature-check text-lg mt-0.5"></i>
+              <span class="text-gray-700 font-medium">Unlimited everything</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="bg-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-800 p-8 mb-12">
-        <h2 class="text-3xl font-black mb-6 text-center">Feature Comparison</h2>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="border-b border-slate-800">
-                <th class="text-left py-4 px-4">Feature</th>
-                <th class="text-center py-4 px-4">Free</th>
-                <th class="text-center py-4 px-4">Starter</th>
-                <th class="text-center py-4 px-4">Professional</th>
-                <th class="text-center py-4 px-4">Enterprise</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-slate-800">
-                <td class="py-4 px-4">Projects per month</td>
-                <td class="text-center py-4 px-4">5</td>
-                <td class="text-center py-4 px-4">25</td>
-                <td class="text-center py-4 px-4">Unlimited</td>
-                <td class="text-center py-4 px-4">Unlimited</td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-4 px-4">Number of Hubs</td>
-                <td class="text-center py-4 px-4">2</td>
-                <td class="text-center py-4 px-4">5</td>
-                <td class="text-center py-4 px-4">9</td>
-                <td class="text-center py-4 px-4">9</td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-4 px-4">Cost Calculator</td>
-                <td class="text-center py-4 px-4"><i class="fas fa-times text-red-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-check text-green-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-check text-green-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-check text-green-400"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-4 px-4">Equipment Database</td>
-                <td class="text-center py-4 px-4"><i class="fas fa-times text-red-400"></i></td>
-                <td class="text-center py-4 px-4">Basic</td>
-                <td class="text-center py-4 px-4">Full</td>
-                <td class="text-center py-4 px-4">Full</td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-4 px-4">AI Cost Predictor</td>
-                <td class="text-center py-4 px-4"><i class="fas fa-times text-red-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-times text-red-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-check text-green-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-check text-green-400"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-4 px-4">API Access</td>
-                <td class="text-center py-4 px-4"><i class="fas fa-times text-red-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-times text-red-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-check text-green-400"></i></td>
-                <td class="text-center py-4 px-4"><i class="fas fa-check text-green-400"></i></td>
-              </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-4 px-4">Support</td>
-                <td class="text-center py-4 px-4">Community</td>
-                <td class="text-center py-4 px-4">Email</td>
-                <td class="text-center py-4 px-4">Priority</td>
-                <td class="text-center py-4 px-4">Dedicated</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="text-center">
-        <h2 class="text-4xl font-black mb-4">Frequently Asked Questions</h2>
-        <p class="text-gray-400 mb-12">Everything you need to know about our pricing</p>
-        
-        <div class="max-w-3xl mx-auto space-y-4 text-left">
-          <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6">
-            <summary class="font-bold cursor-pointer">Can I switch plans anytime?</summary>
-            <p class="text-gray-400 mt-4">Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.</p>
-          </details>
-          
-          <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6">
-            <summary class="font-bold cursor-pointer">Is there a free trial?</summary>
-            <p class="text-gray-400 mt-4">Yes, all paid plans come with a 14-day free trial. No credit card required.</p>
-          </details>
-          
-          <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6">
-            <summary class="font-bold cursor-pointer">What payment methods do you accept?</summary>
-            <p class="text-gray-400 mt-4">We accept all major credit cards, PayPal, and wire transfers for Enterprise plans.</p>
-          </details>
-          
-          <details class="bg-slate-900/50 backdrop-blur-xl rounded-xl border border-slate-800 p-6">
-            <summary class="font-bold cursor-pointer">Can I cancel anytime?</summary>
-            <p class="text-gray-400 mt-4">Yes, you can cancel your subscription at any time. No long-term contracts or cancellation fees.</p>
-          </details>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="border-t border-slate-800 py-12 px-6">
-    <div class="max-w-7xl mx-auto text-center">
-      <p class="text-gray-400">© 2026 SES_MINE. All rights reserved.</p>
+  <!-- Feature Comparison Table -->
+  <section class="py-24 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Detailed Feature Comparison</h2>
+        <p class="text-xl text-gray-600 font-medium">Compare all features across plans</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 border-b-2 border-gray-200">
+              <tr>
+                <th class="text-left py-5 px-6 font-bold text-gray-900">Feature</th>
+                <th class="text-center py-5 px-6 font-bold text-gray-900">Free</th>
+                <th class="text-center py-5 px-6 font-bold text-gray-900">Starter</th>
+                <th class="text-center py-5 px-6 font-bold text-gray-900">Professional</th>
+                <th class="text-center py-5 px-6 font-bold text-gray-900">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">Projects per month</td>
+                <td class="text-center py-4 px-6 text-gray-600">5</td>
+                <td class="text-center py-4 px-6 text-gray-600">25</td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">Unlimited</td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">Unlimited</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">Solution Hubs</td>
+                <td class="text-center py-4 px-6 text-gray-600">2</td>
+                <td class="text-center py-4 px-6 text-gray-600">5</td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">9 (All)</td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">9 (All)</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">AI Cost Calculator</td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">Equipment Database</td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6 text-gray-600">Basic</td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">Full (10,000+)</td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">Full (10,000+)</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">AI Cost Predictor</td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">API Access</td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">Support Level</td>
+                <td class="text-center py-4 px-6 text-gray-600">Community</td>
+                <td class="text-center py-4 px-6 text-gray-600">Email</td>
+                <td class="text-center py-4 px-6 text-gray-600">Priority</td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">Dedicated 24/7</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">Custom Integrations</td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-check text-green-600 text-xl"></i></td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="py-4 px-6 font-medium text-gray-900">SLA Guarantee</td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6"><i class="fas fa-times text-red-500 text-xl"></i></td>
+                <td class="text-center py-4 px-6 text-gray-600 font-bold">99.99%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Frequently Asked Questions</h2>
+        <p class="text-xl text-gray-600 font-medium">Everything you need to know about our pricing</p>
+      </div>
+
+      <div class="space-y-4">
+        <details class="bg-gray-50 rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-900 transition-colors">
+          <summary class="font-bold text-gray-900 cursor-pointer text-lg">Can I switch plans anytime?</summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any charges accordingly.</p>
+        </details>
+        
+        <details class="bg-gray-50 rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-900 transition-colors">
+          <summary class="font-bold text-gray-900 cursor-pointer text-lg">Is there a free trial available?</summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">Yes, all paid plans come with a 14-day free trial. No credit card required to start your trial.</p>
+        </details>
+        
+        <details class="bg-gray-50 rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-900 transition-colors">
+          <summary class="font-bold text-gray-900 cursor-pointer text-lg">What payment methods do you accept?</summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and wire transfers for Enterprise plans.</p>
+        </details>
+        
+        <details class="bg-gray-50 rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-900 transition-colors">
+          <summary class="font-bold text-gray-900 cursor-pointer text-lg">Can I cancel my subscription anytime?</summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">Yes, you can cancel your subscription at any time with no cancellation fees. Your access will continue until the end of your billing period.</p>
+        </details>
+        
+        <details class="bg-gray-50 rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-900 transition-colors">
+          <summary class="font-bold text-gray-900 cursor-pointer text-lg">Do you offer discounts for annual billing?</summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">Yes, you save 20% when you choose annual billing. For example, Starter is $39/month (billed annually) instead of $49/month.</p>
+        </details>
+        
+        <details class="bg-gray-50 rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-900 transition-colors">
+          <summary class="font-bold text-gray-900 cursor-pointer text-lg">What happens when I exceed my project limit?</summary>
+          <p class="text-gray-600 mt-4 leading-relaxed">We'll notify you when approaching your limit. You can upgrade to a higher plan or purchase additional project credits as needed.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 px-6 gradient-blue">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <h2 class="text-5xl font-black mb-6 premium-heading">Ready to Get Started?</h2>
+      <p class="text-xl mb-10 opacity-95">Join 500+ mining companies using SESMine for enterprise solutions</p>
+      <div class="flex gap-4 justify-center">
+        <a href="../auth/signup.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all">Start Free Trial</a>
+        <a href="../contact.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t-2 border-gray-200 py-16 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14 mb-4">
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed font-medium">Global Leader in Mining Engineering Solutions</p>
+          <div class="text-xs text-gray-500 font-semibold">EST. 2004 | ISO 9001 Certified</div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Solutions</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="../features.html" class="hover:text-blue-900 transition-colors">Features</a></li>
+            <li><a href="index.html" class="hover:text-blue-900 transition-colors">Pricing</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Company</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="../about.html" class="hover:text-blue-900 transition-colors">About</a></li>
+            <li><a href="../news.html" class="hover:text-blue-900 transition-colors">News</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Support</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="../help.html" class="hover:text-blue-900 transition-colors">Help Center</a></li>
+            <li><a href="../contact.html" class="hover:text-blue-900 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t-2 border-gray-200 pt-8 text-center">
+        <p class="text-gray-600 text-sm font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
@@ -388,16 +584,16 @@
     const annualPrices = { starter: 39, professional: 119 };
 
     annualBtn.addEventListener('click', function() {
-      monthlyBtn.classList.remove('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600');
-      annualBtn.classList.add('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600');
+      monthlyBtn.classList.remove('active');
+      annualBtn.classList.add('active');
       
       prices[0].textContent = '$' + annualPrices.starter;
       prices[1].textContent = '$' + annualPrices.professional;
     });
 
     monthlyBtn.addEventListener('click', function() {
-      annualBtn.classList.remove('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600');
-      monthlyBtn.classList.add('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600');
+      annualBtn.classList.remove('active');
+      monthlyBtn.classList.add('active');
       
       prices[0].textContent = '$' + monthlyPrices.starter;
       prices[1].textContent = '$' + monthlyPrices.professional;
