@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Features - SESMine | Advanced Mining Solutions</title>
-  <meta name="description" content="Comprehensive suite of enterprise-grade features for mining operations. AI-powered cost estimation, analytics, and project management.">
+  <title>Enterprise Features & Solutions - SESMine | Complete Mining Platform</title>
+  <meta name="description" content="Comprehensive enterprise-grade features for mining operations. AI cost estimation, project management, analytics, ESG compliance, and 9 specialized solution hubs.">
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -22,8 +22,6 @@
     :root {
       --corporate-blue: #003366;
       --navy-dark: #001a3d;
-      --navy-medium: #2c3e50;
-      --steel-blue: #607d8b;
       --success-blue: #1976d2;
       --azure-light: #0080cc;
     }
@@ -65,7 +63,7 @@
       box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
     }
     
-    .card-premium {
+    .feature-card {
       position: relative;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       background: white;
@@ -73,10 +71,27 @@
       box-shadow: 0 4px 20px rgba(0, 51, 102, 0.06);
     }
     
-    .card-premium:hover {
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(135deg, #003366, #0080cc);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .feature-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 25px 50px rgba(0, 51, 102, 0.15);
-      border-color: #003366;
+    }
+    
+    .feature-card:hover::before {
+      opacity: 1;
     }
     
     .feature-icon {
@@ -91,7 +106,7 @@
       transition: all 0.3s ease;
     }
     
-    .card-premium:hover .feature-icon {
+    .feature-card:hover .feature-icon {
       transform: scale(1.1) rotate(5deg);
     }
     
@@ -106,40 +121,36 @@
       text-transform: uppercase;
     }
     
-    .section-header {
-      position: relative;
-      padding-bottom: 1rem;
-      margin-bottom: 3rem;
-    }
-    
-    .section-header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #003366, #0080cc);
-      border-radius: 2px;
-    }
-    
-    .hover-lift {
+    .hub-card {
+      background: white;
+      border: 2px solid #ecf0f1;
       transition: all 0.3s ease;
     }
     
-    .hover-lift:hover {
+    .hub-card:hover {
+      border-color: #003366;
+      box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
       transform: translateY(-5px);
+    }
+    
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #003366, transparent);
+      margin: 4rem 0;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation (Same as index) -->
+  <!-- Navigation -->
   <nav class="fixed w-full z-50 nav-premium">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center justify-between py-4">
         <a href="index.html" class="flex items-center gap-3">
           <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14">
+          <div class="hidden lg:block">
+            <div class="text-xs text-gray-500 font-medium">EST. 2004</div>
+            <div class="text-xs text-blue-900 font-bold tracking-wider">GLOBAL LEADER</div>
+          </div>
         </a>
         <div class="flex items-center gap-4">
           <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Home</a>
@@ -156,111 +167,372 @@
   <!-- Hero Section -->
   <section class="pt-40 pb-24 px-6 bg-gradient-to-b from-gray-50 to-white">
     <div class="max-w-7xl mx-auto text-center">
-      <div class="premium-badge mb-6">Enterprise Features</div>
+      <div class="premium-badge mb-6">Enterprise Platform</div>
       <h1 class="text-6xl lg:text-7xl font-black mb-6 text-gray-900 premium-heading">
-        Comprehensive <span class="gradient-text">Mining Solutions</span>
+        Complete Mining <span class="gradient-text">Technology Platform</span>
       </h1>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium mb-8">
-        Industry-leading technology platform with enterprise-grade features designed for Fortune 500 mining operations
+        Industry-leading suite of enterprise-grade features, 9 specialized solution hubs, and comprehensive tools designed for Fortune 500 mining operations worldwide
       </p>
       <div class="flex justify-center gap-4">
-        <a href="auth/signup.html" class="btn-corporate px-8 py-4 rounded-xl font-bold">Request Demo</a>
-        <a href="contact.html" class="bg-white border-2 border-blue-900 text-blue-900 px-8 py-4 rounded-xl font-bold hover:bg-blue-900 hover:text-white transition-all">Contact Sales</a>
+        <a href="auth/signup.html" class="btn-corporate px-8 py-4 rounded-xl font-bold text-lg">Request Enterprise Demo</a>
+        <a href="contact.html" class="bg-white border-2 border-blue-900 text-blue-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-900 hover:text-white transition-all">Contact Sales Team</a>
       </div>
     </div>
   </section>
 
-  <!-- Core Features -->
+  <!-- Core Products -->
   <section class="py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center section-header">
-        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Core Platform Features</h2>
-        <p class="text-xl text-gray-600 font-medium">Enterprise-grade capabilities for mission-critical operations</p>
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Core Product Suite</h2>
+        <p class="text-xl text-gray-600 font-medium">Enterprise-grade solutions for mission-critical mining operations</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Feature 1 -->
-        <div class="card-premium rounded-2xl p-8">
+        <!-- AI Cost Calculator -->
+        <div class="feature-card rounded-2xl p-8">
           <div class="feature-icon">
             <i class="fas fa-calculator text-white text-3xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">AI Cost Estimation</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Advanced machine learning algorithms providing 94.2% accuracy in cost predictions for mining projects</p>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> AACE-compliant calculations</li>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">AI Cost Calculator</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Advanced machine learning algorithms providing 94.2% accuracy in cost predictions for mining projects with AACE International compliance</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> AACE Class 1-5 estimates</li>
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Real-time cost updates</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Multi-currency support</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Multi-currency support (150+ currencies)</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Historical data analysis</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Risk assessment modeling</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Scenario planning tools</li>
           </ul>
+          <a href="products/cost-calculator.html" class="text-blue-900 font-bold hover:text-blue-700 transition-colors">Learn More →</a>
         </div>
 
-        <!-- Feature 2 -->
-        <div class="card-premium rounded-2xl p-8">
+        <!-- Equipment Database -->
+        <div class="feature-card rounded-2xl p-8">
           <div class="feature-icon">
             <i class="fas fa-database text-white text-3xl"></i>
           </div>
           <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Equipment Database</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Comprehensive database of 10,000+ mining equipment with verified specifications and pricing</p>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Global vendor network</li>
+          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Comprehensive database of 10,000+ mining equipment with verified specifications, real-time pricing, and global vendor network</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> 10,000+ equipment catalog</li>
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Real-time pricing data</li>
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Technical specifications</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Vendor comparison tools</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Maintenance schedules</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Performance analytics</li>
           </ul>
+          <a href="products/equipment-database.html" class="text-blue-900 font-bold hover:text-blue-700 transition-colors">Learn More →</a>
         </div>
 
-        <!-- Feature 3 -->
-        <div class="card-premium rounded-2xl p-8">
+        <!-- Project Manager -->
+        <div class="feature-card rounded-2xl p-8">
+          <div class="feature-icon">
+            <i class="fas fa-tasks text-white text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Project Manager</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed font-medium">End-to-end project tracking with collaborative tools, Gantt charts, and resource management for global mining operations</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Gantt charts & timelines</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Resource allocation</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Team collaboration</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Milestone tracking</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Budget management</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Progress reporting</li>
+          </ul>
+          <a href="products/project-manager.html" class="text-blue-900 font-bold hover:text-blue-700 transition-colors">Learn More →</a>
+        </div>
+
+        <!-- Advanced Analytics -->
+        <div class="feature-card rounded-2xl p-8">
           <div class="feature-icon">
             <i class="fas fa-chart-line text-white text-3xl"></i>
           </div>
           <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Advanced Analytics</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Real-time business intelligence with predictive analytics for strategic decision making</p>
-          <ul class="space-y-2 text-sm text-gray-600">
+          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Real-time business intelligence with predictive analytics, custom dashboards, and data visualization for strategic decision making</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Custom dashboards</li>
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Predictive modeling</li>
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Data visualization</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> KPI tracking</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Automated reporting</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> AI-powered insights</li>
           </ul>
+          <a href="hubs/analytics-hub.html" class="text-blue-900 font-bold hover:text-blue-700 transition-colors">Learn More →</a>
         </div>
 
-        <!-- Feature 4 -->
-        <div class="card-premium rounded-2xl p-8">
-          <div class="feature-icon">
-            <i class="fas fa-tasks text-white text-3xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Project Management</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed font-medium">End-to-end project tracking with collaborative tools for global mining operations</p>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Gantt charts & timelines</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Resource allocation</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Team collaboration</li>
-          </ul>
-        </div>
-
-        <!-- Feature 5 -->
-        <div class="card-premium rounded-2xl p-8">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt text-white text-3xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Enterprise Security</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Bank-level security with SOC 2 Type II compliance and comprehensive data protection</p>
-          <ul class="space-y-2 text-sm text-gray-600">
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> 256-bit encryption</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> SOC 2 certified</li>
-            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> GDPR compliant</li>
-          </ul>
-        </div>
-
-        <!-- Feature 6 -->
-        <div class="card-premium rounded-2xl p-8">
+        <!-- ESG Compliance -->
+        <div class="feature-card rounded-2xl p-8">
           <div class="feature-icon">
             <i class="fas fa-leaf text-white text-3xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">ESG Compliance</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Comprehensive ESG tracking and reporting for sustainable mining operations</p>
-          <ul class="space-y-2 text-sm text-gray-600">
+          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">ESG Compliance Dashboard</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Comprehensive ESG tracking and reporting for sustainable mining operations with carbon footprint analysis and compliance management</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Carbon footprint tracking</li>
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Compliance reporting</li>
             <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Sustainability metrics</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Environmental impact analysis</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Regulatory compliance</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Audit trail management</li>
           </ul>
+          <a href="hubs/sustainability-hub.html" class="text-blue-900 font-bold hover:text-blue-700 transition-colors">Learn More →</a>
+        </div>
+
+        <!-- Safety Management -->
+        <div class="feature-card rounded-2xl p-8">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt text-white text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Safety Management System</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed font-medium">Comprehensive safety protocols, incident tracking, risk assessment, and compliance management for zero-harm operations</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Incident tracking</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Risk assessment tools</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Safety audits</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Training management</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Compliance monitoring</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-blue-900"></i> Emergency response</li>
+          </ul>
+          <a href="hubs/safety-hub.html" class="text-blue-900 font-bold hover:text-blue-700 transition-colors">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- 9 Solution Hubs -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <div class="premium-badge mb-6">Specialized Solutions</div>
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">9 Specialized Solution Hubs</h2>
+        <p class="text-xl text-gray-600 font-medium">Comprehensive ecosystem of specialized tools for every aspect of mining operations</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Engineering Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-drafting-compass text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Engineering Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">Mine design, optimization, geotechnical analysis, and engineering calculations</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• Mine planning & design</li>
+            <li>• Geotechnical analysis</li>
+            <li>• Process optimization</li>
+            <li>• Equipment selection</li>
+          </ul>
+          <a href="hubs/engineering-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Economics Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-pie text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Economics Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">Financial modeling, NPV analysis, commodity pricing, and economic feasibility studies</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• Financial modeling</li>
+            <li>• NPV & IRR calculations</li>
+            <li>• Commodity price forecasting</li>
+            <li>• Feasibility studies</li>
+          </ul>
+          <a href="hubs/economics-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Innovation Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-lightbulb text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Innovation Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">AI, machine learning, digital transformation, and emerging technology solutions</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• AI & machine learning</li>
+            <li>• Digital twins</li>
+            <li>• IoT integration</li>
+            <li>• Automation solutions</li>
+          </ul>
+          <a href="hubs/innovation-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Sustainability Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-leaf text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Sustainability Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">ESG compliance, environmental monitoring, carbon management, and sustainability reporting</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• ESG reporting</li>
+            <li>• Carbon footprint tracking</li>
+            <li>• Environmental compliance</li>
+            <li>• Circular economy initiatives</li>
+          </ul>
+          <a href="hubs/sustainability-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Safety Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-shield-alt text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Safety Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">Risk management, incident tracking, safety protocols, and compliance monitoring</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• Risk assessment</li>
+            <li>• Incident management</li>
+            <li>• Safety training</li>
+            <li>• Compliance tracking</li>
+          </ul>
+          <a href="hubs/safety-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Analytics Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-bar text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Analytics Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">Business intelligence, predictive analytics, data visualization, and performance metrics</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• Real-time dashboards</li>
+            <li>• Predictive analytics</li>
+            <li>• KPI monitoring</li>
+            <li>• Custom reports</li>
+          </ul>
+          <a href="hubs/analytics-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Operations Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-industry text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Operations Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">Production management, process optimization, quality control, and operational efficiency</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• Production planning</li>
+            <li>• Process optimization</li>
+            <li>• Quality management</li>
+            <li>• Efficiency tracking</li>
+          </ul>
+          <a href="hubs/operations-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Supply Chain Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-truck text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Supply Chain Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">Logistics management, procurement, inventory control, and vendor management</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• Procurement management</li>
+            <li>• Inventory optimization</li>
+            <li>• Vendor management</li>
+            <li>• Logistics tracking</li>
+          </ul>
+          <a href="hubs/supply-chain-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+
+        <!-- Training Hub -->
+        <div class="hub-card rounded-2xl p-8">
+          <div class="w-16 h-16 gradient-blue rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Training Hub</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">Professional development, certification programs, e-learning, and skills management</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-4">
+            <li>• E-learning platform</li>
+            <li>• Certification programs</li>
+            <li>• Skills assessment</li>
+            <li>• Training management</li>
+          </ul>
+          <a href="hubs/training-hub.html" class="text-blue-900 font-bold hover:text-blue-700">Explore Hub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- Enterprise Features -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Enterprise-Grade Capabilities</h2>
+        <p class="text-xl text-gray-600 font-medium">Advanced features for Fortune 500 mining companies</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-lock text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Enterprise Security</h4>
+          <p class="text-sm text-gray-600">SOC 2 Type II, ISO 27001, 256-bit encryption, SSO, MFA</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-globe text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Multi-Currency</h4>
+          <p class="text-sm text-gray-600">Support for 150+ currencies with real-time exchange rates</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-users text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Team Collaboration</h4>
+          <p class="text-sm text-gray-600">Real-time collaboration for global distributed teams</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-plug text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">API Integration</h4>
+          <p class="text-sm text-gray-600">RESTful API for seamless third-party integrations</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-mobile-alt text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Mobile Access</h4>
+          <p class="text-sm text-gray-600">Native iOS and Android apps for field operations</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-cloud text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Cloud Infrastructure</h4>
+          <p class="text-sm text-gray-600">99.99% uptime SLA with global CDN</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-cog text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Custom Workflows</h4>
+          <p class="text-sm text-gray-600">Configurable workflows tailored to your processes</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+          <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mb-4">
+            <i class="fas fa-headset text-white text-xl"></i>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">24/7 Support</h4>
+          <p class="text-sm text-gray-600">Dedicated account manager and priority support</p>
         </div>
       </div>
     </div>
@@ -269,19 +541,54 @@
   <!-- CTA Section -->
   <section class="py-24 px-6 gradient-blue">
     <div class="max-w-4xl mx-auto text-center text-white">
-      <h2 class="text-5xl font-black mb-6 premium-heading">Ready to Get Started?</h2>
-      <p class="text-xl mb-8 opacity-95">Join Fortune 500 companies using SESMine for enterprise mining solutions</p>
+      <div class="premium-badge bg-white/20 backdrop-blur-sm text-white mb-8">Enterprise Solutions</div>
+      <h2 class="text-5xl font-black mb-6 premium-heading">Experience the Complete Platform</h2>
+      <p class="text-xl mb-10 opacity-95">Request a personalized demo and discover how SESMine can transform your mining operations</p>
       <div class="flex gap-4 justify-center">
-        <a href="auth/signup.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold hover:scale-105 transition-all">Request Demo</a>
-        <a href="contact.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition-all">Contact Sales</a>
+        <a href="auth/signup.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all">Request Enterprise Demo</a>
+        <a href="contact.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Contact Sales Team</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t-2 border-gray-200 py-12 px-6 bg-gray-50">
-    <div class="max-w-7xl mx-auto text-center">
-      <p class="text-gray-600 font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
+  <footer class="border-t-2 border-gray-200 py-16 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14 mb-4">
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed font-medium">Global Leader in Mining Engineering Solutions</p>
+          <div class="text-xs text-gray-500 font-semibold">EST. 2004 | ISO 9001 Certified</div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Solutions</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="features.html" class="hover:text-blue-900 transition-colors">Features</a></li>
+            <li><a href="pricing/index.html" class="hover:text-blue-900 transition-colors">Pricing</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Company</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="about.html" class="hover:text-blue-900 transition-colors">About</a></li>
+            <li><a href="news.html" class="hover:text-blue-900 transition-colors">News</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-5 text-blue-900 text-lg">Support</h4>
+          <ul class="space-y-3 text-gray-600 font-medium">
+            <li><a href="help.html" class="hover:text-blue-900 transition-colors">Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-blue-900 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t-2 border-gray-200 pt-8 text-center">
+        <p class="text-gray-600 text-sm font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 </body>
