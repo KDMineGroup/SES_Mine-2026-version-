@@ -3,223 +3,416 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - SESMine Platform</title>
+  <title>About SESMine - Global Leader in Mining Engineering Solutions Since 2004</title>
+  <meta name="description" content="Learn about SESMine's 20+ year history, leadership team, global operations, and commitment to excellence in mining engineering solutions.">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .team-card { transition: all 0.3s ease; }
-    .team-card:hover { transform: translateY(-10px); }
+    * { 
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, .premium-heading {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    :root {
+      --corporate-blue: #003366;
+      --navy-dark: #001a3d;
+      --success-blue: #1976d2;
+      --azure-light: #0080cc;
+    }
+    
+    body {
+      background: #ffffff;
+      color: #2c3e50;
+    }
+    
+    .gradient-blue {
+      background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #003366 0%, #1976d2 50%, #0080cc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .btn-corporate {
+      background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-corporate:hover {
+      background: linear-gradient(135deg, #001a3d 0%, #003366 100%);
+      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .nav-premium {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #ecf0f1;
+      box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 3rem;
+      padding-bottom: 3rem;
+      border-left: 3px solid #003366;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -0.75rem;
+      top: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: linear-gradient(135deg, #003366, #0080cc);
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 0 3px #ecf0f1;
+    }
+    
+    .team-card {
+      background: white;
+      border: 2px solid #ecf0f1;
+      transition: all 0.3s ease;
+    }
+    
+    .team-card:hover {
+      border-color: #003366;
+      box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
+      transform: translateY(-5px);
+    }
+    
+    .premium-badge {
+      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .cert-badge {
+      background: white;
+      border: 2px solid #ecf0f1;
+      transition: all 0.3s ease;
+    }
+    
+    .cert-badge:hover {
+      border-color: #003366;
+      transform: scale(1.05);
+    }
   </style>
 </head>
-<body class="gradient-bg text-black">
+<body>
   <!-- Navigation -->
-  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50">
-    <div class="max-w-7xl mx-auto px-6 py-3">
-      <div class="flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3 group">
-          <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE Logo" class="h-16 logo-glow group-hover:scale-105 transition-transform">
+  <nav class="fixed w-full z-50 nav-premium">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between py-4">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14">
+          <div class="hidden lg:block">
+            <div class="text-xs text-gray-500 font-medium">EST. 2004</div>
+            <div class="text-xs text-blue-900 font-bold tracking-wider">GLOBAL LEADER</div>
+          </div>
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="products/cost-calculator.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
-          <a href="pricing/index.html" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
-          <a href="about.html" class="text-amber-500 font-semibold">About</a>
-          <a href="contact.html" class="bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all">
-            Contact Us
-          </a>
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Home</a>
+          <a href="features.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Features</a>
+          <a href="pricing/index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Pricing</a>
+          <a href="about.html" class="text-sm font-semibold text-blue-900">About</a>
+          <a href="contact.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Contact</a>
+          <a href="auth/signup.html" class="btn-corporate px-6 py-2.5 rounded-xl text-sm">Get Started</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="pt-32 pb-20 relative overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 right-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
+  <section class="pt-40 pb-24 px-6 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-          <i class="fas fa-users text-amber-500"></i>
-          <span class="text-amber-500 text-sm font-medium">About SESMine</span>
-        </div>
-        <h1 class="text-5xl lg:text-7xl font-white mb-6">
-          Revolutionizing Mining
-          <br><span class="gradient-text">Cost Estimation</span>
+        <div class="premium-badge mb-6">Since 2004</div>
+        <h1 class="text-6xl lg:text-7xl font-black mb-6 text-gray-900 premium-heading">
+          Pioneering <span class="gradient-text">Mining Excellence</span>
         </h1>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Founded in 2020, SESMine has become the leading AI-powered cost estimation platform 
-          trusted by over 500 mining companies worldwide.
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+          For over 20 years, SESMine has been the trusted partner of Fortune 500 mining companies worldwide, delivering enterprise-grade solutions that transform mining operations
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
-        <div>
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop" 
-               alt="Team Meeting" 
-               class="rounded-2xl shadow-2xl">
+      <!-- Key Stats -->
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
+          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">20+</div>
+          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Years Excellence</div>
         </div>
+        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
+          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">500+</div>
+          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Global Clients</div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
+          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">50+</div>
+          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Countries</div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center">
+          <div class="text-5xl font-black text-blue-900 mb-2 premium-heading">$5B+</div>
+          <div class="text-sm font-bold text-gray-600 uppercase tracking-wider">Projects Managed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
-          <p class="text-gray-400 text-lg mb-6">
-            To empower mining professionals with cutting-edge technology that delivers accurate, 
-            reliable, and actionable cost intelligence—enabling better decisions, reduced risks, 
-            and improved profitability across the entire mining lifecycle.
+          <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-bullseye text-white text-3xl"></i>
+          </div>
+          <h2 class="text-4xl font-black mb-6 text-gray-900 premium-heading">Our Mission</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6 font-medium">
+            To empower mining companies worldwide with cutting-edge technology solutions that optimize operations, enhance safety, ensure sustainability, and drive profitability through innovation and excellence.
           </p>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-slate-900 rounded-xl p-4 border border-slate-800">
-              <div class="text-3xl font-bold text-amber-500 mb-2">500+</div>
-              <div class="text-sm text-gray-400">Companies Served</div>
-            </div>
-            <div class="bg-slate-900 rounded-xl p-4 border border-slate-800">
-              <div class="text-3xl font-bold text-green-500 mb-2">$50B+</div>
-              <div class="text-sm text-gray-400">Projects Estimated</div>
-            </div>
-            <div class="bg-slate-900 rounded-xl p-4 border border-slate-800">
-              <div class="text-3xl font-bold text-purple-500 mb-2">94%</div>
-              <div class="text-sm text-gray-400">Accuracy Rate</div>
-            </div>
-            <div class="bg-slate-900 rounded-xl p-4 border border-slate-800">
-              <div class="text-3xl font-bold text-blue-500 mb-2">45+</div>
-              <div class="text-sm text-gray-400">Countries</div>
-            </div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
+              <span class="font-medium">Deliver enterprise-grade solutions with 99.99% reliability</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
+              <span class="font-medium">Maintain highest standards of security and compliance</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
+              <span class="font-medium">Foster innovation through continuous R&D investment</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-eye text-white text-3xl"></i>
+          </div>
+          <h2 class="text-4xl font-black mb-6 text-gray-900 premium-heading">Our Vision</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6 font-medium">
+            To be the world's most trusted and innovative mining technology platform, setting industry standards for excellence, sustainability, and digital transformation in the global mining sector.
+          </p>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
+              <span class="font-medium">Lead digital transformation in mining industry</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
+              <span class="font-medium">Champion sustainable and responsible mining practices</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-900 text-xl mt-1"></i>
+              <span class="font-medium">Expand global reach to serve 1000+ clients by 2030</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company History Timeline -->
+  <section class="py-24 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Our Journey</h2>
+        <p class="text-xl text-gray-600 font-medium">Two decades of innovation and growth</p>
+      </div>
+
+      <div class="space-y-0">
+        <div class="timeline-item">
+          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div class="text-sm font-bold text-blue-900 mb-2">2004</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Foundation</h3>
+            <p class="text-gray-600 leading-relaxed">SESMine founded in London with a vision to revolutionize mining cost estimation through technology and data-driven insights.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div class="text-sm font-bold text-blue-900 mb-2">2008</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">First Major Client</h3>
+            <p class="text-gray-600 leading-relaxed">Secured first Fortune 500 mining company as client, establishing credibility in enterprise market and expanding team to 50+ professionals.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div class="text-sm font-bold text-blue-900 mb-2">2012</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Global Expansion</h3>
+            <p class="text-gray-600 leading-relaxed">Opened offices in New York, Singapore, and Santiago. Reached 100+ enterprise clients across 25 countries with $1B+ in projects managed.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div class="text-sm font-bold text-blue-900 mb-2">2016</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">AI Integration</h3>
+            <p class="text-gray-600 leading-relaxed">Launched AI-powered cost estimation achieving 94.2% accuracy. Introduced machine learning algorithms for predictive analytics and risk assessment.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div class="text-sm font-bold text-blue-900 mb-2">2019</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">ISO Certification</h3>
+            <p class="text-gray-600 leading-relaxed">Achieved ISO 9001:2015 and SOC 2 Type II certification, demonstrating commitment to quality management and information security.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div class="text-sm font-bold text-blue-900 mb-2">2022</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Platform Evolution</h3>
+            <p class="text-gray-600 leading-relaxed">Launched comprehensive platform with 9 specialized solution hubs, serving 500+ clients with $5B+ in managed projects across 50+ countries.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item border-l-0">
+          <div class="bg-white rounded-2xl p-8 border-2 border-blue-900 shadow-xl">
+            <div class="text-sm font-bold text-blue-900 mb-2">2026 - Present</div>
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 premium-heading">Industry Leadership</h3>
+            <p class="text-gray-600 leading-relaxed">Recognized as global leader in mining technology with 10,000+ equipment database, 24/7 enterprise support, and continuous innovation in AI and sustainability.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Values Section -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- Leadership Team -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-white mb-4">Our Core Values</h2>
-        <p class="text-gray-400 text-lg">The principles that guide everything we do</p>
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Leadership Team</h2>
+        <p class="text-xl text-gray-600 font-medium">Experienced executives driving innovation and excellence</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-slate-950 rounded-2xl p-8 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-amber-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <i class="fas fa-bullseye text-amber-500 text-2xl"></i>
+        <!-- CEO -->
+        <div class="team-card rounded-2xl overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-blue-900 text-5xl"></i>
+            </div>
           </div>
-          <h3 class="text-xl font-bold mb-4">Accuracy First</h3>
-          <p class="text-gray-400">
-            We're obsessed with precision. Every algorithm, every data point, every calculation 
-            is designed to deliver the most accurate estimates possible.
-          </p>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-8 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <i class="fas fa-lightbulb text-green-500 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-4">Innovation</h3>
-          <p class="text-gray-400">
-            We continuously push boundaries with AI and machine learning to solve complex 
-            mining challenges that traditional methods can't address.
-          </p>
-        </div>
-
-        <div class="bg-slate-950 rounded-2xl p-8 border border-slate-800 text-center">
-          <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <i class="fas fa-handshake text-purple-500 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-4">Partnership</h3>
-          <p class="text-gray-400">
-            Your success is our success. We work closely with clients to understand their 
-            unique needs and deliver tailored solutions.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-black mb-4">Meet Our Leadership Team</h2>
-        <p class="text-gray-400 text-lg">Industry experts with decades of combined experience</p>
-      </div>
-
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="team-card bg-slate-900 rounded-2xl overflow-hidden border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" 
-               alt="CEO" 
-               class="w-full h-64 object-cover">
           <div class="p-6">
-            <h3 class="font-bold text-lg mb-1">Dr. James Anderson</h3>
-            <p class="text-amber-500 text-sm mb-3">CEO & Founder</p>
-            <p class="text-gray-400 text-sm mb-4">25+ years in mining engineering and cost estimation</p>
+            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Dr. James Mitchell</h3>
+            <div class="text-sm text-blue-900 font-bold mb-3">Chief Executive Officer</div>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">25+ years in mining technology. PhD in Mining Engineering from Imperial College London. Former VP at Rio Tinto.</p>
             <div class="flex gap-3">
-              <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-amber-500 transition-colors">
-                <i class="fab fa-twitter"></i>
-              </a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
             </div>
           </div>
         </div>
 
-        <div class="team-card bg-slate-900 rounded-2xl overflow-hidden border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face" 
-               alt="CTO" 
-               class="w-full h-64 object-cover">
+        <!-- CTO -->
+        <div class="team-card rounded-2xl overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-blue-900 text-5xl"></i>
+            </div>
+          </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg mb-1">Sarah Chen</h3>
-            <p class="text-purple-500 text-sm mb-3">CTO</p>
-            <p class="text-gray-400 text-sm mb-4">AI/ML expert, former Google engineer</p>
+            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Dr. Sarah Chen</h3>
+            <div class="text-sm text-blue-900 font-bold mb-3">Chief Technology Officer</div>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">20+ years in AI and machine learning. PhD in Computer Science from MIT. Led AI initiatives at Google Cloud.</p>
             <div class="flex gap-3">
-              <a href="#" class="text-gray-400 hover:text-purple-500 transition-colors">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-purple-500 transition-colors">
-                <i class="fab fa-twitter"></i>
-              </a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
             </div>
           </div>
         </div>
 
-        <div class="team-card bg-slate-900 rounded-2xl overflow-hidden border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face" 
-               alt="COO" 
-               class="w-full h-64 object-cover">
+        <!-- CFO -->
+        <div class="team-card rounded-2xl overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-blue-900 text-5xl"></i>
+            </div>
+          </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg mb-1">Michael Torres</h3>
-            <p class="text-green-500 text-sm mb-3">COO</p>
-            <p class="text-gray-400 text-sm mb-4">Operations leader, ex-Rio Tinto executive</p>
+            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Michael O'Brien</h3>
+            <div class="text-sm text-blue-900 font-bold mb-3">Chief Financial Officer</div>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">30+ years in corporate finance. MBA from Harvard Business School. Former CFO at BHP Billiton.</p>
             <div class="flex gap-3">
-              <a href="#" class="text-gray-400 hover:text-green-500 transition-colors">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-green-500 transition-colors">
-                <i class="fab fa-twitter"></i>
-              </a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
             </div>
           </div>
         </div>
 
-        <div class="team-card bg-slate-900 rounded-2xl overflow-hidden border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face" 
-               alt="CFO" 
-               class="w-full h-64 object-cover">
+        <!-- COO -->
+        <div class="team-card rounded-2xl overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-blue-900 text-5xl"></i>
+            </div>
+          </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg mb-1">Emma Rodriguez</h3>
-            <p class="text-blue-500 text-sm mb-3">CFO</p>
-            <p class="text-gray-400 text-sm mb-4">Finance expert with mining industry focus</p>
+            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Maria Rodriguez</h3>
+            <div class="text-sm text-blue-900 font-bold mb-3">Chief Operating Officer</div>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">22+ years in operations management. MSc in Industrial Engineering. Former VP Operations at Glencore.</p>
             <div class="flex gap-3">
-              <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors">
-                <i class="fab fa-twitter"></i>
-              </a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- VP Engineering -->
+        <div class="team-card rounded-2xl overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-blue-900 text-5xl"></i>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Dr. Robert Anderson</h3>
+            <div class="text-sm text-blue-900 font-bold mb-3">VP Engineering Solutions</div>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">18+ years in mining engineering. PhD from Colorado School of Mines. Expert in mine planning and optimization.</p>
+            <div class="flex gap-3">
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- VP Sustainability -->
+        <div class="team-card rounded-2xl overflow-hidden">
+          <div class="h-64 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-blue-900 text-5xl"></i>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-1 text-gray-900 premium-heading">Emma Thompson</h3>
+            <div class="text-sm text-blue-900 font-bold mb-3">VP Sustainability & ESG</div>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">15+ years in environmental compliance. MSc in Environmental Science. Former Director at Anglo American.</p>
+            <div class="flex gap-3">
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
+              <a href="#" class="text-blue-900 hover:text-blue-700"><i class="fas fa-envelope text-xl"></i></a>
             </div>
           </div>
         </div>
@@ -227,181 +420,66 @@
     </div>
   </section>
 
-  <!-- Office Locations -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- Certifications -->
+  <section class="py-24 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-black mb-4">Global Presence</h2>
-        <p class="text-gray-400 text-lg">Offices around the world to serve you better</p>
+        <h2 class="text-5xl font-black text-gray-900 premium-heading mb-4">Certifications & Compliance</h2>
+        <p class="text-xl text-gray-600 font-medium">Maintaining highest standards of quality and security</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1619856699906-09e1f58c98b1?w=400&h=200&fit=crop" 
-               alt="Denver Office" 
-               class="rounded-xl w-full h-40 object-cover mb-4">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-2xl">🇺🇸</span>
-            <h3 class="font-bold text-lg">Denver, USA</h3>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="cert-badge rounded-2xl p-8 text-center">
+          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
+            <i class="fas fa-award text-white text-3xl"></i>
           </div>
-          <p class="text-gray-400 text-sm mb-4">Headquarters</p>
-          <p class="text-gray-500 text-sm">
-            <i class="fas fa-map-marker-alt mr-2"></i>
-            1234 Mining Ave, Denver, CO 80202
-          </p>
+          <h3 class="font-bold text-gray-900 mb-2">ISO 9001:2015</h3>
+          <p class="text-sm text-gray-600">Quality Management System</p>
         </div>
 
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=400&h=200&fit=crop" 
-               alt="Perth Office" 
-               class="rounded-xl w-full h-40 object-cover mb-4">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-2xl">🇦🇺</span>
-            <h3 class="font-bold text-lg">Perth, Australia</h3>
+        <div class="cert-badge rounded-2xl p-8 text-center">
+          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
+            <i class="fas fa-shield-alt text-white text-3xl"></i>
           </div>
-          <p class="text-gray-400 text-sm mb-4">Asia-Pacific Hub</p>
-          <p class="text-gray-500 text-sm">
-            <i class="fas fa-map-marker-alt mr-2"></i>
-            Level 5, 123 St Georges Terrace
-          </p>
+          <h3 class="font-bold text-gray-900 mb-2">SOC 2 Type II</h3>
+          <p class="text-sm text-gray-600">Security & Compliance</p>
         </div>
 
-        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800">
-          <img src="https://images.unsplash.com/photo-1517935706615-2717063c2225?w=400&h=200&fit=crop" 
-               alt="Santiago Office" 
-               class="rounded-xl w-full h-40 object-cover mb-4">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-2xl">🇨🇱</span>
-            <h3 class="font-bold text-lg">Santiago, Chile</h3>
+        <div class="cert-badge rounded-2xl p-8 text-center">
+          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
+            <i class="fas fa-lock text-white text-3xl"></i>
           </div>
-          <p class="text-gray-400 text-sm mb-4">Latin America Hub</p>
-          <p class="text-gray-500 text-sm">
-            <i class="fas fa-map-marker-alt mr-2"></i>
-            Av. Apoquindo 4501, Las Condes
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline Section -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-black mb-4">Our Journey</h2>
-        <p class="text-gray-400 text-lg">From startup to industry leader</p>
-      </div>
-
-      <div class="space-y-8">
-        <div class="flex gap-8 items-start">
-          <div class="bg-amber-500 text-white font-bold px-4 py-2 rounded-lg whitespace-nowrap">2020</div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">Company Founded</h3>
-            <p class="text-gray-400">SESMine launched with a vision to revolutionize mining cost estimation using AI technology.</p>
-          </div>
+          <h3 class="font-bold text-gray-900 mb-2">ISO 27001</h3>
+          <p class="text-sm text-gray-600">Information Security</p>
         </div>
 
-        <div class="flex gap-8 items-start">
-          <div class="bg-green-500 text-white font-bold px-4 py-2 rounded-lg whitespace-nowrap">2021</div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">First 100 Customers</h3>
-            <p class="text-gray-400">Reached milestone of 100 mining companies using our platform across 15 countries.</p>
+        <div class="cert-badge rounded-2xl p-8 text-center">
+          <div class="w-20 h-20 mx-auto mb-4 gradient-blue rounded-2xl flex items-center justify-center">
+            <i class="fas fa-check-circle text-white text-3xl"></i>
           </div>
-        </div>
-
-        <div class="flex gap-8 items-start">
-          <div class="bg-purple-500 text-white font-bold px-4 py-2 rounded-lg whitespace-nowrap">2022</div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">AI Breakthrough</h3>
-            <p class="text-gray-400">Achieved 94% accuracy rate with our proprietary AI prediction models.</p>
-          </div>
-        </div>
-
-        <div class="flex gap-8 items-start">
-          <div class="bg-blue-500 text-white font-bold px-4 py-2 rounded-lg whitespace-nowrap">2023</div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">Global Expansion</h3>
-            <p class="text-gray-400">Opened offices in Australia, Canada, Chile, and South Africa.</p>
-          </div>
-        </div>
-
-        <div class="flex gap-8 items-start">
-          <div class="bg-red-500 text-white font-bold px-4 py-2 rounded-lg whitespace-nowrap">2024</div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">$50B Milestone</h3>
-            <p class="text-gray-400">Surpassed $50 billion in total project value estimated through our platform.</p>
-          </div>
-        </div>
-
-        <div class="flex gap-8 items-start">
-          <div class="bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold px-4 py-2 rounded-lg whitespace-nowrap">2025</div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold mb-2">Industry Leader</h3>
-            <p class="text-gray-400">Now serving 500+ companies with the most comprehensive mining cost platform available.</p>
-          </div>
+          <h3 class="font-bold text-gray-900 mb-2">GDPR Compliant</h3>
+          <p class="text-sm text-gray-600">Data Protection</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-red-500/20 rounded-3xl p-12 border border-amber-500/30 text-center">
-        <h2 class="text-4xl font-black mb-4">Join Our Growing Team</h2>
-        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          We're always looking for talented individuals passionate about mining and technology.
-        </p>
-        <a href="contact.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all">
-          View Open Positions <i class="fas fa-arrow-right"></i>
-        </a>
+  <section class="py-24 px-6 gradient-blue">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <h2 class="text-5xl font-black mb-6 premium-heading">Join Our Journey</h2>
+      <p class="text-xl mb-10 opacity-95">Be part of the future of mining technology with industry leaders</p>
+      <div class="flex gap-4 justify-center">
+        <a href="contact.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all">Contact Us</a>
+        <a href="auth/signup.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Get Started</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-
-  <nav class="fixed w-full z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/50">
-    <div class="max-w-7xl mx-auto px-6 py-3">
-      <div class="flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3 group">
-          <img src="https://cdn.grapesjs.com/workspaces/cmjdh0oo603xm12grpuiruk7p/assets/f6b95b3d-49d1-4e77-b952-49ed80c4befa__image-9-14-1404-ap-at-8.42-pm.png" alt="SES_MINE Logo" class="h-16 logo-glow group-hover:scale-105 transition-transform">
-        </a>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-mountain text-white"></i>
-            </div>
-            <span class="text-xl font-bold">SES<span class="gradient-text">Mine</span></span>
-          </div>
-          <p class="text-gray-400 text-sm">Smart Engineering Solutions for Mining</p>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Product</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="products/cost-calculator.html" class="hover:text-white transition-colors">Cost Calculator</a></li>
-            <li><a href="products/equipment-database.html" class="hover:text-white transition-colors">Equipment Database</a></li>
-            <li><a href="pricing/index.html" class="hover:text-white transition-colors">Pricing</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Company</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
-            <li><a href="news.html" class="hover:text-white transition-colors">News</a></li>
-            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Legal</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-        <p>© 2025 SESMine. All rights reserved.</p>
-      </div>
+  <footer class="border-t-2 border-gray-200 py-16 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-gray-600 font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
     </div>
   </footer>
 </body>
