@@ -1,915 +1,1720 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SESMine - Global Leader in Mining Engineering Solutions | Est. 2004</title>
-  <meta name="description" content="Industry-leading mining cost estimation and project management platform. Trusted by Fortune 500 mining companies worldwide. 20+ years of excellence.">
+  <title>SESMINE | Professional Mining Equipment Solutions & Spare Parts | Oman</title>
+  <meta name="description" content="SESMINE - Professional mining equipment solutions provider in Oman. Specializing in equipment selection, optimization, spare parts supply, procurement, and technology partnerships with global manufacturers like Caterpillar, Komatsu, Liebherr.">
+  <meta name="keywords" content="mining equipment Oman, spare parts mining, equipment optimization, mining procurement, Caterpillar Komatsu Liebherr, SESMINE equipment">
+  <link rel="canonical" href="https://sesmine.om/">
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
-    * { 
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-    }
-    
-    h1, h2, h3, .premium-heading {
-      font-family: 'Playfair Display', serif;
-    }
-    
-    /* Premium Corporate Colors */
-    :root {
-      --corporate-blue: #003366;
-      --navy-dark: #001a3d;
-      --navy-medium: #2c3e50;
-      --steel-blue: #607d8b;
-      --success-blue: #1976d2;
-      --azure-light: #0080cc;
-      --white-pure: #ffffff;
-      --white-soft: #f8f9fa;
-      --gray-light: #ecf0f1;
-    }
-    
-    body {
-      background: #ffffff;
-      color: #2c3e50;
-    }
-    
-    .gradient-blue {
-      background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
-    }
-    
-    .gradient-text {
-      background: linear-gradient(135deg, #003366 0%, #1976d2 50%, #0080cc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .btn-corporate {
-      background: linear-gradient(135deg, #003366 0%, #004d99 100%);
-      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
-      color: white;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    
-    .btn-corporate:hover {
-      background: linear-gradient(135deg, #001a3d 0%, #003366 100%);
-      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
-      transform: translateY(-2px);
-    }
-    
-    .btn-outline {
-      background: white;
-      border: 2px solid #003366;
-      color: #003366;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    
-    .btn-outline:hover {
-      background: #003366;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.3);
-    }
-    
-    .logo-premium {
-      filter: drop-shadow(0 2px 8px rgba(0, 51, 102, 0.2));
-    }
-    
-    /* Premium Navigation */
-    .nav-premium {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid #ecf0f1;
-      box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
-    }
-    
-    .mega-menu {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-15px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: none;
-    }
-    
-    .menu-item:hover .mega-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      pointer-events: all;
-    }
-    
-    .dropdown-menu {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px) scale(0.95);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: none;
-    }
-    
-    .dropdown-menu.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0) scale(1);
-      pointer-events: all;
-    }
-    
-    .menu-link {
-      position: relative;
-      transition: all 0.3s ease;
-      color: #2c3e50;
-      font-weight: 500;
-    }
-    
-    .menu-link::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #003366, #0080cc);
-      border-radius: 2px;
-      transition: width 0.3s ease;
-    }
-    
-    .menu-link:hover {
-      color: #003366;
-    }
-    
-    .menu-link:hover::after {
-      width: 80%;
-    }
-    
-    /* Premium Cards */
-    .card-premium {
-      position: relative;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: white;
-      border: 2px solid #ecf0f1;
-      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.06);
-    }
-    
-    .card-premium::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 2px;
-      background: linear-gradient(135deg, #003366, #0080cc);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    
-    .card-premium:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 50px rgba(0, 51, 102, 0.15);
-    }
-    
-    .card-premium:hover::before {
-      opacity: 1;
-    }
-    
-    .mobile-menu {
-      transform: translateX(-100%);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: white;
-    }
-    
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-    
-    .animate-float {
-      animation: float 8s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-30px); }
-    }
-    
-    .stat-counter {
-      font-variant-numeric: tabular-nums;
-      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family: 'Playfair Display', serif;
-    }
-    
-    .hover-lift {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .hover-lift:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 51, 102, 0.15);
-    }
-    
-    .premium-badge {
-      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
-      color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    
-    .section-divider {
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #003366, transparent);
-      margin: 3rem 0;
-    }
-    
-    .trust-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: white;
-      border: 2px solid #ecf0f1;
-      padding: 0.75rem 1.5rem;
-      border-radius: 9999px;
-      box-shadow: 0 4px 15px rgba(0, 51, 102, 0.08);
-      font-weight: 600;
-      color: #2c3e50;
-    }
-    
-    .hero-premium {
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
-      position: relative;
-    }
-    
-    .hero-premium::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(0, 128, 204, 0.05) 100%);
-      clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
-    }
+      :root {
+          --primary: #1e40af;
+          --secondary: #dc2626;
+          --accent: #f59e0b;
+          --success: #059669;
+          --dark: #1e293b;
+          --darker: #0f172a;
+          --light: #f8fafc;
+          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      }
+      
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      body { 
+          font-family: 'Inter', sans-serif; 
+          background: var(--darker); 
+          color: white; 
+          line-height: 1.6; 
+          overflow-x: hidden;
+      }
+      
+      body.rtl { 
+          font-family: 'Cairo', sans-serif; 
+          direction: rtl; 
+      }
+      
+      html { scroll-behavior: smooth; }
+      
+      /* Professional Background Animation */
+      .professional-bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          pointer-events: none;
+          overflow: hidden;
+      }
+      
+      .tech-grid {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: 
+              linear-gradient(rgba(30, 64, 175, 0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(30, 64, 175, 0.03) 1px, transparent 1px);
+          background-size: 50px 50px;
+          animation: gridMove 20s linear infinite;
+      }
+      
+      @keyframes gridMove {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(50px, 50px); }
+      }
+      
+      .floating-elements {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+      }
+      
+      .floating-element {
+          position: absolute;
+          opacity: 0.1;
+          animation: float 15s infinite ease-in-out;
+      }
+      
+      .element-1 {
+          top: 20%;
+          left: 10%;
+          animation-delay: 0s;
+      }
+      
+      .element-2 {
+          top: 60%;
+          right: 15%;
+          animation-delay: 5s;
+      }
+      
+      .element-3 {
+          bottom: 30%;
+          left: 20%;
+          animation-delay: 10s;
+      }
+      
+      @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+          50% { transform: translateY(-20px) rotate(180deg); opacity: 0.2; }
+      }
+      
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+      @keyframes slideIn { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      
+      /* Top Bar */
+      .top-bar {
+          background: rgba(15, 23, 42, 0.98);
+          border-bottom: 1px solid rgba(30, 64, 175, 0.2);
+          padding: 0.8rem 0;
+          font-size: 0.85rem;
+          position: relative;
+          z-index: 5000;
+      }
+      
+      .top-bar-content {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .top-bar-left {
+          display: flex;
+          gap: 2rem;
+          align-items: center;
+      }
+      
+      .top-bar-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          transition: all 0.3s;
+          font-weight: 500;
+      }
+      
+      .top-bar-item:hover { 
+          color: var(--primary); 
+          transform: translateX(3px);
+      }
+      
+      body.rtl .top-bar-item:hover {
+          transform: translateX(-3px);
+      }
+      
+      .top-bar-item i { color: var(--primary); }
+      
+      .top-bar-right {
+          display: flex;
+          gap: 1.5rem;
+          align-items: center;
+      }
+      
+      .social-icon {
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(30, 64, 175, 0.1);
+          border-radius: 8px;
+          color: rgba(255, 255, 255, 0.8);
+          transition: all 0.3s;
+          text-decoration: none;
+      }
+      
+      .social-icon:hover {
+          background: var(--gradient-primary);
+          color: white;
+          transform: translateY(-2px) scale(1.05);
+      }
+      
+      .language-switcher-top {
+          display: flex;
+          gap: 0.25rem;
+          padding: 0.25rem;
+          background: rgba(30, 64, 175, 0.1);
+          border-radius: 12px;
+          border: 1px solid rgba(30, 64, 175, 0.2);
+      }
+      
+      .lang-btn-top {
+          padding: 0.4rem 1rem;
+          border: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 0.8);
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 0.8rem;
+          font-weight: 600;
+          transition: all 0.3s;
+      }
+      
+      .lang-btn-top.active {
+          background: var(--gradient-primary);
+          color: white;
+          box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+      }
+      
+      /* Header */
+      header {
+          position: sticky;
+          top: 0;
+          z-index: 4000;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
+          transition: all 0.3s;
+      }
+      
+      header.scrolled {
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+          background: rgba(15, 23, 42, 0.98);
+      }
+      
+      nav {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          color: white;
+          font-weight: 800;
+          font-size: 1.8rem;
+          transition: all 0.3s;
+      }
+      
+      .logo:hover { transform: translateY(-2px); }
+      
+      .logo img {
+          height: 60px;
+          filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4));
+          transition: all 0.3s;
+      }
+      
+      .logo:hover img {
+          filter: drop-shadow(0 6px 20px rgba(30, 64, 175, 0.6));
+      }
+      
+      .logo-text { 
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+      
+      .logo-subtitle {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-top: -5px;
+      }
+      
+      .nav-center {
+          display: flex;
+          list-style: none;
+          gap: 0.5rem;
+          align-items: center;
+      }
+      
+      .nav-link {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.8rem 1.5rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: all 0.3s;
+          border-radius: 12px;
+          position: relative;
+      }
+      
+      .nav-link::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: var(--gradient-primary);
+          border-radius: 12px;
+          opacity: 0;
+          transition: opacity 0.3s;
+      }
+      
+      .nav-link:hover::before,
+      .nav-link.active::before {
+          opacity: 0.1;
+      }
+      
+      .nav-link:hover,
+      .nav-link.active {
+          color: white;
+          transform: translateY(-1px);
+      }
+      
+      .nav-right {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+      }
+      
+      .cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.9rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .cta-btn::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, #dc2626 0%, #1e40af 100%);
+          opacity: 0;
+          transition: opacity 0.3s;
+      }
+      
+      .cta-btn:hover::before {
+          opacity: 1;
+      }
+      
+      .cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
+      }
+      
+      .cta-btn span,
+      .cta-btn i {
+          position: relative;
+          z-index: 1;
+      }
+      
+      .mobile-menu-btn {
+          display: none;
+          background: none;
+          border: none;
+          color: white;
+          font-size: 1.5rem;
+          cursor: pointer;
+      }
+      
+      /* Hero Section */
+      .hero {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+          padding: 8rem 2rem 4rem;
+      }
+      
+      .hero-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: 
+              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&q=85') center/cover;
+          z-index: 0;
+      }
+      
+      .hero::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: 
+              radial-gradient(circle at 30% 40%, rgba(30, 64, 175, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+          animation: professionalPulse 12s ease infinite;
+          z-index: 1;
+      }
+      
+      @keyframes professionalPulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.8; }
+      }
+      
+      .hero-content {
+          max-width: 1400px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+          text-align: center;
+      }
+      
+      .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 28px;
+          background: rgba(30, 64, 175, 0.15);
+          border: 1px solid rgba(30, 64, 175, 0.3);
+          border-radius: 100px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--primary);
+          margin-bottom: 2rem;
+          animation: fadeInUp 0.8s ease;
+          backdrop-filter: blur(10px);
+      }
+      
+      .hero h1 {
+          font-size: clamp(2.5rem, 6vw, 5.5rem);
+          font-weight: 900;
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
+          animation: fadeInUp 0.8s ease 0.2s backwards;
+      }
+      
+      .gradient-text {
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+      
+      .hero-subtitle {
+          font-size: clamp(1.1rem, 2vw, 1.4rem);
+          color: rgba(255, 255, 255, 0.85);
+          max-width: 900px;
+          margin: 0 auto 3rem;
+          line-height: 1.8;
+          animation: fadeInUp 0.8s ease 0.4s backwards;
+      }
+      
+      .hero-buttons {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          flex-wrap: wrap;
+          animation: fadeInUp 0.8s ease 0.6s backwards;
+          margin-bottom: 4rem;
+      }
+      
+      .btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 16px 36px;
+          border-radius: 50px;
+          font-weight: 600;
+          font-size: 1rem;
+          text-decoration: none;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          cursor: pointer;
+          border: none;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .btn-primary {
+          background: var(--gradient-primary);
+          color: white;
+          box-shadow: 0 10px 40px rgba(30, 64, 175, 0.3);
+      }
+      
+      .btn-primary::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, #dc2626 0%, #1e40af 100%);
+          opacity: 0;
+          transition: opacity 0.3s;
+      }
+      
+      .btn-primary:hover::before {
+          opacity: 1;
+      }
+      
+      .btn-primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 15px 50px rgba(30, 64, 175, 0.5);
+      }
+      
+      .btn-secondary {
+          background: rgba(255, 255, 255, 0.08);
+          color: white;
+          border: 1px solid rgba(30, 64, 175, 0.3);
+          backdrop-filter: blur(10px);
+      }
+      
+      .btn-secondary:hover {
+          background: rgba(30, 64, 175, 0.15);
+          transform: translateY(-3px);
+      }
+      
+      .btn span,
+      .btn i {
+          position: relative;
+          z-index: 1;
+      }
+      
+      .hero-stats {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 3rem;
+          margin-top: 5rem;
+          padding: 3rem;
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 24px;
+          backdrop-filter: blur(20px);
+          animation: fadeInUp 0.8s ease 0.8s backwards;
+      }
+      
+      .stat-item { 
+          text-align: center;
+          transition: all 0.3s;
+          position: relative;
+      }
+      
+      .stat-item::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 60%;
+          background: rgba(30, 64, 175, 0.2);
+      }
+      
+      .stat-item:last-child::after { display: none; }
+      body.rtl .stat-item::after { right: auto; left: 0; }
+      
+      .stat-item:hover {
+          transform: translateY(-5px);
+      }
+      
+      .stat-number {
+          font-size: 3rem;
+          font-weight: 900;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 1rem;
+          font-weight: 500;
+      }
+      
+      /* Services Section */
+      .services-section {
+          padding: 8rem 2rem;
+          background: rgba(30, 64, 175, 0.02);
+          position: relative;
+      }
+      
+      .section-header {
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 4rem;
+      }
+      
+      .section-badge {
+          display: inline-block;
+          padding: 8px 20px;
+          background: rgba(220, 38, 38, 0.15);
+          border: 1px solid rgba(220, 38, 38, 0.3);
+          border-radius: 100px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--secondary);
+          margin-bottom: 1.5rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+      }
+      
+      .section-title {
+          font-size: clamp(2rem, 4vw, 3.5rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          line-height: 1.2;
+      }
+      
+      .section-description {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+      }
+      
+      .services-grid {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2.5rem;
+      }
+      
+      .service-card {
+          background: rgba(30, 64, 175, 0.03);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 24px;
+          padding: 3rem;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .service-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--gradient-primary);
+          transform: scaleX(0);
+          transition: transform 0.4s;
+      }
+      
+      .service-card:hover {
+          transform: translateY(-10px);
+          background: rgba(30, 64, 175, 0.08);
+          border-color: rgba(30, 64, 175, 0.3);
+          box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+      }
+      
+      .service-card:hover::before { transform: scaleX(1); }
+      
+      .service-image {
+          width: 100%;
+          height: 200px;
+          border-radius: 16px;
+          object-fit: cover;
+          margin-bottom: 2rem;
+          transition: transform 0.3s;
+      }
+      
+      .service-card:hover .service-image {
+          transform: scale(1.05);
+      }
+      
+      .service-icon {
+          width: 80px;
+          height: 80px;
+          background: var(--gradient-primary);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+          color: white;
+      }
+      
+      .service-card:nth-child(2) .service-icon { 
+          background: var(--gradient-secondary); 
+          box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3); 
+      }
+      .service-card:nth-child(3) .service-icon { 
+          background: var(--gradient-success); 
+          box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3); 
+      }
+      .service-card:nth-child(4) .service-icon { 
+          background: var(--gradient-accent); 
+          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3); 
+      }
+      .service-card:nth-child(5) .service-icon { 
+          background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); 
+          box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3); 
+      }
+      
+      .service-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          line-height: 1.3;
+          color: white;
+      }
+      
+      .service-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+      }
+      
+      .service-features {
+          list-style: none;
+          margin-bottom: 2rem;
+      }
+      
+      .service-features li {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.9rem;
+      }
+      
+      .service-features i {
+          color: var(--primary);
+          font-size: 0.8rem;
+      }
+      
+      /* Partners Section */
+      .partners-section {
+          padding: 6rem 2rem;
+          background: rgba(220, 38, 38, 0.05);
+      }
+      
+      .partners-header {
+          text-align: center;
+          margin-bottom: 3rem;
+      }
+      
+      .partners-title {
+          font-size: 2.5rem;
+          font-weight: 900;
+          margin-bottom: 1rem;
+          background: var(--gradient-secondary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .partners-grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          align-items: center;
+      }
+      
+      .partner-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          padding: 2rem;
+          text-align: center;
+          transition: all 0.3s;
+          backdrop-filter: blur(10px);
+      }
+      
+      .partner-card:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.08);
+          border-color: var(--primary);
+      }
+      
+      .partner-logo {
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: var(--primary);
+          margin-bottom: 0.5rem;
+      }
+      
+      .partner-name {
+          font-weight: 600;
+          color: white;
+          font-size: 0.9rem;
+      }
+      
+      /* About Section */
+      .about-section {
+          padding: 8rem 2rem;
+          background: rgba(30, 41, 59, 0.3);
+      }
+      
+      .about-content {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+      }
+      
+      .about-text h2 {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 2rem;
+          line-height: 1.2;
+      }
+      
+      .about-text p {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+          margin-bottom: 2rem;
+      }
+      
+      .about-features {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+          margin-top: 2rem;
+      }
+      
+      .about-feature {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1.5rem;
+          background: rgba(30, 64, 175, 0.05);
+          border-radius: 16px;
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          transition: all 0.3s;
+      }
+      
+      .about-feature:hover {
+          background: rgba(30, 64, 175, 0.1);
+          transform: translateY(-2px);
+      }
+      
+      .about-feature-icon {
+          width: 50px;
+          height: 50px;
+          background: var(--gradient-primary);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1.2rem;
+      }
+      
+      .about-feature-text {
+          font-weight: 600;
+          color: white;
+      }
+      
+      .about-image {
+          position: relative;
+      }
+      
+      .about-image img {
+          width: 100%;
+          height: 500px;
+          object-fit: cover;
+          border-radius: 24px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* Footer */
+      footer {
+          background: rgba(15, 23, 42, 0.95);
+          border-top: 1px solid rgba(30, 64, 175, 0.2);
+      }
+      
+      .footer-main {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 4rem 2rem;
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+          gap: 3rem;
+      }
+      
+      .footer-brand { max-width: 350px; }
+      
+      .footer-logo {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 1.5rem;
+          text-decoration: none;
+      }
+      
+      .footer-logo img {
+          height: 50px;
+      }
+      
+      .footer-logo-text {
+          font-size: 1.4rem;
+          font-weight: 800;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .footer-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+          font-size: 0.95rem;
+      }
+      
+      .footer-social {
+          display: flex;
+          gap: 0.8rem;
+      }
+      
+      .footer-social-link {
+          width: 42px;
+          height: 42px;
+          background: rgba(30, 64, 175, 0.1);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(255, 255, 255, 0.8);
+          transition: all 0.3s;
+          text-decoration: none;
+      }
+      
+      .footer-social-link:hover {
+          background: var(--gradient-primary);
+          color: white;
+          transform: translateY(-3px);
+          border-color: transparent;
+      }
+      
+      .footer-section h4 {
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
+          font-weight: 700;
+          color: var(--primary);
+      }
+      
+      .footer-links {
+          list-style: none;
+      }
+      
+      .footer-links li {
+          margin-bottom: 0.8rem;
+      }
+      
+      .footer-links a {
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: all 0.3s;
+          display: inline-block;
+      }
+      
+      .footer-links a:hover {
+          color: var(--primary);
+          transform: translateX(5px);
+      }
+      
+      body.rtl .footer-links a:hover {
+          transform: translateX(-5px);
+      }
+      
+      .footer-bottom {
+          border-top: 1px solid rgba(30, 64, 175, 0.2);
+          padding: 2rem;
+      }
+      
+      .footer-bottom-content {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .footer-copyright {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.9rem;
+      }
+      
+      .footer-bottom-links {
+          display: flex;
+          gap: 2rem;
+          list-style: none;
+      }
+      
+      .footer-bottom-links a {
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: color 0.3s;
+      }
+      
+      .footer-bottom-links a:hover {
+          color: var(--primary);
+      }
+      
+      /* Responsive */
+      @media (max-width: 1024px) {
+          .footer-main {
+              grid-template-columns: 1fr 1fr;
+          }
+          .about-content {
+              grid-template-columns: 1fr;
+              text-align: center;
+          }
+          .about-features {
+              grid-template-columns: 1fr;
+          }
+          .stat-item::after { display: none; }
+          .partners-grid {
+              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          }
+      }
+      
+      @media (max-width: 768px) {
+          .top-bar { display: none; }
+          .nav-center { display: none; }
+          .mobile-menu-btn { display: block; }
+          .hero { padding: 6rem 1.5rem 3rem; }
+          .hero-stats { grid-template-columns: 1fr 1fr; gap: 2rem; }
+          .footer-main { grid-template-columns: 1fr; }
+          .footer-bottom-content { flex-direction: column; text-align: center; }
+          .services-grid { grid-template-columns: 1fr; }
+          .about-features { grid-template-columns: 1fr; }
+          .partners-grid { grid-template-columns: 1fr 1fr; }
+      }
   </style>
 </head>
 <body>
-  <!-- Premium Navigation -->
-  <nav class="fixed w-full z-50 nav-premium">
-    <div class="max-w-7xl mx-auto px-6">
-      <!-- Top Bar -->
-      <div class="flex items-center justify-between py-4 border-b border-gray-100">
-        <div class="flex items-center gap-8">
-          <!-- Premium Logo -->
-          <a href="index.html" class="flex items-center gap-3 group">
-            <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-16 logo-premium group-hover:scale-105 transition-transform duration-300">
-            <div class="hidden lg:block">
-              <div class="text-xs text-gray-500 font-medium">EST. 2004</div>
-              <div class="text-xs text-blue-900 font-bold tracking-wider">GLOBAL LEADER</div>
-            </div>
-          </a>
-          
-          <!-- Premium Search -->
-          <div class="hidden lg:flex items-center relative">
-            <input type="text" placeholder="Search solutions, resources, documentation..." class="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent focus:w-96 w-80 transition-all duration-300">
-            <i class="fas fa-search absolute left-4 text-blue-900"></i>
-            <button class="absolute right-3 text-xs text-gray-500 bg-white px-2.5 py-1.5 rounded-lg border border-gray-200 shadow-sm font-semibold">⌘K</button>
+  <!-- Professional Background -->
+  <div class="professional-bg">
+      <div class="tech-grid"></div>
+      <div class="floating-elements">
+          <div class="floating-element element-1">
+              <i class="fas fa-industry" style="font-size: 60px; color: var(--primary);"></i>
           </div>
-        </div>
-
-        <!-- Right Actions -->
-        <div class="flex items-center gap-3">
-          <!-- Enterprise Badge -->
-          <div class="hidden lg:flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg border border-blue-200">
-            <i class="fas fa-shield-alt text-blue-900"></i>
-            <span class="text-xs font-bold text-blue-900">ENTERPRISE GRADE</span>
+          <div class="floating-element element-2">
+              <i class="fas fa-cogs" style="font-size: 40px; color: var(--secondary);"></i>
           </div>
-
-          <!-- Notifications -->
-          <button class="relative p-3 hover:bg-gray-50 rounded-xl transition-all hover-lift group">
-            <i class="fas fa-bell text-gray-600 group-hover:text-blue-900 transition-colors text-lg"></i>
-            <span class="absolute top-2 right-2 w-2.5 h-2.5 bg-blue-900 rounded-full"></span>
-          </button>
-
-          <!-- Language -->
-          <div class="relative group">
-            <button class="flex items-center gap-2 px-4 py-3 hover:bg-gray-50 rounded-xl transition-all hover-lift">
-              <i class="fas fa-globe text-gray-600"></i>
-              <span class="text-sm font-semibold text-gray-700">EN</span>
-              <i class="fas fa-chevron-down text-xs text-gray-500"></i>
-            </button>
-            <div class="dropdown-menu absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-gray-100 group-hover:active">
-              <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
-                <span class="text-2xl">🇺🇸</span>
-                <span class="text-sm font-semibold text-gray-700">English</span>
-                <i class="fas fa-check text-blue-900 ml-auto text-xs"></i>
-              </a>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
-                <span class="text-2xl">🇪🇸</span>
-                <span class="text-sm font-semibold text-gray-700">Español</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
-                <span class="text-2xl">🇫🇷</span>
-                <span class="text-sm font-semibold text-gray-700">Français</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-all">
-                <span class="text-2xl">🇩🇪</span>
-                <span class="text-sm font-semibold text-gray-700">Deutsch</span>
-              </a>
-            </div>
+          <div class="floating-element element-3">
+              <i class="fas fa-tools" style="font-size: 50px; color: var(--accent);"></i>
           </div>
-
-          <!-- User Profile -->
-          <div class="relative group">
-            <button class="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded-xl transition-all hover-lift">
-              <div class="w-10 h-10 rounded-xl gradient-blue flex items-center justify-center text-sm font-bold text-white shadow-lg">
-                JD
-              </div>
-              <div class="hidden md:block text-left">
-                <div class="text-sm font-bold text-gray-800">John Doe</div>
-                <div class="text-xs text-blue-900 font-semibold">Enterprise</div>
-              </div>
-              <i class="fas fa-chevron-down text-xs text-gray-500"></i>
-            </button>
-            <div class="dropdown-menu absolute right-0 top-full mt-2 w-80 bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-gray-100 group-hover:active">
-              <div class="p-5 border-b border-gray-100 gradient-blue text-white">
-                <div class="font-bold text-lg">John Doe</div>
-                <div class="text-sm opacity-90">john.doe@mining.com</div>
-                <div class="mt-3 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold">
-                  <i class="fas fa-crown"></i>
-                  Enterprise Plan
-                </div>
-              </div>
-              <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all group/item">
-                <i class="fas fa-user w-5 text-blue-900 group-hover/item:scale-110 transition-transform"></i>
-                <span class="text-sm font-semibold text-gray-700">My Profile</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all group/item">
-                <i class="fas fa-cog w-5 text-blue-900 group-hover/item:rotate-90 transition-transform duration-300"></i>
-                <span class="text-sm font-semibold text-gray-700">Settings</span>
-              </a>
-              <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all group/item">
-                <i class="fas fa-credit-card w-5 text-blue-900 group-hover/item:scale-110 transition-transform"></i>
-                <span class="text-sm font-semibold text-gray-700">Billing & Plans</span>
-              </a>
-              <div class="border-t border-gray-100"></div>
-              <a href="admin/admin-login.html" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all text-blue-900 group/item">
-                <i class="fas fa-user-shield w-5 group-hover/item:scale-110 transition-transform"></i>
-                <span class="text-sm font-semibold">Admin Panel</span>
-              </a>
-              <a href="auth/login.html" class="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-all text-red-600 group/item">
-                <i class="fas fa-sign-out-alt w-5 group-hover/item:translate-x-1 transition-transform"></i>
-                <span class="text-sm font-semibold">Sign Out</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- CTA Button -->
-          <a href="auth/signup.html" class="hidden lg:flex btn-corporate px-6 py-3 rounded-xl items-center gap-2 transition-all">
-            <i class="fas fa-rocket"></i>
-            <span>Get Started</span>
-          </a>
-
-          <!-- Mobile Menu Toggle -->
-          <button onclick="toggleMobileMenu()" class="lg:hidden p-3 hover:bg-gray-50 rounded-xl transition-all">
-            <i class="fas fa-bars text-xl text-gray-700"></i>
-          </button>
-        </div>
       </div>
-
-      <!-- Main Menu -->
-      <div class="hidden lg:flex items-center justify-between py-4">
-        <div class="flex items-center gap-1">
-          <!-- Solutions Mega Menu -->
-          <div class="menu-item relative">
-            <button class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
-              <i class="fas fa-th"></i>
-              <span>Solutions</span>
-              <i class="fas fa-chevron-down text-xs"></i>
-            </button>
-            <div class="mega-menu absolute left-0 top-full mt-2 w-screen max-w-6xl bg-white rounded-2xl shadow-2xl p-10 border-2 border-gray-100">
-              <div class="grid grid-cols-4 gap-10">
-                <!-- Engineering Solutions -->
-                <div>
-                  <div class="flex items-center gap-2 mb-5">
-                    <div class="w-10 h-10 gradient-blue rounded-xl flex items-center justify-center">
-                      <i class="fas fa-cogs text-white text-sm"></i>
-                    </div>
-                    <div class="text-xs font-bold text-blue-900 uppercase tracking-wider">Engineering</div>
-                  </div>
-                  <div class="space-y-2">
-                    <a href="hubs/engineering-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-drafting-compass text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Engineering Hub</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">Design & optimization</div>
-                      </div>
-                    </a>
-                    <a href="hubs/economics-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-chart-pie text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Economics Hub</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">Financial modeling</div>
-                      </div>
-                    </a>
-                    <a href="hubs/innovation-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-lightbulb text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Innovation Hub</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">AI & digital solutions</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Operations -->
-                <div>
-                  <div class="flex items-center gap-2 mb-5">
-                    <div class="w-10 h-10 gradient-blue rounded-xl flex items-center justify-center">
-                      <i class="fas fa-industry text-white text-sm"></i>
-                    </div>
-                    <div class="text-xs font-bold text-blue-900 uppercase tracking-wider">Operations</div>
-                  </div>
-                  <div class="space-y-2">
-                    <a href="hubs/sustainability-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-leaf text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Sustainability Hub</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">ESG & compliance</div>
-                      </div>
-                    </a>
-                    <a href="hubs/safety-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-shield-alt text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Safety Hub</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">Risk management</div>
-                      </div>
-                    </a>
-                    <a href="hubs/analytics-hub.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-chart-bar text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Analytics Hub</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">Business intelligence</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Products -->
-                <div>
-                  <div class="flex items-center gap-2 mb-5">
-                    <div class="w-10 h-10 gradient-blue rounded-xl flex items-center justify-center">
-                      <i class="fas fa-box text-white text-sm"></i>
-                    </div>
-                    <div class="text-xs font-bold text-blue-900 uppercase tracking-wider">Products</div>
-                  </div>
-                  <div class="space-y-2">
-                    <a href="products/cost-calculator.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-calculator text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Cost Calculator</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">AI-powered estimation</div>
-                      </div>
-                    </a>
-                    <a href="products/equipment-database.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-database text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Equipment DB</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">10,000+ specifications</div>
-                      </div>
-                    </a>
-                    <a href="products/project-manager.html" class="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all group">
-                      <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-100 transition-all">
-                        <i class="fas fa-tasks text-blue-900"></i>
-                      </div>
-                      <div>
-                        <div class="font-bold text-sm text-gray-800 group-hover:text-blue-900 transition-colors">Project Manager</div>
-                        <div class="text-xs text-gray-500 leading-relaxed">End-to-end tracking</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Featured -->
-                <div class="gradient-blue rounded-2xl p-6 text-white">
-                  <div class="flex items-center gap-2 mb-4">
-                    <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                      <i class="fas fa-star text-white text-sm"></i>
-                    </div>
-                    <div class="text-xs font-bold uppercase tracking-wider">Featured</div>
-                  </div>
-                  <div>
-                    <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-4">
-                      <i class="fas fa-robot text-white text-3xl"></i>
-                    </div>
-                    <h4 class="font-bold text-lg mb-2">AI Cost Estimator</h4>
-                    <p class="text-sm opacity-90 mb-4 leading-relaxed">Enterprise-grade cost estimation with 94.2% accuracy</p>
-                    <a href="products/cost-calculator.html" class="inline-flex items-center gap-2 text-sm font-bold hover:gap-3 transition-all">
-                      Explore Solution <i class="fas fa-arrow-right text-xs"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Bottom Bar -->
-              <div class="mt-8 pt-6 border-t-2 border-gray-100">
-                <div class="flex items-center justify-between">
-                  <div class="text-sm text-gray-600 font-medium">
-                    <i class="fas fa-info-circle mr-2 text-blue-900"></i>
-                    9 specialized solution hubs for comprehensive mining operations
-                  </div>
-                  <a href="#hubs" class="text-sm font-bold text-blue-900 hover:text-blue-700 transition-colors flex items-center gap-2">
-                    View All Solutions <i class="fas fa-arrow-right text-xs"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Simple Links -->
-          <a href="features.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
-            <i class="fas fa-star"></i>
-            <span>Features</span>
-          </a>
-
-          <a href="pricing/index.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
-            <i class="fas fa-tag"></i>
-            <span>Pricing</span>
-          </a>
-
-          <a href="news.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
-            <i class="fas fa-newspaper"></i>
-            <span>Resources</span>
-          </a>
-
-          <a href="about.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
-            <i class="fas fa-building"></i>
-            <span>Company</span>
-          </a>
-
-          <a href="contact.html" class="menu-link flex items-center gap-2 px-5 py-3 transition-colors font-semibold text-sm">
-            <i class="fas fa-envelope"></i>
-            <span>Contact</span>
-          </a>
-        </div>
-
-        <!-- Support -->
-        <div class="flex items-center gap-3">
-          <a href="help.html" class="text-sm px-4 py-2 hover:text-blue-900 transition-colors font-semibold flex items-center gap-2 text-gray-700">
-            <i class="fas fa-headset"></i>
-            <span>24/7 Support</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-y-0 left-0 w-80 z-50 lg:hidden overflow-y-auto border-r-2 border-gray-200 shadow-2xl">
-    <div class="p-6">
-      <div class="flex items-center justify-between mb-8">
-        <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-12">
-        <button onclick="toggleMobileMenu()" class="p-2 hover:bg-gray-50 rounded-xl transition-all">
-          <i class="fas fa-times text-xl text-gray-700"></i>
-        </button>
-      </div>
-
-      <div class="space-y-2">
-        <a href="index.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-home w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
-          <span class="font-semibold text-gray-800">Home</span>
-        </a>
-        <a href="features.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-star w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
-          <span class="font-semibold text-gray-800">Features</span>
-        </a>
-        <a href="pricing/index.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-tag w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
-          <span class="font-semibold text-gray-800">Pricing</span>
-        </a>
-        <a href="about.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-building w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
-          <span class="font-semibold text-gray-800">About</span>
-        </a>
-        <a href="contact.html" class="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all group">
-          <i class="fas fa-envelope w-5 text-blue-900 group-hover:scale-110 transition-transform"></i>
-          <span class="font-semibold text-gray-800">Contact</span>
-        </a>
-      </div>
-
-      <div class="mt-8 pt-8 border-t-2 border-gray-200">
-        <a href="auth/signup.html" class="block w-full btn-corporate px-6 py-4 rounded-xl font-bold text-center transition-all mb-3">
-          Get Started
-        </a>
-        <a href="auth/login.html" class="block w-full btn-outline px-6 py-4 rounded-xl font-bold text-center transition-all">
-          Sign In
-        </a>
-      </div>
-    </div>
   </div>
 
-  <!-- Premium Hero Section -->
-  <section class="pt-48 pb-32 px-6 relative overflow-hidden hero-premium">
-    <div class="absolute top-20 right-10 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
-    <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-40"></div>
-    
-    <div class="max-w-7xl mx-auto relative z-10">
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
-        <div>
-          <!-- Trust Badges -->
-          <div class="flex flex-wrap gap-3 mb-8">
-            <div class="trust-badge">
-              <i class="fas fa-award text-blue-900"></i>
-              <span class="text-xs">ISO 9001 Certified</span>
-            </div>
-            <div class="trust-badge">
-              <i class="fas fa-shield-alt text-blue-900"></i>
-              <span class="text-xs">SOC 2 Compliant</span>
-            </div>
-            <div class="trust-badge">
-              <i class="fas fa-star text-blue-900"></i>
-              <span class="text-xs">20+ Years Excellence</span>
-            </div>
+  <!-- Top Bar -->
+  <div class="top-bar">
+      <div class="top-bar-content">
+          <div class="top-bar-left">
+              <a href="mailto:equipment@sesmine.om" class="top-bar-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>equipment@sesmine.om</span>
+              </a>
+              <a href="tel:+96824567890" class="top-bar-item">
+                  <i class="fas fa-phone"></i>
+                  <span>+968 2456-7890</span>
+              </a>
+              <div class="top-bar-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span data-en="Muscat Industrial Area, Oman" data-ar="المنطقة الصناعية مسقط، عُمان">Muscat Industrial Area, Oman</span>
+              </div>
+          </div>
+          <div class="top-bar-right">
+              <a href="https://linkedin.com" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="https://youtube.com" class="social-icon"><i class="fab fa-youtube"></i></a>
+              <div class="language-switcher-top">
+                  <button class="lang-btn-top active" data-lang="en">EN</button>
+                  <button class="lang-btn-top" data-lang="ar">عربي</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+      <nav>
+          <a href="index.html" class="logo">
+              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+              <div>
+                  <div class="logo-text" data-en="SESMINE" data-ar="سيسماين">SESMINE</div>
+                  <div class="logo-subtitle" data-en="Equipment Excellence" data-ar="تميز المعدات">Equipment Excellence</div>
+              </div>
+          </a>
+          
+          <ul class="nav-center">
+              <li>
+                  <a href="index.html" class="nav-link active">
+                      <i class="fas fa-home"></i>
+                      <span data-en="Home" data-ar="الرئيسية">Home</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="equipment.html" class="nav-link">
+                      <span data-en="Equipment" data-ar="المعدات">Equipment</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="spare-parts.html" class="nav-link">
+                      <span data-en="Spare Parts" data-ar="قطع الغيار">Spare Parts</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="optimization.html" class="nav-link">
+                      <span data-en="Optimization" data-ar="التحسين">Optimization</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="about.html" class="nav-link">
+                      <span data-en="About" data-ar="عنا">About</span>
+                  </a>
+              </li>
+          </ul>
+          
+          <div class="nav-right">
+              <a href="contact.html" class="cta-btn">
+                  <i class="fas fa-tools"></i>
+                  <span data-en="Get Equipment Quote" data-ar="احصل على عرض المعدات">Get Equipment Quote</span>
+              </a>
+              <button class="mobile-menu-btn">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+      <div class="hero-background"></div>
+      <div class="hero-content">
+          <div class="hero-badge">
+              <i class="fas fa-industry"></i>
+              <span data-en="Professional Mining Equipment Solutions | Sultanate of Oman" data-ar="حلول معدات التعدين المهنية | سلطنة عُمان">Professional Mining Equipment Solutions | Sultanate of Oman</span>
           </div>
           
-          <h1 class="text-6xl lg:text-7xl font-black mb-6 leading-tight text-gray-900 premium-heading">
-            Global Leader in <span class="gradient-text">Mining Engineering</span>
+          <h1>
+              <span data-en="Professional Mining" data-ar="معدات التعدين">Professional Mining</span><br>
+              <span class="gradient-text" data-en="Equipment & Spare Parts" data-ar="المهنية وقطع الغيار">Equipment & Spare Parts</span>
           </h1>
           
-          <p class="text-xl text-gray-600 mb-8 leading-relaxed font-medium">
-            Enterprise-grade cost estimation and project management platform. 
-            Trusted by <span class="font-bold text-blue-900">Fortune 500 mining companies</span> worldwide 
-            for mission-critical operations and strategic planning.
+          <p class="hero-subtitle" data-en="SESMINE delivers professional mining equipment solutions across Oman - specializing in equipment selection, performance optimization, genuine spare parts supply, and strategic procurement management. Trusted partnerships with industry leaders including Caterpillar, Komatsu, Liebherr, Sandvik, and Volvo Construction Equipment." data-ar="تقدم سيسماين حلول معدات التعدين المهنية في جميع أنحاء عُمان - متخصصة في اختيار المعدات وتحسين الأداء وتوريد قطع الغيار الأصلية وإدارة المشتريات الاستراتيجية. شراكات موثوقة مع قادة الصناعة بما في ذلك كاتربيلر وكوماتسو وليبهير وساندفيك ومعدات البناء فولفو.">
+              SESMINE delivers professional mining equipment solutions across Oman - specializing in equipment selection, performance optimization, genuine spare parts supply, and strategic procurement management. Trusted partnerships with industry leaders including Caterpillar, Komatsu, Liebherr, Sandvik, and Volvo Construction Equipment.
           </p>
-
-          <div class="flex flex-wrap gap-4 mb-10">
-            <a href="auth/signup.html" class="btn-corporate px-10 py-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
-              <i class="fas fa-rocket"></i>
-              <span>Request Enterprise Demo</span>
-              <i class="fas fa-arrow-right text-sm"></i>
-            </a>
-            <a href="contact.html" class="btn-outline px-10 py-5 rounded-xl font-bold text-lg flex items-center gap-3 transition-all">
-              <i class="fas fa-phone"></i>
-              <span>Contact Sales</span>
-            </a>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-8 text-sm">
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 gradient-blue rounded-full flex items-center justify-center">
-                <i class="fas fa-check text-white text-xs"></i>
-              </div>
-              <span class="text-gray-700 font-semibold">Enterprise Security</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 gradient-blue rounded-full flex items-center justify-center">
-                <i class="fas fa-check text-white text-xs"></i>
-              </div>
-              <span class="text-gray-700 font-semibold">24/7 Support</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 gradient-blue rounded-full flex items-center justify-center">
-                <i class="fas fa-check text-white text-xs"></i>
-              </div>
-              <span class="text-gray-700 font-semibold">Custom Solutions</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative">
-          <div class="relative z-10">
-            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&h=600&fit=crop&q=80" alt="Mining Operations" class="rounded-3xl shadow-2xl animate-float border-4 border-white">
+          
+          <div class="hero-buttons">
+              <a href="equipment-catalog.html" class="btn btn-primary">
+                  <i class="fas fa-book"></i>
+                  <span data-en="Equipment Catalog" data-ar="كتالوج المعدات">Equipment Catalog</span>
+              </a>
+              <a href="#services" class="btn btn-secondary">
+                  <i class="fas fa-cogs"></i>
+                  <span data-en="Our Solutions" data-ar="حلولنا">Our Solutions</span>
+              </a>
           </div>
           
-          <!-- Floating Stats -->
-          <div class="absolute -bottom-10 -left-10 bg-white rounded-2xl p-6 shadow-2xl z-20 hover-lift border-2 border-gray-100">
-            <div class="flex items-center gap-4">
-              <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center">
-                <i class="fas fa-check-circle text-white text-3xl"></i>
+          <div class="hero-stats">
+              <div class="stat-item">
+                  <div class="stat-number">750+</div>
+                  <div class="stat-label" data-en="Equipment Models" data-ar="موديل معدات">Equipment Models</div>
               </div>
-              <div>
-                <div class="text-4xl font-black stat-counter">94.2%</div>
-                <div class="text-sm text-gray-600 font-bold">AI Accuracy</div>
+              <div class="stat-item">
+                  <div class="stat-number">15K+</div>
+                  <div class="stat-label" data-en="Genuine Parts" data-ar="قطعة غيار أصلية">Genuine Parts</div>
               </div>
-            </div>
+              <div class="stat-item">
+                  <div class="stat-number">20+</div>
+                  <div class="stat-label" data-en="Global Partners" data-ar="شريك عالمي">Global Partners</div>
+              </div>
+              <div class="stat-item">
+                  <div class="stat-number">24/7</div>
+                  <div class="stat-label" data-en="Expert Support" data-ar="دعم الخبراء">Expert Support</div>
+              </div>
           </div>
-          
-          <div class="absolute -top-10 -right-10 bg-white rounded-2xl p-6 shadow-2xl z-20 hover-lift border-2 border-gray-100">
-            <div class="flex items-center gap-4">
-              <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center">
-                <i class="fas fa-building text-white text-3xl"></i>
-              </div>
-              <div>
-                <div class="text-4xl font-black stat-counter">500+</div>
-                <div class="text-sm text-gray-600 font-bold">Global Clients</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
   </section>
 
-  <!-- Stats Section -->
-  <section class="py-24 px-6 bg-gray-50 border-y-2 border-gray-200">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
-          <div class="text-6xl font-black mb-3 stat-counter premium-heading">500+</div>
-          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Global Clients</div>
-          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
-        </div>
-        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
-          <div class="text-6xl font-black mb-3 stat-counter premium-heading">$5B+</div>
-          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Projects Managed</div>
-          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
-        </div>
-        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
-          <div class="text-6xl font-black mb-3 stat-counter premium-heading">10K+</div>
-          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Equipment Database</div>
-          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
-        </div>
-        <div class="text-center group hover-lift bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-100">
-          <div class="text-6xl font-black mb-3 stat-counter premium-heading">24/7</div>
-          <div class="text-gray-700 font-bold text-sm uppercase tracking-wider">Expert Support</div>
-          <div class="mt-4 w-20 h-1.5 gradient-blue mx-auto rounded-full"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features" class="py-32 px-6 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-20">
-        <div class="premium-badge mb-6">Enterprise Solutions</div>
-        <h2 class="text-5xl lg:text-6xl font-black mb-6 text-gray-900 premium-heading">
-          Industry-Leading <span class="gradient-text">Technology Platform</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-          Comprehensive suite of enterprise-grade tools designed for Fortune 500 mining operations
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="card-premium rounded-2xl p-8">
-          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
-            <i class="fas fa-calculator text-white text-4xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">AI Cost Estimator</h3>
-          <p class="text-gray-600 leading-relaxed mb-5 font-medium">Enterprise-grade cost estimation with 94.2% accuracy powered by advanced machine learning</p>
-          <a href="products/cost-calculator.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
-            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <div class="card-premium rounded-2xl p-8">
-          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
-            <i class="fas fa-database text-white text-4xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">Equipment Database</h3>
-          <p class="text-gray-600 leading-relaxed mb-5 font-medium">10,000+ equipment specifications with real-time pricing from verified global vendors</p>
-          <a href="products/equipment-database.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
-            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <div class="card-premium rounded-2xl p-8">
-          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
-            <i class="fas fa-chart-line text-white text-4xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">Advanced Analytics</h3>
-          <p class="text-gray-600 leading-relaxed mb-5 font-medium">Real-time business intelligence and predictive analytics for strategic decision making</p>
-          <a href="features.html#analytics" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
-            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-
-        <div class="card-premium rounded-2xl p-8">
-          <div class="w-18 h-18 gradient-blue rounded-2xl flex items-center justify-center mb-6 p-4">
-            <i class="fas fa-shield-alt text-white text-4xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-4 text-gray-900 premium-heading">Enterprise Security</h3>
-          <p class="text-gray-600 leading-relaxed mb-5 font-medium">Bank-level security with SOC 2 compliance and comprehensive data protection</p>
-          <a href="features.html#security" class="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:gap-3 transition-all">
-            Explore Solution <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-32 px-6 relative overflow-hidden gradient-blue">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    </div>
-    <div class="max-w-5xl mx-auto text-center relative z-10 text-white">
-      <div class="premium-badge bg-white/20 backdrop-blur-sm text-white mb-8">Enterprise Solutions</div>
-      <h2 class="text-5xl lg:text-6xl font-black mb-8 premium-heading">Ready to Transform Your Mining Operations?</h2>
-      <p class="text-2xl mb-12 opacity-95 font-medium">Join Fortune 500 companies using SESMine for mission-critical mining projects</p>
-      <div class="flex flex-wrap gap-6 justify-center">
-        <a href="auth/signup.html" class="bg-white text-blue-900 px-12 py-5 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-2xl">
-          Request Enterprise Demo
-        </a>
-        <a href="contact.html" class="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-12 py-5 rounded-xl font-bold text-lg transition-all hover:bg-white/20">
-          Contact Sales Team
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium Footer -->
-  <footer class="border-t-2 border-gray-200 py-16 px-6 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-4 gap-12 mb-12">
-        <div>
-          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14 mb-4">
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed font-medium">Global Leader in Mining Engineering Solutions</p>
-          <div class="text-xs text-gray-500 font-semibold mb-4">EST. 2004 | ISO 9001 Certified</div>
-          <div class="flex gap-3">
-            <a href="#" class="w-11 h-11 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center hover:bg-blue-900 hover:text-white hover:border-blue-900 transition-all hover-lift text-gray-600">
-              <i class="fab fa-linkedin text-lg"></i>
-            </a>
-            <a href="#" class="w-11 h-11 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center hover:bg-blue-900 hover:text-white hover:border-blue-900 transition-all hover-lift text-gray-600">
-              <i class="fab fa-twitter text-lg"></i>
-            </a>
-            <a href="#" class="w-11 h-11 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center hover:bg-blue-900 hover:text-white hover:border-blue-900 transition-all hover-lift text-gray-600">
-              <i class="fab fa-facebook text-lg"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div>
-          <h4 class="font-bold mb-5 text-blue-900 text-lg">Solutions</h4>
-          <ul class="space-y-3 text-gray-600 font-medium">
-            <li><a href="features.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Features</a></li>
-            <li><a href="pricing/index.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Pricing</a></li>
-            <li><a href="#hubs" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Solution Hubs</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="font-bold mb-5 text-blue-900 text-lg">Company</h4>
-          <ul class="space-y-3 text-gray-600 font-medium">
-            <li><a href="about.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> About Us</a></li>
-            <li><a href="news.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> News & Insights</a></li>
-            <li><a href="contact.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Contact</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="font-bold mb-5 text-blue-900 text-lg">Support</h4>
-          <ul class="space-y-3 text-gray-600 font-medium">
-            <li><a href="help.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Help Center</a></li>
-            <li><a href="Privacy Policy - SESMine.html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Privacy Policy</a></li>
-            <li><a href="Terms of Service - SESMine (Continued).html" class="hover:text-blue-900 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Terms of Service</a></li>
-          </ul>
-        </div>
+  <!-- Services Section -->
+  <section class="services-section" id="services">
+      <div class="section-header">
+          <span class="section-badge" data-en="Our Expertise" data-ar="خبرتنا">Our Expertise</span>
+          <h2 class="section-title">
+              <span data-en="Complete Equipment" data-ar="حلول المعدات">Complete Equipment</span><br>
+              <span class="gradient-text" data-en="Solutions & Services" data-ar="الكاملة والخدمات">Solutions & Services</span>
+          </h2>
+          <p class="section-description" data-en="From heavy-duty excavators to precision drilling equipment, we provide comprehensive solutions for all mining equipment needs across Oman's diverse mining operations." data-ar="من الحفارات الثقيلة إلى معدات الحفر الدقيقة، نقدم حلولاً شاملة لجميع احتياجات معدات التعدين عبر عمليات التعدين المتنوعة في عُمان.">
+              From heavy-duty excavators to precision drilling equipment, we provide comprehensive solutions for all mining equipment needs across Oman's diverse mining operations.
+          </p>
       </div>
       
-      <div class="border-t-2 border-gray-200 pt-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-gray-600 text-sm font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
-          <div class="flex items-center gap-4 text-xs text-gray-500 font-semibold">
-            <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-blue-900"></i> SOC 2 Certified</span>
-            <span class="flex items-center gap-2"><i class="fas fa-award text-blue-900"></i> ISO 9001</span>
-            <span class="flex items-center gap-2"><i class="fas fa-lock text-blue-900"></i> GDPR Compliant</span>
+      <div class="services-grid">
+          <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=85" alt="Professional Mining Equipment" class="service-image">
+              <div class="service-icon">
+                  <i class="fas fa-search"></i>
+              </div>
+              <h3 class="service-title" data-en="Equipment Selection" data-ar="اختيار المعدات">Equipment Selection</h3>
+              <p class="service-description" data-en="Professional consultation for optimal equipment selection based on geological analysis, production requirements, and operational efficiency targets for Oman's unique mining conditions." data-ar="استشارة مهنية لاختيار المعدات الأمثل بناءً على التحليل الجيولوجي ومتطلبات الإنتاج وأهداف الكفاءة التشغيلية لظروف التعدين الفريدة في عُمان.">
+                  Professional consultation for optimal equipment selection based on geological analysis, production requirements, and operational efficiency targets for Oman's unique mining conditions.
+              </p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="Geological Site Analysis" data-ar="تحليل الموقع الجيولوجي">Geological Site Analysis</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Production Capacity Planning" data-ar="تخطيط القدرة الإنتاجية">Production Capacity Planning</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="ROI & TCO Analysis" data-ar="تحليل العائد والتكلفة الإجمالية">ROI & TCO Analysis</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Equipment Matching" data-ar="مطابقة المعدات">Equipment Matching</span></li>
+              </ul>
           </div>
-        </div>
+          
+          <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7e8c6?w=800&q=85" alt="Genuine Spare Parts" class="service-image">
+              <div class="service-icon">
+                  <i class="fas fa-cogs"></i>
+              </div>
+              <h3 class="service-title" data-en="Genuine Spare Parts" data-ar="قطع الغيار الأصلية">Genuine Spare Parts</h3>
+              <p class="service-description" data-en="Comprehensive inventory of genuine OEM spare parts with rapid delivery across Oman. Authorized distributor for Caterpillar, Komatsu, Liebherr, Sandvik, and other premium manufacturers." data-ar="مخزون شامل من قطع الغيار الأصلية من الشركة المصنعة مع التسليم السريع في جميع أنحاء عُمان. موزع معتمد لكاتربيلر وكوماتسو وليبهير وساندفيك والشركات المصنعة المتميزة الأخرى.">
+                  Comprehensive inventory of genuine OEM spare parts with rapid delivery across Oman. Authorized distributor for Caterpillar, Komatsu, Liebherr, Sandvik, and other premium manufacturers.
+              </p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="OEM Certified Parts" data-ar="قطع غيار معتمدة من الشركة المصنعة">OEM Certified Parts</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="24/7 Emergency Supply" data-ar="إمداد طوارئ 24/7">24/7 Emergency Supply</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Same-Day Delivery" data-ar="تسليم في نفس اليوم">Same-Day Delivery</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Inventory Management" data-ar="إدارة المخزون">Inventory Management</span></li>
+              </ul>
+          </div>
+          
+          <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=85" alt="Performance Optimization" class="service-image">
+              <div class="service-icon">
+                  <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="service-title" data-en="Performance Optimization" data-ar="تحسين الأداء">Performance Optimization</h3>
+              <p class="service-description" data-en="Advanced performance monitoring and optimization services using real-time data analytics, predictive maintenance, and efficiency enhancement strategies to maximize equipment ROI." data-ar="خدمات مراقبة وتحسين الأداء المتقدمة باستخدام تحليلات البيانات في الوقت الفعلي والصيانة التنبؤية واستراتيجيات تعزيز الكفاءة لزيادة عائد الاستثمار للمعدات.">
+                  Advanced performance monitoring and optimization services using real-time data analytics, predictive maintenance, and efficiency enhancement strategies to maximize equipment ROI.
+              </p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="Real-Time Monitoring" data-ar="المراقبة في الوقت الفعلي">Real-Time Monitoring</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Predictive Analytics" data-ar="التحليلات التنبؤية">Predictive Analytics</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Efficiency Optimization" data-ar="تحسين الكفاءة">Efficiency Optimization</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Cost Reduction" data-ar="تخفيض التكلفة">Cost Reduction</span></li>
+              </ul>
+          </div>
+          
+          <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=85" alt="Strategic Procurement" class="service-image">
+              <div class="service-icon">
+                  <i class="fas fa-handshake"></i>
+              </div>
+              <h3 class="service-title" data-en="Strategic Procurement" data-ar="المشتريات الاستراتيجية">Strategic Procurement</h3>
+              <p class="service-description" data-en="End-to-end procurement management including global sourcing, vendor qualification, contract negotiation, quality assurance, and logistics coordination with worldwide equipment manufacturers." data-ar="إدارة المشتريات الشاملة بما في ذلك التوريد العالمي وتأهيل الموردين والتفاوض على العقود وضمان الجودة وتنسيق اللوجستيات مع مصنعي المعدات في جميع أنحاء العالم.">
+                  End-to-end procurement management including global sourcing, vendor qualification, contract negotiation, quality assurance, and logistics coordination with worldwide equipment manufacturers.
+              </p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="Global Sourcing Network" data-ar="شبكة التوريد العالمية">Global Sourcing Network</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Vendor Qualification" data-ar="تأهيل الموردين">Vendor Qualification</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Contract Management" data-ar="إدارة العقود">Contract Management</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Quality Assurance" data-ar="ضمان الجودة">Quality Assurance</span></li>
+              </ul>
+          </div>
+          
+          <div class="service-card">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=85" alt="Technology Integration" class="service-image">
+              <div class="service-icon">
+                  <i class="fas fa-microchip"></i>
+              </div>
+              <h3 class="service-title" data-en="Technology Integration" data-ar="دمج التكنولوجيا">Technology Integration</h3>
+              <p class="service-description" data-en="Integration of advanced technologies including IoT sensors, GPS fleet management, telematics systems, and automation solutions to modernize and optimize mining operations." data-ar="دمج التقنيات المتقدمة بما في ذلك أجهزة استشعار إنترنت الأشياء وإدارة الأسطول بنظام GPS وأنظمة المعلوماتية وحلول الأتمتة لتحديث وتحسين عمليات التعدين.">
+                  Integration of advanced technologies including IoT sensors, GPS fleet management, telematics systems, and automation solutions to modernize and optimize mining operations.
+              </p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="IoT Sensor Networks" data-ar="شبكات أجهزة استشعار إنترنت الأشياء">IoT Sensor Networks</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Fleet Management Systems" data-ar="أنظمة إدارة الأسطول">Fleet Management Systems</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Telematics Integration" data-ar="دمج المعلوماتية">Telematics Integration</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Automation Solutions" data-ar="حلول الأتمتة">Automation Solutions</span></li>
+              </ul>
+          </div>
       </div>
-    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="partners-section">
+      <div class="partners-header">
+          <h2 class="partners-title" data-en="Global Technology Partners" data-ar="شركاء التكنولوجيا العالمية">Global Technology Partners</h2>
+          <p data-en="Authorized partnerships with world-leading equipment manufacturers" data-ar="شراكات معتمدة مع الشركات المصنعة للمعدات الرائدة عالمياً">Authorized partnerships with world-leading equipment manufacturers</p>
+      </div>
+      <div class="partners-grid">
+          <div class="partner-card">
+              <div class="partner-logo">CAT</div>
+              <div class="partner-name" data-en="Caterpillar Inc." data-ar="كاتربيلر المحدودة">Caterpillar Inc.</div>
+          </div>
+          <div class="partner-card">
+              <div class="partner-logo">KOMATSU</div>
+              <div class="partner-name" data-en="Komatsu Ltd." data-ar="كوماتسو المحدودة">Komatsu Ltd.</div>
+          </div>
+          <div class="partner-card">
+              <div class="partner-logo">LIEBHERR</div>
+              <div class="partner-name" data-en="Liebherr Group" data-ar="مجموعة ليبهير">Liebherr Group</div>
+          </div>
+          <div class="partner-card">
+              <div class="partner-logo">SANDVIK</div>
+              <div class="partner-name" data-en="Sandvik AB" data-ar="ساندفيك المحدودة">Sandvik AB</div>
+          </div>
+          <div class="partner-card">
+              <div class="partner-logo">VOLVO</div>
+              <div class="partner-name" data-en="Volvo CE" data-ar="فولفو للمعدات">Volvo CE</div>
+          </div>
+          <div class="partner-card">
+              <div class="partner-logo">HITACHI</div>
+              <div class="partner-name" data-en="Hitachi Construction" data-ar="هيتاشي للإنشاءات">Hitachi Construction</div>
+          </div>
+      </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+      <div class="about-content">
+          <div class="about-text">
+              <h2>
+                  <span data-en="Equipment Excellence" data-ar="تميز المعدات">Equipment Excellence</span><br>
+                  <span class="gradient-text" data-en="in Oman's Mining Industry" data-ar="في صناعة التعدين العُمانية">in Oman's Mining Industry</span>
+              </h2>
+              <p data-en="SESMINE has established itself as Oman's premier mining equipment solutions provider, with over two decades of professional experience in equipment selection, optimization, and spare parts supply. Our comprehensive understanding of local mining conditions, combined with strategic global partnerships, enables us to deliver superior solutions that maximize operational efficiency and equipment reliability." data-ar="أسست سيسماين نفسها كمزود رائد لحلول معدات التعدين في عُمان، مع أكثر من عقدين من الخبرة المهنية في اختيار المعدات وتحس              <p data-en="Our state-of-the-art facility in Muscat Industrial Area houses an extensive inventory of over 15,000 genuine spare parts and serves as the regional distribution hub for equipment and technical support services, ensuring minimal downtime and maximum productivity for our clients' mining operations throughout the Sultanate." data-ar="منشأتنا المتطورة في المنطقة الصناعية بمسقط تضم مخزوناً واسعاً يضم أكثر من 15,000 قطعة غيار أصلية وتعمل كمركز توزيع إقليمي للمعدات وخدمات الدعم الفني، مما يضمن أقل وقت توقف وأقصى إنتاجية لعمليات التعدين لعملائنا في جميع أنحاء السلطنة.">
+                  Our state-of-the-art facility in Muscat Industrial Area houses an extensive inventory of over 15,000 genuine spare parts and serves as the regional distribution hub for equipment and technical support services, ensuring minimal downtime and maximum productivity for our clients' mining operations throughout the Sultanate.
+              </p>
+              
+              <div class="about-features">
+                  <div class="about-feature">
+                      <div class="about-feature-icon">
+                          <i class="fas fa-warehouse"></i>
+                      </div>
+                      <div class="about-feature-text" data-en="15,000+ Parts Inventory" data-ar="مخزون 15,000+ قطعة غيار">15,000+ Parts Inventory</div>
+                  </div>
+                  <div class="about-feature">
+                      <div class="about-feature-icon">
+                          <i class="fas fa-shipping-fast"></i>
+                      </div>
+                      <div class="about-feature-text" data-en="Same-Day Delivery" data-ar="تسليم في نفس اليوم">Same-Day Delivery</div>
+                  </div>
+                  <div class="about-feature">
+                      <div class="about-feature-icon">
+                          <i class="fas fa-certificate"></i>
+                      </div>
+                      <div class="about-feature-text" data-en="OEM Authorized" data-ar="معتمد من الشركة المصنعة">OEM Authorized</div>
+                  </div>
+                  <div class="about-feature">
+                      <div class="about-feature-icon">
+                          <i class="fas fa-headset"></i>
+                      </div>
+                      <div class="about-feature-text" data-en="24/7 Expert Support" data-ar="دعم الخبراء 24/7">24/7 Expert Support</div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="about-image">
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=85" alt="Professional Mining Operations" loading="lazy">
+          </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+      <div class="footer-main">
+          <div class="footer-brand">
+              <a href="index.html" class="footer-logo">
+                  <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+                  <div class="footer-logo-text" data-en="SESMINE" data-ar="سيسماين">SESMINE</div>
+              </a>
+              <p class="footer-description" data-en="Professional mining equipment solutions provider in the Sultanate of Oman, delivering comprehensive equipment selection, genuine spare parts supply, performance optimization, and strategic procurement services with trusted global partnerships." data-ar="مزود حلول معدات التعدين المهنية في سلطنة عُمان، يقدم اختيار المعدات الشامل وتوريد قطع الغيار الأصلية وتحسين الأداء وخدمات المشتريات الاستراتيجية مع شراكات عالمية موثوقة.">
+                  Professional mining equipment solutions provider in the Sultanate of Oman, delivering comprehensive equipment selection, genuine spare parts supply, performance optimization, and strategic procurement services with trusted global partnerships.
+              </p>
+              <div class="footer-social">
+                  <a href="#" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="footer-social-link"><i class="fab fa-youtube"></i></a>
+                  <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+          
+          <div class="footer-section">
+              <h4 data-en="Equipment Solutions" data-ar="حلول المعدات">Equipment Solutions</h4>
+              <ul class="footer-links">
+                  <li><a href="excavators.html" data-en="Excavators & Loaders" data-ar="الحفارات والمحملات">Excavators & Loaders</a></li>
+                  <li><a href="haul-trucks.html" data-en="Haul Trucks" data-ar="شاحنات النقل">Haul Trucks</a></li>
+                  <li><a href="drilling.html" data-en="Drilling Equipment" data-ar="معدات الحفر">Drilling Equipment</a></li>
+                  <li><a href="crushers.html" data-en="Crushers & Screens" data-ar="الكسارات والغرابيل">Crushers & Screens</a></li>
+                  <li><a href="dozers.html" data-en="Dozers & Graders" data-ar="البلدوزرات والمسويات">Dozers & Graders</a></li>
+              </ul>
+          </div>
+          
+          <div class="footer-section">
+              <h4 data-en="Spare Parts" data-ar="قطع الغيار">Spare Parts</h4>
+              <ul class="footer-links">
+                  <li><a href="caterpillar-parts.html" data-en="Caterpillar Parts" data-ar="قطع غيار كاتربيلر">Caterpillar Parts</a></li>
+                  <li><a href="komatsu-parts.html" data-en="Komatsu Parts" data-ar="قطع غيار كوماتسو">Komatsu Parts</a></li>
+                  <li><a href="liebherr-parts.html" data-en="Liebherr Parts" data-ar="قطع غيار ليبهير">Liebherr Parts</a></li>
+                  <li><a href="sandvik-parts.html" data-en="Sandvik Parts" data-ar="قطع غيار ساندفيك">Sandvik Parts</a></li>
+                  <li><a href="emergency-parts.html" data-en="Emergency Supply" data-ar="إمداد الطوارئ">Emergency Supply</a></li>
+              </ul>
+          </div>
+          
+          <div class="footer-section">
+              <h4 data-en="Services" data-ar="الخدمات">Services</h4>
+              <ul class="footer-links">
+                  <li><a href="equipment-selection.html" data-en="Equipment Selection" data-ar="اختيار المعدات">Equipment Selection</a></li>
+                  <li><a href="performance-optimization.html" data-en="Performance Optimization" data-ar="تحسين الأداء">Performance Optimization</a></li>
+                  <li><a href="procurement.html" data-en="Strategic Procurement" data-ar="المشتريات الاستراتيجية">Strategic Procurement</a></li>
+                  <li><a href="technology-integration.html" data-en="Technology Integration" data-ar="دمج التكنولوجيا">Technology Integration</a></li>
+                  <li><a href="maintenance.html" data-en="Maintenance Support" data-ar="دعم الصيانة">Maintenance Support</a></li>
+              </ul>
+          </div>
+          
+          <div class="footer-section">
+              <h4 data-en="Contact" data-ar="التواصل">Contact</h4>
+              <ul class="footer-links">
+                  <li><a href="contact.html" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a></li>
+                  <li><a href="mailto:equipment@sesmine.om">equipment@sesmine.om</a></li>
+                  <li><a href="tel:+96824567890">+968 2456-7890</a></li>
+                  <li><a href="locations.html" data-en="Service Locations" data-ar="مواقع الخدمة">Service Locations</a></li>
+                  <li><a href="quote.html" data-en="Request Quote" data-ar="طلب عرض سعر">Request Quote</a></li>
+              </ul>
+          </div>
+      </div>
+      
+      <div class="footer-bottom">
+          <div class="footer-bottom-content">
+              <p class="footer-copyright" data-en="© 2024 SESMINE - Sultanate of Oman. All rights reserved." data-ar="© 2024 سيسماين - سلطنة عُمان. جميع الحقوق محفوظة.">
+                  © 2024 SESMINE - Sultanate of Oman. All rights reserved.
+              </p>
+              <ul class="footer-bottom-links">
+                  <li><a href="privacy.html" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a></li>
+                  <li><a href="terms.html" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a></li>
+                  <li><a href="sitemap.html" data-en="Sitemap" data-ar="خريطة الموقع">Sitemap</a></li>
+              </ul>
+          </div>
+      </div>
   </footer>
 
   <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('active');
-    }
+      // Language Switcher
+      let currentLang = 'en';
+      const langButtons = document.querySelectorAll('.lang-btn-top');
+      
+      langButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+              currentLang = btn.dataset.lang;
+              langButtons.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              
+              document.body.classList.toggle('rtl', currentLang === 'ar');
+              document.documentElement.setAttribute('lang', currentLang);
+              document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+              
+              document.querySelectorAll('[data-en]').forEach(el => {
+                  const text = el.getAttribute(`data-${currentLang}`);
+                  if (text) el.textContent = text;
+              });
+              
+              localStorage.setItem('preferredLanguage', currentLang);
+          });
+      });
+      
+      // Load saved language preference
+      window.addEventListener('DOMContentLoaded', () => {
+          const savedLang = localStorage.getItem('preferredLanguage');
+          if (savedLang && savedLang !== 'en') {
+              document.querySelector(`[data-lang="${savedLang}"]`)?.click();
+          }
+      });
+      
+      // Header Scroll Effect
+      window.addEventListener('scroll', () => {
+          const header = document.getElementById('header');
+          if (header) {
+              header.classList.toggle('scrolled', window.scrollY > 50);
+          }
+      });
+      
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navCenter = document.querySelector('.nav-center');
+      
+      if (mobileMenuBtn && navCenter) {
+          mobileMenuBtn.addEventListener('click', () => {
+              navCenter.classList.toggle('active');
+              
+              if (navCenter.classList.contains('active')) {
+                  navCenter.style.display = 'flex';
+                  navCenter.style.flexDirection = 'column';
+                  navCenter.style.position = 'absolute';
+                  navCenter.style.top = '100%';
+                  navCenter.style.left = '0';
+                  navCenter.style.right = '0';
+                  navCenter.style.background = 'rgba(15, 23, 42, 0.98)';
+                  navCenter.style.padding = '2rem';
+                  navCenter.style.gap = '0.5rem';
+                  navCenter.style.borderTop = '1px solid rgba(30, 64, 175, 0.2)';
+                  navCenter.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.5)';
+                  navCenter.style.zIndex = '1000';
+                  mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+              } else {
+                  navCenter.style.display = 'none';
+                  mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+              }
+          });
+          
+          // Close mobile menu when clicking outside
+          document.addEventListener('click', (e) => {
+              if (!e.target.closest('nav') && navCenter.classList.contains('active')) {
+                  navCenter.classList.remove('active');
+                  navCenter.style.display = 'none';
+                  mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+              }
+          });
+      }
+      
+      // Smooth Scroll for Anchor Links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              const href = this.getAttribute('href');
+              if (href !== '#') {
+                  e.preventDefault();
+                  const target = document.querySelector(href);
+                  if (target) {
+                      const header = document.getElementById('header');
+                      const headerHeight = header ? header.offsetHeight : 0;
+                      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                      
+                      window.scrollTo({
+                          top: targetPosition,
+                          behavior: 'smooth'
+                      });
+                  }
+              }
+          });
+      });
+      
+      // Intersection Observer for Animations
+      const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      }, observerOptions);
+      
+      // Observe all cards
+      document.querySelectorAll('.service-card, .partner-card, .about-feature').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(el);
+      });
+      
+      // Animated Counter for Stats
+      const animateCounter = (element, target, duration = 2000) => {
+          const start = 0;
+          const increment = target / (duration / 16);
+          let current = start;
+          
+          const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                  element.textContent = target;
+                  clearInterval(timer);
+              } else {
+                  element.textContent = Math.floor(current);
+              }
+          }, 16);
+      };
+      
+      // Trigger counter animation when stats are visible
+      const statsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const statNumbers = entry.target.querySelectorAll('.stat-number');
+                  statNumbers.forEach(stat => {
+                      const text = stat.textContent;
+                      const number = parseInt(text.replace(/[^0-9]/g, ''));
+                      if (number && !stat.dataset.animated) {
+                          stat.dataset.animated = 'true';
+                          const originalText = text;
+                          animateCounter(stat, number);
+                          setTimeout(() => {
+                              stat.textContent = originalText;
+                          }, 2000);
+                      }
+                  });
+                  statsObserver.unobserve(entry.target);
+              }
+          });
+      }, { threshold: 0.5 });
+      
+      const heroStats = document.querySelector('.hero-stats');
+      if (heroStats) {
+          statsObserver.observe(heroStats);
+      }
+      
+      // Add active state to current page
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-link').forEach(link => {
+          if (link.getAttribute('href') === currentPage) {
+              link.classList.add('active');
+          }
+      });
+      
+      // Professional Equipment Showcase Animation
+      const equipmentShowcase = () => {
+          const cards = document.querySelectorAll('.service-card');
+          cards.forEach((card, index) => {
+              setTimeout(() => {
+                  card.style.transform = 'translateY(0)';
+                  card.style.opacity = '1';
+              }, index * 200);
+          });
+      };
+      
+      // Partner Cards Hover Effect
+      document.querySelectorAll('.partner-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+              card.style.transform = 'translateY(-10px) scale(1.05)';
+              card.style.boxShadow = '0 15px 40px rgba(30, 64, 175, 0.3)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+              card.style.transform = 'translateY(0) scale(1)';
+              card.style.boxShadow = 'none';
+          });
+      });
+      
+      // Service Cards Interactive Enhancement
+      document.querySelectorAll('.service-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+              const icon = card.querySelector('.service-icon');
+              if (icon) {
+                  icon.style.transform = 'scale(1.1) rotate(5deg)';
+              }
+          });
+          
+          card.addEventListener('mouseleave', () => {
+              const icon = card.querySelector('.service-icon');
+              if (icon) {
+                  icon.style.transform = 'scale(1) rotate(0deg)';
+              }
+          });
+      });
+      
+      // Page Load Animation
+      window.addEventListener('load', () => {
+          document.body.style.opacity = '0';
+          setTimeout(() => {
+              document.body.style.transition = 'opacity 0.5s ease';
+              document.body.style.opacity = '1';
+              equipmentShowcase();
+          }, 100);
+      });
+      
+      // Professional Console Branding
+      console.log('%c🏭 SESMINE - Professional Mining Equipment Solutions', 'font-size: 24px; font-weight: bold; color: #1e40af; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
+      console.log('%c⚙️ Equipment Selection | Spare Parts | Optimization | Procurement', 'font-size: 16px; color: #dc2626;');
+      console.log('%c🤝 Authorized Partners: Caterpillar | Komatsu | Liebherr | Sandvik | Volvo', 'font-size: 14px; color: #059669;');
+      console.log('%c🌐 Bilingual Support: English & العربية', 'font-size: 12px; color: #f59e0b;');
+      console.log('%c📧 Contact: equipment@sesmine.om | ☎️ +968 2456-7890', 'font-size: 12px; color: #64748b;');
+      console.log('%c🏢 Muscat Industrial Area, Sultanate of Oman', 'font-size: 12px; color: #1e40af;');
+      
+      // Equipment Performance Tracking (Demo)
+      const trackEquipmentPerformance = () => {
+          console.log('📊 Equipment Performance Monitoring Active');
+          console.log('⚡ Real-time data collection enabled');
+          console.log('🔧 Predictive maintenance algorithms running');
+      };
+      
+      // Initialize performance tracking after 3 seconds
+      setTimeout(trackEquipmentPerformance, 3000);
+      
+      // Professional Error Handling
+      window.addEventListener('error', (e) => {
+          console.error('🚨 SESMINE System Error:', e.error);
+      });
+      
+      // Professional Page Analytics (Demo)
+      const logPageView = () => {
+          console.log('📈 Page Analytics:', {
+              page: 'SESMINE Equipment Solutions',
+              timestamp: new Date().toISOString(),
+              userAgent: navigator.userAgent.substring(0, 50) + '...',
+              language: currentLang
+          });
+      };
+      
+      logPageView();
   </script>
 </body>
 </html>
