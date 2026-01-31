@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mining Operations Optimization | SESMINE | Engineering & Economic Analysis Oman</title>
+  <meta name="description" content="SESMINE's comprehensive optimization services: Engineering economic analysis, procurement management, new technology integration, and expert consultation for mining operations in Oman.">
+  <meta name="keywords" content="mining optimization Oman, engineering economic analysis, procurement management, mining technology, mining consultant, equipment optimization">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+      :root {
+          --primary: #1e40af;
+          --secondary: #dc2626;
+          --accent: #f59e0b;
+          --success: #059669;
+          --purple: #7c3aed;
+          --pink: #ec4899;
+          --dark: #1e293b;
+          --darker: #0f172a;
+          --light: #f8fafc;
+          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+          --gradient-purple: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+          --gradient-pink: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+      }
+      
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      body { 
+          font-family: 'Inter', sans-serif; 
+          background: var(--darker); 
+          color: white; 
+          line-height: 1.6; 
+          overflow-x: hidden;
+      }
+      
+      body.rtl { 
+          font-family: 'Cairo', sans-serif; 
+          direction: rtl; 
+      }
+      
+      html { scroll-behavior: smooth; }
+      
+      /* Header Styles */
+      header {
+          position: sticky;
+          top: 0;
+          z-index: 4000;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
+          transition: all 0.3s;
+      }
+      
+      nav {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          color: white;
+          font-weight: 800;
+          font-size: 1.8rem;
+      }
+      
+      .logo img { height: 60px; filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4)); }
+      .logo-text { 
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+      .logo-subtitle {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-top: -5px;
+      }
+      
+      .nav-center {
+          display: flex;
+          list-style: none;
+          gap: 0.5rem;
+          align-items: center;
+      }
+      
+      .nav-link {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.8rem 1.5rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: all 0.3s;
+          border-radius: 12px;
+      }
+      
+      .nav-link:hover,
+      .nav-link.active {
+          color: white;
+          background: rgba(30, 64, 175, 0.1);
+      }
+      
+      .cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.9rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+      }
+      
+      .cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
+      }
+      
+      /* Page Header */
+      .page-header {
+          padding: 8rem 2rem 4rem;
+          background: 
+              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=85') center/cover;
+          text-align: center;
+          position: relative;
+      }
+      
+      .page-header::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 70%);
+      }
+      
+      .page-header-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .page-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .page-subtitle {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 2rem;
+      }
+      
+      .optimization-metrics {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+      }
+      
+      .metric-card {
+          background: rgba(30, 64, 175, 0.1);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 16px;
+          padding: 2rem;
+          text-align: center;
+          transition: all 0.3s;
+      }
+      
+      .metric-card:hover {
+          background: rgba(30, 64, 175, 0.15);
+          transform: translateY(-3px);
+      }
+      
+      .metric-number {
+          font-size: 2.5rem;
+          font-weight: 900;
+          background: var(--gradient-accent);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 0.5rem;
+      }
+      
+      .metric-label {
+          color: rgba(255, 255, 255, 0.8);
+          font-weight: 500;
+      }
+      
+      /* Services Overview */
+      .services-overview {
+          padding: 6rem 2rem;
+          background: rgba(30, 64, 175, 0.02);
+      }
+      
+      .overview-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          text-align: center;
+      }
+      
+      .overview-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 2rem;
+          line-height: 1.2;
+      }
+      
+      .overview-description {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 4rem;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.8;
+      }
+      
+      .services-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 3rem;
+          flex-wrap: wrap;
+      }
+      
+      .tab-btn {
+          padding: 1rem 2rem;
+          background: rgba(30, 64, 175, 0.1);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 50px;
+          color: rgba(255, 255, 255, 0.8);
+          cursor: pointer;
+          transition: all 0.3s;
+          font-weight: 600;
+      }
+      
+      .tab-btn.active,
+      .tab-btn:hover {
+          background: var(--gradient-primary);
+          color: white;
+          transform: translateY(-2px);
+      }
+      
+      /* Main Services */
+      .main-services {
+          padding: 8rem 2rem;
+      }
+      
+      .section-header {
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 4rem;
+      }
+      
+      .section-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          line-height: 1.2;
+      }
+      
+      .section-description {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+      }
+      
+      .services-grid {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 3rem;
+      }
+      
+      .service-card {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 24px;
+          padding: 3rem;
+          transition: all 0.4s;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .service-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--gradient-primary);
+          transform: scaleX(0);
+          transition: transform 0.4s;
+      }
+      
+      .service-card:hover {
+          transform: translateY(-10px);
+          background: rgba(30, 64, 175, 0.08);
+          border-color: rgba(30, 64, 175, 0.3);
+          box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+      }
+      
+      .service-card:hover::before { transform: scaleX(1); }
+      
+      .service-header {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+      }
+      
+      .service-icon {
+          width: 80px;
+          height: 80px;
+          background: var(--gradient-primary);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+          color: white;
+          box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+      }
+      
+      .service-card:nth-child(2) .service-icon { 
+          background: var(--gradient-secondary); 
+          box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3); 
+      }
+      .service-card:nth-child(3) .service-icon { 
+          background: var(--gradient-success); 
+          box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3); 
+      }
+      .service-card:nth-child(4) .service-icon { 
+          background: var(--gradient-accent); 
+          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3); 
+      }
+      
+      .service-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 0.5rem;
+      }
+      
+      .service-subtitle {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.9rem;
+      }
+      
+      .service-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+          margin-bottom: 2rem;
+      }
+      
+      .service-features {
+          list-style: none;
+          margin-bottom: 2rem;
+      }
+      
+      .service-features li {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          margin-bottom: 0.8rem;
+          color: rgba(255, 255, 255, 0.8);
+      }
+      
+      .service-features i {
+          color: var(--primary);
+          font-size: 0.9rem;
+          width: 16px;
+      }
+      
+      .service-deliverables {
+          background: rgba(30, 64, 175, 0.05);
+          border-radius: 12px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+      }
+      
+      .deliverables-title {
+          font-weight: 700;
+          color: white;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+      }
+      
+      .deliverables-list {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+      }
+      
+      .deliverable-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.8);
+      }
+      
+      .service-actions {
+          display: flex;
+          gap: 1rem;
+      }
+      
+      .btn-primary {
+          flex: 1;
+          padding: 1rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 12px;
+          font-weight: 600;
+          text-align: center;
+          transition: all 0.3s;
+      }
+      
+      .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+      }
+      
+      .btn-secondary {
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.3s;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      .btn-secondary:hover {
+          background: rgba(30, 64, 175, 0.2);
+          color: white;
+      }
+      
+      /* Technology Showcase */
+      .technology-showcase {
+          padding: 8rem 2rem;
+          background: rgba(124, 58, 237, 0.05);
+      }
+      
+      .tech-grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+      }
+      
+      .tech-card {
+          background: rgba(124, 58, 237, 0.05);
+          border: 1px solid rgba(124, 58, 237, 0.2);
+          border-radius: 20px;
+          padding: 2rem;
+          text-align: center;
+          transition: all 0.4s;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .tech-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--gradient-purple);
+          transform: scaleX(0);
+          transition: transform 0.4s;
+      }
+      
+      .tech-card:hover {
+          transform: translateY(-8px);
+          background: rgba(124, 58, 237, 0.08);
+          border-color: rgba(124, 58, 237, 0.4);
+          box-shadow: 0 20px 50px rgba(124, 58, 237, 0.2);
+      }
+      
+      .tech-card:hover::before { transform: scaleX(1); }
+      
+      .tech-icon {
+          width: 80px;
+          height: 80px;
+          background: var(--gradient-purple);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+          color: white;
+          margin: 0 auto 1.5rem;
+          box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+      }
+      
+      .tech-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+      }
+      
+      .tech-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+      }
+      
+      .tech-benefits {
+          list-style: none;
+          text-align: left;
+      }
+      
+      .tech-benefits li {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          margin-bottom: 0.8rem;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.9rem;
+      }
+      
+      .tech-benefits i {
+          color: var(--purple);
+          font-size: 0.8rem;
+      }
+      
+      /* Case Studies */
+      .case-studies {
+          padding: 8rem 2rem;
+          background: rgba(220, 38, 38, 0.05);
+      }
+      
+      .case-grid {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 3rem;
+      }
+      
+      .case-card {
+          background: rgba(220, 38, 38, 0.05);
+          border: 1px solid rgba(220, 38, 38, 0.2);
+          border-radius: 20px;
+          overflow: hidden;
+          transition: all 0.4s;
+      }
+      
+      .case-card:hover {
+          transform: translateY(-5px);
+          background: rgba(220, 38, 38, 0.08);
+          border-color: rgba(220, 38, 38, 0.4);
+          box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2);
+      }
+      
+      .case-image {
+          width: 100%;
+          height: 200px;
+          background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(239, 68, 68, 0.2)),
+                      url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=85') center/cover;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 3rem;
+      }
+      
+      .case-content {
+          padding: 2rem;
+      }
+      
+      .case-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+      }
+      
+      .case-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+      }
+      
+      .case-results {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+      }
+      
+      .result-item {
+          text-align: center;
+          padding: 1rem;
+          background: rgba(220, 38, 38, 0.1);
+          border-radius: 12px;
+      }
+      
+      .result-number {
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: var(--secondary);
+          margin-bottom: 0.3rem;
+      }
+      
+      .result-label {
+          font-size: 0.8rem;
+          color: rgba(255, 255, 255, 0.8);
+      }
+      
+      /* CTA Section */
+      .cta-section {
+          padding: 8rem 2rem;
+          background: 
+              linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%),
+              url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85') center/cover;
+          position: relative;
+          text-align: center;
+      }
+      
+      .cta-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(15, 23, 42, 0.8);
+      }
+      
+      .cta-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .cta-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .cta-description {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 3rem;
+          line-height: 1.8;
+      }
+      
+      .cta-buttons {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+      
+      .btn-large {
+          padding: 1.2rem 3rem;
+          font-size: 1.1rem;
+          border-radius: 50px;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.8rem;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s;
+      }
+      
+      .btn-primary.btn-large {
+          background: var(--gradient-primary);
+          color: white;
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.4);
+      }
+      
+      .btn-primary.btn-large:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 40px rgba(30, 64, 175, 0.6);
+      }
+      
+      .btn-secondary.btn-large {
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          border: 2px solid rgba(30, 64, 175, 0.3);
+      }
+      
+      .btn-secondary.btn-large:hover {
+          background: rgba(30, 64, 175, 0.2);
+          transform: translateY(-3px);
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+          .nav-center { display: none; }
+          .services-grid { grid-template-columns: 1fr; }
+          .tech-grid { grid-template-columns: 1fr; }
+          .case-grid { grid-template-columns: 1fr; }
+          .optimization-metrics { grid-template-columns: 1fr 1fr; }
+          .services-tabs { flex-direction: column; align-items: center; }
+          .deliverables-list { grid-template-columns: 1fr; }
+          .case-results { grid-template-columns: 1fr; }
+          .cta-buttons { flex-direction: column; align-items: center; }
+      }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+      <nav>
+          <a href="index.html" class="logo">
+              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+              <div>
+                  <div class="logo-text">SESMINE</div>
+                  <div class="logo-subtitle">Equipment Excellence</div>
+              </div>
+          </a>
+          
+          <ul class="nav-center">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="services.html" class="nav-link">Services</a></li>
+              <li><a href="equipment-catalog.html" class="nav-link">Equipment</a></li>
+              <li><a href="spare-parts.html" class="nav-link">Spare Parts</a></li>
+              <li><a href="optimization.html" class="nav-link active">Optimization</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+          </ul>
+          
+          <div class="nav-right">
+              <a href="contact.html" class="cta-btn">
+                  <i class="fas fa-phone"></i>
+                  <span>Contact Us</span>
+              </a>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+      <div class="page-header-content">
+          <h1 class="page-title">Mining Operations Optimization</h1>
+          <p class="page-subtitle">Advanced engineering analysis, procurement management, and technology integration to maximize your mining efficiency and profitability</p>
+          
+          <div class="optimization-metrics">
+              <div class="metric-card">
+                  <div class="metric-number">35%</div>
+                  <div class="metric-label">Average Cost Reduction</div>
+              </div>
+              <div class="metric-card">
+                  <div class="metric-number">45%</div>
+                  <div class="metric-label">Efficiency Improvement</div>
+              </div>
+              <div class="metric-card">
+                  <div class="metric-number">60%</div>
+                  <div class="metric-label">Downtime Reduction</div>
+              </div>
+              <div class="metric-card">
+                  <div class="metric-number">25%</div>
+                  <div class="metric-label">ROI Increase</div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="services-overview">
+      <div class="overview-container">
+          <h2 class="overview-title">
+              <span>Comprehensive</span><br>
+              <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Optimization Solutions</span>
+          </h2>
+          <p class="overview-description">Our optimization services combine advanced engineering analysis, strategic procurement management, cutting-edge technology integration, and expert consultation to transform your mining operations and maximize profitability.</p>
+          
+          <div class="services-tabs">
+              <div class="tab-btn active" data-tab="engineering">Engineering Analysis</div>
+              <div class="tab-btn" data-tab="procurement">Procurement Management</div>
+              <div class="tab-btn" data-tab="technology">New Technology</div>
+              <div class="tab-btn" data-tab="consultation">Expert Consultation</div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Main Services -->
+  <section class="main-services">
+      <div class="section-header">
+          <h2 class="section-title">
+              <span>Our Optimization</span><br>
+              <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Service Portfolio</span>
+          </h2>
+          <p class="section-description">Four core optimization services designed to address every aspect of your mining operations, from economic analysis to technology implementation.</p>
+      </div>
+      
+      <div class="services-grid">
+          <!-- Engineering Economic Analysis -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-calculator"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title">Engineering Economic Analysis</h3>
+                      <p class="service-subtitle">Data-Driven Financial Optimization</p>
+                  </div>
+              </div>
+              <p class="service-description">Comprehensive economic analysis using advanced engineering principles to optimize equipment selection, operational costs, and investment decisions. Our analysis provides clear ROI projections and cost-benefit evaluations for all mining operations.</p>
+              
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> Life Cycle Cost Analysis (LCCA)</li>
+                  <li><i class="fas fa-check"></i> Net Present Value (NPV) Calculations</li>
+                  <li><i class="fas fa-check"></i> Total Cost of Ownership (TCO) Assessment</li>
+                  <li><i class="fas fa-check"></i> Equipment Replacement Analysis</li>
+                  <li><i class="fas fa-check"></i> Risk Assessment & Sensitivity Analysis</li>
+                  <li><i class="fas fa-check"></i> Capital Investment Optimization</li>
+              </ul>
+              
+              <div class="service-deliverables">
+                  <div class="deliverables-title">
+                      <i class="fas fa-file-alt"></i>
+                      Key Deliverables
+                  </div>
+                  <div class="deliverables-list">
+                      <div class="deliverable-item">
+                          <i class="fas fa-chart-line"></i>
+                          <span>Economic Analysis Report</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-calculator"></i>
+                          <span>ROI & NPV Calculations</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-chart-pie"></i>
+                          <span>Cost Breakdown Analysis</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-balance-scale"></i>
+                          <span>Risk Assessment Matrix</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-recommendations"></i>
+                          <span>Investment Recommendations</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-calendar-alt"></i>
+                          <span>Implementation Timeline</span>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="service-actions">
+                  <a href="contact.html?service=engineering-analysis" class="btn-primary">Request Analysis</a>
+                  <a href="#engineering-case-study" class="btn-secondary"><i class="fas fa-eye"></i></a>
+              </div>
+          </div>
+
+          <!-- Procurement Management -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-handshake"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title">Strategic Procurement Management</h3>
+                      <p class="service-subtitle">Global Sourcing & Supply Chain Optimization</p>
+                  </div>
+              </div>
+              <p class="service-description">End-to-end procurement management services leveraging our global network of suppliers and manufacturers. We optimize your supply chain, negotiate better terms, and ensure reliable delivery of equipment and parts.</p>
+              
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> Global Supplier Network Management</li>
+                  <li><i class="fas fa-check"></i> Strategic Sourcing & Negotiations</li>
+                  <li><i class="fas fa-check"></i> Vendor Performance Evaluation</li>
+                  <li><i class="fas fa-check"></i> Contract Management & Compliance</li>
+                  <li><i class="fas fa-check"></i> Supply Chain Risk Mitigation</li>
+                  <li><i class="fas fa-check"></i> Inventory Optimization Strategies</li>
+              </ul>
+              
+              <div class="service-deliverables">
+                  <div class="deliverables-title">
+                      <i class="fas fa-file-contract"></i>
+                      Key Deliverables
+                  </div>
+                  <div class="deliverables-list">
+                      <div class="deliverable-item">
+                          <i class="fas fa-search"></i>
+                          <span>Supplier Assessment Report</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-handshake"></i>
+                          <span>Negotiated Contracts</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-chart-bar"></i>
+                          <span>Cost Savings Analysis</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-shield-alt"></i>
+                          <span>Risk Mitigation Plan</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-truck"></i>
+                          <span>Logistics Coordination</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-clipboard-check"></i>
+                          <span>Quality Assurance Program</span>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="service-actions">
+                  <a href="contact.html?service=procurement" class="btn-primary">Optimize Procurement</a>
+                  <a href="#procurement-case-study" class="btn-secondary"><i class="fas fa-eye"></i></a>
+              </div>
+          </div>
+
+          <!-- New Technology Integration -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-microchip"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title">New Technology Integration</h3>
+                      <p class="service-subtitle">Digital Transformation & Smart Mining Solutions</p>
+                  </div>
+              </div>
+              <p class="service-description">Implementation of cutting-edge technologies including IoT sensors, AI-powered analytics, autonomous systems, and digital twin technology to modernize your mining operations and achieve Industry 4.0 standards.</p>
+              
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> IoT Sensor Networks & Monitoring</li>
+                  <li><i class="fas fa-check"></i> AI-Powered Predictive Analytics</li>
+                  <li><i class="fas fa-check"></i> Autonomous Equipment Integration</li>
+                  <li><i class="fas fa-check"></i> Digital Twin Development</li>
+                  <li><i class="fas fa-check"></i> Real-time Data Visualization</li>
+                  <li><i class="fas fa-check"></i> Machine Learning Optimization</li>
+              </ul>
+              
+              <div class="service-deliverables">
+                  <div class="deliverables-title">
+                      <i class="fas fa-cogs"></i>
+                      Key Deliverables
+                  </div>
+                  <div class="deliverables-list">
+                      <div class="deliverable-item">
+                          <i class="fas fa-sitemap"></i>
+                          <span>Technology Roadmap</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-tools"></i>
+                          <span>System Implementation</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-graduation-cap"></i>
+                          <span>Training Programs</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-chart-line"></i>
+                          <span>Performance Dashboards</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-life-ring"></i>
+                          <span>Ongoing Support</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-sync-alt"></i>
+                          <span>System Integration</span>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="service-actions">
+                  <a href="contact.html?service=technology" class="btn-primary">Modernize Operations</a>
+                  <a href="#technology-showcase" class="btn-secondary"><i class="fas fa-eye"></i></a>
+              </div>
+          </div>
+
+          <!-- Expert Consultation -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-user-tie"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title">Expert Consultation Services</h3>
+                      <p class="service-subtitle">Strategic Advisory & Technical Expertise</p>
+                  </div>
+              </div>
+              <p class="service-description">Access to our team of mining engineers, equipment specialists, and industry experts who provide strategic guidance, technical solutions, and operational improvements tailored to your specific mining challenges.</p>
+              
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> Mining Operations Assessment</li>
+                  <li><i class="fas fa-check"></i> Equipment Selection Guidance</li>
+                  <li><i class="fas fa-check"></i> Process Optimization Consulting</li>
+                  <li><i class="fas fa-check"></i> Safety & Compliance Advisory</li>
+                  <li><i class="fas fa-check"></i> Performance Benchmarking</li>
+                  <li><i class="fas fa-check"></i> Strategic Planning Support</li>
+              </ul>
+              
+              <div class="service-deliverables">
+                  <div class="deliverables-title">
+                      <i class="fas fa-clipboard-list"></i>
+                      Key Deliverables
+                  </div>
+                  <div class="deliverables-list">
+                      <div class="deliverable-item">
+                          <i class="fas fa-search"></i>
+                          <span>Operations Assessment</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-lightbulb"></i>
+                          <span>Improvement Recommendations</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-map-marked-alt"></i>
+                          <span>Strategic Roadmap</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-chart-bar"></i>
+                          <span>Performance Benchmarks</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-phone"></i>
+                          <span>Ongoing Advisory Support</span>
+                      </div>
+                      <div class="deliverable-item">
+                          <i class="fas fa-graduation-cap"></i>
+                          <span>Knowledge Transfer</span>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="service-actions">
+                  <a href="contact.html?service=consultation" class="btn-primary">Book Consultation</a>
+                  <a href="#consultation-experts" class="btn-secondary"><i class="fas fa-eye"></i></a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Technology Showcase -->
+  <section class="technology-showcase" id="technology-showcase">
+      <div class="section-header">
+          <h2 class="section-title">
+              <span>Advanced Technologies</span><br>
+              <span style="background: var(--gradient-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">We Implement</span>
+          </h2>
+          <p class="section-description">Cutting-edge technologies that transform traditional mining operations into smart, efficient, and highly productive digital enterprises.</p>
+      </div>
+      
+      <div class="tech-grid">
+          <!-- IoT & Sensors -->
+          <div class="tech-card">
+              <div class="tech-icon">
+                  <i class="fas fa-wifi"></i>
+              </div>
+              <h3 class="tech-title">IoT Sensor Networks</h3>
+              <p class="tech-description">Comprehensive sensor deployment for real-time monitoring of equipment performance, environmental conditions, and operational parameters.</p>
+              <ul class="tech-benefits">
+                  <li><i class="fas fa-check"></i> Real-time equipment monitoring</li>
+                  <li><i class="fas fa-check"></i> Environmental condition tracking</li>
+                  <li><i class="fas fa-check"></i> Predictive maintenance alerts</li>
+                  <li><i class="fas fa-check"></i> Energy consumption optimization</li>
+              </ul>
+          </div>
+
+          <!-- AI & Machine Learning -->
+          <div class="tech-card">
+              <div class="tech-icon">
+                  <i class="fas fa-brain"></i>
+              </div>
+              <h3 class="tech-title">AI-Powered Analytics</h3>
+              <p class="tech-description">Advanced artificial intelligence and machine learning algorithms for predictive analytics, pattern recognition, and automated decision-making.</p>
+              <ul class="tech-benefits">
+                  <li><i class="fas fa-check"></i> Predictive failure analysis</li>
+                  <li><i class="fas fa-check"></i> Production optimization</li>
+                  <li><i class="fas fa-check"></i> Quality control automation</li>
+                  <li><i class="fas fa-check"></i> Resource allocation optimization</li>
+              </ul>
+          </div>
+
+          <!-- Autonomous Systems -->
+          <div class="tech-card">
+              <div class="tech-icon">
+                  <i class="fas fa-robot"></i>
+              </div>
+              <h3 class="tech-title">Autonomous Equipment</h3>
+              <p class="tech-description">Integration of autonomous haul trucks, drilling systems, and other unmanned equipment to improve safety and operational efficiency.</p>
+              <ul class="tech-benefits">
+                  <li><i class="fas fa-check"></i> Unmanned equipment operation</li>
+                  <li><i class="fas fa-check"></i> Enhanced safety protocols</li>
+                  <li><i class="fas fa-check"></i> 24/7 continuous operation</li>
+                  <li><i class="fas fa-check"></i> Reduced labor costs</li>
+              </ul>
+          </div>
+
+          <!-- Digital Twin -->
+          <div class="tech-card">
+              <div class="tech-icon">
+                  <i class="fas fa-cube"></i>
+              </div>
+              <h3 class="tech-title">Digital Twin Technology</h3>
+              <p class="tech-description">Virtual replicas of physical mining operations for simulation, testing, and optimization without disrupting actual production.</p>
+              <ul class="tech-benefits">
+                  <li><i class="fas fa-check"></i> Virtual operation simulation</li>
+                  <li><i class="fas fa-check"></i> Risk-free testing environment</li>
+                  <li><i class="fas fa-check"></i> Process optimization modeling</li>
+                  <li><i class="fas fa-check"></i> Training simulation platform</li>
+              </ul>
+          </div>
+
+          <!-- Blockchain -->
+          <div class="tech-card">
+              <div class="tech-icon">
+                  <i class="fas fa-link"></i>
+              </div>
+              <h3 class="tech-title">Blockchain Integration</h3>
+              <p class="tech-description">Secure, transparent tracking of materials, equipment, and transactions throughout the mining supply chain.</p>
+              <ul class="tech-benefits">
+                  <li><i class="fas fa-check"></i> Supply chain transparency</li>
+                  <li><i class="fas fa-check"></i> Secure transaction records</li>
+                  <li><i class="fas fa-check"></i> Material traceability</li>
+                  <li><i class="fas fa-check"></i> Compliance documentation</li>
+              </ul>
+          </div>
+
+          <!-- AR/VR -->
+          <div class="tech-card">
+              <div class="tech-icon">
+                  <i class="fas fa-vr-cardboard"></i>
+              </div>
+              <h3 class="tech-title">AR/VR Solutions</h3>
+              <p class="tech-description">Augmented and virtual reality applications for training, maintenance guidance, and remote equipment operation support.</p>
+              <ul class="tech-benefits">
+                  <li><i class="fas fa-check"></i> Immersive training programs</li>
+                  <li><i class="fas fa-check"></i> Remote maintenance guidance</li>
+                  <li><i class="fas fa-check"></i> Virtual site inspections</li>
+                  <li><i class="fas fa-check"></i> Safety procedure simulation</li>
+              </ul>
+          </div>
+      </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="case-studies">
+      <div class="section-header">
+          <h2 class="section-title">
+              <span>Optimization</span><br>
+              <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Success Stories</span>
+          </h2>
+          <p class="section-description">Real-world results from our optimization projects, demonstrating measurable improvements in efficiency, cost reduction, and operational performance.</p>
+      </div>
+      
+      <div class="case-grid">
+          <!-- Case Study 1 -->
+          <div class="case-card" id="engineering-case-study">
+              <div class="case-image">
+                  <i class="fas fa-calculator"></i>
+              </div>
+              <div class="case-content">
+                  <h3 class="case-title">Copper Mine Economic Optimization</h3>
+                  <p class="case-description">Comprehensive economic analysis and equipment optimization for a major copper mining operation in Oman, resulting in significant cost savings and improved ROI.</p>
+                  <div class="case-results">
+                      <div class="result-item">
+                          <div class="result-number">$2.8M</div>
+                          <div class="result-label">Annual Savings</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">32%</div>
+                          <div class="result-label">Cost Reduction</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">18 months</div>
+                          <div class="result-label">Payback Period</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">45%</div>
+                          <div class="result-label">ROI Improvement</div>
+                      </div>
+                  </div>
+                  <a href="contact.html?case=copper-optimization" class="btn-primary">Learn More</a>
+              </div>
+          </div>
+
+          <!-- Case Study 2 -->
+          <div class="case-card" id="procurement-case-study">
+              <div class="case-image">
+                  <i class="fas fa-handshake"></i>
+              </div>
+              <div class="case-content">
+                  <h3 class="case-title">Global Procurement Optimization</h3>
+                  <p class="case-description">Strategic procurement management and supplier optimization for a limestone quarry operation, achieving substantial cost savings and improved supply chain reliability.</p>
+                  <div class="case-results">
+                      <div class="result-item">
+                          <div class="result-number">28%</div>
+                          <div class="result-label">Procurement Savings</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">65%</div>
+                          <div class="result-label">Delivery Improvement</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">15</div>
+                          <div class="result-label">New Suppliers</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">90%</div>
+                          <div class="result-label">Quality Compliance</div>
+                      </div>
+                  </div>
+                  <a href="contact.html?case=procurement-optimization" class="btn-primary">Learn More</a>
+              </div>
+          </div>
+
+          <!-- Case Study 3 -->
+          <div class="case-card">
+              <div class="case-image">
+                  <i class="fas fa-microchip"></i>
+              </div>
+              <div class="case-content">
+                  <h3 class="case-title">Smart Mining Technology Implementation</h3>
+                  <p class="case-description">Complete digital transformation of a gold mining operation with IoT sensors, AI analytics, and autonomous equipment integration.</p>
+                  <div class="case-results">
+                      <div class="result-item">
+                          <div class="result-number">55%</div>
+                          <div class="result-label">Efficiency Gain</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">70%</div>
+                          <div class="result-label">Downtime Reduction</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">40%</div>
+                          <div class="result-label">Energy Savings</div>
+                      </div>
+                      <div class="result-item">
+                          <div class="result-number">99.2%</div>
+                          <div class="result-label">System Uptime</div>
+                      </div>
+                  </div>
+                  <a href="contact.html?case=smart-mining" class="btn-primary">Learn More</a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+      <div class="cta-content">
+          <h2 class="cta-title">Ready to Optimize Your Mining Operations?</h2>
+          <p class="cta-description">Partner with SESMINE's optimization experts to unlock the full potential of your mining operations. Our comprehensive approach combines engineering excellence, strategic procurement, advanced technology, and expert consultation to deliver measurable results.</p>
+          
+          <div class="cta-buttons">
+              <a href="contact.html?service=optimization" class="btn-primary btn-large">
+                  <i class="fas fa-rocket"></i>
+                  <span>Start Optimization</span>
+              </a>
+              <a href="contact.html?request=consultation" class="btn-secondary btn-large">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>Schedule Consultation</span>
+              </a>
+          </div>
+      </div>
+  </section>
+
+  <script>
+      // Tab switching functionality
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+              // Remove active class from all tabs
+              document.querySelectorAll('.tab-btn').forEach(tab => tab.classList.remove('active'));
+              // Add active class to clicked tab
+              btn.classList.add('active');
+              
+              // Log tab selection
+              console.log('Tab selected:', btn.dataset.tab);
+          });
+      });
+      
+      // Animate metrics on scroll
+      const animateMetrics = () => {
+          const metricNumbers = document.querySelectorAll('.metric-number');
+          metricNumbers.forEach(metric => {
+              const finalText = metric.textContent;
+              const number = parseInt(finalText.replace(/[^0-9]/g, ''));
+              if (number && !metric.dataset.animated) {
+                  metric.dataset.animated = 'true';
+                  let current = 0;
+                  const increment = number / 50;
+                  const timer = setInterval(() => {
+                      current += increment;
+                      if (current >= number) {
+                          metric.textContent = finalText;
+                          clearInterval(timer);
+                      } else {
+                          metric.textContent = Math.floor(current) + '%';
+                      }
+                  }, 30);
+              }
+          });
+      };
+      
+      // Animate case study results
+      const animateCaseResults = () => {
+          const resultNumbers = document.querySelectorAll('.result-number');
+          resultNumbers.forEach(result => {
+              if (!result.dataset.animated) {
+                  result.dataset.animated = 'true';
+                  const finalText = result.textContent;
+                  
+                  // Handle different number formats
+                  if (finalText.includes('$')) {
+                      // Handle currency
+                      const number = parseFloat(finalText.replace(/[^0-9.]/g, ''));
+                      let current = 0;
+                      const increment = number / 50;
+                      const timer = setInterval(() => {
+                          current += increment;
+                          if (current >= number) {
+                              result.textContent = finalText;
+                              clearInterval(timer);
+                          } else {
+                              result.textContent = '$' + current.toFixed(1) + 'M';
+                          }
+                      }, 30);
+                  } else if (finalText.includes('%')) {
+                      // Handle percentages
+                      const number = parseInt(finalText.replace(/[^0-9]/g, ''));
+                      let current = 0;
+                      const increment = number / 50;
+                      const timer = setInterval(() => {
+                          current += increment;
+                          if (current >= number) {
+                              result.textContent = finalText;
+                              clearInterval(timer);
+                          } else {
+                              result.textContent = Math.floor(current) + '%';
+                          }
+                      }, 30);
+                  }
+              }
+          });
+      };
+      
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  if (entry.target.classList.contains('page-header')) {
+                      animateMetrics();
+                  }
+                  if (entry.target.classList.contains('case-studies')) {
+                      animateCaseResults();
+                  }
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      }, { threshold: 0.1 });
+      
+      // Observe elements
+      document.querySelectorAll('.service-card, .tech-card, .case-card, .page-header, .case-studies').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(el);
+      });
+      
+      // Service card hover effects
+      document.querySelectorAll('.service-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+              const icon = card.querySelector('.service-icon');
+              icon.style.transform = 'scale(1.1) rotate(5deg)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+              const icon = card.querySelector('.service-icon');
+              icon.style.transform = 'scale(1) rotate(0deg)';
+          });
+      });
+      
+      // Tech card hover effects
+      document.querySelectorAll('.tech-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+              const icon = card.querySelector('.tech-icon');
+              icon.style.transform = 'scale(1.1) rotate(-5deg)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+              const icon = card.querySelector('.tech-icon');
+              icon.style.transform = 'scale(1) rotate(0deg)';
+          });
+      });
+      
+      console.log('🚀 SESMINE Optimization Page Loaded');
+      console.log('📊 Engineering Analysis | 🤝 Procurement | 🔬 Technology | 👨‍💼 Consultation');
+  </script>
+</body>
+</html>
