@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment Selection Services | SESMINE | Mining Equipment Consulting Oman</title>
+  <meta name="description" content="Expert equipment selection services for mining operations in Oman. Professional analysis, recommendations, and technical consulting for optimal equipment choices.">
+  <meta name="keywords" content="equipment selection Oman, mining equipment consulting, equipment analysis, mining equipment recommendations">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+      :root {
+          --primary: #1e40af;
+          --secondary: #dc2626;
+          --accent: #f59e0b;
+          --success: #059669;
+          --dark: #1e293b;
+          --darker: #0f172a;
+          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      }
+      
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      body { 
+          font-family: 'Inter', sans-serif; 
+          background: var(--darker); 
+          color: white; 
+          line-height: 1.6; 
+          overflow-x: hidden;
+      }
+      
+      html { scroll-behavior: smooth; }
+      
+      /* Header Styles */
+      header {
+          position: sticky;
+          top: 0;
+          z-index: 4000;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
+      }
+      
+      nav {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          color: white;
+          font-weight: 800;
+          font-size: 1.8rem;
+      }
+      
+      .logo img { height: 60px; filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4)); }
+      .logo-text { 
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      .logo-subtitle {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-top: -5px;
+      }
+      
+      .nav-center {
+          display: flex;
+          list-style: none;
+          gap: 0.5rem;
+          align-items: center;
+      }
+      
+      .nav-link {
+          padding: 0.8rem 1.5rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: all 0.3s;
+          border-radius: 12px;
+      }
+      
+      .nav-link:hover { color: white; background: rgba(30, 64, 175, 0.1); }
+      
+      .cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.9rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+      }
+      
+      .cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
+      }
+      
+      /* Breadcrumb */
+      .breadcrumb {
+          padding: 2rem;
+          background: rgba(30, 64, 175, 0.05);
+      }
+      
+      .breadcrumb-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+      }
+      
+      .breadcrumb a {
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+          transition: color 0.3s;
+      }
+      
+      .breadcrumb a:hover { color: var(--primary); }
+      .breadcrumb span { color: rgba(255, 255, 255, 0.5); }
+      
+      /* Service Hero */
+      .service-hero {
+          padding: 6rem 2rem 4rem;
+          background: 
+              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=85') center/cover;
+          text-align: center;
+          position: relative;
+      }
+      
+      .service-hero::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 70%);
+      }
+      
+      .hero-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .service-badge {
+          display: inline-block;
+          padding: 0.5rem 1.5rem;
+          background: var(--gradient-primary);
+          color: white;
+          font-size: 0.9rem;
+          font-weight: 600;
+          border-radius: 25px;
+          margin-bottom: 2rem;
+      }
+      
+      .hero-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .hero-subtitle {
+          font-size: 1.3rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 3rem;
+          line-height: 1.6;
+      }
+      
+      .hero-stats {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+      }
+      
+      .stat-item {
+          text-align: center;
+          padding: 1.5rem;
+          background: rgba(30, 64, 175, 0.1);
+          border-radius: 16px;
+          border: 1px solid rgba(30, 64, 175, 0.2);
+      }
+      
+      .stat-number {
+          font-size: 2rem;
+          font-weight: 900;
+          background: var(--gradient-accent);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.9rem;
+      }
+      
+      /* Process Section */
+      .process-section {
+          padding: 8rem 2rem;
+          background: rgba(30, 64, 175, 0.02);
+      }
+      
+      .process-container {
+          max-width: 1400px;
+          margin: 0 auto;
+      }
+      
+      .section-header {
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 4rem;
+      }
+      
+      .section-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          line-height: 1.2;
+      }
+      
+      .section-description {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+      }
+      
+      .process-steps {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+      }
+      
+      .process-step {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 20px;
+          padding: 2.5rem;
+          text-align: center;
+          transition: all 0.4s;
+          position: relative;
+      }
+      
+      .process-step::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--gradient-primary);
+          transform: scaleX(0);
+          transition: transform 0.4s;
+      }
+      
+      .process-step:hover {
+          transform: translateY(-5px);
+          background: rgba(30, 64, 175, 0.08);
+          border-color: rgba(30, 64, 175, 0.3);
+          box-shadow: 0 15px 40px rgba(30, 64, 175, 0.2);
+      }
+      
+      .process-step:hover::before { transform: scaleX(1); }
+      
+      .step-number {
+          width: 60px;
+          height: 60px;
+          background: var(--gradient-primary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: white;
+          margin: 0 auto 1.5rem;
+          box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+      }
+      
+      .step-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+      }
+      
+      .step-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+      }
+      
+      .step-deliverables {
+          list-style: none;
+          text-align: left;
+      }
+      
+      .step-deliverables li {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          margin-bottom: 0.8rem;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.9rem;
+      }
+      
+      .step-deliverables i {
+          color: var(--primary);
+          font-size: 0.8rem;
+      }
+      
+      /* Benefits Section */
+      .benefits-section {
+          padding: 8rem 2rem;
+          background: rgba(5, 150, 105, 0.05);
+      }
+      
+      .benefits-grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2rem;
+      }
+      
+      .benefit-card {
+          background: rgba(5, 150, 105, 0.05);
+          border: 1px solid rgba(5, 150, 105, 0.2);
+          border-radius: 20px;
+          padding: 2.5rem;
+          text-align: center;
+          transition: all 0.4s;
+      }
+      
+      .benefit-card:hover {
+          transform: translateY(-5px);
+          background: rgba(5, 150, 105, 0.08);
+          border-color: rgba(5, 150, 105, 0.4);
+          box-shadow: 0 15px 40px rgba(5, 150, 105, 0.2);
+      }
+      
+      .benefit-icon {
+          width: 80px;
+          height: 80px;
+          background: var(--gradient-success);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+          color: white;
+          margin: 0 auto 1.5rem;
+          box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3);
+      }
+      
+      .benefit-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+      }
+      
+      .benefit-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.6;
+      }
+      
+      /* CTA Section */
+      .cta-section {
+          padding: 6rem 2rem;
+          background: 
+              linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%),
+              url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85') center/cover;
+          position: relative;
+          text-align: center;
+      }
+      
+      .cta-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(15, 23, 42, 0.8);
+      }
+      
+      .cta-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .cta-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .cta-description {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 3rem;
+          line-height: 1.8;
+      }
+      
+      .cta-buttons {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+      
+      .btn-primary {
+          padding: 1.2rem 3rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 1.1rem;
+      }
+      
+      .btn-primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 40px rgba(30, 64, 175, 0.6);
+      }
+      
+      .btn-secondary {
+          padding: 1.2rem 3rem;
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          border: 2px solid rgba(30, 64, 175, 0.3);
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 1.1rem;
+      }
+      
+      .btn-secondary:hover {
+          background: rgba(30, 64, 175, 0.2);
+          transform: translateY(-3px);
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+          .nav-center { display: none; }
+          .hero-stats { grid-template-columns: 1fr 1fr; }
+          .process-steps { grid-template-columns: 1fr; }
+          .benefits-grid { grid-template-columns: 1fr; }
+          .cta-buttons { flex-direction: column; align-items: center; }
+      }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+      <nav>
+          <a href="index.html" class="logo">
+              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+              <div>
+                  <div class="logo-text">SESMINE</div>
+                  <div class="logo-subtitle">Equipment Excellence</div>
+              </div>
+          </a>
+          
+          <ul class="nav-center">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="services.html" class="nav-link">Services</a></li>
+              <li><a href="equipment-catalog.html" class="nav-link">Equipment</a></li>
+              <li><a href="spare-parts.html" class="nav-link">Spare Parts</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+          </ul>
+          
+          <div class="nav-right">
+              <a href="contact.html" class="cta-btn">
+                  <i class="fas fa-phone"></i>
+                  <span>Contact Us</span>
+              </a>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="breadcrumb">
+      <div class="breadcrumb-container">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="services.html">Services</a>
+          <span>/</span>
+          <span>Equipment Selection</span>
+      </div>
+  </section>
+
+  <!-- Service Hero -->
+  <section class="service-hero">
+      <div class="hero-content">
+          <div class="service-badge">EXPERT CONSULTING</div>
+          <h1 class="hero-title">Equipment Selection Services</h1>
+          <p class="hero-subtitle">Professional equipment analysis and recommendations to optimize your mining operations with the right machinery for maximum productivity and cost-effectiveness</p>
+          
+          <div class="hero-stats">
+              <div class="stat-item">
+                  <div class="stat-number">500+</div>
+                  <div class="stat-label">Equipment Analyzed</div>
+              </div>
+              <div class="stat-item">
+                  <div class="stat-number">98%</div>
+                  <div class="stat-label">Client Satisfaction</div>
+              </div>
+              <div class="stat-item">
+                  <div class="stat-number">25%</div>
+                  <div class="stat-label">Average Cost Savings</div>
+              </div>
+              <div class="stat-item">
+                  <div class="stat-number">15+</div>
+                  <div class="stat-label">Years Experience</div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+      <div class="process-container">
+          <div class="section-header">
+              <h2 class="section-title">
+                  <span>Our Equipment Selection</span><br>
+                  <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Process</span>
+              </h2>
+              <p class="section-description">A comprehensive 6-step process that ensures you get the most suitable equipment for your specific mining operations and requirements.</p>
+          </div>
+          
+          <div class="process-steps">
+              <!-- Step 1 -->
+              <div class="process-step">
+                  <div class="step-number">1</div>
+                  <h3 class="step-title">Site Assessment</h3>
+                  <p class="step-description">Comprehensive evaluation of your mining site, geological conditions, operational requirements, and existing infrastructure.</p>
+                  <ul class="step-deliverables">
+                      <li><i class="fas fa-check"></i> Site survey and analysis</li>
+                      <li><i class="fas fa-check"></i> Geological assessment</li>
+                      <li><i class="fas fa-check"></i> Infrastructure evaluation</li>
+                      <li><i class="fas fa-check"></i> Environmental considerations</li>
+                  </ul>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="process-step">
+                  <div class="step-number">2</div>
+                  <h3 class="step-title">Requirements Analysis</h3>
+                  <p class="step-description">Detailed analysis of your production targets, material characteristics, operational constraints, and budget parameters.</p>
+                  <ul class="step-deliverables">
+                      <li><i class="fas fa-check"></i> Production requirement analysis</li>
+                      <li><i class="fas fa-check"></i> Material handling assessment</li>
+                      <li><i class="fas fa-check"></i> Budget and financing review</li>
+                      <li><i class="fas fa-check"></i> Timeline evaluation</li>
+                  </ul>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="process-step">
+                  <div class="step-number">3</div>
+                  <h3 class="step-title">Equipment Matching</h3>
+                  <p class="step-description">Identification and evaluation of suitable equipment options from our extensive database of mining machinery.</p>
+                  <ul class="step-deliverables">
+                      <li><i class="fas fa-check"></i> Equipment database search</li>
+                      <li><i class="fas fa-check"></i> Specification comparison</li>
+                      <li><i class="fas fa-check"></i> Performance analysis</li>
+                      <li><i class="fas fa-check"></i> Compatibility assessment</li>
+                  </ul>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="process-step">
+                  <div class="step-number">4</div>
+                  <h3 class="step-title">
+                  <h3 class="step-title">Economic Analysis</h3>
+                  <p class="step-description">Comprehensive cost-benefit analysis including purchase price, operating costs, maintenance expenses, and return on investment calculations.</p>
+                  <ul class="step-deliverables">
+                      <li><i class="fas fa-check"></i> Total cost of ownership analysis</li>
+                      <li><i class="fas fa-check"></i> ROI and payback calculations</li>
+                      <li><i class="fas fa-check"></i> Financing options evaluation</li>
+                      <li><i class="fas fa-check"></i> Risk assessment</li>
+                  </ul>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="process-step">
+                  <div class="step-number">5</div>
+                  <h3 class="step-title">Recommendation Report</h3>
+                  <p class="step-description">Detailed report with equipment recommendations, technical justifications, and implementation roadmap tailored to your specific needs.</p>
+                  <ul class="step-deliverables">
+                      <li><i class="fas fa-check"></i> Equipment recommendation matrix</li>
+                      <li><i class="fas fa-check"></i> Technical specifications</li>
+                      <li><i class="fas fa-check"></i> Implementation timeline</li>
+                      <li><i class="fas fa-check"></i> Vendor evaluation</li>
+                  </ul>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="process-step">
+                  <div class="step-number">6</div>
+                  <h3 class="step-title">Implementation Support</h3>
+                  <p class="step-description">Ongoing support during procurement, installation, commissioning, and initial operation phases to ensure successful implementation.</p>
+                  <ul class="step-deliverables">
+                      <li><i class="fas fa-check"></i> Procurement assistance</li>
+                      <li><i class="fas fa-check"></i> Installation supervision</li>
+                      <li><i class="fas fa-check"></i> Commissioning support</li>
+                      <li><i class="fas fa-check"></i> Operator training coordination</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+      <div class="section-header">
+          <h2 class="section-title">
+              <span>Key Benefits of Our</span><br>
+              <span style="background: var(--gradient-success); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Equipment Selection Service</span>
+          </h2>
+          <p class="section-description">Our expert equipment selection service delivers measurable value through optimized equipment choices and reduced operational risks.</p>
+      </div>
+      
+      <div class="benefits-grid">
+          <!-- Cost Optimization -->
+          <div class="benefit-card">
+              <div class="benefit-icon">
+                  <i class="fas fa-dollar-sign"></i>
+              </div>
+              <h3 class="benefit-title">Cost Optimization</h3>
+              <p class="benefit-description">Reduce total cost of ownership by 15-25% through optimal equipment selection, right-sizing, and lifecycle cost analysis.</p>
+          </div>
+
+          <!-- Risk Mitigation -->
+          <div class="benefit-card">
+              <div class="benefit-icon">
+                  <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="benefit-title">Risk Mitigation</h3>
+              <p class="benefit-description">Minimize operational risks through thorough analysis, proven equipment selection, and comprehensive vendor evaluation.</p>
+          </div>
+
+          <!-- Performance Enhancement -->
+          <div class="benefit-card">
+              <div class="benefit-icon">
+                  <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="benefit-title">Performance Enhancement</h3>
+              <p class="benefit-description">Maximize productivity and efficiency with equipment perfectly matched to your operational requirements and conditions.</p>
+          </div>
+
+          <!-- Expert Knowledge -->
+          <div class="benefit-card">
+              <div class="benefit-icon">
+                  <i class="fas fa-user-graduate"></i>
+              </div>
+              <h3 class="benefit-title">Expert Knowledge</h3>
+              <p class="benefit-description">Leverage 15+ years of mining equipment expertise and industry knowledge for informed decision-making.</p>
+          </div>
+
+          <!-- Time Savings -->
+          <div class="benefit-card">
+              <div class="benefit-icon">
+                  <i class="fas fa-clock"></i>
+              </div>
+              <h3 class="benefit-title">Time Savings</h3>
+              <p class="benefit-description">Accelerate your equipment selection process with our streamlined methodology and extensive industry network.</p>
+          </div>
+
+          <!-- Ongoing Support -->
+          <div class="benefit-card">
+              <div class="benefit-icon">
+                  <i class="fas fa-handshake"></i>
+              </div>
+              <h3 class="benefit-title">Ongoing Support</h3>
+              <p class="benefit-description">Receive continuous support from selection through implementation, ensuring successful equipment integration.</p>
+          </div>
+      </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+      <div class="cta-content">
+          <h2 class="cta-title">Ready to Optimize Your Equipment Selection?</h2>
+          <p class="cta-description">Partner with SESMINE's equipment selection experts to make informed decisions that maximize your mining operation's productivity and profitability.</p>
+          
+          <div class="cta-buttons">
+              <a href="contact.html?service=equipment-selection" class="btn-primary">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>Schedule Consultation</span>
+              </a>
+              <a href="contact.html?request=quote&service=equipment-selection" class="btn-secondary">
+                  <i class="fas fa-file-alt"></i>
+                  <span>Request Proposal</span>
+              </a>
+          </div>
+      </div>
+  </section>
+
+  <script>
+      // Animate stats on scroll
+      const animateStats = () => {
+          const statNumbers = document.querySelectorAll('.stat-number');
+          statNumbers.forEach(stat => {
+              const finalText = stat.textContent;
+              const number = parseInt(finalText.replace(/[^0-9]/g, ''));
+              if (number && !stat.dataset.animated) {
+                  stat.dataset.animated = 'true';
+                  let current = 0;
+                  const increment = number / 50;
+                  const timer = setInterval(() => {
+                      current += increment;
+                      if (current >= number) {
+                          stat.textContent = finalText;
+                          clearInterval(timer);
+                      } else {
+                          const currentNum = Math.floor(current);
+                          if (finalText.includes('+')) {
+                              stat.textContent = currentNum + '+';
+                          } else if (finalText.includes('%')) {
+                              stat.textContent = currentNum + '%';
+                          } else {
+                              stat.textContent = currentNum;
+                          }
+                      }
+                  }, 30);
+              }
+          });
+      };
+      
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  if (entry.target.classList.contains('service-hero')) {
+                      animateStats();
+                  }
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      }, { threshold: 0.1 });
+      
+      // Observe elements
+      document.querySelectorAll('.process-step, .benefit-card, .service-hero').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(el);
+      });
+      
+      // Process step hover effects
+      document.querySelectorAll('.process-step').forEach(step => {
+          step.addEventListener('mouseenter', () => {
+              const stepNumber = step.querySelector('.step-number');
+              stepNumber.style.transform = 'scale(1.1) rotate(5deg)';
+          });
+          
+          step.addEventListener('mouseleave', () => {
+              const stepNumber = step.querySelector('.step-number');
+              stepNumber.style.transform = 'scale(1) rotate(0deg)';
+          });
+      });
+      
+      // Benefit card hover effects
+      document.querySelectorAll('.benefit-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+              const icon = card.querySelector('.benefit-icon');
+              icon.style.transform = 'scale(1.1) rotate(-5deg)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+              const icon = card.querySelector('.benefit-icon');
+              icon.style.transform = 'scale(1) rotate(0deg)';
+          });
+      });
+      
+      console.log('🔧 SESMINE Equipment Selection Service Page Loaded');
+      console.log('📊 Expert Analysis | 💰 Cost Optimization | ⚡ Performance Enhancement');
+  </script>
+</body>
+</html>
