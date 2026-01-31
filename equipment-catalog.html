@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment Catalog | SESMINE | Mining Equipment Solutions Oman</title>
+  <meta name="description" content="Browse SESMINE's comprehensive equipment catalog featuring Caterpillar, Komatsu, Liebherr, Sandvik mining equipment and machinery for Oman's mining operations.">
+  <meta name="keywords" content="mining equipment catalog, Caterpillar equipment, Komatsu machinery, Liebherr excavators, mining equipment Oman">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+      :root {
+          --primary: #1e40af;
+          --secondary: #dc2626;
+          --accent: #f59e0b;
+          --success: #059669;
+          --dark: #1e293b;
+          --darker: #0f172a;
+          --light: #f8fafc;
+          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      }
+      
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      body { 
+          font-family: 'Inter', sans-serif; 
+          background: var(--darker); 
+          color: white; 
+          line-height: 1.6; 
+          overflow-x: hidden;
+      }
+      
+      body.rtl { 
+          font-family: 'Cairo', sans-serif; 
+          direction: rtl; 
+      }
+      
+      html { scroll-behavior: smooth; }
+      
+      /* Header Styles (Same as main page) */
+      header {
+          position: sticky;
+          top: 0;
+          z-index: 4000;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
+          transition: all 0.3s;
+      }
+      
+      nav {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          color: white;
+          font-weight: 800;
+          font-size: 1.8rem;
+          transition: all 0.3s;
+      }
+      
+      .logo img {
+          height: 60px;
+          filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4));
+      }
+      
+      .logo-text { 
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+      
+      .logo-subtitle {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-top: -5px;
+      }
+      
+      .nav-center {
+          display: flex;
+          list-style: none;
+          gap: 0.5rem;
+          align-items: center;
+      }
+      
+      .nav-link {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.8rem 1.5rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: all 0.3s;
+          border-radius: 12px;
+          position: relative;
+      }
+      
+      .nav-link:hover,
+      .nav-link.active {
+          color: white;
+          background: rgba(30, 64, 175, 0.1);
+      }
+      
+      .cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.9rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+      }
+      
+      .cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
+      }
+      
+      /* Page Header */
+      .page-header {
+          padding: 8rem 2rem 4rem;
+          background: 
+              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1920&q=85') center/cover;
+          text-align: center;
+          position: relative;
+      }
+      
+      .page-header::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 70%);
+      }
+      
+      .page-header-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .page-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .page-subtitle {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 2rem;
+      }
+      
+      .breadcrumb {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+      }
+      
+      .breadcrumb a {
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+          transition: color 0.3s;
+      }
+      
+      .breadcrumb a:hover {
+          color: var(--primary);
+      }
+      
+      .breadcrumb span {
+          color: rgba(255, 255, 255, 0.5);
+      }
+      
+      /* Catalog Filters */
+      .catalog-filters {
+          padding: 4rem 2rem 2rem;
+          background: rgba(30, 64, 175, 0.02);
+      }
+      
+      .filters-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+      }
+      
+      .filter-group {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 16px;
+          padding: 2rem;
+      }
+      
+      .filter-title {
+          font-size: 1.1rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: var(--primary);
+      }
+      
+      .filter-options {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+      }
+      
+      .filter-option {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          cursor: pointer;
+          transition: all 0.3s;
+      }
+      
+      .filter-option:hover {
+          color: var(--primary);
+      }
+      
+      .filter-option input[type="checkbox"] {
+          accent-color: var(--primary);
+      }
+      
+      .search-box {
+          width: 100%;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 12px;
+          color: white;
+          font-size: 1rem;
+      }
+      
+      .search-box::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+      }
+      
+      /* Equipment Grid */
+      .equipment-catalog {
+          padding: 4rem 2rem;
+      }
+      
+      .catalog-header {
+          max-width: 1400px;
+          margin: 0 auto 3rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .results-count {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 1rem;
+      }
+      
+      .sort-options {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+      }
+      
+      .sort-select {
+          padding: 0.8rem 1.5rem;
+          background: rgba(30, 64, 175, 0.1);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 12px;
+          color: white;
+          cursor: pointer;
+      }
+      
+      .view-toggle {
+          display: flex;
+          gap: 0.5rem;
+      }
+      
+      .view-btn {
+          padding: 0.8rem;
+          background: rgba(30, 64, 175, 0.1);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 8px;
+          color: rgba(255, 255, 255, 0.7);
+          cursor: pointer;
+          transition: all 0.3s;
+      }
+      
+      .view-btn.active,
+      .view-btn:hover {
+          background: var(--gradient-primary);
+          color: white;
+      }
+      
+      .equipment-grid {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+          gap: 2.5rem;
+      }
+      
+      .equipment-card {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 24px;
+          overflow: hidden;
+          transition: all 0.4s;
+          position: relative;
+      }
+      
+      .equipment-card:hover {
+          transform: translateY(-10px);
+          background: rgba(30, 64, 175, 0.08);
+          border-color: rgba(30, 64, 175, 0.3);
+          box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+      }
+      
+      .equipment-image {
+          width: 100%;
+          height: 250px;
+          object-fit: cover;
+          transition: transform 0.3s;
+      }
+      
+      .equipment-card:hover .equipment-image {
+          transform: scale(1.05);
+      }
+      
+      .equipment-info {
+          padding: 2rem;
+      }
+      
+      .equipment-brand {
+          display: inline-block;
+          padding: 0.3rem 1rem;
+          background: var(--gradient-primary);
+          color: white;
+          font-size: 0.8rem;
+          font-weight: 600;
+          border-radius: 20px;
+          margin-bottom: 1rem;
+      }
+      
+      .equipment-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          color: white;
+      }
+      
+      .equipment-model {
+          color: rgba(255, 255, 255, 0.7);
+          margin-bottom: 1rem;
+          font-size: 0.9rem;
+      }
+      
+      .equipment-specs {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+          margin-bottom: 1.5rem;
+      }
+      
+      .spec-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.9rem;
+      }
+      
+      .spec-label {
+          color: rgba(255, 255, 255, 0.7);
+      }
+      
+      .spec-value {
+          color: white;
+          font-weight: 600;
+      }
+      
+      .equipment-actions {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1.5rem;
+      }
+      
+      .btn-primary {
+          flex: 1;
+          padding: 0.8rem 1.5rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 12px;
+          font-weight: 600;
+          text-align: center;
+          transition: all 0.3s;
+      }
+      
+      .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+      }
+      
+      .btn-secondary {
+          padding: 0.8rem;
+          background: rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.3s;
+      }
+      
+      .btn-secondary:hover {
+          background: rgba(30, 64, 175, 0.2);
+          color: white;
+      }
+      
+      .availability-badge {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          padding: 0.5rem 1rem;
+          background: var(--gradient-success);
+          color: white;
+          font-size: 0.8rem;
+          font-weight: 600;
+          border-radius: 20px;
+      }
+      
+      .availability-badge.limited {
+          background: var(--gradient-accent);
+      }
+      
+      .availability-badge.unavailable {
+          background: var(--gradient-secondary);
+      }
+      
+      /* Pagination */
+      .pagination {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 4rem;
+      }
+      
+      .page-btn {
+          padding: 0.8rem 1.2rem;
+          background: rgba(30, 64, 175, 0.1);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          border-radius: 8px;
+          transition: all 0.3s;
+      }
+      
+      .page-btn:hover,
+      .page-btn.active {
+          background: var(--gradient-primary);
+          color: white;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+          .nav-center { display: none; }
+          .equipment-grid { grid-template-columns: 1fr; }
+          .filters-container { grid-template-columns: 1fr; }
+          .catalog-header { flex-direction: column; align-items: stretch; }
+          .sort-options { justify-content: space-between; }
+      }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+      <nav>
+          <a href="index.html" class="logo">
+              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+              <div>
+                  <div class="logo-text">SESMINE</div>
+                  <div class="logo-subtitle">Equipment Excellence</div>
+              </div>
+          </a>
+          
+          <ul class="nav-center">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="equipment-catalog.html" class="nav-link active">Equipment</a></li>
+              <li><a href="spare-parts.html" class="nav-link">Spare Parts</a></li>
+              <li><a href="optimization.html" class="nav-link">Optimization</a></li>
+              <li><a href="about.html" class="nav-link">About</a></li>
+          </ul>
+          
+          <div class="nav-right">
+              <a href="contact.html" class="cta-btn">
+                  <i class="fas fa-phone"></i>
+                  <span>Contact Us</span>
+              </a>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+      <div class="page-header-content">
+          <div class="breadcrumb">
+              <a href="index.html">Home</a>
+              <span>/</span>
+              <span>Equipment Catalog</span>
+          </div>
+          <h1 class="page-title">Equipment Catalog</h1>
+          <p class="page-subtitle">Discover our comprehensive range of professional mining equipment from world-leading manufacturers</p>
+      </div>
+  </section>
+
+  <!-- Catalog Filters -->
+  <section class="catalog-filters">
+      <div class="filters-container">
+          <div class="filter-group">
+              <h3 class="filter-title">Search Equipment</h3>
+              <input type="text" class="search-box" placeholder="Search by model, brand, or specifications...">
+          </div>
+          
+          <div class="filter-group">
+              <h3 class="filter-title">Equipment Category</h3>
+              <div class="filter-options">
+                  <label class="filter-option">
+                      <input type="checkbox" checked>
+                      <span>Excavators (45)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Haul Trucks (32)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Dozers (28)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Loaders (38)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Drilling Equipment (24)</span>
+                  </label>
+              </div>
+          </div>
+          
+          <div class="filter-group">
+              <h3 class="filter-title">Manufacturer</h3>
+              <div class="filter-options">
+                  <label class="filter-option">
+                      <input type="checkbox" checked>
+                      <span>Caterpillar (67)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Komatsu (54)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Liebherr (41)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Sandvik (33)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Volvo CE (29)</span>
+                  </label>
+              </div>
+          </div>
+          
+          <div class="filter-group">
+              <h3 class="filter-title">Availability</h3>
+              <div class="filter-options">
+                  <label class="filter-option">
+                      <input type="checkbox" checked>
+                      <span>In Stock (156)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>Limited Stock (23)</span>
+                  </label>
+                  <label class="filter-option">
+                      <input type="checkbox">
+                      <span>On Order (12)</span>
+                  </label>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Equipment Catalog -->
+  <section class="equipment-catalog">
+      <div class="catalog-header">
+          <div class="results-count">
+              Showing 1-12 of 167 equipment models
+          </div>
+          <div class="sort-options">
+              <select class="sort-select">
+                  <option>Sort by Relevance</option>
+                  <option>Price: Low to High</option>
+                  <option>Price: High to Low</option>
+                  <option>Newest First</option>
+                  <option>Most Popular</option>
+              </select>
+              <div class="view-toggle">
+                  <button class="view-btn active"><i class="fas fa-th"></i></button>
+                  <button class="view-btn"><i class="fas fa-list"></i></button>
+              </div>
+          </div>
+      </div>
+      
+      <div class="equipment-grid">
+          <!-- Equipment Card 1 -->
+          <div class="equipment-card">
+              <div class="availability-badge">In Stock</div>
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=85" alt="CAT 390F Excavator" class="equipment-image">
+              <div class="equipment-info">
+                  <div class="equipment-brand">CATERPILLAR</div>
+                  <h3 class="equipment-title">390F Hydraulic Excavator</h3>
+                  <p class="equipment-model">Model: CAT-390F-2024</p>
+                  <div class="equipment-specs">
+                      <div class="spec-item">
+                          <span class="spec-label">Operating Weight:</span>
+                          <span class="spec-value">87.2 tons</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Engine Power:</span>
+                          <span class="spec-value">469 HP</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Bucket Capacity:</span>
+                          <span class="spec-value">4.6 m³</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Max Reach:</span>
+                          <span class="spec-value">12.4 m</span>
+                      </div>
+                  </div>
+                  <div class="equipment-actions">
+                      <a href="equipment-details.html?id=cat-390f" class="btn-primary">View Details</a>
+                      <button class="btn-secondary" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+                      <button class="btn-secondary" title="Compare"><i class="fas fa-balance-scale"></i></button>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Equipment Card 2 -->
+          <div class="equipment-card">
+              <div class="availability-badge">In Stock</div>
+              <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=85" alt="Komatsu 830E Haul Truck" class="equipment-image">
+              <div class="equipment-info">
+                  <div class="equipment-brand">KOMATSU</div>
+                  <h3 class="equipment-title">830E-5 Mining Truck</h3>
+                  <p class="equipment-model">Model: KOM-830E5-2024</p>
+                  <div class="equipment-specs">
+                      <div class="spec-item">
+                          <span class="spec-label">Payload:</span>
+                          <span class="spec-value">290 tons</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Engine Power:</span>
+                          <span class="spec-value">2700 HP</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Body Capacity:</span>
+                          <span class="spec-value">181 m³</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Max Speed:</span>
+                          <span class="spec-value">64 km/h</span>
+                      </div>
+                  </div>
+                  <div class="equipment-actions">
+                      <a href="equipment-details.html?id=kom-830e" class="btn-primary">View Details</a>
+                      <button class="btn-secondary" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+                      <button class="btn-secondary" title="Compare"><i class="fas fa-balance-scale"></i></button>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Equipment Card 3 -->
+          <div class="equipment-card">
+              <div class="availability-badge limited">Limited Stock</div>
+              <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=600&q=85" alt="Liebherr R 9600 Excavator" class="equipment-image">
+              <div class="equipment-info">
+                  <div class="equipment-brand">LIEBHERR</div>
+                  <h3 class="equipment-title">R 9600 Mining Excavator</h3>
+                  <p class="equipment-model">Model: LIE-R9600-2024</p>
+                  <div class="equipment-specs">
+                      <div class="spec-item">
+                          <span class="spec-label">Operating Weight:</span>
+                          <span class="spec-value">600 tons</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Engine Power:</span>
+                          <span class="spec-value">4000 HP</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Bucket Capacity:</span>
+                          <span class="spec-value">34 m³</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Max Reach:</span>
+                          <span class="spec-value">21.7 m</span>
+                      </div>
+                  </div>
+                  <div class="equipment-actions">
+                      <a href="equipment-details.html?id=lie-r9600" class="btn-primary">View Details</a>
+                      <button class="btn-secondary" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+                      <button class="btn-secondary" title="Compare"><i class="fas fa-balance-scale"></i></button>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Equipment Card 4 -->
+          <div class="equipment-card">
+              <div class="availability-badge">In Stock</div>
+              <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7e8c6?w=600&q=85" alt="Sandvik DR461i Drill Rig" class="equipment-image">
+              <div class="equipment-info">
+                  <div class="equipment-brand">SANDVIK</div>
+                  <h3 class="equipment-title">DR461i Rotary Drill Rig</h3>
+                  <p class="equipment-model">Model: SAN-DR461i-2024</p>
+                  <div class="equipment-specs">
+                      <div class="spec-item">
+                          <span class="spec-label">Hole Diameter:</span>
+                          <span class="spec-value">200-311 mm</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Engine Power:</span>
+                          <span class="spec-value">671 HP</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Max Depth:</span>
+                          <span class="spec-value">45 m</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Feed Length:</span>
+                          <span class="spec-value">8.5 m</span>
+                      </div>
+                  </div>
+                  <div class="equipment-actions">
+                      <a href="equipment-details.html?id=san-dr461i" class="btn-primary">View Details</a>
+                      <button class="btn-secondary" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+                      <button class="btn-secondary" title="Compare"><i class="fas fa-balance-scale"></i></button>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Equipment Card 5 -->
+          <div class="equipment-card">
+              <div class="availability-badge">In Stock</div>
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=85" alt="Volvo EC950F Excavator" class="equipment-image">
+              <div class="equipment-info">
+                  <div class="equipment-brand">VOLVO CE</div>
+                  <h3 class="equipment-title">EC950F Crawler Excavator</h3>
+                  <p class="equipment-model">Model: VOL-EC950F-2024</p>
+                  <div class="equipment-specs">
+                      <div class="spec-item">
+                          <span class="spec-label">Operating Weight:</span>
+                          <span class="spec-value">95.2 tons</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Engine Power:</span>
+                          <span class="spec-value">532 HP</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Bucket Capacity:</span>
+                          <span class="spec-value">5.8 m³</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Max Reach:</span>
+                          <span class="spec-value">13.2 m</span>
+                      </div>
+                  </div>
+                  <div class="equipment-actions">
+                      <a href="equipment-details.html?id=vol-ec950f" class="btn-primary">View Details</a>
+                      <button class="btn-secondary" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+                      <button class="btn-secondary" title="Compare"><i class="fas fa-balance-scale"></i></button>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Equipment Card 6 -->
+          <div class="equipment-card">
+              <div class="availability-badge">In Stock</div>
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=85" alt="CAT 994K Wheel Loader" class="equipment-image">
+              <div class="equipment-info">
+                  <div class="equipment-brand">CATERPILLAR</div>
+                  <h3 class="equipment-title">994K Wheel Loader</h3>
+                  <p class="equipment-model">Model: CAT-994K-2024</p>
+                  <div class="equipment-specs">
+                      <div class="spec-item">
+                          <span class="spec-label">Operating Weight:</span>
+                          <span class="spec-value">230 tons</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Engine Power:</span>
+                          <span class="spec-value">1739 HP</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Bucket Capacity:</span>
+                          <span class="spec-value">23 m³</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label">Max Speed:</span>
+                          <span class="spec-value">38 km/h</span>
+                      </div>
+                  </div>
+                  <div class="equipment-actions">
+                      <a href="equipment-details.html?id=cat-994k" class="btn-primary">View Details</a>
+                      <button class="btn-secondary" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+                      <button class="btn-secondary" title="Compare"><i class="fas fa-balance-scale"></i></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Pagination -->
+      <div class="pagination">
+          <a href="#" class="page-btn"><i class="fas fa-chevron-left"></i></a>
+          <a href="#" class="page-btn active">1</a>
+          <a href="#" class="page-btn">2</a>
+          <a href="#" class="page-btn">3</a>
+          <a href="#" class="page-btn">4</a>
+          <a href="#" class="page-btn">5</a>
+          <a href="#" class="page-btn">...</a>
+          <a href="#" class="page-btn">14</a>
+          <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+      </div>
+  </section>
+
+  <script>
+      // Filter functionality
+      document.querySelectorAll('.filter-option input').forEach(checkbox => {
+          checkbox.addEventListener('change', () => {
+              // Update equipment grid based on filters
+              console.log('Filter updated:', checkbox.parentElement.textContent.trim());
+          });
+      });
+      
+      // Search functionality
+      document.querySelector('.search-box').addEventListener('input', (e) => {
+          console.log('Search query:', e.target.value);
+      });
+      
+      // Sort functionality
+      document.querySelector('.sort-select').addEventListener('change', (e) => {
+          console.log('Sort by:', e.target.value);
+      });
+      
+      // View toggle
+      document.querySelectorAll('.view-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+              document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+          });
+      });
+      
+      // Wishlist functionality
+      document.querySelectorAll('.btn-secondary').forEach(btn => {
+          if (btn.querySelector('.fa-heart')) {
+              btn.addEventListener('click', () => {
+                  btn.classList.toggle('active');
+                  const icon = btn.querySelector('i');
+                  icon.classList.toggle('fas');
+                  icon.classList.toggle('far');
+              });
+          }
+      });
+  </script>
+</body>
+</html>

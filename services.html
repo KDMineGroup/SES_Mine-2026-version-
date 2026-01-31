@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Mining Services | SESMINE | Equipment Solutions Oman</title>
+  <meta name="description" content="SESMINE offers comprehensive mining services including equipment selection, spare parts supply, performance optimization, procurement management, and technology integration in Oman.">
+  <meta name="keywords" content="mining services Oman, equipment selection, spare parts supply, mining optimization, procurement management, SESMINE services">
+  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+      :root {
+          --primary: #1e40af;
+          --secondary: #dc2626;
+          --accent: #f59e0b;
+          --success: #059669;
+          --dark: #1e293b;
+          --darker: #0f172a;
+          --light: #f8fafc;
+          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      }
+      
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      body { 
+          font-family: 'Inter', sans-serif; 
+          background: var(--darker); 
+          color: white; 
+          line-height: 1.6; 
+          overflow-x: hidden;
+      }
+      
+      body.rtl { 
+          font-family: 'Cairo', sans-serif; 
+          direction: rtl; 
+      }
+      
+      html { scroll-behavior: smooth; }
+      
+      /* Header Styles */
+      header {
+          position: sticky;
+          top: 0;
+          z-index: 4000;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
+          transition: all 0.3s;
+      }
+      
+      nav {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          color: white;
+          font-weight: 800;
+          font-size: 1.8rem;
+      }
+      
+      .logo img { height: 60px; filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4)); }
+      .logo-text { 
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+      .logo-subtitle {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-top: -5px;
+      }
+      
+      .nav-center {
+          display: flex;
+          list-style: none;
+          gap: 0.5rem;
+          align-items: center;
+      }
+      
+      .nav-link {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.8rem 1.5rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: all 0.3s;
+          border-radius: 12px;
+      }
+      
+      .nav-link:hover,
+      .nav-link.active {
+          color: white;
+          background: rgba(30, 64, 175, 0.1);
+      }
+      
+      .cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.9rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+      }
+      
+      .cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
+      }
+      
+      /* Page Header */
+      .page-header {
+          padding: 8rem 2rem 4rem;
+          background: 
+              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1920&q=85') center/cover;
+          text-align: center;
+          position: relative;
+      }
+      
+      .page-header::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 70%);
+      }
+      
+      .page-header-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .page-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .page-subtitle {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 2rem;
+      }
+      
+      .breadcrumb {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+      }
+      
+      .breadcrumb a {
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+          transition: color 0.3s;
+      }
+      
+      .breadcrumb a:hover { color: var(--primary); }
+      .breadcrumb span { color: rgba(255, 255, 255, 0.5); }
+      
+      /* Services Overview */
+      .services-overview {
+          padding: 6rem 2rem;
+          background: rgba(30, 64, 175, 0.02);
+      }
+      
+      .services-stats {
+          max-width: 1200px;
+          margin: 0 auto 4rem;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+      }
+      
+      .stat-card {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 20px;
+          padding: 2rem;
+          text-align: center;
+          transition: all 0.3s;
+      }
+      
+      .stat-card:hover {
+          transform: translateY(-5px);
+          background: rgba(30, 64, 175, 0.1);
+          border-color: rgba(30, 64, 175, 0.3);
+      }
+      
+      .stat-icon {
+          width: 60px;
+          height: 60px;
+          background: var(--gradient-primary);
+          border-radius: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          color: white;
+          margin: 0 auto 1rem;
+      }
+      
+      .stat-number {
+          font-size: 2.5rem;
+          font-weight: 900;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+          color: rgba(255, 255, 255, 0.8);
+          font-weight: 500;
+      }
+      
+      /* Main Services Grid */
+      .main-services {
+          padding: 6rem 2rem;
+      }
+      
+      .section-header {
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 4rem;
+      }
+      
+      .section-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          line-height: 1.2;
+      }
+      
+      .section-description {
+          font-size: 1.1rem;
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+      }
+      
+      .services-grid {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 3rem;
+      }
+      
+      .service-card {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 24px;
+          padding: 3rem;
+          transition: all 0.4s;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .service-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--gradient-primary);
+          transform: scaleX(0);
+          transition: transform 0.4s;
+      }
+      
+      .service-card:hover {
+          transform: translateY(-10px);
+          background: rgba(30, 64, 175, 0.08);
+          border-color: rgba(30, 64, 175, 0.3);
+          box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+      }
+      
+      .service-card:hover::before { transform: scaleX(1); }
+      
+      .service-header {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+      }
+      
+      .service-icon {
+          width: 80px;
+          height: 80px;
+          background: var(--gradient-primary);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+          color: white;
+          box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+      }
+      
+      .service-card:nth-child(2) .service-icon { 
+          background: var(--gradient-secondary); 
+          box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3); 
+      }
+      .service-card:nth-child(3) .service-icon { 
+          background: var(--gradient-success); 
+          box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3); 
+      }
+      .service-card:nth-child(4) .service-icon { 
+          background: var(--gradient-accent); 
+          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3); 
+      }
+      .service-card:nth-child(5) .service-icon { 
+          background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); 
+          box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3); 
+      }
+      
+      .service-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 0.5rem;
+      }
+      
+      .service-subtitle {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.9rem;
+      }
+      
+      .service-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.8;
+          margin-bottom: 2rem;
+      }
+      
+      .service-features {
+          list-style: none;
+          margin-bottom: 2rem;
+      }
+      
+      .service-features li {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          margin-bottom: 0.8rem;
+          color: rgba(255, 255, 255, 0.8);
+      }
+      
+      .service-features i {
+          color: var(--primary);
+          font-size: 0.9rem;
+          width: 16px;
+      }
+      
+      .service-actions {
+          display: flex;
+          gap: 1rem;
+      }
+      
+      .btn-primary {
+          flex: 1;
+          padding: 1rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 12px;
+          font-weight: 600;
+          text-align: center;
+          transition: all 0.3s;
+      }
+      
+      .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+      }
+      
+      .btn-secondary {
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.3s;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      .btn-secondary:hover {
+          background: rgba(30, 64, 175, 0.2);
+          color: white;
+      }
+      
+      /* Process Section */
+      .process-section {
+          padding: 6rem 2rem;
+          background: rgba(220, 38, 38, 0.05);
+      }
+      
+      .process-steps {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+      }
+      
+      .process-step {
+          text-align: center;
+          position: relative;
+      }
+      
+      .process-step::after {
+          content: '';
+          position: absolute;
+          top: 50px;
+          right: -1rem;
+          width: 2rem;
+          height: 2px;
+          background: var(--gradient-primary);
+          opacity: 0.3;
+      }
+      
+      .process-step:last-child::after { display: none; }
+      
+      .process-number {
+          width: 60px;
+          height: 60px;
+          background: var(--gradient-primary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: white;
+          margin: 0 auto 1.5rem;
+      }
+      
+      .process-title {
+          font-size: 1.2rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+      }
+      
+      .process-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.6;
+      }
+      
+      /* CTA Section */
+      .cta-section {
+          padding: 6rem 2rem;
+          background: 
+              linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%),
+              url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85') center/cover;
+          text-align: center;
+          position: relative;
+      }
+      
+      .cta-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(15, 23, 42, 0.8);
+      }
+      
+      .cta-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .cta-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .cta-description {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 3rem;
+          line-height: 1.8;
+      }
+      
+      .cta-buttons {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+      
+      .btn-large {
+          padding: 1.2rem 3rem;
+          font-size: 1.1rem;
+          border-radius: 50px;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+          .nav-center { display: none; }
+          .services-grid { grid-template-columns: 1fr; }
+          .services-stats { grid-template-columns: 1fr 1fr; }
+          .process-steps { grid-template-columns: 1fr; }
+          .process-step::after { display: none; }
+          .cta-buttons { flex-direction: column; align-items: center; }
+      }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+      <nav>
+          <a href="index.html" class="logo">
+              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+              <div>
+                  <div class="logo-text" data-en="SESMINE" data-ar="سيسماين">SESMINE</div>
+                  <div class="logo-subtitle" data-en="Equipment Excellence" data-ar="تميز المعدات">Equipment Excellence</div>
+              </div>
+          </a>
+          
+          <ul class="nav-center">
+              <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+              <li><a href="services.html" class="nav-link active" data-en="Services" data-ar="الخدمات">Services</a></li>
+              <li><a href="equipment-catalog.html" class="nav-link" data-en="Equipment" data-ar="المعدات">Equipment</a></li>
+              <li><a href="spare-parts.html" class="nav-link" data-en="Spare Parts" data-ar="قطع الغيار">Spare Parts</a></li>
+              <li><a href="about.html" class="nav-link" data-en="About" data-ar="عنا">About</a></li>
+          </ul>
+          
+          <div class="nav-right">
+              <a href="contact.html" class="cta-btn">
+                  <i class="fas fa-phone"></i>
+                  <span data-en="Contact Us" data-ar="اتصل بنا">Contact Us</span>
+              </a>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+      <div class="page-header-content">
+          <div class="breadcrumb">
+              <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+              <span>/</span>
+              <span data-en="Services" data-ar="الخدمات">Services</span>
+          </div>
+          <h1 class="page-title" data-en="Professional Mining Services" data-ar="خدمات التعدين المهنية">Professional Mining Services</h1>
+          <p class="page-subtitle" data-en="Comprehensive solutions for all your mining equipment and operational needs in Oman" data-ar="حلول شاملة لجميع احتياجات معدات التعدين والتشغيل في عُمان">Comprehensive solutions for all your mining equipment and operational needs in Oman</p>
+      </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="services-overview">
+      <div class="services-stats">
+          <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-tools"></i></div>
+              <div class="stat-number">750+</div>
+              <div class="stat-label" data-en="Equipment Models Supported" data-ar="موديل معدات مدعوم">Equipment Models Supported</div>
+          </div>
+          <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-cogs"></i></div>
+              <div class="stat-number">15K+</div>
+              <div class="stat-label" data-en="Spare Parts in Stock" data-ar="قطعة غيار في المخزون">Spare Parts in Stock</div>
+          </div>
+          <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-users"></i></div>
+              <div class="stat-number">200+</div>
+              <div class="stat-label" data-en="Satisfied Clients" data-ar="عميل راضٍ">Satisfied Clients</div>
+          </div>
+          <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-clock"></i></div>
+              <div class="stat-number">24/7</div>
+              <div class="stat-label" data-en="Support Available" data-ar="دعم متاح">Support Available</div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Main Services -->
+  <section class="main-services">
+      <div class="section-header">
+          <h2 class="section-title">
+              <span data-en="Our Core" data-ar="خدماتنا">Our Core</span><br>
+              <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-en="Service Offerings" data-ar="الأساسية">Service Offerings</span>
+          </h2>
+          <p class="section-description" data-en="From equipment selection to ongoing support, we provide end-to-end solutions that maximize your mining operations' efficiency and profitability." data-ar="من اختيار المعدات إلى الدعم المستمر، نقدم حلولاً شاملة تزيد من كفاءة وربحية عمليات التعدين الخاصة بك.">From equipment selection to ongoing support, we provide end-to-end solutions that maximize your mining operations' efficiency and profitability.</p>
+      </div>
+      
+      <div class="services-grid">
+          <!-- Equipment Selection Service -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-search"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title" data-en="Equipment Selection" data-ar="اختيار المعدات">Equipment Selection</h3>
+                      <p class="service-subtitle" data-en="Professional Consultation & Analysis" data-ar="الاستشارة والتحليل المهني">Professional Consultation & Analysis</p>
+                  </div>
+              </div>
+              <p class="service-description" data-en="Expert consultation for optimal equipment selection based on geological analysis, production requirements, and operational efficiency targets specific to Oman's mining conditions." data-ar="استشارة متخصصة لاختيار المعدات الأمثل بناءً على التحليل الجيولوجي ومتطلبات الإنتاج وأهداف الكفاءة التشغيلية الخاصة بظروف التعدين في عُمان.">Expert consultation for optimal equipment selection based on geological analysis, production requirements, and operational efficiency targets specific to Oman's mining conditions.</p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="Geological Site Assessment" data-ar="تقييم الموقع الجيولوجي">Geological Site Assessment</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Production Capacity Planning" data-ar="تخطيط القدرة الإنتاجية">Production Capacity Planning</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="ROI & TCO Analysis" data-ar="تحليل العائد والتكلفة الإجمالية">ROI & TCO Analysis</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Equipment Matching & Sizing" data-ar="مطابقة وتحديد حجم المعدات">Equipment Matching & Sizing</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Performance Benchmarking" data-ar="قياس الأداء المرجعي">Performance Benchmarking</span></li>
+              </ul>
+              <div class="service-actions">
+                  <a href="equipment-selection.html" class="btn-primary" data-en="Learn More" data-ar="اعرف المزيد">Learn More</a>
+                  <a href="contact.html" class="btn-secondary"><i class="fas fa-phone"></i></a>
+              </div>
+          </div>
+
+          <!-- Spare Parts Supply Service -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-cogs"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title" data-en="Spare Parts Supply" data-ar="توريد قطع الغيار">Spare Parts Supply</h3>
+                      <p class="service-subtitle" data-en="Genuine OEM Parts & Fast Delivery" data-ar="قطع غيار أصلية وتسليم سريع">Genuine OEM Parts & Fast Delivery</p>
+                  </div>
+              </div>
+              <p class="service-description" data-en="Comprehensive inventory of genuine OEM spare parts with rapid delivery across Oman. Authorized distributor for Caterpillar, Komatsu, Liebherr, Sandvik, and other premium manufacturers." data-ar="مخزون شامل من قطع الغيار الأصلية من الشركة المصنعة مع التسليم السريع في جميع أنحاء عُمان. موزع معتمد لكاتربيلر وكوماتسو وليبهير وساندفيك والشركات المصنعة المتميزة الأخرى.">Comprehensive inventory of genuine OEM spare parts with rapid delivery across Oman. Authorized distributor for Caterpillar, Komatsu, Liebherr, Sandvik, and other premium manufacturers.</p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="15,000+ Parts in Stock" data-ar="15,000+ قطعة غيار في المخزون">15,000+ Parts in Stock</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Same-Day Delivery in Muscat" data-ar="تسليم في نفس اليوم في مسقط">Same-Day Delivery in Muscat</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="24/7 Emergency Supply" data-ar="إمداد طوارئ 24/7">24/7 Emergency Supply</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Inventory Management Solutions" data-ar="حلول إدارة المخزون">Inventory Management Solutions</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Quality Guarantee" data-ar="ضمان الجودة">Quality Guarantee</span></li>
+              </ul>
+              <div class="service-actions">
+                  <a href="spare-parts.html" class="btn-primary" data-en="Browse Parts" data-ar="تصفح القطع">Browse Parts</a>
+                  <a href="emergency-supply.html" class="btn-secondary"><i class="fas fa-shipping-fast"></i></a>
+              </div>
+          </div>
+
+          <!-- Performance Optimization Service -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title" data-en="Performance Optimization" data-ar="تحسين الأداء">Performance Optimization</h3>
+                      <p class="service-subtitle" data-en="Data-Driven Efficiency Solutions" data-ar="حلول الكفاءة المدفوعة بالبيانات">Data-Driven Efficiency Solutions</p>
+                  </div>
+              </div>
+              <p class="service-description" data-en="Advanced performance monitoring and optimization services using real-time data analytics, predictive maintenance, and efficiency enhancement strategies to maximize equipment ROI." data-ar="خدمات مراقبة وتحسين الأداء المتقدمة باستخدام تحليلات البيانات في الوقت الفعلي والصيانة التنبؤية واستراتيجيات تعزيز الكفاءة لزيادة عائد الاستثمار للمعدات.">Advanced performance monitoring and optimization services using real-time data analytics, predictive maintenance, and efficiency enhancement strategies to maximize equipment ROI.</p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="Real-Time Performance Monitoring" data-ar="مراقبة الأداء في الوقت الفعلي">Real-Time Performance Monitoring</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Predictive Maintenance Programs" data-ar="برامج الصيانة التنبؤية">Predictive Maintenance Programs</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Fuel Efficiency Optimization" data-ar="تحسين كفاءة الوقود">Fuel Efficiency Optimization</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Productivity Analytics" data-ar="تحليلات الإنتاجية">Productivity Analytics</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Cost Reduction Strategies" data-ar="استراتيجيات تخفيض التكلفة">Cost Reduction Strategies</span></li>
+              </ul>
+              <div class="service-actions">
+                  <a href="optimization.html" class="btn-primary" data-en="Optimize Now" data-ar="احسن الآن">Optimize Now</a>
+                  <a href="performance-report.html" class="btn-secondary"><i class="fas fa-chart-bar"></i></a>
+              </div>
+          </div>
+
+          <!-- Procurement Management Service -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-handshake"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title" data-en="Procurement Management" data-ar="إدارة المشتريات">Procurement Management</h3>
+                      <p class="service-subtitle" data-en="Strategic Sourcing & Contract Management" data-ar="التوريد الاستراتيجي وإدارة العقود">Strategic Sourcing & Contract Management</p>
+                  </div>
+              </div>
+              <p class="service-description" data-en="End-to-end procurement management including global sourcing, vendor qualification, contract negotiation, quality assurance, and logistics coordination with worldwide equipment manufacturers." data-ar="إدارة المشتريات الشاملة بما في ذلك التوريد العالمي وتأهيل الموردين والتفاوض على العقود وضمان الجودة وتنسيق اللوجستيات مع مصنعي المعدات في جميع أنحاء العالم.">End-to-end procurement management including global sourcing, vendor qualification, contract negotiation, quality assurance, and logistics coordination with worldwide equipment manufacturers.</p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="Global Sourcing Network" data-ar="شبكة التوريد العالمية">Global Sourcing Network</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Vendor Qualification & Management" data-ar="تأهيل وإدارة الموردين">Vendor Qualification & Management</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Contract Negotiation & Management" data-ar="التفاوض وإدارة العقود">Contract Negotiation & Management</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Quality Assurance Programs" data-ar="برامج ضمان الجودة">Quality Assurance Programs</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Logistics & Customs Support" data-ar="دعم اللوجستيات والجمارك">Logistics & Customs Support</span></li>
+              </ul>
+              <div class="service-actions">
+                  <a href="procurement.html" class="btn-primary" data-en="Get Quote" data-ar="احصل على عرض">Get Quote</a>
+                  <a href="vendor-network.html" class="btn-secondary"><i class="fas fa-network-wired"></i></a>
+              </div>
+          </div>
+
+          <!-- Technology Integration Service -->
+          <div class="service-card">
+              <div class="service-header">
+                  <div class="service-icon">
+                      <i class="fas fa-microchip"></i>
+                  </div>
+                  <div>
+                      <h3 class="service-title" data-en="Technology Integration" data-ar="دمج التكنولوجيا">Technology Integration</h3>
+                      <p class="service-subtitle" data-en="Smart Mining Solutions & Automation" data-ar="حلول التعدين الذكية والأتمتة">Smart Mining Solutions & Automation</p>
+                  </div>
+              </div>
+              <p class="service-description" data-en="Integration of advanced technologies including IoT sensors, GPS fleet management, telematics systems, and automation solutions to modernize and optimize mining operations." data-ar="دمج التقنيات المتقدمة بما في ذلك أجهزة استشعار إنترنت الأشياء وإدارة الأسطول بنظام GPS وأنظمة المعلوماتية وحلول الأتمتة لتحديث وتحسين عمليات التعدين.">Integration of advanced technologies including IoT sensors, GPS fleet management, telematics systems, and automation solutions to modernize and optimize mining operations.</p>
+              <ul class="service-features">
+                  <li><i class="fas fa-check"></i> <span data-en="IoT Sensor Networks" data-ar="شبكات أجهزة استشعار إنترنت الأشياء">IoT Sensor Networks</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="GPS Fleet Management Systems" data-ar="أنظمة إدارة الأسطول بنظام GPS">GPS Fleet Management Systems</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Telematics Integration" data-ar="دمج المعلوماتية">Telematics Integration</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Automation & Control Systems" data-ar="أنظمة الأتمتة والتحكم">Automation & Control Systems</span></li>
+                  <li><i class="fas fa-check"></i> <span data-en="Digital Twin Technology" data-ar="تكنولوجيا التوأم الرقمي">Digital Twin Technology</span></li>
+              </ul>
+              <div class="service-actions">
+                  <a href="technology.html" class="btn-primary" data-en="Explore Tech" data-ar="استكشف التقنية">Explore Tech</a>
+                  <a href="automation-demo.html" class="btn-secondary"><i class="fas fa-robot"></i></a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+      <div class="section-header">
+          <h2 class="section-title">
+              <span data-en="Our Service" data-ar="عملية">Our Service</span><br>
+              <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-en="Process" data-ar="الخدمة">Process</span>
+          </h2>
+          <p class="section-description" data-en="A systematic approach to delivering exceptional mining equipment solutions and services." data-ar="نهج منهجي لتقديم حلول وخدمات معدات التعدين الاستثنائية.">A systematic approach to delivering exceptional mining equipment solutions and services.</p>
+      </div>
+      
+      <div class="process-steps">
+          <div class="process-step">
+              <div class="process-number">1</div>
+              <h3 class="process-title" data-en="Consultation & Assessment" data-ar="الاستشارة والتقييم">Consultation & Assessment</h3>
+              <p class="process-description" data-en="Initial consultation to understand your mining requirements, site conditions, and operational objectives." data-ar="استشارة أولية لفهم متطلبات التعدين وظروف الموقع والأهداف التشغيلية الخاصة بك.">Initial consultation to understand your mining requirements, site conditions, and operational objectives.</p>
+          </div>
+          <div class="process-step">
+              <div class="process-number">2</div>
+              <h3 class="process-title" data-en="Solution Design" data-ar="تصميم الحل">Solution Design</h3>
+              <p class="process-description" data-en="Custom solution design based on your specific needs, budget, and performance requirements." data-ar="تصميم حل مخصص بناءً على احتياجاتك المحددة والميزانية ومتطلبات الأداء.">Custom solution design based on your specific needs, budget, and performance requirements.</p>
+          </div>
+          <div class="process-step">
+              <div class="process-number">3</div>
+              <h3 class="process-title" data-en="Implementation" data-ar="التنفيذ">Implementation</h3>
+              <p class="process-description" data-en="Professional implementation with project management, installation, and commissioning services." data-ar="تنفيذ مهني مع إدارة المشاريع وخدمات التركيب والتشغيل.">Professional implementation with project management, installation, and commissioning services.</p>
+          </div>
+          <div class="process-step">
+              <div class="process-number">4</div>
+              <h3 class="process-title" data-en="Ongoing Support" data-ar="الدعم المستمر">Ongoing Support</h3>
+              <p class="process-description" data-en="Continuous support with maintenance, spare parts supply, and performance optimization services." data-ar="دعم مستمر مع الصيانة وتوريد قطع الغيار وخدمات تحسين الأداء.">Continuous support with maintenance, spare parts supply, and performance optimization services.</p>
+          </div>
+      </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+      <div class="cta-content">
+          <h2 class="cta-title" data-en="Ready to Optimize Your Mining Operations?" data-ar="هل أنت مستعد لتحسين عمليات التعدين الخاصة بك؟">Ready to Optimize Your Mining Operations?</h2>
+          <p class="cta-description" data-en="Contact our team of mining equipment experts today to discuss your requirements and discover how SESMINE can help maximize your operational efficiency and profitability." data-ar="اتصل بفريق خبراء معدات التعدين لدينا اليوم لمناقشة متطلباتك واكتشاف كيف يمكن لسيسماين مساعدتك في زيادة الكفاءة التشغيلية والربحية.">Contact our team of mining equipment experts today to discuss your requirements and discover how SESMINE can help maximize your operational efficiency and profitability.</p>
+          <div class="cta-buttons">
+              <a href="contact.html" class="btn-primary btn-large">
+                  <i class="fas fa-phone"></i>
+                  <span data-en="Contact Our Experts" data-ar="اتصل بخبرائنا">Contact Our Experts</span>
+              </a>
+              <a href="quote.html" class="btn-secondary btn-large">
+                  <i class="fas fa-calculator"></i>
+                  <span data-en="Get Free Quote" data-ar="احصل على عرض مجاني">Get Free Quote</span>
+              </a>
+          </div>
+      </div>
+  </section>
+
+  <script>
+      // Language switcher functionality
+      let currentLang = 'en';
+      
+      // Animate stats on scroll
+      const animateStats = () => {
+          const statNumbers = document.querySelectorAll('.stat-number');
+          statNumbers.forEach(stat => {
+              const finalNumber = stat.textContent;
+              const number = parseInt(finalNumber.replace(/[^0-9]/g, ''));
+              if (number && !stat.dataset.animated) {
+                  stat.dataset.animated = 'true';
+                  let current = 0;
+                  const increment = number / 50;
+                  const timer = setInterval(() => {
+                      current += increment;
+                      if (current >= number) {
+                          stat.textContent = finalNumber;
+                          clearInterval(timer);
+                      } else {
+                          stat.textContent = Math.floor(current) + (finalNumber.includes('+') ? '+' : '');
+                      }
+                  }, 30);
+              }
+          });
+      };
+      
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  if (entry.target.classList.contains('services-stats')) {
+                      animateStats();
+                  }
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      }, { threshold: 0.1 });
+      
+      // Observe elements
+      document.querySelectorAll('.service-card, .stat-card, .process-step, .services-stats').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(el);
+      });
+      
+      // Service card hover effects
+      document.querySelectorAll('.service-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+              const icon = card.querySelector('.service-icon');
+              icon.style.transform = 'scale(1.1) rotate(5deg)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+              const icon = card.querySelector('.service-icon');
+              icon.style.transform = 'scale(1) rotate(0deg)';
+          });
+      });
+      
+      console.log('🔧 SESMINE Services Page Loaded');
+      console.log('⚙️ Equipment Selection | Spare Parts | Optimization | Procurement | Technology');
+  </script>
+</body>
+</html>
