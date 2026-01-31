@@ -1,452 +1,950 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Enterprise Sales - SESMine | Global Mining Solutions Leader</title>
-  <meta name="description" content="Connect with SESMine enterprise sales team. 24/7 support for Fortune 500 mining companies. ISO 9001 certified service.">
+  <title>Contact SESMINE | Mining Equipment Experts Oman | Get Quote</title>
+  <meta name="description" content="Contact SESMINE for mining equipment solutions in Oman. Get expert consultation, quotes, and support. Located in Muscat Industrial Area with 24/7 emergency service.">
+  <meta name="keywords" content="contact SESMINE Oman, mining equipment quote, Muscat industrial area, mining equipment support, emergency parts supply">
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
-    * { 
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-    }
-    
-    h1, h2, h3, .premium-heading {
-      font-family: 'Playfair Display', serif;
-    }
-    
-    :root {
-      --corporate-blue: #003366;
-      --navy-dark: #001a3d;
-      --success-blue: #1976d2;
-      --azure-light: #0080cc;
-    }
-    
-    body {
-      background: #ffffff;
-      color: #2c3e50;
-    }
-    
-    .gradient-blue {
-      background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
-    }
-    
-    .gradient-text {
-      background: linear-gradient(135deg, #003366 0%, #1976d2 50%, #0080cc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .btn-corporate {
-      background: linear-gradient(135deg, #003366 0%, #004d99 100%);
-      box-shadow: 0 4px 20px rgba(0, 51, 102, 0.3);
-      color: white;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-    
-    .btn-corporate:hover {
-      background: linear-gradient(135deg, #001a3d 0%, #003366 100%);
-      box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
-      transform: translateY(-2px);
-    }
-    
-    .nav-premium {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid #ecf0f1;
-      box-shadow: 0 2px 30px rgba(0, 51, 102, 0.08);
-    }
-    
-    .contact-card {
-      background: white;
-      border: 2px solid #ecf0f1;
-      transition: all 0.3s ease;
-    }
-    
-    .contact-card:hover {
-      border-color: #003366;
-      box-shadow: 0 15px 40px rgba(0, 51, 102, 0.12);
-      transform: translateY(-5px);
-    }
-    
-    .form-input {
-      border: 2px solid #ecf0f1;
-      transition: all 0.3s ease;
-    }
-    
-    .form-input:focus {
-      outline: none;
-      border-color: #003366;
-      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-    }
-    
-    .premium-badge {
-      background: linear-gradient(135deg, #003366 0%, #0080cc 100%);
-      color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    
-    .office-marker {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #003366, #0080cc);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
-    }
+      :root {
+          --primary: #1e40af;
+          --secondary: #dc2626;
+          --accent: #f59e0b;
+          --success: #059669;
+          --dark: #1e293b;
+          --darker: #0f172a;
+          --light: #f8fafc;
+          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      }
+      
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      body { 
+          font-family: 'Inter', sans-serif; 
+          background: var(--darker); 
+          color: white; 
+          line-height: 1.6; 
+          overflow-x: hidden;
+      }
+      
+      body.rtl { 
+          font-family: 'Cairo', sans-serif; 
+          direction: rtl; 
+      }
+      
+      html { scroll-behavior: smooth; }
+      
+      /* Header Styles */
+      header {
+          position: sticky;
+          top: 0;
+          z-index: 4000;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
+          transition: all 0.3s;
+      }
+      
+      nav {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .logo {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-decoration: none;
+          color: white;
+          font-weight: 800;
+          font-size: 1.8rem;
+      }
+      
+      .logo img { height: 60px; filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4)); }
+      .logo-text { 
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+      .logo-subtitle {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-top: -5px;
+      }
+      
+      .nav-center {
+          display: flex;
+          list-style: none;
+          gap: 0.5rem;
+          align-items: center;
+      }
+      
+      .nav-link {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.8rem 1.5rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          transition: all 0.3s;
+          border-radius: 12px;
+      }
+      
+      .nav-link:hover,
+      .nav-link.active {
+          color: white;
+          background: rgba(30, 64, 175, 0.1);
+      }
+      
+      .cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.9rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+      }
+      
+      .cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
+      }
+      
+      /* Page Header */
+      .page-header {
+          padding: 8rem 2rem 4rem;
+          background: 
+              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
+              url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85') center/cover;
+          text-align: center;
+          position: relative;
+      }
+      
+      .page-header::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 70%);
+      }
+      
+      .page-header-content {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .page-title {
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .page-subtitle {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 2rem;
+      }
+      
+      /* Contact Methods */
+      .contact-methods {
+          padding: 6rem 2rem;
+          background: rgba(30, 64, 175, 0.02);
+      }
+      
+      .contact-grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+      }
+      
+      .contact-card {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 20px;
+          padding: 2.5rem;
+          text-align: center;
+          transition: all 0.4s;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .contact-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--gradient-primary);
+          transform: scaleX(0);
+          transition: transform 0.4s;
+      }
+      
+      .contact-card:hover {
+          transform: translateY(-8px);
+          background: rgba(30, 64, 175, 0.08);
+          border-color: rgba(30, 64, 175, 0.3);
+          box-shadow: 0 20px 50px rgba(30, 64, 175, 0.2);
+      }
+      
+      .contact-card:hover::before { transform: scaleX(1); }
+      
+      .contact-icon {
+          width: 80px;
+          height: 80px;
+          background: var(--gradient-primary);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+          color: white;
+          margin: 0 auto 2rem;
+          box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+      }
+      
+      .contact-card:nth-child(2) .contact-icon { 
+          background: var(--gradient-secondary); 
+          box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3); 
+      }
+      .contact-card:nth-child(3) .contact-icon { 
+          background: var(--gradient-success); 
+          box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3); 
+      }
+      .contact-card:nth-child(4) .contact-icon { 
+          background: var(--gradient-accent); 
+          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3); 
+      }
+      
+      .contact-title {
+          font-size: 1.4rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+      }
+      
+      .contact-info {
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 1.5rem;
+          line-height: 1.8;
+      }
+      
+      .contact-action {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 1rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s;
+      }
+      
+      .contact-action:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+      }
+      
+      .contact-card:nth-child(2) .contact-action { background: var(--gradient-secondary); }
+      .contact-card:nth-child(3) .contact-action { background: var(--gradient-success); }
+      .contact-card:nth-child(4) .contact-action { background: var(--gradient-accent); }
+      
+      /* Contact Form */
+      .contact-form-section {
+          padding: 6rem 2rem;
+      }
+      
+      .form-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: start;
+      }
+      
+      .form-info {
+          padding: 2rem 0;
+      }
+      
+      .form-title {
+          font-size: 2.5rem;
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .form-description {
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 2rem;
+          line-height: 1.8;
+      }
+      
+      .form-features {
+          list-style: none;
+          margin-bottom: 2rem;
+      }
+      
+      .form-features li {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          color: rgba(255, 255, 255, 0.8);
+      }
+      
+      .form-features i {
+          color: var(--primary);
+          font-size: 1.2rem;
+      }
+      
+      .contact-form {
+          background: rgba(30, 64, 175, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.1);
+          border-radius: 24px;
+          padding: 3rem;
+      }
+      
+      .form-group {
+          margin-bottom: 2rem;
+      }
+      
+      .form-label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          color: white;
+      }
+      
+      .form-input,
+      .form-select,
+      .form-textarea {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 12px;
+          color: white;
+          font-size: 1rem;
+          transition: all 0.3s;
+      }
+      
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+          outline: none;
+          border-color: var(--primary);
+          background: rgba(255, 255, 255, 0.08);
+      }
+      
+      .form-input::placeholder,
+      .form-textarea::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+      }
+      
+      .form-textarea {
+          min-height: 120px;
+          resize: vertical;
+      }
+      
+      .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+      }
+      
+      .form-submit {
+          width: 100%;
+          padding: 1.2rem 2rem;
+          background: var(--gradient-primary);
+          color: white;
+          border: none;
+          border-radius: 50px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+      }
+      
+      .form-submit:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
+      }
+      
+      /* Location Section */
+      .location-section {
+          padding: 6rem 2rem;
+          background: rgba(220, 38, 38, 0.05);
+      }
+      
+      .location-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+      }
+      
+      .location-info {
+          padding: 2rem;
+      }
+      
+      .location-title {
+          font-size: 2.5rem;
+          font-weight: 900;
+          margin-bottom: 1.5rem;
+          background: var(--gradient-secondary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .location-description {
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 2rem;
+          line-height: 1.8;
+      }
+      
+      .location-details {
+          list-style: none;
+      }
+      
+      .location-detail {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+          padding: 1rem;
+          background: rgba(220, 38, 38, 0.1);
+          border-radius: 12px;
+      }
+      
+      .location-detail-icon {
+          width: 40px;
+          height: 40px;
+          background: var(--gradient-secondary);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1rem;
+          flex-shrink: 0;
+      }
+      
+      .location-detail-text {
+          color: white;
+      }
+      
+      .location-detail-label {
+          font-weight: 600;
+          margin-bottom: 0.3rem;
+      }
+      
+      .location-detail-value {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.95rem;
+      }
+      
+      .map-container {
+          background: rgba(30, 64, 175, 0.1);
+          border: 1px solid rgba(30, 64, 175, 0.2);
+          border-radius: 20px;
+          overflow: hidden;
+          height: 400px;
+          position: relative;
+      }
+      
+      .map-placeholder {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: 
+              linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%),
+              url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=85') center/cover;
+          color: white;
+          font-size: 1.2rem;
+          font-weight: 600;
+          flex-direction: column;
+          gap: 1rem;
+      }
+      
+      /* Emergency Contact */
+      .emergency-contact {
+          padding: 4rem 2rem;
+          background: 
+              linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+          text-align: center;
+      }
+      
+      .emergency-content {
+          max-width: 800px;
+          margin: 0 auto;
+      }
+      
+      .emergency-icon {
+          width: 100px;
+          height: 100px;
+          background: var(--gradient-secondary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 3rem;
+          color: white;
+          margin: 0 auto 2rem;
+          animation: pulse 2s infinite;
+      }
+      
+      .emergency-title {
+          font-size: 2.5rem;
+          font-weight: 900;
+          margin-bottom: 1rem;
+          background: var(--gradient-secondary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      
+      .emergency-description {
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 2rem;
+          line-height: 1.8;
+      }
+      
+      .emergency-buttons {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+      
+      .emergency-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.8rem;
+          padding: 1.2rem 2.5rem;
+          background: var(--gradient-secondary);
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 700;
+          font-size: 1.1rem;
+          transition: all 0.3s;
+          box-shadow: 0 8px 30px rgba(220, 38, 38, 0.4);
+      }
+      
+      .emergency-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 40px rgba(220, 38, 38, 0.6);
+      }
+      
+      .emergency-btn.secondary {
+          background: rgba(255, 255, 255, 0.1);
+          border: 2px solid rgba(220, 38, 38, 0.3);
+          box-shadow: none;
+      }
+      
+      .emergency-btn.secondary:hover {
+          background: rgba(220, 38, 38, 0.2);
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+          .nav-center { display: none; }
+          .contact-grid { grid-template-columns: 1fr; }
+          .form-container { grid-template-columns: 1fr; }
+          .location-container { grid-template-columns: 1fr; }
+          .form-row { grid-template-columns: 1fr; }
+          .emergency-buttons { flex-direction: column; align-items: center; }
+      }
+      
+      @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+      }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="fixed w-full z-50 nav-premium">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center justify-between py-4">
-        <a href="index.html" class="flex items-center gap-3">
-          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14">
-          <div class="hidden lg:block">
-            <div class="text-xs text-gray-500 font-medium">EST. 2004</div>
-            <div class="text-xs text-blue-900 font-bold tracking-wider">GLOBAL LEADER</div>
-          </div>
-        </a>
-        <div class="flex items-center gap-4">
-          <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Home</a>
-          <a href="features.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Features</a>
-          <a href="pricing/index.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">Pricing</a>
-          <a href="about.html" class="text-sm font-semibold text-gray-600 hover:text-blue-900 transition-colors">About</a>
-          <a href="contact.html" class="text-sm font-semibold text-blue-900">Contact</a>
-          <a href="auth/signup.html" class="btn-corporate px-6 py-2.5 rounded-xl text-sm">Get Started</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="pt-40 pb-24 px-6 bg-gradient-to-b from-gray-50 to-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <div class="premium-badge mb-6">Enterprise Support</div>
-        <h1 class="text-6xl lg:text-7xl font-black mb-6 text-gray-900 premium-heading">
-          Connect With Our <span class="gradient-text">Global Team</span>
-        </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-          24/7 enterprise support for Fortune 500 mining companies worldwide. ISO 9001 certified service excellence.
-        </p>
-      </div>
-
-      <!-- Quick Contact Options -->
-      <div class="grid md:grid-cols-3 gap-6 mb-16">
-        <div class="contact-card rounded-2xl p-8 text-center">
-          <div class="office-marker mx-auto mb-6">
-            <i class="fas fa-phone"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Call Us</h3>
-          <p class="text-gray-600 mb-4 font-medium">24/7 Enterprise Hotline</p>
-          <a href="tel:+442071234567" class="text-blue-900 font-bold text-lg hover:text-blue-700">+44 20 7123 4567</a>
-          <p class="text-sm text-gray-500 mt-2">Average response: &lt;2 minutes</p>
-        </div>
-
-        <div class="contact-card rounded-2xl p-8 text-center">
-          <div class="office-marker mx-auto mb-6">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Email Us</h3>
-          <p class="text-gray-600 mb-4 font-medium">Enterprise Sales Team</p>
-          <a href="mailto:enterprise@sesmine.com" class="text-blue-900 font-bold text-lg hover:text-blue-700">enterprise@sesmine.com</a>
-          <p class="text-sm text-gray-500 mt-2">Response within 4 hours</p>
-        </div>
-
-        <div class="contact-card rounded-2xl p-8 text-center">
-          <div class="office-marker mx-auto mb-6">
-            <i class="fas fa-comments"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 premium-heading">Live Chat</h3>
-          <p class="text-gray-600 mb-4 font-medium">Instant Support</p>
-          <button class="text-blue-900 font-bold text-lg hover:text-blue-700">Start Chat Now</button>
-          <p class="text-sm text-gray-500 mt-2">Available 24/7</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form Section -->
-  <section class="py-24 px-6 bg-white">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-black mb-4 text-gray-900 premium-heading">Request Enterprise Demo</h2>
-        <p class="text-lg text-gray-600 font-medium">Fill out the form and our team will contact you within 24 hours</p>
-      </div>
-
-      <form class="bg-gray-50 rounded-3xl p-10 border-2 border-gray-200">
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">First Name *</label>
-            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="John">
-          </div>
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">Last Name *</label>
-            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Doe">
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">Work Email *</label>
-            <input type="email" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="john.doe@company.com">
-          </div>
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">Phone Number *</label>
-            <input type="tel" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="+1 (555) 000-0000">
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">Company Name *</label>
-            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Mining Corp">
-          </div>
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">Job Title *</label>
-            <input type="text" required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Chief Mining Officer">
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">Country *</label>
-            <select required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium">
-              <option value="">Select Country</option>
-              <option value="US">United States</option>
-              <option value="UK">United Kingdom</option>
-              <option value="CA">Canada</option>
-              <option value="AU">Australia</option>
-              <option value="DE">Germany</option>
-              <option value="FR">France</option>
-              <option value="ES">Spain</option>
-              <option value="BR">Brazil</option>
-              <option value="CL">Chile</option>
-              <option value="PE">Peru</option>
-              <option value="ZA">South Africa</option>
-              <option value="CN">China</option>
-              <option value="IN">India</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-bold text-gray-800 mb-2">Company Size *</label>
-            <select required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium">
-              <option value="">Select Size</option>
-              <option value="1-50">1-50 employees</option>
-              <option value="51-200">51-200 employees</option>
-              <option value="201-1000">201-1,000 employees</option>
-              <option value="1001-5000">1,001-5,000 employees</option>
-              <option value="5001+">5,001+ employees</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <label class="block text-sm font-bold text-gray-800 mb-2">Area of Interest *</label>
-          <select required class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium">
-            <option value="">Select Solution</option>
-            <option value="cost-estimation">AI Cost Estimation</option>
-            <option value="project-management">Project Management</option>
-            <option value="analytics">Advanced Analytics</option>
-            <option value="esg">ESG Compliance</option>
-            <option value="safety">Safety Management</option>
-            <option value="full-platform">Full Platform Solution</option>
-            <option value="custom">Custom Enterprise Solution</option>
-          </select>
-        </div>
-
-        <div class="mb-6">
-          <label class="block text-sm font-bold text-gray-800 mb-2">Message</label>
-          <textarea rows="5" class="form-input w-full px-4 py-3 rounded-xl bg-white font-medium" placeholder="Tell us about your project requirements and how we can help..."></textarea>
-        </div>
-
-        <div class="mb-6">
-          <label class="flex items-start gap-3">
-            <input type="checkbox" required class="mt-1 w-5 h-5 text-blue-900 border-2 border-gray-300 rounded">
-            <span class="text-sm text-gray-600">
-              I agree to receive communications from SESMine and understand that I can opt out at any time. 
-              By submitting this form, I acknowledge that I have read and understood the 
-              <a href="#" class="text-blue-900 font-semibold hover:underline">Privacy Policy</a> and 
-              <a href="#" class="text-blue-900 font-semibold hover:underline">Terms of Service</a>.
-            </span>
-          </label>
-        </div>
-
-        <button type="submit" class="btn-corporate w-full py-4 rounded-xl font-bold text-lg">
-          Request Enterprise Demo
-        </button>
-
-        <p class="text-center text-sm text-gray-500 mt-4">
-          <i class="fas fa-lock mr-2"></i>
-          Your information is secure and will never be shared with third parties
-        </p>
-      </form>
-    </div>
-  </section>
-
-  <!-- Global Offices -->
-  <section class="py-24 px-6 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl font-black mb-4 text-gray-900 premium-heading">Global Presence</h2>
-        <p class="text-xl text-gray-600 font-medium">Operating in 50+ countries with local expertise</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Headquarters -->
-        <div class="contact-card rounded-2xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
-              <i class="fas fa-building"></i>
-            </div>
-            <div>
-              <div class="font-bold text-gray-900">Headquarters</div>
-              <div class="text-sm text-gray-500">London, UK</div>
-            </div>
-          </div>
-          <p class="text-sm text-gray-600 mb-3">
-            25 Old Broad Street<br>
-            London EC2N 1HN<br>
-            United Kingdom
-          </p>
-          <p class="text-sm font-semibold text-blue-900">+44 20 7123 4567</p>
-        </div>
-
-        <!-- North America -->
-        <div class="contact-card rounded-2xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div>
-              <div class="font-bold text-gray-900">North America</div>
-              <div class="text-sm text-gray-500">New York, USA</div>
-            </div>
-          </div>
-          <p class="text-sm text-gray-600 mb-3">
-            350 Fifth Avenue<br>
-            New York, NY 10118<br>
-            United States
-          </p>
-          <p class="text-sm font-semibold text-blue-900">+1 (212) 555-0100</p>
-        </div>
-
-        <!-- Asia Pacific -->
-        <div class="contact-card rounded-2xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div>
-              <div class="font-bold text-gray-900">Asia Pacific</div>
-              <div class="text-sm text-gray-500">Singapore</div>
-            </div>
-          </div>
-          <p class="text-sm text-gray-600 mb-3">
-            1 Raffles Place<br>
-            Singapore 048616<br>
-            Singapore
-          </p>
-          <p class="text-sm font-semibold text-blue-900">+65 6123 4567</p>
-        </div>
-
-        <!-- Latin America -->
-        <div class="contact-card rounded-2xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center text-white">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div>
-              <div class="font-bold text-gray-900">Latin America</div>
-              <div class="text-sm text-gray-500">Santiago, Chile</div>
-            </div>
-          </div>
-          <p class="text-sm text-gray-600 mb-3">
-            Av. Apoquindo 4501<br>
-            Las Condes, Santiago<br>
-            Chile
-          </p>
-          <p class="text-sm font-semibold text-blue-900">+56 2 2345 6789</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-24 px-6 gradient-blue">
-    <div class="max-w-4xl mx-auto text-center text-white">
-      <h2 class="text-5xl font-black mb-6 premium-heading">Ready to Transform Your Operations?</h2>
-      <p class="text-xl mb-8 opacity-95">Join Fortune 500 companies using SESMine for enterprise mining solutions</p>
-      <div class="flex gap-4 justify-center">
-        <a href="auth/signup.html" class="bg-white text-blue-900 px-10 py-4 rounded-xl font-bold hover:scale-105 transition-all">Get Started Now</a>
-        <a href="help.html" class="bg-white/10 backdrop-blur-sm border-2 border-white px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition-all">Visit Help Center</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t-2 border-gray-200 py-16 px-6 bg-gray-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-4 gap-12 mb-12">
-        <div>
-          <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMine" class="h-14 mb-4">
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed font-medium">Global Leader in Mining Engineering Solutions</p>
-          <div class="text-xs text-gray-500 font-semibold mb-4">EST. 2004 | ISO 9001 Certified</div>
-        </div>
-        
-        <div>
-          <h4 class="font-bold mb-5 text-blue-900 text-lg">Solutions</h4>
-          <ul class="space-y-3 text-gray-600 font-medium">
-            <li><a href="features.html" class="hover:text-blue-900 transition-colors">Features</a></li>
-            <li><a href="pricing/index.html" class="hover:text-blue-900 transition-colors">Pricing</a></li>
+  <!-- Header -->
+  <header>
+      <nav>
+          <a href="index.html" class="logo">
+              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+              <div>
+                  <div class="logo-text">SESMINE</div>
+                  <div class="logo-subtitle">Equipment Excellence</div>
+              </div>
+          </a>
+          
+          <ul class="nav-center">
+              <li><a href="index.html" class="nav-link">Home</a></li>
+              <li><a href="services.html" class="nav-link">Services</a></li>
+              <li><a href="equipment-catalog.html" class="nav-link">Equipment</a></li>
+              <li><a href="spare-parts.html" class="nav-link">Spare Parts</a></li>
+              <li><a href="contact.html" class="nav-link active">Contact</a></li>
           </ul>
-        </div>
-        
-        <div>
-          <h4 class="font-bold mb-5 text-blue-900 text-lg">Company</h4>
-          <ul class="space-y-3 text-gray-600 font-medium">
-            <li><a href="about.html" class="hover:text-blue-900 transition-colors">About Us</a></li>
-            <li><a href="news.html" class="hover:text-blue-900 transition-colors">News</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="font-bold mb-5 text-blue-900 text-lg">Support</h4>
-          <ul class="space-y-3 text-gray-600 font-medium">
-            <li><a href="help.html" class="hover:text-blue-900 transition-colors">Help Center</a></li>
-            <li><a href="contact.html" class="hover:text-blue-900 transition-colors">Contact</a></li>
-          </ul>
-        </div>
+          
+          <div class="nav-right">
+              <a href="tel:+96824567890" class="cta-btn">
+                  <i class="fas fa-phone"></i>
+                  <span>Call Now</span>
+              </a>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+      <div class="page-header-content">
+          <h1 class="page-title">Contact Our Experts</h1>
+          <p class="page-subtitle">Get professional consultation for your mining equipment needs in Oman</p>
       </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="contact-methods">
+      <div class="contact-grid">
+          <!-- Phone Contact -->
+          <div class="contact-card">
+              <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+              </div>
+              <h3 class="contact-title">Call Our Experts</h3>
+              <div class="contact-info">
+                  <p><strong>Main Office:</strong> +968 2456-7890</p>
+                  <p><strong>Emergency Line:</strong> +968 2456-7891</p>
+                  <p><strong>Parts Hotline:</strong> +968 2456-7892</p>
+                  <p>Available 24/7 for emergency support</p>
+              </div>
+              <a href="tel:+96824567890" class="contact-action">
+                  <i class="fas fa-phone"></i>
+                  <span>Call Now</span>
+              </a>
+          </div>
+
+          <!-- Email Contact -->
+          <div class="contact-card">
+              <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+              </div>
+              <h3 class="contact-title">Email Us</h3>
+              <div class="contact-info">
+                  <p><strong>General:</strong> info@sesmine.om</p>
+                  <p><strong>Equipment:</strong> equipment@sesmine.om</p>
+                  <p><strong>Parts:</strong> parts@sesmine.om</p>
+                  <p>Response within 2 hours during business hours</p>
+              </div>
+              <a href="mailto:equipment@sesmine.om" class="contact-action">
+                  <i class="fas fa-envelope"></i>
+                  <span>Send Email</span>
+              </a>
+          </div>
+
+          <!-- WhatsApp Contact -->
+          <div class="contact-card">
+              <div class="contact-icon">
+                  <i class="fab fa-whatsapp"></i>
+              </div>
+              <h3 class="contact-title">WhatsApp Support</h3>
+              <div class="contact-info">
+                  <p><strong>Equipment Quotes:</strong> +968 9123-4567</p>
+                  <p><strong>Parts Support:</strong> +968 9123-4568</p>
+                  <p><strong>Technical Help:</strong> +968 9123-4569</p>
+                  <p>Quick responses and instant support</p>
+              </div>
+              <a href="https://wa.me/96891234567" class="contact-action">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>Chat Now</span>
+              </a>
+          </div>
+
+          <!-- Visit Us -->
+          <div class="contact-card">
+              <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h3 class="contact-title">Visit Our Facility</h3>
+              <div class="contact-info">
+                  <p><strong>Address:</strong> Muscat Industrial Area</p>
+                  <p>Building 47, Street 23</p>
+                  <p>Sultanate of Oman</p>
+                  <p>Open: Sunday - Thursday, 7:00 AM - 6:00 PM</p>
+              </div>
+              <a href="#location" class="contact-action">
+                  <i class="fas fa-map"></i>
+                  <span>Get Directions</span>
+              </a>
+          </div>
+      </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-form-section">
+      <div class="form-container">
+          <div class="form-info">
+              <h2 class="form-title">Get Equipment Quote</h2>
+              <p class="form-description">Fill out the form below and our mining equipment experts will contact you within 2 hours with a customized solution for your needs.</p>
+              
+              <ul class="form-features">
+                  <li><i class="fas fa-check"></i> Free consultation with equipment experts</li>
+                  <li><i class="fas fa-check"></i> Customized equipment recommendations</li>
+                  <li><i class="fas fa-check"></i> Competitive pricing and financing options</li>
+                  <li><i class="fas fa-check"></i> Complete project support and after-sales service</li>
+                  <li><i class="fas fa-check"></i> 24/7 emergency parts and service support</li>
+              </ul>
+          </div>
+          
+          <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                  <div class="form-group">
+                      <label class="form-label">First Name *</label>
+                      <input type="text" class="form-input" name="firstName" placeholder="Enter your first name" required>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Last Name *</label>
+                      <input type="text" class="form-input" name="lastName" placeholder="Enter your last name" required>
+                  </div>
+              </div>
+              
+              <div class="form-row">
+                  <div class="form-group">
+                      <label class="form-label">Email Address *</label>
+                      <input type="email" class="form-input" name="email" placeholder="your.email@company.com" required>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Phone Number *</label>
+                      <input type="tel" class="form-input" name="phone" placeholder="+968 XXXX-XXXX" required>
+                  </div>
+              </div>
+              
+              <div class="form-row">
+                  <div class="form-group">
+                      <label class="form-label">Company Name</label>
+                      <input type="text" class="form-input" name="company" placeholder="Your company name">
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Industry Type</label>
+                      <select class="form-select" name="industry">
+                          <option value="">Select industry</option>
+                          <option value="mining">Mining Operations</option>
+                          <option value="construction">Construction</option>
+                          <option value="quarrying">Quarrying</option>
+                          <option value="infrastructure">Infrastructure</option>
+                          <option value="other">Other</option>
+                      </select>
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                  <label class="form-label">Service Required *</label>
+                  <select class="form-select" name="service" required>
+                      <option value="">Select service</option>
+                      <option value="equipment-purchase">Equipment Purchase</option>
+                      <option value="spare-parts">Spare Parts</option>
+                      <option value="equipment-rental">Equipment Rental</option>
+                      <option value="maintenance">Maintenance & Service</option>
+                      <option value="consultation">Technical Consultation</option>
+                      <option value="training">Operator Training</option>
+                  </select>
+              </div>
+              
+              <div class="form-group">
+                  <label class="form-label">Project Details *</label>
+                  <textarea class="form-textarea" name="message" placeholder="Please describe your equipment needs, project requirements, timeline, and any specific questions you have..." required></textarea>
+              </div>
+              
+              <button type="submit" class="form-submit">
+                  <i class="fas fa-paper-plane"></i>
+                  Send Quote Request
+              </button>
+          </form>
+      </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="location-section" id="location">
+      <div class="location-container">
+          <div class="location-info">
+              <h2 class="location-title">Visit Our Facility</h2>
+              <p class="location-description">Our state-of-the-art facility in Muscat Industrial Area houses our extensive spare parts inventory, equipment showroom, and technical support center.</p>
+              
+              <div class="location-details">
+                  <div class="location-detail">
+                      <div class="location-detail-icon">
+                          <i class="fas fa-map-marker-alt"></i>
+                      </div>
+                      <div class="location-detail-text">
+                          <div class="location-detail-label">Address</div>
+                          <div class="location-detail-value">Building 47, Street 23<br>Muscat Industrial Area<br>Sultanate of Oman</div>
+                      </div>
+                  </div>
+                  
+                  <div class="location-detail">
+                      <div class="location-detail-icon">
+                          <i class="fas fa-clock"></i>
+                      </div>
+                      <div class="location-detail-text">
+                          <div class="location-detail-label">Business Hours</div>
+                          <div class="location-detail-value">Sunday - Thursday: 7:00 AM - 6:00 PM<br>Friday - Saturday: Emergency Only</div>
+                      </div>
+                  </div>
+                  
+                  <div class="location-detail">
+                      <div class="location-detail-icon">
+                          <i class="fas fa-car"></i>
+                      </div>
+                      <div class="location-detail-text">
+                          <div class="location-detail-label">Parking</div>
+                          <div class="location-detail-value">Free parking available<br>Large vehicle access for equipment transport</div>
+                      </div>
+                  </div>
+                  
+                  <div class="location-detail">
+                      <div class="location-detail-icon">
+                          <i class="fas fa-tools"></i>
+                      </div>
+                      <div class="location-detail-text">
+                          <div class="location-detail-label">Facilities</div>
+                          <div class="location-detail-value">Parts warehouse, Equipment showroom<br>Technical support center, Training facility</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="map-container">
+              <div class="map-placeholder">
+                  <i class="fas fa-map-marked-alt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                  <p>Interactive Map</p>
+                  <p style="font-size: 1rem; opacity: 0.8;">Muscat Industrial Area, Oman</p>
+                  <a href="https://maps.google.com" target="_blank" style="color: var(--primary); margin-top: 1rem;">Open in Google Maps</a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Emergency Contact -->
+  <section class="emergency-contact">
+      <div class="emergency-content">
+          <div class="emergency-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h2 class="emergency-title">24/7 Emergency Support</h2>
+          <p class="emergency-description">Equipment breakdown? Need urgent parts? Our emergency support team is available 24/7 to get your operations back online quickly.</p>
+          
+          <div class="emergency-buttons">
+              <a href="tel:+96824567891" class="emergency-btn">
+                  <i class="fas fa-phone-alt"></i>
+                  <span>Emergency Hotline</span>
+              </a>
+              <a href="https://wa.me/96891234567?text=EMERGENCY:%20" class="emergency-btn secondary">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>WhatsApp Emergency</span>
+              </a>
+          </div>
+      </div>
+  </section>
+
+  <script>
+      // Form submission handling
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+          
+          // Show loading state
+          const submitBtn = this.querySelector('.form-submit');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          submitBtn.disabled = true;
+          
+          // Simulate form submission
+          setTimeout(() => {
+              // Show success message
+              submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+              submitBtn.style.background = 'var(--gradient-success)';
+              
+              // Reset form after 3 seconds
+              setTimeout(() => {
+                  this.reset();
+                  submitBtn.innerHTML = originalText;
+                  submitBtn.style.background = 'var(--gradient-primary)';
+                  submitBtn.disabled = false;
+              }, 3000);
+              
+              console.log('Form submitted:', data);
+          }, 2000);
+      });
       
-      <div class="border-t-2 border-gray-200 pt-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-gray-600 text-sm font-medium">&copy; 2026 SESMine Platform. All rights reserved.</p>
-          <div class="flex items-center gap-4 text-xs text-gray-500 font-semibold">
-            <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-blue-900"></i> SOC 2</span>
-            <span class="flex items-center gap-2"><i class="fas fa-award text-blue-900"></i> ISO 9001</span>
-            <span class="flex items-center gap-2"><i class="fas fa-lock text-blue-900"></i> GDPR</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+      // Contact card animations
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.contact-card, .form-info, .contact-form').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(el);
+      });
+      
+      // Phone number formatting
+      document.querySelector('input[name="phone"]').addEventListener('input', function(e) {
+          let value = e.target.value.replace(/\D/g, '');
+          if (value.startsWith('968')) {
+              value = '+' + value;
+          } else if (value.length > 0 && !value.startsWith('968')) {
+              value = '+968' + value;
+          }
+          e.target.value = value;
+      });
+      
+      console.log('📞 SESMINE Contact Page Loaded');
+      console.log('🏢 Muscat Industrial Area | ☎️ +968 2456-7890 | 📧 equipment@sesmine.om');
+  </script>
 </body>
 </html>
