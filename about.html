@@ -1,900 +1,952 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About SESMINE | Mining Equipment Experts | Oman's Trusted Partner</title>
-  <meta name="description" content="Learn about SESMINE - Oman's leading mining equipment solutions provider. Over 20 years of expertise in equipment selection, spare parts, and mining operations support.">
-  <meta name="keywords" content="about SESMINE, mining equipment company Oman, equipment expertise, mining solutions provider, Oman mining industry">
-  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-      :root {
-          --primary: #1e40af;
-          --secondary: #dc2626;
-          --accent: #f59e0b;
-          --success: #059669;
-          --dark: #1e293b;
-          --darker: #0f172a;
-          --light: #f8fafc;
-          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
-      }
-      
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      
-      body { 
-          font-family: 'Inter', sans-serif; 
-          background: var(--darker); 
-          color: white; 
-          line-height: 1.6; 
-          overflow-x: hidden;
-      }
-      
-      html { scroll-behavior: smooth; }
-      
-      /* Header Styles */
-      header {
-          position: sticky;
-          top: 0;
-          z-index: 4000;
-          background: rgba(15, 23, 42, 0.95);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
-          transition: all 0.3s;
-      }
-      
-      nav {
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 1rem 2rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-      }
-      
-      .logo {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          text-decoration: none;
-          color: white;
-          font-weight: 800;
-          font-size: 1.8rem;
-      }
-      
-      .logo img { height: 60px; filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4)); }
-      .logo-text { 
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-      }
-      .logo-subtitle {
-          font-size: 0.7rem;
-          color: rgba(255, 255, 255, 0.7);
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          margin-top: -5px;
-      }
-      
-      .nav-center {
-          display: flex;
-          list-style: none;
-          gap: 0.5rem;
-          align-items: center;
-      }
-      
-      .nav-link {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.8rem 1.5rem;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          font-weight: 500;
-          font-size: 0.95rem;
-          transition: all 0.3s;
-          border-radius: 12px;
-      }
-      
-      .nav-link:hover,
-      .nav-link.active {
-          color: white;
-          background: rgba(30, 64, 175, 0.1);
-      }
-      
-      .cta-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.9rem 2rem;
-          background: var(--gradient-primary);
-          color: white;
-          text-decoration: none;
-          border-radius: 50px;
-          font-weight: 600;
-          transition: all 0.3s;
-          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
-      }
-      
-      .cta-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
-      }
-      
-      /* Page Header */
-      .page-header {
-          padding: 8rem 2rem 4rem;
-          background: 
-              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
-              url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&q=85') center/cover;
-          text-align: center;
-          position: relative;
-      }
-      
-      .page-header::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 70%);
-      }
-      
-      .page-header-content {
-          max-width: 800px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 2;
-      }
-      
-      .page-title {
-          font-size: clamp(2.5rem, 5vw, 4rem);
-          font-weight: 900;
-          margin-bottom: 1.5rem;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-      }
-      
-      .page-subtitle {
-          font-size: 1.2rem;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 2rem;
-      }
-      
-      /* Company Story */
-      .company-story {
-          padding: 8rem 2rem;
-          background: rgba(30, 64, 175, 0.02);
-      }
-      
-      .story-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: center;
-      }
-      
-      .story-content h2 {
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 900;
-          margin-bottom: 2rem;
-          line-height: 1.2;
-      }
-      
-      .story-content p {
-          font-size: 1.1rem;
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.8;
-          margin-bottom: 2rem;
-      }
-      
-      .story-highlights {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
-          margin-top: 2rem;
-      }
-      
-      .highlight {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          padding: 1.5rem;
-          background: rgba(30, 64, 175, 0.05);
-          border-radius: 16px;
-          border: 1px solid rgba(30, 64, 175, 0.2);
-          transition: all 0.3s;
-      }
-      
-      .highlight:hover {
-          background: rgba(30, 64, 175, 0.1);
-          transform: translateY(-2px);
-      }
-      
-      .highlight-icon {
-          width: 50px;
-          height: 50px;
-          background: var(--gradient-primary);
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 1.2rem;
-      }
-      
-      .highlight-text {
-          font-weight: 600;
-          color: white;
-      }
-      
-      .story-image {
-          position: relative;
-      }
-      
-      .story-image img {
-          width: 100%;
-          height: 500px;
-          object-fit: cover;
-          border-radius: 24px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      }
-      
-      /* Values Section */
-      .values-section {
-          padding: 8rem 2rem;
-          background: rgba(220, 38, 38, 0.05);
-      }
-      
-      .section-header {
-          text-align: center;
-          max-width: 800px;
-          margin: 0 auto 4rem;
-      }
-      
-      .section-title {
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 900;
-          margin-bottom: 1.5rem;
-          line-height: 1.2;
-      }
-      
-      .section-description {
-          font-size: 1.1rem;
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.8;
-      }
-      
-      .values-grid {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 2rem;
-      }
-      
-      .value-card {
-          background: rgba(30, 64, 175, 0.05);
-          border: 1px solid rgba(30, 64, 175, 0.1);
-          border-radius: 24px;
-          padding: 3rem;
-          text-align: center;
-          transition: all 0.4s;
-          position: relative;
-          overflow: hidden;
-      }
-      
-      .value-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: var(--gradient-primary);
-          transform: scaleX(0);
-          transition: transform 0.4s;
-      }
-      
-      .value-card:hover {
-          transform: translateY(-10px);
-          background: rgba(30, 64, 175, 0.08);
-          border-color: rgba(30, 64, 175, 0.3);
-          box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
-      }
-      
-      .value-card:hover::before { transform: scaleX(1); }
-      
-      .value-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--gradient-primary);
-          border-radius: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: white;
-          margin: 0 auto 2rem;
-          box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
-      }
-      
-      .value-card:nth-child(2) .value-icon { 
-          background: var(--gradient-secondary); 
-          box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3); 
-      }
-      .value-card:nth-child(3) .value-icon { 
-          background: var(--gradient-success); 
-          box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3); 
-      }
-      .value-card:nth-child(4) .value-icon { 
-          background: var(--gradient-accent); 
-          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3); 
-      }
-      
-      .value-title {
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-          color: white;
-      }
-      
-      .value-description {
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.8;
-      }
-      
-      /* Team Section */
-      .team-section {
-          padding: 8rem 2rem;
-      }
-      
-      .team-grid {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-      }
-      
-      .team-card {
-          background: rgba(30, 64, 175, 0.05);
-          border: 1px solid rgba(30, 64, 175, 0.1);
-          border-radius: 20px;
-          padding: 2rem;
-          text-align: center;
-          transition: all 0.4s;
-      }
-      
-      .team-card:hover {
-          transform: translateY(-5px);
-          background: rgba(30, 64, 175, 0.08);
-          border-color: rgba(30, 64, 175, 0.3);
-          box-shadow: 0 15px 40px rgba(30, 64, 175, 0.2);
-      }
-      
-      .team-avatar {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          background: var(--gradient-primary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 3rem;
-          color: white;
-          margin: 0 auto 1.5rem;
-          box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
-      }
-      
-      .team-name {
-          font-size: 1.3rem;
-          font-weight: 700;
-          margin-bottom: 0.5rem;
-          color: white;
-      }
-      
-      .team-role {
-          color: var(--primary);
-          font-weight: 600;
-          margin-bottom: 1rem;
-      }
-      
-      .team-bio {
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.6;
-          margin-bottom: 1.5rem;
-      }
-      
-      .team-contact {
-          display: flex;
-          justify-content: center;
-          gap: 1rem;
-      }
-      
-      .contact-link {
-          width: 40px;
-          height: 40px;
-          background: rgba(30, 64, 175, 0.1);
-          border: 1px solid rgba(30, 64, 175, 0.2);
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          transition: all 0.3s;
-      }
-      
-      .contact-link:hover {
-          background: var(--gradient-primary);
-          color: white;
-          transform: translateY(-2px);
-      }
-      
-      /* Stats Section */
-      .stats-section {
-          padding: 6rem 2rem;
-          background: 
-              linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%),
-              url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1920&q=85') center/cover;
-          position: relative;
-          text-align: center;
-      }
-      
-      .stats-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(15, 23, 42, 0.8);
-      }
-      
-      .stats-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 2;
-      }
-      
-      .stats-title {
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 900;
-          margin-bottom: 3rem;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-      }
-      
-      .stats-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 3rem;
-      }
-      
-      .stat-item {
-          text-align: center;
-      }
-      
-      .stat-number {
-          font-size: 3.5rem;
-          font-weight: 900;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          margin-bottom: 0.5rem;
-      }
-      
-      .stat-label {
-          color: rgba(255, 255, 255, 0.8);
-          font-size: 1.1rem;
-          font-weight: 500;
-      }
-      
-      /* CTA Section */
-      .cta-section {
-          padding: 6rem 2rem;
-          background: rgba(30, 64, 175, 0.05);
-          text-align: center;
-      }
-      
-      .cta-content {
-          max-width: 800px;
-          margin: 0 auto;
-      }
-      
-      .cta-title {
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 900;
-          margin-bottom: 1.5rem;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-      }
-      
-      .cta-description {
-          font-size: 1.2rem;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 3rem;
-          line-height: 1.8;
-      }
-      
-      .cta-buttons {
-          display: flex;
-          gap: 1.5rem;
-          justify-content: center;
-          flex-wrap: wrap;
-      }
-      
-      .btn-large {
-          padding: 1.2rem 3rem;
-          font-size: 1.1rem;
-          border-radius: 50px;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.8rem;
-          text-decoration: none;
-          font-weight: 600;
-          transition: all 0.3s;
-      }
-      
-      .btn-primary {
-          background: var(--gradient-primary);
-          color: white;
-          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.4);
-      }
-      
-      .btn-primary:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 12px 40px rgba(30, 64, 175, 0.6);
-      }
-      
-      .btn-secondary {
-          background: rgba(255, 255, 255, 0.1);
-          color: white;
-          border: 2px solid rgba(30, 64, 175, 0.3);
-      }
-      
-      .btn-secondary:hover {
-          background: rgba(30, 64, 175, 0.2);
-          transform: translateY(-3px);
-      }
-      
-      /* Responsive */
-      @media (max-width: 768px) {
-          .nav-center { display: none; }
-          .story-container { grid-template-columns: 1fr; }
-          .story-highlights { grid-template-columns: 1fr; }
-          .values-grid { grid-template-columns: 1fr; }
-          .team-grid { grid-template-columns: 1fr; }
-          .stats-grid { grid-template-columns: 1fr 1fr; }
-          .cta-buttons { flex-direction: column; align-items: center; }
-      }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Sesmine Oman - Company Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5aa0;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d5aa0 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        /* Company Hero */
+        .company-hero {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.95) 0%, rgba(45, 90, 160, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .metric-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Company Story */
+        .company-story {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .story-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-text p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .story-image {
+            position: relative;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .overlay-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .badge-number {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+        }
+        
+        .badge-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Timeline */
+        .timeline-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            width: 45%;
+            position: relative;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--gradient-accent);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            z-index: 2;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .value-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Leadership Team */
+        .leadership-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .member-image {
+            height: 300px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .member-info {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-position {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .member-bio {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Certifications */
+        .certifications-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .certification-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cert-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .cert-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .story-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 80px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-year {
+                left: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .values-grid,
+            .team-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-      <nav>
-          <a href="index.html" class="logo">
-              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
-              <div>
-                  <div class="logo-text">SESMINE</div>
-                  <div class="logo-subtitle">Equipment Excellence</div>
-              </div>
-          </a>
-          
-          <ul class="nav-center">
-              <li><a href="index.html" class="nav-link">Home</a></li>
-              <li><a href="services.html" class="nav-link">Services</a></li>
-              <li><a href="equipment-catalog.html" class="nav-link">Equipment</a></li>
-              <li><a href="spare-parts.html" class="nav-link">Spare Parts</a></li>
-              <li><a href="about.html" class="nav-link active">About</a></li>
-          </ul>
-          
-          <div class="nav-right">
-              <a href="contact.html" class="cta-btn">
-                  <i class="fas fa-phone"></i>
-                  <span>Contact Us</span>
-              </a>
-          </div>
-      </nav>
-  </header>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+                </a>
+                <nav>
+                    <a href="index.html" style="background: var(--gradient-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: 600;">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-  <!-- Page Header -->
-  <section class="page-header">
-      <div class="page-header-content">
-          <h1 class="page-title">About SESMINE</h1>
-          <p class="page-subtitle">Oman's trusted partner in mining equipment solutions for over two decades</p>
-      </div>
-  </section>
+    <!-- Company Hero -->
+    <section class="company-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>About Sesmine Oman</h1>
+                <p>Leading the future of mining and mineral processing in the Sultanate of Oman with innovative solutions, expert engineering, and unwavering commitment to excellence.</p>
+                <div class="hero-metrics">
+                    <div class="metric-item">
+                        <span class="metric-number">15+</span>
+                        <div class="metric-label">Years of Excellence</div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">200+</span>
+                        <div class="metric-label">Projects Completed</div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">50+</span>
+                        <div class="metric-label">Expert Team Members</div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">100%</span>
+                        <div class="metric-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Company Story -->
-  <section class="company-story">
-      <div class="story-container">
-          <div class="story-content">
-              <h2>
-                  <span>Our Story</span><br>
-                  <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Equipment Excellence Since 2003</span>
-              </h2>
-              <p>Founded in 2003, SESMINE has grown from a small equipment supplier to become Oman's most trusted mining equipment solutions provider. Our journey began with a simple mission: to provide mining companies with the highest quality equipment, genuine spare parts, and unmatched technical support.</p>
-              
-              <p>Over the past two decades, we have built strong partnerships with global equipment manufacturers including Caterpillar, Komatsu, Liebherr, Sandvik, and Volvo Construction Equipment. This allows us to offer our clients access to the world's best mining equipment and technology.</p>
-              
-              <p>Today, SESMINE operates from our state-of-the-art facility in Muscat Industrial Area, housing over 15,000 genuine spare parts and serving mining operations across the Sultanate of Oman.</p>
-              
-              <div class="story-highlights">
-                  <div class="highlight">
-                      <div class="highlight-icon">
-                          <i class="fas fa-calendar-alt"></i>
-                      </div>
-                      <div class="highlight-text">20+ Years Experience</div>
-                  </div>
-                  <div class="highlight">
-                      <div class="highlight-icon">
-                          <i class="fas fa-handshake"></i>
-                      </div>
-                      <div class="highlight-text">Global Partnerships</div>
-                  </div>
-                  <div class="highlight">
-                      <div class="highlight-icon">
-                          <i class="fas fa-warehouse"></i>
-                      </div>
-                      <div class="highlight-text">15,000+ Parts Inventory</div>
-                  </div>
-                  <div class="highlight">
-                      <div class="highlight-icon">
-                          <i class="fas fa-users"></i>
-                      </div>
-                      <div class="highlight-text">200+ Satisfied Clients</div>
-                  </div>
-              </div>
-          </div>
-          
-          <div class="story-image">
-              <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=85" alt="SESMINE Facility" loading="lazy">
-          </div>
-      </div>
-  </section>
+    <!-- Company Story -->
+    <section class="company-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2009, Sesmine Oman began as a vision to transform the mining and mineral processing landscape in the Sultanate of Oman. What started as a small engineering consultancy has grown into a comprehensive solutions provider, serving clients across the Middle East and beyond.</p>
+                    <p>Our journey has been marked by continuous innovation, strategic partnerships with global leaders, and an unwavering commitment to delivering excellence in every project. Today, we stand as a trusted partner for mining companies, offering end-to-end solutions from initial feasibility studies to complete plant commissioning.</p>
+                    <p>With deep roots in Omani soil and a global perspective, we understand the unique challenges and opportunities in the region's mining sector. Our success is built on the foundation of technical expertise, local knowledge, and international best practices.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sesmine Operations" class="main-image">
+                    <div class="overlay-badge">
+                        <span class="badge-number">ISO</span>
+                        <div class="badge-text">Certified</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Values Section -->
-  <section class="values-section">
-      <div class="section-header">
-          <h2 class="section-title">
-              <span>Our Core</span><br>
-              <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Values</span>
-          </h2>
-          <p class="section-description">The principles that guide everything we do and define our commitment to excellence in mining equipment solutions.</p>
-      </div>
-      
-      <div class="values-grid">
-          <!-- Excellence Value -->
-          <div class="value-card">
-              <div class="value-icon">
-                  <i class="fas fa-star"></i>
-              </div>
-              <h3 class="value-title">Excellence</h3>
-              <p class="value-description">We strive for excellence in every aspect of our business, from the quality of our equipment and parts to the level of service we provide. Our commitment to excellence drives continuous improvement and innovation.</p>
-          </div>
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Journey</h2>
+                <p class="section-subtitle">Key milestones that have shaped our growth and success in the mining industry</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Company Foundation</h3>
+                        <p class="timeline-description">Sesmine Oman was established with a vision to provide world-class mining engineering services in the Sultanate of Oman.</p>
+                    </div>
+                    <div class="timeline-year">2009</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">First Major Project</h3>
+                        <p class="timeline-description">Successfully completed our first large-scale mineral processing plant design, establishing our reputation for technical excellence.</p>
+                    </div>
+                    <div class="timeline-year">2012</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">ISO Certification</h3>
+                        <p class="timeline-description">Achieved ISO 9001:2015 certification, demonstrating our commitment to quality management systems and continuous improvement.</p>
+                    </div>
+                    <div class="timeline-year">2015</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Regional Expansion</h3>
+                        <p class="timeline-description">Expanded operations to serve clients across the GCC region, establishing partnerships with leading international equipment manufacturers.</p>
+                    </div>
+                    <div class="timeline-year">2018</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Digital Transformation</h3>
+                        <p class="timeline-description">Implemented advanced digital technologies including AI-powered process optimization and IoT-based monitoring systems.</p>
+                    </div>
+                    <div class="timeline-year">2021</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Sustainability Initiative</h3>
+                        <p class="timeline-description">Launched comprehensive sustainability program focusing on environmental protection and circular economy principles.</p>
+                    </div>
+                    <div class="timeline-year">2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <!-- Reliability Value -->
-          <div class="value-card">
-              <div class="value-icon">
-                  <i class="fas fa-shield-alt"></i>
-              </div>
-              <h3 class="value-title">Reliability</h3>
-              <p class="value-description">Our clients depend on us to keep their operations running. We ensure reliability through genuine OEM parts, 24/7 emergency support, and partnerships with the world's most trusted equipment manufacturers.</p>
-          </div>
+    <!-- Values -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Core Values</h2>
+                <p class="section-subtitle">The principles that guide our decisions and define our culture</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="value-title">Excellence</h3>
+                    <p class="value-description">We strive for excellence in everything we do, from initial design concepts to final project delivery, ensuring our clients receive world-class solutions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p class="value-description">We embrace cutting-edge technologies and innovative approaches to solve complex mining challenges and drive industry advancement.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="value-title">Integrity</h3>
+                    <p class="value-description">We conduct business with the highest ethical standards, building trust through transparency, honesty, and accountability in all our relationships.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="value-title">Sustainability</h3>
+                    <p class="value-description">We are committed to environmental stewardship and sustainable practices that protect our planet for future generations.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">Collaboration</h3>
+                    <p class="value-description">We believe in the power of teamwork and partnership, working closely with clients, suppliers, and communities to achieve shared success.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title">Safety First</h3>
+                    <p class="value-description">The safety and well-being of our team, clients, and communities is our top priority in every project and operation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <!-- Innovation Value -->
-          <div class="value-card">
-              <div class="value-icon">
-                  <i class="fas fa-lightbulb"></i>
-              </div>
-              <h3 class="value-title">Innovation</h3>
-              <p class="value-description">We embrace new technologies and innovative solutions to help our clients improve efficiency, reduce costs, and stay ahead of industry trends. From IoT integration to predictive analytics, we lead with innovation.</p>
-          </div>
+    <!-- Leadership Team -->
+    <section class="leadership-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Leadership Team</h2>
+                <p class="section-subtitle">Meet the experienced professionals leading Sesmine Oman's vision and growth</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Ahmed Al-Rashid</h3>
+                        <div class="member-position">Chief Executive Officer</div>
+                        <p class="member-bio">With over 20 years of experience in mining engineering and business development, Ahmed leads Sesmine's strategic vision and growth initiatives across the region.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Sarah Mitchell</h3>
+                        <div class="member-position">Chief Technology Officer</div>
+                        <p class="member-bio">A renowned metallurgical engineer with PhD in Mineral Processing, Sarah drives innovation and technical excellence across all engineering projects.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-chart"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Mohammed Al-Balushi</h3>
+                        <div class="member-position">Operations Director</div>
+                        <p class="member-bio">Leading operations management with extensive experience in project execution, quality assurance, and client relationship management in the mining sector.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <!-- Partnership Value -->
-          <div class="value-card">
-              <div class="value-icon">
-                  <i class="fas fa-handshake"></i>
-              </div>
-              <h3 class="value-title">Partnership</h3>
-              <p class="value-description">We build long-term partnerships with our clients, understanding their unique challenges and working together to develop customized solutions that drive success and sustainable growth.</p>
-          </div>
-      </div>
-  </section>
+    <!-- Certifications -->
+    <section class="certifications-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications & Standards</h2>
+                <p class="section-subtitle">Our commitment to quality and excellence is validated by international certifications</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">ISO 9001:2015</h3>
+                    <p class="cert-description">Quality Management Systems</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="cert-title">ISO 14001:2015</h3>
+                    <p class="cert-description">Environmental Management</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="cert-title">ISO 45001:2018</h3>
+                    <p class="cert-description">Occupational Health & Safety</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="cert-title">AACE Certified</h3>
+                    <p class="cert-description">Cost Engineering Standards</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="cert-title">FIDIC Member</h3>
+                    <p class="cert-description">International Engineering Standards</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="cert-title">Oman Chamber</h3>
+                    <p class="cert-description">Registered Local Partner</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Team Section -->
-  <section class="team-section">
-      <div class="section-header">
-          <h2 class="section-title">
-              <span>Meet Our</span><br>
-              <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Expert Team</span>
-          </h2>
-          <p class="section-description">Our experienced professionals bring decades of combined expertise in mining equipment, engineering, and customer service.</p>
-      </div>
-      
-      <div class="team-grid">
-          <!-- Team Member 1 -->
-          <div class="team-card">
-              <div class="team-avatar">
-                  <i class="fas fa-user-tie"></i>
-              </div>
-              <h3 class="team-name">Ahmed Al-Rashid</h3>
-              <p class="team-role">Managing Director</p>
-              <p class="team-bio">20+ years in mining equipment industry. Expert in strategic planning, business development, and client relationship management across the Middle East region.</p>
-              <div class="team-contact">
-                  <a href="mailto:ahmed@sesmine.om" class="contact-link"><i class="fas fa-envelope"></i></a>
-                  <a href="https://linkedin.com" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-          </div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Partner With Us</h2>
+                <p>Join the growing list of satisfied clients who trust Sesmine Oman for their mining and processing needs. Let's build the future of mining together.</p>
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-handshake"></i> Start Your Project
+                </a>
+            </div>
+        </div>
+    </section>
 
-          <!-- Team Member 2 -->
-          <div class="team-card">
-              <div class="team-avatar">
-                  <i class="fas fa-hard-hat"></i>
-              </div>
-              <h3 class="team-name">Sarah Mitchell</h3>
-              <p class="team-role">Technical Director</p>
-              <p class="team-bio">Mining engineer with 15+ years experience. Specializes in equipment selection, performance optimization, and technical support for mining operations.</p>
-              <div class="team-contact">
-                  <a href="mailto:sarah@sesmine.om" class="contact-link"><i class="fas fa-envelope"></i></a>
-                  <a href="https://linkedin.com" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-          </div>
+    <script>
+        // Animate metrics on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-          <!-- Team Member 3 -->
-          <div class="team-card">
-              <div class="team-avatar">
-                  <i class="fas fa-cogs"></i>
-              </div>
-              <h3 class="team-name">Mohammed Al-Balushi</h3>
-              <p class="team-role">Parts & Service Manager</p>
-              <p class="team-bio">Expert in spare parts management and emergency supply logistics. Ensures 24/7 parts availability and rapid delivery across Oman's mining sites.</p>
-              <div class="team-contact">
-                  <a href="mailto:mohammed@sesmine.om" class="contact-link"><i class="fas fa-envelope"></i></a>
-                  <a href="https://linkedin.com" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-          </div>
-      </div>
-  </section>
+        const metricsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const metricNumbers = entry.target.querySelectorAll('.metric-number');
+                    metricNumbers.forEach(metric => {
+                        const target = parseInt(metric.textContent.replace(/[^\d]/g, ''));
+                        animateCounter(metric, target, metric.textContent.includes('%') ? '%' : metric.textContent.includes('+') ? '+' : '');
+                    });
+                    metricsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-  <!-- Stats Section -->
-  <section class="stats-section">
-      <div class="stats-content">
-          <h2 class="stats-title">SESMINE by the Numbers</h2>
-          <div class="stats-grid">
-              <div class="stat-item">
-                  <div class="stat-number">20+</div>
-                  <div class="stat-label">Years of Experience</div>
-              </div>
-              <div class="stat-item">
-                  <div class="stat-number">750+</div>
-                  <div class="stat-label">Equipment Models</div>
-              </div>
-              <div class="stat-item">
-                  <div class="stat-number">15K+</div>
-                  <div class="stat-label">Spare Parts in Stock</div>
-              </div>
-              <div class="stat-item">
-                  <div class="stat-number">200+</div>
-                  <div class="stat-label">Satisfied Clients</div>
-              </div>
-              <div class="stat-item">
-                  <div class="stat-number">24/7</div>
-                  <div class="stat-label">Emergency Support</div>
-              </div>
-              <div class="stat-item">
-                  <div class="stat-number">20+</div>
-                  <div class="stat-label">Global Partners</div>
-              </div>
-          </div>
-      </div>
-  </section>
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 16);
+        }
 
-  <!-- CTA Section -->
-  <section class="cta-section">
-      <div class="cta-content">
-          <h2 class="cta-title">Ready to Partner with SESMINE?</h2>
-          <p class="cta-description">Join over 200 satisfied clients who trust SESMINE for their mining equipment needs. Contact us today to discover how we can help optimize your operations.</p>
-          
-          <div class="cta-buttons">
-              <a href="contact.html" class="btn-primary btn-large">
-                  <i class="fas fa-phone"></i>
-                  <span>Contact Our Team</span>
-              </a>
-              <a href="equipment-catalog.html" class="btn-secondary btn-large">
-                  <i class="fas fa-book"></i>
-                  <span>Browse Equipment</span>
-              </a>
-          </div>
-      </div>
-  </section>
+        const heroMetrics = document.querySelector('.hero-metrics');
+        if (heroMetrics) {
+            metricsObserver.observe(heroMetrics);
+        }
 
-  <script>
-      // Animate stats on scroll
-      const animateStats = () => {
-          const statNumbers = document.querySelectorAll('.stat-number');
-          statNumbers.forEach(stat => {
-              const finalText = stat.textContent;
-              const number = parseInt(finalText.replace(/[^0-9]/g, ''));
-              if (number && !stat.dataset.animated) {
-                  stat.dataset.animated = 'true';
-                  let current = 0;
-                  const increment = number / 50;
-                  const timer = setInterval(() => {
-                      current += increment;
-                      if (current >= number) {
-                          stat.textContent = finalText;
-                          clearInterval(timer);
-                      } else {
-                          const currentNum = Math.floor(current);
-                          if (finalText.includes('+')) {
-                              stat.textContent = currentNum + '+';
-                          } else if (finalText.includes('/')) {
-                              stat.textContent = currentNum + '/7';
-                          } else if (finalText.includes('K')) {
-                              stat.textContent = currentNum + 'K+';
-                          } else {
-                              stat.textContent = currentNum;
-                          }
-                      }
-                  }, 30);
-              }
-          });
-      };
-      
-      // Intersection Observer for animations
-      const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  if (entry.target.classList.contains('stats-section')) {
-                      animateStats();
-                  }
-                  entry.target.style.opacity = '1';
-                  entry.target.style.transform = 'translateY(0)';
-              }
-          });
-      }, { threshold: 0.1 });
-      
-      // Observe elements
-      document.querySelectorAll('.value-card, .team-card, .highlight, .stats-section').forEach(el => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(30px)';
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          observer.observe(el);
-      });
-      
-      // Team card hover effects
-      document.querySelectorAll('.team-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-              const avatar = card.querySelector('.team-avatar');
-              avatar.style.transform = 'scale(1.1) rotate(5deg)';
-          });
-          
-          card.addEventListener('mouseleave', () => {
-              const avatar = card.querySelector('.team-avatar');
-              avatar.style.transform = 'scale(1) rotate(0deg)';
-          });
-      });
-      
-      console.log('🏢 SESMINE About Page Loaded');
-      console.log('📅 Founded 2003 | 🏭 20+ Years Experience | 👥 200+ Clients');
-  </script>
+        // Animate timeline items
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Animate value cards
+        const valuesObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        const valueCards = document.querySelectorAll('.value-card');
+        valueCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            valuesObserver.observe(card);
+        });
+
+        // Button interactions
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('This would redirect to the contact page or open a project inquiry form.');
+                }
+            });
+        });
+
+        // Social link interactions
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-linkedin-in')) {
+                    alert('This would open the LinkedIn profile.');
+                } else if (icon.classList.contains('fa-envelope')) {
+                    alert('This would open the email client.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
