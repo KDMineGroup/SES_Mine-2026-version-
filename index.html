@@ -72,21 +72,13 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--primary-color);
             text-decoration: none;
         }
         
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
         
         .nav-menu {
@@ -826,11 +818,20 @@
             margin-bottom: 3rem;
         }
         
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo {
             margin-bottom: 1rem;
-            color: white;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
         }
         
         .footer-brand p {
@@ -883,6 +884,13 @@
         
         .footer-section ul li a:hover {
             color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
         }
         
         /* Responsive Design */
@@ -959,13 +967,11 @@
     </style>
 </head>
 <body>
-  <!-- Header -->
-  <header id="header">
-      <nav>
-          <a href="index.html" class="logo">
-              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
-              <div>
-                <span>Sesmine</span>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
             </a>
             
             <ul class="nav-menu">
@@ -1470,192 +1476,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="equipment-item fade-in">
-                    <div class="equipment-image lab-bg">
-                        <div class="equipment-badge">Precision</div>
-                    </div>
-                    <div class="equipment-content">
-                        <div id="equipment4-en">
-                            <h3 class="equipment-title">Laboratory Equipment</h3>
-                            <div class="equipment-specs">
-                                <div class="spec-item">
-                                    <div class="spec-label">XRF Analyzers</div>
-                                    <div class="spec-value">Portable & Benchtop</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">Sample Prep</div>
-                                    <div class="spec-value">Complete Line</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">Quality Control</div>
-                                    <div class="spec-value">Automated Testing</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">Accuracy</div>
-                                    <div class="spec-value">±0.01% Precision</div>
-                                </div>
-                            </div>
-                            <div class="equipment-cta">
-                                <div class="price-tag">Precision Testing</div>
-                                <a href="#contact" class="equipment-link">
-                                    Get Quote <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div id="equipment4-ar" class="hidden arabic">
-                            <h3 class="equipment-title">معدات المختبر</h3>
-                            <div class="equipment-specs">
-                                <div class="spec-item">
-                                    <div class="spec-label">محللات XRF</div>
-                                    <div class="spec-value">محمولة ومكتبية</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">تحضير العينات</div>
-                                    <div class="spec-value">خط كامل</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">مراقبة الجودة</div>
-                                    <div class="spec-value">اختبار آلي</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">الدقة</div>
-                                    <div class="spec-value">دقة ±0.01%</div>
-                                </div>
-                            </div>
-                            <div class="equipment-cta">
-                                <div class="price-tag">اختبار دقيق</div>
-                                <a href="#contact" class="equipment-link">
-                                    احصل على عرض أسعار <i class="fas fa-arrow-left"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="equipment-item fade-in">
-                    <div class="equipment-image automation-bg">
-                        <div class="equipment-badge">Smart</div>
-                    </div>
-                    <div class="equipment-content">
-                        <div id="equipment5-en">
-                            <h3 class="equipment-title">Automation Systems</h3>
-                            <div class="equipment-specs">
-                                <div class="spec-item">
-                                    <div class="spec-label">SCADA</div>
-                                    <div class="spec-value">Real-time Control</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">PLC</div>
-                                    <div class="spec-value">Siemens/Allen Bradley</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">HMI</div>
-                                    <div class="spec-value">Touch Screen Interface</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">Integration</div>
-                                    <div class="spec-value">Complete System</div>
-                                </div>
-                            </div>
-                            <div class="equipment-cta">
-                                <div class="price-tag">Smart Solutions</div>
-                                <a href="#contact" class="equipment-link">
-                                    Automate Now <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div id="equipment5-ar" class="hidden arabic">
-                            <h3 class="equipment-title">أنظمة الأتمتة</h3>
-                            <div class="equipment-specs">
-                                <div class="spec-item">
-                                    <div class="spec-label">SCADA</div>
-                                    <div class="spec-value">تحكم فوري</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">PLC</div>
-                                    <div class="spec-value">سيمنز/ألين برادلي</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">HMI</div>
-                                    <div class="spec-value">واجهة شاشة لمس</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">التكامل</div>
-                                    <div class="spec-value">نظام كامل</div>
-                                </div>
-                            </div>
-                            <div class="equipment-cta">
-                                <div class="price-tag">حلول ذكية</div>
-                                <a href="#contact" class="equipment-link">
-                                    أتمت الآن <i class="fas fa-arrow-left"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="equipment-item fade-in">
-                    <div class="equipment-image infrastructure-bg">
-                        <div class="equipment-badge">Complete</div>
-                    </div>
-                    <div class="equipment-content">
-                        <div id="equipment6-en">
-                            <h3 class="equipment-title">Infrastructure Solutions</h3>
-                            <div class="equipment-specs">
-                                <div class="spec-item">
-                                    <div class="spec-label">Buildings</div>
-                                    <div class="spec-value">Industrial Grade</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">Utilities</div>
-                                    <div class="spec-value">Power/Water/Air</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">Safety Systems</div>
-                                    <div class="spec-value">Fire/Gas Detection</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">Compliance</div>
-                                    <div class="spec-value">International Standards</div>
-                                </div>
-                            </div>
-                            <div class="equipment-cta">
-                                <div class="price-tag">Complete Package</div>
-                                <a href="#contact" class="equipment-link">
-                                    Build Now <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div id="equipment6-ar" class="hidden arabic">
-                            <h3 class="equipment-title">حلول البنية التحتية</h3>
-                            <div class="equipment-specs">
-                                <div class="spec-item">
-                                    <div class="spec-label">المباني</div>
-                                    <div class="spec-value">درجة صناعية</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">المرافق</div>
-                                    <div class="spec-value">كهرباء/مياه/هواء</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">أنظمة السلامة</div>
-                                    <div class="spec-value">كشف الحريق/الغاز</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-label">الامتثال</div>
-                                    <div class="spec-value">معايير دولية</div>
-                                </div>
-                            </div>
-                            <div class="equipment-cta">
-                                <div class="price-tag">حزمة كاملة</div>
-                                <a href="#contact" class="equipment-link">
-                                    ابن الآن <i class="fas fa-arrow-left"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1886,7 +1706,9 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div id="footer-brand-en">
-                        <h3>Sesmine Oman</h3>
+                        <div class="footer-logo">
+                            <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+                        </div>
                         <p>Leading provider of comprehensive mining and chemical processing solutions in the Sultanate of Oman. Committed to excellence, innovation, and sustainable operations.</p>
                         <div class="social-links">
                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -1897,7 +1719,9 @@
                         </div>
                     </div>
                     <div id="footer-brand-ar" class="hidden arabic">
-                        <h3>سيسمين عُمان</h3>
+                        <div class="footer-logo">
+                            <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+                        </div>
                         <p>المزود الرائد للحلول الشاملة للتعدين والمعالجة الكيميائية في سلطنة عُمان. ملتزمون بالتميز والابتكار والعمليات المستدامة.</p>
                         <div class="social-links">
                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
