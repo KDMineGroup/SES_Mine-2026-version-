@@ -153,6 +153,16 @@
             box-shadow: var(--shadow-lg);
         }
         
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+        
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -919,6 +929,24 @@
                 display: none;
             }
             
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-actions {
+                gap: 0.5rem;
+            }
+            
+            .lang-toggle {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .cta-nav {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -937,6 +965,10 @@
             }
             
             .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .equipment-specs {
                 grid-template-columns: 1fr;
             }
         }
@@ -961,9 +993,6 @@
         .crusher-bg { background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
         .plant-bg { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
         .conveyor-bg { background-image: url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
-        .lab-bg { background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
-        .automation-bg { background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
-        .infrastructure-bg { background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
     </style>
 </head>
 <body>
@@ -981,6 +1010,10 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             
             <div class="nav-actions">
                 <button class="lang-toggle" onclick="toggleLanguage()">
@@ -1043,7 +1076,7 @@
         <div class="stats-container">
             <div class="stats-grid">
                 <div class="stat-item fade-in">
-                    <span class="stat-number">50+</span>
+                    <span class="stat-number">200+</span>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-item fade-in">
@@ -1843,6 +1876,17 @@
             }
         }
         
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
         // Header Scroll Effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
@@ -1863,6 +1907,12 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
                 }
             });
         });
@@ -1945,17 +1995,77 @@
             statsObserver.observe(statsSection);
         }
         
-        // Mobile Menu Toggle (for future enhancement)
-        function toggleMobileMenu() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('active');
-        }
+        // Service Link Interactions
+        document.querySelectorAll('.service-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#contact') {
+                    // Smooth scroll to contact section
+                    e.preventDefault();
+                    document.getElementById('contact').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else if (this.getAttribute('href') === '#equipment') {
+                    // Smooth scroll to equipment section
+                    e.preventDefault();
+                    document.getElementById('equipment').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Equipment Link Interactions
+        document.querySelectorAll('.equipment-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const equipmentTitle = this.closest('.equipment-item').querySelector('.equipment-title').textContent;
+                alert(`More details about ${equipmentTitle} would be shown here, including technical specifications, pricing, and availability.`);
+            });
+        });
         
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Add any initialization code here
+            // Add mobile menu styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (max-width: 768px) {
+                    .nav-menu {
+                        position: fixed;
+                        top: 100%;
+                        left: 0;
+                        width: 100%;
+                        background: white;
+                        flex-direction: column;
+                        padding: 2rem;
+                        box-shadow: var(--shadow-lg);
+                        transform: translateY(-100%);
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .nav-menu.active {
+                        display: flex;
+                        transform: translateY(0);
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                    
+                    .nav-menu li {
+                        margin-bottom: 1rem;
+                    }
+                    
+                    .nav-menu a {
+                        font-size: 1.1rem;
+                        padding: 0.5rem 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
             console.log('Sesmine Oman website loaded successfully');
         });
     </script>
 </body>
 </html>
+                        
