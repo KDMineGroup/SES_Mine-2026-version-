@@ -1,2319 +1,849 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Equipment Catalog | SESMINE | Complete Mining Equipment Solutions Oman</title>
-<meta name="description" content="Comprehensive mining equipment catalog featuring Caterpillar, Komatsu, Liebherr, and Sandvik equipment. Process plant machinery, excavators, crushers, mills, and complete specifications.">
-<meta name="keywords" content="mining equipment catalog Oman, CAT equipment, Komatsu machinery, Liebherr mining, Sandvik crushers, process plant equipment, mining machinery specifications">
-<link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-    :root {
-        --primary: #0066cc;
-        --primary-dark: #004499;
-        --secondary: #ff6b35;
-        --accent: #00c851;
-        --gold: #ffd700;
-        --dark: #1a1a1a;
-        --darker: #0d1117;
-        --light-gray: #f8f9fa;
-        --medium-gray: #6c757d;
-        --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004499 100%);
-        --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
-        --gradient-accent: linear-gradient(135deg, #00c851 0%, #00a844 100%);
-        --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
-        --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0d1117 100%);
-        --shadow-light: 0 4px 20px rgba(0, 102, 204, 0.1);
-        --shadow-medium: 0 8px 30px rgba(0, 102, 204, 0.15);
-        --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.3);
-    }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body { 
-        font-family: 'Inter', sans-serif; 
-        background: #ffffff;
-        color: var(--dark); 
-        line-height: 1.6; 
-        overflow-x: hidden;
-    }
-    
-    html { scroll-behavior: smooth; }
-    
-    /* Header Styles */
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 5000;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-        transition: all 0.3s ease;
-    }
-    
-    header.scrolled {
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: var(--shadow-light);
-    }
-    
-    nav {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        text-decoration: none;
-        color: var(--dark);
-        font-weight: 800;
-        font-size: 1.8rem;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .logo img { 
-        height: 65px; 
-        filter: drop-shadow(0 4px 15px rgba(0, 102, 204, 0.3));
-        transition: transform 0.3s ease;
-    }
-    
-    .logo:hover img { transform: scale(1.05); }
-    
-    .logo-text { 
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .logo-subtitle {
-        font-size: 0.7rem;
-        color: var(--medium-gray);
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-top: -5px;
-    }
-    
-    .nav-center {
-        display: flex;
-        list-style: none;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    
-    .nav-link {
-        padding: 0.8rem 1.5rem;
-        color: var(--dark);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        border-radius: 12px;
-        position: relative;
-    }
-    
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: var(--gradient-primary);
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-    }
-    
-    .nav-link:hover {
-        color: var(--primary);
-        background: rgba(0, 102, 204, 0.05);
-    }
-    
-    .nav-link:hover::after { width: 80%; }
-    
-    .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 1rem 2.5rem;
-        background: var(--gradient-primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-light);
-        font-size: 0.95rem;
-    }
-    
-    .cta-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-medium);
-    }
-    
-    /* Mobile Menu */
-    .mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--dark);
-        cursor: pointer;
-    }
-    
-    /* Breadcrumb */
-    .breadcrumb {
-        padding: 2rem;
-        background: rgba(0, 102, 204, 0.05);
-        margin-top: 90px;
-    }
-    
-    .breadcrumb-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .breadcrumb a {
-        color: rgba(26, 26, 26, 0.7);
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-    
-    .breadcrumb a:hover { color: var(--primary); }
-    .breadcrumb span { color: rgba(26, 26, 26, 0.5); }
-    
-    /* Hero Section */
-    .catalog-hero {
-        padding: 6rem 2rem 4rem;
-        background: 
-            linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(255, 255, 255, 1) 50%, rgba(0, 200, 81, 0.05) 100%);
-        text-align: center;
-        position: relative;
-    }
-    
-    .hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .hero-badge {
-        display: inline-block;
-        padding: 0.5rem 1.5rem;
-        background: rgba(0, 102, 204, 0.1);
-        color: var(--primary);
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-    }
-    
-    .hero-title {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 900;
-        margin-bottom: 1.5rem;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .hero-title .highlight {
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.3rem;
-        color: var(--medium-gray);
-        margin-bottom: 3rem;
-        line-height: 1.6;
-    }
-    
-    /* Filter Section */
-    .filter-section {
-        padding: 3rem 2rem;
-        background: white;
-        border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-        position: sticky;
-        top: 90px;
-        z-index: 1000;
-    }
-    
-    .filter-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    
-    .filter-group {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .filter-label {
-        font-weight: 600;
-        color: var(--dark);
-        font-size: 0.9rem;
-    }
-    
-    .filter-select {
-        padding: 0.8rem 1.2rem;
-        border: 2px solid rgba(0, 102, 204, 0.2);
-        border-radius: 12px;
-        background: white;
-        color: var(--dark);
-        font-size: 0.9rem;
-        min-width: 150px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .filter-select:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-    }
-    
-    .search-box {
-        flex: 1;
-        max-width: 300px;
-        position: relative;
-    }
-    
-    .search-input {
-        width: 100%;
-        padding: 0.8rem 1.2rem 0.8rem 3rem;
-        border: 2px solid rgba(0, 102, 204, 0.2);
-        border-radius: 12px;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-    }
-    
-    .search-input:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-    }
-    
-    .search-icon {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--medium-gray);
-    }
-    
-    /* Suppliers Section */
-    .suppliers-section {
-        padding: 6rem 2rem;
-        background: var(--light-gray);
-    }
-    
-    .suppliers-container {
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    
-    .section-header {
-        text-align: center;
-        margin-bottom: 4rem;
-    }
-    
-    .section-title {
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 900;
-        margin-bottom: 1.5rem;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .section-title .highlight {
-        background: var(--gradient-secondary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .section-description {
-        font-size: 1.2rem;
-        color: var(--medium-gray);
-        line-height: 1.7;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .suppliers-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-    }
-    
-    .supplier-card {
-        background: white;
-        border-radius: 24px;
-        padding: 3rem;
-        text-align: center;
-        transition: all 0.4s ease;
-        border: 1px solid rgba(0, 102, 204, 0.1);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .supplier-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gradient-primary);
-        transform: scaleX(0);
-        transition: transform 0.4s ease;
-    }
-    
-    .supplier-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-medium);
-        border-color: var(--primary);
-    }
-    
-    .supplier-card:hover::before { transform: scaleX(1); }
-    
-    .supplier-logo {
-        width: 120px;
-        height: 80px;
-        background: var(--gradient-primary);
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 2rem;
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        box-shadow: var(--shadow-light);
-    }
-    
-    .supplier-name {
-        font-size: 1.8rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        color: var(--dark);
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .supplier-description {
-        color: var(--medium-gray);
-        line-height: 1.6;
-        margin-bottom: 2rem;
-    }
-    
-    .supplier-specialties {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-        margin-bottom: 2rem;
-    }
-    
-    .specialty-tag {
-        padding: 0.4rem 0.8rem;
-        background: rgba(0, 102, 204, 0.1);
-        color: var(--primary);
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-    
-    .supplier-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .stat-item {
-        text-align: center;
-        padding: 1rem;
-        background: rgba(0, 102, 204, 0.05);
-        border-radius: 12px;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-        font-weight: 900;
-        background: var(--gradient-secondary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-        font-size: 0.8rem;
-        color: var(--medium-gray);
-        font-weight: 500;
-    }
-    
-    .supplier-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 1rem 2rem;
-        background: var(--gradient-primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-    
-    .supplier-link:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-light);
-    }
-    
-    /* Equipment Categories */
-    .categories-section {
-        padding: 8rem 2rem;
-        background: white;
-    }
-    
-    .categories-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 4rem;
-    }
-    
-    .category-card {
-        background: white;
-        border: 1px solid rgba(0, 102, 204, 0.1);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        position: relative;
-    }
-    
-    .category-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-medium);
-        border-color: var(--primary);
-    }
-    
-    .category-image {
-        width: 100%;
-        height: 200px;
-        background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 200, 81, 0.1));
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .category-image::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(0, 102, 204, 0.3) 0%, transparent 50%, rgba(0, 200, 81, 0.3) 100%);
-    }
-    
-    .category-content {
-        padding: 2rem;
-    }
-    
-    .category-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--dark);
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .category-description {
-        color: var(--medium-gray);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-    
-    .category-count {
-        display: inline-block;
-        padding: 0.3rem 0.8rem;
-        background: rgba(0, 200, 81, 0.1);
-        color: var(--accent);
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-    }
-    
-    .category-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-    
-    .category-link:hover {
-        gap: 1rem;
-    }
-    
-    /* Equipment Grid */
-    .equipment-section {
-        padding: 8rem 2rem;
-        background: rgba(0, 102, 204, 0.02);
-    }
-    
-    .equipment-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 2rem;
-        margin-top: 4rem;
-    }
-    
-    .equipment-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: var(--shadow-light);
-        transition: all 0.4s ease;
-        position: relative;
-    }
-    
-    .equipment-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-medium);
-    }
-    
-    .equipment-image {
-        width: 100%;
-        height: 250px;
-        background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 200, 81, 0.1));
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .equipment-badge {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        padding: 0.4rem 0.8rem;
-        background: var(--gradient-primary);
-        color: white;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-    
-    .equipment-content {
-        padding: 2rem;
-    }
-    
-    .equipment-supplier {
-        color: var(--primary);
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .equipment-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-    
-    .equipment-description {
-        color: var(--medium-gray);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-    
-    .equipment-specs {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .spec-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-        font-size: 0.9rem;
-    }
-    
-    .spec-item:last-child {
-        border-bottom: none;
-    }
-    
-    .spec-label {
-        color: var(--medium-gray);
-        font-weight: 500;
-    }
-    
-    .spec-value {
-        color: var(--dark);
-        font-weight: 600;
-    }
-    
-    .equipment-actions {
-        display: flex;
-        gap: 1rem;
-    }
-    
-    .btn-primary {
-        flex: 1;
-        padding: 1rem;
-        background: var(--gradient-primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: 600;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-light);
-    }
-    
-    .btn-secondary {
-        flex: 1;
-        padding: 1rem;
-        background: white;
-        color: var(--primary);
-        border: 2px solid var(--primary);
-        text-decoration: none;
-        border-radius: 12px;
-        font-weight: 600;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-secondary:hover {
-        background: var(--primary);
-        color: white;
-        transform: translateY(-2px);
-    }
-    
-    /* Footer */
-    footer {
-        background: var(--darker);
-        color: white;
-        padding: 4rem 2rem 2rem;
-    }
-    
-    .footer-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 3rem;
-    }
-    
-    .footer-brand h3 {
-        font-size: 2rem;
-        font-weight: 900;
-        margin-bottom: 1rem;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .footer-brand p {
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.6;
-        margin-bottom: 2rem;
-    }
-    
-    .social-links {
-        display: flex;
-        gap: 1rem;
-    }
-    
-    .social-link {
-        width: 45px;
-        height: 45px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-    
-    .social-link:hover {
-        background: var(--primary);
-        transform: translateY(-3px);
-    }
-    
-    .footer-section h4 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        color: white;
-    }
-    
-    .footer-links {
-        list-style: none;
-    }
-    
-    .footer-links li {
-        margin-bottom: 0.8rem;
-    }
-    
-    .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    
-    .footer-links a:hover {
-        color: var(--primary);
-    }
-    
-    .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 2rem;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.5);
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .mobile-menu-btn { display: block; }
-        .nav-center { display: none; }
-        .filter-container { flex-direction: column; align-items: stretch; }
-        .filter-group { justify-content: space-between; }
-        .search-box { max-width: none; }
-        .suppliers-grid { grid-template-columns: 1fr; }
-        .categories-grid { grid-template-columns: 1fr; }
-        .equipment-grid { grid-template-columns: 1fr; }
-        .footer-container { grid-template-columns: 1fr; text-align: center; }
-        .equipment-specs { grid-template-columns: 1fr; }
-        .supplier-stats { grid-template-columns: 1fr; }
-    }
-    
-    /* Animations */
-    .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
-    }
-    
-    .animate-on-scroll.animated {
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
-</head>
-<body>
-<!-- Header -->
-<header id="header">
-    <nav>
-        <a href="index.html" class="logo">
-            <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
-            <div>
-                <div class="logo-text">SESMINE</div>
-                <div class="logo-subtitle">Equipment Excellence</div>
-            </div>
-        </a>
-        
-        <ul class="nav-center">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="services.html" class="nav-link">Services</a></li>
-            <li><a href="equipment-catalog.html" class="nav-link">Equipment</a></li>
-            <li><a href="spare-parts.html" class="nav-link">Parts</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-        </ul>
-        
-        <a href="contact.html" class="cta-btn">
-            <i class="fas fa-phone"></i>
-            <span>Get Quote</span>
-        </a>
-        
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
-</header>
-
-<!-- Breadcrumb -->
-<section class="breadcrumb">
-    <div class="breadcrumb-container">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <span>Equipment Catalog</span>
-    </div>
-</section>
-
-<!-- Hero Section -->
-<section class="catalog-hero">
-    <div class="hero-content">
-        <div class="hero-badge">COMPREHENSIVE CATALOG</div>
-        <h1 class="hero-title">
-            Complete <span class="highlight">Mining Equipment</span><br>
-            Catalog & Specifications
-        </h1>
-        <p class="hero-subtitle">
-            Explore our comprehensive catalog of premium mining equipment from world-leading manufacturers. Find detailed specifications, technical data, and complete solutions for your mining operations.
-        </p>
-    </div>
-</section>
-
-<!-- Filter Section -->
-<section class="filter-section">
-    <div class="filter-container">
-        <div class="filter-group">
-            <label class="filter-label">Supplier:</label>
-            <select class="filter-select" id="supplierFilter">
-                <option value="">All Suppliers</option>
-                <option value="caterpillar">Caterpillar</option>
-                <option value="komatsu">Komatsu</option>
-                <option value="liebherr">Liebherr</option>
-                <option value="sandvik">Sandvik</option>
-                <option value="metso">Metso Outotec</option>
-            </select>
-        </div>
-        
-        <div class="filter-group">
-            <label class="filter-label">Category:</label>
-            <select class="filter-select" id="categoryFilter">
-                <option value="">All Categories</option>
-                <option value="excavators">Excavators</option>
-                <option value="crushers">Crushers</option>
-                <option value="mills">Mills</option>
-                <option value="trucks">Haul Trucks</option>
-                <option value="dozers">Dozers</option>
-                <option value="flotation">Flotation</option>
-            </select>
-        </div>
-        
-        <div class="filter-group">
-            <label class="filter-label">Application:</label>
-            <select class="filter-select" id="applicationFilter">
-                <option value="">All Applications</option>
-                <option value="surface">Surface Mining</option>
-                <option value="underground">Underground</option>
-                <option value="processing">Processing Plant</option>
-                <option value="quarry">Quarry</option>
-            </select>
-        </div>
-        
-        <div class="search-box">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Search equipment..." id="searchInput">
-        </div>
-    </div>
-</section>
-
-<!-- Suppliers Section -->
-<section class="suppliers-section">
-    <div class="suppliers-container">
-        <div class="section-header animate-on-scroll">
-            <h2 class="section-title">
-                Our <span class="highlight">Premium Suppliers</span><br>
-                & Manufacturing Partners
-            </h2>
-            <p class="section-description">
-                SESMINE partners with the world's leading mining equipment manufacturers to deliver premium machinery and comprehensive solutions for your operations.
-            </p>
-        </div>
-        
-        <div class="suppliers-grid">
-            <!-- Caterpillar -->
-            <div class="supplier-card animate-on-scroll">
-                <div class="supplier-logo">CAT</div>
-                <h3 class="supplier-name">Caterpillar Inc.</h3>
-                <p class="supplier-description">
-                    World's leading manufacturer of construction and mining equipment. CAT machines are renowned for durability, performance, and reliability in the harshest mining conditions.
-                </p>
-                <div class="supplier-specialties">
-                    <span class="specialty-tag">Ultra-Class Excavators</span>
-                    <span class="specialty-tag">Mining Trucks</span>
-                    <span class="specialty-tag">Dozers</span>
-                    <span class="specialty-tag">Wheel Loaders</span>
-                </div>
-                <div class="supplier-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">95+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">200+</div>
-                        <div class="stat-label">Countries Served</div>
-                    </div>
-                </div>
-                <a href="#caterpillar-equipment" class="supplier-link">
-                    <span>View CAT Equipment</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Komatsu -->
-            <div class="supplier-card animate-on-scroll">
-                <div class="supplier-logo" style="background: var(--gradient-secondary);">KOMATSU</div>
-                <h3 class="supplier-name">Komatsu Ltd.</h3>
-                <p class="supplier-description">
-                    Japanese multinational corporation and leading manufacturer of construction, mining, and utility equipment. Known for innovation and advanced technology integration.
-                </p>
-                <div class="supplier-specialties">
-                    <span class="specialty-tag">Mining Excavators</span>
-                    <span class="specialty-tag">Dump Trucks</span>
-                    <span class="specialty-tag">Bulldozers</span>
-                    <span class="specialty-tag">Autonomous Systems</span>
-                </div>
-                <div class="supplier-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">150+</div>
-                        <div class="stat-label">Countries Served</div>
-                    </div>
-                </div>
-                <a href="#komatsu-equipment" class="supplier-link">
-                    <span>View Komatsu Equipment</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Liebherr -->
-            <div class="supplier-card animate-on-scroll">
-                <div class="supplier-logo" style="background: var(--gradient-accent);">LIEBHERR</div>
-                <h3 class="supplier-name">Liebherr Group</h3>
-                <p class="supplier-description">
-                    German-Swiss multinational equipment manufacturer specializing in ultra-large mining equipment. Leader in innovation and engineering excellence.
-                </p>
-                <div class="supplier-specialties">
-                    <span class="specialty-tag">Ultra-Large Excavators</span>
-                    <span class="specialty-tag">Mining Trucks</span>
-                    <span class="specialty-tag">Rope Shovels</span>
-                    <span class="specialty-tag">Draglines</span>
-                </div>
-                <div class="supplier-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">70+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">130+</div>
-                        <div class="stat-label">Countries Served</div>
-                    </div>
-                </div>
-                <a href="#liebherr-equipment" class="supplier-link">
-                    <span>View Liebherr Equipment</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Sandvik -->
-            <div class="supplier-card animate-on-scroll">
-                <div class="supplier-logo" style="background: var(--gradient-gold); color: var(--dark);">SANDVIK</div>
-                <h3 class="supplier-name">Sandvik AB</h3>
-                <p class="supplier-description">
-                    Swedish multinational engineering company specializing in mining equipment, rock processing, and metal cutting. Pioneer in sustainable mining solutions.
-                </p>
-                <div class="supplier-specialties">
-                    <span class="specialty-tag">Crushers & Screens</span>
-                    <span class="specialty-tag">Underground Equipment</span>
-                    <span class="specialty-tag">Drilling Rigs</span>
-                    <span class="specialty-tag">Automation Systems</span>
-                </div>
-                <div class="supplier-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">160+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">160+</div>
-                        <div class="stat-label">Countries Served</div>
-                    </div>
-                </div>
-                <a href="#sandvik-equipment" class="supplier-link">
-                    <span>View Sandvik Equipment</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Metso Outotec -->
-            <div class="supplier-card animate-on-scroll">
-                <div class="supplier-logo" style="background: var(--gradient-secondary);">METSO</div>
-                <h3 class="supplier-name">Metso Outotec</h3>
-                <p class="supplier-description">
-                    Finnish company and frontrunner in sustainable technologies for mining and aggregates processing. Leading provider of process plant equipment.
-                </p>
-                <div class="supplier-specialties">
-                    <span class="specialty-tag">Crushing Equipment</span>
-                    <span class="specialty-tag">Grinding Mills</span>
-                    <span class="specialty-tag">Flotation Systems</span>
-                    <span class="specialty-tag">Process Plants</span>
-                </div>
-                <div class="supplier-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">150+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Countries Served</div>
-                    </div>
-                </div>
-                <a href="#metso-equipment" class="supplier-link">
-                    <span>View Metso Equipment</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- FLSmidth -->
-            <div class="supplier-card animate-on-scroll">
-                <div class="supplier-logo" style="background: var(--gradient-accent);">FLS</div>
-                <h3 class="supplier-name">FLSmidth</h3>
-                <p class="supplier-description">
-                    Danish multinational engineering company providing sustainable productivity solutions to the mining industry. Specialist in cement and minerals processing.
-                </p>
-                <div class="supplier-specialties">
-                    <span class="specialty-tag">Grinding Mills</span>
-                    <span class="specialty-tag">Kilns & Furnaces</span>
-                    <span class="specialty-tag">Separation Equipment</span>
-                    <span class="specialty-tag">Filtration Systems</span>
-                </div>
-                <div class="supplier-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">140+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">60+</div>
-                        <div class="stat-label">Countries Served</div>
-                    </div>
-                </div>
-                <a href="#flsmidth-equipment" class="supplier-link">
-                    <span>View FLS Equipment</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Equipment Categories -->
-<section class="categories-section">
-    <div class="suppliers-container">
-        <div class="section-header animate-on-scroll">
-            <h2 class="section-title">
-                Equipment <span class="highlight">Categories</span><br>
-                & Applications
-            </h2>
-            <p class="section-description">
-                Browse our comprehensive range of mining equipment organized by category and application. Find the perfect machinery for your specific mining requirements.
-            </p>
-        </div>
-        
-        <div class="categories-grid">
-            <!-- Excavators -->
-            <div class="category-card animate-on-scroll">
-                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=85');"></div>
-                <div class="category-content">
-                    <div class="category-count">45+ Models</div>
-                    <h3 class="category-title">Mining Excavators</h3>
-                    <p class="category-description">Ultra-class hydraulic excavators from 20 to 800 tons operating weight. Perfect for surface mining, quarrying, and heavy construction.</p>
-                    <a href="#excavators" class="category-link">
-                        View Excavators <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Crushers -->
-            <div class="category-card animate-on-scroll">
-                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600&q=85');"></div>
-                <div class="category-content">
-                    <div class="category-count">60+ Models</div>
-                    <h3 class="category-title">Crushers & Screens</h3>
-                    <p class="category-description">Primary, secondary, and tertiary crushing equipment. Jaw crushers, cone crushers, impact crushers, and screening systems.</p>
-                    <a href="#crushers" class="category-link">
-                        View Crushers <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mills -->
-            <div class="category-card animate-on-scroll">
-                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=600&q=85');"></div>
-                <div class="category-content">
-                    <div class="category-count">35+ Models</div>
-                    <h3 class="category-title">Grinding Mills</h3>
-                    <p class="category-description">SAG mills, ball mills, rod mills, and pebble mills. Complete grinding solutions for mineral processing applications.</p>
-                    <a href="#mills" class="category-link">
-                        View Mills <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Haul Trucks -->
-            <div class="category-card animate-on-scroll">
-                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=85');"></div>
-                <div class="category-content">
-                    <div class="category-count">25+ Models</div>
-                    <h3 class="category-title">Mining Haul Trucks</h3>
-                    <p class="category-description">Ultra-class mining trucks from 100 to 450 ton payload capacity. Designed for maximum productivity and fuel efficiency.</p>
-                    <a href="#trucks" class="category-link">
-                        View Trucks <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Flotation -->
-            <div class="category-card animate-on-scroll">
-                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=600&q=85');"></div>
-                <div class="category-content">
-                    <div class="category-count">40+ Models</div>
-                    <h3 class="category-title">Flotation Systems</h3>
-                    <p class="category-description">Complete flotation circuits, cells, columns, and conditioning equipment for mineral separation and recovery.</p>
-                    <a href="#flotation" class="category-link">
-                        View Flotation <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Dozers -->
-            <div class="category-card animate-on-scroll">
-                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=85');"></div>
-                <div class="category-content">
-                    <div class="category-count">30+ Models</div>
-                    <h3 class="category-title">Bulldozers</h3>
-                    <p class="category-description">Heavy-duty track-type tractors for earthmoving, waste handling, and mine development. From medium to ultra-large sizes.</p>
-                    <a href="#dozers" class="category-link">
-                        View Dozers <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Equipment -->
-<section class="equipment-section" id="featured-equipment">
-    <div class="suppliers-container">
-        <div class="section-header animate-on-scroll">
-            <h2 class="section-title">
-                Featured <span class="highlight">Equipment</span><br>
-                & Latest Models
-            </h2>
-            <p class="section-description">
-                Discover our most popular and latest mining equipment models with detailed specifications and technical data.
-            </p>
-        </div>
-        
-        <div class="equipment-grid">
-            <!-- CAT 6020B Excavator -->
-            <div class="equipment-card animate-on-scroll" data-supplier="caterpillar" data-category="excavators">
-                <div class="equipment-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=85');">
-                    <div class="equipment-badge">Ultra Class</div>
-                </div>
-                <div class="equipment-content">
-                    <div class="equipment-supplier">CATERPILLAR</div>
-                    <h3 class="equipment-title">CAT 6020B Ultra Class Excavator</h3>
-                    <p class="equipment-description">Ultra-class hydraulic excavator designed for the most demanding mining applications with exceptional productivity and fuel efficiency.</p>
-                    <div class="equipment-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">Operating Weight</span>
-                            <span class="spec-value">220 tons</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Engine Power</span>
-                            <span class="spec-value">1,193 HP</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Bucket Capacity</span>
-                            <span class="spec-value">12-15 m³</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Max Reach</span>
-                            <span class="spec-value">12.5 m</span>
-                        </div>
-                    </div>
-                    <div class="equipment-actions">
-                        <a href="equipment-detail.html?id=cat-6020b" class="btn-primary">View Details</a>
-                        <a href="contact.html?equipment=cat-6020b" class="btn-secondary">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Komatsu PC8000 -->
-            <div class="equipment-card animate-on-scroll" data-supplier="komatsu" data-category="excavators">
-                <div class="equipment-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=85');">
-                    <div class="equipment-badge">Ultra Class</div>
-                </div>
-                <div class="equipment-content">
-                    <div class="equipment-supplier">KOMATSU</div>
-                    <h3 class="equipment-title">Komatsu PC8000-6 Mining Excavator</h3>
-                    <p class="equipment-description">World's largest hydraulic excavator with advanced automation systems and superior fuel efficiency for ultra-large mining operations.</p>
-                    <div class="equipment-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">Operating Weight</span>
-                            <span class="spec-value">810 tons</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Engine Power</span>
-                            <span class="spec-value">2,700 HP</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Bucket Capacity</span>
-                            <span class="spec-value">42 m³</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Max Reach</span>
-                            <span class="spec-value">18.4 m</span>
-                        </div>
-                    </div>
-                    <div class="equipment-actions">
-                        <a href="equipment-detail.html?id=komatsu-pc8000" class="btn-primary">View Details</a>
-                        <a href="contact.html?equipment=komatsu-pc8000" class="btn-secondary">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sandvik QJ341 -->
-            <div class="equipment-card animate-on-scroll" data-supplier="sandvik" data-category="crushers">
-                <div class="equipment-image" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600&q=85');">
-                    <div class="equipment-badge">Mobile</div>
-                </div>
-                <div class="equipment-content">
-                    <div class="equipment-supplier">SANDVIK</div>
-                    <h3 class="equipment-title">Sandvik QJ341 Mobile Jaw Crusher</h3>
-                    <p class="equipment-description">High-performance mobile jaw crusher with excellent fuel efficiency and easy maintenance for quarrying and mining applications.</p>
-                    <div class="equipment-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">Feed Opening</span>
-                            <span class="spec-value">1200 x 750 mm</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Capacity</span>
-                            <span class="spec-value">up to 650 TPH</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Engine Power</span>
-                            <span class="spec-value">400 HP</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Weight</span>
-                            <span class="spec-value">58 tons</span>
-                        </div>
-                    </div>
-                    <div class="equipment-actions">
-                        <a href="equipment-detail.html?id=sandvik-qj341" class="btn-primary">View Details</a>
-                        <a href="contact.html?equipment=sandvik-qj341" class="btn-secondary">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Metso HP800 -->
-            <div class="equipment-card animate-on-scroll" data-supplier="metso" data-category="crushers">
-                <div class="equipment-image" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600&q=85');">
-                    <div class="equipment-badge">Stationary</div>
-                </div>
-                <div class="equipment-content">
-                    <div class="equipment-supplier">METSO OUTOTEC</div>
-                    <h3 class="equipment-title">Metso HP800 Cone Crusher</h3>
-                    <p class="equipment-description">High-performance cone crusher with advanced automation and excellent particle shape for secondary and tertiary crushing.</p>
-                    <div class="equipment-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">Feed Size</span>
-                            <span class="spec-value">up to 300 mm</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Capacity</span>
-                            <span class="spec-value">up to 1,200 TPH</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Motor Power</span>
-                            <span class="spec-value">630 kW</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Weight</span>
-                            <span class="spec-value">95 tons</span>
-                        </div>
-                    </div>
-                    <div class="equipment-actions">
-                        <a href="equipment-detail.html?id=metso-hp800" class="btn-primary">View Details</a>
-                        <a href="contact.html?equipment=metso-hp800" class="btn-secondary">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FLSmidth SAG Mill -->
-            <div class="equipment-card animate-on-scroll" data-supplier="flsmidth" data-category="mills">
-                <div class="equipment-image" style="background-image: url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=600&q=85');">
-                    <div class="equipment-badge">Process Plant</div>
-                </div>
-                <div class="equipment-content">
-                    <div class="equipment-supplier">FLSMIDTH</div>
-                    <h3 class="equipment-title">FLSmidth SAG Mill 36' x 15'</h3>
-                    <p class="equipment-description">Large semi-autogenous grinding mill with advanced liner design and optimal power utilization for mineral processing plants.</p>
-                    <div class="equipment-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">Diameter x Length</span>
-                            <span class="spec-value">36' x 15'</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Capacity</span>
-                            <span class="spec-value">up to 2,000 TPH</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Motor Power</span>
-                            <span class="spec-value">22 MW</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Weight</span>
-                            <span class="spec-value">1,850 tons</span>
-                        </div>
-                    </div>
-                    <div class="equipment-actions">
-                        <a href="equipment-detail.html?id=fls-sag-mill" class="btn-primary">View Details</a>
-                        <a href="contact.html?equipment=fls-sag-mill" class="btn-secondary">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Liebherr T 284 -->
-            <div class="equipment-card animate-on-scroll" data-supplier="liebherr" data-category="trucks">
-                <div class="equipment-image" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=85');">
-                    <div class="equipment-badge">Ultra Class</div>
-                </div>
-                <div class="equipment-content">
-                    <div class="equipment-supplier">LIEBHERR</div>
-                    <h3 class="equipment-title">Liebherr T 284 Mining Truck</h3>
-                    <p class="equipment-description">Ultra-class mining truck with advanced diesel-electric drive system and superior fuel efficiency for large-scale mining operations.</p>
-                    <div class="equipment-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">Payload</span>
-                            <span class="spec-value">400 tons</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Engine Power</span>
-                            <span class="spec-value">3,650 HP</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Body Capacity</span>
-                            <span class="spec-value">235 m³</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Operating Weight</span>
-                            <span class="spec-value">628 tons</span>
-                        </div>
-                    </div>
-                    <div class="equipment-actions">
-                        <a href="equipment-detail.html?id=liebherr-t284" class="btn-primary">View Details</a>
-                        <a href="contact.html?equipment=liebherr-t284" class="btn-secondary">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-container">
-        <div class="footer-brand">
-            <h3>SESMINE</h3>
-            <p>Oman's leading provider of premium mining equipment and comprehensive solutions. Partnering with world-class manufacturers to deliver excellence in mining operations.</p>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram">                </i></a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h4>Equipment Categories</h4>
-            <ul class="footer-links">
-                <li><a href="#excavators">Mining Excavators</a></li>
-                <li><a href="#crushers">Crushers & Screens</a></li>
-                <li><a href="#mills">Grinding Mills</a></li>
-                <li><a href="#trucks">Haul Trucks</a></li>
-                <li><a href="#flotation">Flotation Systems</a></li>
-                <li><a href="#dozers">Bulldozers</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Suppliers</h4>
-            <ul class="footer-links">
-                <li><a href="#caterpillar-equipment">Caterpillar</a></li>
-                <li><a href="#komatsu-equipment">Komatsu</a></li>
-                <li><a href="#liebherr-equipment">Liebherr</a></li>
-                <li><a href="#sandvik-equipment">Sandvik</a></li>
-                <li><a href="#metso-equipment">Metso Outotec</a></li>
-                <li><a href="#flsmidth-equipment">FLSmidth</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Support</h4>
-            <ul class="footer-links">
-                <li><a href="contact.html">Get Quote</a></li>
-                <li><a href="services.html">Technical Support</a></li>
-                <li><a href="spare-parts.html">Spare Parts</a></li>
-                <li><a href="about.html">About SESMINE</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 SESMINE. All rights reserved. | Premium Mining Equipment Solutions in Oman</p>
-    </div>
-</footer>
-
-<script>
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-    
-    // Animate on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
-    
-    // Filter functionality
-    const supplierFilter = document.getElementById('supplierFilter');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const applicationFilter = document.getElementById('applicationFilter');
-    const searchInput = document.getElementById('searchInput');
-    const equipmentCards = document.querySelectorAll('.equipment-card');
-    
-    function filterEquipment() {
-        const supplierValue = supplierFilter.value.toLowerCase();
-        const categoryValue = categoryFilter.value.toLowerCase();
-        const applicationValue = applicationFilter.value.toLowerCase();
-        const searchValue = searchInput.value.toLowerCase();
-        
-        equipmentCards.forEach(card => {
-            const supplier = card.dataset.supplier || '';
-            const category = card.dataset.category || '';
-            const application = card.dataset.application || '';
-            const title = card.querySelector('.equipment-title').textContent.toLowerCase();
-            const description = card.querySelector('.equipment-description').textContent.toLowerCase();
-            
-            const supplierMatch = !supplierValue || supplier.includes(supplierValue);
-            const categoryMatch = !categoryValue || category.includes(categoryValue);
-            const applicationMatch = !applicationValue || application.includes(applicationValue);
-            const searchMatch = !searchValue || 
-                title.includes(searchValue) || 
-                description.includes(searchValue) ||
-                supplier.includes(searchValue);
-            
-            if (supplierMatch && categoryMatch && applicationMatch && searchMatch) {
-                card.style.display = 'block';
-                card.style.animation = 'fadeInUp 0.6s ease forwards';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-        
-        // Update results count
-        const visibleCards = Array.from(equipmentCards).filter(card => 
-            card.style.display !== 'none'
-        ).length;
-        
-        console.log(`Showing ${visibleCards} equipment models`);
-    }
-    
-    // Add event listeners for filters
-    supplierFilter.addEventListener('change', filterEquipment);
-    categoryFilter.addEventListener('change', filterEquipment);
-    applicationFilter.addEventListener('change', filterEquipment);
-    searchInput.addEventListener('input', filterEquipment);
-    
-    // Supplier card hover effects
-    document.querySelectorAll('.supplier-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const logo = card.querySelector('.supplier-logo');
-            if (logo) {
-                logo.style.transform = 'scale(1.1) rotate(5deg)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            const logo = card.querySelector('.supplier-logo');
-            if (logo) {
-                logo.style.transform = 'scale(1) rotate(0deg)';
-            }
-        });
-    });
-    
-    // Equipment card hover effects
-    document.querySelectorAll('.equipment-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const image = card.querySelector('.equipment-image');
-            if (image) {
-                image.style.transform = 'scale(1.05)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            const image = card.querySelector('.equipment-image');
-            if (image) {
-                image.style.transform = 'scale(1)';
-            }
-        });
-    });
-    
-    // Category card hover effects
-    document.querySelectorAll('.category-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const image = card.querySelector('.category-image');
-            if (image) {
-                image.style.transform = 'scale(1.1)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            const image = card.querySelector('.category-image');
-            if (image) {
-                image.style.transform = 'scale(1)';
-            }
-        });
-    });
-    
-    // Mobile menu functionality
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navCenter = document.querySelector('.nav-center');
-    
-    if (mobileMenuBtn && navCenter) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navCenter.classList.toggle('mobile-active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navCenter.classList.contains('mobile-active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Advanced search functionality
-    function advancedSearch(query) {
-        const searchTerms = query.toLowerCase().split(' ');
-        const results = [];
-        
-        equipmentCards.forEach(card => {
-            const supplier = card.dataset.supplier || '';
-            const category = card.dataset.category || '';
-            const title = card.querySelector('.equipment-title').textContent.toLowerCase();
-            const description = card.querySelector('.equipment-description').textContent.toLowerCase();
-            const specs = Array.from(card.querySelectorAll('.spec-value')).map(spec => 
-                spec.textContent.toLowerCase()
-            ).join(' ');
-            
-            const searchableContent = `${supplier} ${category} ${title} ${description} ${specs}`;
-            
-            let score = 0;
-            searchTerms.forEach(term => {
-                if (searchableContent.includes(term)) {
-                    score++;
-                }
-            });
-            
-            if (score > 0) {
-                results.push({ card, score });
-            }
-        });
-        
-        // Sort by relevance score
-        results.sort((a, b) => b.score - a.score);
-        
-        return results.map(result => result.card);
-    }
-    
-    // Enhanced search with suggestions
-    let searchTimeout;
-    searchInput.addEventListener('input', (e) => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            const query = e.target.value.trim();
-            if (query.length >= 2) {
-                const results = advancedSearch(query);
-                console.log(`Found ${results.length} relevant equipment models`);
-            }
-            filterEquipment();
-        }, 300);
-    });
-    
-    // Equipment comparison functionality
-    let comparisonList = [];
-    
-    function addToComparison(equipmentId) {
-        if (comparisonList.length < 3 && !comparisonList.includes(equipmentId)) {
-            comparisonList.push(equipmentId);
-            updateComparisonUI();
-        }
-    }
-    
-    function removeFromComparison(equipmentId) {
-        const index = comparisonList.indexOf(equipmentId);
-        if (index > -1) {
-            comparisonList.splice(index, 1);
-            updateComparisonUI();
-        }
-    }
-    
-    function updateComparisonUI() {
-        // Update comparison counter and show/hide comparison panel
-        console.log(`Comparison list: ${comparisonList.length} items`);
-    }
-    
-    // Equipment detail modal
-    function showEquipmentDetail(equipmentId) {
-        // Create and show detailed equipment modal
-        const modal = document.createElement('div');
-        modal.className = 'equipment-modal';
-        modal.innerHTML = `
-            <div class="modal-overlay">
-                <div class="modal-content">
-                    <button class="modal-close">&times;</button>
-                    <div class="modal-header">
-                        <h2>Equipment Details</h2>
-                    </div>
-                    <div class="modal-body">
-                        <p>Loading equipment details...</p>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // Add modal styles if not already present
-        if (!document.querySelector('#modal-styles')) {
-            const modalStyles = document.createElement('style');
-            modalStyles.id = 'modal-styles';
-            modalStyles.textContent = `
-                .equipment-modal {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    z-index: 10000;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: rgba(0, 0, 0, 0.8);
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                }
-                
-                .equipment-modal.active {
-                    opacity: 1;
-                }
-                
-                .modal-overlay {
-                    position: relative;
-                    max-width: 90vw;
-                    max-height: 90vh;
-                    background: white;
-                    border-radius: 20px;
-                    overflow: hidden;
-                    transform: scale(0.8);
-                    transition: transform 0.3s ease;
-                }
-                
-                .equipment-modal.active .modal-overlay {
-                    transform: scale(1);
-                }
-                
-                .modal-close {
-                    position: absolute;
-                    top: 1rem;
-                    right: 1rem;
-                    background: rgba(0, 0, 0, 0.5);
-                    color: white;
-                    border: none;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    font-size: 1.5rem;
-                    cursor: pointer;
-                    z-index: 10001;
-                }
-                
-                .modal-header {
-                    padding: 2rem;
-                    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-                }
-                
-                .modal-body {
-                    padding: 2rem;
-                    max-height: 60vh;
-                    overflow-y: auto;
-                }
-            `;
-            document.head.appendChild(modalStyles);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Catalog - Sesmine Oman</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5aa0;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d5aa0 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
         
-        // Animate in
-        setTimeout(() => modal.classList.add('active'), 10);
-        
-        // Close functionality
-        const closeModal = () => {
-            modal.classList.remove('active');
-            setTimeout(() => document.body.removeChild(modal), 300);
-        };
-        
-        modal.querySelector('.modal-close').addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        
-        // ESC key close
-        const escHandler = (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-                document.removeEventListener('keydown', escHandler);
-            }
-        };
-        document.addEventListener('keydown', escHandler);
-    }
-    
-    // Equipment card click handlers
-    document.querySelectorAll('.equipment-card').forEach(card => {
-        const detailBtn = card.querySelector('.btn-primary');
-        if (detailBtn) {
-            detailBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const equipmentId = detailBtn.href.split('id=')[1];
-                if (equipmentId) {
-                    showEquipmentDetail(equipmentId);
-                }
-            });
-        }
-    });
-    
-    // Lazy loading for equipment images
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const image = entry.target;
-                if (image.dataset.src) {
-                    image.style.backgroundImage = `url(${image.dataset.src})`;
-                    image.removeAttribute('data-src');
-                    imageObserver.unobserve(image);
-                }
-            }
-        });
-    });
-    
-    document.querySelectorAll('[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-    
-    // Equipment specifications calculator
-    function calculateProductivity(equipment) {
-        // Basic productivity calculation based on equipment specs
-        const specs = equipment.querySelector('.equipment-specs');
-        if (!specs) return null;
-        
-        const capacity = specs.querySelector('.spec-value');
-        if (capacity) {
-            const value = parseFloat(capacity.textContent);
-            return {
-                hourly: value,
-                daily: value * 20, // Assuming 20 hours operation
-                monthly: value * 20 * 25 // 25 working days
-            };
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        return null;
-    }
-    
-    // Performance monitoring
-    function trackEquipmentInteraction(action, equipmentId) {
-        console.log(`Equipment interaction: ${action} - ${equipmentId}`);
-        // Here you could send analytics data
-    }
-    
-    // Add interaction tracking
-    document.querySelectorAll('.equipment-card').forEach(card => {
-        const equipmentTitle = card.querySelector('.equipment-title').textContent;
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
         
-        card.addEventListener('click', () => {
-            trackEquipmentInteraction('view', equipmentTitle);
-        });
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
         
-        const quoteBtn = card.querySelector('.btn-secondary');
-        if (quoteBtn) {
-            quoteBtn.addEventListener('click', () => {
-                trackEquipmentInteraction('quote_request', equipmentTitle);
-            });
-        }
-    });
-    
-    // Supplier link tracking
-    document.querySelectorAll('.supplier-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            const supplierName = link.closest('.supplier-card').querySelector('.supplier-name').textContent;
-            trackEquipmentInteraction('supplier_view', supplierName);
-        });
-    });
-    
-    // Filter usage tracking
-    [supplierFilter, categoryFilter, applicationFilter].forEach(filter => {
-        filter.addEventListener('change', (e) => {
-            trackEquipmentInteraction('filter_use', `${e.target.id}: ${e.target.value}`);
-        });
-    });
-    
-    // Search usage tracking
-    searchInput.addEventListener('input', (e) => {
-        if (e.target.value.length >= 3) {
-            trackEquipmentInteraction('search', e.target.value);
-        }
-    });
-    
-    // Equipment favorites functionality
-    let favorites = JSON.parse(localStorage.getItem('equipment_favorites') || '[]');
-    
-    function toggleFavorite(equipmentId) {
-        const index = favorites.indexOf(equipmentId);
-        if (index > -1) {
-            favorites.splice(index, 1);
-        } else {
-            favorites.push(equipmentId);
-        }
-        localStorage.setItem('equipment_favorites', JSON.stringify(favorites));
-        updateFavoriteUI();
-    }
-    
-    function updateFavoriteUI() {
-        document.querySelectorAll('.equipment-card').forEach(card => {
-            const equipmentId = card.dataset.equipmentId;
-            const favoriteBtn = card.querySelector('.favorite-btn');
-            if (favoriteBtn && equipmentId) {
-                favoriteBtn.classList.toggle('active', favorites.includes(equipmentId));
-            }
-        });
-    }
-    
-    // Initialize page
-    console.log('🏭 SESMINE Equipment Catalog Loaded');
-    console.log('⚙️ 6 Premium Suppliers | 200+ Equipment Models | Complete Specifications');
-    
-    // Load favorites on page load
-    updateFavoriteUI();
-    
-    // Performance optimization
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            // Preload critical equipment images
-            const criticalImages = document.querySelectorAll('.equipment-image');
-            criticalImages.forEach(img => {
-                if (img.style.backgroundImage) {
-                    const imageUrl = img.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-                    const preloadImg = new Image();
-                    preloadImg.src = imageUrl;
-                }
-            });
-        });
-    }
-    
-    // Service Worker registration for offline functionality
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('SW registered: ', registration);
-                })
-                .catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
-        });
-    }
-    
-    // Error handling
-    window.addEventListener('error', (e) => {
-        console.error('Catalog error:', e.error);
-    });
-    
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey || e.metaKey) {
-            switch(e.key) {
-                case 'f':
-                    e.preventDefault();
-                    searchInput.focus();
-                    break;
-                case 'k':
-                    e.preventDefault();
-                    searchInput.focus();
-                    break;
-            }
-        }
-    });
-    
-</script>
-
-<!-- Additional CSS for enhanced functionality -->
-<style>
-    /* Mobile Navigation Styles */
-    @media (max-width: 768px) {
-        .nav-center {
-            position: fixed;
-            top: 100%;
-            left: 0;
-            right: 0;
+        /* Header */
+        .header {
             background: white;
-            flex-direction: column;
-            padding: 2rem;
-            box-shadow: var(--shadow-heavy);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            z-index: 4999;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
-        .nav-center.mobile-active {
-            transform: translateY(0);
-        }
-        
-        .nav-link {
-            padding: 1rem 0;
-            width: 100%;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-        }
-        
-        .nav-link:last-child {
-            border-bottom: none;
-        }
-        
-        /* Mobile Filter Adjustments */
-        .filter-container {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 1rem;
-        }
-        
-        .filter-group {
+        .nav-container {
+            display: flex;
             justify-content: space-between;
-            width: 100%;
+            align-items: center;
+            padding: 1rem 0;
         }
         
-        .filter-select {
-            flex: 1;
-            margin-left: 1rem;
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
         
-        .search-box {
-            max-width: none;
-            width: 100%;
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
         
-        /* Mobile Equipment Grid */
-        .equipment-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+        .breadcrumb {
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
         }
         
-        .equipment-card {
-            margin: 0 0.5rem;
-        }
-        
-        /* Mobile Supplier Grid */
-        .suppliers-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        .supplier-card {
-            padding: 2rem;
-        }
-        
-        /* Mobile Categories Grid */
-        .categories-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        /* Mobile Equipment Specs */
-        .equipment-specs {
-            grid-template-columns: 1fr;
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
             gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
         
-        .equipment-actions {
-            flex-direction: column;
-            gap: 0.5rem;
+        .breadcrumb-nav a {
+            color: var(--secondary-color);
+            text-decoration: none;
         }
         
-        /* Mobile Supplier Stats */
-        .supplier-stats {
-            grid-template-columns: 1fr;
-            gap: 0.5rem;
-        }
-    }
-    
-    /* Tablet Styles */
-    @media (min-width: 769px) and (max-width: 1024px) {
-        .equipment-grid {
-            grid-template-columns: repeat(2, 1fr);
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
         }
         
-        .suppliers-grid {
-            grid-template-columns: repeat(2, 1fr);
+        /* Page Header */
+        .page-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
         }
         
-        .categories-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    
-    /* Loading States */
-    .loading {
-        opacity: 0.5;
-        pointer-events: none;
-        position: relative;
-    }
-    
-    .loading::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 30px;
-        height: 30px;
-        margin: -15px 0 0 -15px;
-        border: 3px solid var(--primary);
-        border-radius: 50%;
-        border-top-color: transparent;
-        animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-    
-    /* Favorite Button Styles */
-    .favorite-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-    }
-    
-    .favorite-btn:hover {
-        background: white;
-        transform: scale(1.1);
-    }
-    
-    .favorite-btn.active {
-        background: var(--secondary);
-        color: white;
-    }
-    
-    .favorite-btn i {
-        font-size: 1.2rem;
-        transition: all 0.3s ease;
-    }
-    
-    /* Comparison Panel */
-    .comparison-panel {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: var(--gradient-primary);
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        box-shadow: var(--shadow-medium);
-        transform: translateY(100px);
-        transition: transform 0.3s ease;
-        z-index: 1000;
-    }
-    
-    .comparison-panel.active {
-        transform: translateY(0);
-    }
-    
-    /* Filter Results Counter */
-    .results-counter {
-        text-align: center;
-        padding: 1rem 2rem;
-        background: rgba(0, 102, 204, 0.1);
-        border-radius: 12px;
-        margin-bottom: 2rem;
-        color: var(--primary);
-        font-weight: 600;
-    }
-    
-    /* Equipment Badge Variations */
-    .equipment-badge.new {
-        background: var(--gradient-accent);
-    }
-    
-    .equipment-badge.popular {
-        background: var(--gradient-secondary);
-    }
-    
-    .equipment-badge.featured {
-        background: var(--gradient-gold);
-        color: var(--dark);
-    }
-    
-    /* Accessibility Improvements */
-    .nav-link:focus,
-    .filter-select:focus,
-    .search-input:focus,
-    .btn-primary:focus,
-    .btn-secondary:focus {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-    }
-    
-    /* High contrast mode */
-    @media (prefers-contrast: high) {
-        .equipment-card,
-        .supplier-card,
-        .category-card {
-            border: 2px solid var(--dark);
-        }
-    }
-    
-    /* Print styles */
-    @media print {
-        .filter-section,
-        .cta-btn,
-        footer {
-            display: none;
-        }
-        
-        .equipment-card,
-        .supplier-card {
-            break-inside: avoid;
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 1rem;
         }
         
-        .hero-title,
-        .section-title {
-            color: #000 !important;
-            -webkit-text-fill-color: #000 !important;
+        .page-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
-    }
-    
-    /* Animation keyframes */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow-sm);
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        
+        .filter-container {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
         }
-    }
-    
-    @keyframes slideInRight {
-        from {
-            opacity: 0;
-            transform: translateX(30px);
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        to {
-            opacity: 1;
-            transform: translateX(0);
+        
+        .filter-group label {
+            font-weight: 600;
+            color: var(--text-dark);
         }
-    }
-    
-    @keyframes pulse {
-        0%, 100% {
-            transform: scale(1);
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            min-width: 150px;
         }
-        50% {
-            transform: scale(1.05);
+        
+        .search-box {
+            flex: 1;
+            max-width: 300px;
+            position: relative;
         }
-    }
-    
-    /* Hover animations */
-    .equipment-card:hover {
-        animation: pulse 0.6s ease-in-out;
-    }
-    
-    .supplier-card:hover {
-        animation: slideInRight 0.4s ease-out;
-    }
-</style>
+        
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        /* Products Grid */
+        .products-section {
+            padding: 4rem 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-category {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .product-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 0.85rem;
+        }
+        
+        .spec-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .spec-value {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary-color);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        /* Category Sections */
+        .category-section {
+            margin-bottom: 4rem;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        /* Product Images */
+        .crusher-1 { background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        .crusher-2 { background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        .plant-1 { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        .plant-2 { background-image: url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        .conveyor-1 { background-image: url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        .lab-1 { background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        .automation-1 { background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        .infrastructure-1 { background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+                </a>
+                <nav>
+                    <a href="index.html" class="btn-secondary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Products Catalog</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Products Catalog</h1>
+            <p class="page-subtitle">Comprehensive range of mining equipment, processing plants, and industrial solutions for your operations</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label>Category:</label>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="crushers">Crushers</option>
+                        <option value="plants">Process Plants</option>
+                        <option value="conveyors">Material Handling</option>
+                        <option value="lab">Laboratory Equipment</option>
+                        <option value="automation">Automation</option>
+                        <option value="infrastructure">Infrastructure</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Capacity:</label>
+                    <select class="filter-select" id="capacityFilter">
+                        <option value="">All Capacities</option>
+                        <option value="small">0-500 TPH</option>
+                        <option value="medium">500-1500 TPH</option>
+                        <option value="large">1500+ TPH</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            
+            <!-- Crushers Category -->
+            <div class="category-section" data-category="crushers">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h2 class="category-title">Primary & Secondary Crushers</h2>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card" data-capacity="large">
+                        <div class="product-image crusher-1">
+                            <div class="product-badge">Best Seller</div>
+                            <div class="product-category">Heavy Duty</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Jaw Crusher PE-1200×1500</h3>
+                            <p class="product-description">Heavy-duty primary jaw crusher designed for high-capacity crushing operations with excellent reliability and low maintenance requirements.</p>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Capacity:</span>
+                                    <span class="spec-value">1000-2000 TPH</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Power:</span>
+                                    <span class="spec-value">400-800 kW</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Feed Size:</span>
+                                    <span class="spec-value">≤1200mm</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Output:</span>
+                                    <span class="spec-value">50-200mm</span>
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <a href="#" class="btn-primary">
+                                    <i class="fas fa-file-download"></i> Download Specs
+                                </a>
+                                <a href="#" class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Get Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-capacity="medium">
+                        <div class="product-image crusher-2">
+                            <div class="product-badge">New</div>
+                            <div class="product-category">Cone Crusher</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Hydraulic Cone Crusher HP-300</h3>
+                            <p class="product-description">Advanced hydraulic cone crusher with automatic adjustment and overload protection for secondary and tertiary crushing applications.</p>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Capacity:</span>
+                                    <span class="spec-value">200-800 TPH</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Power:</span>
+                                    <span class="spec-value">220 kW</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Feed Size:</span>
+                                    <span class="spec-value">≤300mm</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Output:</span>
+                                    <span class="spec-value">6-64mm</span>
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <a href="#" class="btn-primary">
+                                    <i class="fas fa-file-download"></i> Download Specs
+                                </a>
+                                <a href="#" class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Get Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Plants Category -->
+            <div class="category-section" data-category="plants">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h2 class="category-title">Complete Process Plants</h2>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card" data-capacity="large">
+                        <div class="product-image plant-1">
+                            <div class="product-badge">Turnkey</div>
+                            <div class="product-category">Modular Plant</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Aggregate Processing Plant 500 TPH</h3>
+                            <p class="product-description">Complete modular aggregate processing plant with crushing, screening, and washing systems. Fully automated with SCADA control.</p>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Capacity:</span>
+                                    <span class="spec-value">500 TPH</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Products:</span>
+                                    <span class="spec-value">4 Sizes</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Automation:</span>
+                                    <span class="spec-value">Full PLC</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Installation:</span>
+                                    <span class="spec-value">6 Months</span>
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <a href="#" class="btn-primary">
+                                    <i class="fas fa-file-download"></i> Download Specs
+                                </a>
+                                <a href="#" class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Get Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-capacity="medium">
+                        <div class="product-image plant-2">
+                            <div class="product-badge">Eco-Friendly</div>
+                            <div class="product-category">Mineral Processing</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Mineral Beneficiation Plant</h3>
+                            <p class="product-description">Advanced mineral processing plant with flotation, magnetic separation, and gravity concentration systems for various ore types.</p>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Capacity:</span>
+                                    <span class="spec-value">100-1000 TPD</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Recovery:</span>
+                                    <span class="spec-value">85-95%</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Water Recycling:</span>
+                                    <span class="spec-value">90%</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Automation:</span>
+                                    <span class="spec-value">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <a href="#" class="btn-primary">
+                                    <i class="fas fa-file-download"></i> Download Specs
+                                </a>
+                                <a href="#" class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Get Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Material Handling Category -->
+            <div class="category-section" data-category="conveyors">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h2 class="category-title">Material Handling Systems</h2>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card" data-capacity="large">
+                        <div class="product-image conveyor-1">
+                            <div class="product-badge">Heavy Duty</div>
+                            <div class="product-category">Belt Conveyor</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Heavy Duty Belt Conveyor System</h3>
+                            <p class="product-description">Robust belt conveyor system designed for continuous material transport in harsh mining environments with minimal maintenance.</p>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Belt Width:</span>
+                                    <span class="spec-value">800-2400mm</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Capacity:</span>
+                                    <span class="spec-value">500-8000 TPH</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Length:</span>
+                                    <span class="spec-value">Up to 15km</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Inclination:</span>
+                                    <span class="spec-value">0-18°</span>
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <a href="#" class="btn-primary">
+                                    <i class="fas fa-file-download"></i> Download Specs
+                                </a>
+                                <a href="#" class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Get Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Laboratory Equipment Category -->
+            <div class="category-section" data-category="lab">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h2 class="category-title">Laboratory & Testing Equipment</h2>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card" data-capacity="small">
+                        <div class="product-image lab-1">
+                            <div class="product-badge">Precision</div>
+                            <div class="product-category">XRF Analyzer</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Portable XRF Analyzer XL3t</h3>
+                            <p class="product-description">Advanced handheld XRF analyzer for rapid elemental analysis in mining, metals, and environmental applications with laboratory-grade accuracy.</p>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Elements:</span>
+                                    <span class="spec-value">Mg to U</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Accuracy:</span>
+                                    <span class="spec-value">±0.02%</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Test Time:</span>
+                                    <span class="spec-value">2-60 sec</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Battery:</span>
+                                    <span class="spec-value">12+ hours</span>
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <a href="#" class="btn-primary">
+                                    <i class="fas fa-file-download"></i> Download Specs
+                                </a>
+                                <a href="#" class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Get Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Category -->
+            <div class="category-section" data-category="automation">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2 class="category-title">Automation & Control Systems</h2>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card" data-capacity="medium">
+                        <div class="product-image automation-1">
+                            <div class="product-badge">Smart</div>
+                            <div class="product-category">SCADA System</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Mining SCADA Control System</h3>
+                            <p class="product-description">Comprehensive SCADA system for mining operations with real-time monitoring, data acquisition, and automated control capabilities.</p>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">I/O Points:</span>
+                                    <span class="spec-value">Up to 50,000</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">HMI Stations:</span>
+                                    <span class="spec-value">Unlimited</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Redundancy:</span>
+                                    <span class="spec-value">Full Support</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Communication:</span>
+                                    <span class="spec-value">Multi-Protocol</span>
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <a href="#" class="btn-primary">
+                                    <i class="fas fa-file-download"></i> Download Specs
+                                </a>
+                                <a href="#" class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Get Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Filter functionality
+        const categoryFilter = document.getElementById('categoryFilter');
+        const capacityFilter = document.getElementById('capacityFilter');
+        const searchInput = document.getElementById('searchInput');
+        const productCards = document.querySelectorAll('.product-card');
+        const categorySections = document.querySelectorAll('.category-section');
+
+        function filterProducts() {
+            const selectedCategory = categoryFilter.value;
+            const selectedCapacity = capacityFilter.value;
+            const searchTerm = searchInput.value.toLowerCase();
+
+            categorySections.forEach(section => {
+                const sectionCategory = section.getAttribute('data-category');
+                let hasVisibleProducts = false;
+
+                // Show/hide entire category section
+                if (selectedCategory && selectedCategory !== sectionCategory) {
+                    section.style.display = 'none';
+                    return;
+                } else {
+                    section.style.display = 'block';
+                }
+
+                // Filter products within the section
+                const cards = section.querySelectorAll('.product-card');
+                cards.forEach(card => {
+                    const cardCapacity = card.getAttribute('data-capacity');
+                    const cardTitle = card.querySelector('.product-title').textContent.toLowerCase();
+                    const cardDescription = card.querySelector('.product-description').textContent.toLowerCase();
+
+                    let show = true;
+
+                    // Capacity filter
+                    if (selectedCapacity && selectedCapacity !== cardCapacity) {
+                        show = false;
+                    }
+
+                    // Search filter
+                    if (searchTerm && !cardTitle.includes(searchTerm) && !cardDescription.includes(searchTerm)) {
+                        show = false;
+                    }
+
+                    if (show) {
+                        card.style.display = 'block';
+                        hasVisibleProducts = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Hide section if no products are visible
+                if (!hasVisibleProducts) {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Event listeners
+        categoryFilter.addEventListener('change', filterProducts);
+        capacityFilter.addEventListener('change', filterProducts);
+        searchInput.addEventListener('input', filterProducts);
+
+        // Download specs functionality
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                alert(`Downloading specifications for: ${productTitle}\n\nThis would normally download a PDF file with detailed technical specifications.`);
+            });
+        });
+
+        // Get quote functionality
+        document.querySelectorAll('.btn-secondary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                alert(`Quote request for: ${productTitle}\n\nThis would normally open a contact form or redirect to a quote request page.`);
+            });
+        });
+    </script>
 </body>
 </html>
