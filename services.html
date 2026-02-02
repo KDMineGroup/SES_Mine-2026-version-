@@ -3,60 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional Mining Services | SESMINE | Equipment Solutions Oman</title>
-  <meta name="description" content="SESMINE offers comprehensive mining services including equipment selection, spare parts supply, performance optimization, procurement management, and technology integration in Oman.">
-  <meta name="keywords" content="mining services Oman, equipment selection, spare parts supply, mining optimization, procurement management, SESMINE services">
+  <title>SESMINE Services | World-Class Engineering & Procurement Solutions | خدمات سيسماين</title>
+  <meta name="description" content="SESMINE's comprehensive engineering and procurement services: Plant Design, Process Optimization, Equipment Selection, Project Management, Digital Transformation, and 24/7 Global Support. خدمات الهندسة والمشتريات الشاملة من سيسماين">
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
       :root {
-          --primary: #1e40af;
-          --secondary: #dc2626;
-          --accent: #f59e0b;
+          --primary: #0f1419;
+          --secondary: #c9a96e;
+          --accent: #2563eb;
           --success: #059669;
-          --dark: #1e293b;
-          --darker: #0f172a;
+          --warning: #d97706;
+          --dark: #0f172a;
+          --darker: #020617;
           --light: #f8fafc;
-          --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-          --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-          --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-          --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+          --medium-gray: #64748b;
+          --glass: rgba(255, 255, 255, 0.03);
+          --glass-border: rgba(255, 255, 255, 0.08);
+          --gradient-primary: linear-gradient(135deg, #0f1419 0%, #1e293b 100%);
+          --gradient-gold: linear-gradient(135deg, #c9a96e 0%, #f59e0b 100%);
+          --gradient-accent: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+          --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+          --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          --shadow-glow: 0 0 40px rgba(201, 169, 110, 0.15);
       }
       
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
       
-      body { 
-          font-family: 'Inter', sans-serif; 
-          background: var(--darker); 
-          color: white; 
-          line-height: 1.6; 
+      body {
+          font-family: 'Inter', sans-serif;
+          background: var(--darker);
+          color: white;
+          line-height: 1.6;
           overflow-x: hidden;
       }
       
-      body.rtl { 
-          font-family: 'Cairo', sans-serif; 
-          direction: rtl; 
+      body[dir="rtl"] {
+          font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
       }
       
-      html { scroll-behavior: smooth; }
+      /* Language Toggle */
+      .language-toggle {
+          position: fixed;
+          top: 50%;
+          right: 2rem;
+          transform: translateY(-50%);
+          z-index: 6000;
+          background: var(--gradient-gold);
+          border-radius: 50px;
+          padding: 0.5rem;
+          box-shadow: var(--shadow-xl);
+      }
       
-      /* Header Styles */
-      header {
-          position: sticky;
+      body[dir="rtl"] .language-toggle {
+          right: auto;
+          left: 2rem;
+      }
+      
+      .lang-btn {
+          display: block;
+          padding: 0.8rem 1.2rem;
+          background: transparent;
+          color: var(--dark);
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-weight: 700;
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+      }
+      
+      .lang-btn:last-child {
+          margin-bottom: 0;
+      }
+      
+      .lang-btn.active {
+          background: var(--dark);
+          color: var(--secondary);
+          box-shadow: var(--shadow-xl);
+      }
+      
+      .lang-btn:hover {
+          background: rgba(15, 20, 25, 0.1);
+      }
+      
+      /* Content Language Control */
+      .content-ar {
+          display: none;
+      }
+      
+      body[dir="rtl"] .content-en {
+          display: none;
+      }
+      
+      body[dir="rtl"] .content-ar {
+          display: block;
+      }
+      
+      /* Header */
+      .header {
+          position: fixed;
           top: 0;
-          z-index: 4000;
-          background: rgba(15, 23, 42, 0.95);
+          left: 0;
+          right: 0;
+          z-index: 1000;
+          background: rgba(2, 6, 23, 0.95);
           backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(30, 64, 175, 0.15);
-          transition: all 0.3s;
+          border-bottom: 1px solid var(--glass-border);
+          transition: all 0.3s ease;
       }
       
-      nav {
-          max-width: 1400px;
+      .nav-container {
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 1rem 2rem;
+          padding: 1rem 3rem;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -65,226 +134,157 @@
       .logo {
           display: flex;
           align-items: center;
-          gap: 15px;
+          gap: 1rem;
           text-decoration: none;
           color: white;
-          font-weight: 800;
-          font-size: 1.8rem;
       }
       
-      .logo img { height: 60px; filter: drop-shadow(0 4px 15px rgba(30, 64, 175, 0.4)); }
-      .logo-text { 
-          background: var(--gradient-primary);
+      .logo img {
+          height: 55px;
+          filter: brightness(1.3) drop-shadow(0 0 10px rgba(201, 169, 110, 0.3));
+      }
+      
+      .logo-text {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.75rem;
+          font-weight: 700;
+          background: var(--gradient-gold);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
       }
-      .logo-subtitle {
-          font-size: 0.7rem;
-          color: rgba(255, 255, 255, 0.7);
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          margin-top: -5px;
-      }
       
-      .nav-center {
+      .nav-menu {
           display: flex;
           list-style: none;
-          gap: 0.5rem;
+          gap: 2.5rem;
           align-items: center;
       }
       
       .nav-link {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.8rem 1.5rem;
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba(255, 255, 255, 0.85);
           text-decoration: none;
           font-weight: 500;
-          font-size: 0.95rem;
-          transition: all 0.3s;
-          border-radius: 12px;
-      }
-      
-      .nav-link:hover,
-      .nav-link.active {
-          color: white;
-          background: rgba(30, 64, 175, 0.1);
-      }
-      
-      .cta-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.9rem 2rem;
-          background: var(--gradient-primary);
-          color: white;
-          text-decoration: none;
-          border-radius: 50px;
-          font-weight: 600;
-          transition: all 0.3s;
-          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
-      }
-      
-      .cta-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(30, 64, 175, 0.5);
-      }
-      
-      /* Page Header */
-      .page-header {
-          padding: 8rem 2rem 4rem;
-          background: 
-              linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%),
-              url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1920&q=85') center/cover;
-          text-align: center;
+          transition: all 0.3s ease;
           position: relative;
       }
       
-      .page-header::before {
+      .nav-link:hover {
+          color: var(--secondary);
+      }
+      
+      .cta-button {
+          padding: 0.875rem 2rem;
+          background: var(--gradient-gold);
+          color: var(--dark);
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          box-shadow: var(--shadow-xl);
+      }
+      
+      .cta-button:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-glow);
+      }
+      
+      /* Hero Section */
+      .hero {
+          min-height: 80vh;
+          display: flex;
+          align-items: center;
+          position: relative;
+          overflow: hidden;
+          background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+          margin-top: 80px;
+      }
+      
+      .hero::before {
           content: '';
           position: absolute;
           top: 0;
-          left: 0;
           right: 0;
-          bottom: 0;
-          background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 70%);
+          width: 60%;
+          height: 100%;
+          background: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1920&q=90') center/cover;
+          opacity: 0.08;
+          z-index: 1;
       }
       
-      .page-header-content {
-          max-width: 800px;
+      body[dir="rtl"] .hero::before {
+          right: auto;
+          left: 0;
+      }
+      
+      .hero-container {
+          max-width: 1600px;
           margin: 0 auto;
+          padding: 3rem;
+          text-align: center;
           position: relative;
           z-index: 2;
       }
       
-      .page-title {
-          font-size: clamp(2.5rem, 5vw, 4rem);
-          font-weight: 900;
-          margin-bottom: 1.5rem;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-      }
-      
-      .page-subtitle {
-          font-size: 1.2rem;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 2rem;
-      }
-      
-      .breadcrumb {
-          display: flex;
-          justify-content: center;
-          gap: 1rem;
-          margin-bottom: 2rem;
-      }
-      
-      .breadcrumb a {
-          color: rgba(255, 255, 255, 0.7);
-          text-decoration: none;
-          transition: color 0.3s;
-      }
-      
-      .breadcrumb a:hover { color: var(--primary); }
-      .breadcrumb span { color: rgba(255, 255, 255, 0.5); }
-      
-      /* Services Overview */
-      .services-overview {
-          padding: 6rem 2rem;
-          background: rgba(30, 64, 175, 0.02);
-      }
-      
-      .services-stats {
-          max-width: 1200px;
-          margin: 0 auto 4rem;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 2rem;
-      }
-      
-      .stat-card {
-          background: rgba(30, 64, 175, 0.05);
-          border: 1px solid rgba(30, 64, 175, 0.1);
-          border-radius: 20px;
-          padding: 2rem;
-          text-align: center;
-          transition: all 0.3s;
-      }
-      
-      .stat-card:hover {
-          transform: translateY(-5px);
-          background: rgba(30, 64, 175, 0.1);
-          border-color: rgba(30, 64, 175, 0.3);
-      }
-      
-      .stat-icon {
-          width: 60px;
-          height: 60px;
-          background: var(--gradient-primary);
-          border-radius: 15px;
-          display: flex;
+      .hero-badge {
+          display: inline-flex;
           align-items: center;
-          justify-content: center;
-          font-size: 1.5rem;
-          color: white;
-          margin: 0 auto 1rem;
+          gap: 0.75rem;
+          padding: 0.75rem 1.5rem;
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
+          border-radius: 50px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 2rem;
+          backdrop-filter: blur(20px);
       }
       
-      .stat-number {
-          font-size: 2.5rem;
-          font-weight: 900;
-          background: var(--gradient-primary);
+      .hero-title {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(3rem, 6vw, 5rem);
+          font-weight: 800;
+          line-height: 1.1;
+          margin-bottom: 2rem;
+      }
+      
+      .gradient-text {
+          background: var(--gradient-gold);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          margin-bottom: 0.5rem;
+          background-clip: text;
       }
       
-      .stat-label {
+      .hero-subtitle {
+          font-size: 1.375rem;
           color: rgba(255, 255, 255, 0.8);
-          font-weight: 500;
-      }
-      
-      /* Main Services Grid */
-      .main-services {
-          padding: 6rem 2rem;
-      }
-      
-      .section-header {
-          text-align: center;
+          margin-bottom: 3rem;
           max-width: 800px;
-          margin: 0 auto 4rem;
+          margin-left: auto;
+          margin-right: auto;
       }
       
-      .section-title {
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 900;
-          margin-bottom: 1.5rem;
-          line-height: 1.2;
-      }
-      
-      .section-description {
-          font-size: 1.1rem;
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.8;
+      /* Services Grid */
+      .services-section {
+          padding: 8rem 3rem;
+          background: var(--darker);
       }
       
       .services-grid {
-          max-width: 1400px;
+          max-width: 1600px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
           gap: 3rem;
       }
       
       .service-card {
-          background: rgba(30, 64, 175, 0.05);
-          border: 1px solid rgba(30, 64, 175, 0.1);
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
           border-radius: 24px;
           padding: 3rem;
-          transition: all 0.4s;
+          backdrop-filter: blur(20px);
+          transition: all 0.4s ease;
           position: relative;
           overflow: hidden;
       }
@@ -296,461 +296,727 @@
           left: 0;
           right: 0;
           height: 4px;
-          background: var(--gradient-primary);
+          background: var(--gradient-gold);
           transform: scaleX(0);
-          transition: transform 0.4s;
+          transition: transform 0.4s ease;
       }
       
       .service-card:hover {
-          transform: translateY(-10px);
-          background: rgba(30, 64, 175, 0.08);
-          border-color: rgba(30, 64, 175, 0.3);
-          box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+          transform: translateY(-12px);
+          box-shadow: var(--shadow-glow);
+          border-color: rgba(201, 169, 110, 0.3);
       }
       
-      .service-card:hover::before { transform: scaleX(1); }
+      .service-card:hover::before {
+          transform: scaleX(1);
+      }
       
       .service-header {
           display: flex;
-          align-items: center;
-          gap: 1.5rem;
+          align-items: flex-start;
+          gap: 2rem;
           margin-bottom: 2rem;
       }
       
-      .service-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--gradient-primary);
-          border-radius: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: white;
-          box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+      .service-image {
+          width: 120px;
+          height: 120px;
+          border-radius: 16px;
+          background-size: cover;
+          background-position: center;
+          border: 2px solid var(--glass-border);
+          box-shadow: var(--shadow-xl);
+          flex-shrink: 0;
       }
       
-      .service-card:nth-child(2) .service-icon { 
-          background: var(--gradient-secondary); 
-          box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3); 
-      }
-      .service-card:nth-child(3) .service-icon { 
-          background: var(--gradient-success); 
-          box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3); 
-      }
-      .service-card:nth-child(4) .service-icon { 
-          background: var(--gradient-accent); 
-          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3); 
-      }
-      .service-card:nth-child(5) .service-icon { 
-          background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); 
-          box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3); 
+      .service-info {
+          flex: 1;
       }
       
       .service-title {
-          font-size: 1.5rem;
+          font-family: 'Playfair Display', serif;
+          font-size: 1.75rem;
           font-weight: 700;
+          margin-bottom: 0.75rem;
           color: white;
-          margin-bottom: 0.5rem;
       }
       
-      .service-subtitle {
-          color: rgba(255, 255, 255, 0.7);
-          font-size: 0.9rem;
+      .service-category {
+          font-size: 0.875rem;
+          color: var(--secondary);
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 1rem;
       }
       
       .service-description {
           color: rgba(255, 255, 255, 0.8);
-          line-height: 1.8;
+          line-height: 1.7;
           margin-bottom: 2rem;
+          font-size: 1rem;
       }
       
       .service-features {
           list-style: none;
           margin-bottom: 2rem;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.75rem;
       }
       
       .service-features li {
           display: flex;
           align-items: center;
-          gap: 0.8rem;
-          margin-bottom: 0.8rem;
-          color: rgba(255, 255, 255, 0.8);
-      }
-      
-      .service-features i {
-          color: var(--primary);
+          gap: 0.75rem;
+          color: rgba(255, 255, 255, 0.9);
           font-size: 0.9rem;
-          width: 16px;
       }
       
-      .service-actions {
-          display: flex;
-          gap: 1rem;
-      }
-      
-      .btn-primary {
-          flex: 1;
-          padding: 1rem 2rem;
-          background: var(--gradient-primary);
-          color: white;
-          text-decoration: none;
-          border-radius: 12px;
-          font-weight: 600;
-          text-align: center;
-          transition: all 0.3s;
-      }
-      
-      .btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
-      }
-      
-      .btn-secondary {
-          padding: 1rem;
-          background: rgba(255, 255, 255, 0.1);
-          color: rgba(255, 255, 255, 0.8);
-          border: 1px solid rgba(30, 64, 175, 0.2);
-          border-radius: 12px;
-          cursor: pointer;
-          transition: all 0.3s;
-          text-decoration: none;
+      .feature-icon {
+          width: 20px;
+          height: 20px;
+          background: var(--gradient-accent);
+          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
+          font-size: 0.7rem;
+          color: white;
+          flex-shrink: 0;
       }
       
-      .btn-secondary:hover {
-          background: rgba(30, 64, 175, 0.2);
-          color: white;
+      .service-metrics {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+          margin-bottom: 2rem;
+          padding-top: 2rem;
+          border-top: 1px solid var(--glass-border);
+      }
+      
+      .metric-item {
+          text-align: center;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 12px;
+      }
+      
+      .metric-value {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.5rem;
+          font-weight: 700;
+          background: var(--gradient-accent);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.25rem;
+      }
+      
+      .metric-label {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.7);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+      }
+      
+      .service-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .btn-service {
+          padding: 0.75rem 1.5rem;
+          background: var(--gradient-gold);
+          color: var(--dark);
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-size: 0.875rem;
+      }
+      
+      .btn-service:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-xl);
+      }
+      
+      .service-status {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.875rem;
+      }
+      
+      .status-dot {
+          width: 8px;
+          height: 8px;
+          background: var(--success);
+          border-radius: 50%;
+          animation: pulse 2s ease-in-out infinite;
       }
       
       /* Process Section */
       .process-section {
-          padding: 6rem 2rem;
-          background: rgba(220, 38, 38, 0.05);
+          padding: 8rem 3rem;
+          background: var(--dark);
+      }
+      
+      .process-container {
+          max-width: 1600px;
+          margin: 0 auto;
+          text-align: center;
+      }
+      
+      .section-title {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(2.5rem, 4vw, 4rem);
+          font-weight: 700;
+          margin-bottom: 3rem;
       }
       
       .process-steps {
-          max-width: 1200px;
-          margin: 0 auto;
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 2rem;
+          margin-top: 4rem;
       }
       
       .process-step {
-          text-align: center;
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
+          border-radius: 20px;
+          padding: 2.5rem;
+          backdrop-filter: blur(20px);
           position: relative;
+          transition: all 0.4s ease;
       }
       
-      .process-step::after {
-          content: '';
+      .process-step:hover {
+          transform: translateY(-8px);
+          box-shadow: var(--shadow-glow);
+      }
+      
+      .step-number {
           position: absolute;
-          top: 50px;
-          right: -1rem;
-          width: 2rem;
-          height: 2px;
-          background: var(--gradient-primary);
-          opacity: 0.3;
+          top: -15px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 40px;
+          background: var(--gradient-gold);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          color: var(--dark);
       }
       
-      .process-step:last-child::after { display: none; }
-      
-      .process-number {
+      .step-icon {
           width: 60px;
           height: 60px;
-          background: var(--gradient-primary);
+          background: var(--gradient-accent);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 1.5rem;
-          font-weight: 900;
           color: white;
           margin: 0 auto 1.5rem;
       }
       
-      .process-title {
-          font-size: 1.2rem;
+      .step-title {
+          font-size: 1.25rem;
           font-weight: 700;
           margin-bottom: 1rem;
-          color: white;
       }
       
-      .process-description {
+      .step-description {
           color: rgba(255, 255, 255, 0.8);
           line-height: 1.6;
       }
       
-      /* CTA Section */
-      .cta-section {
-          padding: 6rem 2rem;
-          background: 
-              linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%),
-              url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85') center/cover;
-          text-align: center;
-          position: relative;
+      /* Animations */
+      @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.2); }
       }
       
-      .cta-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(15, 23, 42, 0.8);
+      .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(40px);
+          transition: all 0.8s ease;
       }
       
-      .cta-content {
-          max-width: 800px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 2;
+      .animate-on-scroll.animated {
+          opacity: 1;
+          transform: translateY(0);
       }
       
-      .cta-title {
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 900;
-          margin-bottom: 1.5rem;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-      }
-      
-      .cta-description {
-          font-size: 1.2rem;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 3rem;
-          line-height: 1.8;
-      }
-      
-      .cta-buttons {
-          display: flex;
-          gap: 1.5rem;
-          justify-content: center;
-          flex-wrap: wrap;
-      }
-      
-      .btn-large {
-          padding: 1.2rem 3rem;
-          font-size: 1.1rem;
-          border-radius: 50px;
-      }
-      
-      /* Responsive */
+      /* Mobile Responsive */
       @media (max-width: 768px) {
-          .nav-center { display: none; }
-          .services-grid { grid-template-columns: 1fr; }
-          .services-stats { grid-template-columns: 1fr 1fr; }
-          .process-steps { grid-template-columns: 1fr; }
-          .process-step::after { display: none; }
-          .cta-buttons { flex-direction: column; align-items: center; }
+          .language-toggle {
+              position: static;
+              transform: none;
+              margin: 1rem auto;
+              display: flex;
+              justify-content: center;
+              width: fit-content;
+          }
+          
+          .nav-menu {
+              display: none;
+          }
+          
+          .hero-container {
+              padding: 2rem 1.5rem;
+          }
+          
+          .services-grid {
+              grid-template-columns: 1fr;
+              padding: 0 1.5rem;
+          }
+          
+          .service-card {
+              padding: 2rem;
+          }
+          
+          .service-header {
+              flex-direction: column;
+              text-align: center;
+              gap: 1rem;
+          }
+          
+          .service-image {
+              width: 100px;
+              height: 100px;
+              margin: 0 auto;
+          }
+          
+          .service-features {
+              grid-template-columns: 1fr;
+          }
+          
+          .service-metrics {
+              grid-template-columns: 1fr;
+          }
+          
+          .process-steps {
+              grid-template-columns: 1fr;
+          }
       }
   </style>
 </head>
 <body>
+  <!-- Language Toggle -->
+  <div class="language-toggle">
+      <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+      <button class="lang-btn" onclick="switchLanguage('ar')">عربي</button>
+  </div>
+
   <!-- Header -->
-  <header>
-      <nav>
+  <header class="header" id="header">
+      <div class="nav-container">
           <a href="index.html" class="logo">
               <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
-              <div>
-                  <div class="logo-text" data-en="SESMINE" data-ar="سيسماين">SESMINE</div>
-                  <div class="logo-subtitle" data-en="Equipment Excellence" data-ar="تميز المعدات">Equipment Excellence</div>
-              </div>
+              <div class="logo-text">SESMINE</div>
           </a>
           
-          <ul class="nav-center">
-              <li><a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
-              <li><a href="services.html" class="nav-link active" data-en="Services" data-ar="الخدمات">Services</a></li>
-              <li><a href="equipment-catalog.html" class="nav-link" data-en="Equipment" data-ar="المعدات">Equipment</a></li>
-              <li><a href="spare-parts.html" class="nav-link" data-en="Spare Parts" data-ar="قطع الغيار">Spare Parts</a></li>
-              <li><a href="about.html" class="nav-link" data-en="About" data-ar="عنا">About</a></li>
-          </ul>
-          
-          <div class="nav-right">
-              <a href="contact.html" class="cta-btn">
-                  <i class="fas fa-phone"></i>
-                  <span data-en="Contact Us" data-ar="اتصل بنا">Contact Us</span>
+          <nav class="nav-menu">
+              <a href="index.html" class="nav-link">
+                  <span class="content-en">Home</span>
+                  <span class="content-ar">الرئيسية</span>
               </a>
-          </div>
-      </nav>
+              <a href="assets.html" class="nav-link">
+                  <span class="content-en">Assets</span>
+                  <span class="content-ar">الأصول</span>
+              </a>
+              <a href="services.html" class="nav-link">
+                  <span class="content-en">Services</span>
+                  <span class="content-ar">الخدمات</span>
+              </a>
+              <a href="projects.html" class="nav-link">
+                  <span class="content-en">Projects</span>
+                  <span class="content-ar">المشاريع</span>
+              </a>
+              <a href="about.html" class="nav-link">
+                  <span class="content-en">About</span>
+                  <span class="content-ar">حولنا</span>
+              </a>
+          </nav>
+          
+          <a href="contact.html" class="cta-button">
+              <span class="content-en">Get Started</span>
+              <span class="content-ar">ابدأ الآن</span>
+          </a>
+      </div>
   </header>
 
-  <!-- Page Header -->
-  <section class="page-header">
-      <div class="page-header-content">
-          <div class="breadcrumb">
-              <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
-              <span>/</span>
-              <span data-en="Services" data-ar="الخدمات">Services</span>
+  <!-- Hero Section -->
+  <section class="hero">
+      <div class="hero-container">
+          <div class="hero-badge">
+              <i class="fas fa-cogs"></i>
+              <span class="content-en">Comprehensive Engineering & Procurement Services</span>
+              <span class="content-ar">خدمات هندسة ومشتريات شاملة</span>
           </div>
-          <h1 class="page-title" data-en="Professional Mining Services" data-ar="خدمات التعدين المهنية">Professional Mining Services</h1>
-          <p class="page-subtitle" data-en="Comprehensive solutions for all your mining equipment and operational needs in Oman" data-ar="حلول شاملة لجميع احتياجات معدات التعدين والتشغيل في عُمان">Comprehensive solutions for all your mining equipment and operational needs in Oman</p>
+          
+          <h1 class="hero-title">
+              <span class="content-en">World-Class <span class="gradient-text">Engineering</span><br>& Procurement Solutions</span>
+              <span class="content-ar">خدمات <span class="gradient-text">الهندسة</span><br>والمشتريات عالمية المستوى</span>
+          </h1>
+          
+          <p class="hero-subtitle content-en">
+              From conceptual design to commissioning and beyond, SESMINE delivers end-to-end engineering and procurement services that set global standards for excellence, innovation, and reliability in mining and processing operations.
+          </p>
+          
+          <p class="hero-subtitle content-ar">
+              من التصميم المفاهيمي إلى التشغيل وما بعده، تقدم سيسماين خدمات هندسة ومشتريات شاملة تضع المعايير العالمية للتميز والابتكار والموثوقية في عمليات التعدين والمعالجة.
+          </p>
       </div>
   </section>
 
-  <!-- Services Overview -->
-  <section class="services-overview">
-      <div class="services-stats">
-          <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-tools"></i></div>
-              <div class="stat-number">750+</div>
-              <div class="stat-label" data-en="Equipment Models Supported" data-ar="موديل معدات مدعوم">Equipment Models Supported</div>
-          </div>
-          <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-cogs"></i></div>
-              <div class="stat-number">15K+</div>
-              <div class="stat-label" data-en="Spare Parts in Stock" data-ar="قطعة غيار في المخزون">Spare Parts in Stock</div>
-          </div>
-          <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-users"></i></div>
-              <div class="stat-number">200+</div>
-              <div class="stat-label" data-en="Satisfied Clients" data-ar="عميل راضٍ">Satisfied Clients</div>
-          </div>
-          <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-clock"></i></div>
-              <div class="stat-number">24/7</div>
-              <div class="stat-label" data-en="Support Available" data-ar="دعم متاح">Support Available</div>
-          </div>
-      </div>
-  </section>
-
-  <!-- Main Services -->
-  <section class="main-services">
-      <div class="section-header">
-          <h2 class="section-title">
-              <span data-en="Our Core" data-ar="خدماتنا">Our Core</span><br>
-              <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-en="Service Offerings" data-ar="الأساسية">Service Offerings</span>
-          </h2>
-          <p class="section-description" data-en="From equipment selection to ongoing support, we provide end-to-end solutions that maximize your mining operations' efficiency and profitability." data-ar="من اختيار المعدات إلى الدعم المستمر، نقدم حلولاً شاملة تزيد من كفاءة وربحية عمليات التعدين الخاصة بك.">From equipment selection to ongoing support, we provide end-to-end solutions that maximize your mining operations' efficiency and profitability.</p>
-      </div>
-      
+  <!-- Services Grid -->
+  <section class="services-section">
       <div class="services-grid">
-          <!-- Equipment Selection Service -->
-          <div class="service-card">
+          <!-- Plant Design & Engineering -->
+          <div class="service-card animate-on-scroll">
               <div class="service-header">
-                  <div class="service-icon">
-                      <i class="fas fa-search"></i>
-                  </div>
-                  <div>
-                      <h3 class="service-title" data-en="Equipment Selection" data-ar="اختيار المعدات">Equipment Selection</h3>
-                      <p class="service-subtitle" data-en="Professional Consultation & Analysis" data-ar="الاستشارة والتحليل المهني">Professional Consultation & Analysis</p>
+                  <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=400&q=90');"></div>
+                  <div class="service-info">
+                      <h3 class="service-title content-en">Plant Design & Engineering</h3>
+                      <h3 class="service-title content-ar">تصميم وهندسة المصانع</h3>
+                      <div class="service-category content-en">Complete Engineering Solutions</div>
+                      <div class="service-category content-ar">حلول هندسية كاملة</div>
                   </div>
               </div>
-              <p class="service-description" data-en="Expert consultation for optimal equipment selection based on geological analysis, production requirements, and operational efficiency targets specific to Oman's mining conditions." data-ar="استشارة متخصصة لاختيار المعدات الأمثل بناءً على التحليل الجيولوجي ومتطلبات الإنتاج وأهداف الكفاءة التشغيلية الخاصة بظروف التعدين في عُمان.">Expert consultation for optimal equipment selection based on geological analysis, production requirements, and operational efficiency targets specific to Oman's mining conditions.</p>
+              
+              <p class="service-description content-en">
+                  World-class plant design and engineering services from conceptual studies to detailed engineering. Our multidisciplinary team delivers innovative, cost-effective solutions optimized for performance, safety, and sustainability.
+              </p>
+              
+              <p class="service-description content-ar">
+                  خدمات تصميم وهندسة المصانع عالمية المستوى من الدراسات المفاهيمية إلى الهندسة التفصيلية. يقدم فريقنا متعدد التخصصات حلولاً مبتكرة وفعالة من حيث التكلفة محسنة للأداء والسلامة والاستدامة.
+              </p>
+              
               <ul class="service-features">
-                  <li><i class="fas fa-check"></i> <span data-en="Geological Site Assessment" data-ar="تقييم الموقع الجيولوجي">Geological Site Assessment</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Production Capacity Planning" data-ar="تخطيط القدرة الإنتاجية">Production Capacity Planning</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="ROI & TCO Analysis" data-ar="تحليل العائد والتكلفة الإجمالية">ROI & TCO Analysis</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Equipment Matching & Sizing" data-ar="مطابقة وتحديد حجم المعدات">Equipment Matching & Sizing</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Performance Benchmarking" data-ar="قياس الأداء المرجعي">Performance Benchmarking</span></li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Conceptual & Feasibility Studies</span>
+                      <span class="content-ar">الدراسات المفاهيمية والجدوى</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Process Flow Design & Optimization</span>
+                      <span class="content-ar">تصميم وتحسين تدفق العمليات</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">3D Plant Modeling & Simulation</span>
+                      <span class="content-ar">النمذجة ثلاثية الأبعاد والمحاكاة</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Detailed Engineering & Documentation</span>
+                      <span class="content-ar">الهندسة التفصيلية والتوثيق</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Environmental & Safety Compliance</span>
+                      <span class="content-ar">الامتثال البيئي والسلامة</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Construction Management</span>
+                      <span class="content-ar">إدارة البناء</span>
+                  </li>
               </ul>
-              <div class="service-actions">
-                  <a href="equipment-selection.html" class="btn-primary" data-en="Learn More" data-ar="اعرف المزيد">Learn More</a>
-                  <a href="contact.html" class="btn-secondary"><i class="fas fa-phone"></i></a>
+              
+              <div class="service-metrics">
+                  <div class="metric-item">
+                      <div class="metric-value">500+</div>
+                      <div class="metric-label content-en">Plants Designed</div>
+                      <div class="metric-label content-ar">مصنع مصمم</div>
+                  </div>
+                  <div class="metric-item">
+                      <div class="metric-value">98%</div>
+                      <div class="metric-label content-en">On-Time Delivery</div>
+                      <div class="metric-label content-ar">تسليم في الوقت</div>
+                  </div>
+                  <div class="metric-item">
+                      <div class="metric-value">15%</div>
+                      <div class="metric-label content-en">Cost Savings</div>
+                      <div class="metric-label content-ar">توفير التكاليف</div>
+                  </div>
+              </div>
+              
+              <div class="service-footer">
+                  <a href="#" class="btn-service">
+                      <span class="content-en">Learn More</span>
+                      <span class="content-ar">اعرف المزيد</span>
+                  </a>
+                  <div class="service-status">
+                      <div class="status-dot"></div>
+                      <span class="content-en">Available Globally</span>
+                      <span class="content-ar">متوفر عالمياً</span>
+                  </div>
               </div>
           </div>
 
-          <!-- Spare Parts Supply Service -->
-          <div class="service-card">
+          <!-- Process Optimization -->
+          <div class="service-card animate-on-scroll">
               <div class="service-header">
-                  <div class="service-icon">
-                      <i class="fas fa-cogs"></i>
-                  </div>
-                  <div>
-                      <h3 class="service-title" data-en="Spare Parts Supply" data-ar="توريد قطع الغيار">Spare Parts Supply</h3>
-                      <p class="service-subtitle" data-en="Genuine OEM Parts & Fast Delivery" data-ar="قطع غيار أصلية وتسليم سريع">Genuine OEM Parts & Fast Delivery</p>
+                  <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=400&q=90');"></div>
+                  <div class="service-info">
+                      <h3 class="service-title content-en">Process Optimization</h3>
+                      <h3 class="service-title content-ar">تحسين العمليات</h3>
+                      <div class="service-category content-en">Performance Enhancement</div>
+                      <div class="service-category content-ar">تحسين الأداء</div>
                   </div>
               </div>
-              <p class="service-description" data-en="Comprehensive inventory of genuine OEM spare parts with rapid delivery across Oman. Authorized distributor for Caterpillar, Komatsu, Liebherr, Sandvik, and other premium manufacturers." data-ar="مخزون شامل من قطع الغيار الأصلية من الشركة المصنعة مع التسليم السريع في جميع أنحاء عُمان. موزع معتمد لكاتربيلر وكوماتسو وليبهير وساندفيك والشركات المصنعة المتميزة الأخرى.">Comprehensive inventory of genuine OEM spare parts with rapid delivery across Oman. Authorized distributor for Caterpillar, Komatsu, Liebherr, Sandvik, and other premium manufacturers.</p>
+              
+              <p class="service-description content-en">
+                  Advanced process optimization services using AI, machine learning, and digital twin technology to maximize efficiency, reduce costs, and improve environmental performance across your operations.
+              </p>
+              
+              <p class="service-description content-ar">
+                  خدمات تحسين العمليات المتقدمة باستخدام الذكاء الاصطناعي والتعلم الآلي وتقنية التوأم الرقمي لتعظيم الكفاءة وتقليل التكاليف وتحسين الأداء البيئي عبر عملياتك.
+              </p>
+              
               <ul class="service-features">
-                  <li><i class="fas fa-check"></i> <span data-en="15,000+ Parts in Stock" data-ar="15,000+ قطعة غيار في المخزون">15,000+ Parts in Stock</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Same-Day Delivery in Muscat" data-ar="تسليم في نفس اليوم في مسقط">Same-Day Delivery in Muscat</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="24/7 Emergency Supply" data-ar="إمداد طوارئ 24/7">24/7 Emergency Supply</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Inventory Management Solutions" data-ar="حلول إدارة المخزون">Inventory Management Solutions</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Quality Guarantee" data-ar="ضمان الجودة">Quality Guarantee</span></li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Performance Audits & Analysis</span>
+                      <span class="content-ar">مراجعة وتحليل الأداء</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Digital Twin Implementation</span>
+                      <span class="content-ar">تطبيق التوأم الرقمي</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">AI-Powered Process Control</span>
+                      <span class="content-ar">التحكم بالعمليات بالذكاء الاصطناعي</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Energy Efficiency Programs</span>
+                      <span class="content-ar">برامج كفاءة الطاقة</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Continuous Improvement Systems</span>
+                      <span class="content-ar">أنظمة التحسين المستمر</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Real-time Monitoring</span>
+                      <span class="content-ar">المراقبة في الوقت الفعلي</span>
+                  </li>
               </ul>
-              <div class="service-actions">
-                  <a href="spare-parts.html" class="btn-primary" data-en="Browse Parts" data-ar="تصفح القطع">Browse Parts</a>
-                  <a href="emergency-supply.html" class="btn-secondary"><i class="fas fa-shipping-fast"></i></a>
+              
+              <div class="service-metrics">
+                  <div class="metric-item">
+                      <div class="metric-value">25%</div>
+                      <div class="metric-label content-en">Efficiency Gain</div>
+                      <div class="metric-label content-ar">زيادة الكفاءة</div>
+                  </div>
+                  <div class="metric-item">
+                      <div class="metric-value">30%</div>
+                      <div class="metric-label content-en">Cost Reduction</div>
+                      <div class="metric-label content-ar">تقليل التكاليف</div>
+                  </div>
+                  <div class="metric-item">
+                      <div class="metric-value">40%</div>
+                      <div class="metric-label content-en">Energy Savings</div>
+                      <div class="metric-label content-ar">توفير الطاقة</div>
+                  </div>
+              </div>
+              
+              <div class="service-footer">
+                  <a href="#" class="btn-service">
+                      <span class="content-en">Optimize Now</span>
+                      <span class="content-ar">احسن الآن</span>
+                  </a>
+                  <div class="service-status">
+                      <div class="status-dot"></div>
+                      <span class="content-en">AI-Powered</span>
+                      <span class="content-ar">بالذكاء الاصطناعي</span>
+                  </div>
               </div>
           </div>
 
-          <!-- Performance Optimization Service -->
-          <div class="service-card">
+          <!-- Equipment Selection & Procurement -->
+          <div class="service-card animate-on-scroll">
               <div class="service-header">
-                  <div class="service-icon">
-                      <i class="fas fa-chart-line"></i>
-                  </div>
-                  <div>
-                      <h3 class="service-title" data-en="Performance Optimization" data-ar="تحسين الأداء">Performance Optimization</h3>
-                      <p class="service-subtitle" data-en="Data-Driven Efficiency Solutions" data-ar="حلول الكفاءة المدفوعة بالبيانات">Data-Driven Efficiency Solutions</p>
+                  <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&q=90');"></div>
+                  <div class="service-info">
+                      <h3 class="service-title content-en">Equipment Selection & Procurement</h3>
+                      <h3 class="service-title content-ar">اختيار ومشتريات المعدات</h3>
+                      <div class="service-category content-en">Strategic Sourcing</div>
+                      <div class="service-category content-ar">المصادر الاستراتيجية</div>
                   </div>
               </div>
-              <p class="service-description" data-en="Advanced performance monitoring and optimization services using real-time data analytics, predictive maintenance, and efficiency enhancement strategies to maximize equipment ROI." data-ar="خدمات مراقبة وتحسين الأداء المتقدمة باستخدام تحليلات البيانات في الوقت الفعلي والصيانة التنبؤية واستراتيجيات تعزيز الكفاءة لزيادة عائد الاستثمار للمعدات.">Advanced performance monitoring and optimization services using real-time data analytics, predictive maintenance, and efficiency enhancement strategies to maximize equipment ROI.</p>
+              
+              <p class="service-description content-en">
+                  Strategic equipment selection and procurement services leveraging our global supplier network and deep technical expertise to deliver optimal solutions at competitive prices with guaranteed performance.
+              </p>
+              
+              <p class="service-description content-ar">
+                  خدمات اختيار ومشتريات المعدات الاستراتيجية باستخدام شبكة الموردين العالمية والخبرة التقنية العميقة لتقديم حلول مثلى بأسعار تنافسية مع ضمان الأداء.
+              </p>
+              
               <ul class="service-features">
-                  <li><i class="fas fa-check"></i> <span data-en="Real-Time Performance Monitoring" data-ar="مراقبة الأداء في الوقت الفعلي">Real-Time Performance Monitoring</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Predictive Maintenance Programs" data-ar="برامج الصيانة التنبؤية">Predictive Maintenance Programs</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Fuel Efficiency Optimization" data-ar="تحسين كفاءة الوقود">Fuel Efficiency Optimization</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Productivity Analytics" data-ar="تحليلات الإنتاجية">Productivity Analytics</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Cost Reduction Strategies" data-ar="استراتيجيات تخفيض التكلفة">Cost Reduction Strategies</span></li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Technical Equipment Evaluation</span>
+                      <span class="content-ar">تقييم المعدات التقني</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Global Supplier Network Access</span>
+                      <span class="content-ar">الوصول لشبكة الموردين العالمية</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Competitive Bidding Management</span>
+                      <span class="content-ar">إدارة المناقصات التنافسية</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Quality Assurance & Inspection</span>
+                      <span class="content-ar">ضمان الجودة والتفتيش</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Logistics & Delivery Coordination</span>
+                      <span class="content-ar">تنسيق اللوجستيات والتسليم</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">After-Sales Support</span>
+                      <span class="content-ar">دعم ما بعد البيع</span>
+                  </li>
               </ul>
-              <div class="service-actions">
-                  <a href="optimization.html" class="btn-primary" data-en="Optimize Now" data-ar="احسن الآن">Optimize Now</a>
-                  <a href="performance-report.html" class="btn-secondary"><i class="fas fa-chart-bar"></i></a>
+              
+              <div class="service-metrics">
+                  <div class="metric-item">
+                      <div class="metric-value">$2B+</div>
+                      <div class="metric-label content-en">Annual Procurement</div>
+                      <div class="metric-label content-ar">مشتريات سنوية</div>
+                  </div>
+                  <div class="metric-item">
+                      <div class="metric-value">500+</div>
+                      <div class="metric-label content-en">Global Suppliers</div>
+                      <div class="metric-label content-ar">مورد عالمي</div>
+                  </div>
+                  <div class="metric-item">
+                      <div class="metric-value">20%</div>
+                      <div class="metric-label content-en">Cost Savings</div>
+                      <div class="metric-label content-ar">توفير التكاليف</div>
+                  </div>
+              </div>
+              
+              <div class="service-footer">
+                  <a href="#" class="btn-service">
+                      <span class="content-en">Start Procurement</span>
+                      <span class="content-ar">ابدأ المشتريات</span>
+                  </a>
+                  <div class="service-status">
+                      <div class="status-dot"></div>
+                      <span class="content-en">Global Network</span>
+                      <span class="content-ar">شبكة عالمية</span>
+                  </div>
               </div>
           </div>
 
-          <!-- Procurement Management Service -->
-          <div class="service-card">
+          <!-- 24/7 Support Services -->
+          <div class="service-card animate-on-scroll">
               <div class="service-header">
-                  <div class="service-icon">
-                      <i class="fas fa-handshake"></i>
-                  </div>
-                  <div>
-                      <h3 class="service-title" data-en="Procurement Management" data-ar="إدارة المشتريات">Procurement Management</h3>
-                      <p class="service-subtitle" data-en="Strategic Sourcing & Contract Management" data-ar="التوريد الاستراتيجي وإدارة العقود">Strategic Sourcing & Contract Management</p>
+                  <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=90');"></div>
+                  <div class="service-info">
+                      <h3 class="service-title content-en">24/7 Global Support</h3>
+                      <h3 class="service-title content-ar">دعم عالمي ٢٤/٧</h3>
+                      <div class="service-category content-en">Continuous Operations</div>
+                      <div class="service-category content-ar">العمليات المستمرة</div>
                   </div>
               </div>
-              <p class="service-description" data-en="End-to-end procurement management including global sourcing, vendor qualification, contract negotiation, quality assurance, and logistics coordination with worldwide equipment manufacturers." data-ar="إدارة المشتريات الشاملة بما في ذلك التوريد العالمي وتأهيل الموردين والتفاوض على العقود وضمان الجودة وتنسيق اللوجستيات مع مصنعي المعدات في جميع أنحاء العالم.">End-to-end procurement management including global sourcing, vendor qualification, contract negotiation, quality assurance, and logistics coordination with worldwide equipment manufacturers.</p>
+              
+              <p class="service-description content-en">
+                  Round-the-clock global support services ensuring maximum uptime and operational continuity. Our expert teams provide remote monitoring, predictive maintenance, and emergency response services worldwide.
+              </p>
+              
+              <p class="service-description content-ar">
+                  خدمات الدعم العالمي على مدار الساعة لضمان أقصى وقت تشغيل واستمرارية العمليات. تقدم فرقنا الخبيرة خدمات المراقبة عن بعد والصيانة التنبؤية والاستجابة للطوارئ في جميع أنحاء العالم.
+              </p>
+              
               <ul class="service-features">
-                  <li><i class="fas fa-check"></i> <span data-en="Global Sourcing Network" data-ar="شبكة التوريد العالمية">Global Sourcing Network</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Vendor Qualification & Management" data-ar="تأهيل وإدارة الموردين">Vendor Qualification & Management</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Contract Negotiation & Management" data-ar="التفاوض وإدارة العقود">Contract Negotiation & Management</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Quality Assurance Programs" data-ar="برامج ضمان الجودة">Quality Assurance Programs</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Logistics & Customs Support" data-ar="دعم اللوجستيات والجمارك">Logistics & Customs Support</span></li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">24/7 Remote Monitoring</span>
+                      <span class="content-ar">مراقبة عن بعد ٢٤/٧</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Predictive Maintenance Programs</span>
+                      <span class="content-ar">برامج الصيانة التنبؤية</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Emergency Response Teams</span>
+                      <span class="content-ar">فرق الاستجابة للطوارئ</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Technical Helpdesk Support</span>
+                      <span class="content-ar">دعم المساعدة التقنية</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Performance Optimization Reviews</span>
+                      <span class="content-ar">مراجعات تحسين الأداء</span>
+                  </li>
+                  <li>
+                      <div class="feature-icon"><i class="fas fa-check"></i></div>
+                      <span class="content-en">Spare Parts Management</span>
+                      <span class="content-ar">إدارة قطع الغيار</span>
+                  </li>
               </ul>
-              <div class="service-actions">
-                  <a href="procurement.html" class="btn-primary" data-en="Get Quote" data-ar="احصل على عرض">Get Quote</a>
-                  <a href="vendor-network.html" class="btn-secondary"><i class="fas fa-network-wired"></i></a>
-              </div>
-          </div>
-
-          <!-- Technology Integration Service -->
-          <div class="service-card">
-              <div class="service-header">
-                  <div class="service-icon">
-                      <i class="fas fa-microchip"></i>
+              
+              <div class="service-metrics">
+                  <div class="metric-item">
+                      <div class="metric-value">24/7</div>
+                      <div class="metric-label content-en">Global Coverage</div>
+                      <div class="metric-label content-ar">تغطية عالمية</div>
                   </div>
-                  <div>
-                      <h3 class="service-title" data-en="Technology Integration" data-ar="دمج التكنولوجيا">Technology Integration</h3>
-                      <p class="service-subtitle" data-en="Smart Mining Solutions & Automation" data-ar="حلول التعدين الذكية والأتمتة">Smart Mining Solutions & Automation</p>
+                  <div class="metric-item">
+                      <div class="metric-value">4hr</div>
+                      <div class="metric-label content-en">Response Time</div>
+                      <div class="metric-label content-ar">وقت الاستجابة</div>
+                  </div>
+                  <div class="metric-item">
+                      <div class="metric-value">99.5%</div>
+                      <div class="metric-label content-en">Uptime Guarantee</div>
+                      <div class="metric-label content-ar">ضمان وقت التشغيل</div>
                   </div>
               </div>
-              <p class="service-description" data-en="Integration of advanced technologies including IoT sensors, GPS fleet management, telematics systems, and automation solutions to modernize and optimize mining operations." data-ar="دمج التقنيات المتقدمة بما في ذلك أجهزة استشعار إنترنت الأشياء وإدارة الأسطول بنظام GPS وأنظمة المعلوماتية وحلول الأتمتة لتحديث وتحسين عمليات التعدين.">Integration of advanced technologies including IoT sensors, GPS fleet management, telematics systems, and automation solutions to modernize and optimize mining operations.</p>
-              <ul class="service-features">
-                  <li><i class="fas fa-check"></i> <span data-en="IoT Sensor Networks" data-ar="شبكات أجهزة استشعار إنترنت الأشياء">IoT Sensor Networks</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="GPS Fleet Management Systems" data-ar="أنظمة إدارة الأسطول بنظام GPS">GPS Fleet Management Systems</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Telematics Integration" data-ar="دمج المعلوماتية">Telematics Integration</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Automation & Control Systems" data-ar="أنظمة الأتمتة والتحكم">Automation & Control Systems</span></li>
-                  <li><i class="fas fa-check"></i> <span data-en="Digital Twin Technology" data-ar="تكنولوجيا التوأم الرقمي">Digital Twin Technology</span></li>
-              </ul>
-              <div class="service-actions">
-                  <a href="technology.html" class="btn-primary" data-en="Explore Tech" data-ar="استكشف التقنية">Explore Tech</a>
-                  <a href="automation-demo.html" class="btn-secondary"><i class="fas fa-robot"></i></a>
+              
+              <div class="service-footer">
+                  <a href="#" class="btn-service">
+                      <span class="content-en">Get Support</span>
+                      <span class="content-ar">احصل على الدعم</span>
+                  </a>
+                  <div class="service-status">
+                      <div class="status-dot"></div>
+                      <span class="content-en">Always Available</span>
+                      <span class="content-ar">متوفر دائماً</span>
+                  </div>
               </div>
           </div>
       </div>
@@ -758,119 +1024,192 @@
 
   <!-- Process Section -->
   <section class="process-section">
-      <div class="section-header">
+      <div class="process-container">
           <h2 class="section-title">
-              <span data-en="Our Service" data-ar="عملية">Our Service</span><br>
-              <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-en="Process" data-ar="الخدمة">Process</span>
+              <span class="content-en">Our Proven <span class="gradient-text">Delivery Process</span></span>
+              <span class="content-ar">عملية <span class="gradient-text">التسليم</span> المثبتة</span>
           </h2>
-          <p class="section-description" data-en="A systematic approach to delivering exceptional mining equipment solutions and services." data-ar="نهج منهجي لتقديم حلول وخدمات معدات التعدين الاستثنائية.">A systematic approach to delivering exceptional mining equipment solutions and services.</p>
-      </div>
-      
-      <div class="process-steps">
-          <div class="process-step">
-              <div class="process-number">1</div>
-              <h3 class="process-title" data-en="Consultation & Assessment" data-ar="الاستشارة والتقييم">Consultation & Assessment</h3>
-              <p class="process-description" data-en="Initial consultation to understand your mining requirements, site conditions, and operational objectives." data-ar="استشارة أولية لفهم متطلبات التعدين وظروف الموقع والأهداف التشغيلية الخاصة بك.">Initial consultation to understand your mining requirements, site conditions, and operational objectives.</p>
-          </div>
-          <div class="process-step">
-              <div class="process-number">2</div>
-              <h3 class="process-title" data-en="Solution Design" data-ar="تصميم الحل">Solution Design</h3>
-              <p class="process-description" data-en="Custom solution design based on your specific needs, budget, and performance requirements." data-ar="تصميم حل مخصص بناءً على احتياجاتك المحددة والميزانية ومتطلبات الأداء.">Custom solution design based on your specific needs, budget, and performance requirements.</p>
-          </div>
-          <div class="process-step">
-              <div class="process-number">3</div>
-              <h3 class="process-title" data-en="Implementation" data-ar="التنفيذ">Implementation</h3>
-              <p class="process-description" data-en="Professional implementation with project management, installation, and commissioning services." data-ar="تنفيذ مهني مع إدارة المشاريع وخدمات التركيب والتشغيل.">Professional implementation with project management, installation, and commissioning services.</p>
-          </div>
-          <div class="process-step">
-              <div class="process-number">4</div>
-              <h3 class="process-title" data-en="Ongoing Support" data-ar="الدعم المستمر">Ongoing Support</h3>
-              <p class="process-description" data-en="Continuous support with maintenance, spare parts supply, and performance optimization services." data-ar="دعم مستمر مع الصيانة وتوريد قطع الغيار وخدمات تحسين الأداء.">Continuous support with maintenance, spare parts supply, and performance optimization services.</p>
-          </div>
-      </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-      <div class="cta-content">
-          <h2 class="cta-title" data-en="Ready to Optimize Your Mining Operations?" data-ar="هل أنت مستعد لتحسين عمليات التعدين الخاصة بك؟">Ready to Optimize Your Mining Operations?</h2>
-          <p class="cta-description" data-en="Contact our team of mining equipment experts today to discuss your requirements and discover how SESMINE can help maximize your operational efficiency and profitability." data-ar="اتصل بفريق خبراء معدات التعدين لدينا اليوم لمناقشة متطلباتك واكتشاف كيف يمكن لسيسماين مساعدتك في زيادة الكفاءة التشغيلية والربحية.">Contact our team of mining equipment experts today to discuss your requirements and discover how SESMINE can help maximize your operational efficiency and profitability.</p>
-          <div class="cta-buttons">
-              <a href="contact.html" class="btn-primary btn-large">
-                  <i class="fas fa-phone"></i>
-                  <span data-en="Contact Our Experts" data-ar="اتصل بخبرائنا">Contact Our Experts</span>
-              </a>
-              <a href="quote.html" class="btn-secondary btn-large">
-                  <i class="fas fa-calculator"></i>
-                  <span data-en="Get Free Quote" data-ar="احصل على عرض مجاني">Get Free Quote</span>
-              </a>
+          
+          <div class="process-steps">
+              <div class="process-step animate-on-scroll">
+                  <div class="step-number">1</div>
+                  <div class="step-icon">
+                      <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <h3 class="step-title content-en">Discovery & Analysis</h3>
+                  <h3 class="step-title content-ar">الاستكشاف والتحليل</h3>
+                  <p class="step-description content-en">
+                      Comprehensive assessment of your requirements, existing systems, and operational challenges to develop optimal solutions.
+                  </p>
+                  <p class="step-description content-ar">
+                      تقييم شامل لمتطلباتك والأنظمة الحالية والتحديات التشغيلية لتطوير الحلول المثلى.
+                  </p>
+              </div>
+              
+              <div class="process-step animate-on-scroll">
+                  <div class="step-number">2</div>
+                  <div class="step-icon">
+                      <i class="fas fa-drafting-compass"></i>
+                  </div>
+                  <h3 class="step-title content-en">Design & Engineering</h3>
+                  <h3 class="step-title content-ar">التصميم والهندسة</h3>
+                  <p class="step-description content-en">
+                      Detailed engineering design and planning using advanced modeling tools and industry best practices.
+                  </p>
+                  <p class="step-description content-ar">
+                      التصميم الهندسي التفصيلي والتخطيط باستخدام أدوات النمذجة المتقدمة وأفضل الممارسات الصناعية.
+                  </p>
+              </div>
+              
+              <div class="process-step animate-on-scroll">
+                  <div class="step-number">3</div>
+                  <div class="step-icon">
+                      <i class="fas fa-cogs"></i>
+                  </div>
+                  <h3 class="step-title content-en">Implementation</h3>
+                  <h3 class="step-title content-ar">التنفيذ</h3>
+                  <p class="step-description content-en">
+                      Professional project execution with rigorous quality control, safety management, and progress monitoring.
+                  </p>
+                  <p class="step-description content-ar">
+                      تنفيذ المشاريع الاحترافي مع مراقبة الجودة الصارمة وإدارة السلامة ومتابعة التقدم.
+                  </p>
+              </div>
+              
+              <div class="process-step animate-on-scroll">
+                  <div class="step-number">4</div>
+                  <div class="step-icon">
+                      <i class="fas fa-rocket"></i>
+                  </div>
+                  <h3 class="step-title content-en">Commissioning & Support</h3>
+                  <h3 class="step-title content-ar">التشغيل والدعم</h3>
+                  <p class="step-description content-en">
+                      Complete system commissioning, staff training, and ongoing support to ensure optimal performance.
+                  </p>
+                  <p class="step-description content-ar">
+                      تشغيل النظام الكامل وتدريب الموظفين والدعم المستمر لضمان الأداء الأمثل.
+                  </p>
+              </div>
           </div>
       </div>
   </section>
 
   <script>
-      // Language switcher functionality
-      let currentLang = 'en';
-      
-      // Animate stats on scroll
-      const animateStats = () => {
-          const statNumbers = document.querySelectorAll('.stat-number');
-          statNumbers.forEach(stat => {
-              const finalNumber = stat.textContent;
-              const number = parseInt(finalNumber.replace(/[^0-9]/g, ''));
-              if (number && !stat.dataset.animated) {
-                  stat.dataset.animated = 'true';
-                  let current = 0;
-                  const increment = number / 50;
-                  const timer = setInterval(() => {
-                      current += increment;
-                      if (current >= number) {
-                          stat.textContent = finalNumber;
-                          clearInterval(timer);
-                      } else {
-                          stat.textContent = Math.floor(current) + (finalNumber.includes('+') ? '+' : '');
-                      }
-                  }, 30);
-              }
+      // Language switching functionality
+      function switchLanguage(lang) {
+          const body = document.body;
+          const langButtons = document.querySelectorAll('.lang-btn');
+          
+          // Update body direction and language
+          if (lang === 'ar') {
+              body.setAttribute('dir', 'rtl');
+              body.setAttribute('lang', 'ar');
+          } else {
+              body.setAttribute('dir', 'ltr');
+              body.setAttribute('lang', 'en');
+          }
+          
+          // Update active button
+          langButtons.forEach(btn => {
+              btn.classList.remove('active');
           });
+          event.target.classList.add('active');
+          
+          // Store language preference
+          localStorage.setItem('preferred-language', lang);
+          
+          console.log(`Language switched to: ${lang}`);
+      }
+      
+      // Load saved language preference
+      document.addEventListener('DOMContentLoaded', () => {
+          const savedLang = localStorage.getItem('preferred-language');
+          if (savedLang && savedLang === 'ar') {
+              document.body.setAttribute('dir', 'rtl');
+              document.body.setAttribute('lang', 'ar');
+              document.querySelector('.lang-btn[onclick="switchLanguage(\'ar\')"]').classList.add('active');
+              document.querySelector('.lang-btn[onclick="switchLanguage(\'en\')"]').classList.remove('active');
+          }
+      });
+      
+      // Header scroll effect
+      window.addEventListener('scroll', () => {
+          const header = document.getElementById('header');
+          if (window.scrollY > 100) {
+              header.classList.add('scrolled');
+          } else {
+              header.classList.remove('scrolled');
+          }
+      });
+      
+      // Animate on scroll
+      const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -100px 0px'
       };
       
-      // Intersection Observer for animations
       const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
               if (entry.isIntersecting) {
-                  if (entry.target.classList.contains('services-stats')) {
-                      animateStats();
-                  }
-                  entry.target.style.opacity = '1';
-                  entry.target.style.transform = 'translateY(0)';
+                  entry.target.classList.add('animated');
               }
           });
-      }, { threshold: 0.1 });
+      }, observerOptions);
       
-      // Observe elements
-      document.querySelectorAll('.service-card, .stat-card, .process-step, .services-stats').forEach(el => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(30px)';
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
           observer.observe(el);
       });
       
-      // Service card hover effects
+      // Service card interactions
       document.querySelectorAll('.service-card').forEach(card => {
           card.addEventListener('mouseenter', () => {
-              const icon = card.querySelector('.service-icon');
-              icon.style.transform = 'scale(1.1) rotate(5deg)';
+              card.style.transform = 'translateY(-16px) scale(1.02)';
+              card.style.boxShadow = '0 0 60px rgba(201, 169, 110, 0.2)';
           });
           
           card.addEventListener('mouseleave', () => {
-              const icon = card.querySelector('.service-icon');
-              icon.style.transform = 'scale(1) rotate(0deg)';
+              card.style.transform = 'translateY(0) scale(1)';
+              card.style.boxShadow = 'var(--shadow-xl)';
           });
       });
       
-      console.log('🔧 SESMINE Services Page Loaded');
-      console.log('⚙️ Equipment Selection | Spare Parts | Optimization | Procurement | Technology');
+      // Process step interactions
+      document.querySelectorAll('.process-step').forEach(step => {
+          step.addEventListener('mouseenter', () => {
+              step.style.transform = 'translateY(-12px) rotate(1deg)';
+          });
+          
+          step.addEventListener('mouseleave', () => {
+              step.style.transform = 'translateY(0) rotate(0deg)';
+          });
+      });
+      
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const target = document.querySelector(this.getAttribute('href'));
+              if (target) {
+                  target.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start'
+                  });
+              }
+          });
+      });
+      
+      // Initialize page
+      console.log('🔧 SESMINE Bilingual Services Platform Loaded');
+      console.log('🌟 Languages: English & Arabic | World-Class Engineering Solutions');
+      console.log('⚙️ Services: Plant Design | Process Optimization | Equipment Procurement | 24/7 Support');
+      
+      // Performance monitoring
+      if ('performance' in window) {
+          window.addEventListener('load', () => {
+              const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+              console.log(`⚡ Services page loaded in ${loadTime}ms`);
+          });
+      }
   </script>
 </body>
 </html>
