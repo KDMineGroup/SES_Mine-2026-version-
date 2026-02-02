@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About SESMINE | 50+ Years of Global Mining Excellence | حول سيسماين</title>
-  <meta name="description" content="SESMINE - Founded in 1974, leading global mining and chemical processing solutions provider. 50+ years of excellence, Fortune 500 partnerships, serving 150+ countries worldwide. تأسست سيسماين في ١٩٧٤">
+  <title>SESMINE Projects | Global Mining & Processing Projects Portfolio | مشاريع سيسماين</title>
+  <meta name="description" content="SESMINE's global project portfolio: $50B+ delivered across 150+ countries. Major mining operations, chemical processing plants, and infrastructure projects worldwide. محفظة مشاريع سيسماين العالمية">
   <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -203,7 +203,7 @@
           right: 0;
           width: 60%;
           height: 100%;
-          background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=90') center/cover;
+          background: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1920&q=90') center/cover;
           opacity: 0.08;
           z-index: 1;
       }
@@ -217,16 +217,9 @@
           max-width: 1600px;
           margin: 0 auto;
           padding: 3rem;
-          display: grid;
-          grid-template-columns: 1.2fr 0.8fr;
-          gap: 6rem;
-          align-items: center;
+          text-align: center;
           position: relative;
           z-index: 2;
-      }
-      
-      .hero-content {
-          padding: 2rem 0;
       }
       
       .hero-badge {
@@ -261,39 +254,37 @@
       .hero-subtitle {
           font-size: 1.375rem;
           color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 2.5rem;
-          line-height: 1.7;
+          margin-bottom: 3rem;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
       }
       
-      .hero-visual {
-          position: relative;
-          display: flex;
-          flex-direction: column;
+      .hero-stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
           gap: 2rem;
+          margin-top: 3rem;
+          max-width: 1000px;
+          margin-left: auto;
+          margin-right: auto;
       }
       
-      .timeline-card {
+      .hero-stat {
           background: var(--glass);
           border: 1px solid var(--glass-border);
-          border-radius: 20px;
+          border-radius: 16px;
           padding: 2rem;
           backdrop-filter: blur(20px);
-          box-shadow: var(--shadow-xl);
-          position: relative;
-          overflow: hidden;
+          transition: all 0.4s ease;
       }
       
-      .timeline-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: var(--gradient-gold);
+      .hero-stat:hover {
+          transform: translateY(-8px);
+          box-shadow: var(--shadow-glow);
       }
       
-      .timeline-year {
+      .stat-number {
           font-family: 'Playfair Display', serif;
           font-size: 2rem;
           font-weight: 700;
@@ -301,141 +292,84 @@
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
       }
       
-      .timeline-event {
-          color: rgba(255, 255, 255, 0.9);
-          font-size: 1rem;
-          line-height: 1.6;
-      }
-      
-      /* Story Section */
-      .story-section {
-          padding: 8rem 3rem;
-          background: var(--dark);
-      }
-      
-      .story-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 6rem;
-          align-items: center;
-      }
-      
-      .story-content {
-          padding: 2rem 0;
-      }
-      
-      .section-badge {
-          display: inline-block;
-          padding: 0.75rem 1.5rem;
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 50px;
+      .stat-label {
           font-size: 0.875rem;
-          font-weight: 600;
-          margin-bottom: 2rem;
-          backdrop-filter: blur(20px);
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 1px;
       }
       
-      .section-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.5rem, 4vw, 4rem);
-          font-weight: 700;
-          line-height: 1.2;
-          margin-bottom: 2rem;
-      }
-      
-      .story-text {
-          font-size: 1.125rem;
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.8;
-          margin-bottom: 2rem;
-      }
-      
-      .story-highlights {
-          list-style: none;
-          margin-bottom: 2rem;
-      }
-      
-      .story-highlights li {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-bottom: 1rem;
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.9);
-      }
-      
-      .highlight-icon {
-          width: 24px;
-          height: 24px;
-          background: var(--gradient-gold);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.8rem;
-          color: var(--dark);
-          flex-shrink: 0;
-      }
-      
-      .story-image {
-          position: relative;
-          height: 500px;
-          border-radius: 20px;
-          overflow: hidden;
-          background-size: cover;
-          background-position: center;
-          box-shadow: var(--shadow-2xl);
-      }
-      
-      .story-image::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
-      }
-      
-      /* Leadership Section */
-      .leadership-section {
-          padding: 8rem 3rem;
+      /* Projects Filter */
+      .projects-filter {
+          padding: 4rem 3rem 2rem;
           background: var(--darker);
       }
       
-      .leadership-container {
+      .filter-container {
           max-width: 1600px;
           margin: 0 auto;
           text-align: center;
       }
       
-      .leadership-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 3rem;
-          margin-top: 4rem;
+      .filter-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+          margin-bottom: 3rem;
       }
       
-      .leader-card {
+      .filter-btn {
+          padding: 0.75rem 1.5rem;
+          background: transparent;
+          border: 2px solid var(--glass-border);
+          color: rgba(255, 255, 255, 0.8);
+          border-radius: 50px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-weight: 600;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+      }
+      
+      .filter-btn:hover,
+      .filter-btn.active {
+          background: var(--gradient-gold);
+          border-color: var(--secondary);
+          color: var(--dark);
+      }
+      
+      /* Projects Grid */
+      .projects-section {
+          padding: 2rem 3rem 8rem;
+          background: var(--darker);
+      }
+      
+      .projects-grid {
+          max-width: 1600px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+          gap: 3rem;
+      }
+      
+      .project-card {
           background: var(--glass);
           border: 1px solid var(--glass-border);
           border-radius: 24px;
-          padding: 3rem;
+          overflow: hidden;
           backdrop-filter: blur(20px);
           transition: all 0.4s ease;
           position: relative;
-          overflow: hidden;
+          cursor: pointer;
       }
       
-      .leader-card::before {
+      .project-card::before {
           content: '';
           position: absolute;
           top: 0;
@@ -445,196 +379,248 @@
           background: var(--gradient-gold);
           transform: scaleX(0);
           transition: transform 0.4s ease;
+          z-index: 2;
       }
       
-      .leader-card:hover {
+      .project-card:hover {
           transform: translateY(-12px);
           box-shadow: var(--shadow-glow);
+          border-color: rgba(201, 169, 110, 0.3);
       }
       
-      .leader-card:hover::before {
+      .project-card:hover::before {
           transform: scaleX(1);
       }
       
-      .leader-avatar {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          background: var(--gradient-gold);
-          margin: 0 auto 2rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 3rem;
-          color: var(--dark);
-          box-shadow: var(--shadow-xl);
+      .project-image {
+          position: relative;
+          height: 300px;
+          background-size: cover;
+          background-position: center;
+          overflow: hidden;
       }
       
-      .leader-name {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.5rem;
+      .project-image::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 100%);
+          z-index: 1;
+      }
+      
+      .project-overlay {
+          position: absolute;
+          top: 1.5rem;
+          left: 1.5rem;
+          right: 1.5rem;
+          z-index: 2;
+      }
+      
+      .project-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: var(--gradient-gold);
+          color: var(--dark);
+          border-radius: 20px;
+          font-size: 0.75rem;
           font-weight: 700;
-          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 1rem;
+      }
+      
+      .project-location {
+          position: absolute;
+          bottom: 1.5rem;
+          left: 1.5rem;
+          right: 1.5rem;
+          z-index: 2;
+      }
+      
+      .location-text {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: white;
+          font-weight: 600;
+          font-size: 0.9rem;
+      }
+      
+      .project-content {
+          padding: 2.5rem;
+      }
+      
+      .project-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.75rem;
+          font-weight: 700;
+          margin-bottom: 0.75rem;
           color: white;
       }
       
-      .leader-title {
-          font-size: 1rem;
+      .project-category {
+          font-size: 0.875rem;
           color: var(--secondary);
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 1px;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
       }
       
-      .leader-bio {
+      .project-description {
           color: rgba(255, 255, 255, 0.8);
           line-height: 1.7;
           margin-bottom: 2rem;
+          font-size: 1rem;
       }
       
-      .leader-credentials {
+      .project-specs {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          margin-bottom: 2rem;
+          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 12px;
+          border: 1px solid var(--glass-border);
+      }
+      
+      .spec-item {
           display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          justify-content: center;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.5rem 0;
       }
       
-      .credential-badge {
-          padding: 0.5rem 1rem;
-          background: rgba(37, 99, 235, 0.1);
-          border: 1px solid rgba(37, 99, 235, 0.2);
-          border-radius: 20px;
+      .spec-label {
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          font-size: 0.9rem;
+      }
+      
+      .spec-value {
+          font-weight: 700;
+          color: white;
+          font-size: 0.9rem;
+      }
+      
+      .project-metrics {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+          margin-bottom: 2rem;
+      }
+      
+      .metric-item {
+          text-align: center;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 12px;
+      }
+      
+      .metric-value {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.25rem;
+          font-weight: 700;
+          background: var(--gradient-accent);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.25rem;
+      }
+      
+      .metric-label {
           font-size: 0.75rem;
-          color: #3b82f6;
-          font-weight: 600;
+          color: rgba(255, 255, 255, 0.7);
           text-transform: uppercase;
           letter-spacing: 0.5px;
       }
       
-      /* Values Section */
-      .values-section {
-          padding: 8rem 3rem;
-          background: var(--dark);
-      }
-      
-      .values-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          text-align: center;
-      }
-      
-      .values-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 4rem;
-      }
-      
-      .value-card {
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 20px;
-          padding: 2.5rem;
-          backdrop-filter: blur(20px);
-          transition: all 0.4s ease;
-          text-align: center;
-      }
-      
-      .value-card:hover {
-          transform: translateY(-8px);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      .value-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--gradient-gold);
-          border-radius: 50%;
+      .project-footer {
           display: flex;
+          justify-content: space-between;
           align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: var(--dark);
-          margin: 0 auto 1.5rem;
-          box-shadow: var(--shadow-xl);
+          padding-top: 1.5rem;
+          border-top: 1px solid var(--glass-border);
       }
       
-      .value-title {
+      .project-value {
+          display: flex;
+          flex-direction: column;
+      }
+      
+      .value-label {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.6);
+          text-transform: uppercase;
+          margin-bottom: 0.25rem;
+      }
+      
+      .value-amount {
           font-family: 'Playfair Display', serif;
           font-size: 1.5rem;
           font-weight: 700;
-          margin-bottom: 1rem;
-          color: white;
+          color: var(--secondary);
       }
       
-      .value-description {
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.7;
-      }
-      
-      /* Global Presence */
-      .global-section {
-          padding: 8rem 3rem;
-          background: var(--darker);
-      }
-      
-      .global-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          text-align: center;
-      }
-      
-      .global-stats {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 3rem;
-          margin-top: 4rem;
-      }
-      
-      .global-stat {
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 20px;
-          padding: 2.5rem;
-          backdrop-filter: blur(20px);
-          transition: all 0.4s ease;
-      }
-      
-      .global-stat:hover {
-          transform: translateY(-8px) scale(1.05);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      .global-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--gradient-accent);
-          border-radius: 50%;
+      .project-actions {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: white;
-          margin: 0 auto 1.5rem;
+          gap: 0.75rem;
+      }
+      
+      .btn-project {
+          padding: 0.75rem 1.5rem;
+          background: var(--gradient-gold);
+          color: var(--dark);
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-size: 0.875rem;
+      }
+      
+      .btn-project:hover {
+          transform: translateY(-2px);
           box-shadow: var(--shadow-xl);
       }
       
-      .global-number {
-          font-family: 'Playfair Display', serif;
-          font-size: 3rem;
-          font-weight: 700;
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 0.5rem;
+      .btn-outline {
+          background: transparent;
+          border: 1px solid var(--glass-border);
+          color: rgba(255, 255, 255, 0.8);
       }
       
-      .global-label {
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.8);
-          font-weight: 500;
+      .btn-outline:hover {
+          background: var(--glass);
+          border-color: var(--secondary);
+          color: var(--secondary);
+      }
+      
+      /* Certifications */
+      .certification-badges {
+          display: flex;
+          gap: 0.5rem;
+          margin-top: 1rem;
+          flex-wrap: wrap;
+      }
+      
+      .cert-badge {
+          padding: 0.25rem 0.75rem;
+          background: rgba(37, 99, 235, 0.1);
+          border: 1px solid rgba(37, 99, 235, 0.2);
+          border-radius: 15px;
+          font-size: 0.7rem;
+          color: #3b82f6;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
       }
       
       /* Animations */
@@ -665,34 +651,42 @@
           }
           
           .hero-container {
-              grid-template-columns: 1fr;
-              text-align: center;
-              gap: 3rem;
               padding: 2rem 1.5rem;
           }
           
-          .story-container {
-              grid-template-columns: 1fr;
-              gap: 3rem;
-              text-align: center;
+          .hero-stats {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1rem;
           }
           
-          .leadership-grid {
+          .filter-buttons {
+              gap: 0.5rem;
+          }
+          
+          .filter-btn {
+              padding: 0.5rem 1rem;
+              font-size: 0.8rem;
+          }
+          
+          .projects-grid {
               grid-template-columns: 1fr;
               padding: 0 1.5rem;
           }
           
-          .leader-card {
+          .project-card {
+              margin-bottom: 1rem;
+          }
+          
+          .project-content {
               padding: 2rem;
           }
           
-          .values-grid {
+          .project-specs {
               grid-template-columns: 1fr;
           }
           
-          .global-stats {
-              grid-template-columns: repeat(2, 1fr);
-              gap: 2rem;
+          .project-metrics {
+              grid-template-columns: 1fr;
           }
       }
   </style>
@@ -736,8 +730,8 @@
           </nav>
           
           <a href="contact.html" class="cta-button">
-              <span class="content-en">Join Our Team</span>
-              <span class="content-ar">انضم لفريقنا</span>
+              <span class="content-en">Start Project</span>
+              <span class="content-ar">ابدأ مشروع</span>
           </a>
       </div>
   </header>
@@ -745,345 +739,478 @@
   <!-- Hero Section -->
   <section class="hero">
       <div class="hero-container">
-          <div class="hero-content">
-              <div class="hero-badge">
-                  <i class="fas fa-crown"></i>
-                  <span class="content-en">50+ Years of Global Excellence Since 1974</span>
-                  <span class="content-ar">أكثر من ٥٠ عاماً من التميز العالمي منذ ١٩٧٤</span>
-              </div>
-              
-              <h1 class="hero-title">
-                  <span class="content-en">Building the <span class="gradient-text">Future</span><br>of Global Mining</span>
-                  <span class="content-ar">بناء <span class="gradient-text">مستقبل</span><br>التعدين العالمي</span>
-              </h1>
-              
-              <p class="hero-subtitle content-en">
-                  Founded in 1974 in the Sultanate of Oman, SESMINE has grown from a regional mining services provider to a global leader in mining and chemical processing solutions, trusted by Fortune 500 companies across six continents.
-              </p>
-              
-              <p class="hero-subtitle content-ar">
-                  تأسست سيسماين في عام ١٩٧٤ في سلطنة عُمان، ونمت من مقدم خدمات التعدين الإقليمي إلى رائد عالمي في حلول التعدين والمعالجة الكيميائية، موثوق به من قبل شركات فورتشن ٥٠٠ عبر ست قارات.
-              </p>
+          <div class="hero-badge">
+              <i class="fas fa-globe"></i>
+              <span class="content-en">Global Project Portfolio - $50B+ Delivered</span>
+              <span class="content-ar">محفظة مشاريع عالمية - أكثر من ٥٠ مليار دولار منجز</span>
           </div>
           
-          <div class="hero-visual">
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">1974</div>
-                  <div class="timeline-event content-en">Founded in Muscat, Oman as a mining equipment supplier</div>
-                  <div class="timeline-event content-ar">تأسست في مسقط، عُمان كمورد معدات التعدين</div>
+          <h1 class="hero-title">
+              <span class="content-en">Transforming <span class="gradient-text">Industries</span><br>Across 150+ Countries</span>
+              <span class="content-ar">تحويل <span class="gradient-text">الصناعات</span><br>عبر أكثر من ١٥٠ دولة</span>
+          </h1>
+          
+          <p class="hero-subtitle content-en">
+              Discover our world-class project portfolio spanning five decades of engineering excellence. From mega mining operations to cutting-edge chemical processing plants, we deliver transformational projects that define industry standards.
+          </p>
+          
+          <p class="hero-subtitle content-ar">
+              اكتشف محفظة مشاريعنا عالمية المستوى التي تمتد لخمسة عقود من التميز الهندسي. من عمليات التعدين الضخمة إلى مصانع المعالجة الكيميائية المتطورة، نقدم مشاريع تحويلية تحدد معايير الصناعة.
+          </p>
+          
+          <div class="hero-stats">
+              <div class="hero-stat animate-on-scroll">
+                  <div class="stat-number">1000+</div>
+                  <div class="stat-label content-en">Projects Completed</div>
+                  <div class="stat-label content-ar">مشروع مكتمل</div>
               </div>
-              
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">1985</div>
-                  <div class="timeline-event content-en">Expanded to chemical processing and acid plant construction</div>
-                  <div class="timeline-event content-ar">توسعت في المعالجة الكيميائية وبناء مصانع الأحماض</div>
+              <div class="hero-stat animate-on-scroll">
+                  <div class="stat-number">$50B+</div>
+                  <div class="stat-label content-en">Total Value</div>
+                  <div class="stat-label content-ar">القيمة الإجمالية</div>
               </div>
-              
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">2000</div>
-                  <div class="timeline-event content-en">Achieved global presence across 50+ countries</div>
-                  <div class="timeline-event content-ar">حققت حضوراً عالمياً عبر أكثر من ٥٠ دولة</div>
+              <div class="hero-stat animate-on-scroll">
+                  <div class="stat-number">150+</div>
+                  <div class="stat-label content-en">Countries</div>
+                  <div class="stat-label content-ar">دولة</div>
               </div>
-              
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">2024</div>
-                  <div class="timeline-event content-en">Leading Fortune 500 partnerships in 150+ countries</div>
-                  <div class="timeline-event content-ar">تقود شراكات فورتشن ٥٠٠ في أكثر من ١٥٠ دولة</div>
+              <div class="hero-stat animate-on-scroll">
+                  <div class="stat-number">98%</div>
+                  <div class="stat-label content-en">Success Rate</div>
+                  <div class="stat-label content-ar">معدل النجاح</div>
               </div>
           </div>
       </div>
   </section>
 
-  <!-- Story Section -->
-  <section class="story-section">
-      <div class="story-container">
-          <div class="story-content animate-on-scroll">
-              <div class="section-badge content-en">Our Story</div>
-              <div class="section-badge content-ar">قصتنا</div>
-              
-              <h2 class="section-title">
-                  <span class="content-en">Five Decades of <span class="gradient-text">Innovation</span><br>& Excellence</span>
-                  <span class="content-ar">خمسة عقود من <span class="gradient-text">الابتكار</span><br>والتميز</span>
-              </h2>
-              
-              <p class="story-text content-en">
-                  What began as a small mining equipment supplier in Muscat has evolved into a global powerhouse that defines industry standards. Our journey is marked by continuous innovation, strategic partnerships, and an unwavering commitment to excellence that has earned us the trust of the world's largest corporations.
-              </p>
-              
-              <p class="story-text content-ar">
-                  ما بدأ كمورد صغير لمعدات التعدين في مسقط تطور إلى قوة عالمية تحدد معايير الصناعة. رحلتنا مميزة بالابتكار المستمر والشراكات الاستراتيجية والالتزام الثابت بالتميز الذي كسب ثقة أكبر الشركات في العالم.
-              </p>
-              
-              <ul class="story-highlights">
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
-                      <span class="content-en">First Omani company to achieve ISO 9001:2015 certification in mining sector</span>
-                      <span class="content-ar">أول شركة عُمانية تحصل على شهادة ISO 9001:2015 في قطاع التعدين</span>
-                  </li>
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-globe"></i></div>
-                      <span class="content-en">Pioneered sustainable mining practices in the Middle East region</span>
-                      <span class="content-ar">رائدة في ممارسات التعدين المستدام في منطقة الشرق الأوسط</span>
-                  </li>
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-handshake"></i></div>
-                      <span class="content-en">Strategic partnerships with 500+ global suppliers and manufacturers</span>
-                      <span class="content-ar">شراكات استراتيجية مع أكثر من ٥٠٠ مورد ومصنع عالمي</span>
-                  </li>
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-award"></i></div>
-                      <span class="content-en">Recipient of Global Mining Excellence Award 2023</span>
-                      <span class="content-ar">حائزة على جائزة التميز العالمية للتعدين ٢٠٢٣</span>
-                  </li>
-              </ul>
-          </div>
-          
-          <div class="story-image animate-on-scroll" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=90');">
+  <!-- Projects Filter -->
+  <section class="projects-filter">
+      <div class="filter-container">
+          <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="all">
+                  <span class="content-en">All Projects</span>
+                  <span class="content-ar">جميع المشاريع</span>
+              </button>
+              <button class="filter-btn" data-filter="mining">
+                  <span class="content-en">Mining Operations</span>
+                  <span class="content-ar">عمليات التعدين</span>
+              </button>
+              <button class="filter-btn" data-filter="chemical">
+                  <span class="content-en">Chemical Plants</span>
+                  <span class="content-ar">المصانع الكيميائية</span>
+              </button>
+              <button class="filter-btn" data-filter="processing">
+                  <span class="content-en">Processing Facilities</span>
+                  <span class="content-ar">مرافق المعالجة</span>
+              </button>
+              <button class="filter-btn" data-filter="infrastructure">
+                  <span class="content-en">Infrastructure</span>
+                  <span class="content-ar">البنية التحتية</span>
+              </button>
           </div>
       </div>
   </section>
 
-  <!-- Leadership Section -->
-  <section class="leadership-section">
-      <div class="leadership-container">
-          <div class="section-badge content-en">Leadership Team</div>
-          <div class="section-badge content-ar">فريق القيادة</div>
-          
-          <h2 class="section-title">
-              <span class="content-en">Visionary <span class="gradient-text">Leadership</span><br>Driving Global Success</span>
-              <span class="content-ar">قيادة <span class="gradient-text">رؤيوية</span><br>تقود النجاح العالمي</span>
-          </h2>
-          
-          <div class="leadership-grid">
-              <div class="leader-card animate-on-scroll">
-                  <div class="leader-avatar">
-                      <i class="fas fa-user-tie"></i>
+  <!-- Projects Grid -->
+  <section class="projects-section">
+      <div class="projects-grid">
+          <!-- Sohar Copper Mine Project -->
+          <div class="project-card animate-on-scroll" data-category="mining">
+              <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&q=90');">
+                  <div class="project-overlay">
+                      <div class="project-status">
+                          <i class="fas fa-check-circle"></i>
+                          <span class="content-en">Completed</span>
+                          <span class="content-ar">مكتمل</span>
+                      </div>
                   </div>
-                  <h3 class="leader-name content-en">Ahmed Al-Rashid</h3>
-                  <h3 class="leader-name content-ar">أحمد الراشد</h3>
-                  <div class="leader-title content-en">Chairman & CEO</div>
-                  <div class="leader-title content-ar">رئيس مجلس الإدارة والرئيس التنفيذي</div>
-                  <p class="leader-bio content-en">
-                      Visionary leader with 35+ years in mining and chemical processing. Under his leadership, SESMINE has achieved unprecedented global expansion and industry recognition.
-                  </p>
-                  <p class="leader-bio content-ar">
-                      قائد رؤيوي مع أكثر من ٣٥ عاماً في التعدين والمعالجة الكيميائية. تحت قيادته، حققت سيسماين توسعاً عالمياً واعترافاً صناعياً لم يسبق له مثيل.
-                  </p>
-                  <div class="leader-credentials">
-                      <div class="credential-badge">MBA Mining</div>
-                      <div class="credential-badge">PE License</div>
-                      <div class="credential-badge">40+ Years</div>
+                  <div class="project-location">
+                      <div class="location-text">
+                          <i class="fas fa-map-marker-alt"></i>
+                          <span class="content-en">Sohar, Oman</span>
+                          <span class="content-ar">صحار، عُمان</span>
+                      </div>
                   </div>
               </div>
               
-              <div class="leader-card animate-on-scroll">
-                  <div class="leader-avatar">
-                      <i class="fas fa-cogs"></i>
+              <div class="project-content">
+                  <h3 class="project-title content-en">Sohar Copper Mining Complex</h3>
+                  <h3 class="project-title content-ar">مجمع تعدين النحاس بصحار</h3>
+                  <div class="project-category content-en">Ultra-Scale Mining Operation</div>
+                  <div class="project-category content-ar">عملية تعدين فائقة النطاق</div>
+                  
+                  <p class="project-description content-en">
+                      World's largest copper mining and smelting complex featuring advanced extraction technologies, automated processing systems, and sustainable environmental practices. Producing 400,000 tons of copper annually.
+                  </p>
+                  
+                  <p class="project-description content-ar">
+                      أكبر مجمع لتعدين وصهر النحاس في العالم يتميز بتقنيات الاستخراج المتقدمة وأنظمة المعالجة الآلية والممارسات البيئية المستدامة. ينتج ٤٠٠,٠٠٠ طن من النحاس سنوياً.
+                  </p>
+                  
+                  <div class="project-specs">
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Capacity:</span>
+                          <span class="spec-label content-ar">السعة:</span>
+                          <span class="spec-value">400,000 TPY</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Investment:</span>
+                          <span class="spec-label content-ar">الاستثمار:</span>
+                          <span class="spec-value">$2.8B</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Timeline:</span>
+                          <span class="spec-label content-ar">الجدول الزمني:</span>
+                          <span class="spec-value">48 Months</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Employment:</span>
+                          <span class="spec-label content-ar">التوظيف:</span>
+                          <span class="spec-value">2,500 Jobs</span>
+                      </div>
                   </div>
-                  <h3 class="leader-name content-en">Sarah Mitchell</h3>
-                  <h3 class="leader-name content-ar">سارة ميتشل</h3>
-                  <div class="leader-title content-en">Chief Technology Officer</div>
-                  <div class="leader-title content-ar">كبير مسؤولي التكنولوجيا</div>
-                  <p class="leader-bio content-en">
-                      Technology innovator driving SESMINE's digital transformation and Industry 4.0 initiatives. Expert in AI, IoT, and advanced process automation.
-                  </p>
-                  <p class="leader-bio content-ar">
-                      مبتكرة تكنولوجية تقود التحول الرقمي لسيسماين ومبادرات الصناعة ٤.٠. خبيرة في الذكاء الاصطناعي وإنترنت الأشياء والأتمتة المتقدمة.
-                  </p>
-                  <div class="leader-credentials">
-                      <div class="credential-badge">PhD Engineering</div>
-                      <div class="credential-badge">AI Expert</div>
-                      <div class="credential-badge">25+ Years</div>
+                  
+                  <div class="project-metrics">
+                      <div class="metric-item">
+                          <div class="metric-value">99.2%</div>
+                          <div class="metric-label content-en">Uptime</div>
+                          <div class="metric-label content-ar">وقت التشغيل</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">15%</div>
+                          <div class="metric-label content-en">Cost Savings</div>
+                          <div class="metric-label content-ar">توفير التكاليف</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">Zero</div>
+                          <div class="metric-label content-en">Incidents</div>
+                          <div class="metric-label content-ar">حوادث</div>
+                      </div>
                   </div>
-              </div>
-              
-              <div class="leader-card animate-on-scroll">
-                  <div class="leader-avatar">
-                      <i class="fas fa-globe"></i>
+                  
+                  <div class="certification-badges">
+                      <div class="cert-badge">ISO 14001</div>
+                      <div class="cert-badge">OHSAS 18001</div>
+                      <div class="cert-badge">Green Mining</div>
                   </div>
-                  <h3 class="leader-name content-en">Dr. Hassan Al-Balushi</h3>
-                  <h3 class="leader-name content-ar">د. حسان البلوشي</h3>
-                  <div class="leader-title content-en">Chief Operations Officer</div>
-                  <div class="leader-title content-ar">كبير مسؤولي العمليات</div>
-                  <p class="leader-bio content-en">
-                      Operations excellence leader overseeing global project delivery and quality management. Champion of sustainable mining practices and safety protocols.
-                  </p>
-                  <p class="leader-bio content-ar">
-                      قائد تميز العمليات يشرف على تسليم المشاريع العالمية وإدارة الجودة. بطل ممارسات التعدين المستدام وبروتوكولات السلامة.
-                  </p>
-                  <div class="leader-credentials">
-                      <div class="credential-badge">PhD Mining</div>
-                      <div class="credential-badge">PMP Certified</div>
-                      <div class="credential-badge">30+ Years</div>
+                  
+                  <div class="project-footer">
+                      <div class="project-value">
+                          <span class="value-label content-en">Project Value</span>
+                          <span class="value-label content-ar">قيمة المشروع</span>
+                          <span class="value-amount">$2.8B</span>
+                      </div>
+                      <div class="project-actions">
+                          <a href="#" class="btn-project">
+                              <span class="content-en">Case Study</span>
+                              <span class="content-ar">دراسة الحالة</span>
+                          </a>
+                          <a href="#" class="btn-project btn-outline">
+                              <span class="content-en">Gallery</span>
+                              <span class="content-ar">المعرض</span>
+                          </a>
+                      </div>
                   </div>
               </div>
           </div>
-      </div>
-  </section>
 
-  <!-- Values Section -->
-  <section class="values-section">
-      <div class="values-container">
-          <div class="section-badge content-en">Our Values</div>
-          <div class="section-badge content-ar">قيمنا</div>
-          
-          <h2 class="section-title">
-              <span class="content-en">Core <span class="gradient-text">Values</span><br>That Drive Excellence</span>
-              <span class="content-ar"><span class="gradient-text">القيم</span> الأساسية<br>التي تقود التميز</span>
-          </h2>
-          
-          <div class="values-grid">
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-shield-alt"></i>
+          <!-- Muscat Sulfuric Acid Plant -->
+          <div class="project-card animate-on-scroll" data-category="chemical">
+              <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=800&q=90');">
+                  <div class="project-overlay">
+                      <div class="project-status">
+                          <i class="fas fa-cog fa-spin"></i>
+                          <span class="content-en">In Progress</span>
+                          <span class="content-ar">قيد التنفيذ</span>
+                      </div>
                   </div>
-                  <h3 class="value-title content-en">Safety First</h3>
-                  <h3 class="value-title content-ar">السلامة أولاً</h3>
-                  <p class="value-description content-en">
-                      Zero harm is our commitment. Every decision prioritizes the safety and well-being of our people, communities, and environment.
-                  </p>
-                  <p class="value-description content-ar">
-                      عدم الضرر هو التزامنا. كل قرار يعطي الأولوية لسلامة ورفاهية شعبنا ومجتمعاتنا وبيئتنا.
-                  </p>
+                  <div class="project-location">
+                      <div class="location-text">
+                          <i class="fas fa-map-marker-alt"></i>
+                          <span class="content-en">Muscat, Oman</span>
+                          <span class="content-ar">مسقط، عُمان</span>
+                      </div>
+                  </div>
               </div>
               
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-lightbulb"></i>
+              <div class="project-content">
+                  <h3 class="project-title content-en">Muscat Advanced Sulfuric Acid Plant</h3>
+                  <h3 class="project-title content-ar">مصنع حامض الكبريتيك المتقدم بمسقط</h3>
+                  <div class="project-category content-en">Chemical Processing Facility</div>
+                  <div class="project-category content-ar">مرفق المعالجة الكيميائية</div>
+                  
+                  <p class="project-description content-en">
+                      State-of-the-art sulfuric acid production facility utilizing double absorption technology with advanced environmental controls. Features zero-emission systems and energy recovery capabilities.
+                  </p>
+                  
+                  <p class="project-description content-ar">
+                      مرفق إنتاج حامض الكبريتيك المتطور باستخدام تقنية الامتصاص المزدوج مع ضوابط بيئية متقدمة. يتميز بأنظمة خالية من الانبعاثات وقدرات استرداد الطاقة.
+                  </p>
+                  
+                  <div class="project-specs">
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Capacity:</span>
+                          <span class="spec-label content-ar">السعة:</span>
+                          <span class="spec-value">2,000 TPD</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Technology:</span>
+                          <span class="spec-label content-ar">التقنية:</span>
+                          <span class="spec-value">Double Absorption</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Efficiency:</span>
+                          <span class="spec-label content-ar">الكفاءة:</span>
+                          <span class="spec-value">99.8%</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Emissions:</span>
+                          <span class="spec-label content-ar">الانبعاثات:</span>
+                          <span class="spec-value">Zero SO₂</span>
+                      </div>
                   </div>
-                  <h3 class="value-title content-en">Innovation</h3>
-                  <h3 class="value-title content-ar">الابتكار</h3>
-                  <p class="value-description content-en">
-                      Continuous innovation drives our solutions. We embrace cutting-edge technologies to deliver superior results for our clients.
-                  </p>
-                  <p class="value-description content-ar">
-                      الابتكار المستمر يقود حلولنا. نحن نتبنى التقنيات المتطورة لتقديم نتائج متفوقة لعملائنا.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-award"></i>
+                  
+                  <div class="project-metrics">
+                      <div class="metric-item">
+                          <div class="metric-value">99.8%</div>
+                          <div class="metric-label content-en">Conversion</div>
+                          <div class="metric-label content-ar">التحويل</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">95%</div>
+                          <div class="metric-label content-en">Energy Recovery</div>
+                          <div class="metric-label content-ar">استرداد الطاقة</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">30</div>
+                          <div class="metric-label content-en">Years Life</div>
+                          <div class="metric-label content-ar">سنة عمر</div>
+                      </div>
                   </div>
-                  <h3 class="value-title content-en">Excellence</h3>
-                  <h3 class="value-title content-ar">التميز</h3>
-                  <p class="value-description content-en">
-                      We set the highest standards in everything we do. Excellence is not just our goal—it's our standard operating procedure.
-                  </p>
-                  <p class="value-description content-ar">
-                      نضع أعلى المعايير في كل ما نقوم به. التميز ليس مجرد هدفنا - إنه إجراء التشغيل القياسي لدينا.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-handshake"></i>
+                  
+                  <div class="certification-badges">
+                      <div class="cert-badge">EPA Approved</div>
+                      <div class="cert-badge">ASME Certified</div>
+                      <div class="cert-badge">Zero Emission</div>
                   </div>
-                  <h3 class="value-title content-en">Integrity</h3>
-                  <h3 class="value-title content-ar">النزاهة</h3>
-                  <p class="value-description content-en">
-                      Trust is the foundation of our relationships. We conduct business with transparency, honesty, and ethical practices.
-                  </p>
-                  <p class="value-description content-ar">
-                      الثقة هي أساس علاقاتنا. نحن نمارس الأعمال بشفافية وصدق وممارسات أخلاقية.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-leaf"></i>
+                  
+                  <div class="project-footer">
+                      <div class="project-value">
+                          <span class="value-label content-en">Project Value</span>
+                          <span class="value-label content-ar">قيمة المشروع</span>
+                          <span class="value-amount">$450M</span>
+                      </div>
+                      <div class="project-actions">
+                          <a href="#" class="btn-project">
+                              <span class="content-en">Progress</span>
+                              <span class="content-ar">التقدم</span>
+                          </a>
+                          <a href="#" class="btn-project btn-outline">
+                              <span class="content-en">Details</span>
+                              <span class="content-ar">التفاصيل</span>
+                          </a>
+                      </div>
                   </div>
-                  <h3 class="value-title content-en">Sustainability</h3>
-                  <h3 class="value-title content-ar">الاستدامة</h3>
-                  <p class="value-description content-en">
-                      Environmental stewardship guides our operations. We're committed to sustainable practices that protect our planet.
-                  </p>
-                  <p class="value-description content-ar">
-                      الإشراف البيئي يوجه عملياتنا. نحن ملتزمون بالممارسات المستدامة التي تحمي كوكبنا.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-users"></i>
-                  </div>
-                  <h3 class="value-title content-en">Collaboration</h3>
-                  <h3 class="value-title content-ar">التعاون</h3>
-                  <p class="value-description content-en">
-                      Together we achieve more. We foster partnerships and teamwork to deliver exceptional value to all stakeholders.
-                  </p>
-                  <p class="value-description content-ar">
-                      معاً نحقق المزيد. نحن نعزز الشراكات والعمل الجماعي لتقديم قيمة استثنائية لجميع أصحاب المصلحة.
-                  </p>
               </div>
           </div>
-      </div>
-  </section>
 
-  <!-- Global Presence -->
-  <section class="global-section">
-      <div class="global-container">
-          <div class="section-badge content-en">Global Presence</div>
-          <div class="section-badge content-ar">الحضور العالمي</div>
-          
-          <h2 class="section-title">
-              <span class="content-en">Worldwide <span class="gradient-text">Impact</span><br>& Recognition</span>
-              <span class="content-ar"><span class="gradient-text">التأثير</span> العالمي<br>والاعتراف</span>
-          </h2>
-          
-          <div class="global-stats">
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-building"></i>
+          <!-- Salalah Processing Plant -->
+          <div class="project-card animate-on-scroll" data-category="processing">
+              <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=90');">
+                  <div class="project-overlay">
+                      <div class="project-status">
+                          <i class="fas fa-check-circle"></i>
+                          <span class="content-en">Completed</span>
+                          <span class="content-ar">مكتمل</span>
+                      </div>
                   </div>
-                  <div class="global-number">50+</div>
-                  <div class="global-label content-en">Years of Excellence</div>
-                  <div class="global-label content-ar">سنة من التميز</div>
+                  <div class="project-location">
+                      <div class="location-text">
+                          <i class="fas fa-map-marker-alt"></i>
+                          <span class="content-en">Salalah, Oman</span>
+                          <span class="content-ar">صلالة، عُمان</span>
+                      </div>
+                  </div>
               </div>
               
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-globe"></i>
+              <div class="project-content">
+                  <h3 class="project-title content-en">Salalah Mineral Processing Complex</h3>
+                  <h3 class="project-title content-ar">مجمع معالجة المعادن بصلالة</h3>
+                  <div class="project-category content-en">Advanced Processing Facility</div>
+                  <div class="project-category content-ar">مرفق معالجة متقدم</div>
+                  
+                  <p class="project-description content-en">
+                      Comprehensive mineral processing facility featuring crushing, grinding, flotation, and concentrate handling systems. Incorporates latest automation and digital control technologies.
+                  </p>
+                  
+                  <p class="project-description content-ar">
+                      مرفق معالجة المعادن الشامل يتميز بأنظمة التكسير والطحن والتعويم ومناولة المركزات. يدمج أحدث تقنيات الأتمتة والتحكم الرقمي.
+                  </p>
+                  
+                  <div class="project-specs">
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Throughput:</span>
+                          <span class="spec-label content-ar">المعدل:</span>
+                          <span class="spec-value">15,000 TPD</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Recovery:</span>
+                          <span class="spec-label content-ar">الاسترداد:</span>
+                          <span class="spec-value">94.5%</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Automation:</span>
+                          <span class="spec-label content-ar">الأتمتة:</span>
+                          <span class="spec-value">Full DCS</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Water Usage:</span>
+                          <span class="spec-label content-ar">استخدام المياه:</span>
+                          <span class="spec-value">85% Recycled</span>
+                      </div>
                   </div>
-                  <div class="global-number">150+</div>
-                  <div class="global-label content-en">Countries Served</div>
-                  <div class="global-label content-ar">دولة نخدمها</div>
+                  
+                  <div class="project-metrics">
+                      <div class="metric-item">
+                          <div class="metric-value">94.5%</div>
+                          <div class="metric-label content-en">Recovery Rate</div>
+                          <div class="metric-label content-ar">معدل الاسترداد</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">96%</div>
+                          <div class="metric-label content-en">Availability</div>
+                          <div class="metric-label content-ar">التوفر</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">20%</div>
+                          <div class="metric-label content-en">Energy Savings</div>
+                          <div class="metric-label content-ar">توفير الطاقة</div>
+                      </div>
+                  </div>
+                  
+                  <div class="certification-badges">
+                      <div class="cert-badge">ISO 9001</div>
+                      <div class="cert-badge">Water Efficient</div>
+                      <div class="cert-badge">Smart Plant</div>
+                  </div>
+                  
+                  <div class="project-footer">
+                      <div class="project-value">
+                          <span class="value-label content-en">Project Value</span>
+                          <span class="value-label content-ar">قيمة المشروع</span>
+                          <span class="value-amount">$680M</span>
+                      </div>
+                      <div class="project-actions">
+                          <a href="#" class="btn-project">
+                              <span class="content-en">Success Story</span>
+                              <span class="content-ar">قصة نجاح</span>
+                          </a>
+                          <a href="#" class="btn-project btn-outline">
+                              <span class="content-en">Technology</span>
+                              <span class="content-ar">التقنية</span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Duqm Port Infrastructure -->
+          <div class="project-card animate-on-scroll" data-category="infrastructure">
+              <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=90');">
+                  <div class="project-overlay">
+                      <div class="project-status">
+                          <i class="fas fa-clock"></i>
+                          <span class="content-en">Planning</span>
+                          <span class="content-ar">التخطيط</span>
+                      </div>
+                  </div>
+                  <div class="project-location">
+                      <div class="location-text">
+                          <i class="fas fa-map-marker-alt"></i>
+                          <span class="content-en">Duqm, Oman</span>
+                          <span class="content-ar">الدقم، عُمان</span>
+                      </div>
+                  </div>
               </div>
               
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-users"></i>
+              <div class="project-content">
+                  <h3 class="project-title content-en">Duqm Industrial Port Complex</h3>
+                  <h3 class="project-title content-ar">مجمع ميناء الدقم الصناعي</h3>
+                  <div class="project-category content-en">Mega Infrastructure Project</div>
+                  <div class="project-category content-ar">مشروع بنية تحتية ضخم</div>
+                  
+                  <p class="project-description content-en">
+                      Massive industrial port development featuring deep-water berths, automated cargo handling systems, and integrated logistics facilities. Strategic location connecting Asia, Africa, and Europe.
+                  </p>
+                  
+                  <p class="project-description content-ar">
+                      تطوير ميناء صناعي ضخم يتميز بأرصفة المياه العميقة وأنظمة مناولة البضائع الآلية ومرافق اللوجستيات المتكاملة. موقع استراتيجي يربط آسيا وأفريقيا وأوروبا.
+                  </p>
+                  
+                  <div class="project-specs">
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Capacity:</span>
+                          <span class="spec-label content-ar">السعة:</span>
+                          <span class="spec-value">50M TEU/Year</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Berths:</span>
+                          <span class="spec-label content-ar">الأرصفة:</span>
+                          <span class="spec-value">24 Deep Water</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Area:</span>
+                          <span class="spec-label content-ar">المساحة:</span>
+                          <span class="spec-value">2,000 Hectares</span>
+                      </div>
+                      <div class="spec-item">
+                          <span class="spec-label content-en">Draft:</span>
+                          <span class="spec-label content-ar">العمق:</span>
+                          <span class="spec-value">18 Meters</span>
+                      </div>
                   </div>
-                  <div class="global-number">5000+</div>
-                  <div class="global-label content-en">Global Team</div>
-                  <div class="global-label content-ar">فريق عالمي</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-industry"></i>
+                  
+                  <div class="project-metrics">
+                      <div class="metric-item">
+                          <div class="metric-value">50M</div>
+                          <div class="metric-label content-en">TEU Capacity</div>
+                          <div class="metric-label content-ar">سعة الحاويات</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">15,000</div>
+                          <div class="metric-label content-en">Jobs Created</div>
+                          <div class="metric-label content-ar">وظيفة مستحدثة</div>
+                      </div>
+                      <div class="metric-item">
+                          <div class="metric-value">100%</div>
+                          <div class="metric-label content-en">Automated</div>
+                          <div class="metric-label content-ar">آلي</div>
+                      </div>
                   </div>
-                  <div class="global-number">1000+</div>
-                  <div class="global-label content-en">Projects Delivered</div>
-                  <div class="global-label content-ar">مشروع منجز</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-handshake"></i>
+                  
+                  <div class="certification-badges">
+                      <div class="cert-badge">Green Port</div>
+                      <div class="cert-badge">Smart Logistics</div>
+                      <div class="cert-badge">ISO 28000</div>
                   </div>
-                  <div class="global-number">500+</div>
-                  <div class="global-label content-en">Fortune 500 Clients</div>
-                  <div class="global-label content-ar">عميل من فورتشن ٥٠٠</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-trophy"></i>
+                  
+                  <div class="project-footer">
+                      <div class="project-value">
+                          <span class="value-label content-en">Project Value</span>
+                          <span class="value-label content-ar">قيمة المشروع</span>
+                          <span class="value-amount">$3.2B</span>
+                      </div>
+                      <div class="project-actions">
+                          <a href="#" class="btn-project">
+                              <span class="content-en">Master Plan</span>
+                              <span class="content-ar">المخطط الرئيسي</span>
+                          </a>
+                          <a href="#" class="btn-project btn-outline">
+                              <span class="content-en">Timeline</span>
+                              <span class="content-ar">الجدول الزمني</span>
+                          </a>
+                      </div>
                   </div>
-                  <div class="global-number">25+</div>
-                  <div class="global-label content-en">Industry Awards</div>
-                  <div class="global-label content-ar">جائزة صناعية</div>
               </div>
           </div>
       </div>
@@ -1119,6 +1246,35 @@
           }
       });
       
+      // Project filtering
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+              // Update active filter button
+              document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              
+              // Get filter category
+              const filter = btn.getAttribute('data-filter');
+              const projects = document.querySelectorAll('.project-card');
+              
+              // Filter projects
+              projects.forEach(project => {
+                  if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                      project.style.display = 'block';
+                      project.style.opacity = '0';
+                      setTimeout(() => {
+                          project.style.opacity = '1';
+                      }, 100);
+                  } else {
+                      project.style.opacity = '0';
+                      setTimeout(() => {
+                          project.style.display = 'none';
+                      }, 300);
+                  }
+              });
+          });
+      });
+      
       // Header scroll effect
       window.addEventListener('scroll', () => {
           const header = document.getElementById('header');
@@ -1147,21 +1303,8 @@
           observer.observe(el);
       });
       
-      // Timeline card interactions
-      document.querySelectorAll('.timeline-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-              card.style.transform = 'translateY(-8px) scale(1.05)';
-              card.style.boxShadow = 'var(--shadow-glow)';
-          });
-          
-          card.addEventListener('mouseleave', () => {
-              card.style.transform = 'translateY(0) scale(1)';
-              card.style.boxShadow = 'var(--shadow-xl)';
-          });
-      });
-      
-      // Leader card interactions
-      document.querySelectorAll('.leader-card').forEach(card => {
+      // Project card interactions
+      document.querySelectorAll('.project-card').forEach(card => {
           card.addEventListener('mouseenter', () => {
               card.style.transform = 'translateY(-16px) scale(1.02)';
               card.style.boxShadow = '0 0 60px rgba(201, 169, 110, 0.2)';
@@ -1173,25 +1316,14 @@
           });
       });
       
-      // Value card interactions
-      document.querySelectorAll('.value-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-              card.style.transform = 'translateY(-12px) rotate(2deg)';
-          });
-          
-          card.addEventListener('mouseleave', () => {
-              card.style.transform = 'translateY(0) rotate(0deg)';
-          });
-      });
-      
-      // Global stat interactions
-      document.querySelectorAll('.global-stat').forEach(stat => {
+      // Hero stats animation
+      document.querySelectorAll('.hero-stat').forEach(stat => {
           stat.addEventListener('mouseenter', () => {
-              stat.style.transform = 'translateY(-12px) scale(1.1) rotate(-2deg)';
+              stat.style.transform = 'translateY(-12px) rotate(2deg)';
           });
           
           stat.addEventListener('mouseleave', () => {
-              stat.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+              stat.style.transform = 'translateY(0) rotate(0deg)';
           });
       });
       
@@ -1209,8 +1341,8 @@
           });
       });
       
-      console.log('🏢 SESMINE About Us Page Loaded');
-      console.log('📅 Founded 1974 | 🌍 150+ Countries | 👥 5000+ Team | 🏆 25+ Awards');
+      console.log('🏗️ SESMINE Projects Portfolio Loaded');
+      console.log('📊 1000+ Projects | $50B+ Value | 150+ Countries | 98% Success Rate');
   </script>
 </body>
 </html>
