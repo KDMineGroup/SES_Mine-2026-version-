@@ -1,1216 +1,1969 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About SESMINE | 50+ Years of Global Mining Excellence | حول سيسماين</title>
-  <meta name="description" content="SESMINE - Founded in 1974, leading global mining and chemical processing solutions provider. 50+ years of excellence, Fortune 500 partnerships, serving 150+ countries worldwide. تأسست سيسماين في ١٩٧٤">
-  <link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-      :root {
-          --primary: #0f1419;
-          --secondary: #c9a96e;
-          --accent: #2563eb;
-          --success: #059669;
-          --warning: #d97706;
-          --dark: #0f172a;
-          --darker: #020617;
-          --light: #f8fafc;
-          --medium-gray: #64748b;
-          --glass: rgba(255, 255, 255, 0.03);
-          --glass-border: rgba(255, 255, 255, 0.08);
-          --gradient-primary: linear-gradient(135deg, #0f1419 0%, #1e293b 100%);
-          --gradient-gold: linear-gradient(135deg, #c9a96e 0%, #f59e0b 100%);
-          --gradient-accent: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-          --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-          --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-          --shadow-glow: 0 0 40px rgba(201, 169, 110, 0.15);
-      }
-      
-      * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-      }
-      
-      body {
-          font-family: 'Inter', sans-serif;
-          background: var(--darker);
-          color: white;
-          line-height: 1.6;
-          overflow-x: hidden;
-      }
-      
-      body[dir="rtl"] {
-          font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
-      }
-      
-      /* Language Toggle */
-      .language-toggle {
-          position: fixed;
-          top: 50%;
-          right: 2rem;
-          transform: translateY(-50%);
-          z-index: 6000;
-          background: var(--gradient-gold);
-          border-radius: 50px;
-          padding: 0.5rem;
-          box-shadow: var(--shadow-xl);
-      }
-      
-      body[dir="rtl"] .language-toggle {
-          right: auto;
-          left: 2rem;
-      }
-      
-      .lang-btn {
-          display: block;
-          padding: 0.8rem 1.2rem;
-          background: transparent;
-          color: var(--dark);
-          border: none;
-          border-radius: 25px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 700;
-          font-size: 0.9rem;
-          margin-bottom: 0.5rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-      }
-      
-      .lang-btn:last-child {
-          margin-bottom: 0;
-      }
-      
-      .lang-btn.active {
-          background: var(--dark);
-          color: var(--secondary);
-          box-shadow: var(--shadow-xl);
-      }
-      
-      /* Content Language Control */
-      .content-ar {
-          display: none;
-      }
-      
-      body[dir="rtl"] .content-en {
-          display: none;
-      }
-      
-      body[dir="rtl"] .content-ar {
-          display: block;
-      }
-      
-      /* Header */
-      .header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-          background: rgba(2, 6, 23, 0.95);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid var(--glass-border);
-          transition: all 0.3s ease;
-      }
-      
-      .nav-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          padding: 1rem 3rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-      }
-      
-      .logo {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          text-decoration: none;
-          color: white;
-      }
-      
-      .logo img {
-          height: 55px;
-          filter: brightness(1.3) drop-shadow(0 0 10px rgba(201, 169, 110, 0.3));
-      }
-      
-      .logo-text {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.75rem;
-          font-weight: 700;
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-      }
-      
-      .nav-menu {
-          display: flex;
-          list-style: none;
-          gap: 2.5rem;
-          align-items: center;
-      }
-      
-      .nav-link {
-          color: rgba(255, 255, 255, 0.85);
-          text-decoration: none;
-          font-weight: 500;
-          transition: all 0.3s ease;
-          position: relative;
-      }
-      
-      .nav-link:hover {
-          color: var(--secondary);
-      }
-      
-      .cta-button {
-          padding: 0.875rem 2rem;
-          background: var(--gradient-gold);
-          color: var(--dark);
-          text-decoration: none;
-          border-radius: 50px;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          box-shadow: var(--shadow-xl);
-      }
-      
-      .cta-button:hover {
-          transform: translateY(-2px);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      /* Hero Section */
-      .hero {
-          min-height: 80vh;
-          display: flex;
-          align-items: center;
-          position: relative;
-          overflow: hidden;
-          background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-          margin-top: 80px;
-      }
-      
-      .hero::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 60%;
-          height: 100%;
-          background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=90') center/cover;
-          opacity: 0.08;
-          z-index: 1;
-      }
-      
-      body[dir="rtl"] .hero::before {
-          right: auto;
-          left: 0;
-      }
-      
-      .hero-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          padding: 3rem;
-          display: grid;
-          grid-template-columns: 1.2fr 0.8fr;
-          gap: 6rem;
-          align-items: center;
-          position: relative;
-          z-index: 2;
-      }
-      
-      .hero-content {
-          padding: 2rem 0;
-      }
-      
-      .hero-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 0.75rem 1.5rem;
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 50px;
-          font-size: 0.875rem;
-          font-weight: 600;
-          margin-bottom: 2rem;
-          backdrop-filter: blur(20px);
-      }
-      
-      .hero-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(3rem, 6vw, 5rem);
-          font-weight: 800;
-          line-height: 1.1;
-          margin-bottom: 2rem;
-      }
-      
-      .gradient-text {
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-      }
-      
-      .hero-subtitle {
-          font-size: 1.375rem;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 2.5rem;
-          line-height: 1.7;
-      }
-      
-      .hero-visual {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-      }
-      
-      .timeline-card {
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 20px;
-          padding: 2rem;
-          backdrop-filter: blur(20px);
-          box-shadow: var(--shadow-xl);
-          position: relative;
-          overflow: hidden;
-      }
-      
-      .timeline-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: var(--gradient-gold);
-      }
-      
-      .timeline-year {
-          font-family: 'Playfair Display', serif;
-          font-size: 2rem;
-          font-weight: 700;
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 1rem;
-      }
-      
-      .timeline-event {
-          color: rgba(255, 255, 255, 0.9);
-          font-size: 1rem;
-          line-height: 1.6;
-      }
-      
-      /* Story Section */
-      .story-section {
-          padding: 8rem 3rem;
-          background: var(--dark);
-      }
-      
-      .story-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 6rem;
-          align-items: center;
-      }
-      
-      .story-content {
-          padding: 2rem 0;
-      }
-      
-      .section-badge {
-          display: inline-block;
-          padding: 0.75rem 1.5rem;
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 50px;
-          font-size: 0.875rem;
-          font-weight: 600;
-          margin-bottom: 2rem;
-          backdrop-filter: blur(20px);
-          text-transform: uppercase;
-          letter-spacing: 1px;
-      }
-      
-      .section-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.5rem, 4vw, 4rem);
-          font-weight: 700;
-          line-height: 1.2;
-          margin-bottom: 2rem;
-      }
-      
-      .story-text {
-          font-size: 1.125rem;
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.8;
-          margin-bottom: 2rem;
-      }
-      
-      .story-highlights {
-          list-style: none;
-          margin-bottom: 2rem;
-      }
-      
-      .story-highlights li {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-bottom: 1rem;
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.9);
-      }
-      
-      .highlight-icon {
-          width: 24px;
-          height: 24px;
-          background: var(--gradient-gold);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.8rem;
-          color: var(--dark);
-          flex-shrink: 0;
-      }
-      
-      .story-image {
-          position: relative;
-          height: 500px;
-          border-radius: 20px;
-          overflow: hidden;
-          background-size: cover;
-          background-position: center;
-          box-shadow: var(--shadow-2xl);
-      }
-      
-      .story-image::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
-      }
-      
-      /* Leadership Section */
-      .leadership-section {
-          padding: 8rem 3rem;
-          background: var(--darker);
-      }
-      
-      .leadership-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          text-align: center;
-      }
-      
-      .leadership-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 3rem;
-          margin-top: 4rem;
-      }
-      
-      .leader-card {
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 24px;
-          padding: 3rem;
-          backdrop-filter: blur(20px);
-          transition: all 0.4s ease;
-          position: relative;
-          overflow: hidden;
-      }
-      
-      .leader-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: var(--gradient-gold);
-          transform: scaleX(0);
-          transition: transform 0.4s ease;
-      }
-      
-      .leader-card:hover {
-          transform: translateY(-12px);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      .leader-card:hover::before {
-          transform: scaleX(1);
-      }
-      
-      .leader-avatar {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          background: var(--gradient-gold);
-          margin: 0 auto 2rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 3rem;
-          color: var(--dark);
-          box-shadow: var(--shadow-xl);
-      }
-      
-      .leader-name {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin-bottom: 0.5rem;
-          color: white;
-      }
-      
-      .leader-title {
-          font-size: 1rem;
-          color: var(--secondary);
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-bottom: 1.5rem;
-      }
-      
-      .leader-bio {
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.7;
-          margin-bottom: 2rem;
-      }
-      
-      .leader-credentials {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          justify-content: center;
-      }
-      
-      .credential-badge {
-          padding: 0.5rem 1rem;
-          background: rgba(37, 99, 235, 0.1);
-          border: 1px solid rgba(37, 99, 235, 0.2);
-          border-radius: 20px;
-          font-size: 0.75rem;
-          color: #3b82f6;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-      }
-      
-      /* Values Section */
-      .values-section {
-          padding: 8rem 3rem;
-          background: var(--dark);
-      }
-      
-      .values-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          text-align: center;
-      }
-      
-      .values-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 4rem;
-      }
-      
-      .value-card {
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 20px;
-          padding: 2.5rem;
-          backdrop-filter: blur(20px);
-          transition: all 0.4s ease;
-          text-align: center;
-      }
-      
-      .value-card:hover {
-          transform: translateY(-8px);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      .value-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--gradient-gold);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: var(--dark);
-          margin: 0 auto 1.5rem;
-          box-shadow: var(--shadow-xl);
-      }
-      
-      .value-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-          color: white;
-      }
-      
-      .value-description {
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.7;
-      }
-      
-      /* Global Presence */
-      .global-section {
-          padding: 8rem 3rem;
-          background: var(--darker);
-      }
-      
-      .global-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          text-align: center;
-      }
-      
-      .global-stats {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 3rem;
-          margin-top: 4rem;
-      }
-      
-      .global-stat {
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 20px;
-          padding: 2.5rem;
-          backdrop-filter: blur(20px);
-          transition: all 0.4s ease;
-      }
-      
-      .global-stat:hover {
-          transform: translateY(-8px) scale(1.05);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      .global-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--gradient-accent);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: white;
-          margin: 0 auto 1.5rem;
-          box-shadow: var(--shadow-xl);
-      }
-      
-      .global-number {
-          font-family: 'Playfair Display', serif;
-          font-size: 3rem;
-          font-weight: 700;
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 0.5rem;
-      }
-      
-      .global-label {
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.8);
-          font-weight: 500;
-      }
-      
-      /* Animations */
-      .animate-on-scroll {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: all 0.8s ease;
-      }
-      
-      .animate-on-scroll.animated {
-          opacity: 1;
-          transform: translateY(0);
-      }
-      
-      /* Mobile Responsive */
-      @media (max-width: 768px) {
-          .language-toggle {
-              position: static;
-              transform: none;
-              margin: 1rem auto;
-              display: flex;
-              justify-content: center;
-              width: fit-content;
-          }
-          
-          .nav-menu {
-              display: none;
-          }
-          
-          .hero-container {
-              grid-template-columns: 1fr;
-              text-align: center;
-              gap: 3rem;
-              padding: 2rem 1.5rem;
-          }
-          
-          .story-container {
-              grid-template-columns: 1fr;
-              gap: 3rem;
-              text-align: center;
-          }
-          
-          .leadership-grid {
-              grid-template-columns: 1fr;
-              padding: 0 1.5rem;
-          }
-          
-          .leader-card {
-              padding: 2rem;
-          }
-          
-          .values-grid {
-              grid-template-columns: 1fr;
-          }
-          
-          .global-stats {
-              grid-template-columns: repeat(2, 1fr);
-              gap: 2rem;
-          }
-      }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About SESMINE | Scientific & Engineering Supplies LLC | Mining Excellence Oman | حول سيسماين</title>
+<meta name="description" content="Learn about SESMINE - Scientific & Engineering Supplies LLC. 12+ years of mining excellence in Oman, expert team, innovative solutions, and commitment to sustainable mining practices. تعرف على سيسماين">
+<link rel="icon" type="image/png" href="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        /* Ultra Professional Color Palette */
+        --primary: #0066cc;
+        --primary-light: #1a7fff;
+        --primary-dark: #004499;
+        --secondary: #ff4757;
+        --secondary-light: #ff6b7a;
+        --secondary-dark: #e63946;
+        --accent: #00d4aa;
+        --accent-light: #26e5cc;
+        --accent-dark: #00b894;
+        --gold: #f39c12;
+        --gold-light: #f4b942;
+        --gold-dark: #d68910;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --danger: #e74c3c;
+        --info: #3498db;
+        
+        /* Professional Neutrals */
+        --white: #ffffff;
+        --off-white: #fefefe;
+        --gray-50: #f8fafc;
+        --gray-100: #f1f5f9;
+        --gray-200: #e2e8f0;
+        --gray-300: #cbd5e1;
+        --gray-400: #94a3b8;
+        --gray-500: #64748b;
+        --gray-600: #475569;
+        --gray-700: #334155;
+        --gray-800: #1e293b;
+        --gray-900: #0f172a;
+        --navy: #1a202c;
+        --navy-light: #2d3748;
+        
+        /* Professional Gradients */
+        --gradient-primary: linear-gradient(135deg, #0066cc 0%, #1a7fff 100%);
+        --gradient-secondary: linear-gradient(135deg, #ff4757 0%, #ff6b7a 100%);
+        --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #26e5cc 100%);
+        --gradient-gold: linear-gradient(135deg, #f39c12 0%, #f4b942 100%);
+        --gradient-hero: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        --gradient-dark: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        --gradient-rainbow: linear-gradient(135deg, #0066cc 0%, #00d4aa 50%, #f39c12 100%);
+        --gradient-mesh: radial-gradient(circle at 20% 80%, rgba(0, 102, 204, 0.1) 0%, transparent 50%),
+                         radial-gradient(circle at 80% 20%, rgba(0, 212, 170, 0.08) 0%, transparent 50%),
+                         radial-gradient(circle at 40% 40%, rgba(243, 156, 18, 0.06) 0%, transparent 50%);
+        
+        /* Professional Shadows */
+        --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        --shadow-3xl: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
+        --shadow-primary: 0 10px 25px rgba(0, 102, 204, 0.25);
+        --shadow-secondary: 0 10px 25px rgba(255, 71, 87, 0.25);
+        --shadow-accent: 0 10px 25px rgba(0, 212, 170, 0.25);
+        --shadow-gold: 0 10px 25px rgba(243, 156, 18, 0.25);
+        --shadow-glow: 0 0 50px rgba(0, 102, 204, 0.15);
+        
+        /* Professional Spacing */
+        --space-xs: 0.25rem;
+        --space-sm: 0.5rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+        --space-2xl: 3rem;
+        --space-3xl: 4rem;
+        --space-4xl: 6rem;
+        --space-5xl: 8rem;
+        
+        /* Professional Border Radius */
+        --radius-sm: 0.375rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-2xl: 1.5rem;
+        --radius-3xl: 2rem;
+        --radius-full: 9999px;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--gradient-hero);
+        color: var(--gray-800);
+        line-height: 1.7;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body[dir="rtl"] {
+        font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+    }
+    
+    /* Content Language Control */
+    .content-ar {
+        display: none;
+    }
+    
+    body[dir="rtl"] .content-en {
+        display: none;
+    }
+    
+    body[dir="rtl"] .content-ar {
+        display: block;
+    }
+    
+    /* Professional Language Toggle */
+    .language-toggle {
+        position: fixed;
+        top: 50%;
+        right: 2rem;
+        transform: translateY(-50%);
+        z-index: 6000;
+        background: var(--white);
+        border-radius: var(--radius-full);
+        padding: var(--space-sm);
+        box-shadow: var(--shadow-xl);
+        border: 1px solid var(--gray-200);
+        backdrop-filter: blur(20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .language-toggle:hover {
+        transform: translateY(-50%) scale(1.05);
+        box-shadow: var(--shadow-2xl);
+    }
+    
+    body[dir="rtl"] .language-toggle {
+        right: auto;
+        left: 2rem;
+    }
+    
+    .lang-btn {
+        display: block;
+        padding: var(--space-lg) var(--space-xl);
+        background: transparent;
+        color: var(--gray-600);
+        border: none;
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-bottom: var(--space-sm);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .lang-btn:last-child {
+        margin-bottom: 0;
+    }
+    
+    .lang-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        transition: left 0.3s ease;
+        z-index: -1;
+    }
+    
+    .lang-btn.active {
+        color: var(--white);
+        box-shadow: var(--shadow-primary);
+        transform: scale(1.05);
+    }
+    
+    .lang-btn.active::before {
+        left: 0;
+    }
+    
+    .lang-btn:hover:not(.active) {
+        background: var(--gray-100);
+        color: var(--primary);
+        transform: scale(1.02);
+    }
+    
+    /* Ultra Professional Header */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--gray-200);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .header.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow-lg);
+        border-bottom-color: var(--gray-300);
+    }
+    
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--space-lg) var(--space-2xl);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+        text-decoration: none;
+        color: var(--gray-800);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+    
+    .logo::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+    }
+    
+    .logo:hover::after {
+        width: 100%;
+    }
+    
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    
+    .logo img {
+        height: 50px;
+        filter: drop-shadow(0 4px 12px rgba(0, 102, 204, 0.15));
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .logo:hover img {
+        filter: drop-shadow(0 6px 16px rgba(0, 102, 204, 0.25));
+        transform: rotate(-2deg);
+    }
+    
+    .logo-text {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+    }
+    
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: var(--space-2xl);
+        align-items: center;
+    }
+    
+    .nav-link {
+        color: var(--gray-700);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        padding: var(--space-md) 0;
+        letter-spacing: 0.25px;
+    }
+    
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -10px;
+        width: 4px;
+        height: 0;
+        background: var(--gradient-primary);
+        border-radius: var(--radius-full);
+        transition: height 0.3s ease;
+        transform: translateY(-50%);
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+        color: var(--primary);
+        transform: translateX(8px);
+    }
+    
+    .nav-link:hover::before {
+        height: 20px;
+    }
+    
+    .nav-link:hover::after {
+        width: 100%;
+    }
+    
+    .nav-link.active {
+        color: var(--primary);
+        font-weight: 600;
+    }
+    
+    .nav-link.active::after {
+        width: 100%;
+    }
+    
+    .cta-button {
+        padding: var(--space-lg) var(--space-2xl);
+        background: var(--gradient-primary);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: var(--radius-full);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .cta-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: var(--shadow-glow);
+    }
+    
+    .cta-button:hover::before {
+        left: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(226, 232, 240, 0.95) 100%),
+                    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=90') center/cover;
+        padding-top: 120px;
+    }
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-mesh);
+        z-index: 1;
+    }
+    
+    .hero-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--space-2xl);
+        text-align: center;
+        position: relative;
+        z-index: 3;
+    }
+    
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-md);
+        padding: var(--space-lg) var(--space-xl);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-full);
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: var(--space-2xl);
+        box-shadow: var(--shadow-lg);
+        color: var(--primary);
+        backdrop-filter: blur(10px);
+    }
+    
+    .hero-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: var(--space-2xl);
+        letter-spacing: -2px;
+        color: var(--gray-900);
+    }
+    
+    .gradient-text {
+        background: var(--gradient-rainbow);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: var(--gray-600);
+        margin-bottom: var(--space-3xl);
+        line-height: 1.8;
+        font-weight: 400;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Story Section */
+    .story-section {
+        padding: var(--space-5xl) var(--space-2xl);
+        background: var(--white);
+        position: relative;
+    }
+    
+    .story-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4xl);
+        align-items: center;
+    }
+    
+    .story-content {
+        padding: var(--space-2xl) 0;
+    }
+    
+    .section-badge {
+        display: inline-block;
+        padding: var(--space-md) var(--space-xl);
+        background: var(--gradient-accent);
+        color: var(--white);
+        border-radius: var(--radius-full);
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: var(--space-2xl);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: var(--shadow-accent);
+    }
+    
+    .section-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: var(--space-2xl);
+        letter-spacing: -1px;
+        color: var(--gray-900);
+    }
+    
+    .story-text {
+        font-size: 1.125rem;
+        color: var(--gray-600);
+        line-height: 1.8;
+        margin-bottom: var(--space-xl);
+    }
+    
+    .story-highlights {
+        list-style: none;
+        margin-bottom: var(--space-2xl);
+    }
+    
+    .story-highlights li {
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+        margin-bottom: var(--space-lg);
+        font-size: 1rem;
+        color: var(--gray-700);
+        transition: all 0.3s ease;
+    }
+    
+    .story-highlights li:hover {
+        color: var(--primary);
+        transform: translateX(8px);
+    }
+    
+    .highlight-icon {
+        width: 28px;
+        height: 28px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.875rem;
+        color: var(--white);
+        flex-shrink: 0;
+        box-shadow: var(--shadow-primary);
+        transition: all 0.3s ease;
+    }
+    
+    .story-highlights li:hover .highlight-icon {
+        transform: scale(1.1) rotate(10deg);
+    }
+    
+    .story-visual {
+        position: relative;
+        height: 500px;
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=90') center/cover;
+        box-shadow: var(--shadow-2xl);
+    }
+    
+    .story-visual::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(0, 102, 204, 0.2) 0%, rgba(0, 212, 170, 0.1) 100%);
+    }
+    
+    .story-overlay {
+        position: absolute;
+        bottom: var(--space-2xl);
+        left: var(--space-2xl);
+        right: var(--space-2xl);
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        padding: var(--space-xl);
+        z-index: 2;
+        box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(10px);
+    }
+    
+    .overlay-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.375rem;
+        font-weight: 700;
+        margin-bottom: var(--space-sm);
+        color: var(--gray-800);
+    }
+    
+    .overlay-description {
+        color: var(--gray-600);
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    /* Values Section */
+    .values-section {
+        padding: var(--space-5xl) var(--space-2xl);
+        background: var(--gray-50);
+        position: relative;
+    }
+    
+    .values-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .section-header {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto var(--space-4xl);
+    }
+    
+    .section-description {
+        font-size: 1.25rem;
+        color: var(--gray-600);
+        line-height: 1.8;
+        font-weight: 400;
+    }
+    
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-2xl);
+    }
+    
+    .value-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-xl);
+        padding: var(--space-2xl);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(10px);
+    }
+    
+    .value-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.05), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .value-card:hover::before {
+        left: 100%;
+    }
+    
+    .value-card:hover {
+        transform: translateY(-16px) scale(1.03);
+        box-shadow: var(--shadow-3xl);
+        border-color: var(--primary);
+    }
+    
+    .value-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--white);
+        margin: 0 auto var(--space-xl);
+        box-shadow: var(--shadow-primary);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+    
+    .value-icon::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border: 2px solid var(--primary);
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.3s ease;
+    }
+    
+    .value-card:hover .value-icon {
+        transform: scale(1.1) rotate(10deg);
+    }
+    
+    .value-card:hover .value-icon::after {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .value-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--space-lg);
+        color: var(--gray-800);
+    }
+    
+    .value-description {
+        color: var(--gray-600);
+        line-height: 1.7;
+        font-size: 1rem;
+    }
+    
+    /* Leadership Section */
+    .leadership-section {
+        padding: var(--space-5xl) var(--space-2xl);
+        background: var(--white);
+        position: relative;
+    }
+    
+    .leadership-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .leadership-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--space-2xl);
+        margin-top: var(--space-4xl);
+    }
+    
+    .leader-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(10px);
+    }
+    
+    .leader-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-gold);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+        z-index: 2;
+    }
+    
+    .leader-card:hover {
+        transform: translateY(-16px) scale(1.02);
+        box-shadow: var(--shadow-3xl);
+    }
+    
+    .leader-card:hover::before {
+        transform: scaleX(1);
+    }
+    
+    .leader-image {
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .leader-placeholder {
+        width: 120px;
+        height: 120px;
+        background: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--primary);
+        box-shadow: var(--shadow-xl);
+    }
+    
+    .leader-content {
+        padding: var(--space-2xl);
+        text-align: center;
+    }
+    
+    .leader-name {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--space-sm);
+        color: var(--gray-800);
+    }
+    
+    .leader-title {
+        font-size: 1.125rem;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: var(--space-lg);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .leader-description {
+        color: var(--gray-600);
+        line-height: 1.7;
+        margin-bottom: var(--space-xl);
+        font-size: 1rem;
+    }
+    
+    .leader-contact {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-lg);
+    }
+    
+    .contact-link {
+        width: 40px;
+        height: 40px;
+        background: var(--gray-100);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray-600);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+    
+    .contact-link:hover {
+        background: var(--gradient-primary);
+        color: var(--white);
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: var(--shadow-primary);
+    }
+    
+    /* Stats Section */
+    .stats-section {
+        padding: var(--space-5xl) var(--space-2xl);
+        background: var(--gradient-dark);
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stats-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-mesh);
+        opacity: 0.3;
+    }
+    
+    .stats-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-2xl);
+        margin-top: var(--space-4xl);
+    }
+    
+    .stat-card {
+        text-align: center;
+        padding: var(--space-2xl);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-xl);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-8px) scale(1.05);
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .stat-number {
+        font-family: 'Poppins', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: var(--space-sm);
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: block;
+    }
+    
+    .stat-label {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        color: var(--white);
+    }
+    
+    .stat-description {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        padding: var(--space-5xl) var(--space-2xl);
+        background: var(--white);
+        text-align: center;
+        position: relative;
+    }
+    
+    .cta-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .cta-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        margin-bottom: var(--space-2xl);
+        line-height: 1.2;
+        color: var(--gray-900);
+    }
+    
+    .cta-description {
+        font-size: 1.25rem;
+        margin-bottom: var(--space-3xl);
+        line-height: 1.7;
+        color: var(--gray-600);
+    }
+    
+    .cta-actions {
+        display: flex;
+        gap: var(--space-xl);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .btn-primary {
+        padding: var(--space-xl) var(--space-2xl);
+        background: var(--gradient-primary);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: var(--radius-full);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-primary);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-md);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: var(--shadow-glow);
+    }
+    
+    .btn-secondary {
+        padding: var(--space-xl) var(--space-2xl);
+        background: transparent;
+        color: var(--gray-700);
+        text-decoration: none;
+        border: 2px solid var(--gray-300);
+        border-radius: var(--radius-full);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-md);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .btn-secondary:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: var(--white);
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: var(--shadow-primary);
+    }
+    
+    /* Footer */
+    .footer {
+        background: var(--gray-900);
+        color: var(--gray-300);
+        padding: var(--space-4xl) var(--space-2xl) var(--space-2xl);
+    }
+    
+    .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: var(--space-3xl);
+        margin-bottom: var(--space-2xl);
+    }
+    
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+    }
+    
+    .footer-logo img {
+        height: 45px;
+        filter: brightness(1.2);
+    }
+    
+    .footer-logo-text {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.375rem;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .footer-description {
+        color: var(--gray-400);
+        line-height: 1.7;
+        margin-bottom: var(--space-2xl);
+        font-size: 0.95rem;
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: var(--space-lg);
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+        background: var(--gray-800);
+        border: 1px solid var(--gray-700);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray-400);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+    
+    .social-link:hover {
+        background: var(--gradient-primary);
+        color: var(--white);
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: var(--shadow-primary);
+    }
+    
+    .footer-section h4 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--space-xl);
+        color: var(--white);
+    }
+    
+    .footer-links {
+        list-style: none;
+    }
+    
+    .footer-links li {
+        margin-bottom: var(--space-md);
+    }
+    
+    .footer-links a {
+        color: var(--gray-400);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+    }
+    
+    .footer-links a:hover {
+        color: var(--primary);
+        padding-left: var(--space-sm);
+    }
+    
+    .footer-bottom {
+        padding-top: var(--space-2xl);
+        border-top: 1px solid var(--gray-800);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--gray-500);
+        font-size: 0.9rem;
+    }
+    
+    .footer-links-bottom {
+        display: flex;
+        gap: var(--space-2xl);
+    }
+    
+    .footer-links-bottom a {
+        color: var(--gray-500);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-links-bottom a:hover {
+        color: var(--primary);
+    }
+    
+    /* Animations */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .language-toggle {
+            position: static;
+            transform: none;
+            margin: var(--space-lg) auto;
+            display: flex;
+            justify-content: center;
+            width: fit-content;
+        }
+        
+        .nav-menu {
+            display: none;
+        }
+        
+        .story-container {
+            grid-template-columns: 1fr;
+            gap: var(--space-2xl);
+            text-align: center;
+        }
+        
+        .values-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .leadership-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .cta-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-content {
+            grid-template-columns: 1fr;
+            gap: var(--space-2xl);
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            flex-direction: column;
+            gap: var(--space-lg);
+            text-align: center;
+        }
+        
+        .footer-links-bottom {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-lg);
+        }
+    }
+</style>
 </head>
 <body>
-  <!-- Language Toggle -->
-  <div class="language-toggle">
-      <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
-      <button class="lang-btn" onclick="switchLanguage('ar')">عربي</button>
-  </div>
+<!-- Professional Language Toggle -->
+<div class="language-toggle">
+    <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+    <button class="lang-btn" onclick="switchLanguage('ar')">عربي</button>
+</div>
 
-  <!-- Header -->
-  <header class="header" id="header">
-      <div class="nav-container">
-          <a href="index.html" class="logo">
-              <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
-              <div class="logo-text">SESMINE</div>
-          </a>
-          
-          <nav class="nav-menu">
-              <a href="index.html" class="nav-link">
-                  <span class="content-en">Home</span>
-                  <span class="content-ar">الرئيسية</span>
-              </a>
-              <a href="assets.html" class="nav-link">
-                  <span class="content-en">Assets</span>
-                  <span class="content-ar">الأصول</span>
-              </a>
-              <a href="services.html" class="nav-link">
-                  <span class="content-en">Services</span>
-                  <span class="content-ar">الخدمات</span>
-              </a>
-              <a href="projects.html" class="nav-link">
-                  <span class="content-en">Projects</span>
-                  <span class="content-ar">المشاريع</span>
-              </a>
-              <a href="about.html" class="nav-link">
-                  <span class="content-en">About</span>
-                  <span class="content-ar">حولنا</span>
-              </a>
-          </nav>
-          
-          <a href="contact.html" class="cta-button">
-              <span class="content-en">Join Our Team</span>
-              <span class="content-ar">انضم لفريقنا</span>
-          </a>
-      </div>
-  </header>
+<!-- Ultra Professional Header -->
+<header class="header" id="header">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+            <div class="logo-text">SESMINE</div>
+        </a>
+        
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <span class="content-en">Home</span>
+                <span class="content-ar">الرئيسية</span>
+            </a>
+            <a href="services.html" class="nav-link">
+                <span class="content-en">Services</span>
+                <span class="content-ar">الخدمات</span>
+            </a>
+            <a href="solutions.html" class="nav-link">
+                <span class="content-en">Solutions</span>
+                <span class="content-ar">الحلول</span>
+            </a>
+            <a href="projects.html" class="nav-link">
+                <span class="content-en">Projects</span>
+                <span class="content-ar">المشاريع</span>
+            </a>
+            <a href="about.html" class="nav-link active">
+                <span class="content-en">About</span>
+                <span class="content-ar">حولنا</span>
+            </a>
+            <a href="contact.html" class="nav-link">
+                <span class="content-en">Contact</span>
+                <span class="content-ar">اتصل</span>
+            </a>
+        </nav>
+        
+        <a href="contact.html" class="cta-button">
+            <span class="content-en">Get in Touch</span>
+            <span class="content-ar">تواصل معنا</span>
+        </a>
+    </div>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-      <div class="hero-container">
-          <div class="hero-content">
-              <div class="hero-badge">
-                  <i class="fas fa-crown"></i>
-                  <span class="content-en">50+ Years of Global Excellence Since 1974</span>
-                  <span class="content-ar">أكثر من ٥٠ عاماً من التميز العالمي منذ ١٩٧٤</span>
-              </div>
-              
-              <h1 class="hero-title">
-                  <span class="content-en">Building the <span class="gradient-text">Future</span><br>of Global Mining</span>
-                  <span class="content-ar">بناء <span class="gradient-text">مستقبل</span><br>التعدين العالمي</span>
-              </h1>
-              
-              <p class="hero-subtitle content-en">
-                  Founded in 1974 in the Sultanate of Oman, SESMINE has grown from a regional mining services provider to a global leader in mining and chemical processing solutions, trusted by Fortune 500 companies across six continents.
-              </p>
-              
-              <p class="hero-subtitle content-ar">
-                  تأسست سيسماين في عام ١٩٧٤ في سلطنة عُمان، ونمت من مقدم خدمات التعدين الإقليمي إلى رائد عالمي في حلول التعدين والمعالجة الكيميائية، موثوق به من قبل شركات فورتشن ٥٠٠ عبر ست قارات.
-              </p>
-          </div>
-          
-          <div class="hero-visual">
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">1974</div>
-                  <div class="timeline-event content-en">Founded in Muscat, Oman as a mining equipment supplier</div>
-                  <div class="timeline-event content-ar">تأسست في مسقط، عُمان كمورد معدات التعدين</div>
-              </div>
-              
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">1985</div>
-                  <div class="timeline-event content-en">Expanded to chemical processing and acid plant construction</div>
-                  <div class="timeline-event content-ar">توسعت في المعالجة الكيميائية وبناء مصانع الأحماض</div>
-              </div>
-              
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">2000</div>
-                  <div class="timeline-event content-en">Achieved global presence across 50+ countries</div>
-                  <div class="timeline-event content-ar">حققت حضوراً عالمياً عبر أكثر من ٥٠ دولة</div>
-              </div>
-              
-              <div class="timeline-card animate-on-scroll">
-                  <div class="timeline-year">2024</div>
-                  <div class="timeline-event content-en">Leading Fortune 500 partnerships in 150+ countries</div>
-                  <div class="timeline-event content-ar">تقود شراكات فورتشن ٥٠٠ في أكثر من ١٥٠ دولة</div>
-              </div>
-          </div>
-      </div>
-  </section>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-badge">
+            <i class="fas fa-building"></i>
+            <span class="content-en">About SESMINE</span>
+            <span class="content-ar">حول سيسماين</span>
+        </div>
+        
+        <h1 class="hero-title">
+            <span class="content-en">Engineering <span class="gradient-text">Excellence</span><br>Since 2012</span>
+            <span class="content-ar">التميز <span class="gradient-text">الهندسي</span><br>منذ ٢٠١٢</span>
+        </h1>
+        
+        <p class="hero-subtitle content-en">
+            Discover the story behind SESMINE - Scientific and Engineering Supplies LLC, Oman's trusted partner in mining excellence, innovation, and sustainable development for over 12 years.
+        </p>
+        
+        <p class="hero-subtitle content-ar">
+            اكتشف القصة وراء سيسماين - شركة الإمدادات العلمية والهندسية ذ.م.م، الشريك الموثوق في عُمان للتميز في التعدين والابتكار والتنمية المستدامة لأكثر من ١٢ عاماً.
+        </p>
+    </div>
+</section>
 
-  <!-- Story Section -->
-  <section class="story-section">
-      <div class="story-container">
-          <div class="story-content animate-on-scroll">
-              <div class="section-badge content-en">Our Story</div>
-              <div class="section-badge content-ar">قصتنا</div>
-              
-              <h2 class="section-title">
-                  <span class="content-en">Five Decades of <span class="gradient-text">Innovation</span><br>& Excellence</span>
-                  <span class="content-ar">خمسة عقود من <span class="gradient-text">الابتكار</span><br>والتميز</span>
-              </h2>
-              
-              <p class="story-text content-en">
-                  What began as a small mining equipment supplier in Muscat has evolved into a global powerhouse that defines industry standards. Our journey is marked by continuous innovation, strategic partnerships, and an unwavering commitment to excellence that has earned us the trust of the world's largest corporations.
-              </p>
-              
-              <p class="story-text content-ar">
-                  ما بدأ كمورد صغير لمعدات التعدين في مسقط تطور إلى قوة عالمية تحدد معايير الصناعة. رحلتنا مميزة بالابتكار المستمر والشراكات الاستراتيجية والالتزام الثابت بالتميز الذي كسب ثقة أكبر الشركات في العالم.
-              </p>
-              
-              <ul class="story-highlights">
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
-                      <span class="content-en">First Omani company to achieve ISO 9001:2015 certification in mining sector</span>
-                      <span class="content-ar">أول شركة عُمانية تحصل على شهادة ISO 9001:2015 في قطاع التعدين</span>
-                  </li>
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-globe"></i></div>
-                      <span class="content-en">Pioneered sustainable mining practices in the Middle East region</span>
-                      <span class="content-ar">رائدة في ممارسات التعدين المستدام في منطقة الشرق الأوسط</span>
-                  </li>
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-handshake"></i></div>
-                      <span class="content-en">Strategic partnerships with 500+ global suppliers and manufacturers</span>
-                      <span class="content-ar">شراكات استراتيجية مع أكثر من ٥٠٠ مورد ومصنع عالمي</span>
-                  </li>
-                  <li>
-                      <div class="highlight-icon"><i class="fas fa-award"></i></div>
-                      <span class="content-en">Recipient of Global Mining Excellence Award 2023</span>
-                      <span class="content-ar">حائزة على جائزة التميز العالمية للتعدين ٢٠٢٣</span>
-                  </li>
-              </ul>
-          </div>
-          
-          <div class="story-image animate-on-scroll" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=90');">
-          </div>
-      </div>
-  </section>
+<!-- Our Story Section -->
+<section class="story-section">
+    <div class="story-container">
+        <div class="story-content animate-on-scroll">
+            <div class="section-badge content-en">Our Story</div>
+            <div class="section-badge content-ar">قصتنا</div>
+            
+            <h2 class="section-title">
+                <span class="content-en">Building <span class="gradient-text">Oman's</span><br>Mining Future</span>
+                <span class="content-ar">بناء مستقبل <span class="gradient-text">التعدين</span><br>في عُمان</span>
+            </h2>
+            
+            <p class="story-text content-en">
+                Founded in 2012, SESMINE - Scientific and Engineering Supplies LLC emerged from a vision to transform Oman's mining landscape through innovative technology, expert engineering, and unwavering commitment to excellence. What started as a specialized equipment supplier has evolved into a comprehensive mining solutions provider.
+            </p>
+            
+            <p class="story-text content-ar">
+                تأسست سيسماين - شركة الإمدادات العلمية والهندسية ذ.م.م في عام ٢٠١٢، نشأت من رؤية لتحويل المشهد التعديني في عُمان من خلال التكنولوجيا المبتكرة والهندسة المتخصصة والالتزام الثابت بالتميز. ما بدأ كمورد متخصص للمعدات تطور إلى مقدم حلول التعدين الشاملة.
+            </p>
+            
+            <ul class="story-highlights">
+                <li>
+                    <div class="highlight-icon"><i class="fas fa-rocket"></i></div>
+                    <span class="content-en">Pioneered advanced mining solutions in Oman's geological landscape</span>
+                    <span class="content-ar">رائدة الحلول التعدينية المتقدمة في المشهد الجيولوجي لعُمان</span>
+                </li>
+                <li>
+                    <div class="highlight-icon"><i class="fas fa-users"></i></div>
+                    <span class="content-en">Built a team of 35+ expert professionals and engineers</span>
+                    <span class="content-ar">بناء فريق من أكثر من ٣٥ محترف ومهندس خبير</span>
+                </li>
+                <li>
+                    <div class="highlight-icon"><i class="fas fa-handshake"></i></div>
+                    <span class="content-en">Established partnerships with 75+ international and local suppliers</span>
+                    <span class="content-ar">إقامة شراكات مع أكثر من ٧٥ مورد دولي ومحلي</span>
+                </li>
+                <li>
+                    <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
+                    <span class="content-en">Achieved 99% project success rate across 250+ completed projects</span>
+                    <span class="content-ar">تحقيق معدل نجاح ٩٩٪ عبر أكثر من ٢٥٠ مشروع مكتمل</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="story-visual animate-on-scroll">
+            <div class="story-overlay">
+                <h4 class="overlay-title content-en">Our Muscat Headquarters</h4>
+                <h4 class="overlay-title content-ar">مقرنا الرئيسي في مسقط</h4>
+                <p class="overlay-description content-en">
+                    Strategically located in Al Mawaleh South, Al Seeb, our modern facilities serve as the hub for our operations across Oman and the broader Middle East region.
+                </p>
+                <p class="overlay-description content-ar">
+                    يقع استراتيجياً في المعولة الجنوبية، السيب، مرافقنا الحديثة تعمل كمركز لعملياتنا عبر عُمان ومنطقة الشرق الأوسط الأوسع.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <!-- Leadership Section -->
-  <section class="leadership-section">
-      <div class="leadership-container">
-          <div class="section-badge content-en">Leadership Team</div>
-          <div class="section-badge content-ar">فريق القيادة</div>
-          
-          <h2 class="section-title">
-              <span class="content-en">Visionary <span class="gradient-text">Leadership</span><br>Driving Global Success</span>
-              <span class="content-ar">قيادة <span class="gradient-text">رؤيوية</span><br>تقود النجاح العالمي</span>
-          </h2>
-          
-          <div class="leadership-grid">
-              <div class="leader-card animate-on-scroll">
-                  <div class="leader-avatar">
-                      <i class="fas fa-user-tie"></i>
-                  </div>
-                  <h3 class="leader-name content-en">Ahmed Al-Rashid</h3>
-                  <h3 class="leader-name content-ar">أحمد الراشد</h3>
-                  <div class="leader-title content-en">Chairman & CEO</div>
-                  <div class="leader-title content-ar">رئيس مجلس الإدارة والرئيس التنفيذي</div>
-                  <p class="leader-bio content-en">
-                      Visionary leader with 35+ years in mining and chemical processing. Under his leadership, SESMINE has achieved unprecedented global expansion and industry recognition.
-                  </p>
-                  <p class="leader-bio content-ar">
-                      قائد رؤيوي مع أكثر من ٣٥ عاماً في التعدين والمعالجة الكيميائية. تحت قيادته، حققت سيسماين توسعاً عالمياً واعترافاً صناعياً لم يسبق له مثيل.
-                  </p>
-                  <div class="leader-credentials">
-                      <div class="credential-badge">MBA Mining</div>
-                      <div class="credential-badge">PE License</div>
-                      <div class="credential-badge">40+ Years</div>
-                  </div>
-              </div>
-              
-              <div class="leader-card animate-on-scroll">
-                  <div class="leader-avatar">
-                      <i class="fas fa-cogs"></i>
-                  </div>
-                  <h3 class="leader-name content-en">Sarah Mitchell</h3>
-                  <h3 class="leader-name content-ar">سارة ميتشل</h3>
-                  <div class="leader-title content-en">Chief Technology Officer</div>
-                  <div class="leader-title content-ar">كبير مسؤولي التكنولوجيا</div>
-                  <p class="leader-bio content-en">
-                      Technology innovator driving SESMINE's digital transformation and Industry 4.0 initiatives. Expert in AI, IoT, and advanced process automation.
-                  </p>
-                  <p class="leader-bio content-ar">
-                      مبتكرة تكنولوجية تقود التحول الرقمي لسيسماين ومبادرات الصناعة ٤.٠. خبيرة في الذكاء الاصطناعي وإنترنت الأشياء والأتمتة المتقدمة.
-                  </p>
-                  <div class="leader-credentials">
-                      <div class="credential-badge">PhD Engineering</div>
-                      <div class="credential-badge">AI Expert</div>
-                      <div class="credential-badge">25+ Years</div>
-                  </div>
-              </div>
-              
-              <div class="leader-card animate-on-scroll">
-                  <div class="leader-avatar">
-                      <i class="fas fa-globe"></i>
-                  </div>
-                  <h3 class="leader-name content-en">Dr. Hassan Al-Balushi</h3>
-                  <h3 class="leader-name content-ar">د. حسان البلوشي</h3>
-                  <div class="leader-title content-en">Chief Operations Officer</div>
-                  <div class="leader-title content-ar">كبير مسؤولي العمليات</div>
-                  <p class="leader-bio content-en">
-                      Operations excellence leader overseeing global project delivery and quality management. Champion of sustainable mining practices and safety protocols.
-                  </p>
-                  <p class="leader-bio content-ar">
-                      قائد تميز العمليات يشرف على تسليم المشاريع العالمية وإدارة الجودة. بطل ممارسات التعدين المستدام وبروتوكولات السلامة.
-                  </p>
-                  <div class="leader-credentials">
-                      <div class="credential-badge">PhD Mining</div>
-                      <div class="credential-badge">PMP Certified</div>
-                      <div class="credential-badge">30+ Years</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+<!-- Our Values Section -->
+<section class="values-section">
+    <div class="values-container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-badge content-en">Our Values</div>
+            <div class="section-badge content-ar">قيمنا</div>
+            <h2 class="section-title">
+                <span class="content-en">Core <span class="gradient-text">Values</span><br>That Drive Us</span>
+                <span class="content-ar">القيم <span class="gradient-text">الأساسية</span><br>التي تحركنا</span>
+            </h2>
+            <p class="section-description content-en">
+                Our values form the foundation of everything we do, guiding our decisions, shaping our culture, and defining our commitment to excellence in the mining industry.
+            </p>
+            <p class="section-description content-ar">
+                قيمنا تشكل أساس كل ما نقوم به، توجه قراراتنا، تشكل ثقافتنا، وتحدد التزامنا بالتميز في صناعة التعدين.
+            </p>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3 class="value-title content-en">Excellence</h3>
+                <h3 class="value-title content-ar">التميز</h3>
+                <p class="value-description content-en">
+                    We pursue excellence in every aspect of our work, from equipment selection to project delivery, ensuring the highest standards of quality and performance.
+                </p>
+                <p class="value-description content-ar">
+                    نسعى للتميز في كل جانب من جوانب عملنا، من اختيار المعدات إلى تسليم المشاريع، مما يضمن أعلى معايير الجودة والأداء.
+                </p>
+            </div>
+            
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="value-title content-en">Innovation</h3>
+                <h3 class="value-title content-ar">الابتكار</h3>
+                <p class="value-description content-en">
+                    We embrace cutting-edge technology and innovative solutions to address the evolving challenges of modern mining operations in Oman.
+                </p>
+                <p class="value-description content-ar">
+                    نتبنى التكنولوجيا المتطورة والحلول المبتكرة لمواجهة التحديات المتطورة لعمليات التعدين الحديثة في عُمان.
+                </p>
+            </div>
+            
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <i class="fas fa-shield-check"></i>
+                </div>
+                <h3 class="value-title content-en">Integrity</h3>
+                <h3 class="value-title content-ar">النزاهة</h3>
+                <p class="value-description content-en">
+                    Honesty, transparency, and ethical business practices are at the core of our relationships with clients, partners, and stakeholders.
+                </p>
+                <p class="value-description content-ar">
+                    الصدق والشفافية والممارسات التجارية الأخلاقية في صميم علاقاتنا مع العملاء والشركاء وأصحاب المصلحة.
+                </p>
+            </div>
+            
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="value-title content-en">Sustainability</h3>
+                <h3 class="value-title content-ar">الاستدامة</h3>
+                <p class="value-description content-en">
+                    We are committed to environmentally responsible mining practices that protect Oman's natural resources for future generations.
+                </p>
+                <p class="value-description content-ar">
+                    نحن ملتزمون بممارسات التعدين المسؤولة بيئياً التي تحمي الموارد الطبيعية في عُمان للأجيال القادمة.
+                </p>
+            </div>
+            
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="value-title content-en">Collaboration</h3>
+                <h3 class="value-title content-ar">التعاون</h3>
+                <p class="value-description content-en">
+                    We believe in the power of teamwork and partnership, working closely with clients to achieve shared goals and mutual success.
+                </p>
+                <p class="value-description content-ar">
+                    نؤمن بقوة العمل الجماعي والشراكة، نعمل بشكل وثيق مع العملاء لتحقيق الأهداف المشتركة والنجاح المتبادل.
+                </p>
+            </div>
+            
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="value-title content-en">Customer Focus</h3>
+                <h3 class="value-title content-ar">التركيز على العملاء</h3>
+                <p class="value-description content-en">
+                    Our clients' success is our success. We prioritize understanding their unique needs and delivering tailored solutions that exceed expectations.
+                </p>
+                <p class="value-description content-ar">
+                    نجاح عملائنا هو نجاحنا. نعطي الأولوية لفهم احتياجاتهم الفريدة وتقديم حلول مخصصة تتجاوز التوقعات.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <!-- Values Section -->
-  <section class="values-section">
-      <div class="values-container">
-          <div class="section-badge content-en">Our Values</div>
-          <div class="section-badge content-ar">قيمنا</div>
-          
-          <h2 class="section-title">
-              <span class="content-en">Core <span class="gradient-text">Values</span><br>That Drive Excellence</span>
-              <span class="content-ar"><span class="gradient-text">القيم</span> الأساسية<br>التي تقود التميز</span>
-          </h2>
-          
-          <div class="values-grid">
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-shield-alt"></i>
-                  </div>
-                  <h3 class="value-title content-en">Safety First</h3>
-                  <h3 class="value-title content-ar">السلامة أولاً</h3>
-                  <p class="value-description content-en">
-                      Zero harm is our commitment. Every decision prioritizes the safety and well-being of our people, communities, and environment.
-                  </p>
-                  <p class="value-description content-ar">
-                      عدم الضرر هو التزامنا. كل قرار يعطي الأولوية لسلامة ورفاهية شعبنا ومجتمعاتنا وبيئتنا.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-lightbulb"></i>
-                  </div>
-                  <h3 class="value-title content-en">Innovation</h3>
-                  <h3 class="value-title content-ar">الابتكار</h3>
-                  <p class="value-description content-en">
-                      Continuous innovation drives our solutions. We embrace cutting-edge technologies to deliver superior results for our clients.
-                  </p>
-                  <p class="value-description content-ar">
-                      الابتكار المستمر يقود حلولنا. نحن نتبنى التقنيات المتطورة لتقديم نتائج متفوقة لعملائنا.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-award"></i>
-                  </div>
-                  <h3 class="value-title content-en">Excellence</h3>
-                  <h3 class="value-title content-ar">التميز</h3>
-                  <p class="value-description content-en">
-                      We set the highest standards in everything we do. Excellence is not just our goal—it's our standard operating procedure.
-                  </p>
-                  <p class="value-description content-ar">
-                      نضع أعلى المعايير في كل ما نقوم به. التميز ليس مجرد هدفنا - إنه إجراء التشغيل القياسي لدينا.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-handshake"></i>
-                  </div>
-                  <h3 class="value-title content-en">Integrity</h3>
-                  <h3 class="value-title content-ar">النزاهة</h3>
-                  <p class="value-description content-en">
-                      Trust is the foundation of our relationships. We conduct business with transparency, honesty, and ethical practices.
-                  </p>
-                  <p class="value-description content-ar">
-                      الثقة هي أساس علاقاتنا. نحن نمارس الأعمال بشفافية وصدق وممارسات أخلاقية.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-leaf"></i>
-                  </div>
-                  <h3 class="value-title content-en">Sustainability</h3>
-                  <h3 class="value-title content-ar">الاستدامة</h3>
-                  <p class="value-description content-en">
-                      Environmental stewardship guides our operations. We're committed to sustainable practices that protect our planet.
-                  </p>
-                  <p class="value-description content-ar">
-                      الإشراف البيئي يوجه عملياتنا. نحن ملتزمون بالممارسات المستدامة التي تحمي كوكبنا.
-                  </p>
-              </div>
-              
-              <div class="value-card animate-on-scroll">
-                  <div class="value-icon">
-                      <i class="fas fa-users"></i>
-                  </div>
-                  <h3 class="value-title content-en">Collaboration</h3>
-                  <h3 class="value-title content-ar">التعاون</h3>
-                  <p class="value-description content-en">
-                      Together we achieve more. We foster partnerships and teamwork to deliver exceptional value to all stakeholders.
-                  </p>
-                  <p class="value-description content-ar">
-                      معاً نحقق المزيد. نحن نعزز الشراكات والعمل الجماعي لتقديم قيمة استثنائية لجميع أصحاب المصلحة.
-                  </p>
-              </div>
-          </div>
-      </div>
-  </section>
+<!-- Leadership Section -->
+<section class="leadership-section">
+    <div class="leadership-container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-badge content-en">Leadership Team</div>
+            <div class="section-badge content-ar">فريق القيادة</div>
+            <h2 class="section-title">
+                <span class="content-en">Meet Our <span class="gradient-text">Expert</span><br>Leadership Team</span>
+                <span class="content-ar">تعرف على فريق <span class="gradient-text">القيادة</span><br>الخبير لدينا</span>
+            </h2>
+            <p class="section-description content-en">
+                Our leadership team combines decades of industry experience with a shared vision for advancing Oman's mining sector through innovation and excellence.
+            </p>
+            <p class="section-description content-ar">
+                يجمع فريق القيادة لدينا عقوداً من الخبرة في الصناعة مع رؤية مشتركة لتطوير قطاع التعدين في عُمان من خلال الابتكار والتميز.
+            </p>
+        </div>
+        
+        <div class="leadership-grid">
+            <div class="leader-card animate-on-scroll">
+                <div class="leader-image">
+                    <div class="leader-placeholder">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="leader-content">
+                    <h3 class="leader-name content-en">Dr. Ahmed Al-Busaidi</h3>
+                    <h3 class="leader-name content-ar">د. أحمد البوسعيدي</h3>
+                    <p class="leader-title content-en">Chief Executive Officer</p>
+                    <p class="leader-title content-ar">الرئيس التنفيذي</p>
+                    <p class="leader-description content-en">
+                        With over 15 years of experience in mining engineering and business leadership, Dr. Al-Busaidi has been instrumental in positioning SESMINE as Oman's leading mining solutions provider. His vision for sustainable mining practices and technological innovation drives our strategic direction.
+                    </p>
+                    <p class="leader-description content-ar">
+                        مع أكثر من ١٥ عاماً من الخبرة في هندسة التعدين والقيادة التجارية، كان د. البوسعيدي له دور أساسي في وضع سيسماين كمقدم الحلول التعدينية الرائد في عُمان. رؤيته لممارسات التعدين المستدام والابتكار التكنولوجي توجه اتجاهنا الاستراتيجي.
+                    </p>
+                    <div class="leader-contact">
+                        <a href="mailto:ceo@sesmine.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="leader-card animate-on-scroll">
+                <div class="leader-image">
+                    <div class="leader-placeholder">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                </div>
+                <div class="leader-content">
+                    <h3 class="leader-name content-en">Yousuf Al-Rawahi</h3>
+                    <h3 class="leader-name content-ar">يوسف الرواحي</h3>
+                    <p class="leader-title content-en">Business Development Director</p>
+                    <p class="leader-title content-ar">مدير تطوير الأعمال</p>
+                    <p class="leader-description content-en">
+                        Yousuf brings extensive experience in business development and client relations within the mining sector. His deep understanding of regional markets and strong relationships with key stakeholders have been crucial to SESMINE's growth and expansion across the Middle East.
+                    </p>
+                    <p class="leader-description content-ar">
+                        يجلب يوسف خبرة واسعة في تطوير الأعمال وعلاقات العملاء داخل قطاع التعدين. فهمه العميق للأسواق الإقليمية وعلاقاته القوية مع أصحاب المصلحة الرئيسيين كانت حاسمة لنمو وتوسع سيسماين عبر الشرق الأوسط.
+                    </p>
+                    <div class="leader-contact">
+                        <a href="mailto:yousuf@sesmine.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+96898844620" class="contact-link">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="leader-card animate-on-scroll">
+                <div class="leader-image">
+                    <div class="leader-placeholder">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                </div>
+                <div class="leader-content">
+                    <h3 class="leader-name content-en">Eng. Sarah Al-Kindi</h3>
+                    <h3 class="leader-name content-ar">م. سارة الكندي</h3>
+                    <p class="leader-title content-en">Chief Technical Officer</p>
+                    <p class="leader-title content-ar">مدير التقنية الرئيسي</p>
+                    <p class="leader-description content-en">
+                        As our Chief Technical Officer, Eng. Al-Kindi oversees all technical operations and engineering projects. Her expertise in mining technology and process optimization ensures that SESMINE delivers cutting-edge solutions that meet the highest industry standards.
+                    </p>
+                    <p class="leader-description content-ar">
+                        كمدير التقنية الرئيسي، تشرف م. الكندي على جميع العمليات التقنية والمشاريع الهندسية. خبرتها في تكنولوجيا التعدين وتحسين العمليات تضمن أن سيسماين تقدم حلولاً متطورة تلبي أعلى معايير الصناعة.
+                    </p>
+                    <div class="leader-contact">
+                        <a href="mailto:sarah@sesmine.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <!-- Global Presence -->
-  <section class="global-section">
-      <div class="global-container">
-          <div class="section-badge content-en">Global Presence</div>
-          <div class="section-badge content-ar">الحضور العالمي</div>
-          
-          <h2 class="section-title">
-              <span class="content-en">Worldwide <span class="gradient-text">Impact</span><br>& Recognition</span>
-              <span class="content-ar"><span class="gradient-text">التأثير</span> العالمي<br>والاعتراف</span>
-          </h2>
-          
-          <div class="global-stats">
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-building"></i>
-                  </div>
-                  <div class="global-number">50+</div>
-                  <div class="global-label content-en">Years of Excellence</div>
-                  <div class="global-label content-ar">سنة من التميز</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-globe"></i>
-                  </div>
-                  <div class="global-number">150+</div>
-                  <div class="global-label content-en">Countries Served</div>
-                  <div class="global-label content-ar">دولة نخدمها</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-users"></i>
-                  </div>
-                  <div class="global-number">5000+</div>
-                  <div class="global-label content-en">Global Team</div>
-                  <div class="global-label content-ar">فريق عالمي</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-industry"></i>
-                  </div>
-                  <div class="global-number">1000+</div>
-                  <div class="global-label content-en">Projects Delivered</div>
-                  <div class="global-label content-ar">مشروع منجز</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-handshake"></i>
-                  </div>
-                  <div class="global-number">500+</div>
-                  <div class="global-label content-en">Fortune 500 Clients</div>
-                  <div class="global-label content-ar">عميل من فورتشن ٥٠٠</div>
-              </div>
-              
-              <div class="global-stat animate-on-scroll">
-                  <div class="global-icon">
-                      <i class="fas fa-trophy"></i>
-                  </div>
-                  <div class="global-number">25+</div>
-                  <div class="global-label content-en">Industry Awards</div>
-                  <div class="global-label content-ar">جائزة صناعية</div>
-              </div>
-          </div>
-      </div>
-  </section>
+<!-- Company Statistics -->
+<section class="stats-section">
+    <div class="stats-container">
+        <div class="section-header animate-on-scroll">
+            <div class="section-badge content-en">Our Impact</div>
+            <div class="section-badge content-ar">تأثيرنا</div>
+            <h2 class="section-title">
+                <span class="content-en">Measurable <span class="gradient-text">Results</span><br>Across Oman</span>
+                <span class="content-ar">نتائج <span class="gradient-text">قابلة للقياس</span><br>عبر عُمان</span>
+            </h2>
+            <p class="section-description content-en">
+                Our commitment to excellence is reflected in the measurable impact we've made across Oman's mining sector over the past 12 years.
+            </p>
+            <p class="section-description content-ar">
+                التزامنا بالتميز ينعكس في التأثير القابل للقياس الذي أحدثناه عبر قطاع التعدين في عُمان خلال الـ ١٢ عاماً الماضية.
+            </p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card animate-on-scroll">
+                <span class="stat-number">12+</span>
+                <h4 class="stat-label content-en">Years of Excellence</h4>
+                <h4 class="stat-label content-ar">سنة من التميز</h4>
+                <p class="stat-description content-en">
+                    Over a decade of consistent growth and innovation in Oman's mining industry.
+                </p>
+                <p class="stat-description content-ar">
+                    أكثر من عقد من النمو المستمر والابتكار في صناعة التعدين في عُمان.
+                </p>
+            </div>
+            
+            <div class="stat-card animate-on-scroll">
+                <span class="stat-number">250+</span>
+                <h4 class="stat-label content-en">Projects Completed</h4>
+                <h4 class="stat-label content-ar">مشروع مكتمل</h4>
+                <p class="stat-description content-en">
+                    Successfully delivered projects ranging from equipment supply to complete mining solutions.
+                </p>
+                <p class="stat-description content-ar">
+                    مشاريع منجزة بنجاح تتراوح من توريد المعدات إلى حلول التعدين الكاملة.
+                </p>
+            </div>
+            
+            <div class="stat-card animate-on-scroll">
+                <span class="stat-number">35+</span>
+                <h4 class="stat-label content-en">Expert Team Members</h4>
+                <h4 class="stat-label content-ar">عضو فريق خبير</h4>
+                <p class="stat-description content-en">
+                    Highly skilled professionals including engineers, technicians, and consultants.
+                </p>
+                <p class="stat-description content-ar">
+                    محترفون ماهرون للغاية بما في ذلك المهندسون والفنيون والاستشاريون.
+                </p>
+            </div>
+            
+            <div class="stat-card animate-on-scroll">
+                <span class="stat-number">75+</span>
+                <h4 class="stat-label content-en">Strategic Partners</h4>
+                <h4 class="stat-label content-ar">شريك استراتيجي</h4>
+                <p class="stat-description content-en">
+                    Global network of suppliers and partners ensuring comprehensive solution delivery.
+                </p>
+                <p class="stat-description content-ar">
+                    شبكة عالمية من الموردين والشركاء تضمن تقديم الحلول الشاملة.
+                </p>
+            </div>
+            
+            <div class="stat-card animate-on-scroll">
+                <span class="stat-number">8+</span>
+                <h4 class="stat-label content-en">Regional Markets</h4>
+                <h4 class="stat-label content-ar">أسواق إقليمية</h4>
+                <p class="stat-description content-en">
+                    Expanding presence across Oman and strategic regional markets in the Middle East.
+                </p>
+                <p class="stat-description content-ar">
+                    توسع الحضور عبر عُمان والأسواق الإقليمية الاستراتيجية في الشرق الأوسط.
+                </p>
+            </div>
+            
+            <div class="stat-card animate-on-scroll">
+                <span class="stat-number">99%</span>
+                <h4 class="stat-label content-en">Success Rate</h4>
+                <h4 class="stat-label content-ar">معدل النجاح</h4>
+                <p class="stat-description content-en">
+                    Exceptional project success rate through quality execution and client satisfaction.
+                </p>
+                <p class="stat-description content-ar">
+                    معدل نجاح استثنائي للمشاريع من خلال التنفيذ عالي الجودة ورضا العملاء.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <script>
-      // Language switching functionality
-      function switchLanguage(lang) {
-          const body = document.body;
-          const langButtons = document.querySelectorAll('.lang-btn');
-          
-          if (lang === 'ar') {
-              body.setAttribute('dir', 'rtl');
-              body.setAttribute('lang', 'ar');
-          } else {
-              body.setAttribute('dir', 'ltr');
-              body.setAttribute('lang', 'en');
-          }
-          
-          langButtons.forEach(btn => btn.classList.remove('active'));
-          event.target.classList.add('active');
-          localStorage.setItem('preferred-language', lang);
-      }
-      
-      // Load saved language preference
-      document.addEventListener('DOMContentLoaded', () => {
-          const savedLang = localStorage.getItem('preferred-language');
-          if (savedLang === 'ar') {
-              document.body.setAttribute('dir', 'rtl');
-              document.body.setAttribute('lang', 'ar');
-              document.querySelector('.lang-btn[onclick="switchLanguage(\'ar\')"]').classList.add('active');
-              document.querySelector('.lang-btn[onclick="switchLanguage(\'en\')"]').classList.remove('active');
-          }
-      });
-      
-      // Header scroll effect
-      window.addEventListener('scroll', () => {
-          const header = document.getElementById('header');
-          if (window.scrollY > 100) {
-              header.classList.add('scrolled');
-          } else {
-              header.classList.remove('scrolled');
-          }
-      });
-      
-      // Animate on scroll
-      const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -100px 0px'
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  entry.target.classList.add('animated');
-              }
-          });
-      }, observerOptions);
-      
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
-          observer.observe(el);
-      });
-      
-      // Timeline card interactions
-      document.querySelectorAll('.timeline-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-              card.style.transform = 'translateY(-8px) scale(1.05)';
-              card.style.boxShadow = 'var(--shadow-glow)';
-          });
-          
-          card.addEventListener('mouseleave', () => {
-              card.style.transform = 'translateY(0) scale(1)';
-              card.style.boxShadow = 'var(--shadow-xl)';
-          });
-      });
-      
-      // Leader card interactions
-      document.querySelectorAll('.leader-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-              card.style.transform = 'translateY(-16px) scale(1.02)';
-              card.style.boxShadow = '0 0 60px rgba(201, 169, 110, 0.2)';
-          });
-          
-          card.addEventListener('mouseleave', () => {
-              card.style.transform = 'translateY(0) scale(1)';
-              card.style.boxShadow = 'var(--shadow-xl)';
-          });
-      });
-      
-      // Value card interactions
-      document.querySelectorAll('.value-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-              card.style.transform = 'translateY(-12px) rotate(2deg)';
-          });
-          
-          card.addEventListener('mouseleave', () => {
-              card.style.transform = 'translateY(0) rotate(0deg)';
-          });
-      });
-      
-      // Global stat interactions
-      document.querySelectorAll('.global-stat').forEach(stat => {
-          stat.addEventListener('mouseenter', () => {
-              stat.style.transform = 'translateY(-12px) scale(1.1) rotate(-2deg)';
-          });
-          
-          stat.addEventListener('mouseleave', () => {
-              stat.style.transform = 'translateY(0) scale(1) rotate(0deg)';
-          });
-      });
-      
-      // Smooth scrolling
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-              e.preventDefault();
-              const target = document.querySelector(this.getAttribute('href'));
-              if (target) {
-                  target.scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'start'
-                  });
-              }
-          });
-      });
-      
-      console.log('🏢 SESMINE About Us Page Loaded');
-      console.log('📅 Founded 1974 | 🌍 150+ Countries | 👥 5000+ Team | 🏆 25+ Awards');
-  </script>
+<!-- Call to Action Section -->
+<section class="cta-section">
+    <div class="cta-container">
+        <div class="animate-on-scroll">
+            <div class="section-badge content-en">Join Our Journey</div>
+            <div class="section-badge content-ar">انضم لرحلتنا</div>
+            
+            <h2 class="cta-title">
+                <span class="content-en">Ready to Partner with <span class="gradient-text">SESMINE</span>?</span>
+                <span class="content-ar">مستعد للشراكة مع <span class="gradient-text">سيسماين</span>؟</span>
+            </h2>
+            
+            <p class="cta-description content-en">
+                Whether you're planning a new mining project, need equipment solutions, or require expert consulting services, our team is ready to help you achieve your goals with innovative solutions and unmatched expertise.
+            </p>
+            
+            <p class="cta-description content-ar">
+                سواء كنت تخطط لمشروع تعدين جديد، أو تحتاج لحلول المعدات، أو تتطلب خدمات استشارية متخصصة، فريقنا مستعد لمساعدتك في تحقيق أهدافك بحلول مبتكرة وخبرة لا مثيل لها.
+            </p>
+            
+            <div class="cta-actions">
+                <a href="contact.html" class="btn-primary">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="content-en">Contact Our Team</span>
+                    <span class="content-ar">اتصل بفريقنا</span>
+                </a>
+                <a href="projects.html" class="btn-secondary">
+                    <i class="fas fa-eye"></i>
+                    <span class="content-en">View Our Projects</span>
+                    <span class="content-ar">شاهد مشاريعنا</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Professional Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="https://cdn.grapesjs.com/workspaces/cmivl7m5v1t2tgj5kw0x6pzxu/assets/8b119d9c-7c03-4ca6-8d65-61364ee98471__image-07-01-2026-at-02.49-photoroom.png" alt="SESMINE Logo">
+                    <div class="footer-logo-text">SESMINE</div>
+                </div>
+                <p class="footer-description content-en">
+                    Scientific and Engineering Supplies LLC - Your premier partner for comprehensive mining solutions in Oman since 2012. Delivering cutting-edge equipment, expert engineering consultation, and reliable technical support with unwavering commitment to excellence and innovation.
+                </p>
+                <p class="footer-description content-ar">
+                    شركة الإمدادات العلمية والهندسية ذ.م.م - شريكك المتميز للحلول التعدينية الشاملة في عُمان منذ ٢٠١٢. نقدم المعدات المتطورة والاستشارات الهندسية المتخصصة والدعم التقني الموثوق مع التزام ثابت بالتميز والابتكار.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="content-en">Company</h4>
+                <h4 class="content-ar">الشركة</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html" class="content-en">About SESMINE</a><a href="about.html" class="content-ar">حول سيسماين</a></li>
+                    <li><a href="services.html" class="content-en">Our Services</a><a href="services.html" class="content-ar">خدماتنا</a></li>
+                    <li><a href="solutions.html" class="content-en">Solutions</a><a href="solutions.html" class="content-ar">الحلول</a></li>
+                    <li><a href="projects.html" class="content-en">Projects</a><a href="projects.html" class="content-ar">المشاريع</a></li>
+                    <li><a href="careers.html" class="content-en">Careers</a><a href="careers.html" class="content-ar">الوظائف</a></li>
+                    <li><a href="news.html" class="content-en">News & Updates</a><a href="news.html" class="content-ar">الأخبار والتحديثات</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="content-en">Contact Info</h4>
+                <h4 class="content-ar">معلومات الاتصال</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+96824271478" class="content-en">+968-24271478</a><a href="tel:+96824271478" class="content-ar">+968-24271478</a></li>
+                    <li><a href="tel:+96898844620" class="content-en">+968-98844620</a><a href="tel:+96898844620" class="content-ar">+968-98844620</a></li>
+                    <li><a href="mailto:procurement-hub@sesmine.com" class="content-en">procurement-hub@sesmine.com</a><a href="mailto:procurement-hub@sesmine.com" class="content-ar">procurement-hub@sesmine.com</a></li>
+                    <li><a href="contact.html" class="content-en">Al Mawaleh South, Al Seeb</a><a href="contact.html" class="content-ar">المعولة الجنوبية، السيب</a></li>
+                    <li><a href="contact.html" class="content-en">Muscat, Oman</a><a href="contact.html" class="content-ar">مسقط، عُمان</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="content-en">© 2024 Scientific and Engineering Supplies LLC (SESMINE). All rights reserved. | Pioneering Mining Excellence in Oman Since 2012</div>
+            <div class="content-ar">© ٢٠٢٤ شركة الإمدادات العلمية والهندسية ذ.م.م (سيسماين). جميع الحقوق محفوظة. | رائدة التميز في التعدين في عُمان منذ ٢٠١٢</div>
+            <div class="footer-links-bottom">
+                <a href="privacy.html" class="content-en">Privacy Policy</a><a href="privacy.html" class="content-ar">سياسة الخصوصية</a>
+                <a href="terms.html" class="content-en">Terms of Service</a><a href="terms.html" class="content-ar">شروط الخدمة</a>
+                <a href="quality.html" class="content-en">Quality Policy</a><a href="quality.html" class="content-ar">سياسة الجودة</a>
+                <a href="sustainability.html" class="content-en">Sustainability</a><a href="sustainability.html" class="content-ar">الاستدامة</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Ultra Professional JavaScript for About Page
+    const SESMINE_About = {
+        init() {
+            this.initLanguage();
+            this.initHeader();
+            this.initAnimations();
+            this.initInteractions();
+            this.initCounters();
+            this.logPageInfo();
+        },
+        
+        initLanguage() {
+            // Load saved language preference
+            document.addEventListener('DOMContentLoaded', () => {
+                const savedLang = localStorage.getItem('sesmine-language');
+                if (savedLang === 'ar') {
+                    document.body.setAttribute('dir', 'rtl');
+                    document.body.setAttribute('lang', 'ar');
+                    document.querySelector('.lang-btn[onclick="switchLanguage(\'ar\')"]')?.classList.add('active');
+                    document.querySelector('.lang-btn[onclick="switchLanguage(\'en\')"]')?.classList.remove('active');
+                }
+            });
+        },
+        
+        initHeader() {
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                const scrolled = window.pageYOffset > 100;
+                
+                header.classList.toggle('scrolled', scrolled);
+                
+                if (scrolled) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            });
+        },
+        
+        initAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, index * 150);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        },
+        
+        initInteractions() {
+            // Professional card interactions
+            document.querySelectorAll('.value-card, .leader-card, .stat-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-16px) scale(1.03)';
+                    card.style.boxShadow = '0 35px 60px rgba(0, 102, 204, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+                });
+            });
+            
+            // Story highlights interactions
+            document.querySelectorAll('.story-highlights li').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    const icon = item.querySelector('.highlight-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.2) rotate(15deg)';
+                        icon.style.background = 'linear-gradient(135deg, #ff4757 0%, #00d4aa 100%)';
+                    }
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    const icon = item.querySelector('.highlight-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0deg)';
+                        icon.style.background = 'linear-gradient(135deg, #0066cc 0%, #1a7fff 100%)';
+                    }
+                });
+            });
+            
+            // Professional button interactions
+            document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button').forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.transform = 'translateY(-4px) scale(1.05)';
+                });
+                
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        },
+        
+        initCounters() {
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number');
+                
+                counters.forEach(counter => {
+                    const text = counter.textContent;
+                    const target = parseInt(text.replace(/[^0-9]/g, ''));
+                    
+                    if (target > 0) {
+                        let count = 0;
+                        const increment = target / 80;
+                        const timer = setInterval(() => {
+                            count += increment;
+                            if (count >= target) {
+                                counter.textContent = text;
+                                clearInterval(timer);
+                            } else {
+                                counter.textContent = text.replace(/[0-9]+/, Math.floor(count));
+                            }
+                        }, 30);
+                    }
+                });
+            }
+            
+            // Trigger counter animation when stats section is visible
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        },
+        
+        logPageInfo() {
+            console.log('📖 SESMINE About Page - Ultra Professional');
+            console.log('🏢 Scientific & Engineering Supplies LLC');
+            console.log('📅 Established: 2012 (12+ Years Excellence)');
+            console.log('👥 Leadership: Dr. Ahmed Al-Busaidi (CEO), Yousuf Al-Rawahi (BD Director)');
+            console.log('🎯 35+ Expert Team Members | 250+ Projects | 99% Success Rate');
+            console.log('🌟 Professional About Page with Leadership & Values');
+        }
+    };
+    
+    // Language switching functionality
+    function switchLanguage(lang) {
+        const body = document.body;
+        const langButtons = document.querySelectorAll('.lang-btn');
+        
+        if (lang === 'ar') {
+            body.setAttribute('dir', 'rtl');
+            body.setAttribute('lang', 'ar');
+        } else {
+            body.setAttribute('dir', 'ltr');
+            body.setAttribute('lang', 'en');
+        }
+        
+        langButtons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        localStorage.setItem('sesmine-language', lang);
+    }
+    
+    // Initialize SESMINE About application
+    document.addEventListener('DOMContentLoaded', () => {
+        SESMINE_About.init();
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Advanced parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        
+        if (hero) {
+            const rate = scrolled * -0.2;
+            hero.style.transform = `translateY(${rate}px)`;
+        }
+    });
+</script>
 </body>
 </html>
