@@ -186,7 +186,552 @@
           box-shadow: var(--shadow-glow);
       }
       
-      /* Technology Section Continued */
+      /* Hero Section */
+      .hero {
+          min-height: 80vh;
+          display: flex;
+          align-items: center;
+          position: relative;
+          overflow: hidden;
+          background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+          margin-top: 80px;
+      }
+      
+      .hero::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 60%;
+          height: 100%;
+          background: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=90') center/cover;
+          opacity: 0.08;
+          z-index: 1;
+      }
+      
+      body[dir="rtl"] .hero::before {
+          right: auto;
+          left: 0;
+      }
+      
+      .hero-container {
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 3rem;
+          text-align: center;
+          position: relative;
+          z-index: 2;
+      }
+      
+      .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem 1.5rem;
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
+          border-radius: 50px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 2rem;
+          backdrop-filter: blur(20px);
+      }
+      
+      .hero-title {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(3rem, 6vw, 5rem);
+          font-weight: 800;
+          line-height: 1.1;
+          margin-bottom: 2rem;
+      }
+      
+      .gradient-text {
+          background: var(--gradient-gold);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+      
+      .hero-subtitle {
+          font-size: 1.375rem;
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 3rem;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      
+      .asset-stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          margin-top: 3rem;
+          max-width: 1000px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      
+      .asset-stat {
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
+          border-radius: 16px;
+          padding: 2rem;
+          backdrop-filter: blur(20px);
+          transition: all 0.4s ease;
+      }
+      
+      .asset-stat:hover {
+          transform: translateY(-8px);
+          box-shadow: var(--shadow-glow);
+      }
+      
+      .stat-number {
+          font-family: 'Playfair Display', serif;
+          font-size: 2rem;
+          font-weight: 700;
+          background: var(--gradient-gold);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+          font-size: 0.875rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+      }
+      
+      /* Asset Categories */
+      .categories-section {
+          padding: 8rem 3rem;
+          background: var(--darker);
+      }
+      
+      .categories-container {
+          max-width: 1600px;
+          margin: 0 auto;
+      }
+      
+      .section-header {
+          text-align: center;
+          max-width: 1000px;
+          margin: 0 auto 6rem;
+      }
+      
+      .section-badge {
+          display: inline-block;
+          padding: 0.75rem 1.5rem;
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
+          border-radius: 50px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 2rem;
+          backdrop-filter: blur(20px);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+      }
+      
+      .section-title {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(2.5rem, 4vw, 4rem);
+          font-weight: 700;
+          line-height: 1.2;
+          margin-bottom: 2rem;
+          letter-spacing: -1px;
+      }
+      
+      .section-description {
+          font-size: 1.25rem;
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.7;
+          font-weight: 400;
+      }
+      
+      .categories-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2rem;
+      }
+      
+      .category-card {
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
+          border-radius: 20px;
+          overflow: hidden;
+          backdrop-filter: blur(20px);
+          transition: all 0.4s ease;
+          cursor: pointer;
+      }
+      
+      .category-card:hover {
+          transform: translateY(-8px);
+          box-shadow: var(--shadow-glow);
+          border-color: rgba(201, 169, 110, 0.3);
+      }
+      
+      .category-image {
+          height: 250px;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+      }
+      
+      .category-image::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 100%);
+      }
+      
+      .category-overlay {
+          position: absolute;
+          top: 1.5rem;
+          left: 1.5rem;
+          right: 1.5rem;
+          z-index: 2;
+      }
+      
+      .category-badge {
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          background: var(--gradient-gold);
+          color: var(--dark);
+          border-radius: 15px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+      }
+      
+      .category-content {
+          padding: 2.5rem;
+      }
+      
+      .category-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.75rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+      }
+      
+      .category-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.7;
+          margin-bottom: 2rem;
+      }
+      
+      .category-features {
+          list-style: none;
+          margin-bottom: 2rem;
+      }
+      
+      .category-features li {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.9);
+      }
+      
+      .feature-icon {
+          width: 18px;
+          height: 18px;
+          background: var(--gradient-accent);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.6rem;
+          color: white;
+          flex-shrink: 0;
+      }
+      
+      .category-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 1.5rem;
+          border-top: 1px solid var(--glass-border);
+      }
+      
+      .asset-count {
+          font-size: 0.875rem;
+          color: rgba(255, 255, 255, 0.7);
+      }
+      
+      .view-assets-btn {
+          color: var(--secondary);
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+      }
+      
+      .view-assets-btn:hover {
+          color: white;
+          gap: 1rem;
+      }
+      
+      /* Featured Assets */
+      .featured-section {
+          padding: 8rem 3rem;
+          background: var(--dark);
+      }
+      
+      .featured-grid {
+          max-width: 1600px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+          gap: 3rem;
+          margin-top: 4rem;
+      }
+      
+      .featured-asset {
+          background: var(--glass);
+          border: 1px solid var(--glass-border);
+          border-radius: 24px;
+          overflow: hidden;
+          backdrop-filter: blur(20px);
+          transition: all 0.4s ease;
+          position: relative;
+      }
+      
+      .featured-asset::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--gradient-gold);
+          transform: scaleX(0);
+          transition: transform 0.4s ease;
+          z-index: 2;
+      }
+      
+      .featured-asset:hover {
+          transform: translateY(-12px);
+          box-shadow: var(--shadow-glow);
+      }
+      
+      .featured-asset:hover::before {
+          transform: scaleX(1);
+      }
+      
+      .asset-image {
+          height: 300px;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+      }
+      
+      .asset-image::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(45deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%);
+      }
+      
+      .asset-overlay {
+          position: absolute;
+          top: 1.5rem;
+          left: 1.5rem;
+          right: 1.5rem;
+          z-index: 2;
+      }
+      
+      .asset-status {
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          background: var(--gradient-gold);
+          color: var(--dark);
+          border-radius: 15px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+      }
+      
+      .asset-content {
+          padding: 3rem;
+      }
+      
+      .asset-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.75rem;
+          font-weight: 700;
+          margin-bottom: 0.75rem;
+          color: white;
+      }
+      
+      .asset-category {
+          font-size: 0.875rem;
+          color: var(--secondary);
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 1.5rem;
+      }
+      
+      .asset-description {
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.7;
+          margin-bottom: 2rem;
+      }
+      
+      .asset-specs {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          margin-bottom: 2rem;
+          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 12px;
+          border: 1px solid var(--glass-border);
+      }
+      
+      .spec-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .spec-label {
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          font-size: 0.9rem;
+      }
+      
+      .spec-value {
+          font-weight: 700;
+          color: white;
+          font-size: 0.9rem;
+      }
+      
+      .asset-metrics {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+          margin-bottom: 2rem;
+      }
+      
+      .metric-item {
+          text-align: center;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 12px;
+      }
+      
+      .metric-value {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.25rem;
+          font-weight: 700;
+          background: var(--gradient-accent);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.25rem;
+      }
+      
+      .metric-label {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.7);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+      }
+      
+      .asset-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 1.5rem;
+          border-top: 1px solid var(--glass-border);
+      }
+      
+      .asset-value {
+          display: flex;
+          flex-direction: column;
+      }
+      
+      .value-label {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.6);
+          text-transform: uppercase;
+          margin-bottom: 0.25rem;
+      }
+      
+      .value-amount {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--secondary);
+      }
+      
+      .asset-actions {
+          display: flex;
+          gap: 0.75rem;
+      }
+      
+      .btn-asset {
+          padding: 0.75rem 1.5rem;
+          background: var(--gradient-gold);
+          color: var(--dark);
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-size: 0.875rem;
+      }
+      
+      .btn-asset:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-xl);
+      }
+      
+      /* Technology Section */
+      .technology-section {
+          padding: 8rem 3rem;
+          background: var(--darker);
+      }
+      
+      .tech-container {
+          max-width: 1600px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6rem;
+          align-items: center;
+      }
+      
+      .tech-content {
+          padding: 2rem 0;
+      }
+      
+      .tech-features {
+          list-style: none;
+          margin-bottom: 2rem;
+      }
+      
       .tech-features li {
           display: flex;
           align-items: center;
@@ -229,269 +774,6 @@
           background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
       }
       
-      /* Asset Performance Section */
-      .performance-section {
-          padding: 8rem 3rem;
-          background: var(--dark);
-      }
-      
-      .performance-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          text-align: center;
-      }
-      
-      .performance-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 4rem;
-      }
-      
-      .performance-card {
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 20px;
-          padding: 2.5rem;
-          backdrop-filter: blur(20px);
-          transition: all 0.4s ease;
-          text-align: center;
-      }
-      
-      .performance-card:hover {
-          transform: translateY(-8px);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      .performance-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--gradient-accent);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          color: white;
-          margin: 0 auto 1.5rem;
-          box-shadow: var(--shadow-xl);
-      }
-      
-      .performance-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-          color: white;
-      }
-      
-      .performance-value {
-          font-family: 'Playfair Display', serif;
-          font-size: 3rem;
-          font-weight: 700;
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 0.5rem;
-      }
-      
-      .performance-description {
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.6;
-      }
-      
-      /* Sustainability Section */
-      .sustainability-section {
-          padding: 8rem 3rem;
-          background: var(--darker);
-      }
-      
-      .sustainability-container {
-          max-width: 1600px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 6rem;
-          align-items: center;
-      }
-      
-      .sustainability-content {
-          padding: 2rem 0;
-      }
-      
-      .section-badge {
-          display: inline-block;
-          padding: 0.75rem 1.5rem;
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 50px;
-          font-size: 0.875rem;
-          font-weight: 600;
-          margin-bottom: 2rem;
-          backdrop-filter: blur(20px);
-          text-transform: uppercase;
-          letter-spacing: 1px;
-      }
-      
-      .section-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.5rem, 4vw, 4rem);
-          font-weight: 700;
-          line-height: 1.2;
-          margin-bottom: 2rem;
-          letter-spacing: -1px;
-      }
-      
-      .gradient-text {
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-      }
-      
-      .section-description {
-          font-size: 1.25rem;
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.7;
-          font-weight: 400;
-          margin-bottom: 2rem;
-      }
-      
-      .sustainability-features {
-          list-style: none;
-          margin-bottom: 2rem;
-      }
-      
-      .sustainability-features li {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-bottom: 1rem;
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.9);
-      }
-      
-      .sustainability-icon {
-          width: 24px;
-          height: 24px;
-          background: var(--gradient-gold);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.8rem;
-          color: var(--dark);
-          flex-shrink: 0;
-      }
-      
-      .sustainability-image {
-          position: relative;
-          height: 500px;
-          border-radius: 20px;
-          overflow: hidden;
-          background-size: cover;
-          background-position: center;
-          box-shadow: var(--shadow-2xl);
-      }
-      
-      .sustainability-image::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
-      }
-      
-      /* CTA Section */
-      .cta-section {
-          padding: 8rem 3rem;
-          background: var(--dark);
-      }
-      
-      .cta-container {
-          max-width: 1000px;
-          margin: 0 auto;
-          text-align: center;
-          background: var(--glass);
-          border: 1px solid var(--glass-border);
-          border-radius: 24px;
-          padding: 4rem;
-          backdrop-filter: blur(20px);
-          box-shadow: var(--shadow-xl);
-      }
-      
-      .cta-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-          color: white;
-      }
-      
-      .cta-description {
-          font-size: 1.25rem;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 2.5rem;
-          line-height: 1.7;
-      }
-      
-      .cta-actions {
-          display: flex;
-          gap: 1.5rem;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-      }
-      
-      .btn-primary {
-          padding: 1.25rem 2.5rem;
-          background: var(--gradient-gold);
-          color: var(--dark);
-          text-decoration: none;
-          border-radius: 50px;
-          font-weight: 700;
-          font-size: 0.95rem;
-          transition: all 0.3s ease;
-          box-shadow: var(--shadow-xl);
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-      }
-      
-      .btn-primary:hover {
-          transform: translateY(-3px);
-          box-shadow: var(--shadow-glow);
-      }
-      
-      .btn-secondary {
-          padding: 1.25rem 2.5rem;
-          background: transparent;
-          color: rgba(255, 255, 255, 0.9);
-          text-decoration: none;
-          border: 2px solid var(--glass-border);
-          border-radius: 50px;
-          font-weight: 600;
-          font-size: 0.95rem;
-          transition: all 0.3s ease;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-      }
-      
-      .btn-secondary:hover {
-          background: var(--glass);
-          border-color: var(--secondary);
-          color: var(--secondary);
-          transform: translateY(-3px);
-      }
-      
       /* Animations */
       .animate-on-scroll {
           opacity: 0;
@@ -519,23 +801,41 @@
               display: none;
           }
           
-          .performance-grid {
-              grid-template-columns: 1fr;
+          .hero-container {
+              padding: 2rem 1.5rem;
           }
           
-          .sustainability-container {
-              grid-template-columns: 1fr;
-              gap: 3rem;
-              text-align: center;
+          .asset-stats {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1rem;
           }
           
-          .cta-container {
+          .categories-grid {
+              grid-template-columns: 1fr;
+              padding: 0 1.5rem;
+          }
+          
+          .featured-grid {
+              grid-template-columns: 1fr;
+              padding: 0 1.5rem;
+          }
+          
+          .asset-content {
               padding: 2rem;
           }
           
-          .cta-actions {
-              flex-direction: column;
-              gap: 1rem;
+          .asset-specs {
+              grid-template-columns: 1fr;
+          }
+          
+          .asset-metrics {
+              grid-template-columns: 1fr;
+          }
+          
+          .tech-container {
+              grid-template-columns: 1fr;
+              gap: 3rem;
+              text-align: center;
           }
       }
   </style>
@@ -585,8 +885,470 @@
       </div>
   </header>
 
-  <!-- Technology Section Continued -->
-  <section class="technology-section">
+  <!-- Hero Section -->
+  <section class="hero">
+      <div class="hero-container">
+          <div class="hero-badge">
+              <i class="fas fa-industry"></i>
+              <span class="content-en">$10B+ Premium Mining Assets Portfolio</span>
+              <span class="content-ar">محفظة أصول التعدين المتميزة بأكثر من ١٠ مليار دولار</span>
+          </div>
+          
+          <h1 class="hero-title">
+              <span class="content-en">World-Class <span class="gradient-text">Mining</span><br>Assets & Equipment</span>
+              <span class="content-ar">أصول ومعدات <span class="gradient-text">التعدين</span><br>عالمية المستوى</span>
+          </h1>
+          
+          <p class="hero-subtitle content-en">
+              Explore SESMINE's comprehensive portfolio of premium mining assets, cutting-edge equipment, and state-of-the-art processing facilities that power Fortune 500 operations across 150+ countries worldwide.
+          </p>
+          
+          <p class="hero-subtitle content-ar">
+              استكشف محفظة سيسماين الشاملة من أصول التعدين المتميزة والمعدات المتطورة ومرافق المعالجة الحديثة التي تشغل عمليات فورتشن ٥٠٠ عبر أكثر من ١٥٠ دولة في جميع أنحاء العالم.
+          </p>
+          
+          <div class="asset-stats">
+              <div class="asset-stat animate-on-scroll">
+                  <div class="stat-number">$10B+</div>
+                  <div class="stat-label content-en">Asset Portfolio</div>
+                  <div class="stat-label content-ar">محفظة الأصول</div>
+              </div>
+              <div class="asset-stat animate-on-scroll">
+                  <div class="stat-number">500+</div>
+                  <div class="stat-label content-en">Premium Equipment</div>
+                  <div class="stat-label content-ar">معدات متميزة</div>
+              </div>
+              <div class="asset-stat animate-on-scroll">
+                  <div class="stat-number">50+</div>
+                  <div class="stat-label content-en">Processing Plants</div>
+                  <div class="stat-label content-ar">مصانع معالجة</div>
+              </div>
+              <div class="asset-stat animate-on-scroll">
+                  <div class="stat-number">99.5%</div>
+                  <div class="stat-label content-en">Uptime Rate</div>
+                  <div class="stat-label content-ar">معدل التشغيل</div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Asset Categories -->
+  <section class="categories-section">
+      <div class="categories-container">
+          <div class="section-header animate-on-scroll">
+              <div class="section-badge content-en">Asset Categories</div>
+              <div class="section-badge content-ar">فئات الأصول</div>
+              <h2 class="section-title">
+                  <span class="content-en">Comprehensive <span class="gradient-text">Mining</span><br>Asset Portfolio</span>
+                  <span class="content-ar">محفظة أصول <span class="gradient-text">التعدين</span><br>الشاملة</span>
+              </h2>
+              <p class="section-description content-en">
+                  From heavy-duty mining equipment to advanced processing plants, our diverse asset portfolio supports every aspect of modern mining operations with unmatched reliability and performance.
+              </p>
+              <p class="section-description content-ar">
+                  من معدات التعدين الثقيلة إلى مصانع المعالجة المتقدمة، تدعم محفظة أصولنا المتنوعة كل جانب من جوانب عمليات التعدين الحديثة بموثوقية وأداء لا مثيل لهما.
+              </p>
+          </div>
+          
+          <div class="categories-grid">
+              <!-- Heavy Mining Equipment -->
+              <div class="category-card animate-on-scroll">
+                  <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=90');">
+                      <div class="category-overlay">
+                          <div class="category-badge content-en">Premium Equipment</div>
+                          <div class="category-badge content-ar">معدات متميزة</div>
+                      </div>
+                  </div>
+                  <div class="category-content">
+                      <h3 class="category-title content-en">Heavy Mining Equipment</h3>
+                      <h3 class="category-title content-ar">معدات التعدين الثقيلة</h3>
+                      <p class="category-description content-en">
+                          State-of-the-art excavators, haul trucks, bulldozers, and drilling equipment from leading manufacturers, engineered for maximum productivity and durability in the harshest conditions.
+                      </p>
+                      <p class="category-description content-ar">
+                          حفارات وشاحنات نقل وجرافات ومعدات حفر حديثة من الشركات المصنعة الرائدة، مهندسة لتحقيق أقصى إنتاجية ومتانة في أقسى الظروف.
+                      </p>
+                      <ul class="category-features">
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Caterpillar 797F Mining Trucks</span>
+                              <span class="content-ar">شاحنات التعدين Caterpillar 797F</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Komatsu PC8000 Excavators</span>
+                              <span class="content-ar">حفارات Komatsu PC8000</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Atlas Copco Drill Rigs</span>
+                              <span class="content-ar">منصات الحفر Atlas Copco</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Liebherr Mining Dozers</span>
+                              <span class="content-ar">جرافات التعدين Liebherr</span>
+                          </li>
+                      </ul>
+                      <div class="category-footer">
+                          <div class="asset-count">
+                              <span class="content-en">150+ Units Available</span>
+                              <span class="content-ar">أكثر من ١٥٠ وحدة متاحة</span>
+                          </div>
+                          <a href="#" class="view-assets-btn">
+                              <span class="content-en">View Equipment</span>
+                              <span class="content-ar">عرض المعدات</span>
+                              <i class="fas fa-arrow-right"></i>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Processing Plants -->
+              <div class="category-card animate-on-scroll">
+                  <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=600&q=90');">
+                      <div class="category-overlay">
+                          <div class="category-badge content-en">Processing Facilities</div>
+                          <div class="category-badge content-ar">مرافق المعالجة</div>
+                      </div>
+                  </div>
+                  <div class="category-content">
+                      <h3 class="category-title content-en">Processing Plants</h3>
+                      <h3 class="category-title content-ar">مصانع المعالجة</h3>
+                      <p class="category-description content-en">
+                          Advanced mineral processing facilities including crushing, grinding, flotation, and concentration plants designed for optimal recovery rates and environmental compliance.
+                      </p>
+                      <p class="category-description content-ar">
+                          مرافق معالجة المعادن المتقدمة بما في ذلك مصانع التكسير والطحن والتعويم والتركيز المصممة لمعدلات الاسترداد المثلى والامتثال البيئي.
+                      </p>
+                      <ul class="category-features">
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Copper Concentration Plants</span>
+                              <span class="content-ar">مصانع تركيز النحاس</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Gold Recovery Systems</span>
+                              <span class="content-ar">أنظمة استرداد الذهب</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Iron Ore Beneficiation</span>
+                              <span class="content-ar">إثراء خام الحديد</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Coal Preparation Plants</span>
+                              <span class="content-ar">مصانع إعداد الفحم</span>
+                          </li>
+                      </ul>
+                      <div class="category-footer">
+                          <div class="asset-count">
+                              <span class="content-en">25+ Plants Operational</span>
+                              <span class="content-ar">أكثر من ٢٥ مصنع تشغيلي</span>
+                          </div>
+                          <a href="#" class="view-assets-btn">
+                              <span class="content-en">View Plants</span>
+                              <span class="content-ar">عرض المصانع</span>
+                              <i class="fas fa-arrow-right"></i>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Chemical Processing -->
+              <div class="category-card animate-on-scroll">
+                  <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600&q=90');">
+                      <div class="category-overlay">
+                          <div class="category-badge content-en">Chemical Systems</div>
+                          <div class="category-badge content-ar">الأنظمة الكيميائية</div>
+                      </div>
+                  </div>
+                  <div class="category-content">
+                      <h3 class="category-title content-en">Chemical Processing Systems</h3>
+                      <h3 class="category-title content-ar">أنظمة المعالجة الكيميائية</h3>
+                      <p class="category-description content-en">
+                          Sophisticated chemical processing equipment including acid plants, lime kilns, and specialty chemical production facilities with advanced environmental controls.
+                      </p>
+                      <p class="category-description content-ar">
+                          معدات المعالجة الكيميائية المتطورة بما في ذلك مصانع الأحماض وأفران الجير ومرافق إنتاج الكيماويات المتخصصة مع ضوابط بيئية متقدمة.
+                      </p>
+                      <ul class="category-features">
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Sulfuric Acid Plants</span>
+                              <span class="content-ar">مصانع حامض الكبريتيك</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Lime Production Facilities</span>
+                              <span class="content-ar">مرافق إنتاج الجير</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Reagent Preparation Systems</span>
+                              <span class="content-ar">أنظمة تحضير الكواشف</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Water Treatment Plants</span>
+                              <span class="content-ar">محطات معالجة المياه</span>
+                          </li>
+                      </ul>
+                      <div class="category-footer">
+                          <div class="asset-count">
+                              <span class="content-en">15+ Chemical Plants</span>
+                              <span class="content-ar">أكثر من ١٥ مصنع كيميائي</span>
+                          </div>
+                          <a href="#" class="view-assets-btn">
+                              <span class="content-en">View Systems</span>
+                              <span class="content-ar">عرض الأنظمة</span>
+                              <i class="fas fa-arrow-right"></i>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Infrastructure Assets -->
+              <div class="category-card animate-on-scroll">
+                  <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=90');">
+                      <div class="category-overlay">
+                          <div class="category-badge content-en">Infrastructure</div>
+                          <div class="category-badge content-ar">البنية التحتية</div>
+                      </div>
+                  </div>
+                  <div class="category-content">
+                      <h3 class="category-title content-en">Infrastructure Assets</h3>
+                      <h3 class="category-title content-ar">أصول البنية التحتية</h3>
+                      <p class="category-description content-en">
+                          Comprehensive infrastructure including ports, railways, power generation, and logistics facilities that support seamless mining operations and global distribution.
+                      </p>
+                      <p class="category-description content-ar">
+                          البنية التحتية الشاملة بما في ذلك الموانئ والسكك الحديدية وتوليد الطاقة ومرافق اللوجستيات التي تدعم عمليات التعدين السلسة والتوزيع العالمي.
+                      </p>
+                      <ul class="category-features">
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Deep Water Port Facilities</span>
+                              <span class="content-ar">مرافق الموانئ العميقة</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Railway Transportation</span>
+                              <span class="content-ar">النقل بالسكك الحديدية</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Power Generation Plants</span>
+                              <span class="content-ar">محطات توليد الطاقة</span>
+                          </li>
+                          <li>
+                              <div class="feature-icon"><i class="fas fa-check"></i></div>
+                              <span class="content-en">Storage & Logistics Centers</span>
+                              <span class="content-ar">مراكز التخزين واللوجستيات</span>
+                          </li>
+                      </ul>
+                      <div class="category-footer">
+                          <div class="asset-count">
+                              <span class="content-en">10+ Major Facilities</span>
+                              <span class="content-ar">أكثر من ١٠ مرافق رئيسية</span>
+                          </div>
+                          <a href="#" class="view-assets-btn">
+                              <span class="content-en">View Infrastructure</span>
+                              <span class="content-ar">عرض البنية التحتية</span>
+                              <i class="fas fa-arrow-right"></i>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Featured Assets -->
+  <section class="featured-section">
+      <div class="categories-container">
+          <div class="section-header animate-on-scroll">
+              <div class="section-badge content-en">Featured Assets</div>
+              <div class="section-badge content-ar">الأصول المميزة</div>
+              <h2 class="section-title">
+                  <span class="content-en">Flagship <span class="gradient-text">Mining</span><br>Operations</span>
+                  <span class="content-ar">عمليات <span class="gradient-text">التعدين</span><br>الرائدة</span>
+              </h2>
+              <p class="section-description content-en">
+                  Discover our most advanced and productive mining assets that set industry benchmarks for efficiency, safety, and environmental stewardship.
+              </p>
+              <p class="section-description content-ar">
+                  اكتشف أصول التعدين الأكثر تقدماً وإنتاجية التي تضع معايير الصناعة للكفاءة والسلامة والإشراف البيئي.
+              </p>
+          </div>
+          
+          <div class="featured-grid">
+              <!-- Sohar Copper Complex -->
+              <div class="featured-asset animate-on-scroll">
+                  <div class="asset-image" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&q=90');">
+                      <div class="asset-overlay">
+                          <div class="asset-status content-en">Flagship Operation</div>
+                          <div class="asset-status content-ar">العملية الرائدة</div>
+                      </div>
+                  </div>
+                  
+                  <div class="asset-content">
+                      <h3 class="asset-title content-en">Sohar Copper Mining Complex</h3>
+                      <h3 class="asset-title content-ar">مجمع تعدين النحاس بصحار</h3>
+                      <div class="asset-category content-en">Integrated Mining & Smelting</div>
+                      <div class="asset-category content-ar">التعدين والصهر المتكامل</div>
+                      
+                      <p class="asset-description content-en">
+                          World's largest copper mining and smelting complex featuring state-of-the-art extraction technologies, automated processing systems, and comprehensive environmental controls. Produces 400,000 tons of copper annually.
+                      </p>
+                      
+                      <p class="asset-description content-ar">
+                          أكبر مجمع لتعدين وصهر النحاس في العالم يتميز بتقنيات الاستخراج المتطورة وأنظمة المعالجة الآلية والضوابط البيئية الشاملة. ينتج ٤٠٠,٠٠٠ طن من النحاس سنوياً.
+                      </p>
+                      
+                      <div class="asset-specs">
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Annual Capacity:</span>
+                              <span class="spec-label content-ar">السعة السنوية:</span>
+                              <span class="spec-value">400,000 TPY</span>
+                          </div>
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Investment Value:</span>
+                              <span class="spec-label content-ar">قيمة الاستثمار:</span>
+                              <span class="spec-value">$2.8B</span>
+                          </div>
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Employment:</span>
+                              <span class="spec-label content-ar">التوظيف:</span>
+                              <span class="spec-value">2,500 Jobs</span>
+                          </div>
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Operational Since:</span>
+                              <span class="spec-label content-ar">تشغيلي منذ:</span>
+                              <span class="spec-value">2019</span>
+                          </div>
+                      </div>
+                      
+                      <div class="asset-metrics">
+                          <div class="metric-item">
+                              <div class="metric-value">99.2%</div>
+                              <div class="metric-label content-en">Uptime</div>
+                              <div class="metric-label content-ar">وقت التشغيل</div>
+                          </div>
+                          <div class="metric-item">
+                              <div class="metric-value">94.5%</div>
+                              <div class="metric-label content-en">Recovery Rate</div>
+                              <div class="metric-label content-ar">معدل الاسترداد</div>
+                          </div>
+                          <div class="metric-item">
+                              <div class="metric-value">Zero</div>
+                              <div class="metric-label content-en">Incidents</div>
+                              <div class="metric-label content-ar">حوادث</div>
+                          </div>
+                      </div>
+                      
+                      <div class="asset-footer">
+                          <div class="asset-value">
+                              <span class="value-label content-en">Asset Value</span>
+                              <span class="value-label content-ar">قيمة الأصل</span>
+                              <span class="value-amount">$2.8B</span>
+                          </div>
+                          <div class="asset-actions">
+                              <a href="#" class="btn-asset">
+                                  <span class="content-en">View Details</span>
+                                  <span class="content-ar">عرض التفاصيل</span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Muscat Acid Plant -->
+              <div class="featured-asset animate-on-scroll">
+                  <div class="asset-image" style="background-image: url('https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=800&q=90');">
+                      <div class="asset-overlay">
+                          <div class="asset-status content-en">Advanced Technology</div>
+                          <div class="asset-status content-ar">تقنية متقدمة</div>
+                      </div>
+                  </div>
+                  
+                  <div class="asset-content">
+                      <h3 class="asset-title content-en">Muscat Advanced Acid Plant</h3>
+                      <h3 class="asset-title content-ar">مصنع الأحماض المتقدم بمسقط</h3>
+                      <div class="asset-category content-en">Chemical Processing Facility</div>
+                      <div class="asset-category content-ar">مرفق المعالجة الكيميائية</div>
+                      
+                      <p class="asset-description content-en">
+                          State-of-the-art sulfuric acid production facility utilizing double absorption technology with zero-emission systems and advanced energy recovery capabilities. Environmental excellence certified.
+                      </p>
+                      
+                      <p class="asset-description content-ar">
+                          مرفق إنتاج حامض الكبريتيك المتطور باستخدام تقنية الامتصاص المزدوج مع أنظمة خالية من الانبعاثات وقدرات استرداد الطاقة المتقدمة. معتمد للتميز البيئي.
+                      </p>
+                      
+                      <div class="asset-specs">
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Daily Capacity:</span>
+                              <span class="spec-label content-ar">السعة اليومية:</span>
+                              <span class="spec-value">2,000 TPD</span>
+                          </div>
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Technology:</span>
+                              <span class="spec-label content-ar">التقنية:</span>
+                              <span class="spec-value">Double Absorption</span>
+                          </div>
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Conversion Rate:</span>
+                              <span class="spec-label content-ar">معدل التحويل:</span>
+                              <span class="spec-value">99.8%</span>
+                          </div>
+                          <div class="spec-item">
+                              <span class="spec-label content-en">Emissions:</span>
+                              <span class="spec-label content-ar">الانبعاثات:</span>
+                              <span class="spec-value">Zero SO₂</span>
+                          </div>
+                      </div>
+                      
+                      <div class="asset-metrics">
+                          <div class="metric-item">
+                              <div class="metric-value">99.8%</div>
+                              <div class="metric-label content-en">Efficiency</div>
+                              <div class="metric-label content-ar">الكفاءة</div>
+                          </div>
+                          <div class="metric-item">
+                              <div class="metric-value">95%</div>
+                              <div class="metric-label content-en">Energy Recovery</div>
+                              <div class="metric-label content-ar">استرداد الطاقة</div>
+                          </div>
+                          <div class="metric-item">
+                              <div class="metric-value">30</div>
+                              <div class="metric-label content-en">Years Life</div>
+                              <div class="metric-label content-ar">سنة عمر</div>
+                          </div>
+                      </div>
+                      
+                      <div class="asset-footer">
+                          <div class="asset-value">
+                              <span class="value-label content-en">Asset Value</span>
+                              <span class="value-label content-ar">قيمة الأصل</span>
+                              <span class="value-amount">$450M</span>
+                          </div>
+                          <div class="asset-actions">
+                              <a href="#" class="btn-asset">
+                                  <span class="content-en">View Details</span>
+                                  <span class="content-ar">عرض التفاصيل</span>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+   <section class="technology-section">
       <div class="tech-container">
           <div class="tech-content animate-on-scroll">
               <div class="section-badge content-en">Advanced Technology</div>
